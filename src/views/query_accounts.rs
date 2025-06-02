@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 use crate::AccountState;
+use crate::views::accounts::TokenAccountCard;
 
 // Dialog state: open/closed, input address, loading, and fetched result
 #[component]
@@ -71,6 +72,30 @@ pub fn QueryAccountDialog(show_query_dialog: Signal<bool>) -> Element {
                             p { "Balance: {account.balance}" }
                             // List tokens and transactions, etc.
                         }
+
+
+			div { class: "flex flex-col w-full mt-5",
+                                div { class: "flex items-center text-true-blue dark:text-white",
+
+                                    if account.token_accounts_is_empty() {
+                                        p { class: "text-sm", "No Token Accounts Found" }
+                                    } else {
+                                        p { "Token Accounts" }
+                                    }
+                                }
+                                div { class: "flex flex-wrap gap-4 mt-2",
+                                    for token_account in account.token_accounts() {
+                                        TokenAccountCard {
+                                            mint: token_account.mint(),
+                                            ata_address: token_account.ata_address(),
+                                            token_balance: token_account.balance(),
+                                            state: token_account.state()
+                                        }
+                                    }
+                                }
+                        }
+			
+			
                     }
                 }
             }

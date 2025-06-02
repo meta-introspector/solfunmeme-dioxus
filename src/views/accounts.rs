@@ -233,7 +233,7 @@ fn ClusterSuccess(
 }
 
 #[component]
-fn TokenAccountCard(
+pub fn TokenAccountCard(
     mint: String,
     ata_address: String,
     token_balance: String,
