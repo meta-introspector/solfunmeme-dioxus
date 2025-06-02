@@ -4419,7 +4419,7 @@ checksum = "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
 [[package]]
 name = "wallet-adapter"
 version = "1.1.2"
-source = "git+https://github.com/meta-introspector/SolanaWalletAdapter-zos?branch=master#1450561e12145371ed04a5d64833ccfa79e57bc6"
+source = "git+https://github.com/meta-introspector/SolanaWalletAdapter-zos?branch=no-template#64d7842a55771471a64a23ff37148454c544abac"
 dependencies = [
  "async-channel",
  "async-lock",

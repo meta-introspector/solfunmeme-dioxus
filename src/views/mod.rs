@@ -10,6 +10,9 @@ pub use clusters::*;
 mod accounts;
 pub use accounts::*;
 
+mod query_accounts;
+pub use query_accounts::*;
+
 mod airdrop;
 pub use airdrop::*;
 
@@ -27,3 +30,7 @@ pub use connect_first::*;
 
 mod extras_views;
 pub use extras_views::*;
+
+//mod extras_views;
+//pub use extras_views::*;
+

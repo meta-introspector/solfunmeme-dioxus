@@ -4,7 +4,7 @@ use wallet_adapter::Cluster;
 use crate::{
     format_timestamp, link_target_blank, trunk_cluster_name,
     utils::{format_address_url, format_tx_url, get_cluster_svg},
-    views::{ReceiveSol, SendSol},
+    views::{ReceiveSol, SendSol, QueryAccountDialog},
     Airdrop, AirdropSvg, AtaSvg, BalanceSvg, CheckSvg, ErrorSvg, Loader, MintSvg, NotificationInfo,
     ReceiveSvg, SendSvg, SignatureSvg, SignaturesResponse, TimestampSvg, TokenAccountResponse,
     UserSvg, WalletSvg, ACCOUNT_STATE, ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE,
@@ -87,6 +87,7 @@ fn ClusterSuccess(
     public_key_bytes: [u8; 32],
 ) -> Element {
     let mut show_send_modal = use_signal(|| false);
+    let mut show_query_dialog = use_signal(|| false);
     let mut show_airdrop_modal = use_signal(|| false);
     let mut show_receive_modal = use_signal(|| false);
     let mut refreshing = use_signal(|| false);
@@ -140,6 +141,11 @@ fn ClusterSuccess(
                         onclick:move|_|{show_receive_modal.set(true)},
                         class:"flex bg-true-blue items-center justify-center text-sm text-white px-5 py-2 mt-5 rounded-full hover:bg-cobalt-blue",
                         span{class:"w-[25px] flex mr-1", {ReceiveSvg()}} "Receive"
+                    }
+		    button {
+                        onclick:move|_|{show_query_dialog.set(true)},
+                        class:"flex bg-true-blue items-center justify-center text-sm text-white px-5 py-2 mt-5 rounded-full hover:bg-cobalt-blue",
+                        span{class:"w-[25px] flex mr-1", {ReceiveSvg()}} "Query"
                     }
                     if CLUSTER_STORAGE.read().active_cluster().cluster() != Cluster::MainNet{
                         button {
@@ -218,6 +224,7 @@ fn ClusterSuccess(
         }
 
         SendSol{show_send_modal}
+	QueryAccountDialog{show_query_dialog}
         ReceiveSol{show_receive_modal}
         if CLUSTER_STORAGE.read().active_cluster().cluster() != Cluster::MainNet{
             Airdrop{show_airdrop_modal}
