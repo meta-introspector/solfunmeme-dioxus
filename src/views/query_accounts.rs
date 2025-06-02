@@ -37,12 +37,13 @@ pub fn QueryAccountDialog(show_query_dialog: Signal<bool>) -> Element {
 
     rsx! {
         if *show_query_dialog.read() {
-            div { class: "fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-30",
-                div { class: "bg-white dark:bg-rich-black p-6 rounded shadow-lg w-[400px]",
-                    h2 { class: "text-xl mb-4", "Query Solana Account" }
+            div { 
+                div {
+		    class: "shrink-0 select-none text-base text-gray-500 sm:text-sm/6",
+                    h2 {  "Query Solana Account" }
                     input {
-                        class: "border rounded px-2 py-1 w-full mb-2",
                         r#type: "text",
+			class: "focus:outline-none bg-transparent border-b-2 border-white block min-w-0 grow ml-2 text-black dark:text-white placeholder:text-gray-400 sm:text-sm/6",
                         value: "{input_address}",
                         oninput: move |evt| input_address.set(evt.value().clone()),
                         placeholder: "Enter account address",
