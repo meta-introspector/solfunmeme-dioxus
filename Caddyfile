@@ -1,0 +1,31 @@
+{
+	log {
+		level DEBUG
+	}
+	auto_https off
+}
+
+:8080 {
+	root * /usr/share/caddy/public
+	file_server
+
+	@healthReady {
+		path /health/ready
+	}
+	respond @healthReady 200 {
+		body "OK"
+	}
+}
+
+http://solfunmeme-dioxus.fly.dev {
+
+	root * /usr/share/caddy/public
+	file_server
+
+	@healthReady {
+		path /health/ready
+	}
+	respond @healthReady 200 {
+		body "OK"
+	}
+}
