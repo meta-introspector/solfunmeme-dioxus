@@ -61,7 +61,8 @@ ENV PATH="/.cargo/bin:$PATH"
 RUN dx bundle --platform web
 
 FROM chef AS runtime
-COPY --from=builder /app/target/dx/hot_dog/release/web/ /usr/local/app
+#COPY --from=builder /app/target/dx/solfunmeme-dioxus/debug/web/ /usr/local/app
+COPY --from=builder /app/target/dx/solfunmeme-dioxus/release/web/ /usr/local/app
 
 # set our port and make sure to listen for all connections
 ENV PORT=8080
