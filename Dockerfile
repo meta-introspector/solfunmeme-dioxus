@@ -60,16 +60,12 @@ ENV PATH="/.cargo/bin:$PATH"
 # Create the final bundle folder. Bundle always executes in release mode with optimizations enabled
 RUN dx bundle --platform web
 
-FROM chef AS runtime
+#FROM chef AS runtime
 #COPY --from=builder /app/target/dx/solfunmeme-dioxus/debug/web/ /usr/local/app
-COPY --from=builder /app/target/dx/solfunmeme-dioxus/release/web/ /usr/local/app
+#COPY --from=builder /app/target/wasm32-unknown-unknown/release/solfunmeme-dioxus.wasm/ /usr/local/app/
+#COPY --from=builder /app/target/dx/solfunmeme-dioxus/web/ /usr/local/app
 
-# set our port and make sure to listen for all connections
-ENV PORT=8080
-ENV IP=0.0.0.0
 
-# expose the port 8080
-EXPOSE 8080
-
-WORKDIR /usr/local/app
-ENTRYPOINT [ "/usr/local/app/server" ]
+FROM caddy:2.7.5-alpine as runtime
+COPY --from=builder /app/target/dx/solfunmeme-dioxus/release/web/  /usr/share/caddy
+#COPY --from=builder /app/target/dx/solfunmeme-dioxus/web/ /usr/local/app
