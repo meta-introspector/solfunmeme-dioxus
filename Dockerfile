@@ -67,5 +67,10 @@ RUN dx bundle --platform web
 
 
 FROM caddy:2.7.5-alpine as runtime
+
 COPY --from=builder /app/target/dx/solfunmeme-dioxus/release/web/  /usr/share/caddy
+COPY Caddyfile /etc/caddy/Caddyfile
+
+RUN caddy validate --config /etc/caddy/Caddyfile
+
 #COPY --from=builder /app/target/dx/solfunmeme-dioxus/web/ /usr/local/app
