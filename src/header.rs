@@ -194,7 +194,7 @@ fn NavClusterItem() -> Element {
                 class:"flex text-sm hover:bg-true-yonder bg-true-blue text-white rounded-full md:py-1 md:px-4 appearance-none text-center cursor-pointer",
                 for adapter_cluster in CLUSTER_STORAGE.read().get_clusters() {
                     option {
-                        key:adapter_cluster.identifier.as_str(),
+                        key:adapter_cluster.identifier().as_str(),
                         value:adapter_cluster.name(), selected:adapter_cluster.name().as_bytes() == CLUSTER_STORAGE.read().active_cluster().name().as_bytes(),
                         {trunk_cluster_name(adapter_cluster.name())},}
                 }
