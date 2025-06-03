@@ -10,6 +10,9 @@ pub use clusters::*;
 mod accounts;
 pub use accounts::*;
 
+mod coins;
+pub use coins::*;
+
 mod query_accounts;
 pub use query_accounts::*;
 
