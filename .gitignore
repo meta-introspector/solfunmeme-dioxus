@@ -9,7 +9,6 @@
 dist
 
 node_modules/
-/.cargo/
 /Cargo.toml~
 # -*- mode: gitignore; -*-
 *~
