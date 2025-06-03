@@ -1,10 +1,4 @@
 
-# from https://github.com/sandydoo/flux/blob/2acfb3108f52d48908d8d41599c6c6fe2c2b279c/.cargo/config.toml#L2
-
-[target.'wasm32-unknown-unknown']
-rustflags = [ "--cfg", "getrandom_backend=\"wasm_js\"" ]
-
-
 #https://github.com/GlareDB/glaredb/blob/c8c2d3ab252f1f8ea4cfb7785f5c0b876267542f/.cargo/config.toml#L2
 # See <https://docs.rs/getrandom/latest/getrandom/#webassembly-support>
 [target.wasm32-unknown-unknown]
