@@ -1,4 +1,3 @@
-
 use dioxus::prelude::*;
 #[component]
 //show_query_dialog: Signal<bool>

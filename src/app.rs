@@ -6,9 +6,13 @@ use wallet_adapter::{ConnectionInfo, WalletAdapter};
 
 use crate::{
     views::{AccountState, ClusterNetState},
-    Accounts, AdapterCluster, ClusterStore, Clusters, Dashboard, Extras, Footer, Header,
-    NotificationInfo,
+    Accounts, AdapterCluster, ClusterStore, Clusters, Dashboard, Extras, Footer, Header,    NotificationInfo
 };
+
+use crate::views::connections::Connections;
+
+
+
 
 const FAVICON: Asset = asset!("/assets/favicon.png");
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
@@ -45,6 +49,8 @@ pub(crate) fn App() -> Element {
         AdapterCluster::localnet(),
     ];
 
+    
+
     if CLUSTER_STORAGE.write().add_clusters(clusters).is_err() {}
 
     spawn(async move {
@@ -72,6 +78,7 @@ pub(crate) fn App() -> Element {
 
             div { class: "flex flex-col w-full min-h-full justify-between items-center",
                 Router::<Route> {}
+                 Connections {}
                 Footer{}
             }
         }

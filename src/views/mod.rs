@@ -7,6 +7,9 @@ pub use footer::*;
 mod clusters;
 pub use clusters::*;
 
+mod clusters_new;
+pub use clusters_new::*;
+
 mod accounts;
 pub use accounts::*;
 
@@ -36,4 +39,5 @@ pub use extras_views::*;
 
 //mod extras_views;
 //pub use extras_views::*;
-
+pub mod connections;
+pub use connections::*;

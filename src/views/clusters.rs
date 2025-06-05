@@ -36,7 +36,7 @@ pub fn Clusters() -> Element {
 }
 
 #[component]
-fn ClusterInfo() -> Element {
+pub fn ClusterInfo() -> Element {
     let active = |adapter_cluster: &AdapterCluster| {
         adapter_cluster.name().as_bytes()
             == CLUSTER_STORAGE.read().active_cluster().name().as_bytes()
