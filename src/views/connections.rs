@@ -8,7 +8,7 @@ use std::collections::HashMap;
 pub struct Connection {
     name: String,
     url: String,
-    token: String,
+//    token: String,
 }
 
 // Define the storage entry for persistent state
@@ -56,7 +56,7 @@ pub fn Connections() -> Element {
     let mut connections = use_connections("app_connections");
     let mut new_name = use_signal(|| String::new());
     let mut new_url = use_signal(|| String::new());
-    let mut new_token = use_signal(|| String::new());
+//    let mut new_token = use_signal(|| String::new());
 
     rsx! {
         div { class: "container",
@@ -77,25 +77,27 @@ pub fn Connections() -> Element {
 		    class: "focus:outline-none bg-transparent border-b-2 border-white block min-w-0 grow ml-2 text-black dark:text-white placeholder:text-gray-400 sm:text-sm/6",
                     oninput: move |event| new_url.set(event.value().clone())
                 }
-                input {
-                    placeholder: "Token",
-                    value: "{new_token}",
-		    class: "focus:outline-none bg-transparent border-b-2 border-white block min-w-0 grow ml-2 text-black dark:text-white placeholder:text-gray-400 sm:text-sm/6",
-		    name: "connection_token",
-                    oninput: move |event| new_token.set(event.value().clone())
-                }
+//                input {
+//                    placeholder: "Token",
+//                    value: "{new_token}",
+//		    class: "focus:outline-none bg-transparent border-b-2 border-white block min-w-0 grow ml-2 text-black dark:text-white placeholder:text-gray-400 sm:text-sm/6",
+//		    name: "connection_token",
+//                    oninput: move |event| new_token.set(event.value().clone())
+//                }
                 button {
                     onclick: move |_| {
                         let connection = Connection {
                             name: new_name().clone(),
                             url: new_url().clone(),
-                            token: new_token().clone(),
+//                            token: new_token().clone(),
                         };
-                        if !connection.name.is_empty() && !connection.url.is_empty() && !connection.token.is_empty() {
+            web_sys::console::log_1(&wasm_bindgen::JsValue::from_str("Click1"));
+                        if !connection.name.is_empty() && !connection.url.is_empty()  {
                             connections.add(connection);
+                            web_sys::console::log_1(&wasm_bindgen::JsValue::from_str("Click2"));
                             new_name.set(String::new());
                             new_url.set(String::new());
-                            new_token.set(String::new());
+//                            new_token.set(String::new());
                         }
                     },
                     "Add Connection"
@@ -109,9 +111,10 @@ pub fn Connections() -> Element {
                 } else {
                     ul {
                         for conn in connections.get_all() {
+			                
                             li {
                                 div { class: "connection",
-                                    span { "{conn.name}: {conn.url} (Token: {conn.token})" }
+                                    span { "{conn.name}: {conn.url}" }
                                     button {
                                         onclick: move |_| connections.remove(&conn.name),
                                         "Delete"
