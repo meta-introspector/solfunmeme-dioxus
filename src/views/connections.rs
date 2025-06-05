@@ -66,16 +66,22 @@ pub fn Connections() -> Element {
                 input {
                     placeholder: "Connection Name",
                     value: "{new_name}",
+		    name: "connection_name",
+		    class: "focus:outline-none bg-transparent border-b-2 border-white block min-w-0 grow ml-2 text-black dark:text-white placeholder:text-gray-400 sm:text-sm/6",
                     oninput: move |event| new_name.set(event.value().clone())
                 }
                 input {
                     placeholder: "URL",
                     value: "{new_url}",
+		    name: "connection_url",
+		    class: "focus:outline-none bg-transparent border-b-2 border-white block min-w-0 grow ml-2 text-black dark:text-white placeholder:text-gray-400 sm:text-sm/6",
                     oninput: move |event| new_url.set(event.value().clone())
                 }
                 input {
                     placeholder: "Token",
                     value: "{new_token}",
+		    class: "focus:outline-none bg-transparent border-b-2 border-white block min-w-0 grow ml-2 text-black dark:text-white placeholder:text-gray-400 sm:text-sm/6",
+		    name: "connection_token",
                     oninput: move |event| new_token.set(event.value().clone())
                 }
                 button {

@@ -184,6 +184,7 @@ fn NavClusterItem() -> Element {
         div{
             class:"flex w-full items-center justify-center md:w-[15%]",
             select{
+		name: "select_cluster",
                 onchange:move |event| {
                     let cluster = CLUSTER_STORAGE.read().get_cluster(&event.data.value()).cloned().unwrap_or_default();
                     let cluster_identifier = String::new() + cluster.name() + " cluster now active!";

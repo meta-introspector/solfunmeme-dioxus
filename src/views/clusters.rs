@@ -86,25 +86,27 @@ pub fn ClusterInfo() -> Element {
 fn Switch(cluster_name: &str) -> Element {
     let cluster_name = cluster_name.to_string();
 
+    let cluster_name2 = cluster_name.clone();
+    
     rsx! {
         label {
             onclick:move|_|{
-                let cluster_name = cluster_name.clone();
+                let cluster_name3 = cluster_name.clone();
 
-                let find_cluster = CLUSTER_STORAGE.read().get_cluster(&cluster_name).cloned();
+                let find_cluster = CLUSTER_STORAGE.read().get_cluster(&cluster_name3).cloned();
 
                 if let Some(active_cluster) = find_cluster{
                     CLUSTER_STORAGE.write().set_active_cluster(active_cluster);
-                    GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(String::new() + &cluster_name + " cluster now active!"));
+                    GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(String::new() + &cluster_name3 + " cluster now active!"));
 
                 }else {
-                    GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(String::from("Could not find `") + &cluster_name + "` cluster!"));
+                    GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(String::from("Could not find `") + &cluster_name3 + "` cluster!"));
                 }
 
             },
             title:"Switch",
             class: "inline-flex items-center cursor-pointer",
-            input { class: "sr-only peer", r#type: "checkbox", value: "" }
+            input { name: "sr-only-peer-{&cluster_name2}", class: "sr-only peer", r#type: "checkbox", value: "" }
             div { class: "relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600" }
         }
     }
@@ -164,7 +166,8 @@ fn AddClusterModal(mut show_add_cluster_modal: Signal<bool>) -> Element {
                             span { class: "w-[40px] inline-flex items-center px-3 text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600",
                                 {ClusterName()}
                             }
-                            input {
+                              input {
+				  
                                 oninput: move |event| {
                                     let data = event.data.value();
                                     add_cluster.write().name = data;
