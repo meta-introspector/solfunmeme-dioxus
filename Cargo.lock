@@ -4411,6 +4411,7 @@ dependencies = [
  "serde_json",
  "solana-sdk",
  "solana-transaction-error",
+ "thiserror 2.0.12",
  "wallet-adapter",
  "wasm-bindgen",
  "wasm-bindgen-futures",
