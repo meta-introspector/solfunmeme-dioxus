@@ -1,3 +1,5 @@
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/meta-introspector/solfunmeme-dioxus)
+
 ## Dioxus Template with Tailwind CSS
 
 ### Requirements
