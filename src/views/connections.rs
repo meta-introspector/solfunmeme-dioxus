@@ -1,21 +1,19 @@
-use thiserror::Error;
 use dioxus::prelude::*;
 use gloo_storage::{LocalStorage, Storage};
 use serde::{Deserialize, Serialize};
-use serde::Serializer;
-use serde::Deserializer;
-use serde::de::{self, Visitor};
-use std::fmt;
+use thiserror::Error;
+//use serde::Deserializer;
+//use serde::de::{self, Visitor};
+//use std::fmt;
 
 use std::collections::HashMap;
-use percent_encoding::{utf8_percent_encode, NON_ALPHANUMERIC};
+//use percent_encoding::{utf8_percent_encode, NON_ALPHANUMERIC};
 use wallet_adapter::{
-    web_sys::{self, Window},
+    //    web_sys::{self, Window},
     Cluster,
 };
 
-pub(crate) static WINDOW: GlobalSignal<Window> =
-    Signal::global(|| web_sys::window().expect("Unable to find Window"));
+//pub(crate) static WINDOW: GlobalSignal<Window> =    Signal::global(|| web_sys::window().expect("Unable to find Window"));
 
 // Define the Connection struct with cluster support
 #[derive(Clone, Serialize, Deserialize, PartialEq, Default)]
@@ -33,7 +31,11 @@ impl Connection {
             if let Some(token_end) = after_token.find('&') {
                 let (token_part, rest) = after_token.split_at(token_end);
                 let masked_token = if token_part.len() > 8 {
-                    format!("{}...{}", &token_part[..4], &token_part[token_part.len()-4..])
+                    format!(
+                        "{}...{}",
+                        &token_part[..4],
+                        &token_part[token_part.len() - 4..]
+                    )
                 } else {
                     "*".repeat(token_part.len())
                 };
@@ -41,7 +43,11 @@ impl Connection {
             } else {
                 // Token is at the end of URL
                 let masked_token = if after_token.len() > 8 {
-                    format!("{}...{}", &after_token[..4], &after_token[after_token.len()-4..])
+                    format!(
+                        "{}...{}",
+                        &after_token[..4],
+                        &after_token[after_token.len() - 4..]
+                    )
                 } else {
                     "*".repeat(after_token.len())
                 };
@@ -54,14 +60,22 @@ impl Connection {
                 if let Some(token_end) = after_token.find('&') {
                     let (token_part, rest) = after_token.split_at(token_end);
                     let masked_token = if token_part.len() > 8 {
-                        format!("{}...{}", &token_part[..4], &token_part[token_part.len()-4..])
+                        format!(
+                            "{}...{}",
+                            &token_part[..4],
+                            &token_part[token_part.len() - 4..]
+                        )
                     } else {
                         "*".repeat(token_part.len())
                     };
                     format!("{}{}{}", before_token, masked_token, rest)
                 } else {
                     let masked_token = if after_token.len() > 8 {
-                        format!("{}...{}", &after_token[..4], &after_token[after_token.len()-4..])
+                        format!(
+                            "{}...{}",
+                            &after_token[..4],
+                            &after_token[after_token.len() - 4..]
+                        )
                     } else {
                         "*".repeat(after_token.len())
                     };
@@ -89,16 +103,15 @@ impl Connection {
     }
 }
 
-
-
 //struct MyCluster(Cluster); // Wrapper type
-
 
 /// Used as a helper struct to contain all the features supported by a wallet
 /// as defined by the wallet standard
 
 /// Solana Clusters
-#[derive(Debug, PartialEq, Eq, Default, PartialOrd, Ord, Clone, Copy, Hash,  Serialize, Deserialize)]
+#[derive(
+    Debug, PartialEq, Eq, Default, PartialOrd, Ord, Clone, Copy, Hash, Serialize, Deserialize,
+)]
 pub enum MyCluster {
     /// Solana Mainnet cluster,  [https://api.mainnet-beta.solana.com](https://api.mainnet-beta.solana.com)
     MainNet,
@@ -149,14 +162,14 @@ impl MyCluster {
     }
 
     /// A Solana cluster identifier
-    pub fn chain(&self) -> &str {
-        match self {
-            MyCluster::MainNet => MAINNET_IDENTIFIER,
-            MyCluster::DevNet => DEVNET_IDENTIFIER,
-            MyCluster::TestNet => TESTNET_IDENTIFIER,
-            MyCluster::LocalNet => LOCALNET_IDENTIFIER,
-        }
-    }
+    // pub fn chain(&self) -> &str {
+    //     match self {
+    //         MyCluster::MainNet => MAINNET_IDENTIFIER,
+    //         MyCluster::DevNet => DEVNET_IDENTIFIER,
+    //         MyCluster::TestNet => TESTNET_IDENTIFIER,
+    //         MyCluster::LocalNet => LOCALNET_IDENTIFIER,
+    //     }
+    // }
 
     /// A Solana cluster identifier as a &str
     pub fn display(&self) -> &str {
@@ -179,10 +192,10 @@ impl core::fmt::Display for MyCluster {
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Hash, Error)]
 pub enum MyWalletError {
     /// Unable to send the a [WalletEvent] via the [crate::WalletEventSender]
-    #[error("Unable to send the a `WalletEvent` variant via the WalletEventSender channel")]
-    ChannelError,
+    //    #[error("Unable to send the a `WalletEvent` variant via the WalletEventSender channel")]
+    //    ChannelError,
     #[error("Unsupported")]
-    UnsupportedChain (String),
+    UnsupportedChain(String),
 }
 
 impl TryFrom<&str> for MyCluster {
@@ -209,8 +222,7 @@ impl TryFrom<&str> for MyCluster {
     }
 }
 
-
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone,  Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
 pub struct AdapterCluster {
     name: String,
     cluster: MyCluster,
@@ -240,32 +252,32 @@ impl AdapterCluster {
     pub fn name(&self) -> &str {
         self.name.as_str()
     }
-    
+
     pub fn cluster(&self) -> MyCluster {
         self.cluster
     }
-    
+
     pub fn endpoint(&self) -> &str {
         self.endpoint.as_str()
     }
-    
-    pub fn identifier(&self) -> String {
-        self.to_string()
-    }
 
-    pub fn query_string(&self) -> String {
-        if self.name.as_bytes() == self.cluster.to_string().as_bytes()
-            && self.cluster != MyCluster::LocalNet
-        {
-            String::new() + "?cluster=" + self.cluster.to_string().as_str()
-        } else {
-            String::new()
-                + "?cluster=custom&customUrl="
-                + utf8_percent_encode(self.endpoint.as_str(), NON_ALPHANUMERIC)
-                    .to_string()
-                    .as_str()
-        }
-    }
+    // pub fn identifier(&self) -> String {
+    //     self.to_string()
+    // }
+
+    // pub fn query_string(&self) -> String {
+    //     if self.name.as_bytes() == self.cluster.to_string().as_bytes()
+    //         && self.cluster != MyCluster::LocalNet
+    //     {
+    //         String::new() + "?cluster=" + self.cluster.to_string().as_str()
+    //     } else {
+    //         String::new()
+    //             + "?cluster=custom&customUrl="
+    //             + utf8_percent_encode(self.endpoint.as_str(), NON_ALPHANUMERIC)
+    //                 .to_string()
+    //                 .as_str()
+    //     }
+    // }
 
     pub fn devnet() -> Self {
         AdapterCluster {
@@ -301,11 +313,12 @@ impl AdapterCluster {
 
     // Mask sensitive parts of the endpoint for display
     pub fn masked_endpoint(&self) -> String {
-        Connection { 
-            name: self.name.clone(), 
-            url: self.endpoint.clone(), 
-            cluster_name: self.name.clone() 
-        }.masked_url()
+        Connection {
+            name: self.name.clone(),
+            url: self.endpoint.clone(),
+            cluster_name: self.name.clone(),
+        }
+        .masked_url()
     }
 }
 
@@ -321,74 +334,12 @@ impl std::fmt::Display for AdapterCluster {
     }
 }
 
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Default)]
-pub struct ClusterStore {
-    clusters: Vec<AdapterCluster>,
-    active_cluster: AdapterCluster,
-}
-
-impl ClusterStore {
-    pub fn new(clusters: Vec<AdapterCluster>) -> Self {
-        Self {
-            clusters,
-            active_cluster: AdapterCluster::default(),
-        }
-    }
-
-    pub fn get_clusters(&self) -> &[AdapterCluster] {
-        self.clusters.as_slice()
-    }
-
-    pub fn add_cluster(&mut self, cluster: AdapterCluster) -> Result<&mut Self, String> {
-        let cluster_exists = self.clusters.iter().any(|inner_cluster| {
-            inner_cluster.name.as_bytes() == cluster.name.as_bytes()
-                || inner_cluster.endpoint.as_bytes() == cluster.endpoint.as_bytes()
-        });
-
-        if cluster_exists {
-            Err(String::from(
-                "Cluster exists, make sure endpoint or name are not the same",
-            ))
-        } else {
-            self.clusters.push(cluster);
-            Ok(self)
-        }
-    }
-
-    pub fn set_active_cluster(&mut self, cluster: AdapterCluster) -> &mut Self {
-        self.active_cluster = cluster;
-        self
-    }
-
-    pub fn active_cluster(&self) -> &AdapterCluster {
-        &self.active_cluster
-    }
-
-    pub fn add_clusters(&mut self, clusters: Vec<AdapterCluster>) -> Result<(), String> {
-        clusters.into_iter().try_for_each(|cluster| {
-            self.add_cluster(cluster)?;
-            Ok::<(), String>(())
-        })
-    }
-
-    pub fn get_cluster(&self, name: &str) -> Option<&AdapterCluster> {
-        self.clusters.iter().find(|cluster| cluster.name == name)
-    }
-
-    pub fn remove_cluster(&mut self, cluster_name: &str) -> Option<AdapterCluster> {
-        self.clusters
-            .iter()
-            .position(|current_cluster| current_cluster.name.as_bytes() == cluster_name.as_bytes())
-            .map(|index| self.clusters.remove(index))
-    }
-}
-
 // Define the storage entry for persistent state
 #[derive(Clone, Serialize, Deserialize)]
 pub struct StorageEntry {
     key: String,
     connections: HashMap<String, Connection>, // Keyed by name for uniqueness
-    clusters: Vec<AdapterCluster>, // Store clusters separately
+    clusters: Vec<AdapterCluster>,            // Store clusters separately
 }
 
 // Custom hook to manage persistent connections and clusters
@@ -417,7 +368,8 @@ impl UseConnections {
     }
 
     pub fn get_cluster_names(&self) -> Vec<String> {
-        let mut names: Vec<String> = self.inner
+        let mut names: Vec<String> = self
+            .inner
             .read()
             .clusters
             .iter()
@@ -429,7 +381,9 @@ impl UseConnections {
 
     pub fn add_connection(&mut self, connection: Connection) {
         let mut inner = self.inner.write();
-        inner.connections.insert(connection.name.clone(), connection.clone());
+        inner
+            .connections
+            .insert(connection.name.clone(), connection.clone());
         LocalStorage::set(&format!("{}_connections", inner.key), &inner.connections)
             .expect("Failed to save connections to LocalStorage");
     }
@@ -443,10 +397,11 @@ impl UseConnections {
 
     pub fn add_cluster(&mut self, cluster: AdapterCluster) -> Result<(), String> {
         let mut inner = self.inner.write();
-        
+
         // Check if cluster already exists
         let cluster_exists = inner.clusters.iter().any(|existing_cluster| {
-            existing_cluster.name() == cluster.name() || existing_cluster.endpoint() == cluster.endpoint()
+            existing_cluster.name() == cluster.name()
+                || existing_cluster.endpoint() == cluster.endpoint()
         });
 
         if cluster_exists {
@@ -461,28 +416,34 @@ impl UseConnections {
 
     pub fn remove_cluster(&mut self, cluster_name: &str) -> Option<AdapterCluster> {
         let mut inner = self.inner.write();
-        
+
         // Find and remove cluster
-        let position = inner.clusters
+        let position = inner
+            .clusters
             .iter()
             .position(|cluster| cluster.name() == cluster_name)?;
-        
+
         let removed_cluster = inner.clusters.remove(position);
-        
+
         // Also remove all connections that reference this cluster
-        inner.connections.retain(|_, conn| conn.cluster_name != cluster_name);
-        
+        inner
+            .connections
+            .retain(|_, conn| conn.cluster_name != cluster_name);
+
         // Save both updated collections
         LocalStorage::set(&format!("{}_clusters", inner.key), &inner.clusters)
             .expect("Failed to save clusters to LocalStorage");
         LocalStorage::set(&format!("{}_connections", inner.key), &inner.connections)
             .expect("Failed to save connections to LocalStorage");
-            
+
         Some(removed_cluster)
     }
 
     pub fn get_cluster(&self, name: &str) -> Option<AdapterCluster> {
-        self.inner.read().clusters.iter()
+        self.inner
+            .read()
+            .clusters
+            .iter()
             .find(|cluster| cluster.name() == name)
             .cloned()
     }
@@ -491,22 +452,25 @@ impl UseConnections {
 pub fn use_connections(key: impl ToString) -> UseConnections {
     let state = use_signal(move || {
         let key = key.to_string();
-        
+
         // Load connections
-        let connections: HashMap<String, Connection> = LocalStorage::get(&format!("{}_connections", key))
-            .ok()
-            .unwrap_or_default();
-            
+        let connections: HashMap<String, Connection> =
+            LocalStorage::get(&format!("{}_connections", key))
+                .ok()
+                .unwrap_or_default();
+
         // Load clusters, with default clusters if none exist
         let mut clusters: Vec<AdapterCluster> = LocalStorage::get(&format!("{}_clusters", key))
             .ok()
-            .unwrap_or_else(|| vec![
-                AdapterCluster::devnet(),
-                AdapterCluster::testnet(),
-                AdapterCluster::mainnet(),
-                AdapterCluster::localnet(),
-            ]);
-            
+            .unwrap_or_else(|| {
+                vec![
+                    AdapterCluster::devnet(),
+                    AdapterCluster::testnet(),
+                    AdapterCluster::mainnet(),
+                    AdapterCluster::localnet(),
+                ]
+            });
+
         // Ensure default clusters exist
         if clusters.is_empty() {
             clusters = vec![
@@ -516,194 +480,56 @@ pub fn use_connections(key: impl ToString) -> UseConnections {
                 AdapterCluster::localnet(),
             ];
         }
-            
-        StorageEntry { key, connections, clusters }
+
+        StorageEntry {
+            key,
+            connections,
+            clusters,
+        }
     });
     UseConnections { inner: state }
 }
 
-// Main Connections component
-pub fn Connections() -> Element {
+pub fn connection_management_section(
+    cluster_names: Vec<String>,
+    mut new_connection_name: Signal<String>,
+    mut new_connection_url: Signal<String>,
+    mut selected_cluster_for_connection: Signal<String>,
+    //filtered_connections: Vec<Connection>,
+    //connections: &UseConnections,
+    //selected_cluster_filter: Signal<String>
+) -> Element {
     let mut connections = use_connections("app_data");
-    let mut new_connection_name = use_signal(|| String::new());
-    let mut new_connection_url = use_signal(|| String::new());
-    let mut selected_cluster_for_connection = use_signal(|| String::new());
-    let mut selected_cluster_filter = use_signal(|| String::from("All"));
-    
-    // Cluster management state
-    let mut new_cluster_name = use_signal(|| String::new());
-    let mut new_cluster_endpoint = use_signal(|| String::new());
-    let mut new_cluster_type = use_signal(|| String::from("custom"));
-    let mut show_cluster_form = use_signal(|| false);
-
-    // Get available clusters for dropdowns
-    let cluster_names = connections.get_cluster_names();
-    let mut filter_options = cluster_names.clone();
-    filter_options.insert(0, "All".to_string());
-
-    // Filter connections based on selected cluster
-    let filtered_connections = if selected_cluster_filter() == "All" {
-        connections.get_all_connections()
-    } else {
-        connections.get_connections_by_cluster(&selected_cluster_filter())
-    };
-
     rsx! {
-        div { class: "container mx-auto p-6 max-w-6xl",
-            h2 { class: "text-3xl font-bold mb-8 text-gray-800 dark:text-white", 
-                "Manage Connections & Clusters" 
-            }
-            
-            // Cluster Management Section
+                // Connection Management Section
             div { class: "bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6",
-                div { class: "flex items-center justify-between mb-4",
-                    h3 { class: "text-lg font-semibold text-gray-700 dark:text-gray-300", 
-                        "Cluster Management" 
-                    }
-                    button {
-                        class: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition-colors text-sm",
-                        onclick: move |_| show_cluster_form.set(!show_cluster_form()),
-                        if show_cluster_form() { "Cancel" } else { "Add Cluster" }
-                    }
-                }
-
-                // Add Cluster Form (conditional)
-                if show_cluster_form() {
-                    div { class: "border-t pt-4 mb-4",
-                        div { class: "grid grid-cols-1 md:grid-cols-3 gap-4 mb-4",
-                            div {
-                                label { class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1", 
-                                    "Cluster Name" 
-                                }
-                                input {
-                                    placeholder: "e.g., my-custom-cluster",
-                                    value: "{new_cluster_name}",
-                                    class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white",
-                                    oninput: move |event| new_cluster_name.set(event.value().clone())
-                                }
-                            }
-                            div {
-                                label { class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1", 
-                                    "Cluster Type" 
-                                }
-                                select {
-                                    class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white",
-                                    value: "{new_cluster_type}",
-                                    onchange: move |event| {
-                                        new_cluster_type.set(event.value().clone());
-                                        // Auto-fill endpoint based on type
-                                        match event.value().as_str() {
-                                            "devnet" => new_cluster_endpoint.set(Cluster::DevNet.endpoint().to_string()),
-                                            "testnet" => new_cluster_endpoint.set(Cluster::TestNet.endpoint().to_string()),
-                                            "mainnet" => new_cluster_endpoint.set(Cluster::MainNet.endpoint().to_string()),
-                                            "localnet" => new_cluster_endpoint.set(Cluster::LocalNet.endpoint().to_string()),
-                                            _ => {}
-                                        }
-                                    },
-                                    option { value: "custom", "Custom" }
-                                    option { value: "devnet", "DevNet" }
-                                    option { value: "testnet", "TestNet" }
-                                    option { value: "mainnet", "MainNet" }
-                                    option { value: "localnet", "LocalNet" }
-                                }
-                            }
-                            div {
-                                label { class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1", 
-                                    "Endpoint URL" 
-                                }
-                                input {
-                                    placeholder: "https://api.devnet.solana.com",
-                                    value: "{new_cluster_endpoint}",
-                                    class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white",
-                                    oninput: move |event| new_cluster_endpoint.set(event.value().clone())
-                                }
-                            }
-                        }
-                        button {
-                            class: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition-colors",
-                            onclick: move |_| {
-                                if !new_cluster_name().is_empty() && !new_cluster_endpoint().is_empty() {
-                                    let cluster_type = match new_cluster_type().as_str() {
-                                        "devnet" => MyCluster::DevNet,
-                                        "testnet" => MyCluster::TestNet,
-                                        "mainnet" => MyCluster::MainNet,
-                                        "localnet" => MyCluster::LocalNet,
-                                        _ => MyCluster::DevNet, // Default for custom
-                                    };
-                                    
-                                    let cluster = AdapterCluster::new()
-                                        .add_name(&new_cluster_name())
-                                        .add_cluster(cluster_type)
-                                        .add_endpoint(&new_cluster_endpoint());
-                                    
-                                    match connections.add_cluster(cluster) {
-                                        Ok(_) => {
-                                            new_cluster_name.set(String::new());
-                                            new_cluster_endpoint.set(String::new());
-                                            new_cluster_type.set(String::from("custom"));
-                                            show_cluster_form.set(false);
-                                        }
-                                        Err(e) => {
-                                            web_sys::console::log_1(&wasm_bindgen::JsValue::from_str(&format!("Error: {}", e)));
-                                        }
-                                    }
-                                }
-                            },
-                            "Add Cluster"
-                        }
-                    }
-                }
-
-                // Display clusters
-                div { class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
-                    for cluster in connections.get_all_clusters() {
-                        div { class: "border border-gray-200 dark:border-gray-600 rounded-lg p-4",
-                            div { class: "flex items-center justify-between mb-2",
-                                h4 { class: "font-semibold text-gray-800 dark:text-white", 
-                                    "{cluster.name()}" 
-                                }
-                                button {
-                                    class: "text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm",
-                                    onclick: move |_| {
-                                        let cluster_name = cluster.name().to_string();
-                                        connections.remove_cluster(&cluster_name);
-                                    },
-                                    "Delete"
-                                }
-                            }
-                            p { class: "text-sm text-gray-600 dark:text-gray-400 mb-1",
-                                "Type: {cluster.cluster().display()}"
-                            }
-                            p { class: "text-xs text-gray-500 dark:text-gray-500 font-mono break-all",
-                                "{cluster.masked_endpoint()}"
-                            }
-                        }
-                    }
-                }
-            }
-            
-            // Connection Management Section
-            div { class: "bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6",
-                h3 { class: "text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300", 
-                    "Add New Connection" 
+                h3 { class: "text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300",
+                    "Add New Connection"
                 }
                 div { class: "grid grid-cols-1 md:grid-cols-3 gap-4 mb-4",
                     div {
-                        label { class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1", 
-                            "Connection Name" 
+                        label {
+			    class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1",
+			    for: "connection-name",
+                            "Connection Name"
                         }
+
                         input {
                             placeholder: "e.g., My App Connection",
                             value: "{new_connection_name}",
+			    id:  "connection-name",
                             class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white",
                             oninput: move |event| new_connection_name.set(event.value().clone())
                         }
                     }
                     div {
-                        label { class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1", 
-                            "Cluster" 
+                        label {
+			    class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1",
+			    for: "select_cluster",
+                            "Cluster"
                         }
                         select {
+                id: "select_cluster",
                             class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white",
                             value: "{selected_cluster_for_connection}",
                             onchange: move |event| selected_cluster_for_connection.set(event.value().clone()),
@@ -714,12 +540,15 @@ pub fn Connections() -> Element {
                         }
                     }
                     div {
-                        label { class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1", 
-                            "URL (with token)" 
+                        label {
+			    class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1",
+			    for : "api-url",
+                            "URL (with token)"
                         }
                         input {
                             placeholder: "https://api.example.com?token=...",
                             value: "{new_connection_url}",
+			    id: "api-url",
                             class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white",
                             oninput: move |event| new_connection_url.set(event.value().clone())
                         }
@@ -743,14 +572,66 @@ pub fn Connections() -> Element {
                     "Add Connection"
                 }
             }
+    }
+}
 
+fn delete_connections(
+    filtered_connections: &Vec<Connection>, //, connections: &UseConnections
+) -> Element {
+    //        let mut connections = use_connections("app_data");
+    rsx! {
+    div { class: "divide-y divide-gray-200 dark:divide-gray-700",
+                    for conn in filtered_connections {
+                        div { class: "p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors",
+                            div { class: "flex items-center justify-between",
+                                div { class: "flex-1",
+                                    div { class: "flex items-center gap-3 mb-2",
+                                        h4 { class: "font-semibold text-gray-800 dark:text-white",
+                                            "{conn.name}"
+                                        }
+                                        span { class: "px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs rounded-full",
+                                            "{conn.cluster_name}"
+                                        }
+                                    }
+                                    p { class: "text-sm text-gray-600 dark:text-gray-400 font-mono break-all",
+                                        "{conn.masked_url()}"
+                                    }
+                                }
+                                div { class: "flex gap-2",
+                                    button {
+                                        class: "text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm font-medium",
+                                        onclick: move |_| {
+                                            //let conn_name = conn.name.clone();
+                                            //connections.remove_connection(&conn_name)
+                                        },
+                                        "Delete"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+}
+
+fn connection_filter(
+    filter_options: Vec<String>,
+    //filtered_connections: Vec<Connection>,
+    //connections: &UseConnections,
+    mut selected_cluster_filter: Signal<String>,
+) -> Element {
+    rsx! {
             // Connection Filter and List
             if !filter_options.is_empty() {
-                div { class: "mb-6",
-                    label { class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2",
+                div {
+		    class: "mb-6",
+                    label {
+			class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2",
+			for: "filter-cluster",
                         "Filter connections by cluster:"
                     }
                     select {
+                name: 	"filter-cluster",
                         class: "px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white",
                         value: "{selected_cluster_filter}",
                         onchange: move |event| selected_cluster_filter.set(event.value().clone()),
@@ -760,58 +641,265 @@ pub fn Connections() -> Element {
                     }
                 }
             }
+    }
+}
 
-            // Display connection list
-            div { class: "bg-white dark:bg-gray-800 rounded-lg shadow-md",
-                div { class: "px-6 py-4 border-b border-gray-200 dark:border-gray-700",
-                    h3 { class: "text-lg font-semibold text-gray-800 dark:text-white", 
-                        "Connections"
-                        if selected_cluster_filter() != "All" {
-                            span { class: "text-sm text-gray-500 ml-2", 
-                                "({selected_cluster_filter()})" 
-                            }
+pub fn connection_list(
+    filtered_connections: &Vec<Connection>,
+    //connections: &UseConnections,
+    selected_cluster_filter: Signal<String>,
+) -> Element {
+    rsx! {
+         // Display connection list
+        div { class: "bg-white dark:bg-gray-800 rounded-lg shadow-md",
+            div { class: "px-6 py-4 border-b border-gray-200 dark:border-gray-700",
+                h3 { class: "text-lg font-semibold text-gray-800 dark:text-white",
+                    "Connections"
+                    if selected_cluster_filter() != "All" {
+                        span { class: "text-sm text-gray-500 ml-2",
+                            "({selected_cluster_filter()})"
                         }
                     }
                 }
-                
-                if filtered_connections.is_empty() {
-                    div { class: "p-6 text-center text-gray-500 dark:text-gray-400",
-                        p { "No connections found." }
+            }
+
+            if filtered_connections.is_empty() {
+                div { class: "p-6 text-center text-gray-500 dark:text-gray-400",
+                    p { "No connections found." }
+                }
+            } else {
+               //delete_connections(filtered_connections, &connections)
+                {
+        let res = delete_connections(filtered_connections);
+        match res {
+            Ok(_rst) => "Ok",
+            Err(_err) => "err",
+        }
+        }
+            }
+        }
+    }
+}
+
+pub fn cluster_management_section(
+    mut new_cluster_name: Signal<String>,
+    mut new_cluster_type: Signal<String>,
+    mut new_cluster_endpoint: Signal<String>,
+    mut show_cluster_form: Signal<bool>,
+    mut connections: UseConnections,
+) -> Element {
+    rsx! {
+                   // Cluster Management Section
+            div { class: "bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6",
+                div { class: "flex items-center justify-between mb-4",
+                    h3 { class: "text-lg font-semibold text-gray-700 dark:text-gray-300",
+                        "Cluster Management"
                     }
-                } else {
-                    div { class: "divide-y divide-gray-200 dark:divide-gray-700",
-                        for conn in filtered_connections {
-                            div { class: "p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors",
-                                div { class: "flex items-center justify-between",
-                                    div { class: "flex-1",
-                                        div { class: "flex items-center gap-3 mb-2",
-                                            h4 { class: "font-semibold text-gray-800 dark:text-white", 
-                                                "{conn.name}" 
-                                            }
-                                            span { class: "px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs rounded-full",
-                                                "{conn.cluster_name}"
-                                            }
+                    button {
+                        class: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition-colors text-sm",
+                        onclick: move |_| show_cluster_form.set(!show_cluster_form()),
+                        if show_cluster_form() { "Cancel" } else { "Add Cluster" }
+                    }
+                }
+
+                // Add Cluster Form (conditional)
+                if show_cluster_form() {
+                    div { class: "border-t pt-4 mb-4",
+                        div { class: "grid grid-cols-1 md:grid-cols-3 gap-4 mb-4",
+                            div {
+                                label {
+				    class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1",
+				    for: "cluster-name",
+                                    "Cluster Name"
+                                }
+                                input {
+                                    placeholder: "e.g., my-custom-cluster",
+                                    value: "{new_cluster_name}",
+                    name: "cluster-name",
+                                    class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white",
+                                    oninput: move |event| new_cluster_name.set(event.value().clone())
+                                }
+                            }
+                            div {
+                                label {
+				    class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1",
+				    for: "cluster-type",
+                                    "Cluster Type"
+                                }
+                                select {
+                                    class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white",
+                                    value: "{new_cluster_type}",
+                        name: "cluster-type",
+                                    onchange: move |event| {
+                                        new_cluster_type.set(event.value().clone());
+                                        // Auto-fill endpoint based on type
+                                        match event.value().as_str() {
+                                            "devnet" => new_cluster_endpoint.set(Cluster::DevNet.endpoint().to_string()),
+                                            "testnet" => new_cluster_endpoint.set(Cluster::TestNet.endpoint().to_string()),
+                                            "mainnet" => new_cluster_endpoint.set(Cluster::MainNet.endpoint().to_string()),
+                                            "localnet" => new_cluster_endpoint.set(Cluster::LocalNet.endpoint().to_string()),
+                                            _ => {}
                                         }
-                                        p { class: "text-sm text-gray-600 dark:text-gray-400 font-mono break-all",
-                                            "{conn.masked_url()}"
+                                    },
+                                    option { value: "custom", "Custom" }
+                                    option { value: "devnet", "DevNet" }
+                                    option { value: "testnet", "TestNet" }
+                                    option { value: "mainnet", "MainNet" }
+                                    option { value: "localnet", "LocalNet" }
+                                }
+                            }
+                            div {
+                                label {
+				    for: "endpoint-url",
+				    class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1",
+                                    "Endpoint URL"
+                                }
+                                input {
+                                    placeholder: "https://api.devnet.solana.com",
+                                    value: "{new_cluster_endpoint}",
+                    name: "endpoint-url",
+                                    class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white",
+                                    oninput: move |event| new_cluster_endpoint.set(event.value().clone())
+                                }
+                            }
+                        }
+                        button {
+                            class: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition-colors",
+                            onclick: move |_| {
+                                if !new_cluster_name().is_empty() && !new_cluster_endpoint().is_empty() {
+                                    let cluster_type = match new_cluster_type().as_str() {
+                                        "devnet" => MyCluster::DevNet,
+                                        "testnet" => MyCluster::TestNet,
+                                        "mainnet" => MyCluster::MainNet,
+                                        "localnet" => MyCluster::LocalNet,
+                                        _ => MyCluster::DevNet, // Default for custom
+                                    };
+
+                                    let cluster = AdapterCluster::new()
+                                        .add_name(&new_cluster_name())
+                                        .add_cluster(cluster_type)
+                                        .add_endpoint(&new_cluster_endpoint());
+
+                                    match connections.add_cluster(cluster) {
+                                        Ok(_) => {
+                                            new_cluster_name.set(String::new());
+                                            new_cluster_endpoint.set(String::new());
+                                            new_cluster_type.set(String::from("custom"));
+                                            show_cluster_form.set(false);
                                         }
-                                    }
-                                    div { class: "flex gap-2",
-                                        button {
-                                            class: "text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm font-medium",
-                                            onclick: move |_| {
-                                                let conn_name = conn.name.clone();
-                                                connections.remove_connection(&conn_name)
-                                            },
-                                            "Delete"
+                                        Err(e) => {
+                                            web_sys::console::log_1(&wasm_bindgen::JsValue::from_str(&format!("Error: {}", e)));
                                         }
                                     }
                                 }
+                            },
+                            "Add Cluster"
+                        }
+                    }
+                }
+
+                // Display clusters
+                div { class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
+                    for cluster in connections.get_all_clusters() {
+                        div { class: "border border-gray-200 dark:border-gray-600 rounded-lg p-4",
+                            div { class: "flex items-center justify-between mb-2",
+                                h4 { class: "font-semibold text-gray-800 dark:text-white",
+                                    "{cluster.name()}"
+                                }
+                                button {
+                                    class: "text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm",
+                                    onclick: move |_| {
+                                        let cluster_name = cluster.name().to_string();
+                                        connections.remove_cluster(&cluster_name);
+                                    },
+                                    "Delete"
+                                }
+                            }
+                            p { class: "text-sm text-gray-600 dark:text-gray-400 mb-1",
+                                "Type: {cluster.cluster().display()}"
+                            }
+                            p { class: "text-xs text-gray-500 dark:text-gray-500 font-mono break-all",
+                                "{cluster.masked_endpoint()}"
                             }
                         }
                     }
                 }
             }
+
+
+    }
+}
+
+// Main Connections component
+pub fn Connections() -> Element {
+    let connections = use_connections("app_data");
+    let new_connection_name = use_signal(|| String::new());
+    let new_connection_url = use_signal(|| String::new());
+    let selected_cluster_for_connection = use_signal(|| String::new());
+    let selected_cluster_filter: Signal<String> = use_signal(|| String::from("All"));
+
+    // Cluster management state
+    let new_cluster_name = use_signal(|| String::new());
+    let new_cluster_endpoint = use_signal(|| String::new());
+    let new_cluster_type = use_signal(|| String::from("custom"));
+    let show_cluster_form = use_signal(|| false);
+
+    // Get available clusters for dropdowns
+    let cluster_names = connections.get_cluster_names();
+    let mut filter_options = cluster_names.clone();
+    filter_options.insert(0, "All".to_string());
+
+    // Filter connections based on selected cluster
+    let filtered_connections = if selected_cluster_filter() == "All" {
+        connections.get_all_connections()
+    } else {
+        connections.get_connections_by_cluster(&selected_cluster_filter())
+    };
+
+    rsx! {
+        div { class: "container mx-auto p-6 max-w-6xl",
+            h2 { class: "text-3xl font-bold mb-8 text-gray-800 dark:text-white",
+                "Manage Connections & Clusters"
+            }
+          { cluster_management_section(new_cluster_name,
+                       new_cluster_type,
+                       new_cluster_endpoint,
+                        show_cluster_form,
+                       connections )
+                    }
+
+
+
+
+
+           {  connection_management_section(
+               cluster_names,
+               new_connection_name,
+               new_connection_url,
+               selected_cluster_for_connection,
+               //filtered_connections,
+               //& connections,
+               //selected_cluster_filter
+           ) }
+              {
+          let res1 = connection_filter(
+              filter_options,
+              selected_cluster_filter
+          );
+
+          match res1 {
+                Ok(_rst) => "Ok",
+                Err(_err) => "err",
+          };
+          let res = connection_list(&filtered_connections,
+                        //&connections,
+                        selected_cluster_filter);
+
+          match res {
+              Ok(_rst) => "Ok",
+              Err(_err) => "err",
+          };
+          }
         }
     }
 }
