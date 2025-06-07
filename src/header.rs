@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 use crate::{
-    trunk_cluster_name, utils::copied_address, views::ClusterNetState, ChangeWalletSvg, CloseSvg,
+    trunk_cluster_name, utils::copied_address, model::ClusterNetState, ChangeWalletSvg, CloseSvg,
     ClustersSvg, CopySvg, DisconnectSvg, FetchReq, GradientWalletIcon, Loader, MenuSvg,
     NotificationInfo, Route, WalletSvg, ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE,
     GLOBAL_MESSAGE, LOGO, WALLET_ADAPTER,

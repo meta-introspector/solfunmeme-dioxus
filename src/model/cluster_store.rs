@@ -1,3 +1,5 @@
+use crate::model::AdapterCluster;
+
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Default)]
 pub struct ClusterStore {
     clusters: Vec<AdapterCluster>,
@@ -18,8 +20,8 @@ impl ClusterStore {
 
     pub fn add_cluster(&mut self, cluster: AdapterCluster) -> Result<&mut Self, String> {
         let cluster_exists = self.clusters.iter().any(|inner_cluster| {
-            inner_cluster.name.as_bytes() == cluster.name.as_bytes()
-                || inner_cluster.endpoint.as_bytes() == cluster.endpoint.as_bytes()
+            inner_cluster.name().as_bytes() == cluster.name().as_bytes()
+                || inner_cluster.endpoint().as_bytes() == cluster.endpoint().as_bytes()
         });
 
         if cluster_exists {
@@ -49,13 +51,13 @@ impl ClusterStore {
     }
 
     pub fn get_cluster(&self, name: &str) -> Option<&AdapterCluster> {
-        self.clusters.iter().find(|cluster| cluster.name == name)
+        self.clusters.iter().find(|cluster| cluster.name() == name)
     }
 
     pub fn remove_cluster(&mut self, cluster_name: &str) -> Option<AdapterCluster> {
         self.clusters
             .iter()
-            .position(|current_cluster| current_cluster.name.as_bytes() == cluster_name.as_bytes())
+            .position(|current_cluster| current_cluster.name().as_bytes() == cluster_name.as_bytes())
             .map(|index| self.clusters.remove(index))
     }
 }

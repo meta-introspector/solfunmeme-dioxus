@@ -2,9 +2,7 @@ use dioxus::prelude::*;
 use wallet_adapter::Cluster;
 
 use crate::{
-    utils::{get_cluster_svg, trunk_cluster_name},
-    AdapterCluster, BinSvg, CheckSvg, CloseSvg, ClusterName, ClustersSvg, LinkSvg,
-    NotificationInfo, CLUSTER_STORAGE, GLOBAL_MESSAGE,
+    model::MyCluster, utils::{get_cluster_svg, trunk_cluster_name}, AdapterCluster, BinSvg, CheckSvg, CloseSvg, ClusterName, ClustersSvg, LinkSvg, NotificationInfo, CLUSTER_STORAGE, GLOBAL_MESSAGE
 };
 
 #[component]
@@ -134,7 +132,7 @@ fn AddClusterModal(mut show_add_cluster_modal: Signal<bool>) -> Element {
     struct AddCluster {
         name: String,
         endpoint: String,
-        network: Cluster,
+        network: MyCluster,
     }
 
     let mut add_cluster = use_signal(|| AddCluster::default());
@@ -213,7 +211,7 @@ fn AddClusterModal(mut show_add_cluster_modal: Signal<bool>) -> Element {
                             }
                             select {
                                 onchange: move |event| {
-                                    let network: Cluster = event.data.value().as_str().try_into().expect(
+                                    let network: MyCluster = event.data.value().as_str().try_into().expect(
                                         "This is a fatal error, you provided an invalid cluster"
                                     );
                                     add_cluster.write().network = network;
@@ -239,7 +237,7 @@ fn AddClusterModal(mut show_add_cluster_modal: Signal<bool>) -> Element {
                                             .add_name(add_cluster.read().name.as_str())
                                             .add_endpoint(add_cluster.read().endpoint.clone().as_str())
                                             .add_cluster(add_cluster.read().network);
-
+                                        // fixme merge
                                         let name = adapter_cluster.name().to_string();
 
                                         if let Err(error) = CLUSTER_STORAGE.write().add_cluster(adapter_cluster){

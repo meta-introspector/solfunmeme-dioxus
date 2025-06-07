@@ -5,38 +5,20 @@ use gloo_timers::callback::Timeout;
 use wallet_adapter::{ConnectionInfo, WalletAdapter};
 
 use crate::{
-    views::{AccountState, ClusterNetState},
-    Accounts, AdapterCluster, ClusterStore, Clusters, Dashboard, Extras, Footer, Header,    NotificationInfo
+    model::NotificationInfo, model::{ClusterNetState}, Accounts, Clusters, Dashboard, Extras, Footer, Header
 };
 
 use crate::views::connections::Connections;
-
-
-
-
+//use crate::model::AdapterCluster;
+use crate::model::{AdapterCluster, AccountState};
 const FAVICON: Asset = asset!("/assets/favicon.png");
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 pub(crate) const LOGO: Asset = asset!("/assets/logo.png");
 
-pub(crate) static WALLET_ADAPTER: GlobalSignal<WalletAdapter> =
-    Signal::global(|| WalletAdapter::init().unwrap());
-
-pub(crate) static CLUSTER_STORAGE: GlobalSignal<ClusterStore> =
-    Signal::global(|| ClusterStore::new(Vec::default()));
-
-pub(crate) static GLOBAL_MESSAGE: GlobalSignal<VecDeque<NotificationInfo>> =
-    Signal::global(|| VecDeque::default());
-
-pub(crate) static ACCOUNT_STATE: GlobalSignal<AccountState> =
-    Signal::global(|| AccountState::default());
-
-pub(crate) static LOADING: GlobalSignal<Option<()>> = Signal::global(|| Option::default());
-
-pub(crate) static CLUSTER_NET_STATE: GlobalSignal<ClusterNetState> =
-    Signal::global(|| ClusterNetState::default());
-
-pub(crate) static ACTIVE_CONNECTION: GlobalSignal<ConnectionInfo> =
-    Signal::global(|| ConnectionInfo::default());
+use crate::model::storage::WALLET_ADAPTER;
+use crate::model::storage::{CLUSTER_STORAGE, GLOBAL_MESSAGE, ACCOUNT_STATE, ACTIVE_CONNECTION};
+//use crate::model::storage::{ClusterStore, NotificationInfo};
+//use crate::model::adaptercluster::AdapterCluster;
 
 #[component]
 pub(crate) fn App() -> Element {

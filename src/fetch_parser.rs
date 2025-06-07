@@ -12,7 +12,7 @@ use wallet_adapter::{
     SendOptions, WalletError, WalletResult,
 };
 
-use crate::{views::AccountState, FetchReq, ACCOUNT_STATE, CLUSTER_STORAGE, WALLET_ADAPTER};
+use crate::{model::{AccountState, BlockHashResponseValue, ResponseWithContext, RpcResponse, SignaturesResponse, TokenAccountResponse}, FetchReq, ACCOUNT_STATE, CLUSTER_STORAGE, WALLET_ADAPTER};
 
 pub fn format_timestamp(unix_timestamp: i64) -> String {
     let timestamp_ms = unix_timestamp as f64 * 1000.0; //Convert seconds to millisconds
@@ -55,13 +55,7 @@ async fn get_blockhash() -> WalletResult<solana_sdk::hash::Hash> {
         .map_err(|error| WalletError::Op(error.to_string()))
 }
 
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Clone, Copy, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct BlockHashResponseValue<'a> {
-    #[serde(borrow)]
-    pub blockhash: &'a str,
-    pub last_valid_block_height: u64,
-}
+
 
 pub async fn get_balance(address: &str) -> WalletResult<String> {
     let balance_options = jzon::object! {
@@ -196,91 +190,7 @@ pub async fn accounts_runner(address: &str) -> WalletResult<AccountState> {
     })
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct RpcResponse<T> {
-    pub jsonrpc: String,
-    pub id: u8,
-    pub result: T,
-}
 
-#[derive(Debug, PartialEq, Clone, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct SignaturesResponse {
-    pub block_time: Option<i64>,
-    pub confirmation_status: Option<String>,
-    pub err: Option<TransactionError>,
-    pub signature: String,
-}
 
-#[derive(Debug, PartialEq, Clone, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct ResponseWithContext<O> {
-    pub value: O,
-}
 
-#[derive(Debug, PartialEq, Clone, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct TokenAccountResponse {
-    pub pubkey: String,
-    pub account: Account,
-}
 
-impl TokenAccountResponse {
-    pub fn mint(&self) -> String {
-        self.account.data.parsed.info.mint.to_owned()
-    }
-
-    pub fn ata_address(&self) -> String {
-        self.pubkey.to_owned()
-    }
-
-    pub fn balance(&self) -> String {
-        self.account
-            .data
-            .parsed
-            .info
-            .token_amount
-            .ui_amount_string
-            .to_owned()
-    }
-
-    pub fn state(&self) -> String {
-        self.account.data.parsed.info.state.to_uppercase()
-    }
-}
-
-#[derive(Debug, PartialEq, Clone, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Account {
-    pub data: TokenData,
-}
-
-#[derive(Debug, PartialEq, Clone, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct TokenAmount {
-    pub amount: String,
-    pub decimals: u8,
-    pub ui_amount: f64,
-    pub ui_amount_string: String,
-}
-
-#[derive(Debug, PartialEq, Clone, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct ParseInfo {
-    pub mint: String,
-    pub state: String,
-    pub token_amount: TokenAmount,
-}
-
-#[derive(Debug, PartialEq, Clone, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Parsed {
-    pub info: ParseInfo,
-}
-
-#[derive(Debug, PartialEq, Clone, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct TokenData {
-    pub parsed: Parsed,
-}
