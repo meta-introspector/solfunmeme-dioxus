@@ -5,10 +5,8 @@ use crate::model::adaptercluster::AdapterCluster;
 use crate::model::connection::Connection;
 
 use gloo_storage::{LocalStorage, Storage};
-use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
-use wallet_adapter::Cluster;
 //storage_entry
 // Custom hook to manage persistent connections and clusters
 #[derive(Clone, Copy)]

@@ -25,7 +25,7 @@ pub const DEVNET_IDENTIFIER: &str = "solana:devnet";
 pub const TESTNET_IDENTIFIER: &str = "solana:testnet";
 /// Solana Localnet cluster, e.g. [http://localhost:8899](http://localhost:8899)
 pub const LOCALNET_IDENTIFIER: &str = "solana:localnet";
-pub const PRIVATENET_IDENTIFIER: &str = "solana:solfunmeme";
+//pub const PRIVATENET_IDENTIFIER: &str = "solana:solfunmeme";
 
 /// Solana Mainnet cluster,  [https://api.mainnet-beta.solana.com](https://api.mainnet-beta.solana.com)
 pub const MAINNET: &str = "mainnet";

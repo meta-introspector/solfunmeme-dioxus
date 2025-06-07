@@ -1,11 +1,9 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use dioxus::prelude::*;
 
-use wallet_adapter::Cluster;
+//use wallet_adapter::Cluster;
 
-use crate::model::storage_entry::StorageEntry;
-use crate::model::adaptercluster::AdapterCluster;
+//use crate::model::storage_entry::StorageEntry;
+//use crate::model::adaptercluster::AdapterCluster;
 // storage_entry
 #[derive(Clone, Serialize, Deserialize, PartialEq, Default)]
 pub struct Connection {

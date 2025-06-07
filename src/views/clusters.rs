@@ -1,9 +1,9 @@
 use dioxus::prelude::*;
-use wallet_adapter::Cluster;
 
 use crate::{
-    model::MyCluster, utils::{get_cluster_svg, trunk_cluster_name}, AdapterCluster, BinSvg, CheckSvg, CloseSvg, ClusterName, ClustersSvg, LinkSvg, NotificationInfo, CLUSTER_STORAGE, GLOBAL_MESSAGE
+    model::{storage::{CLUSTER_STORAGE, GLOBAL_MESSAGE}, MyCluster}, utils::{get_cluster_svg, trunk_cluster_name}, AdapterCluster, BinSvg, CheckSvg, CloseSvg, ClusterName, ClustersSvg, LinkSvg, NotificationInfo, 
 };
+//CLUSTER_STORAGE, GLOBAL_MESSAGE
 
 #[component]
 pub fn Clusters() -> Element {

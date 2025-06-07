@@ -1,10 +1,9 @@
 use dioxus::prelude::*;
 
 use crate::{
-    trunk_cluster_name, utils::copied_address, model::ClusterNetState, ChangeWalletSvg, CloseSvg,
-    ClustersSvg, CopySvg, DisconnectSvg, FetchReq, GradientWalletIcon, Loader, MenuSvg,
-    NotificationInfo, Route, WalletSvg, ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE,
-    GLOBAL_MESSAGE, LOGO, WALLET_ADAPTER,
+    model::{storage::{ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, WALLET_ADAPTER}, ClusterNetState, NotificationInfo}, trunk_cluster_name, utils::copied_address, ChangeWalletSvg, CloseSvg, ClustersSvg, CopySvg, DisconnectSvg, FetchReq, GradientWalletIcon, Loader, MenuSvg, Route, WalletSvg, LOGO
+    //NotificationInfo, Route, WalletSvg, ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE,
+    //GLOBAL_MESSAGE, LOGO, WALLET_ADAPTER,
 };
 
 #[component]

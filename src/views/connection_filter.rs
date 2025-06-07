@@ -1,13 +1,4 @@
 use dioxus::prelude::*;
-use crate::model::UseConnections;
-use crate::views::connection_list;
-use crate::views::connection_management_section;
-use crate::views::cluster_management_section;
-use crate::model::Connection;
-use crate::model::use_connections;
-use crate::model::AdapterCluster;
-use crate::model::MyCluster;
-use crate::model::ClusterNetState;
 
 pub fn connection_filter(
     filter_options: Vec<String>,

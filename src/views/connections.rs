@@ -1,13 +1,9 @@
 use dioxus::prelude::*;
-use gloo_storage::{LocalStorage, Storage};
-use serde::{Deserialize, Serialize};
-use thiserror::Error;
-use std::collections::HashMap;
-use wallet_adapter::{
-    Cluster,
-};
+//use thiserror::Error;
+//use std::collections::HashMap;
+//use wallet_adapter::{Cluster,};
 
-use crate::{connection_management_section, model::use_connections, views::{cluster_management_section, connection_filter, connection_list}};
+use crate::{model::use_connections, views::{cluster_management_section, connection_filter, connection_list, connection_management::connection_management_section}};
 
 // Main Connections component
 pub fn Connections() -> Element {

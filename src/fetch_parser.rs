@@ -1,18 +1,21 @@
 use std::str::FromStr;
 
 use dioxus::prelude::*;
-use serde::Deserialize;
 use solana_sdk::{
     native_token::LAMPORTS_PER_SOL, pubkey::Pubkey, system_instruction::transfer,
     transaction::Transaction,
 };
-use solana_transaction_error::TransactionError;
+//use solana_transaction_error::TransactionError;
 use wallet_adapter::{
     web_sys::{js_sys::Date, wasm_bindgen::JsValue},
     SendOptions, WalletError, WalletResult,
 };
 
-use crate::{model::{AccountState, BlockHashResponseValue, ResponseWithContext, RpcResponse, SignaturesResponse, TokenAccountResponse}, FetchReq, ACCOUNT_STATE, CLUSTER_STORAGE, WALLET_ADAPTER};
+use crate::{model::{storage::{ACCOUNT_STATE, CLUSTER_STORAGE, WALLET_ADAPTER}, AccountState, BlockHashResponseValue, ResponseWithContext, RpcResponse, SignaturesResponse, TokenAccountResponse}, FetchReq};
+//, views::FetchReq
+//, WALLET_ADAPTER, CLUSTER_STORAGE
+
+//ACCOUNT_STATE, CLUSTER_STORAGE, WALLET_ADAPTER};
 
 pub fn format_timestamp(unix_timestamp: i64) -> String {
     let timestamp_ms = unix_timestamp as f64 * 1000.0; //Convert seconds to millisconds

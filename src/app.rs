@@ -1,11 +1,9 @@
-use std::collections::VecDeque;
 
 use dioxus::prelude::*;
 use gloo_timers::callback::Timeout;
-use wallet_adapter::{ConnectionInfo, WalletAdapter};
 
 use crate::{
-    model::NotificationInfo, model::{ClusterNetState}, Accounts, Clusters, Dashboard, Extras, Footer, Header
+    model::NotificationInfo, Footer, Header
 };
 
 use crate::views::connections::Connections;
@@ -19,6 +17,11 @@ use crate::model::storage::WALLET_ADAPTER;
 use crate::model::storage::{CLUSTER_STORAGE, GLOBAL_MESSAGE, ACCOUNT_STATE, ACTIVE_CONNECTION};
 //use crate::model::storage::{ClusterStore, NotificationInfo};
 //use crate::model::adaptercluster::AdapterCluster;
+use crate::views::dashboard::Dashboard;
+use crate::views::accounts::Accounts;
+use crate::views::clusters::Clusters;
+use crate::views::extras::Extras;
+
 
 #[component]
 pub(crate) fn App() -> Element {

@@ -3,7 +3,9 @@ use dioxus::prelude::*;
 use qrcodegen::{QrCode, QrCodeEcc};
 use wallet_adapter::{wasm_bindgen_futures::JsFuture, Cluster, WalletResult};
 
-use crate::{DevnetSvg, LocalnetSvg, MainnetSvg, TestnetSvg, CLUSTER_STORAGE};
+use crate::{model::storage::CLUSTER_STORAGE, DevnetSvg, LocalnetSvg, MainnetSvg, TestnetSvg};
+
+//use crate::{DevnetSvg, LocalnetSvg, MainnetSvg, TestnetSvg, CLUSTER_STORAGE};
 
 pub fn trunk_cluster_name(name: &str) -> String {
     if name.len() > 10 {

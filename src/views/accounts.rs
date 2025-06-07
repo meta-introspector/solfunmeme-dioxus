@@ -2,8 +2,9 @@ use dioxus::prelude::*;
 use wallet_adapter::Cluster;
 
 use crate::{
-    format_timestamp, link_target_blank, model::{AccountState, ClusterNetState}, trunk_cluster_name, utils::{format_address_url, format_tx_url, get_cluster_svg}, views::{QueryAccountDialog, ReceiveSol, SendSol}, Airdrop, AirdropSvg, AtaSvg, BalanceSvg, CheckSvg, ErrorSvg, Loader, MintSvg, NotificationInfo, ReceiveSvg, SendSvg, SignatureSvg, SignaturesResponse, TimestampSvg, TokenAccountResponse, UserSvg, WalletSvg, ACCOUNT_STATE, ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, LOADING
+    format_timestamp, link_target_blank, model::{storage::{ACCOUNT_STATE, ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, LOADING}, AccountState, ClusterNetState}, trunk_cluster_name, utils::{format_address_url, format_tx_url, get_cluster_svg}, views::{QueryAccountDialog, ReceiveSol, SendSol}, Airdrop, AirdropSvg, AtaSvg, BalanceSvg, CheckSvg, ErrorSvg, Loader, MintSvg, NotificationInfo, ReceiveSvg, SendSvg, SignatureSvg, TimestampSvg, UserSvg, WalletSvg
 };
+//ACCOUNT_STATE, ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE,LOADING
 
 use super::ConnectWalletFirst;
 

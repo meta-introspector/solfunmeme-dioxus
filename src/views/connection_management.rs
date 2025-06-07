@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use crate::model::{Connection, UseConnections, use_connections};
+use crate::model::{Connection, use_connections};
 
 pub(crate) fn connection_management_section(
     cluster_names: Vec<String>,

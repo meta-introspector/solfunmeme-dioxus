@@ -5,9 +5,8 @@ use wallet_adapter::{
     WalletError, WalletResult,
 };
 
-use crate::{
-    model::NotificationInfo, model::ClusterNetState, CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, WALLET_ADAPTER
-};
+use crate::model::{storage::{CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, WALLET_ADAPTER}, ClusterNetState, NotificationInfo};
+//CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, WALLET_ADAPTER
 
 // NOTE: You can use Reqwest crate instead to fetch the blockhash but
 // this code shows how to use the browser `fetch` api

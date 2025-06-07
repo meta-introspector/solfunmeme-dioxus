@@ -1,7 +1,5 @@
 use dioxus::prelude::*;
-use crate::model::{Connection, UseConnections, use_connections};
-use crate::views::connection_filter;
-use crate::views::connection_management_section;
+use crate::model::{Connection, use_connections};
 
 fn list_connections(
     // connections: &UseConnections,
