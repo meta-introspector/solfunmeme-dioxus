@@ -602,8 +602,8 @@ fn list_connections(
                                     button {
                                         class: "text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm font-medium",
                                         onclick: move |_| {
-                                            //let conn_name = conn.name.clone();
-                                            //connections.remove_connection(&conn_name)
+                                            let conn_name = conn.name.clone();
+                                            connections.remove_connection(&conn_name)
                                         },
                                         "Delete"
                                     }
