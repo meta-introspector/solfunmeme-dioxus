@@ -6,11 +6,6 @@
 // };
 
 
-// #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Default)]
-// pub(crate) struct ClusterStore {
-//     clusters: Vec<AdapterCluster>,
-//     active_cluster: AdapterCluster,
-// }
 
 // impl ClusterStore {
 //     pub fn new(clusters: Vec<AdapterCluster>) -> Self {
@@ -70,12 +65,6 @@
 //     }
 // }
 
-// #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
-// pub(crate) struct AdapterCluster {
-//     name: String,
-//     cluster: Cluster,
-//     endpoint: String,
-// }
 
 // impl AdapterCluster {
 //     pub fn new() -> Self {
