@@ -388,12 +388,12 @@ impl UseConnections {
             .expect("Failed to save connections to LocalStorage");
     }
 
-    pub fn remove_connection(&mut self, name: &str) {
-        let mut inner = self.inner.write();
-        inner.connections.remove(name);
-        LocalStorage::set(&format!("{}_connections", inner.key), &inner.connections)
-            .expect("Failed to save connections to LocalStorage");
-    }
+    // pub fn remove_connection(&mut self, name: &str) {
+    //     let mut inner = self.inner.write();
+    //     inner.connections.remove(name);
+    //     LocalStorage::set(&format!("{}_connections", inner.key), &inner.connections)
+    //         .expect("Failed to save connections to LocalStorage");
+    // }
 
     pub fn add_cluster(&mut self, cluster: AdapterCluster) -> Result<(), String> {
         let mut inner = self.inner.write();
@@ -439,14 +439,14 @@ impl UseConnections {
         Some(removed_cluster)
     }
 
-    pub fn get_cluster(&self, name: &str) -> Option<AdapterCluster> {
-        self.inner
-            .read()
-            .clusters
-            .iter()
-            .find(|cluster| cluster.name() == name)
-            .cloned()
-    }
+    // pub fn get_cluster(&self, name: &str) -> Option<AdapterCluster> {
+    //     self.inner
+    //         .read()
+    //         .clusters
+    //         .iter()
+    //         .find(|cluster| cluster.name() == name)
+    //         .cloned()
+    // }
 }
 
 pub fn use_connections(key: impl ToString) -> UseConnections {
@@ -575,15 +575,16 @@ pub fn connection_management_section(
     }
 }
 
-fn delete_connections(
+fn list_connections(
     filtered_connections: &Vec<Connection>, //, connections: &UseConnections
 ) -> Element {
     //        let mut connections = use_connections("app_data");
     rsx! {
     div { class: "divide-y divide-gray-200 dark:divide-gray-700",
-                    for conn in filtered_connections {
-                        div { class: "p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors",
-                            div { class: "flex items-center justify-between",
+          for conn in filtered_connections {
+            { web_sys::console::log_1(&wasm_bindgen::JsValue::from_str(&format!("conn: {}", conn.name))); }
+              div { class: "p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors",
+                    div { class: "flex items-center justify-between",
                                 div { class: "flex-1",
                                     div { class: "flex items-center gap-3 mb-2",
                                         h4 { class: "font-semibold text-gray-800 dark:text-white",
@@ -649,6 +650,7 @@ pub fn connection_list(
     //connections: &UseConnections,
     selected_cluster_filter: Signal<String>,
 ) -> Element {
+    web_sys::console::log_1(&wasm_bindgen::JsValue::from_str(&format!("get: {}", selected_cluster_filter())));
     rsx! {
          // Display connection list
         div { class: "bg-white dark:bg-gray-800 rounded-lg shadow-md",
@@ -668,12 +670,16 @@ pub fn connection_list(
                     p { "No connections found." }
                 }
             } else {
-               //delete_connections(filtered_connections, &connections)
+               //list_connections(filtered_connections, &connections)
                 {
-        let res = delete_connections(filtered_connections);
-        match res {
-            Ok(_rst) => "Ok",
-            Err(_err) => "err",
+		    let res = list_connections(filtered_connections);
+//   	            web_sys::console::log_1(&wasm_bindgen::JsValue::from_str(&format!("res: {:#?}", res)));
+		    match res {
+			Ok(rst) => {
+			    web_sys::console::log_1(&wasm_bindgen::JsValue::from_str(&format!("rst1: {:#?}", rst)));
+			    rst
+			},
+			Err(_err) => rsx! { div { "error"} }?,
         }
         }
             }
@@ -881,25 +887,44 @@ pub fn Connections() -> Element {
                //& connections,
                //selected_cluster_filter
            ) }
-              {
-          let res1 = connection_filter(
-              filter_options,
-              selected_cluster_filter
-          );
 
-          match res1 {
-                Ok(_rst) => "Ok",
-                Err(_err) => "err",
-          };
-          let res = connection_list(&filtered_connections,
-                        //&connections,
-                        selected_cluster_filter);
 
-          match res {
-              Ok(_rst) => "Ok",
-              Err(_err) => "err",
-          };
-          }
+	  { connection_filter(   filter_options,       selected_cluster_filter ); }
+	  { connection_list(&filtered_connections,                   selected_cluster_filter) }
+	      
+          // { let res1 = connection_filter(              filter_options,              selected_cluster_filter);
+          //   match res1 {
+	  // 	//Ok(rst) => rst,
+	  // 	Ok(rst) => {
+	  // 	    web_sys::console::log_1(&wasm_bindgen::JsValue::from_str(&format!("rst4: {:#?}", rst)));
+	  // 	    rst
+	  // 	},
+		
+	  // 	//              Err(_err) => "err",
+	  // 	Err(_err) => rsx! { div { "error1"} }?,
+          //   };
+	    
+	  //   let res = connection_list(&filtered_connections,
+	  // 			      //&connections,
+	  // 			      selected_cluster_filter);
+	    
+          //   match res {
+	  // 	//Ok(rst) => rst,
+	  // 	Ok(rst) => {
+	  // 	    web_sys::console::log_1(&wasm_bindgen::JsValue::from_str(&format!("rst3: {:#?}", rst)));
+	  // 	    rst
+	  // 	},
+		
+	  // 	Err(_err) => rsx! { div { "error2"} }?,
+	  // 	//Err(_err) => "err",
+          //   };
+          // }
+	      
+	      
+	      //      connection_list {filtered_connections,selected_cluster_filter}
+	      
+	      
+	      
         }
     }
 }
