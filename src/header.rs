@@ -1,10 +1,9 @@
 use dioxus::prelude::*;
 
 use crate::{
-    trunk_cluster_name, utils::copied_address, views::ClusterNetState, ChangeWalletSvg, CloseSvg,
-    ClustersSvg, CopySvg, DisconnectSvg, FetchReq, GradientWalletIcon, Loader, NotificationInfo,
-    Route, WalletSvg, ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, LOGO,
-    WALLET_ADAPTER,MenuSvg,
+    model::{storage::{ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, WALLET_ADAPTER}, ClusterNetState, NotificationInfo}, trunk_cluster_name, utils::copied_address, ChangeWalletSvg, CloseSvg, ClustersSvg, CopySvg, DisconnectSvg, FetchReq, GradientWalletIcon, Loader, MenuSvg, Route, WalletSvg, LOGO
+    //NotificationInfo, Route, WalletSvg, ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE,
+    //GLOBAL_MESSAGE, LOGO, WALLET_ADAPTER,
 };
 
 #[component]
@@ -44,7 +43,7 @@ pub fn Header() -> Element {
                         div{class:"flex appearance-none text-center cursor-pointer",
                             span{
                                 onclick:move |_|{show_mobile_close_button.set(true)},
-                                class:"flex w-[15px]", {MenuSvg()} 
+                                class:"flex w-[15px]", {MenuSvg()}
                             }
                         }
                     }
@@ -54,10 +53,10 @@ pub fn Header() -> Element {
                             div{class:"flex w-[80%] flex-col md:lg:flex-row items-end justify-end",
                                 span{
                                     onclick:move |_|{show_mobile_close_button.set(false)},
-                                    class:"flex w-[30px]", {CloseSvg()} 
+                                    class:"flex w-[30px]", {CloseSvg()}
                                 }
                             }
-                            
+
                             div {class:"flex flex-col md:lg:flex-row items-center justify-center w-full",
                                 div{ class:"flex flex-col md:lg:flex-row  items-center justify-center w-full md:w-[80%] mx-2",
                                     {NavItem(Route::Dashboard, "Home")}
@@ -83,7 +82,7 @@ pub fn Header() -> Element {
 }
 
 #[component]
-pub fn ConnectWalletModalModal(show_modal: Signal<bool>, show_connecting: Signal<bool>,) -> Element {
+pub fn ConnectWalletModalModal(show_modal: Signal<bool>, show_connecting: Signal<bool>) -> Element {
     if *show_modal.read() {
         rsx! {
             div{class:"flex flex-col w-full h-full bg-[#1a1a1a88] absolute items-center justify-center z-50",
@@ -184,6 +183,7 @@ fn NavClusterItem() -> Element {
         div{
             class:"flex w-full items-center justify-center md:w-[15%]",
             select{
+		name: "select_cluster",
                 onchange:move |event| {
                     let cluster = CLUSTER_STORAGE.read().get_cluster(&event.data.value()).cloned().unwrap_or_default();
                     let cluster_identifier = String::new() + cluster.name() + " cluster now active!";
@@ -208,7 +208,7 @@ fn NavWalletItem(
     show_modal: Signal<bool>,
     show_connecting: Signal<bool>,
     shortened_address: String,
-    show_mobile_close_button: Signal<bool>
+    show_mobile_close_button: Signal<bool>,
 ) -> Element {
     let compute_wallet = || {
         if let Ok(connected_account) = ACTIVE_CONNECTION.read().connected_account() {
@@ -247,13 +247,17 @@ fn NavWalletItem(
 }
 
 #[component]
-pub fn ActiveAccountDropDown(show_modal: Signal<bool>, shortened_address: String, show_mobile_close_button: Signal<bool>) -> Element {
+pub fn ActiveAccountDropDown(
+    show_modal: Signal<bool>,
+    shortened_address: String,
+    show_mobile_close_button: Signal<bool>,
+) -> Element {
     let mut show_dropdown = use_signal(|| false);
 
     let disconnect_callback = move || {
         spawn(async move {
             WALLET_ADAPTER.write().disconnect().await;
-            
+
             show_mobile_close_button.set(false);
         });
     };
@@ -279,7 +283,6 @@ pub fn ActiveAccountDropDown(show_modal: Signal<bool>, shortened_address: String
     let change_wallet_callback = move || {
         show_modal.set(true);
         show_mobile_close_button.set(false);
-
     };
 
     let connected_wallet = ACTIVE_CONNECTION.read().connected_wallet().unwrap().clone();

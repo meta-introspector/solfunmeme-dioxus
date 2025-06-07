@@ -5,6 +5,9 @@ use dioxus::prelude::*;
 mod views;
 use views::*;
 
+mod model;
+use model::*;
+
 mod header;
 use header::*;
 
@@ -17,8 +20,8 @@ use fetch_parser::*;
 mod svg_assets;
 pub(crate) use svg_assets::*;
 
-mod dioxus_adapter;
-pub(crate) use dioxus_adapter::*;
+//mod dioxus_adapter;
+//pub(crate) use dioxus_adapter::*;
 
 mod fetch_util;
 pub(crate) use fetch_util::*;

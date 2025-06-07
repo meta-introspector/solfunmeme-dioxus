@@ -1,9 +1,9 @@
 use dioxus::prelude::*;
 
+use crate::model::storage::{ACTIVE_CONNECTION, GLOBAL_MESSAGE, WALLET_ADAPTER} ;
+
 use crate::{
-    ErrorSvg, MintSvg, NotificationInfo, SiwsSvg, TimestampSvg, UserSvg, ACTIVE_CONNECTION,
-    GLOBAL_MESSAGE, WALLET_ADAPTER,
-};
+    ErrorSvg, MintSvg, NotificationInfo, SiwsSvg, TimestampSvg, UserSvg, };
 use wallet_adapter::SigninInput;
 
 #[component]
