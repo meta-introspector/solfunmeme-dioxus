@@ -33,11 +33,7 @@ pub fn Connections() -> Element {
 
     rsx! {
         div { class: "container mx-auto p-6 max-w-6xl",
-              h2 { class: "text-3xl font-bold mb-8 text-gray-800 dark:text-white", "Manage Connections & Clusters" }
-              { cluster_management_section(new_cluster_name, new_cluster_type,new_cluster_endpoint,show_cluster_form,connections )}
-              { connection_management_section(cluster_names, new_connection_name, new_connection_url, selected_cluster_for_connection ) }
-              { connection_filter( filter_options,  selected_cluster_filter ) }
-              { connection_list(&filtered_connections,  selected_cluster_filter) }                        
+    
         }
     }
 }

@@ -15,7 +15,7 @@ pub struct Connection {
 impl Connection {
     // Mask sensitive parts of the URL for display
     pub fn masked_url(&self) -> String {
-        if let Some(token_start) = self.url.find("token=") {
+        if let Some(token_start) = self.url.find("?") {
             let (before_token, after_token) = self.url.split_at(token_start + 6); // "token=".len() = 6
             if let Some(token_end) = after_token.find('&') {
                 let (token_part, rest) = after_token.split_at(token_end);

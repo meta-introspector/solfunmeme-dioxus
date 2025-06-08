@@ -57,18 +57,23 @@ pub fn ClusterInfo(connections: UseConnections) -> Element {
                     }
                     div {
                         class: "flex flex-col w-full",
+                        id: "cluster-info",
                         div {
                             class: "flex w-full items-start flex-col mt-2.5 mb-5",
                             div {
+                                id:   "cluster-name",
                                 class: "bg-blue-100 text-blue-800 text-sm font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
                                 {adapter_cluster.cluster().chain()}
                             }
-                            div { class: "text-sm mt-2", {adapter_cluster.endpoint()} }
+                            div { 
+                                id: "masked-endpoint",
+                                class: "text-sm mt-2", {adapter_cluster.masked_endpoint()} }
                         }
                         div {
                             class: "flex w-full items-center justify-between",
                             if !is_active {
                                 div {
+                                    id: "switch",
                                     class: "text-3xl font-bold text-gray-900 dark:text-white",
                                     {Switch(adapter_cluster.name().to_string(), connections)}
                                 }
