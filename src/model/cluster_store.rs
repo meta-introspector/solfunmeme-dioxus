@@ -54,10 +54,10 @@ impl ClusterStore {
         self.clusters.iter().find(|cluster| cluster.name() == name)
     }
 
-    pub fn remove_cluster(&mut self, cluster_name: &str) -> Option<AdapterCluster> {
-        self.clusters
-            .iter()
-            .position(|current_cluster| current_cluster.name().as_bytes() == cluster_name.as_bytes())
-            .map(|index| self.clusters.remove(index))
-    }
+    // pub fn remove_cluster(&mut self, cluster_name: &str) -> Option<AdapterCluster> {
+    //     self.clusters
+    //         .iter()
+    //         .position(|current_cluster| current_cluster.name().as_bytes() == cluster_name.as_bytes())
+    //         .map(|index| self.clusters.remove(index))
+    // }
 }

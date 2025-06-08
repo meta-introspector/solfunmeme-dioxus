@@ -1,109 +1,12 @@
 use dioxus::prelude::*;
+
 use crate::{
-    model::{adaptercluster::AdapterCluster, storage::GLOBAL_MESSAGE, storage_entry::StorageEntry, Connection, MyCluster},
-    utils::{get_cluster_svg, trunk_cluster_name},
-    //AdapterCluster,
-     BinSvg, CheckSvg, CloseSvg, ClusterName, ClustersSvg, LinkSvg, NotificationInfo,
+    model::{storage::{CLUSTER_STORAGE, GLOBAL_MESSAGE}, MyCluster},
+     utils::{get_cluster_svg, trunk_cluster_name}, 
+     AdapterCluster, BinSvg, CheckSvg, CloseSvg, ClusterName, ClustersSvg, 
+     LinkSvg, NotificationInfo, 
 };
-use gloo_storage::{LocalStorage, Storage};
-use url::Url;
-use std::collections::HashMap;
-
-// Custom hook to manage persistent connections and clusters
-#[derive(Clone, Copy, PartialEq)]
-pub struct UseConnections {
-    inner: Signal<StorageEntry>,
-    active_cluster: Signal<String>,
-}
-
-impl UseConnections {
-    pub fn get_all_clusters(&self) -> Vec<AdapterCluster> {
-        self.inner.read().clusters.clone()
-    }
-
-    pub fn get_cluster(&self, name: &str) -> Option<AdapterCluster> {
-        self.inner.read().clusters.iter().find(|c| c.name() == name).cloned()
-    }
-
-    pub fn add_cluster(&mut self, cluster: AdapterCluster) -> Result<(), String> {
-        let mut inner = self.inner.write();
-        let cluster_exists = inner.clusters.iter().any(|existing_cluster| {
-            existing_cluster.name() == cluster.name() || existing_cluster.endpoint() == cluster.endpoint()
-        });
-        if cluster_exists {
-            return Err("Cluster exists, make sure endpoint or name are not the same".to_string());
-        }
-        inner.clusters.push(cluster);
-        LocalStorage::set(&format!("{}_clusters", inner.key), &inner.clusters)
-            .expect("Failed to save clusters to LocalStorage");
-        Ok(())
-    }
-
-    pub fn remove_cluster(&mut self, cluster_name: &str) -> Option<AdapterCluster> {
-        let mut inner = self.inner.write();
-        let position = inner.clusters.iter().position(|cluster| cluster.name() == cluster_name)?;
-        let removed_cluster = inner.clusters.remove(position);
-        inner.connections.retain(|_, conn| conn.cluster_name != cluster_name);
-        LocalStorage::set(&format!("{}_clusters", inner.key), &inner.clusters)
-            .expect("Failed to save clusters to LocalStorage");
-        LocalStorage::set(&format!("{}_connections", inner.key), &inner.connections)
-            .expect("Failed to save connections to LocalStorage");
-        if *self.active_cluster.read() == cluster_name {
-            self.active_cluster.set(
-                inner.clusters.first().map(|c| c.name().to_string()).unwrap_or_default()
-            );
-            LocalStorage::set(&format!("{}_active_cluster", inner.key), &*self.active_cluster.read())
-                .expect("Failed to save active cluster");
-        }
-        Some(removed_cluster)
-    }
-
-    pub fn set_active_cluster(&mut self, cluster_name: String) {
-        self.active_cluster.set(cluster_name.clone());
-        LocalStorage::set(&format!("{}_active_cluster", self.inner.read().key), &cluster_name)
-            .expect("Failed to save active cluster");
-    }
-
-    pub fn active_cluster(&self) -> String {
-        self.active_cluster.read().clone()
-    }
-}
-
-pub fn use_connections(key: impl ToString) -> UseConnections {
-    let key = key.to_string();
-    let key_for_state = key.clone();
-    let key_for_active = key.clone();
-    let state = use_signal(move || {
-        let connections: HashMap<String, Connection> = LocalStorage::get(&format!("{}_connections", &key_for_state))
-            .ok()
-            .unwrap_or_default();
-        let mut clusters: Vec<AdapterCluster> = LocalStorage::get(&format!("{}_clusters", &key_for_state))
-            .ok()
-            .unwrap_or_else(|| {
-                vec![
-                    AdapterCluster::devnet(),
-                    AdapterCluster::testnet(),
-                    AdapterCluster::mainnet(),
-                    AdapterCluster::localnet(),
-                ]
-            });
-        if clusters.is_empty() {
-            clusters = vec![
-                AdapterCluster::devnet(),
-                AdapterCluster::testnet(),
-                AdapterCluster::mainnet(),
-                AdapterCluster::localnet(),
-            ];
-        }
-        StorageEntry { key: key_for_state.clone(), connections, clusters }
-    });
-    let active_cluster = use_signal(move || {
-        LocalStorage::get(&format!("{}_active_cluster", &key_for_active))
-            .ok()
-            .unwrap_or_else(|| state.read().clusters.first().map(|c| c.name().to_string()).unwrap_or_default())
-    });
-    UseConnections { inner: state, active_cluster }
-}
+//CLUSTER_STORAGE, GLOBAL_MESSAGE
 
 #[component]
 pub fn Clusters() -> Element {

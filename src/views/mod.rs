@@ -51,5 +51,3 @@ pub use connection_list::*;
 //mod query_accounts;
 //pub use query_accounts::*;
 
-mod test_ai;
-pub use test_ai::*;

@@ -44,9 +44,9 @@ impl AdapterCluster {
         self.endpoint.as_str()
     }
 
-    pub fn identifier(&self) -> String {
-         self.to_string()
-    }
+//    pub fn identifier(&self) -> String {
+//         self.to_string()
+//    }
 
      pub fn query_string(&self) -> String {
          if self.name.as_bytes() == self.cluster.to_string().as_bytes()

@@ -5,13 +5,15 @@ use crate::model::adaptercluster::AdapterCluster;
 use crate::model::connection::Connection;
 
 use gloo_storage::{LocalStorage, Storage};
+//use url::Url;
 use std::collections::HashMap;
 
 //storage_entry
 // Custom hook to manage persistent connections and clusters
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, PartialEq)]
 pub struct UseConnections {
     inner: Signal<StorageEntry>,
+    active_cluster: Signal<String>,
 }
 
 impl UseConnections {
@@ -31,6 +33,10 @@ impl UseConnections {
 
     pub fn get_all_clusters(&self) -> Vec<AdapterCluster> {
         self.inner.read().clusters.clone()
+    }
+
+    pub fn get_cluster(&self, name: &str) -> Option<AdapterCluster> {
+        self.inner.read().clusters.iter().find(|c| c.name() == name).cloned()
     }
 
     pub fn get_cluster_names(&self) -> Vec<String> {
@@ -89,6 +95,7 @@ impl UseConnections {
             .iter()
             .position(|cluster| cluster.name() == cluster_name)?;
 
+
         let removed_cluster = inner.clusters.remove(position);
 
         // Also remove all connections that reference this cluster
@@ -101,32 +108,36 @@ impl UseConnections {
             .expect("Failed to save clusters to LocalStorage");
         LocalStorage::set(&format!("{}_connections", inner.key), &inner.connections)
             .expect("Failed to save connections to LocalStorage");
-
+        if *self.active_cluster.read() == cluster_name {
+            self.active_cluster.set(
+                inner.clusters.first().map(|c| c.name().to_string()).unwrap_or_default()
+            );
+            LocalStorage::set(&format!("{}_active_cluster", inner.key), &*self.active_cluster.read())
+                .expect("Failed to save active cluster");
+        }
         Some(removed_cluster)
     }
 
-    // pub fn get_cluster(&self, name: &str) -> Option<AdapterCluster> {
-    //     self.inner
-    //         .read()
-    //         .clusters
-    //         .iter()
-    //         .find(|cluster| cluster.name() == name)
-    //         .cloned()
-    // }
+    pub fn set_active_cluster(&mut self, cluster_name: String) {
+        self.active_cluster.set(cluster_name.clone());
+        LocalStorage::set(&format!("{}_active_cluster", self.inner.read().key), &cluster_name)
+            .expect("Failed to save active cluster");
+    }
+
+    pub fn active_cluster(&self) -> String {
+        self.active_cluster.read().clone()
+    }
 }
 
 pub fn use_connections(key: impl ToString) -> UseConnections {
+    let key = key.to_string();
+    let key_for_state = key.clone();
+    let key_for_active = key.clone();
     let state = use_signal(move || {
-        let key = key.to_string();
-
-        // Load connections
-        let connections: HashMap<String, Connection> =
-            LocalStorage::get(&format!("{}_connections", key))
+        let connections: HashMap<String, Connection> = LocalStorage::get(&format!("{}_connections", &key_for_state))
             .ok()
             .unwrap_or_default();
-
-        // Load clusters, with default clusters if none exist
-        let mut clusters: Vec<AdapterCluster> = LocalStorage::get(&format!("{}_clusters", key))
+        let mut clusters: Vec<AdapterCluster> = LocalStorage::get(&format!("{}_clusters", &key_for_state))
             .ok()
             .unwrap_or_else(|| {
                 vec![
@@ -136,8 +147,6 @@ pub fn use_connections(key: impl ToString) -> UseConnections {
                     AdapterCluster::localnet(),
                 ]
             });
-
-        // Ensure default clusters exist
         if clusters.is_empty() {
             clusters = vec![
                 AdapterCluster::devnet(),
@@ -146,13 +155,15 @@ pub fn use_connections(key: impl ToString) -> UseConnections {
                 AdapterCluster::localnet(),
             ];
         }
-
-        StorageEntry {
-            key,
-            connections,
-            clusters,
-        }
+        StorageEntry { key: key_for_state.clone(), connections, clusters }
     });
-    UseConnections { inner: state }
+    let active_cluster = use_signal(move || {
+        LocalStorage::get(&format!("{}_active_cluster", &key_for_active))
+            .ok()
+            .unwrap_or_else(|| state.read().clusters.first().map(|c| c.name().to_string()).unwrap_or_default())
+    });
+    UseConnections { inner: state, active_cluster }
 }
+
+
 
