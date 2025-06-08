@@ -4412,6 +4412,7 @@ dependencies = [
  "solana-sdk",
  "solana-transaction-error",
  "thiserror 2.0.12",
+ "url",
  "wallet-adapter",
  "wasm-bindgen",
  "wasm-bindgen-futures",

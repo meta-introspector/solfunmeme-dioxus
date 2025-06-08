@@ -5,8 +5,8 @@ mod connection;
 pub use connection::*;
 
 
-mod storage_entry;
-//pub use storage_entry::*;
+pub mod storage_entry;
+pub use storage_entry::*;
 
 //AdapterCluster
 pub mod storage;
