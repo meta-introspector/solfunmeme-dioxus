@@ -1,10 +1,9 @@
 use dioxus::prelude::*;
 
 use crate::{
-    trunk_cluster_name, utils::copied_address, views::ClusterNetState, ChangeWalletSvg, CloseSvg,
-    ClustersSvg, CopySvg, DisconnectSvg, FetchReq, GradientWalletIcon, Loader, NotificationInfo,
-    Route, WalletSvg, ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, LOGO,
-    WALLET_ADAPTER,MenuSvg,
+    model::{storage::{ACTIVE_CONNECTION, CLUSTER_NET_STATE, GLOBAL_MESSAGE, WALLET_ADAPTER}, use_connections, ClusterNetState, NotificationInfo}, trunk_cluster_name, utils::copied_address, ChangeWalletSvg, CloseSvg, ClustersSvg, CopySvg, DisconnectSvg, FetchReq, GradientWalletIcon, Loader, MenuSvg, Route, WalletSvg, LOGO
+    //NotificationInfo, Route, WalletSvg, ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE,
+    //GLOBAL_MESSAGE, LOGO, WALLET_ADAPTER,
 };
 
 #[component]
@@ -44,7 +43,7 @@ pub fn Header() -> Element {
                         div{class:"flex appearance-none text-center cursor-pointer",
                             span{
                                 onclick:move |_|{show_mobile_close_button.set(true)},
-                                class:"flex w-[15px]", {MenuSvg()} 
+                                class:"flex w-[15px]", {MenuSvg()}
                             }
                         }
                     }
@@ -54,10 +53,10 @@ pub fn Header() -> Element {
                             div{class:"flex w-[80%] flex-col md:lg:flex-row items-end justify-end",
                                 span{
                                     onclick:move |_|{show_mobile_close_button.set(false)},
-                                    class:"flex w-[30px]", {CloseSvg()} 
+                                    class:"flex w-[30px]", {CloseSvg()}
                                 }
                             }
-                            
+
                             div {class:"flex flex-col md:lg:flex-row items-center justify-center w-full",
                                 div{ class:"flex flex-col md:lg:flex-row  items-center justify-center w-full md:w-[80%] mx-2",
                                     {NavItem(Route::Dashboard, "Home")}
@@ -83,7 +82,7 @@ pub fn Header() -> Element {
 }
 
 #[component]
-pub fn ConnectWalletModalModal(show_modal: Signal<bool>, show_connecting: Signal<bool>,) -> Element {
+pub fn ConnectWalletModalModal(show_modal: Signal<bool>, show_connecting: Signal<bool>) -> Element {
     if *show_modal.read() {
         rsx! {
             div{class:"flex flex-col w-full h-full bg-[#1a1a1a88] absolute items-center justify-center z-50",
@@ -180,23 +179,41 @@ fn NavItem(route: fn() -> Route, text: &str) -> Element {
 }
 
 fn NavClusterItem() -> Element {
+
+    let mut connections = use_connections("solana_wallet");
+    let cluster_names = connections.get_entry_names();
+    let active_entry_name =  connections.active_entry().clone();
+
     rsx! {
         div{
             class:"flex w-full items-center justify-center md:w-[15%]",
             select{
+		name: "select_cluster",
                 onchange:move |event| {
-                    let cluster = CLUSTER_STORAGE.read().get_cluster(&event.data.value()).cloned().unwrap_or_default();
-                    let cluster_identifier = String::new() + cluster.name() + " cluster now active!";
-                    CLUSTER_STORAGE.write().set_active_cluster(cluster);
+                    let cluster_name = &event.data.value();
+                    let cluster = connections.get_entry(cluster_name);
+                    if let Some(cluster2) = cluster {
+                        let cluster_identifier = String::new() + cluster2.name() + " cluster now active!";
+                        connections.set_active_entry(cluster_name.to_string());
+                        GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(cluster_identifier));
+                    }
 
-                    GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(cluster_identifier));
+                    
                 },
                 class:"flex text-sm hover:bg-true-yonder bg-true-blue text-white rounded-full md:py-1 md:px-4 appearance-none text-center cursor-pointer",
-                for adapter_cluster in CLUSTER_STORAGE.read().get_clusters() {
-                    option {
+                for adapter_cluster in cluster_names {
+
+
+                    option {    
                         key:adapter_cluster.identifier().as_str(),
-                        value:adapter_cluster.name(), selected:adapter_cluster.name().as_bytes() == CLUSTER_STORAGE.read().active_cluster().name().as_bytes(),
-                        {trunk_cluster_name(adapter_cluster.name())},}
+                        value: adapter_cluster.clone(),
+                        selected: active_entry_name == adapter_cluster,                     
+                       
+                        
+                        { 
+                             let val = adapter_cluster.clone();
+                            format!("{}", trunk_cluster_name(&val))}
+                        }
                 }
             }
         }
@@ -208,7 +225,7 @@ fn NavWalletItem(
     show_modal: Signal<bool>,
     show_connecting: Signal<bool>,
     shortened_address: String,
-    show_mobile_close_button: Signal<bool>
+    show_mobile_close_button: Signal<bool>,
 ) -> Element {
     let compute_wallet = || {
         if let Ok(connected_account) = ACTIVE_CONNECTION.read().connected_account() {
@@ -247,13 +264,17 @@ fn NavWalletItem(
 }
 
 #[component]
-pub fn ActiveAccountDropDown(show_modal: Signal<bool>, shortened_address: String, show_mobile_close_button: Signal<bool>) -> Element {
+pub fn ActiveAccountDropDown(
+    show_modal: Signal<bool>,
+    shortened_address: String,
+    show_mobile_close_button: Signal<bool>,
+) -> Element {
     let mut show_dropdown = use_signal(|| false);
 
     let disconnect_callback = move || {
         spawn(async move {
             WALLET_ADAPTER.write().disconnect().await;
-            
+
             show_mobile_close_button.set(false);
         });
     };
@@ -279,7 +300,6 @@ pub fn ActiveAccountDropDown(show_modal: Signal<bool>, shortened_address: String
     let change_wallet_callback = move || {
         show_modal.set(true);
         show_mobile_close_button.set(false);
-
     };
 
     let connected_wallet = ACTIVE_CONNECTION.read().connected_wallet().unwrap().clone();
@@ -342,26 +362,30 @@ where
 
 #[component]
 fn PingCluster() -> Element {
+    let connections = use_connections("solana_wallet");
+    //let active_entry = connections.active_entry().clone();
     use_effect(move || {
-        CLUSTER_STORAGE.read();
+        //active_entry;
         spawn(async move {
             FetchReq::ping().await;
         });
     });
 
     if *CLUSTER_NET_STATE.read() == ClusterNetState::Failure {
+        let active_entry2 = connections.active_entry().clone();
+        
         rsx! {
             div {class:"flex w-full justify-center min-h-[40px] bg-red-800 text-center items-center text-2xl justify-center items-center",
                 div{ class:"flex px-4 py-2 justify-center items-center",
                     div{class:"flex flex-col md:flex-row w-full mr-2",
                         span { class:"flex hidden md:inline-flex w-[30px] mr-1 text-white text-[30px] md:text-md", {ClustersSvg()}}
-                        {CLUSTER_STORAGE.read().active_cluster().name()} " cluster is unreachable!"
+                        {active_entry2} " cluster is unreachable!"
                     }
                     button {
-                        onclick:move|_| {
-                            let active_cluster = CLUSTER_STORAGE.read().active_cluster().clone();
-                            CLUSTER_STORAGE.write().set_active_cluster(active_cluster);
-                        },
+                       // onclick:move|_| {
+                       //     let active_entry = active_entry;
+                           // CLUSTER_STORAGE.write().set_active_entry(active_entry);
+                        //},
                         class:"flex bg-true-blue items-center justify-center text-sm text-white px-2 py-1 rounded-full hover:bg-cobalt-blue",
                         "REFRESH"
                     }

@@ -1,8 +1,11 @@
 use dioxus::prelude::*;
 
 use crate::{
-    utils::copied_address, CopySvg, NotificationInfo, ReceiveSvg, ACTIVE_CONNECTION, GLOBAL_MESSAGE,
+    utils::copied_address, CopySvg, NotificationInfo, ReceiveSvg
 };
+use crate::model::storage::ACTIVE_CONNECTION;
+use crate::model::storage::{GLOBAL_MESSAGE};
+
 
 #[component]
 pub fn ReceiveSol(show_receive_modal: Signal<bool>) -> Element {

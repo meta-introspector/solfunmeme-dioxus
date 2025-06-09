@@ -1,51 +1,40 @@
-use std::collections::VecDeque;
 
 use dioxus::prelude::*;
 use gloo_timers::callback::Timeout;
-use wallet_adapter::{ConnectionInfo, WalletAdapter};
 
 use crate::{
-    views::{AccountState, ClusterNetState},
-    Accounts, AdapterCluster, ClusterStore, Clusters, Dashboard, Extras, Footer, Header,
-    NotificationInfo,
+    model::NotificationInfo, Footer, Header
 };
 
+use crate::views::connections::Connections;
+//use crate::model::AdapterCluster;
+use crate::model::{AccountState};
 const FAVICON: Asset = asset!("/assets/favicon.png");
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 pub(crate) const LOGO: Asset = asset!("/assets/logo.png");
 
-pub(crate) static WALLET_ADAPTER: GlobalSignal<WalletAdapter> =
-    Signal::global(|| WalletAdapter::init().unwrap());
+use crate::model::storage::WALLET_ADAPTER;
+use crate::model::storage::{GLOBAL_MESSAGE, ACCOUNT_STATE, ACTIVE_CONNECTION};
+//use crate::model::storage::{ClusterStore, NotificationInfo};
+//use crate::model::adaptercluster::AdapterCluster;
+use crate::views::dashboard::Dashboard;
+use crate::views::accounts::Accounts;
+use crate::views::clusters::Clusters;
+use crate::views::extras::Extras;
 
-pub(crate) static CLUSTER_STORAGE: GlobalSignal<ClusterStore> =
-    Signal::global(|| ClusterStore::new(Vec::default()));
-
-pub(crate) static GLOBAL_MESSAGE: GlobalSignal<VecDeque<NotificationInfo>> =
-    Signal::global(|| VecDeque::default());
-
-pub(crate) static ACCOUNT_STATE: GlobalSignal<AccountState> =
-    Signal::global(|| AccountState::default());
-
-pub(crate) static LOADING: GlobalSignal<Option<()>> = Signal::global(|| Option::default());
-
-pub(crate) static CLUSTER_NET_STATE: GlobalSignal<ClusterNetState> =
-    Signal::global(|| ClusterNetState::default());
-
-pub(crate) static ACTIVE_CONNECTION: GlobalSignal<ConnectionInfo> =
-    Signal::global(|| ConnectionInfo::default());
 
 #[component]
 pub(crate) fn App() -> Element {
     let wallet_event_listener = WALLET_ADAPTER.read().events().clone();
 
-    let clusters = vec![
-        AdapterCluster::devnet(),
-        AdapterCluster::mainnet(),
-        AdapterCluster::testnet(),
-        AdapterCluster::localnet(),
-    ];
+    // let clusters = vec![
+    //     AdapterCluster::devnet(),
+    //     AdapterCluster::mainnet(),
+    //     AdapterCluster::testnet(),
+    //     AdapterCluster::localnet(),
+    // ];
+    //    if CLUSTER_STORAGE.write().add_clusters(clusters).is_err() {}     // FIXME: add default clusters
 
-    if CLUSTER_STORAGE.write().add_clusters(clusters).is_err() {}
 
     spawn(async move {
         while let Ok(wallet_event) = wallet_event_listener.recv().await {
@@ -72,6 +61,7 @@ pub(crate) fn App() -> Element {
 
             div { class: "flex flex-col w-full min-h-full justify-between items-center",
                 Router::<Route> {}
+                 Connections {}
                 Footer{}
             }
         }

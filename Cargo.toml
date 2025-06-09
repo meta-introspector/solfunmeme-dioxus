@@ -8,27 +8,40 @@ publish = false
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-dioxus = { version = "0.6.2", features = ["router"] }
-
 #wallet-adapter = "1.1.2"
 #wallet-adapter = { git = "https://github.com/meta-introspector/SolanaWalletAdapter-zos", branch ="master" }
-wallet-adapter = { git = "https://github.com/meta-introspector/SolanaWalletAdapter-zos", branch ="no-template" }
 
-solana-sdk = "2.1.2"
 bincode = "1.3.3"
-jzon = "0.12.5"
-serde_json = "1.0.133"
-serde = { version = "1.0.215", features = ["derive"] }
-gloo-timers = "0.3.0"
-solana-transaction-error = { version = "2.1.13", features = ["serde"] }
-qrcodegen = "1.8.0"
-percent-encoding = "2.3.1"
+dioxus = { version = "0.6.2", features = ["router"] }
 fastrand = "2.3.0"
-
+gloo = "0.11.0"
+gloo-timers = "0.3.0"
+gloo-storage = "0.3.0"
+js-sys = "0.3.69"
+jzon = "0.12.5"
+log = "0.4.21"
+thiserror = { version = "2.0.12" }
+markdown-meta-parser = "0.1.3"
+percent-encoding = "2.3.1"
+pulldown-cmark = "0.13.0"
+qrcodegen = "1.8.0"
+reqwasm = "0.5.0"
+serde = { version = "1.0.215", features = ["derive"] }
+serde_json = "1.0.133"
+solana-sdk = "2.1.2"
+solana-transaction-error = { version = "2.1.13", features = ["serde"] }
+wallet-adapter = { git = "https://github.com/meta-introspector/SolanaWalletAdapter-zos", branch ="no-template" }
+wasm-logger = "0.2.0"
+wasm-bindgen = { version = "0.2.92", features = ["serde-serialize"] }
+wasm-bindgen-futures = "0.4.42"
+web-sys = { version = "0.3.58", features = ["Storage"] }
+url = "2.5.4"
+# backend only sqlx = { version="0.8.3", features = [ "sqlite", "runtime-tokio", "tls-native-tls" ], optional = true}
 
 [features]
 default = ["web"]
 web = ["dioxus/web"]
+
 
 [profile]
 
