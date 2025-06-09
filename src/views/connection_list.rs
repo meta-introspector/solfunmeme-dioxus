@@ -5,7 +5,7 @@ fn list_connections(
     // connections: &UseConnections,
     //filtered_connections: &Vec<Connection>, //, connections: &UseConnections
 ) -> Element {
-    let connections = use_connections("app_data");
+    let connections = use_connections("solana_wallet");
     rsx! {
         div { class: "divide-y divide-gray-200 dark:divide-gray-700",
 
@@ -33,7 +33,7 @@ fn list_connections(
                                         class: "text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm font-medium",
                                         onclick: move |_| {
                                             let conn_name = conn.name.clone();
-                                            let mut connections = use_connections("app_data");
+                                            let mut connections = use_connections("solana_wallet");
                                             let res = connections.remove_entry(&conn_name);
                                             res;                                          
 

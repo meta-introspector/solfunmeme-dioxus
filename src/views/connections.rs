@@ -7,7 +7,7 @@ use crate::{model::use_connections, views::{cluster_management_section, connecti
 
 // Main Connections component
 pub fn Connections() -> Element {
-    let connections = use_connections("app_data");
+    let connections = use_connections("solana_wallet");
     let new_connection_name = use_signal(|| String::new());
     let new_connection_url = use_signal(|| String::new());
     let selected_cluster_for_connection = use_signal(|| String::new());

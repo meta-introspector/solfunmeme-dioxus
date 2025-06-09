@@ -180,7 +180,7 @@ fn NavItem(route: fn() -> Route, text: &str) -> Element {
 
 fn NavClusterItem() -> Element {
 
-    let mut connections = use_connections("app_data");
+    let mut connections = use_connections("solana_wallet");
     let cluster_names = connections.get_entry_names();
     let active_entry_name =  connections.active_entry().clone();
 
@@ -203,14 +203,16 @@ fn NavClusterItem() -> Element {
                 class:"flex text-sm hover:bg-true-yonder bg-true-blue text-white rounded-full md:py-1 md:px-4 appearance-none text-center cursor-pointer",
                 for adapter_cluster in cluster_names {
 
+
                     option {    
                         key:adapter_cluster.identifier().as_str(),
-                        value:adapter_cluster.clone(), selected: active_entry_name == adapter_cluster,
-                        {
-                            let val = adapter_cluster.clone();
-                            trunk_cluster_name(&val);
-                        }
-                            ,
+                        value: adapter_cluster.clone(),
+                        selected: active_entry_name == adapter_cluster,                     
+                       
+                        
+                        { 
+                             let val = adapter_cluster.clone();
+                            format!("{}", trunk_cluster_name(&val))}
                         }
                 }
             }
