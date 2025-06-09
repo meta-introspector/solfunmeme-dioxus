@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 use crate::{
-    model::{storage::{ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, WALLET_ADAPTER}, ClusterNetState, NotificationInfo}, trunk_cluster_name, utils::copied_address, ChangeWalletSvg, CloseSvg, ClustersSvg, CopySvg, DisconnectSvg, FetchReq, GradientWalletIcon, Loader, MenuSvg, Route, WalletSvg, LOGO
+    model::{storage::{ACTIVE_CONNECTION, CLUSTER_NET_STATE, GLOBAL_MESSAGE, WALLET_ADAPTER}, use_connections, ClusterNetState, NotificationInfo}, trunk_cluster_name, utils::copied_address, ChangeWalletSvg, CloseSvg, ClustersSvg, CopySvg, DisconnectSvg, FetchReq, GradientWalletIcon, Loader, MenuSvg, Route, WalletSvg, LOGO
     //NotificationInfo, Route, WalletSvg, ACTIVE_CONNECTION, CLUSTER_NET_STATE, CLUSTER_STORAGE,
     //GLOBAL_MESSAGE, LOGO, WALLET_ADAPTER,
 };
@@ -179,24 +179,39 @@ fn NavItem(route: fn() -> Route, text: &str) -> Element {
 }
 
 fn NavClusterItem() -> Element {
+
+    let mut connections = use_connections("app_data");
+    let cluster_names = connections.get_entry_names();
+    let active_entry_name =  connections.active_entry().clone();
+
     rsx! {
         div{
             class:"flex w-full items-center justify-center md:w-[15%]",
             select{
 		name: "select_cluster",
                 onchange:move |event| {
-                    let cluster = CLUSTER_STORAGE.read().get_cluster(&event.data.value()).cloned().unwrap_or_default();
-                    let cluster_identifier = String::new() + cluster.name() + " cluster now active!";
-                    CLUSTER_STORAGE.write().set_active_cluster(cluster);
+                    let cluster_name = &event.data.value();
+                    let cluster = connections.get_entry(cluster_name);
+                    if let Some(cluster2) = cluster {
+                        let cluster_identifier = String::new() + cluster2.name() + " cluster now active!";
+                        connections.set_active_entry(cluster_name.to_string());
+                        GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(cluster_identifier));
+                    }
 
-                    GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(cluster_identifier));
+                    
                 },
                 class:"flex text-sm hover:bg-true-yonder bg-true-blue text-white rounded-full md:py-1 md:px-4 appearance-none text-center cursor-pointer",
-                for adapter_cluster in CLUSTER_STORAGE.read().get_clusters() {
-                    option {
+                for adapter_cluster in cluster_names {
+
+                    option {    
                         key:adapter_cluster.identifier().as_str(),
-                        value:adapter_cluster.name(), selected:adapter_cluster.name().as_bytes() == CLUSTER_STORAGE.read().active_cluster().name().as_bytes(),
-                        {trunk_cluster_name(adapter_cluster.name())},}
+                        value:adapter_cluster.clone(), selected: active_entry_name == adapter_cluster,
+                        {
+                            let val = adapter_cluster.clone();
+                            trunk_cluster_name(&val);
+                        }
+                            ,
+                        }
                 }
             }
         }
@@ -345,26 +360,30 @@ where
 
 #[component]
 fn PingCluster() -> Element {
+    let connections = use_connections("solana_wallet");
+    //let active_entry = connections.active_entry().clone();
     use_effect(move || {
-        CLUSTER_STORAGE.read();
+        //active_entry;
         spawn(async move {
             FetchReq::ping().await;
         });
     });
 
     if *CLUSTER_NET_STATE.read() == ClusterNetState::Failure {
+        let active_entry2 = connections.active_entry().clone();
+        
         rsx! {
             div {class:"flex w-full justify-center min-h-[40px] bg-red-800 text-center items-center text-2xl justify-center items-center",
                 div{ class:"flex px-4 py-2 justify-center items-center",
                     div{class:"flex flex-col md:flex-row w-full mr-2",
                         span { class:"flex hidden md:inline-flex w-[30px] mr-1 text-white text-[30px] md:text-md", {ClustersSvg()}}
-                        {CLUSTER_STORAGE.read().active_cluster().name()} " cluster is unreachable!"
+                        {active_entry2} " cluster is unreachable!"
                     }
                     button {
-                        onclick:move|_| {
-                            let active_cluster = CLUSTER_STORAGE.read().active_cluster().clone();
-                            CLUSTER_STORAGE.write().set_active_cluster(active_cluster);
-                        },
+                       // onclick:move|_| {
+                       //     let active_entry = active_entry;
+                           // CLUSTER_STORAGE.write().set_active_entry(active_entry);
+                        //},
                         class:"flex bg-true-blue items-center justify-center text-sm text-white px-2 py-1 rounded-full hover:bg-cobalt-blue",
                         "REFRESH"
                     }

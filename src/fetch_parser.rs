@@ -11,11 +11,9 @@ use wallet_adapter::{
     SendOptions, WalletError, WalletResult,
 };
 
-use crate::{model::{storage::{ACCOUNT_STATE, CLUSTER_STORAGE, WALLET_ADAPTER}, AccountState, BlockHashResponseValue, ResponseWithContext, RpcResponse, SignaturesResponse, TokenAccountResponse}, FetchReq};
+use crate::{model::{storage::{ACCOUNT_STATE, WALLET_ADAPTER}, use_connections, AccountState, BlockHashResponseValue, ResponseWithContext, RpcResponse, SignaturesResponse, TokenAccountResponse}, FetchReq};
 //, views::FetchReq
-//, WALLET_ADAPTER, CLUSTER_STORAGE
 
-//ACCOUNT_STATE, CLUSTER_STORAGE, WALLET_ADAPTER};
 
 pub fn format_timestamp(unix_timestamp: i64) -> String {
     let timestamp_ms = unix_timestamp as f64 * 1000.0; //Convert seconds to millisconds
@@ -89,7 +87,8 @@ pub async fn send_sol_req(
     lamports: u64,
     public_key_bytes: [u8; 32],
 ) -> WalletResult<()> {
-    let cluster = CLUSTER_STORAGE.read().active_cluster().cluster();
+    let connections = use_connections("solana_wallet");
+    let cluster = connections.active_entry_object();
 
     let pubkey = Pubkey::new_from_array(public_key_bytes);
     let recipient = Pubkey::from_str(recipient).or(Err(WalletError::Op(
@@ -105,7 +104,7 @@ pub async fn send_sol_req(
 
     WALLET_ADAPTER
         .read()
-        .sign_and_send_transaction(&tx_bytes, cluster, SendOptions::default())
+        .sign_and_send_transaction(&tx_bytes, cluster.cluster(), SendOptions::default())
         .await?;
 
     Ok(())

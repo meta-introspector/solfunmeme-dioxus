@@ -102,7 +102,7 @@ pub fn cluster_management_section(
                                         .add_cluster(cluster_type)
                                         .add_endpoint(&new_cluster_endpoint());
 
-                                    match connections.add_cluster(cluster) {
+                                    match connections.add_entry(cluster) {
                                         Ok(_) => {
                                             new_cluster_name.set(String::new());
                                             new_cluster_endpoint.set(String::new());
@@ -122,7 +122,7 @@ pub fn cluster_management_section(
 
               // Display clusters
               div { class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
-                    for cluster in connections.get_all_clusters() {
+                    for cluster in connections.get_all_entries() {
                         div { class: "border border-gray-200 dark:border-gray-600 rounded-lg p-4",
                               div { class: "flex items-center justify-between mb-2",
                                     h4 { class: "font-semibold text-gray-800 dark:text-white",
@@ -132,7 +132,7 @@ pub fn cluster_management_section(
                                         class: "text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm",
                                         onclick: move |_| {
                                             let cluster_name = cluster.name().to_string();
-                                            connections.remove_cluster(&cluster_name);
+                                            connections.remove_entry(&cluster_name);
                                         },
                                         "Delete"
                                     }

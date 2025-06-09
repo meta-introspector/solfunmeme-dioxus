@@ -14,7 +14,7 @@ use crate::{
 #[component]
 pub fn Clusters() -> Element {
     let connections = use_connections("solana_wallet");
-    let mut show_add_cluster_modal = use_signal(|| false);
+    let mut show_add_entry_modal = use_signal(|| false);
 
     rsx! {
         div {
@@ -25,7 +25,7 @@ pub fn Clusters() -> Element {
                 "Clusters"
                 div { class: "text-xl", "Manage your Solana endpoints" }
                 button {
-                    onclick: move |_| show_add_cluster_modal.set(true),
+                    onclick: move |_| show_add_entry_modal.set(true),
                     class: "bg-true-blue text-sm text-white px-5 py-2 mt-5 rounded-full hover:bg-cobalt-blue",
                     "ADD CLUSTER"
                 }
@@ -35,14 +35,14 @@ pub fn Clusters() -> Element {
                 }
             }
         }
-        AddClusterModal { show_add_cluster_modal, connections }
+        AddClusterModal { show_add_entry_modal, connections }
     }
 }
 
 #[component(partial_eq = false)]
 pub fn ClusterInfo(connections: UseConnections) -> Element {
-    let active_cluster_name = connections.active_cluster();
-    let clusters = connections.get_all_clusters();
+    let active_cluster_name = connections.active_entry();
+    let clusters = connections.get_all_entries();
 
     rsx! {
         {clusters.iter().map(|adapter_cluster| {
@@ -97,8 +97,8 @@ fn Switch(cluster_name: String, mut connections: UseConnections) -> Element {
     rsx! {
         label {
             onclick: move |_| {
-                if let Some(_active_cluster) = connections.get_cluster(&cluster_name) {
-                    connections.set_active_cluster(cluster_name.clone());
+                if let Some(_active_cluster) = connections.get_entry(&cluster_name) {
+                    connections.set_active_entry(cluster_name.clone());
                     GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(format!("{} cluster now active!", cluster_name)));
                 } else {
                     GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(format!("Could not find `{}` cluster!", cluster_name)));
@@ -123,7 +123,7 @@ fn Delete(cluster_name: String, mut connections: UseConnections) -> Element {
     rsx! {
         div {
             onclick: move |_| {
-                if connections.remove_cluster(&cluster_name).is_some() {
+                if connections.remove_entry(&cluster_name).is_some() {
                     GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(format!("{} cluster has been removed!", cluster_name)));
                 } else {
                     GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(format!("Could not find `{}` cluster!", cluster_name)));
@@ -137,7 +137,7 @@ fn Delete(cluster_name: String, mut connections: UseConnections) -> Element {
 }
 
 #[component]
-fn AddClusterModal(mut show_add_cluster_modal: Signal<bool>, mut connections: UseConnections) -> Element {
+fn AddClusterModal(mut show_add_entry_modal: Signal<bool>, mut connections: UseConnections) -> Element {
     #[derive(Debug, Default)]
     struct AddCluster {
         name: String,
@@ -145,10 +145,10 @@ fn AddClusterModal(mut show_add_cluster_modal: Signal<bool>, mut connections: Us
         network: MyCluster,
     }
 
-    let mut add_cluster = use_signal(|| AddCluster::default());
-    let should_show_button = !add_cluster.read().name.is_empty() && !add_cluster.read().endpoint.is_empty();
+    let mut add_entry = use_signal(|| AddCluster::default());
+    let should_show_button = !add_entry.read().name.is_empty() && !add_entry.read().endpoint.is_empty();
 
-    if *show_add_cluster_modal.read() {
+    if *show_add_entry_modal.read() {
         rsx! {
             div {
                 class: "fixed z-10 flex flex-col w-full h-full bg-[rgba(0,0,0,0.6)] justify-center items-center",
@@ -157,7 +157,7 @@ fn AddClusterModal(mut show_add_cluster_modal: Signal<bool>, mut connections: Us
                     div {
                         class: "flex w-full justify-end items-center p-5",
                         button {
-                            onclick: move |_| show_add_cluster_modal.set(false),
+                            onclick: move |_| show_add_entry_modal.set(false),
                             class: "wallet-adapter-modal-button-close w-[25px] items-center justify-center",
                             {CloseSvg()}
                         }
@@ -177,7 +177,7 @@ fn AddClusterModal(mut show_add_cluster_modal: Signal<bool>, mut connections: Us
                             }
                             input {
                                 oninput: move |event| {
-                                    add_cluster.write().name = event.data.value();
+                                    add_entry.write().name = event.data.value();
                                 },
                                 class: "rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
                                 id: "cluster-name",
@@ -201,7 +201,7 @@ fn AddClusterModal(mut show_add_cluster_modal: Signal<bool>, mut connections: Us
                                 oninput: move |event| {
                                     let data = event.data.value();
                                     if validate_url(&data) {
-                                        add_cluster.write().endpoint = data;
+                                        add_entry.write().endpoint = data;
                                     }
                                 },
                                 class: "rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
@@ -225,7 +225,7 @@ fn AddClusterModal(mut show_add_cluster_modal: Signal<bool>, mut connections: Us
                             select {
                                 onchange: move |event| {
                                     let network: MyCluster = event.data.value().as_str().try_into().unwrap_or_default();
-                                    add_cluster.write().network = network;
+                                    add_entry.write().network = network;
                                 },
                                 class: "rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
                                 id: "network",
@@ -247,20 +247,20 @@ fn AddClusterModal(mut show_add_cluster_modal: Signal<bool>, mut connections: Us
                                 button {
                                     onclick: move |_| {
                                         let adapter_cluster = AdapterCluster::new()
-                                            .add_name(add_cluster.read().name.as_str())
-                                            .add_endpoint(add_cluster.read().endpoint.as_str())
-                                            .add_cluster(add_cluster.read().network);
+                                            .add_name(add_entry.read().name.as_str())
+                                            .add_endpoint(add_entry.read().endpoint.as_str())                                            
+                                            .add_cluster(add_entry.read().network);
                                         let name = adapter_cluster.name().to_string();
-                                        match connections.add_cluster(adapter_cluster) {
+                                        match connections.add_entry(adapter_cluster) {
                                             Ok(()) => {
                                                 GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(format!("Added `{}` cluster!", name)));
-                                                show_add_cluster_modal.set(false);
-                                                add_cluster.set(AddCluster::default());
+                                                show_add_entry_modal.set(false);
+                                                add_entry.set(AddCluster::default());
                                             }
                                             Err(error) => {
                                                 GLOBAL_MESSAGE.write().push_back(NotificationInfo::new(format!("Error adding cluster: `{}`!", error)));
-                                                show_add_cluster_modal.set(false);
-                                                add_cluster.set(AddCluster::default());
+                                                show_add_entry_modal.set(false);
+                                                add_entry.set(AddCluster::default());
                                             }
                                         }
                                     },

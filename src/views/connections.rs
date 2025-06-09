@@ -20,15 +20,15 @@ pub fn Connections() -> Element {
     let show_cluster_form = use_signal(|| false);
 
     // Get available clusters for dropdowns
-    let cluster_names = connections.get_cluster_names();
+    let cluster_names = connections.get_entry_names();
     let mut filter_options = cluster_names.clone();
     filter_options.insert(0, "All".to_string());
 
     // Filter connections based on selected cluster
     let filtered_connections = if selected_cluster_filter() == "All" {
-        connections.get_all_connections()
+        connections.get_all_entries()
     } else {
-        connections.get_connections_by_cluster(&selected_cluster_filter())
+        connections.get_entries_by_name (&selected_cluster_filter())
     };
 
     rsx! {

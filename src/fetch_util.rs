@@ -5,8 +5,9 @@ use wallet_adapter::{
     WalletError, WalletResult,
 };
 
-use crate::model::{storage::{CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, WALLET_ADAPTER}, ClusterNetState, NotificationInfo};
-//CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, WALLET_ADAPTER
+use crate::model::{storage::{CLUSTER_NET_STATE, GLOBAL_MESSAGE, WALLET_ADAPTER}, ClusterNetState, NotificationInfo};
+use crate::model::use_connections;
+
 
 // NOTE: You can use Reqwest crate instead to fetch the blockhash but
 // this code shows how to use the browser `fetch` api
@@ -83,11 +84,11 @@ impl FetchReq {
     pub async fn build(&self) -> WalletResult<Response> {
         self.options.set_headers(&self.headers);
 
-        let url = CLUSTER_STORAGE
-            .read()
-            .active_cluster()
-            .endpoint()
-            .to_owned();
+	let connections = use_connections("solana_wallet");
+    let cluster = connections.active_entry_object();
+        
+	let url = cluster.endpoint();
+        //let url = CLUSTER_STORAGE            .read()            .active_cluster()            .endpoint()            .to_owned();
 
         let request = Request::new_with_str_and_init(&url, &self.options)?;
 

@@ -2,14 +2,14 @@ use percent_encoding::{utf8_percent_encode, NON_ALPHANUMERIC};
 use serde::Serialize;
 use serde::Deserialize;
 use crate::model::mycluster::MyCluster;
-use crate::model::Connection;
+//use crate::model::Connection;
 use wallet_adapter::Cluster;
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
 pub struct AdapterCluster {
-    name: String,
-    cluster: MyCluster,
-    endpoint: String,
+    pub name: String,
+    pub cluster: MyCluster,
+    pub endpoint: String,
 }
 
 impl AdapterCluster {
@@ -96,10 +96,14 @@ impl AdapterCluster {
 
     // Mask sensitive parts of the endpoint for display
     pub fn masked_endpoint(&self) -> String {
-        Connection {
+        let name :&  str = self.name.as_str();
+        let clst : MyCluster = name.try_into()
+            .unwrap_or_else(|_| MyCluster::LocalNet); // Default to LocalNet if conversion fails     
+            
+        AdapterCluster {
             name: self.name.clone(),
-            url: self.endpoint.clone(),
-            cluster_name: self.name.clone(),
+            endpoint: self.endpoint.clone(),
+            cluster: clst,
         }
         .masked_url()
     }
@@ -116,3 +120,85 @@ impl std::fmt::Display for AdapterCluster {
         write!(f, "{}", self.cluster.display())
     }
 }
+
+
+impl AdapterCluster {
+    // Mask sensitive parts of the URL for display
+    pub fn masked_url(&self) -> String {
+        if let Some(token_start) = self.endpoint.find("?") {
+            let (before_token, after_token) = self.endpoint.split_at(token_start + 6); // "token=".len() = 6
+            if let Some(token_end) = after_token.find('&') {
+                let (token_part, rest) = after_token.split_at(token_end);
+                let masked_token = if token_part.len() > 8 {
+                    format!(
+                        "{}...{}",
+                        &token_part[..4],
+                        &token_part[token_part.len() - 4..]
+                    )
+                } else {
+                    "*".repeat(token_part.len())
+                };
+                format!("{}{}{}", before_token, masked_token, rest)
+            } else {
+                // Token is at the end of endpoint
+                let masked_token = if after_token.len() > 8 {
+                    format!(
+                        "{}...{}",
+                        &after_token[..4],
+                        &after_token[after_token.len() - 4..]
+                    )
+                } else {
+                    "*".repeat(after_token.len())
+                };
+                format!("{}{}", before_token, masked_token)
+            }
+        } else if self.endpoint.contains("access_token=") {
+            // Handle access_token parameter
+            if let Some(token_start) = self.endpoint.find("access_token=") {
+                let (before_token, after_token) = self.endpoint.split_at(token_start + 13); // "access_token=".len() = 13
+                if let Some(token_end) = after_token.find('&') {
+                    let (token_part, rest) = after_token.split_at(token_end);
+                    let masked_token = if token_part.len() > 8 {
+                        format!(
+                            "{}...{}",
+                            &token_part[..4],
+                            &token_part[token_part.len() - 4..]
+                        )
+                    } else {
+                        "*".repeat(token_part.len())
+                    };
+                    format!("{}{}{}", before_token, masked_token, rest)
+                } else {
+                    let masked_token = if after_token.len() > 8 {
+                        format!(
+                            "{}...{}",
+                            &after_token[..4],
+                            &after_token[after_token.len() - 4..]
+                        )
+                    } else {
+                        "*".repeat(after_token.len())
+                    };
+                    format!("{}{}", before_token, masked_token)
+                }
+            } else {
+                self.endpoint.clone()
+            }
+        } else if self.endpoint.contains("://") && self.endpoint.matches(':').count() >= 2 {
+            // Handle endpoints with embedded credentials (user:pass@host)
+            if let Some(at_pos) = self.endpoint.find('@') {
+                if let Some(scheme_end) = self.endpoint.find("://") {
+                    let scheme_part = &self.endpoint[..scheme_end + 3];
+                    let after_at = &self.endpoint[at_pos..];
+                    format!("{}***{}", scheme_part, after_at)
+                } else {
+                    self.endpoint.clone()
+                }
+            } else {
+                self.endpoint.clone()
+            }
+        } else {
+            self.endpoint.clone()
+        }
+    }
+}
+

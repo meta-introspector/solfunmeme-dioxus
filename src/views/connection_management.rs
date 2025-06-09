@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use crate::model::{Connection, use_connections};
+use crate::model::{use_connections, AdapterCluster, MyCluster};
 
 pub(crate) fn connection_management_section(
     cluster_names: Vec<String>,
@@ -68,13 +68,14 @@ pub(crate) fn connection_management_section(
               button {
                   class: "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-colors",
                   onclick: move |_| {
-                      let connection = Connection {
+                    let mc :MyCluster = MyCluster::try_from(selected_cluster_for_connection().as_str()).unwrap_or(MyCluster::MainNet);
+                    let connection = AdapterCluster {
                           name: new_connection_name().clone(),
-                          url: new_connection_url().clone(),
-                          cluster_name: selected_cluster_for_connection().clone(),
+                          endpoint: new_connection_url().clone(),
+                          cluster: mc
                       };
-                      if !connection.name.is_empty() && !connection.url.is_empty() && !connection.cluster_name.is_empty() {
-                          connections.add_connection(connection);
+                      if !connection.name.is_empty() && !connection.endpoint.is_empty()  {
+                          connections.add_entry(connection);
                           new_connection_name.set(String::new());
                           new_connection_url.set(String::new());
                           selected_cluster_for_connection.set(String::new());

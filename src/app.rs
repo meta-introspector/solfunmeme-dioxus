@@ -8,13 +8,13 @@ use crate::{
 
 use crate::views::connections::Connections;
 //use crate::model::AdapterCluster;
-use crate::model::{AdapterCluster, AccountState};
+use crate::model::{AccountState};
 const FAVICON: Asset = asset!("/assets/favicon.png");
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 pub(crate) const LOGO: Asset = asset!("/assets/logo.png");
 
 use crate::model::storage::WALLET_ADAPTER;
-use crate::model::storage::{CLUSTER_STORAGE, GLOBAL_MESSAGE, ACCOUNT_STATE, ACTIVE_CONNECTION};
+use crate::model::storage::{GLOBAL_MESSAGE, ACCOUNT_STATE, ACTIVE_CONNECTION};
 //use crate::model::storage::{ClusterStore, NotificationInfo};
 //use crate::model::adaptercluster::AdapterCluster;
 use crate::views::dashboard::Dashboard;
@@ -27,16 +27,14 @@ use crate::views::extras::Extras;
 pub(crate) fn App() -> Element {
     let wallet_event_listener = WALLET_ADAPTER.read().events().clone();
 
-    let clusters = vec![
-        AdapterCluster::devnet(),
-        AdapterCluster::mainnet(),
-        AdapterCluster::testnet(),
-        AdapterCluster::localnet(),
-    ];
+    // let clusters = vec![
+    //     AdapterCluster::devnet(),
+    //     AdapterCluster::mainnet(),
+    //     AdapterCluster::testnet(),
+    //     AdapterCluster::localnet(),
+    // ];
+    //    if CLUSTER_STORAGE.write().add_clusters(clusters).is_err() {}     // FIXME: add default clusters
 
-    
-
-    if CLUSTER_STORAGE.write().add_clusters(clusters).is_err() {}
 
     spawn(async move {
         while let Ok(wallet_event) = wallet_event_listener.recv().await {
