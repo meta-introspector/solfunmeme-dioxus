@@ -3,7 +3,11 @@ use dioxus::prelude::*;
 //use std::collections::HashMap;
 //use wallet_adapter::{Cluster,};
 
-use crate::{model::use_connections, views::{cluster_management_section, connection_filter, connection_list, connection_management::connection_management_section}};
+use crate::{model::use_connections,
+	    //views::{
+    //cluster_management_section, connection_filter, connection_list, connection_management::connection_management_section
+	    //}
+};
 
 // Main Connections component
 pub fn Connections() -> Element {
