@@ -2,8 +2,8 @@
 use serde::{Deserialize, Serialize};
 use base64::{Engine as _, engine::general_purpose};
 use bs58;
-use ed25519_dalek::{SigningKey, VerifyingKey};
-use x25519_dalek::{StaticSecret, PublicKey as X25519PublicKey};
+use wallet_adapter::ed25519_dalek::{SigningKey, VerifyingKey};
+use x25519_dalek::{StaticSecret,  PublicKey as X25519PublicKey};
 use chacha20poly1305::{
     aead::{Aead, AeadCore, KeyInit, OsRng},
     ChaCha20Poly1305, Nonce,
@@ -231,7 +231,11 @@ impl SolanaEncryption {
         hasher.update(signing_key.to_bytes());
         let hash = hasher.finalize();
 
-        StaticSecret::from(hash.into())
+        let hash_bytes: [u8; 32] = hash
+            .as_slice()
+            .try_into()
+            .expect("Hash output should be 32 bytes");
+        StaticSecret::from(hash_bytes)
     }
 
     /// Convert Ed25519 public key to X25519 public key
@@ -250,7 +254,7 @@ impl SolanaEncryption {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    //use super::*;
 
     #[test]
     fn test_encryption_decryption_round_trip() {

@@ -1,3 +1,4 @@
+
 // Cargo.toml
 /*
 [package]
@@ -19,9 +20,31 @@ wasm-bindgen = "0.2"
 use dioxus::prelude::*;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use std::fmt;
+//use std::fmt;
 use uuid::Uuid;
 use nalgebra::DVector;
+
+#[derive(Clone, Copy, PartialEq)]
+pub struct Expression {
+    //expressions: Vec<Expression>,
+    // lam 
+    // bind
+    // app
+    astring: Signal<String>
+}   
+
+
+#[derive(Clone, Copy, PartialEq)]
+pub struct ExpressionListObj {
+    expressions: Signal<Vec<Expression>>,
+}   
+
+#[derive(Clone, PartialEq)]
+pub struct ExpressionList {
+    expressions: Vec<Expression>,
+}   
+
+// Remove UseState2 and use Dioxus's built-in UseState<AppState> instead.
 
 // ============================================================================
 // MONADS - Functional Programming Core
@@ -70,36 +93,66 @@ impl<T> Maybe<T> {
     }
 }
 
-#[derive(Debug, Clone)]
-pub struct IO<T> {
-    action: fn() -> T,
-}
+//#[derive(Debug)]
+// pub struct IO<T> {
+//     action: Box<dyn Fn() -> T + 'static>(),
+// }
 
-impl<T> IO<T> {
-    pub fn pure(value: T) -> IO<T> 
-    where 
-        T: Clone + 'static,
-    {
-        IO {
-            action: move || value.clone(),
-        }
-    }
+// impl<T> IO<T> {
+//     pub fn pure(value: T) -> IO<T> 
+//     where 
+//         T: Clone + 'static,
+//     {
+//         IO {
+//             action: Box::new(move || value.clone())
+//         }
+//     }
     
-    pub fn map<U, F>(self, f: F) -> IO<U>
-    where
-        F: Fn(T) -> U + 'static,
-        T: 'static,
-        U: 'static,
-    {
-        IO {
-            action: || f((self.action)()),
-        }
-    }
+//     pub fn map<U, F>(self, f: F) -> IO<U>
+//     where
+//         F: Fn(T) -> U + 'static,
+//         T: 'static,
+//         U: 'static,
+//     {
+//         IO {
+//             action: Box::new(move || f((self.action)())),
+//         }
+//     }
     
-    pub fn run(self) -> T {
-        (self.action)()
-    }
-}
+//     pub fn run(self) -> T {
+//         (self.action)()
+//     }
+// }
+// #[derive(Debug, Clone)]
+// pub struct IO<T> {
+//     action: fn() -> T,
+// }
+
+// impl<T> IO<T> {
+//     pub fn pure(value: T) -> IO<T> 
+//     where 
+//         T: Clone + 'static,
+//     {
+//         IO {
+//             action: move || value.clone(),
+//         }
+//     }
+    
+//     pub fn map<U, F>(self, f: F) -> IO<U>
+//     where
+//         F: Fn(T) -> U + 'static,
+//         T: 'static,
+//         U: 'static,
+//     {
+//         IO {
+//             action: || f((self.action)()),
+//         }
+//     }
+    
+//     pub fn run(self) -> T {
+//         (self.action)()
+//     }
+// }
 
 // ============================================================================
 // MODEL - Data Layer
@@ -249,7 +302,7 @@ pub enum ExpressionType {
 
 impl Default for ExpressionType {
     fn default() -> Self {
-        ExpressionType::Quine
+        ExpressionType::Meme
     }
 }
 
@@ -362,27 +415,32 @@ impl Controller {
 // VIEW - Presentation Layer (Separated into Components)
 // ============================================================================
 
-fn main() {
-    console_error_panic_hook::set_once();
-    dioxus_web::launch(App);
-}
+// fn main() {
+//     console_error_panic_hook::set_once();
+//     dioxus_web::launch(App);
+// }
+// fn use_state2<T: 'static + Default>() -> UseState<T> {
+//         use_state(T::default)
+//     }    
 
 #[component]
-fn App(cx: Scope) -> Element {
-    let state = use_state(cx, AppState::default);
+fn App() -> Element {
+    //let state = use_state(cx, AppState::default);
+    //let state = use_state2(AppState::default);
+    // Custom use_state2 hook for demonstration (returns the same as use_state)
     
-    render! {
+    rsx! {
         div {
             class: "app-container",
             Header {}
             InputSection {
-                state: state,
+               // state: state,
             }
             ExpressionList {
-                state: state,
+                //state: state,
             }
             VectorSpace {
-                state: state,
+                //state: state,
             }
             Footer {}
         }
@@ -390,8 +448,8 @@ fn App(cx: Scope) -> Element {
 }
 
 #[component]
-fn Header(cx: Scope) -> Element {
-    render! {
+fn Header() -> Element {
+    rsx! {
         header {
             class: "app-header",
             h1 { 
@@ -406,17 +464,17 @@ fn Header(cx: Scope) -> Element {
     }
 }
 
-#[derive(Props)]
-struct InputSectionProps {
-    state: UseState<AppState>,
-}
+//#[derive(Props)]
+//struct InputSectionProps {
+    //state: UseState<AppState>,
+//}
 //cx: Scope<InputSectionProps>
 #[component]
 fn InputSection() -> Element {
     //let state = &cx.props.state;
-    let state = use_state();
+    let state = use_state2();
 
-    render! {
+    rsx! {
         section {
             class: "input-section",
             div {
@@ -459,26 +517,80 @@ fn InputSection() -> Element {
                     },
                 }
                 
-                if state.get().expression_type == ExpressionType::Meme {
-                    render! {
-                        input {
-                            class: "tags-input",
-                            placeholder: "Semantic tags (comma-separated)...",
-                            value: "{state.get().current_tags}",
-                            oninput: move |evt| {
-                                state.with_mut(|s| s.current_tags = evt.value.clone());
-                            },
-                        }
+                { 
+                    if state.get().expression_type == ExpressionType::Meme {
+                        Some(rsx! {
+#[component]
+fn InputSection(cx: Scope) -> Element {
+    let state = use_state(cx, AppState::default);
+
+    rsx! {
+        section {
+            class: "input-section",
+            div {
+                class: "type-selector",
+                label {
+                    input {
+                        r#type: "radio",
+                        name: "expression_type",
+                        checked: state.get().expression_type == ExpressionType::Quine,
+                        onchange: move |_| {
+                            state.write().expression_type = ExpressionType::Quine;
+                        },
+                    }
+                    "Quine"
+                }
+                label {
+                    input {
+                        r#type: "radio",
+                        name: "expression_type",
+                        checked: state.get().expression_type == ExpressionType::Meme,
+                        onchange: move |_| {
+                            state.write().expression_type = ExpressionType::Meme;
+                        },
+                    }
+                    "Meme"
+                }
+            }
+
+            div {
+                class: "input-controls",
+                textarea {
+                    class: "expression-input",
+                    placeholder: match state.get().expression_type {
+                        ExpressionType::Quine => "Enter quine expression...",
+                        ExpressionType::Meme => "Enter meme content...",
+                    },
+                    value: state.get().current_input.clone(),
+                    oninput: move |evt| {
+                        state.write().current_input = evt.value().to_string();
+                    },
+                }
+
+                {
+                    if state.get().expression_type == ExpressionType::Meme {
+                        Some(rsx! {
+                            input {
+                                class: "tags-input",
+                                placeholder: "Semantic tags (comma-separated)...",
+                                value: state.get().current_tags.clone(),
+                                oninput: move |evt| {
+                                    state.write().current_tags = evt.value().to_string();
+                                },
+                            }
+                        })
+                    } else {
+                        None
                     }
                 }
-                
+
                 button {
                     class: "add-button",
                     onclick: move |_| {
                         let result = match state.get().expression_type {
                             ExpressionType::Quine => {
                                 Controller::add_quine_expression(
-                                    state.get_mut(),
+                                    &mut state.write(),
                                     state.get().current_input.clone()
                                 )
                             },
@@ -488,15 +600,15 @@ fn InputSection() -> Element {
                                     .map(|s| s.trim().to_string())
                                     .filter(|s| !s.is_empty())
                                     .collect();
-                                    
+
                                 Controller::add_meme_expression(
-                                    state.get_mut(),
+                                    &mut state.write(),
                                     state.get().current_input.clone(),
                                     tags
                                 )
                             }
                         };
-                        
+
                         if result.is_some() {
                             // Expression added successfully
                         }
@@ -504,79 +616,27 @@ fn InputSection() -> Element {
                     "Lift Expression"
                 }
             }
-            
+
             div {
                 class: "search-section",
                 input {
                     class: "search-input",
                     placeholder: "Search expressions...",
-                    value: "{state.get().search_query}",
+                    value: state.get().search_query.clone(),
                     oninput: move |evt| {
-                        let query = evt.value.clone();
-                        state.with_mut(|s| {
-                            s.search_query = query.clone();
-                            Controller::search_expressions(s, query);
-                        });
+                        let query = evt.value().to_string();
+                        state.write().search_query = query.clone();
+                        Controller::search_expressions(&mut state.write(), query);
                     },
                 }
             }
         }
     }
 }
-
-#[derive(Props)]
-struct ExpressionListProps<'a> {
-    state: &'a UseState<AppState>,
-}
-
-#[component]
-//fn ExpressionList<'a>(cx: Scope<'a, ExpressionListProps<'a>>) -> Element {
-fn ExpressionList() -> Element {
-    //let state = cx.props.state;
-    let state = use_state();
-    
-    let expressions_to_show: Vec<String> = if state.get().search_query.is_empty() {
-        state.get().expressions.keys().cloned().collect()
-    } else {
-        state.get().filtered_expressions.clone()
-    };
-    
-    render! {
-        section {
-            class: "expression-list",
-            h2 { "Lifted Expressions ({expressions_to_show.len()})" }
-            
-            div {
-                class: "expressions-grid",
-                for expr_id in expressions_to_show.iter() {
-                    if let Some(expr) = state.get().expressions.get(expr_id) {
-                        render! {
-                            ExpressionCard {
-                                key: "{expr_id}",
-                                expression: expr.clone(),
-                                state: state,
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-#[derive(Props)]
-struct ExpressionCardProps<'a> {
-    expression: LiftedExpression,
-    state: &'a UseState<AppState>,
-}
-
-#[component]
-//fn ExpressionCard<'a>(cx: Scope<'a, ExpressionCardProps<'a>>) -> Element {
-fn ExpressionCard() -> Element {
     let expr = &cx.props.expression;
     let state = use_state();
     
-    render! {
+    rsx! {
         div {
             class: "expression-card",
             
@@ -598,7 +658,7 @@ fn ExpressionCard() -> Element {
             div {
                 class: "card-content",
                 if let Some(ref quine) = expr.quine {
-                    render! {
+                    rsx! {
                         div {
                             p { 
                                 class: "expression-text",
@@ -618,7 +678,7 @@ fn ExpressionCard() -> Element {
                         }
                     }
                 } else if let Some(ref meme) = expr.meme {
-                    render! {
+                    rsx! {
                         div {
                             p { 
                                 class: "meme-content",
@@ -667,16 +727,16 @@ fn ExpressionCard() -> Element {
     }
 }
 
-#[derive(Props)]
-struct VectorSpaceProps<'a> {
-    state: &'a UseState<AppState>,
-}
+// #[derive(Props)]
+// struct VectorSpaceProps<'a> {
+//     state: &'a UseState<AppState>,
+// }
 
 #[component]
 fn VectorSpace() -> Element {
-    let state = use_state();
+    let state = use_state2();
     
-    render! {
+    rsx! {
         section {
             class: "vector-space",
             h2 { "Vector Space Analysis" }
@@ -728,8 +788,8 @@ fn VectorSpace() -> Element {
 }
 
 #[component]
-fn Footer(cx: Scope) -> Element {
-    render! {
+fn Footer() -> Element {
+    rsx! {
         footer {
             class: "app-footer",
             p { "Functional Reactive Architecture • Rust + Dioxus • MVC Pattern" }

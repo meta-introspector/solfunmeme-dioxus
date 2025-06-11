@@ -20,3 +20,10 @@ pub const CARD: &str = "bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-g
 pub const FORM_CONTAINER: &str = "space-y-6";
 pub const INPUT: &str = "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white";
 //pub const TEXTAREA: &str
+pub const TEXTAREA: &str = "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white";
+pub const BUTTON_PRIMARY: &str = "w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-200";
+pub const BUTTON_SUCCESS: &str = "w-full px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 transition-all duration-200";
+//BUTTON_DANGER
+pub const BUTTON_DANGER: &str = "w-full px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-all duration-200";
+//BUTTON_DISABLED
+pub const BUTTON_DISABLED: &str = "w-full px-6 py-3 bg-gray-400 text-gray-700 rounded-lg cursor-not-allowed transition-all duration-200";

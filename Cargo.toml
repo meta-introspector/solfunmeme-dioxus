@@ -38,7 +38,25 @@ web-sys = { version = "0.3.58", features = ["Storage"] }
 url = "2.5.4"
 sha2 = "0.10.9"
 aes-gcm = "0.10.3"
+base64 = "0.22.1"
+bs58 = "0.5.1"
+chacha20poly1305 = "0.10.1"
+
+#uuid = "1.17.0"
+nalgebra = "0.33.2"
+chrono = "0.4.41"
 # backend only sqlx = { version="0.8.3", features = [ "sqlite", "runtime-tokio", "tls-native-tls" ], optional = true}
+
+[dependencies.x25519-dalek  ]
+version = "2.0.1"
+features = [ "static_secrets"]
+
+[dependencies.uuid]
+version = "1.17.0"
+# Lets you generate random UUIDs
+features = [
+    "v4",
+]
 
 [features]
 default = ["web"]

@@ -1,0 +1,517 @@
+
+use std::collections::HashMap;
+
+// Equivalent to Lean's Level type
+#[derive(Debug, Clone, PartialEq)]
+pub enum Level {
+    Zero,
+    Succ(Box<Level>),
+    Max(Box<Level>, Box<Level>),
+    IMax(Box<Level>, Box<Level>),
+    Param(String),
+    MVar(u64),
+}
+pub struct LevelDescr {
+    level: String,
+    kind: String,
+}
+
+pub struct Forbd {
+    forbndrTyp: String,
+    forbdB: String,
+}
+
+
+pub struct CnstInf {
+    levels: Vec<Level>,
+    declName: String,
+    forbd: Forbd,
+    binderName: String,
+    binderInfo: String,
+}  
+pub struct Sig {
+    atype: String,
+    forbndrTypB: String,
+    binderName: String,
+    binderInfo: String,
+}
+
+pub struct CnstInfB {
+    sig: Sig,
+    cnstInf: CnstInf,
+}
+
+pub struct Foo {
+
+    akind: String,
+    cnstInfB: CnstInfB,
+}
+
+// Rust translation of the SimpleExpr type and its recursor
+// Based on the Lean 4 JSON representation
+
+
+
+// Equivalent to Lean's Name type
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub enum Name {
+    Anonymous,
+    Str(Box<Name>, String),
+    Num(Box<Name>, u64),
+}
+
+// Equivalent to Lean's BinderInfo
+#[derive(Debug, Clone, PartialEq)]
+pub enum BinderInfo {
+    Default,
+    Implicit,
+    StrictImplicit,
+    InstImplicit,
+    AuxDecl,
+}
+
+// The main SimpleExpr type (inductive type from Lean)
+#[derive(Debug, Clone, PartialEq)]
+pub enum SimpleExpr {
+    // Bound variable with de Bruijn index
+    BVar {
+        index: u64,
+    },
+    
+    // Sort (Type universe)
+    Sort {
+        level: Level,
+    },
+    
+    // Constant with name and universe levels
+    Const {
+        name: Name,
+        levels: Vec<Level>,
+    },
+    
+    // Function application
+    App {
+        func: Box<SimpleExpr>,
+        arg: Box<SimpleExpr>,
+    },
+    
+    // Lambda abstraction
+    Lam {
+        binder_name: Name,
+        binder_type: Box<SimpleExpr>,
+        body: Box<SimpleExpr>,
+        binder_info: BinderInfo,
+    },
+    
+    // Dependent product (Pi type / forall)
+    ForallE {
+        binder_name: Name,
+        binder_type: Box<SimpleExpr>,
+        body: Box<SimpleExpr>,
+        binder_info: BinderInfo,
+    },
+}
+
+impl SimpleExpr {
+    // Recursor implementation - pattern matching with continuation-passing style
+    pub fn rec<T, F1, F2, F3, F4, F5, F6>(
+        &self,
+        bvar_case: F1,
+        sort_case: F2,
+        const_case: F3,
+        app_case: F4,
+        lam_case: F5,
+        forall_case: F6,
+    ) -> T
+    where
+        F1: FnOnce(u64) -> T + Clone,
+        F2: FnOnce(&Level) -> T + Clone,
+        F3: FnOnce(&Name, &[Level]) -> T + Clone,
+        F4: FnOnce(&SimpleExpr, &SimpleExpr, T, T) -> T + Clone,
+        F5: FnOnce(&Name, &SimpleExpr, &SimpleExpr, &BinderInfo, T, T) -> T + Clone,
+        F6: FnOnce(&Name, &SimpleExpr, &SimpleExpr, &BinderInfo, T, T) -> T + Clone,
+    {
+        match self {
+            SimpleExpr::BVar { index } => bvar_case(*index),
+
+            SimpleExpr::Sort { level } => sort_case(level),
+
+            SimpleExpr::Const { name, levels } => const_case(name, levels),
+
+            SimpleExpr::App { func, arg } => {
+                let func_ih = func.rec(
+                    bvar_case.clone(), sort_case.clone(), const_case.clone(),
+                    app_case.clone(), lam_case.clone(), forall_case.clone()
+                );
+                let arg_ih = arg.rec(
+                    bvar_case, sort_case, const_case,
+                    app_case, lam_case, forall_case
+                );
+                app_case(func, arg, func_ih, arg_ih)
+            },
+
+            SimpleExpr::Lam { binder_name, binder_type, body, binder_info } => {
+                let binder_type_ih = binder_type.rec(
+                    bvar_case.clone(), sort_case.clone(), const_case.clone(),
+                    app_case.clone(), lam_case.clone(), forall_case.clone()
+                );
+                let body_ih = body.rec(
+                    bvar_case, sort_case, const_case,
+                    app_case, lam_case, forall_case
+                );
+                lam_case(binder_name, binder_type, body, binder_info, binder_type_ih, body_ih)
+            },
+
+            SimpleExpr::ForallE { binder_name, binder_type, body, binder_info } => {
+                let binder_type_ih = binder_type.rec(
+                    bvar_case.clone(), sort_case.clone(), const_case.clone(),
+                    app_case.clone(), lam_case.clone(), forall_case.clone()
+                );
+                let body_ih = body.rec(
+                    bvar_case, sort_case, const_case,
+                    app_case, lam_case, forall_case
+                );
+                forall_case(binder_name, binder_type, body, binder_info, binder_type_ih, body_ih)
+            },
+        }
+    }
+    
+    // Helper method for simple pattern matching without recursion
+    pub fn match_expr<T, F1, F2, F3, F4, F5, F6>(
+        &self,
+        bvar_case: F1,
+        sort_case: F2,
+        const_case: F3,
+        app_case: F4,
+        lam_case: F5,
+        forall_case: F6,
+    ) -> T
+    where
+        F1: FnOnce(u64) -> T,
+        F2: FnOnce(&Level) -> T,
+        F3: FnOnce(&Name, &[Level]) -> T,
+        F4: FnOnce(&SimpleExpr, &SimpleExpr) -> T,
+        F5: FnOnce(&Name, &SimpleExpr, &SimpleExpr, &BinderInfo) -> T,
+        F6: FnOnce(&Name, &SimpleExpr, &SimpleExpr, &BinderInfo) -> T,
+    {
+        match self {
+            SimpleExpr::BVar { index } => bvar_case(*index),
+            SimpleExpr::Sort { level } => sort_case(level),
+            SimpleExpr::Const { name, levels } => const_case(name, levels),
+            SimpleExpr::App { func, arg } => app_case(func, arg),
+            SimpleExpr::Lam { binder_name, binder_type, body, binder_info } => {
+                lam_case(binder_name, binder_type, body, binder_info)
+            },
+            SimpleExpr::ForallE { binder_name, binder_type, body, binder_info } => {
+                forall_case(binder_name, binder_type, body, binder_info)
+            },
+        }
+    }
+}
+
+// Example usage and helper functions
+impl SimpleExpr {
+    // Create a bound variable
+    pub fn bvar(index: u64) -> Self {
+        SimpleExpr::BVar { index }
+    }
+    
+    // Create a sort
+    pub fn sort(level: Level) -> Self {
+        SimpleExpr::Sort { level }
+    }
+    
+    // Create a constant
+    pub fn const_expr(name: Name, levels: Vec<Level>) -> Self {
+        SimpleExpr::Const { name, levels }
+    }
+    
+    // Create an application
+    pub fn app(func: SimpleExpr, arg: SimpleExpr) -> Self {
+        SimpleExpr::App {
+            func: Box::new(func),
+            arg: Box::new(arg),
+        }
+    }
+    
+    // Create a lambda
+    pub fn lam(name: Name, binder_type: SimpleExpr, body: SimpleExpr, info: BinderInfo) -> Self {
+        SimpleExpr::Lam {
+            binder_name: name,
+            binder_type: Box::new(binder_type),
+            body: Box::new(body),
+            binder_info: info,
+        }
+    }
+    
+    // Create a forall (Pi type)
+    pub fn forall_e(name: Name, binder_type: SimpleExpr, body: SimpleExpr, info: BinderInfo) -> Self {
+        SimpleExpr::ForallE {
+            binder_name: name,
+            binder_type: Box::new(binder_type),
+            body: Box::new(body),
+            binder_info: info,
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    
+    #[test]
+    fn test_simple_expr_construction() {
+        // Create a simple expression: λx: Type, x
+        let type_sort = SimpleExpr::sort(Level::Zero);
+        let x_var = SimpleExpr::bvar(0);
+        let identity = SimpleExpr::lam(
+            Name::Str(Box::new(Name::Anonymous), "x".to_string()),
+            type_sort,
+            x_var,
+            BinderInfo::Default,
+        );
+        
+        // Test pattern matching
+        let result = identity.match_expr(
+            |_| "bvar",
+            |_| "sort", 
+            |_, _| "const",
+            |_, _| "app",
+            |_, _, _, _| "lambda",
+            |_, _, _, _| "forall",
+        );
+        
+        assert_eq!(result, "lambda");
+    }
+}
+
+
+
+use std::collections::HashMap;
+
+// First, let's fix the struct definitions to be valid Rust
+#[derive(Debug, Clone, PartialEq)]
+pub struct Level {
+    level: String,
+    kind: String,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct Forbd {
+    forbndr_typ: String, // Fixed naming
+    forbd_b: String,     // Fixed naming
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct CnstInf {
+    levels: Vec<Level>,
+    decl_name: String,   // Fixed naming
+    forbd: Forbd,
+    binder_name: String, // Fixed naming
+    binder_info: String, // Fixed naming
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct Sig {
+    atype: String,
+    forbndr_typ_b: String, // Fixed naming
+    binder_name: String,   // Fixed naming
+    binder_info: String,   // Fixed naming
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct CnstInfB {
+    sig: Sig,
+    cnst_inf: CnstInf, // Fixed naming
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct Foo {
+    akind: String,
+    cnst_inf_b: CnstInfB, // Fixed naming
+}
+
+// Enhanced Level enum to match the JSON better
+#[derive(Debug, Clone, PartialEq)]
+pub enum LevelType {
+    Zero,
+    Succ(Box<LevelType>),
+    Max(Box<LevelType>, Box<LevelType>),
+    IMax(Box<LevelType>, Box<LevelType>),
+    Param(String),
+    MVar(u64),
+}
+
+// Enhanced SimpleExpr to match JSON structure more closely
+#[derive(Debug, Clone, PartialEq)]
+pub enum SimpleExprType {
+    BVar {
+        index: Option<u64>,
+    },
+    Sort {
+        level: Level,
+    },
+    Const {
+        levels: Vec<Level>,
+        decl_name: String,
+    },
+    App {
+        fn_expr: Box<SimpleExprType>,
+        arg: Box<SimpleExprType>,
+    },
+    ForallE {
+        forbndr_typ: Option<Box<SimpleExprType>>,
+        forbndr_typ_b: Option<Box<SimpleExprType>>,
+        forbd_b: Option<Box<SimpleExprType>>,
+        forbd: Option<Box<SimpleExprType>>,
+        binder_name: String,
+        binder_info: String,
+    },
+    Lam {
+        binder_name: String,
+        binder_type: Box<SimpleExprType>,
+        body: Box<SimpleExprType>,
+        binder_info: String,
+    },
+}
+
+// Convert the JSON chunk 1 into Rust constant
+pub const SIMPLE_EXPR_REC_CHUNK1: SimpleExprType = SimpleExprType::ForallE {
+    forbndr_typ_b: Some(Box::new(SimpleExprType::ForallE {
+        forbndr_typ: Some(Box::new(SimpleExprType::Const {
+            levels: vec![
+                Level { level: "u_1".to_string(), kind: "Lean.Level".to_string() },
+                Level { level: "u_2".to_string(), kind: "Lean.Level".to_string() },
+                Level { level: "u_3".to_string(), kind: "Lean.Level".to_string() },
+                Level { level: "u_4".to_string(), kind: "Lean.Level".to_string() },
+                Level { level: "u_5".to_string(), kind: "Lean.Level".to_string() },
+                Level { level: "u_6".to_string(), kind: "Lean.Level".to_string() },
+                Level { level: "u_7".to_string(), kind: "Lean.Level".to_string() },
+                Level { level: "u_8".to_string(), kind: "Lean.Level".to_string() },
+            ],
+            decl_name: "SimpleExpr".to_string(),
+        })),
+        forbndr_typ_b: None,
+        forbd_b: Some(Box::new(SimpleExprType::Sort {
+            level: Level {
+                level: "u".to_string(),
+                kind: "Lean.Level".to_string(),
+            },
+        })),
+        forbd: Some(Box::new(SimpleExprType::ForallE {
+            forbndr_typ: Some(Box::new(SimpleExprType::ForallE {
+                forbndr_typ: Some(Box::new(SimpleExprType::Sort {
+                    level: Level {
+                        level: "u_1".to_string(),
+                        kind: "Lean.Level".to_string(),
+                    },
+                })),
+                forbndr_typ_b: None,
+                forbd_b: Some(Box::new(SimpleExprType::ForallE {
+                    forbndr_typ: Some(Box::new(SimpleExprType::BVar { index: None })),
+                    forbndr_typ_b: None,
+                    forbd_b: Some(Box::new(SimpleExprType::App {
+                        fn_expr: Box::new(SimpleExprType::BVar { index: None }),
+                        arg: Box::new(SimpleExprType::App {
+                            fn_expr: Box::new(SimpleExprType::App {
+                                fn_expr: Box::new(SimpleExprType::Const {
+                                    levels: vec![
+                                        Level { level: "u_1".to_string(), kind: "Lean.Level".to_string() },
+                                        Level { level: "u_2".to_string(), kind: "Lean.Level".to_string() },
+                                        Level { level: "u_3".to_string(), kind: "Lean.Level".to_string() },
+                                        Level { level: "u_4".to_string(), kind: "Lean.Level".to_string() },
+                                        Level { level: "u_5".to_string(), kind: "Lean.Level".to_string() },
+                                        Level { level: "u_6".to_string(), kind: "Lean.Level".to_string() },
+                                        Level { level: "u_7".to_string(), kind: "Lean.Level".to_string() },
+                                        Level { level: "u_8".to_string(), kind: "Lean.Level".to_string() },
+                                    ],
+                                    decl_name: "SimpleExpr.bvar".to_string(),
+                                }),
+                                arg: Box::new(SimpleExprType::BVar { index: None }),
+                            }),
+                            arg: Box::new(SimpleExprType::BVar { index: None }),
+                        }),
+                    })),
+                    forbd: None,
+                    binder_name: "deBruijnIndex".to_string(),
+                    binder_info: "default".to_string(),
+                })),
+                forbd: None,
+                binder_name: "Nat".to_string(),
+                binder_info: "implicit".to_string(),
+            })),
+            forbndr_typ_b: None,
+            forbd_b: Some(Box::new(SimpleExprType::ForallE {
+                forbndr_typ: Some(Box::new(SimpleExprType::ForallE {
+                    forbndr_typ: Some(Box::new(SimpleExprType::Const {
+                        levels: vec![
+                            Level { level: "u_2".to_string(), kind: "Lean.Level".to_string() },
+                            Level { level: "u_3".to_string(), kind: "Lean.Level".to_string() },
+                        ],
+                        decl_name: "Level".to_string(),
+                    })),
+                    forbndr_typ_b: None,
+                    forbd_b: Some(Box::new(SimpleExprType::App {
+                        fn_expr: Box::new(SimpleExprType::BVar { index: None }),
+                        arg: Box::new(SimpleExprType::App {
+                            fn_expr: Box::new(SimpleExprType::Const {
+                                levels: vec![
+                                    Level { level: "u_1".to_string(), kind: "Lean.Level".to_string() },
+                                    Level { level: "u_2".to_string(), kind: "Lean.Level".to_string() },
+                                    Level { level: "u_3".to_string(), kind: "Lean.Level".to_string() },
+                                    Level { level: "u_4".to_string(), kind: "Lean.Level".to_string() },
+                                    Level { level: "u_5".to_string(), kind: "Lean.Level".to_string() },
+                                    Level { level: "u_6".to_string(), kind: "Lean.Level".to_string() },
+                                    Level { level: "u_7".to_string(), kind: "Lean.Level".to_string() },
+                                    Level { level: "u_8".to_string(), kind: "Lean.Level".to_string() },
+                                ],
+                                decl_name: "SimpleExpr.sort".to_string(),
+                            }),
+                            arg: Box::new(SimpleExprType::BVar { index: None }),
+                        }),
+                    })),
+                    forbd: None,
+                    binder_name: "u".to_string(),
+                    binder_info: "default".to_string(),
+                })),
+                forbndr_typ_b: None,
+                // This continues but gets cut off in chunk 1...
+                forbd_b: None, // Placeholder - will be filled with remaining chunks
+                forbd: None,
+                binder_name: "sort".to_string(),
+                binder_info: "default".to_string(),
+            })),
+            forbd: None,
+            binder_name: "bvar".to_string(),
+            binder_info: "default".to_string(),
+        })),
+        binder_name: "t".to_string(),
+        binder_info: "default".to_string(),
+    })),
+    forbndr_typ: None,
+    forbd_b: None,
+    forbd: None,
+    binder_name: "".to_string(),
+    binder_info: "".to_string(),
+};
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    
+    #[test]
+    fn test_chunk1_structure() {
+        // Test that the structure compiles and can be accessed
+        match &SIMPLE_EXPR_REC_CHUNK1 {
+            SimpleExprType::ForallE { binder_name, .. } => {
+                println!("Root binder: {}", binder_name);
+            }
+            _ => panic!("Expected ForallE at root"),
+        }
+    }
+}
+
+fn main() {
+    println!("Chunk 1 converted to Rust structure");
+    println!("Structure depth: Very deep nested ForallE expressions");
+}
