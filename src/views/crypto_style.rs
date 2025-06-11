@@ -27,3 +27,6 @@ pub const BUTTON_SUCCESS: &str = "w-full px-6 py-3 bg-gray-200 text-gray-700 rou
 pub const BUTTON_DANGER: &str = "w-full px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-all duration-200";
 //BUTTON_DISABLED
 pub const BUTTON_DISABLED: &str = "w-full px-6 py-3 bg-gray-400 text-gray-700 rounded-lg cursor-not-allowed transition-all duration-200";
+pub const ERROR_MESSAGE: &str = "text-red-500 text-sm mt-2";
+pub const SUCCESS_MESSAGE: &str =  "text-green-800 text-sm mt-2";
+pub const CODE_BLOCK: &str = "bg-gray-100 p-4 rounded-lg overflow-x-auto"; 

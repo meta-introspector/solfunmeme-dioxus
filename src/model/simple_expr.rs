@@ -1,6 +1,8 @@
 
 use std::collections::HashMap;
 
+use crate::model::simple_expr;
+
 // Equivalent to Lean's Level type
 #[derive(Debug, Clone, PartialEq)]
 pub enum Level {
@@ -8,7 +10,7 @@ pub enum Level {
     Succ(Box<Level>),
     Max(Box<Level>, Box<Level>),
     IMax(Box<Level>, Box<Level>),
-    Param(String),
+    Param(&'static str),
     MVar(u64),
 }
 
@@ -17,6 +19,30 @@ pub enum Level {
 pub struct LevelDescr {
     level: String,
     kind: String,
+}
+
+            // Define globals for u_1 to u_8
+pub const LEVEL_U1: Level = Level::Param("u_1");
+pub const LEVEL_U2: Level = Level::Param("u_2");
+pub const LEVEL_U3: Level = Level::Param("u_3");
+pub const LEVEL_U4: Level = Level::Param("u_4");
+pub const LEVEL_U5: Level = Level::Param("u_5");
+pub const LEVEL_U6: Level = Level::Param("u_6");
+pub const LEVEL_U7: Level = Level::Param("u_7");
+pub const LEVEL_U8: Level = Level::Param("u_8");
+
+// Use a function to return the vector at runtime, since Vec and .clone() are not allowed in consts
+pub fn levels_8() -> Vec<Level> {
+    vec![
+        LEVEL_U1,
+        LEVEL_U2,
+        LEVEL_U3,
+        LEVEL_U4,
+        LEVEL_U5,
+        LEVEL_U6,
+        LEVEL_U7,
+        LEVEL_U8,
+    ]
 }
 #[derive(Debug, Clone, PartialEq)]
 pub struct Forbd {
@@ -365,134 +391,107 @@ pub enum SimpleExprType {
     },
 }
 
-// Convert the JSON chunk 1 into Rust constant
-pub const SIMPLE_EXPR_REC_CHUNK1: SimpleExprType = SimpleExprType::ForallE {
-    forbndr_typ_b: Some(Box::new(SimpleExprType::ForallE {
-        forbndr_typ: Some(Box::new(SimpleExprType::Const {
-            levels: vec![
-                Level { level: "u_1".to_string(), kind: "Lean.Level".to_string() },
-                Level { level: "u_2".to_string(), kind: "Lean.Level".to_string() },
-                Level { level: "u_3".to_string(), kind: "Lean.Level".to_string() },
-                Level { level: "u_4".to_string(), kind: "Lean.Level".to_string() },
-                Level { level: "u_5".to_string(), kind: "Lean.Level".to_string() },
-                Level { level: "u_6".to_string(), kind: "Lean.Level".to_string() },
-                Level { level: "u_7".to_string(), kind: "Lean.Level".to_string() },
-                Level { level: "u_8".to_string(), kind: "Lean.Level".to_string() },
-            ],
-            decl_name: "SimpleExpr".to_string(),
-        })),
-        forbndr_typ_b: None,
-        forbd_b: Some(Box::new(SimpleExprType::Sort {
-            level: Level {
-                level: "u".to_string(),
-                kind: "Lean.Level".to_string(),
-            },
-        })),
-        forbd: Some(Box::new(SimpleExprType::ForallE {
-            forbndr_typ: Some(Box::new(SimpleExprType::ForallE {
-                forbndr_typ: Some(Box::new(SimpleExprType::Sort {
-                    level: Level {
-                        level: "u_1".to_string(),
-                        kind: "Lean.Level".to_string(),
-                    },
-                })),
-                forbndr_typ_b: None,
-                forbd_b: Some(Box::new(SimpleExprType::ForallE {
-                    forbndr_typ: Some(Box::new(SimpleExprType::BVar { index: None })),
+// Convert the JSON chunk 1 into a Rust value at runtime (not a const)
+pub fn simple_expr_rec_chunk1() -> SimpleExprType {
+    // Helper to box and Some
+    fn some_box(expr: SimpleExprType) -> Option<Box<SimpleExprType>> {
+        Some(Box::new(expr))
+    }
+
+    SimpleExprType::ForallE {
+        forbndr_typ_b: some_box(SimpleExprType::ForallE {
+            forbndr_typ: some_box(SimpleExprType::Const {
+                levels: vec![
+                    LEVEL_U1,
+                    LEVEL_U2,
+                    LEVEL_U3,
+                    LEVEL_U4,
+                    LEVEL_U5,
+                    LEVEL_U6,
+                    LEVEL_U7,
+                    LEVEL_U8,
+                ],
+                decl_name: String::from("SimpleExpr"),
+            }),
+            forbndr_typ_b: None,
+            forbd_b: some_box(SimpleExprType::Sort {
+                level: Level::Param("u"),
+            }),
+            forbd: some_box(SimpleExprType::ForallE {
+                forbndr_typ: some_box(SimpleExprType::ForallE {
+                    forbndr_typ: some_box(SimpleExprType::Sort {
+                        level: Level::Param("u_1"),
+                    }),
                     forbndr_typ_b: None,
-                    forbd_b: Some(Box::new(SimpleExprType::App {
-                        fn_expr: Box::new(SimpleExprType::BVar { index: None }),
-                        arg: Box::new(SimpleExprType::App {
-                            fn_expr: Box::new(SimpleExprType::App {
+                    forbd_b: None,
+                    forbd: None,
+                    binder_name: String::from("Nat"),
+                    binder_info: String::from("implicit"),
+                }),
+                forbndr_typ_b: None,
+                forbd_b: some_box(SimpleExprType::ForallE {
+                    forbndr_typ: some_box(SimpleExprType::ForallE {
+                        forbndr_typ: some_box(SimpleExprType::Const {
+                            levels: vec![
+                                LEVEL_U2,
+                                LEVEL_U3,
+                            ],
+                            decl_name: String::from("Level"),
+                        }),
+                        forbndr_typ_b: None,
+                        forbd_b: some_box(SimpleExprType::App {
+                            fn_expr: Box::new(SimpleExprType::BVar { index: None }),
+                            arg: Box::new(SimpleExprType::App {
                                 fn_expr: Box::new(SimpleExprType::Const {
                                     levels: vec![
-                                        Level { level: "u_1".to_string(), kind: "Lean.Level".to_string() },
-                                        Level { level: "u_2".to_string(), kind: "Lean.Level".to_string() },
-                                        Level { level: "u_3".to_string(), kind: "Lean.Level".to_string() },
-                                        Level { level: "u_4".to_string(), kind: "Lean.Level".to_string() },
-                                        Level { level: "u_5".to_string(), kind: "Lean.Level".to_string() },
-                                        Level { level: "u_6".to_string(), kind: "Lean.Level".to_string() },
-                                        Level { level: "u_7".to_string(), kind: "Lean.Level".to_string() },
-                                        Level { level: "u_8".to_string(), kind: "Lean.Level".to_string() },
+                                        LEVEL_U1,
+                                        LEVEL_U2,
+                                        LEVEL_U3,
+                                        LEVEL_U4,
+                                        LEVEL_U5,
+                                        LEVEL_U6,
+                                        LEVEL_U7,
+                                        LEVEL_U8,
                                     ],
-                                    decl_name: "SimpleExpr.bvar".to_string(),
+                                    decl_name: String::from("SimpleExpr.sort"),
                                 }),
                                 arg: Box::new(SimpleExprType::BVar { index: None }),
                             }),
-                            arg: Box::new(SimpleExprType::BVar { index: None }),
                         }),
-                    })),
-                    forbd: None,
-                    binder_name: "deBruijnIndex".to_string(),
-                    binder_info: "default".to_string(),
-                })),
-                forbd: None,
-                binder_name: "Nat".to_string(),
-                binder_info: "implicit".to_string(),
-            })),
-            forbndr_typ_b: None,
-            forbd_b: Some(Box::new(SimpleExprType::ForallE {
-                forbndr_typ: Some(Box::new(SimpleExprType::ForallE {
-                    forbndr_typ: Some(Box::new(SimpleExprType::Const {
-                        levels: vec![
-                            Level { level: "u_2".to_string(), kind: "Lean.Level".to_string() },
-                            Level { level: "u_3".to_string(), kind: "Lean.Level".to_string() },
-                        ],
-                        decl_name: "Level".to_string(),
-                    })),
+                        forbd: None,
+                        binder_name: String::from("u"),
+                        binder_info: String::from("default"),
+                    }),
                     forbndr_typ_b: None,
-                    forbd_b: Some(Box::new(SimpleExprType::App {
-                        fn_expr: Box::new(SimpleExprType::BVar { index: None }),
-                        arg: Box::new(SimpleExprType::App {
-                            fn_expr: Box::new(SimpleExprType::Const {
-                                levels: vec![
-                                    Level { level: "u_1".to_string(), kind: "Lean.Level".to_string() },
-                                    Level { level: "u_2".to_string(), kind: "Lean.Level".to_string() },
-                                    Level { level: "u_3".to_string(), kind: "Lean.Level".to_string() },
-                                    Level { level: "u_4".to_string(), kind: "Lean.Level".to_string() },
-                                    Level { level: "u_5".to_string(), kind: "Lean.Level".to_string() },
-                                    Level { level: "u_6".to_string(), kind: "Lean.Level".to_string() },
-                                    Level { level: "u_7".to_string(), kind: "Lean.Level".to_string() },
-                                    Level { level: "u_8".to_string(), kind: "Lean.Level".to_string() },
-                                ],
-                                decl_name: "SimpleExpr.sort".to_string(),
-                            }),
-                            arg: Box::new(SimpleExprType::BVar { index: None }),
-                        }),
-                    })),
+                    forbd_b: None,
                     forbd: None,
-                    binder_name: "u".to_string(),
-                    binder_info: "default".to_string(),
-                })),
-                forbndr_typ_b: None,
-                // This continues but gets cut off in chunk 1...
-                forbd_b: None, // Placeholder - will be filled with remaining chunks
+                    binder_name: String::from("sort"),
+                    binder_info: String::from("default"),
+                }),
                 forbd: None,
-                binder_name: "sort".to_string(),
-                binder_info: "default".to_string(),
-            })),
-            forbd: None,
-            binder_name: "bvar".to_string(),
-            binder_info: "default".to_string(),
-        })),
-        binder_name: "t".to_string(),
-        binder_info: "default".to_string(),
-    })),
-    forbndr_typ: None,
-    forbd_b: None,
-    forbd: None,
-    binder_name: "".to_string(),
-    binder_info: "".to_string(),
-};
+                binder_name: String::from("bvar"),
+                binder_info: String::from("default"),
+            }),
+            binder_name: String::from("t"),
+            binder_info: String::from("default"),
+        }),
+        forbndr_typ: None,
+        forbd_b: None,
+        forbd: None,
+        binder_name: String::from(""),
+        binder_info: String::from(""),
+    }
+}
 
 #[cfg(test)]
-mod tests {
+mod tests2 {
     use super::*;
     
     #[test]
     fn test_chunk1_structure() {
         // Test that the structure compiles and can be accessed
-        match &SIMPLE_EXPR_REC_CHUNK1 {
+        let expr = simple_expr_rec_chunk1();
+        match &expr {
             SimpleExprType::ForallE { binder_name, .. } => {
                 println!("Root binder: {}", binder_name);
             }
