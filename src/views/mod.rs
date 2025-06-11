@@ -51,3 +51,7 @@ mod connection_list;
 //mod query_accounts;
 //pub use query_accounts::*;
 
+mod crypto_frontend;
+use crypto_frontend::*;
+mod crypto_style;
+use crypto_style::*;
