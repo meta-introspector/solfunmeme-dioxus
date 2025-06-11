@@ -58,6 +58,9 @@ use crate::model::{AccountState};
 mod password_manager;
 use password_manager::App;
 
+mod signwithsolana;
+//use signwithsolana;
+
 fn main() {
     launch(App);
 }
