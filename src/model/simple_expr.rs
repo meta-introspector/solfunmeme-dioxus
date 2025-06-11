@@ -11,17 +11,26 @@ pub enum Level {
     Param(String),
     MVar(u64),
 }
+
+
+#[derive(Debug, Clone, PartialEq)]
 pub struct LevelDescr {
     level: String,
     kind: String,
 }
-
+#[derive(Debug, Clone, PartialEq)]
 pub struct Forbd {
     forbndrTyp: String,
     forbdB: String,
 }
 
+#[derive(Debug, Clone, PartialEq)]
+pub struct Forbd2 {
+    forbndr_typ: String, // Fixed naming
+    forbd_b: String,     // Fixed naming
+}
 
+#[derive(Debug, Clone, PartialEq)]
 pub struct CnstInf {
     levels: Vec<Level>,
     declName: String,
@@ -29,6 +38,16 @@ pub struct CnstInf {
     binderName: String,
     binderInfo: String,
 }  
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct CnstInf2 {
+    levels: Vec<Level>,
+    decl_name: String,   // Fixed naming
+    forbd: Forbd,
+    binder_name: String, // Fixed naming
+    binder_info: String, // Fixed naming
+}
+#[derive(Debug, Clone, PartialEq)]
 pub struct Sig {
     atype: String,
     forbndrTypB: String,
@@ -36,11 +55,16 @@ pub struct Sig {
     binderInfo: String,
 }
 
-pub struct CnstInfB {
-    sig: Sig,
-    cnstInf: CnstInf,
+#[derive(Debug, Clone, PartialEq)]
+pub struct Sig2 {
+    atype: String,
+    forbndr_typ_b: String, // Fixed naming
+    binder_name: String,   // Fixed naming
+    binder_info: String,   // Fixed naming
 }
 
+
+#[derive(Debug, Clone, PartialEq)]
 pub struct Foo {
 
     akind: String,
@@ -133,23 +157,19 @@ impl SimpleExpr {
     {
         match self {
             SimpleExpr::BVar { index } => bvar_case(*index),
-
             SimpleExpr::Sort { level } => sort_case(level),
-
             SimpleExpr::Const { name, levels } => const_case(name, levels),
-
             SimpleExpr::App { func, arg } => {
                 let func_ih = func.rec(
                     bvar_case.clone(), sort_case.clone(), const_case.clone(),
                     app_case.clone(), lam_case.clone(), forall_case.clone()
                 );
                 let arg_ih = arg.rec(
-                    bvar_case, sort_case, const_case,
-                    app_case, lam_case, forall_case
+                    bvar_case.clone(), sort_case.clone(), const_case.clone(),
+                    app_case.clone(), lam_case.clone(), forall_case.clone()
                 );
                 app_case(func, arg, func_ih, arg_ih)
-            },
-
+            }
             SimpleExpr::Lam { binder_name, binder_type, body, binder_info } => {
                 let binder_type_ih = binder_type.rec(
                     bvar_case.clone(), sort_case.clone(), const_case.clone(),
@@ -157,11 +177,10 @@ impl SimpleExpr {
                 );
                 let body_ih = body.rec(
                     bvar_case, sort_case, const_case,
-                    app_case, lam_case, forall_case
+                    app_case, lam_case.clone(), forall_case
                 );
                 lam_case(binder_name, binder_type, body, binder_info, binder_type_ih, body_ih)
-            },
-
+            }
             SimpleExpr::ForallE { binder_name, binder_type, body, binder_info } => {
                 let binder_type_ih = binder_type.rec(
                     bvar_case.clone(), sort_case.clone(), const_case.clone(),
@@ -169,10 +188,10 @@ impl SimpleExpr {
                 );
                 let body_ih = body.rec(
                     bvar_case, sort_case, const_case,
-                    app_case, lam_case, forall_case
+                    app_case, lam_case, forall_case.clone()
                 );
                 forall_case(binder_name, binder_type, body, binder_info, binder_type_ih, body_ih)
-            },
+            }
         }
     }
     
@@ -285,40 +304,6 @@ mod tests {
     }
 }
 
-
-
-use std::collections::HashMap;
-
-// First, let's fix the struct definitions to be valid Rust
-#[derive(Debug, Clone, PartialEq)]
-pub struct Level {
-    level: String,
-    kind: String,
-}
-
-#[derive(Debug, Clone, PartialEq)]
-pub struct Forbd {
-    forbndr_typ: String, // Fixed naming
-    forbd_b: String,     // Fixed naming
-}
-
-#[derive(Debug, Clone, PartialEq)]
-pub struct CnstInf {
-    levels: Vec<Level>,
-    decl_name: String,   // Fixed naming
-    forbd: Forbd,
-    binder_name: String, // Fixed naming
-    binder_info: String, // Fixed naming
-}
-
-#[derive(Debug, Clone, PartialEq)]
-pub struct Sig {
-    atype: String,
-    forbndr_typ_b: String, // Fixed naming
-    binder_name: String,   // Fixed naming
-    binder_info: String,   // Fixed naming
-}
-
 #[derive(Debug, Clone, PartialEq)]
 pub struct CnstInfB {
     sig: Sig,
@@ -326,7 +311,12 @@ pub struct CnstInfB {
 }
 
 #[derive(Debug, Clone, PartialEq)]
-pub struct Foo {
+pub struct CnstInfB2 {
+    sig: Sig,
+    cnstInf: CnstInf,
+}
+#[derive(Debug, Clone, PartialEq)]
+pub struct Foo2 {
     akind: String,
     cnst_inf_b: CnstInfB, // Fixed naming
 }
