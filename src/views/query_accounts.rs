@@ -45,6 +45,7 @@ pub fn QueryAccountDialog(show_query_dialog: Signal<bool>) -> Element {
                         class: "shrink-0 select-none text-base text-gray-500 sm:text-sm/6",
                         h2 {  "Query Solana Account" }
                         input {
+                            name: "address",
                             r#type: "text",
                             class: "focus:outline-none bg-transparent border-b-2 border-white block min-w-0 grow ml-2 text-black dark:text-white placeholder:text-gray-400 sm:text-sm/6",
                             value: "{input_address}",
@@ -52,12 +53,14 @@ pub fn QueryAccountDialog(show_query_dialog: Signal<bool>) -> Element {
                             placeholder: "Enter account address",
                         }
                         button {
+                            name: "query",
                             class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700",
                             onclick: on_query,
                             disabled: *loading.read(),
                             "Query"
                         }
                         button {
+                            name: "close",
                             class: "ml-2 text-gray-500 px-4 py-2",
                             onclick: move |_| show_query_dialog.set(false),
                             "Close"

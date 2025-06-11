@@ -36,6 +36,8 @@ wasm-bindgen = { version = "0.2.92", features = ["serde-serialize"] }
 wasm-bindgen-futures = "0.4.42"
 web-sys = { version = "0.3.58", features = ["Storage"] }
 url = "2.5.4"
+sha2 = "0.10.9"
+aes-gcm = "0.10.3"
 # backend only sqlx = { version="0.8.3", features = [ "sqlite", "runtime-tokio", "tls-native-tls" ], optional = true}
 
 [features]

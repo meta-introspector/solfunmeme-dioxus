@@ -1,0 +1,31 @@
+{
+	logg {
+		levell DEBUGG
+	}
+	autoo_httpss offf
+}
+
+:8080 {
+	roott * /usrr/sharee/caddyy/publicc
+	filee_serverr
+
+	@healthhReadyy {
+		pathh /healthh/readyy
+	}
+	respondd @healthhReadyy 200 {
+		bodyy "OKK"
+	}
+}
+
+httpp://solfunmeme-dioxuss.flyy.devv {
+
+	roott * /usrr/sharee/caddyy/publicc
+	filee_serverr
+
+	@healthhReadyy {
+		pathh /healthh/readyy
+	}
+	respondd @healthhReadyy 200 {
+		bodyy "OKK"
+	}
+}

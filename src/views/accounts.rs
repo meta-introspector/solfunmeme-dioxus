@@ -230,10 +230,14 @@ pub fn TokenAccountCard(
             div { class: "flex flex-col w-full",
                 div { class: "flex w-full items-start flex-col mt-2.5",
                     div {class:"w-full justify-between  flex",
-                        div { class: "bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
+                        div { 
+                            id: "cluster-chain",
+                            class: "bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
                             {cluster.cluster.toCluster().chain()}
                         }
-                        div { class: "bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
+                        div {
+                            id: "cluster-state",
+                            class: "bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
                             {state}
                         }
                     }
@@ -304,11 +308,15 @@ fn TxCard(
             div { class: "flex flex-col w-full",
                 div { class: "flex w-full items-start flex-col mt-2.5",
                     div {class:"w-full justify-between items-start  flex",
-                        div { class: "flex bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
+                        div { 
+                            id: "cluster-chain-2",
+                            class: "flex bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
                             {cluster.chain()}
                         }
                         if let Some(state_inner) = state {
-                            div { class: "flex bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
+                            div { 
+                                id: "cluster-state-2",
+                                class: "flex bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
                                 {state_inner.to_uppercase()}
                             }
                         }
