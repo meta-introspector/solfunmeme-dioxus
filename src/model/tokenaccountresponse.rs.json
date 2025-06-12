@@ -1,0 +1,477 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "serde",
+            "tree": {
+              "ident": "Deserialize"
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "ident": "Account"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "struct": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Deserialize"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "serde"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "rename_all"
+                  },
+                  {
+                    "punct": {
+                      "op": "=",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "lit": "\"camelCase\""
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "TokenAccountResponse",
+        "fields": {
+          "named": [
+            {
+              "vis": "pub",
+              "ident": "pubkey",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "account",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Account"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "impl": {
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "TokenAccountResponse"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "mint",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "field": {
+                                "base": {
+                                  "field": {
+                                    "base": {
+                                      "field": {
+                                        "base": {
+                                          "field": {
+                                            "base": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "self"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "ident": "account"
+                                          }
+                                        },
+                                        "ident": "data"
+                                      }
+                                    },
+                                    "ident": "parsed"
+                                  }
+                                },
+                                "ident": "info"
+                              }
+                            },
+                            "ident": "mint"
+                          }
+                        },
+                        "method": "to_owned",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "ata_address",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "pubkey"
+                          }
+                        },
+                        "method": "to_owned",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "balance",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "field": {
+                                "base": {
+                                  "field": {
+                                    "base": {
+                                      "field": {
+                                        "base": {
+                                          "field": {
+                                            "base": {
+                                              "field": {
+                                                "base": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "self"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "ident": "account"
+                                              }
+                                            },
+                                            "ident": "data"
+                                          }
+                                        },
+                                        "ident": "parsed"
+                                      }
+                                    },
+                                    "ident": "info"
+                                  }
+                                },
+                                "ident": "token_amount"
+                              }
+                            },
+                            "ident": "ui_amount_string"
+                          }
+                        },
+                        "method": "to_owned",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "state",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "field": {
+                                "base": {
+                                  "field": {
+                                    "base": {
+                                      "field": {
+                                        "base": {
+                                          "field": {
+                                            "base": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "self"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "ident": "account"
+                                          }
+                                        },
+                                        "ident": "data"
+                                      }
+                                    },
+                                    "ident": "parsed"
+                                  }
+                                },
+                                "ident": "info"
+                              }
+                            },
+                            "ident": "state"
+                          }
+                        },
+                        "method": "to_uppercase",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

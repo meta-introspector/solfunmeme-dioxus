@@ -1,0 +1,238 @@
+{
+  "items": [
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "binder",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "constants",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "level",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "name",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "simple_expr",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "types",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "binder",
+            "tree": {
+              "ident": "BinderInfo"
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "level",
+            "tree": {
+              "group": [
+                {
+                  "ident": "Level"
+                },
+                {
+                  "ident": "LevelType"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "name",
+            "tree": {
+              "ident": "Name"
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "simple_expr",
+            "tree": {
+              "ident": "SimpleExpr"
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "types",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "cnst_inf",
+                    "tree": {
+                      "ident": "CnstInf"
+                    }
+                  }
+                },
+                {
+                  "path": {
+                    "ident": "foo",
+                    "tree": {
+                      "group": [
+                        {
+                          "ident": "Foo"
+                        },
+                        {
+                          "ident": "Foo2"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "path": {
+                    "ident": "forbd",
+                    "tree": {
+                      "ident": "Forbd"
+                    }
+                  }
+                },
+                {
+                  "path": {
+                    "ident": "sig",
+                    "tree": {
+                      "ident": "Sig"
+                    }
+                  }
+                },
+                {
+                  "path": {
+                    "ident": "simple_expr_type",
+                    "tree": {
+                      "ident": "SimpleExprType"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "meme",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "meem",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "style",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "style",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "emojis",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "emojis",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "parser",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "parser",
+            "tree": "*"
+          }
+        }
+      }
+    }
+  ]
+}

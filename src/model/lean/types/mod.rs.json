@@ -1,0 +1,91 @@
+{
+  "items": [
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "cnst_inf",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "forbd",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "sig",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "simple_expr_type",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "cnst_inf",
+            "tree": {
+              "group": [
+                {
+                  "ident": "CnstInf"
+                },
+                {
+                  "ident": "CnstInfB"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "forbd",
+            "tree": {
+              "ident": "Forbd"
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "sig",
+            "tree": {
+              "ident": "Sig"
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "simple_expr_type",
+            "tree": {
+              "ident": "SimpleExprType"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

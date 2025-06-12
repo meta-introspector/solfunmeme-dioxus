@@ -1,0 +1,80 @@
+{
+  "items": [
+    {
+      "struct": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "Forbd",
+        "fields": {
+          "named": [
+            {
+              "ident": "forbndr_typ",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ident": "forbd_b",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

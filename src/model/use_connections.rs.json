@@ -1,0 +1,3189 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "dioxus",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "wallet_adapter",
+            "tree": {
+              "ident": "Cluster"
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "path": {
+                    "ident": "storage_entry",
+                    "tree": {
+                      "ident": "StorageEntry"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "path": {
+                    "ident": "adaptercluster",
+                    "tree": {
+                      "ident": "AdapterCluster"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "gloo_storage",
+            "tree": {
+              "group": [
+                {
+                  "ident": "LocalStorage"
+                },
+                {
+                  "ident": "Storage"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "struct": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Copy"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "UseConnections",
+        "fields": {
+          "named": [
+            {
+              "ident": "inner",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Signal",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "StorageEntry"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ident": "active_entry",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Signal",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "impl": {
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "UseConnections"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "get_all_entries",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Vec",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "AdapterCluster"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "method_call": {
+                                "receiver": {
+                                  "field": {
+                                    "base": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "self"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "ident": "inner"
+                                  }
+                                },
+                                "method": "read",
+                                "args": []
+                              }
+                            },
+                            "ident": "entries"
+                          }
+                        },
+                        "method": "clone",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "get_entries_by_name",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "name"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Vec",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "AdapterCluster"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "method_call": {
+                            "receiver": {
+                              "method_call": {
+                                "receiver": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "field": {
+                                        "base": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "field": {
+                                                "base": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "self"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "ident": "inner"
+                                              }
+                                            },
+                                            "method": "read",
+                                            "args": []
+                                          }
+                                        },
+                                        "ident": "entries"
+                                      }
+                                    },
+                                    "method": "iter",
+                                    "args": []
+                                  }
+                                },
+                                "method": "filter",
+                                "args": [
+                                  {
+                                    "closure": {
+                                      "inputs": [
+                                        {
+                                          "ident": {
+                                            "ident": "entry"
+                                          }
+                                        }
+                                      ],
+                                      "output": null,
+                                      "body": {
+                                        "binary": {
+                                          "left": {
+                                            "method_call": {
+                                              "receiver": {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "entry"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "method": "name",
+                                              "args": []
+                                            }
+                                          },
+                                          "op": "==",
+                                          "right": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "name"
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "cloned",
+                            "args": []
+                          }
+                        },
+                        "method": "collect",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "get_entry",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "name"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Option",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "AdapterCluster"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "method_call": {
+                            "receiver": {
+                              "method_call": {
+                                "receiver": {
+                                  "field": {
+                                    "base": {
+                                      "method_call": {
+                                        "receiver": {
+                                          "field": {
+                                            "base": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "self"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "ident": "inner"
+                                          }
+                                        },
+                                        "method": "read",
+                                        "args": []
+                                      }
+                                    },
+                                    "ident": "entries"
+                                  }
+                                },
+                                "method": "iter",
+                                "args": []
+                              }
+                            },
+                            "method": "find",
+                            "args": [
+                              {
+                                "closure": {
+                                  "inputs": [
+                                    {
+                                      "ident": {
+                                        "ident": "e"
+                                      }
+                                    }
+                                  ],
+                                  "output": null,
+                                  "body": {
+                                    "binary": {
+                                      "left": {
+                                        "method_call": {
+                                          "receiver": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "e"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "method": "name",
+                                          "args": []
+                                        }
+                                      },
+                                      "op": "==",
+                                      "right": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "name"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "method": "cloned",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "get_entry_names",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Vec",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "let": {
+                    "pat": {
+                      "type": {
+                        "pat": {
+                          "ident": {
+                            "mut": true,
+                            "ident": "names"
+                          }
+                        },
+                        "ty": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Vec",
+                                "arguments": {
+                                  "angle_bracketed": {
+                                    "args": [
+                                      {
+                                        "type": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "String"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "init": {
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "method_call": {
+                              "receiver": {
+                                "method_call": {
+                                  "receiver": {
+                                    "method_call": {
+                                      "receiver": {
+                                        "method_call": {
+                                          "receiver": {
+                                            "field": {
+                                              "base": {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "field": {
+                                                      "base": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "self"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "ident": "inner"
+                                                    }
+                                                  },
+                                                  "method": "read",
+                                                  "args": []
+                                                }
+                                              },
+                                              "ident": "entries"
+                                            }
+                                          },
+                                          "method": "iter",
+                                          "args": []
+                                        }
+                                      },
+                                      "method": "map",
+                                      "args": [
+                                        {
+                                          "closure": {
+                                            "inputs": [
+                                              {
+                                                "ident": {
+                                                  "ident": "entry"
+                                                }
+                                              }
+                                            ],
+                                            "output": null,
+                                            "body": {
+                                              "method_call": {
+                                                "receiver": {
+                                                  "method_call": {
+                                                    "receiver": {
+                                                      "path": {
+                                                        "segments": [
+                                                          {
+                                                            "ident": "entry"
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    "method": "name",
+                                                    "args": []
+                                                  }
+                                                },
+                                                "method": "to_string",
+                                                "args": []
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "method": "collect",
+                                  "turbofish": {
+                                    "colon2_token": true,
+                                    "args": [
+                                      {
+                                        "type": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "std"
+                                              },
+                                              {
+                                                "ident": "collections"
+                                              },
+                                              {
+                                                "ident": "HashSet",
+                                                "arguments": {
+                                                  "angle_bracketed": {
+                                                    "args": [
+                                                      {
+                                                        "type": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "String"
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "args": []
+                                }
+                              },
+                              "method": "into_iter",
+                              "args": []
+                            }
+                          },
+                          "method": "collect",
+                          "args": []
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "names"
+                              }
+                            ]
+                          }
+                        },
+                        "method": "sort",
+                        "args": []
+                      }
+                    },
+                    true
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "names"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "add_entry",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "mut": true,
+                    "ty": {
+                      "reference": {
+                        "mut": true,
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "entry"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "AdapterCluster"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Result",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "tuple": {
+                                  "elems": []
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "let": {
+                    "pat": {
+                      "ident": {
+                        "mut": true,
+                        "ident": "inner"
+                      }
+                    },
+                    "init": {
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "field": {
+                              "base": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "self"
+                                    }
+                                  ]
+                                }
+                              },
+                              "ident": "inner"
+                            }
+                          },
+                          "method": "write",
+                          "args": []
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "expr": [
+                    {
+                      "if": {
+                        "cond": {
+                          "method_call": {
+                            "receiver": {
+                              "method_call": {
+                                "receiver": {
+                                  "field": {
+                                    "base": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "inner"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "ident": "entries"
+                                  }
+                                },
+                                "method": "iter",
+                                "args": []
+                              }
+                            },
+                            "method": "any",
+                            "args": [
+                              {
+                                "closure": {
+                                  "inputs": [
+                                    {
+                                      "ident": {
+                                        "ident": "existing"
+                                      }
+                                    }
+                                  ],
+                                  "output": null,
+                                  "body": {
+                                    "block": {
+                                      "stmts": [
+                                        {
+                                          "expr": [
+                                            {
+                                              "binary": {
+                                                "left": {
+                                                  "binary": {
+                                                    "left": {
+                                                      "method_call": {
+                                                        "receiver": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "existing"
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        "method": "name",
+                                                        "args": []
+                                                      }
+                                                    },
+                                                    "op": "==",
+                                                    "right": {
+                                                      "method_call": {
+                                                        "receiver": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "entry"
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        "method": "name",
+                                                        "args": []
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "op": "||",
+                                                "right": {
+                                                  "binary": {
+                                                    "left": {
+                                                      "method_call": {
+                                                        "receiver": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "existing"
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        "method": "endpoint",
+                                                        "args": []
+                                                      }
+                                                    },
+                                                    "op": "==",
+                                                    "right": {
+                                                      "method_call": {
+                                                        "receiver": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "entry"
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        "method": "endpoint",
+                                                        "args": []
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            false
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "then_branch": [
+                          {
+                            "expr": [
+                              {
+                                "return": {
+                                  "expr": {
+                                    "call": {
+                                      "func": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "Err"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "args": [
+                                        {
+                                          "method_call": {
+                                            "receiver": {
+                                              "lit": {
+                                                "str": "\"Entry exists with the same name or endpoint\""
+                                              }
+                                            },
+                                            "method": "to_string",
+                                            "args": []
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              true
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "inner"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "entries"
+                          }
+                        },
+                        "method": "push",
+                        "args": [
+                          {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "entry"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    true
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "LocalStorage"
+                                  },
+                                  {
+                                    "ident": "set"
+                                  }
+                                ]
+                              }
+                            },
+                            "args": [
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "macro": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "format"
+                                          }
+                                        ]
+                                      },
+                                      "delimiter": "paren",
+                                      "tokens": [
+                                        {
+                                          "lit": "\"{}_entries\""
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "inner"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ".",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "key"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "field": {
+                                      "base": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "inner"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "ident": "entries"
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "method": "expect",
+                        "args": [
+                          {
+                            "lit": {
+                              "str": "\"Failed to save entries to LocalStorage\""
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    true
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "call": {
+                        "func": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Ok"
+                              }
+                            ]
+                          }
+                        },
+                        "args": [
+                          {
+                            "tuple": {
+                              "elems": []
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "remove_entry",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "mut": true,
+                    "ty": {
+                      "reference": {
+                        "mut": true,
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "name"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Option",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "AdapterCluster"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "let": {
+                    "pat": {
+                      "ident": {
+                        "mut": true,
+                        "ident": "inner"
+                      }
+                    },
+                    "init": {
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "field": {
+                              "base": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "self"
+                                    }
+                                  ]
+                                }
+                              },
+                              "ident": "inner"
+                            }
+                          },
+                          "method": "write",
+                          "args": []
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "let": {
+                    "pat": {
+                      "ident": {
+                        "ident": "position"
+                      }
+                    },
+                    "init": {
+                      "expr": {
+                        "try": {
+                          "expr": {
+                            "method_call": {
+                              "receiver": {
+                                "method_call": {
+                                  "receiver": {
+                                    "field": {
+                                      "base": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "inner"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "ident": "entries"
+                                    }
+                                  },
+                                  "method": "iter",
+                                  "args": []
+                                }
+                              },
+                              "method": "position",
+                              "args": [
+                                {
+                                  "closure": {
+                                    "inputs": [
+                                      {
+                                        "ident": {
+                                          "ident": "entry"
+                                        }
+                                      }
+                                    ],
+                                    "output": null,
+                                    "body": {
+                                      "binary": {
+                                        "left": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "entry"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "method": "name",
+                                            "args": []
+                                          }
+                                        },
+                                        "op": "==",
+                                        "right": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "name"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "let": {
+                    "pat": {
+                      "ident": {
+                        "ident": "removed_entry"
+                      }
+                    },
+                    "init": {
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "field": {
+                              "base": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "inner"
+                                    }
+                                  ]
+                                }
+                              },
+                              "ident": "entries"
+                            }
+                          },
+                          "method": "remove",
+                          "args": [
+                            {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "position"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "LocalStorage"
+                                  },
+                                  {
+                                    "ident": "set"
+                                  }
+                                ]
+                              }
+                            },
+                            "args": [
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "macro": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "format"
+                                          }
+                                        ]
+                                      },
+                                      "delimiter": "paren",
+                                      "tokens": [
+                                        {
+                                          "lit": "\"{}_entries\""
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "inner"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ".",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "key"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "field": {
+                                      "base": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "inner"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "ident": "entries"
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "method": "expect",
+                        "args": [
+                          {
+                            "lit": {
+                              "str": "\"Failed to save entries to LocalStorage\""
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    true
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "if": {
+                        "cond": {
+                          "binary": {
+                            "left": {
+                              "unary": {
+                                "op": "*",
+                                "expr": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "field": {
+                                        "base": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "self"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "ident": "active_entry"
+                                      }
+                                    },
+                                    "method": "read",
+                                    "args": []
+                                  }
+                                }
+                              }
+                            },
+                            "op": "==",
+                            "right": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "name"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "then_branch": [
+                          {
+                            "let": {
+                              "pat": {
+                                "ident": {
+                                  "ident": "new_active"
+                                }
+                              },
+                              "init": {
+                                "expr": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "method_call": {
+                                        "receiver": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "field": {
+                                                "base": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "inner"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "ident": "entries"
+                                              }
+                                            },
+                                            "method": "first",
+                                            "args": []
+                                          }
+                                        },
+                                        "method": "map",
+                                        "args": [
+                                          {
+                                            "closure": {
+                                              "inputs": [
+                                                {
+                                                  "ident": {
+                                                    "ident": "e"
+                                                  }
+                                                }
+                                              ],
+                                              "output": null,
+                                              "body": {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "method_call": {
+                                                      "receiver": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "e"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "method": "name",
+                                                      "args": []
+                                                    }
+                                                  },
+                                                  "method": "to_string",
+                                                  "args": []
+                                                }
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "unwrap_or_default",
+                                    "args": []
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "expr": [
+                              {
+                                "method_call": {
+                                  "receiver": {
+                                    "field": {
+                                      "base": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "self"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "ident": "active_entry"
+                                    }
+                                  },
+                                  "method": "set",
+                                  "args": [
+                                    {
+                                      "method_call": {
+                                        "receiver": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "new_active"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "method": "clone",
+                                        "args": []
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              true
+                            ]
+                          },
+                          {
+                            "expr": [
+                              {
+                                "method_call": {
+                                  "receiver": {
+                                    "call": {
+                                      "func": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "LocalStorage"
+                                            },
+                                            {
+                                              "ident": "set"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "args": [
+                                        {
+                                          "reference": {
+                                            "expr": {
+                                              "macro": {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "format"
+                                                    }
+                                                  ]
+                                                },
+                                                "delimiter": "paren",
+                                                "tokens": [
+                                                  {
+                                                    "lit": "\"{}_active_entry\""
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ",",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "inner"
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ".",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "key"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "expr": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "new_active"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "method": "expect",
+                                  "args": [
+                                    {
+                                      "lit": {
+                                        "str": "\"Failed to save active entry\""
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              true
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "call": {
+                        "func": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Some"
+                              }
+                            ]
+                          }
+                        },
+                        "args": [
+                          {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "removed_entry"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "set_active_entry",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "mut": true,
+                    "ty": {
+                      "reference": {
+                        "mut": true,
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "name"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "String"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": null,
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "active_entry"
+                          }
+                        },
+                        "method": "set",
+                        "args": [
+                          {
+                            "method_call": {
+                              "receiver": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "name"
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "clone",
+                              "args": []
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    true
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "LocalStorage"
+                                  },
+                                  {
+                                    "ident": "set"
+                                  }
+                                ]
+                              }
+                            },
+                            "args": [
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "macro": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "format"
+                                          }
+                                        ]
+                                      },
+                                      "delimiter": "paren",
+                                      "tokens": [
+                                        {
+                                          "lit": "\"{}_active_entry\""
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "self"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ".",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "inner"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ".",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "read"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "parenthesis",
+                                            "stream": []
+                                          }
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ".",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "key"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "name"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "method": "expect",
+                        "args": [
+                          {
+                            "lit": {
+                              "str": "\"Failed to save active entry\""
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    true
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "active_entry",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "method_call": {
+                            "receiver": {
+                              "field": {
+                                "base": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "self"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "ident": "active_entry"
+                              }
+                            },
+                            "method": "read",
+                            "args": []
+                          }
+                        },
+                        "method": "clone",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "active_entry_object",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "AdapterCluster"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "let": {
+                    "pat": {
+                      "ident": {
+                        "ident": "active_name"
+                      }
+                    },
+                    "init": {
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "method_call": {
+                              "receiver": {
+                                "field": {
+                                  "base": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "self"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "ident": "active_entry"
+                                }
+                              },
+                              "method": "read",
+                              "args": []
+                            }
+                          },
+                          "method": "clone",
+                          "args": []
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "method_call": {
+                            "receiver": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "get_entry",
+                            "args": [
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "active_name"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "method": "unwrap",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "supports_airdrop",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "active_cluster_name"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "bool"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "let": {
+                    "pat": {
+                      "ident": {
+                        "ident": "active_entry"
+                      }
+                    },
+                    "init": {
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "method_call": {
+                              "receiver": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "self"
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "get_entry",
+                              "args": [
+                                {
+                                  "reference": {
+                                    "expr": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "active_cluster_name"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "method": "unwrap",
+                          "args": []
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "expr": [
+                    {
+                      "binary": {
+                        "left": {
+                          "method_call": {
+                            "receiver": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "active_entry"
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "cluster",
+                            "args": []
+                          }
+                        },
+                        "op": "!=",
+                        "right": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Cluster"
+                              },
+                              {
+                                "ident": "MainNet"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "use_connections",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "key"
+                }
+              },
+              "ty": {
+                "impl_trait": {
+                  "bounds": [
+                    {
+                      "trait": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "ToString"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "UseConnections"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "key"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "key"
+                          }
+                        ]
+                      }
+                    },
+                    "method": "to_string",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "key_for_state"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "key"
+                          }
+                        ]
+                      }
+                    },
+                    "method": "clone",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "key_for_active"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "key"
+                          }
+                        ]
+                      }
+                    },
+                    "method": "clone",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "state"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_signal"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "closure": {
+                          "move": true,
+                          "inputs": [],
+                          "output": null,
+                          "body": {
+                            "block": {
+                              "stmts": [
+                                {
+                                  "let": {
+                                    "pat": {
+                                      "type": {
+                                        "pat": {
+                                          "ident": {
+                                            "ident": "entries"
+                                          }
+                                        },
+                                        "ty": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "Vec",
+                                                "arguments": {
+                                                  "angle_bracketed": {
+                                                    "args": [
+                                                      {
+                                                        "type": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "AdapterCluster"
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "init": {
+                                      "expr": {
+                                        "method_call": {
+                                          "receiver": {
+                                            "method_call": {
+                                              "receiver": {
+                                                "call": {
+                                                  "func": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "LocalStorage"
+                                                        },
+                                                        {
+                                                          "ident": "get"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "args": [
+                                                    {
+                                                      "reference": {
+                                                        "expr": {
+                                                          "macro": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "format"
+                                                                }
+                                                              ]
+                                                            },
+                                                            "delimiter": "paren",
+                                                            "tokens": [
+                                                              {
+                                                                "lit": "\"{}_entries\""
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ",",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": "&",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "key_for_state"
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "method": "ok",
+                                              "args": []
+                                            }
+                                          },
+                                          "method": "unwrap_or_else",
+                                          "args": [
+                                            {
+                                              "closure": {
+                                                "inputs": [],
+                                                "output": null,
+                                                "body": {
+                                                  "block": {
+                                                    "stmts": [
+                                                      {
+                                                        "expr": [
+                                                          {
+                                                            "macro": {
+                                                              "path": {
+                                                                "segments": [
+                                                                  {
+                                                                    "ident": "vec"
+                                                                  }
+                                                                ]
+                                                              },
+                                                              "delimiter": "bracket",
+                                                              "tokens": [
+                                                                {
+                                                                  "ident": "AdapterCluster"
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ":",
+                                                                    "spacing": "joint"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ":",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "devnet"
+                                                                },
+                                                                {
+                                                                  "group": {
+                                                                    "delimiter": "parenthesis",
+                                                                    "stream": []
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ",",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "AdapterCluster"
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ":",
+                                                                    "spacing": "joint"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ":",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "testnet"
+                                                                },
+                                                                {
+                                                                  "group": {
+                                                                    "delimiter": "parenthesis",
+                                                                    "stream": []
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ",",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "AdapterCluster"
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ":",
+                                                                    "spacing": "joint"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ":",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "mainnet"
+                                                                },
+                                                                {
+                                                                  "group": {
+                                                                    "delimiter": "parenthesis",
+                                                                    "stream": []
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ",",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "AdapterCluster"
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ":",
+                                                                    "spacing": "joint"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ":",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "localnet"
+                                                                },
+                                                                {
+                                                                  "group": {
+                                                                    "delimiter": "parenthesis",
+                                                                    "stream": []
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ",",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          false
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "expr": [
+                                    {
+                                      "struct": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "StorageEntry"
+                                            }
+                                          ]
+                                        },
+                                        "fields": [
+                                          {
+                                            "ident": "key",
+                                            "colon_token": true,
+                                            "expr": {
+                                              "method_call": {
+                                                "receiver": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "key_for_state"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "method": "clone",
+                                                "args": []
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "ident": "entries",
+                                            "expr": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "entries"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    false
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "active_entry"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_signal"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "closure": {
+                          "move": true,
+                          "inputs": [],
+                          "output": null,
+                          "body": {
+                            "block": {
+                              "stmts": [
+                                {
+                                  "expr": [
+                                    {
+                                      "method_call": {
+                                        "receiver": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "call": {
+                                                "func": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "LocalStorage"
+                                                      },
+                                                      {
+                                                        "ident": "get"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "args": [
+                                                  {
+                                                    "reference": {
+                                                      "expr": {
+                                                        "macro": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "format"
+                                                              }
+                                                            ]
+                                                          },
+                                                          "delimiter": "paren",
+                                                          "tokens": [
+                                                            {
+                                                              "lit": "\"{}_active_entry\""
+                                                            },
+                                                            {
+                                                              "punct": {
+                                                                "op": ",",
+                                                                "spacing": "alone"
+                                                              }
+                                                            },
+                                                            {
+                                                              "punct": {
+                                                                "op": "&",
+                                                                "spacing": "alone"
+                                                              }
+                                                            },
+                                                            {
+                                                              "ident": "key_for_active"
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "method": "ok",
+                                            "args": []
+                                          }
+                                        },
+                                        "method": "unwrap_or_else",
+                                        "args": [
+                                          {
+                                            "closure": {
+                                              "inputs": [],
+                                              "output": null,
+                                              "body": {
+                                                "block": {
+                                                  "stmts": [
+                                                    {
+                                                      "expr": [
+                                                        {
+                                                          "method_call": {
+                                                            "receiver": {
+                                                              "method_call": {
+                                                                "receiver": {
+                                                                  "method_call": {
+                                                                    "receiver": {
+                                                                      "field": {
+                                                                        "base": {
+                                                                          "method_call": {
+                                                                            "receiver": {
+                                                                              "path": {
+                                                                                "segments": [
+                                                                                  {
+                                                                                    "ident": "state"
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            },
+                                                                            "method": "read",
+                                                                            "args": []
+                                                                          }
+                                                                        },
+                                                                        "ident": "entries"
+                                                                      }
+                                                                    },
+                                                                    "method": "first",
+                                                                    "args": []
+                                                                  }
+                                                                },
+                                                                "method": "map",
+                                                                "args": [
+                                                                  {
+                                                                    "closure": {
+                                                                      "inputs": [
+                                                                        {
+                                                                          "ident": {
+                                                                            "ident": "e"
+                                                                          }
+                                                                        }
+                                                                      ],
+                                                                      "output": null,
+                                                                      "body": {
+                                                                        "method_call": {
+                                                                          "receiver": {
+                                                                            "method_call": {
+                                                                              "receiver": {
+                                                                                "path": {
+                                                                                  "segments": [
+                                                                                    {
+                                                                                      "ident": "e"
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              },
+                                                                              "method": "name",
+                                                                              "args": []
+                                                                            }
+                                                                          },
+                                                                          "method": "to_string",
+                                                                          "args": []
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              }
+                                                            },
+                                                            "method": "unwrap_or_default",
+                                                            "args": []
+                                                          }
+                                                        },
+                                                        false
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    false
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "struct": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "UseConnections"
+                      }
+                    ]
+                  },
+                  "fields": [
+                    {
+                      "ident": "inner",
+                      "colon_token": true,
+                      "expr": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "state"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "ident": "active_entry",
+                      "expr": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "active_entry"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

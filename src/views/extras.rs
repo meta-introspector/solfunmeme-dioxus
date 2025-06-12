@@ -2,8 +2,11 @@ use dioxus::prelude::*;
 
 use crate::{
     views::{SignMessage, SignTx},
-    ConnectWalletFirst, SignInWithSolana, ACTIVE_CONNECTION,
+    ConnectWalletFirst, SignInWithSolana,
 };
+
+use crate::model::storage::ACTIVE_CONNECTION ;
+
 
 #[component]
 pub fn Extras() -> Element {

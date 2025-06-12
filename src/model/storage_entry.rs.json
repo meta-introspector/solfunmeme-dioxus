@@ -1,0 +1,161 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "serde",
+            "tree": {
+              "group": [
+                {
+                  "ident": "Deserialize"
+                },
+                {
+                  "ident": "Serialize"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\"use crate::model::connection::Connection;\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "path": {
+                    "ident": "adaptercluster",
+                    "tree": {
+                      "ident": "AdapterCluster"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "struct": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Serialize"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Deserialize"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "StorageEntry",
+        "fields": {
+          "named": [
+            {
+              "vis": "pub",
+              "ident": "key",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "entries",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Vec",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "AdapterCluster"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

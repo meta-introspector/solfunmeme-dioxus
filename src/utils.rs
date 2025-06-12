@@ -1,8 +1,13 @@
+//use std::sync::Arc;
+
+use web_sys::Window;
 use dioxus::prelude::*;
 use qrcodegen::{QrCode, QrCodeEcc};
 use wallet_adapter::{wasm_bindgen_futures::JsFuture, Cluster, WalletResult};
 
-use crate::{DevnetSvg, LocalnetSvg, MainnetSvg, TestnetSvg, CLUSTER_STORAGE, WINDOW};
+use crate::{ model::use_connections, DevnetSvg, LocalnetSvg, MainnetSvg, TestnetSvg};
+
+//use crate::{DevnetSvg, LocalnetSvg, MainnetSvg, TestnetSvg, CLUSTER_STORAGE};
 
 pub fn trunk_cluster_name(name: &str) -> String {
     if name.len() > 10 {
@@ -37,16 +42,20 @@ pub fn format_tx_url(tx: &str) -> String {
 }
 
 pub fn adapter_query_string() -> String {
-    CLUSTER_STORAGE
-        .read()
-        .active_cluster()
-        .query_string()
-        .to_owned()
+    let connections = use_connections("solana_wallet");
+    let active_entry = connections.active_entry_object();
+    active_entry.query_string().to_owned()
+
 }
 
 pub(crate) fn link_target_blank(href: &str, text: &str) -> Element {
     rsx! {a {class:"underline", href, target:"_blank", rel:"noopener noreferrer", {text}"⇗"}}
 }
+
+
+
+pub(crate) static WINDOW: GlobalSignal<Window> =
+     Signal::global(|| web_sys::window().expect("Unable to find Window"));
 
 pub async fn copied_address(address: &str) -> WalletResult<()> {
     let pending: JsFuture = WINDOW

@@ -1,0 +1,1960 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "constants",
+                    "tree": "*"
+                  }
+                },
+                {
+                  "path": {
+                    "ident": "level",
+                    "tree": {
+                      "ident": "Level"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "enum": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "SimpleExprType",
+        "variants": [
+          {
+            "ident": "BVar",
+            "fields": {
+              "named": [
+                {
+                  "ident": "index",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Option",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "u64"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "Sort",
+            "fields": {
+              "named": [
+                {
+                  "ident": "level",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Level"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "Const",
+            "fields": {
+              "named": [
+                {
+                  "ident": "levels",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Vec",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Level"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "decl_name",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "String"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "App",
+            "fields": {
+              "named": [
+                {
+                  "ident": "fn_expr",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "SimpleExprType"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "arg",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "SimpleExprType"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "ForallE",
+            "fields": {
+              "named": [
+                {
+                  "ident": "forbndr_typ",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Option",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Box",
+                                          "arguments": {
+                                            "angle_bracketed": {
+                                              "args": [
+                                                {
+                                                  "type": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "SimpleExprType"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "forbndr_typ_b",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Option",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Box",
+                                          "arguments": {
+                                            "angle_bracketed": {
+                                              "args": [
+                                                {
+                                                  "type": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "SimpleExprType"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "forbd_b",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Option",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Box",
+                                          "arguments": {
+                                            "angle_bracketed": {
+                                              "args": [
+                                                {
+                                                  "type": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "SimpleExprType"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "forbd",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Option",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Box",
+                                          "arguments": {
+                                            "angle_bracketed": {
+                                              "args": [
+                                                {
+                                                  "type": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "SimpleExprType"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "binder_name",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "String"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "binder_info",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "String"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "Lam",
+            "fields": {
+              "named": [
+                {
+                  "ident": "binder_name",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "String"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "binder_type",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "SimpleExprType"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "body",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "SimpleExprType"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "binder_info",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "String"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "simple_expr_rec_chunk1",
+        "inputs": [],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "SimpleExprType"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "item": {
+              "fn": {
+                "ident": "some_box",
+                "inputs": [
+                  {
+                    "typed": {
+                      "pat": {
+                        "ident": {
+                          "ident": "expr"
+                        }
+                      },
+                      "ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "SimpleExprType"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ],
+                "output": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "Option",
+                        "arguments": {
+                          "angle_bracketed": {
+                            "args": [
+                              {
+                                "type": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "Box",
+                                        "arguments": {
+                                          "angle_bracketed": {
+                                            "args": [
+                                              {
+                                                "type": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "SimpleExprType"
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "stmts": [
+                  {
+                    "expr": [
+                      {
+                        "call": {
+                          "func": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Some"
+                                }
+                              ]
+                            }
+                          },
+                          "args": [
+                            {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "Box"
+                                      },
+                                      {
+                                        "ident": "new"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "expr"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      false
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "struct": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "SimpleExprType"
+                      },
+                      {
+                        "ident": "ForallE"
+                      }
+                    ]
+                  },
+                  "fields": [
+                    {
+                      "ident": "forbndr_typ_b",
+                      "colon_token": true,
+                      "expr": {
+                        "call": {
+                          "func": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "some_box"
+                                }
+                              ]
+                            }
+                          },
+                          "args": [
+                            {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExprType"
+                                    },
+                                    {
+                                      "ident": "ForallE"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "forbndr_typ",
+                                    "colon_token": true,
+                                    "expr": {
+                                      "call": {
+                                        "func": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "some_box"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "args": [
+                                          {
+                                            "struct": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExprType"
+                                                  },
+                                                  {
+                                                    "ident": "Const"
+                                                  }
+                                                ]
+                                              },
+                                              "fields": [
+                                                {
+                                                  "ident": "levels",
+                                                  "colon_token": true,
+                                                  "expr": {
+                                                    "call": {
+                                                      "func": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "levels_8"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "args": []
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "ident": "decl_name",
+                                                  "colon_token": true,
+                                                  "expr": {
+                                                    "call": {
+                                                      "func": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "String"
+                                                            },
+                                                            {
+                                                              "ident": "from"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "args": [
+                                                        {
+                                                          "lit": {
+                                                            "str": "\"SimpleExpr\""
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "forbndr_typ_b",
+                                    "colon_token": true,
+                                    "expr": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "None"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "forbd_b",
+                                    "colon_token": true,
+                                    "expr": {
+                                      "call": {
+                                        "func": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "some_box"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "args": [
+                                          {
+                                            "struct": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExprType"
+                                                  },
+                                                  {
+                                                    "ident": "Sort"
+                                                  }
+                                                ]
+                                              },
+                                              "fields": [
+                                                {
+                                                  "ident": "level",
+                                                  "colon_token": true,
+                                                  "expr": {
+                                                    "call": {
+                                                      "func": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "Level"
+                                                            },
+                                                            {
+                                                              "ident": "Param"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "args": [
+                                                        {
+                                                          "lit": {
+                                                            "str": "\"u\""
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "forbd",
+                                    "colon_token": true,
+                                    "expr": {
+                                      "call": {
+                                        "func": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "some_box"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "args": [
+                                          {
+                                            "struct": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExprType"
+                                                  },
+                                                  {
+                                                    "ident": "ForallE"
+                                                  }
+                                                ]
+                                              },
+                                              "fields": [
+                                                {
+                                                  "ident": "forbndr_typ",
+                                                  "colon_token": true,
+                                                  "expr": {
+                                                    "call": {
+                                                      "func": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "some_box"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "args": [
+                                                        {
+                                                          "struct": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "SimpleExprType"
+                                                                },
+                                                                {
+                                                                  "ident": "ForallE"
+                                                                }
+                                                              ]
+                                                            },
+                                                            "fields": [
+                                                              {
+                                                                "ident": "forbndr_typ",
+                                                                "colon_token": true,
+                                                                "expr": {
+                                                                  "call": {
+                                                                    "func": {
+                                                                      "path": {
+                                                                        "segments": [
+                                                                          {
+                                                                            "ident": "some_box"
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    },
+                                                                    "args": [
+                                                                      {
+                                                                        "struct": {
+                                                                          "path": {
+                                                                            "segments": [
+                                                                              {
+                                                                                "ident": "SimpleExprType"
+                                                                              },
+                                                                              {
+                                                                                "ident": "Sort"
+                                                                              }
+                                                                            ]
+                                                                          },
+                                                                          "fields": [
+                                                                            {
+                                                                              "ident": "level",
+                                                                              "colon_token": true,
+                                                                              "expr": {
+                                                                                "call": {
+                                                                                  "func": {
+                                                                                    "path": {
+                                                                                      "segments": [
+                                                                                        {
+                                                                                          "ident": "Level"
+                                                                                        },
+                                                                                        {
+                                                                                          "ident": "Param"
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  },
+                                                                                  "args": [
+                                                                                    {
+                                                                                      "lit": {
+                                                                                        "str": "\"u_1\""
+                                                                                      }
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "forbndr_typ_b",
+                                                                "colon_token": true,
+                                                                "expr": {
+                                                                  "path": {
+                                                                    "segments": [
+                                                                      {
+                                                                        "ident": "None"
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "forbd_b",
+                                                                "colon_token": true,
+                                                                "expr": {
+                                                                  "path": {
+                                                                    "segments": [
+                                                                      {
+                                                                        "ident": "None"
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "forbd",
+                                                                "colon_token": true,
+                                                                "expr": {
+                                                                  "path": {
+                                                                    "segments": [
+                                                                      {
+                                                                        "ident": "None"
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "binder_name",
+                                                                "colon_token": true,
+                                                                "expr": {
+                                                                  "call": {
+                                                                    "func": {
+                                                                      "path": {
+                                                                        "segments": [
+                                                                          {
+                                                                            "ident": "String"
+                                                                          },
+                                                                          {
+                                                                            "ident": "from"
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    },
+                                                                    "args": [
+                                                                      {
+                                                                        "lit": {
+                                                                          "str": "\"Nat\""
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "binder_info",
+                                                                "colon_token": true,
+                                                                "expr": {
+                                                                  "call": {
+                                                                    "func": {
+                                                                      "path": {
+                                                                        "segments": [
+                                                                          {
+                                                                            "ident": "String"
+                                                                          },
+                                                                          {
+                                                                            "ident": "from"
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    },
+                                                                    "args": [
+                                                                      {
+                                                                        "lit": {
+                                                                          "str": "\"implicit\""
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "ident": "forbndr_typ_b",
+                                                  "colon_token": true,
+                                                  "expr": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "None"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "ident": "forbd_b",
+                                                  "colon_token": true,
+                                                  "expr": {
+                                                    "call": {
+                                                      "func": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "some_box"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "args": [
+                                                        {
+                                                          "struct": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "SimpleExprType"
+                                                                },
+                                                                {
+                                                                  "ident": "ForallE"
+                                                                }
+                                                              ]
+                                                            },
+                                                            "fields": [
+                                                              {
+                                                                "ident": "forbndr_typ",
+                                                                "colon_token": true,
+                                                                "expr": {
+                                                                  "call": {
+                                                                    "func": {
+                                                                      "path": {
+                                                                        "segments": [
+                                                                          {
+                                                                            "ident": "some_box"
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    },
+                                                                    "args": [
+                                                                      {
+                                                                        "struct": {
+                                                                          "path": {
+                                                                            "segments": [
+                                                                              {
+                                                                                "ident": "SimpleExprType"
+                                                                              },
+                                                                              {
+                                                                                "ident": "ForallE"
+                                                                              }
+                                                                            ]
+                                                                          },
+                                                                          "fields": [
+                                                                            {
+                                                                              "ident": "forbndr_typ",
+                                                                              "colon_token": true,
+                                                                              "expr": {
+                                                                                "call": {
+                                                                                  "func": {
+                                                                                    "path": {
+                                                                                      "segments": [
+                                                                                        {
+                                                                                          "ident": "some_box"
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  },
+                                                                                  "args": [
+                                                                                    {
+                                                                                      "struct": {
+                                                                                        "path": {
+                                                                                          "segments": [
+                                                                                            {
+                                                                                              "ident": "SimpleExprType"
+                                                                                            },
+                                                                                            {
+                                                                                              "ident": "Const"
+                                                                                            }
+                                                                                          ]
+                                                                                        },
+                                                                                        "fields": [
+                                                                                          {
+                                                                                            "ident": "levels",
+                                                                                            "colon_token": true,
+                                                                                            "expr": {
+                                                                                              "macro": {
+                                                                                                "path": {
+                                                                                                  "segments": [
+                                                                                                    {
+                                                                                                      "ident": "vec"
+                                                                                                    }
+                                                                                                  ]
+                                                                                                },
+                                                                                                "delimiter": "bracket",
+                                                                                                "tokens": [
+                                                                                                  {
+                                                                                                    "ident": "LEVEL_U2"
+                                                                                                  },
+                                                                                                  {
+                                                                                                    "punct": {
+                                                                                                      "op": ",",
+                                                                                                      "spacing": "alone"
+                                                                                                    }
+                                                                                                  },
+                                                                                                  {
+                                                                                                    "ident": "LEVEL_U3"
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            }
+                                                                                          },
+                                                                                          {
+                                                                                            "ident": "decl_name",
+                                                                                            "colon_token": true,
+                                                                                            "expr": {
+                                                                                              "call": {
+                                                                                                "func": {
+                                                                                                  "path": {
+                                                                                                    "segments": [
+                                                                                                      {
+                                                                                                        "ident": "String"
+                                                                                                      },
+                                                                                                      {
+                                                                                                        "ident": "from"
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                },
+                                                                                                "args": [
+                                                                                                  {
+                                                                                                    "lit": {
+                                                                                                      "str": "\"Level\""
+                                                                                                    }
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "forbndr_typ_b",
+                                                                              "colon_token": true,
+                                                                              "expr": {
+                                                                                "path": {
+                                                                                  "segments": [
+                                                                                    {
+                                                                                      "ident": "None"
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "forbd_b",
+                                                                              "colon_token": true,
+                                                                              "expr": {
+                                                                                "call": {
+                                                                                  "func": {
+                                                                                    "path": {
+                                                                                      "segments": [
+                                                                                        {
+                                                                                          "ident": "some_box"
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  },
+                                                                                  "args": [
+                                                                                    {
+                                                                                      "struct": {
+                                                                                        "path": {
+                                                                                          "segments": [
+                                                                                            {
+                                                                                              "ident": "SimpleExprType"
+                                                                                            },
+                                                                                            {
+                                                                                              "ident": "App"
+                                                                                            }
+                                                                                          ]
+                                                                                        },
+                                                                                        "fields": [
+                                                                                          {
+                                                                                            "ident": "fn_expr",
+                                                                                            "colon_token": true,
+                                                                                            "expr": {
+                                                                                              "call": {
+                                                                                                "func": {
+                                                                                                  "path": {
+                                                                                                    "segments": [
+                                                                                                      {
+                                                                                                        "ident": "Box"
+                                                                                                      },
+                                                                                                      {
+                                                                                                        "ident": "new"
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                },
+                                                                                                "args": [
+                                                                                                  {
+                                                                                                    "struct": {
+                                                                                                      "path": {
+                                                                                                        "segments": [
+                                                                                                          {
+                                                                                                            "ident": "SimpleExprType"
+                                                                                                          },
+                                                                                                          {
+                                                                                                            "ident": "BVar"
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      },
+                                                                                                      "fields": [
+                                                                                                        {
+                                                                                                          "ident": "index",
+                                                                                                          "colon_token": true,
+                                                                                                          "expr": {
+                                                                                                            "path": {
+                                                                                                              "segments": [
+                                                                                                                {
+                                                                                                                  "ident": "None"
+                                                                                                                }
+                                                                                                              ]
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      ]
+                                                                                                    }
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            }
+                                                                                          },
+                                                                                          {
+                                                                                            "ident": "arg",
+                                                                                            "colon_token": true,
+                                                                                            "expr": {
+                                                                                              "call": {
+                                                                                                "func": {
+                                                                                                  "path": {
+                                                                                                    "segments": [
+                                                                                                      {
+                                                                                                        "ident": "Box"
+                                                                                                      },
+                                                                                                      {
+                                                                                                        "ident": "new"
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                },
+                                                                                                "args": [
+                                                                                                  {
+                                                                                                    "struct": {
+                                                                                                      "path": {
+                                                                                                        "segments": [
+                                                                                                          {
+                                                                                                            "ident": "SimpleExprType"
+                                                                                                          },
+                                                                                                          {
+                                                                                                            "ident": "App"
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      },
+                                                                                                      "fields": [
+                                                                                                        {
+                                                                                                          "ident": "fn_expr",
+                                                                                                          "colon_token": true,
+                                                                                                          "expr": {
+                                                                                                            "call": {
+                                                                                                              "func": {
+                                                                                                                "path": {
+                                                                                                                  "segments": [
+                                                                                                                    {
+                                                                                                                      "ident": "Box"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                      "ident": "new"
+                                                                                                                    }
+                                                                                                                  ]
+                                                                                                                }
+                                                                                                              },
+                                                                                                              "args": [
+                                                                                                                {
+                                                                                                                  "struct": {
+                                                                                                                    "path": {
+                                                                                                                      "segments": [
+                                                                                                                        {
+                                                                                                                          "ident": "SimpleExprType"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                          "ident": "Const"
+                                                                                                                        }
+                                                                                                                      ]
+                                                                                                                    },
+                                                                                                                    "fields": [
+                                                                                                                      {
+                                                                                                                        "ident": "levels",
+                                                                                                                        "colon_token": true,
+                                                                                                                        "expr": {
+                                                                                                                          "call": {
+                                                                                                                            "func": {
+                                                                                                                              "path": {
+                                                                                                                                "segments": [
+                                                                                                                                  {
+                                                                                                                                    "ident": "levels_8"
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            },
+                                                                                                                            "args": []
+                                                                                                                          }
+                                                                                                                        }
+                                                                                                                      },
+                                                                                                                      {
+                                                                                                                        "ident": "decl_name",
+                                                                                                                        "colon_token": true,
+                                                                                                                        "expr": {
+                                                                                                                          "call": {
+                                                                                                                            "func": {
+                                                                                                                              "path": {
+                                                                                                                                "segments": [
+                                                                                                                                  {
+                                                                                                                                    "ident": "String"
+                                                                                                                                  },
+                                                                                                                                  {
+                                                                                                                                    "ident": "from"
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            },
+                                                                                                                            "args": [
+                                                                                                                              {
+                                                                                                                                "lit": {
+                                                                                                                                  "str": "\"SimpleExpr.sort\""
+                                                                                                                                }
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                }
+                                                                                                              ]
+                                                                                                            }
+                                                                                                          }
+                                                                                                        },
+                                                                                                        {
+                                                                                                          "ident": "arg",
+                                                                                                          "colon_token": true,
+                                                                                                          "expr": {
+                                                                                                            "call": {
+                                                                                                              "func": {
+                                                                                                                "path": {
+                                                                                                                  "segments": [
+                                                                                                                    {
+                                                                                                                      "ident": "Box"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                      "ident": "new"
+                                                                                                                    }
+                                                                                                                  ]
+                                                                                                                }
+                                                                                                              },
+                                                                                                              "args": [
+                                                                                                                {
+                                                                                                                  "struct": {
+                                                                                                                    "path": {
+                                                                                                                      "segments": [
+                                                                                                                        {
+                                                                                                                          "ident": "SimpleExprType"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                          "ident": "BVar"
+                                                                                                                        }
+                                                                                                                      ]
+                                                                                                                    },
+                                                                                                                    "fields": [
+                                                                                                                      {
+                                                                                                                        "ident": "index",
+                                                                                                                        "colon_token": true,
+                                                                                                                        "expr": {
+                                                                                                                          "path": {
+                                                                                                                            "segments": [
+                                                                                                                              {
+                                                                                                                                "ident": "None"
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                }
+                                                                                                              ]
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      ]
+                                                                                                    }
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "forbd",
+                                                                              "colon_token": true,
+                                                                              "expr": {
+                                                                                "path": {
+                                                                                  "segments": [
+                                                                                    {
+                                                                                      "ident": "None"
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "binder_name",
+                                                                              "colon_token": true,
+                                                                              "expr": {
+                                                                                "call": {
+                                                                                  "func": {
+                                                                                    "path": {
+                                                                                      "segments": [
+                                                                                        {
+                                                                                          "ident": "String"
+                                                                                        },
+                                                                                        {
+                                                                                          "ident": "from"
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  },
+                                                                                  "args": [
+                                                                                    {
+                                                                                      "lit": {
+                                                                                        "str": "\"u\""
+                                                                                      }
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "binder_info",
+                                                                              "colon_token": true,
+                                                                              "expr": {
+                                                                                "call": {
+                                                                                  "func": {
+                                                                                    "path": {
+                                                                                      "segments": [
+                                                                                        {
+                                                                                          "ident": "String"
+                                                                                        },
+                                                                                        {
+                                                                                          "ident": "from"
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  },
+                                                                                  "args": [
+                                                                                    {
+                                                                                      "lit": {
+                                                                                        "str": "\"default\""
+                                                                                      }
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "forbndr_typ_b",
+                                                                "colon_token": true,
+                                                                "expr": {
+                                                                  "path": {
+                                                                    "segments": [
+                                                                      {
+                                                                        "ident": "None"
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "forbd_b",
+                                                                "colon_token": true,
+                                                                "expr": {
+                                                                  "path": {
+                                                                    "segments": [
+                                                                      {
+                                                                        "ident": "None"
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "forbd",
+                                                                "colon_token": true,
+                                                                "expr": {
+                                                                  "path": {
+                                                                    "segments": [
+                                                                      {
+                                                                        "ident": "None"
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "binder_name",
+                                                                "colon_token": true,
+                                                                "expr": {
+                                                                  "call": {
+                                                                    "func": {
+                                                                      "path": {
+                                                                        "segments": [
+                                                                          {
+                                                                            "ident": "String"
+                                                                          },
+                                                                          {
+                                                                            "ident": "from"
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    },
+                                                                    "args": [
+                                                                      {
+                                                                        "lit": {
+                                                                          "str": "\"sort\""
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "binder_info",
+                                                                "colon_token": true,
+                                                                "expr": {
+                                                                  "call": {
+                                                                    "func": {
+                                                                      "path": {
+                                                                        "segments": [
+                                                                          {
+                                                                            "ident": "String"
+                                                                          },
+                                                                          {
+                                                                            "ident": "from"
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    },
+                                                                    "args": [
+                                                                      {
+                                                                        "lit": {
+                                                                          "str": "\"default\""
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "ident": "forbd",
+                                                  "colon_token": true,
+                                                  "expr": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "None"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "ident": "binder_name",
+                                                  "colon_token": true,
+                                                  "expr": {
+                                                    "call": {
+                                                      "func": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "String"
+                                                            },
+                                                            {
+                                                              "ident": "from"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "args": [
+                                                        {
+                                                          "lit": {
+                                                            "str": "\"bvar\""
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "ident": "binder_info",
+                                                  "colon_token": true,
+                                                  "expr": {
+                                                    "call": {
+                                                      "func": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "String"
+                                                            },
+                                                            {
+                                                              "ident": "from"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "args": [
+                                                        {
+                                                          "lit": {
+                                                            "str": "\"default\""
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "binder_name",
+                                    "colon_token": true,
+                                    "expr": {
+                                      "call": {
+                                        "func": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "String"
+                                              },
+                                              {
+                                                "ident": "from"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "args": [
+                                          {
+                                            "lit": {
+                                              "str": "\"t\""
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "binder_info",
+                                    "colon_token": true,
+                                    "expr": {
+                                      "call": {
+                                        "func": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "String"
+                                              },
+                                              {
+                                                "ident": "from"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "args": [
+                                          {
+                                            "lit": {
+                                              "str": "\"default\""
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "ident": "forbndr_typ",
+                      "colon_token": true,
+                      "expr": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "None"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "ident": "forbd_b",
+                      "colon_token": true,
+                      "expr": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "None"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "ident": "forbd",
+                      "colon_token": true,
+                      "expr": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "None"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "ident": "binder_name",
+                      "colon_token": true,
+                      "expr": {
+                        "call": {
+                          "func": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "String"
+                                },
+                                {
+                                  "ident": "from"
+                                }
+                              ]
+                            }
+                          },
+                          "args": [
+                            {
+                              "lit": {
+                                "str": "\"\""
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "ident": "binder_info",
+                      "colon_token": true,
+                      "expr": {
+                        "call": {
+                          "func": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "String"
+                                },
+                                {
+                                  "ident": "from"
+                                }
+                              ]
+                            }
+                          },
+                          "args": [
+                            {
+                              "lit": {
+                                "str": "\"\""
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

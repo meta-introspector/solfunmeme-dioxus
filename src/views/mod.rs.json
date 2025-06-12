@@ -1,0 +1,222 @@
+{
+  "items": [
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "dashboard",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "ident": "footer",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "footer",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "clusters",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "accounts",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "ident": "coins",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "ident": "query_accounts",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "query_accounts",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "airdrop",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "airdrop",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "send_sol",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "send_sol",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "receive_sol",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "receive_sol",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "extras",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "ident": "connect_first",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "connect_first",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "extras_views",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "extras_views",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "connections",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "vis": "pub",
+        "ident": "clusters_management",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "ident": "connection_management",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "ident": "connection_filter",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "ident": "connection_list",
+        "semi": true
+      }
+    },
+    {
+      "mod": {
+        "ident": "crypto_frontend",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crypto_frontend",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "crypto_style",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crypto_style",
+            "tree": "*"
+          }
+        }
+      }
+    }
+  ]
+}

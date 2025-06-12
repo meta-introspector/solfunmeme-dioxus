@@ -1,0 +1,331 @@
+{
+  "attrs": [
+    {
+      "style": "inner",
+      "meta": {
+        "list": {
+          "path": {
+            "segments": [
+              {
+                "ident": "allow"
+              }
+            ]
+          },
+          "delimiter": "paren",
+          "tokens": [
+            {
+              "ident": "non_snake_case"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "dioxus",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "views",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "views",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "model",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "model",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "header",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "header",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "utils",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "utils",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "fetch_parser",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "fetch_parser",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "svg_assets",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "tree": {
+          "path": {
+            "ident": "svg_assets",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "fetch_util",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "tree": {
+          "path": {
+            "ident": "fetch_util",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "app",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "tree": {
+          "path": {
+            "ident": "app",
+            "tree": {
+              "ident": "LOGO"
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "tree": {
+          "path": {
+            "ident": "app",
+            "tree": {
+              "ident": "Route"
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "model",
+                    "tree": {
+                      "ident": "NotificationInfo"
+                    }
+                  }
+                },
+                {
+                  "ident": "Footer"
+                },
+                {
+                  "ident": "Header"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "group": [
+                    {
+                      "ident": "AccountState"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "password_manager",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "password_manager",
+            "tree": {
+              "ident": "App"
+            }
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "ident": "main",
+        "inputs": [],
+        "output": null,
+        "stmts": [
+          {
+            "expr": [
+              {
+                "call": {
+                  "func": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "launch"
+                        }
+                      ]
+                    }
+                  },
+                  "args": [
+                    {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "App"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              true
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

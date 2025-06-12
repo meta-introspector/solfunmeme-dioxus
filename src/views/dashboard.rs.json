@@ -1,0 +1,559 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "dioxus",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "component"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "Dashboard",
+        "inputs": [],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Element"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "macro": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "rsx"
+                  }
+                ]
+              },
+              "delimiter": "brace",
+              "tokens": [
+                {
+                  "ident": "div"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "ident": "class"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"flex flex-col justify-around items-center w-full m-h-[100%] h-full p-5\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "h1"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "brace",
+                          "stream": [
+                            {
+                              "ident": "class"
+                            },
+                            {
+                              "punct": {
+                                "op": ":",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "lit": "\"text-black dark:text-gray-300 text-6xl\""
+                            },
+                            {
+                              "punct": {
+                                "op": ",",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "lit": "\"gm\""
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "ident": "h2"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "brace",
+                          "stream": [
+                            {
+                              "ident": "class"
+                            },
+                            {
+                              "punct": {
+                                "op": ":",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "lit": "\"dark:text-gray-300 text-2xl\""
+                            },
+                            {
+                              "punct": {
+                                "op": ",",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "lit": "\"\""
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "ident": "div"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "brace",
+                          "stream": [
+                            {
+                              "ident": "class"
+                            },
+                            {
+                              "punct": {
+                                "op": ":",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "lit": "\"text-center flex flex-col justify-between items-center\""
+                            },
+                            {
+                              "punct": {
+                                "op": ",",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "ident": "h3"
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "class"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ":",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"text-black dark:text-gray-300 text-md\""
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ",",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"Welcome to Solfunmeme Dashboard\""
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "ident": "p"
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "class"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ":",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"text-black dark:text-gray-300 text-md\""
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ",",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"This is a work in progress, please be patient as we build this out.\""
+                                  },
+                                  {
+                                    "ident": "ul"
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "brace",
+                                      "stream": [
+                                        {
+                                          "ident": "class"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ":",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"text-black dark:text-gray-300 text-md\""
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"We are currently working on the following features:\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"1. Create a new contract on devnet.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"2. import contract from mainnet via helius api.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"3. import holders from mainnet via helius api.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"4. import transactions from mainnet via helius api.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"5. import token metadata from mainnet via helius api.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"6. create new contract on devnet.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"7. provision access to ip address on devnet via aws security groups.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"8. setup aws credentials.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"9. allow deployment of aws resources via terrafom replacement in browser/wasm via rust replacement.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"10. deploy contract on devnet via solana api via our frontend.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"11. allow swapping of tokens on devnet via our frontend.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"12. allow for zkp transactions on devnet via our frontend.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"13. use zkml proofs to prove inference correctness and convergence.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"14. creation of lean oracles using llm zkp and zkml.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"15. allow for zkml inference on devnet via our frontend.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"16. generate images.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"17. allow for quality control of images via llm and user control.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"17. importing of events from twitter, discord, telegram, and github. (universal inbox)\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"18. create emoji grammar language for memes, metamemes, and memes of memes, and meta programs, proof engines, lean4 expressions\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"19. allow for creation of memes, metamemes, and memes of memes, and meta programs, proof engines, lean4 expressions.\""
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "li"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "lit": "\"20. allow for execution of the emojiprograms, proof engines, lean4 expressions.\""
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,2059 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "dioxus",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "path": {
+                    "ident": "storage",
+                    "tree": {
+                      "group": [
+                        {
+                          "ident": "ACTIVE_CONNECTION"
+                        },
+                        {
+                          "ident": "GLOBAL_MESSAGE"
+                        },
+                        {
+                          "ident": "WALLET_ADAPTER"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "group": [
+                {
+                  "ident": "ErrorSvg"
+                },
+                {
+                  "ident": "MintSvg"
+                },
+                {
+                  "ident": "NotificationInfo"
+                },
+                {
+                  "ident": "SiwsSvg"
+                },
+                {
+                  "ident": "TimestampSvg"
+                },
+                {
+                  "ident": "UserSvg"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "wallet_adapter",
+            "tree": {
+              "ident": "SigninInput"
+            }
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "component"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "SignInWithSolana",
+        "inputs": [],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Element"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "community"
+                }
+              },
+              "init": {
+                "expr": {
+                  "lit": {
+                    "str": "\"JamiiDAO\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "user_id"
+                }
+              },
+              "init": {
+                "expr": {
+                  "lit": {
+                    "str": "\"X48K48\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "mut": true,
+                  "ident": "address"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "String"
+                          },
+                          {
+                            "ident": "default"
+                          }
+                        ]
+                      }
+                    },
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "mut": true,
+                  "ident": "public_key"
+                }
+              },
+              "init": {
+                "expr": {
+                  "repeat": {
+                    "expr": {
+                      "lit": {
+                        "int": "0u8"
+                      }
+                    },
+                    "len": {
+                      "lit": {
+                        "int": "32"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "mut": true,
+                  "ident": "solana_signin"
+                }
+              },
+              "init": {
+                "expr": {
+                  "lit": {
+                    "bool": false
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "if": {
+                  "cond": {
+                    "let": {
+                      "pat": {
+                        "tuple_struct": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Ok"
+                              }
+                            ]
+                          },
+                          "elems": [
+                            {
+                              "ident": {
+                                "ident": "wallet_account"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "method_call": {
+                              "receiver": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "ACTIVE_CONNECTION"
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "read",
+                              "args": []
+                            }
+                          },
+                          "method": "connected_account",
+                          "args": []
+                        }
+                      }
+                    }
+                  },
+                  "then_branch": [
+                    {
+                      "expr": [
+                        {
+                          "assign": {
+                            "left": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "address"
+                                  }
+                                ]
+                              }
+                            },
+                            "right": {
+                              "method_call": {
+                                "receiver": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "wallet_account"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "address",
+                                    "args": []
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            }
+                          }
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "expr": [
+                        {
+                          "assign": {
+                            "left": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "public_key"
+                                  }
+                                ]
+                              }
+                            },
+                            "right": {
+                              "method_call": {
+                                "receiver": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "wallet_account"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "method": "public_key",
+                                "args": []
+                              }
+                            }
+                          }
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "expr": [
+                        {
+                          "assign": {
+                            "left": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "solana_signin"
+                                  }
+                                ]
+                              }
+                            },
+                            "right": {
+                              "method_call": {
+                                "receiver": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "wallet_account"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "method": "solana_signin",
+                                "args": []
+                              }
+                            }
+                          }
+                        },
+                        true
+                      ]
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          },
+          {
+            "let": {
+              "pat": {
+                "tuple": {
+                  "elems": [
+                    {
+                      "ident": {
+                        "ident": "signin_input"
+                      }
+                    },
+                    {
+                      "ident": {
+                        "ident": "nonce"
+                      }
+                    },
+                    {
+                      "ident": {
+                        "ident": "public_key"
+                      }
+                    }
+                  ]
+                }
+              },
+              "init": {
+                "expr": {
+                  "if": {
+                    "cond": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "solana_signin"
+                          }
+                        ]
+                      }
+                    },
+                    "then_branch": [
+                      {
+                        "let": {
+                          "pat": {
+                            "ident": {
+                              "mut": true,
+                              "ident": "signin_input"
+                            }
+                          },
+                          "init": {
+                            "expr": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "SigninInput"
+                                      },
+                                      {
+                                        "ident": "new"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": []
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "expr": [
+                          {
+                            "method_call": {
+                              "receiver": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "signin_input"
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "set_nonce",
+                              "args": []
+                            }
+                          },
+                          true
+                        ]
+                      },
+                      {
+                        "let": {
+                          "pat": {
+                            "ident": {
+                              "ident": "nonce"
+                            }
+                          },
+                          "init": {
+                            "expr": {
+                              "method_call": {
+                                "receiver": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "method_call": {
+                                        "receiver": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "signin_input"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "method": "nonce",
+                                        "args": []
+                                      }
+                                    },
+                                    "method": "unwrap",
+                                    "args": []
+                                  }
+                                },
+                                "method": "clone",
+                                "args": []
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "let": {
+                          "pat": {
+                            "ident": {
+                              "ident": "message"
+                            }
+                          },
+                          "init": {
+                            "expr": {
+                              "binary": {
+                                "left": {
+                                  "binary": {
+                                    "left": {
+                                      "binary": {
+                                        "left": {
+                                          "binary": {
+                                            "left": {
+                                              "binary": {
+                                                "left": {
+                                                  "binary": {
+                                                    "left": {
+                                                      "call": {
+                                                        "func": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "String"
+                                                              },
+                                                              {
+                                                                "ident": "new"
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        "args": []
+                                                      }
+                                                    },
+                                                    "op": "+",
+                                                    "right": {
+                                                      "lit": {
+                                                        "str": "\"Community: \""
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "op": "+",
+                                                "right": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "community"
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "op": "+",
+                                            "right": {
+                                              "lit": {
+                                                "str": "\"USER ID: \""
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "user_id"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                      "lit": {
+                                        "str": "\"SESSION: \""
+                                      }
+                                    }
+                                  }
+                                },
+                                "op": "+",
+                                "right": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "nonce"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "as_str",
+                                    "args": []
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "expr": [
+                          {
+                            "method_call": {
+                              "receiver": {
+                                "method_call": {
+                                  "receiver": {
+                                    "method_call": {
+                                      "receiver": {
+                                        "method_call": {
+                                          "receiver": {
+                                            "method_call": {
+                                              "receiver": {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "signin_input"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "set_domain",
+                                                  "args": [
+                                                    {
+                                                      "method_call": {
+                                                        "receiver": {
+                                                          "method_call": {
+                                                            "receiver": {
+                                                              "path": {
+                                                                "segments": [
+                                                                  {
+                                                                    "ident": "WALLET_ADAPTER"
+                                                                  }
+                                                                ]
+                                                              }
+                                                            },
+                                                            "method": "read",
+                                                            "args": []
+                                                          }
+                                                        },
+                                                        "method": "window",
+                                                        "args": []
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "method": "unwrap",
+                                              "args": []
+                                            }
+                                          },
+                                          "method": "set_statement",
+                                          "args": [
+                                            {
+                                              "reference": {
+                                                "expr": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "message"
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "method": "set_chain_id",
+                                      "args": [
+                                        {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "wallet_adapter"
+                                              },
+                                              {
+                                                "ident": "Cluster"
+                                              },
+                                              {
+                                                "ident": "DevNet"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "method": "set_address",
+                                  "args": [
+                                    {
+                                      "reference": {
+                                        "expr": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "address"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "unwrap",
+                              "args": []
+                            }
+                          },
+                          true
+                        ]
+                      },
+                      {
+                        "expr": [
+                          {
+                            "tuple": {
+                              "elems": [
+                                {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "signin_input"
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "nonce"
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "public_key"
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          false
+                        ]
+                      }
+                    ],
+                    "else_branch": {
+                      "block": {
+                        "stmts": [
+                          {
+                            "expr": [
+                              {
+                                "tuple": {
+                                  "elems": [
+                                    {
+                                      "call": {
+                                        "func": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "SigninInput"
+                                              },
+                                              {
+                                                "ident": "default"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "args": []
+                                      }
+                                    },
+                                    {
+                                      "call": {
+                                        "func": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "String"
+                                              },
+                                              {
+                                                "ident": "default"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "args": []
+                                      }
+                                    },
+                                    {
+                                      "repeat": {
+                                        "expr": {
+                                          "lit": {
+                                            "int": "0u8"
+                                          }
+                                        },
+                                        "len": {
+                                          "lit": {
+                                            "int": "32"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              false
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "macro": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "rsx"
+                  }
+                ]
+              },
+              "delimiter": "brace",
+              "tokens": [
+                {
+                  "ident": "div"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "ident": "class"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"flex dark:bg-[#160231] bg-white flex-col w-[300px] p-5 rounded-lg dark:shadow-2xl shadow-sm border dark:border-none\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "div"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "brace",
+                          "stream": [
+                            {
+                              "ident": "class"
+                            },
+                            {
+                              "punct": {
+                                "op": ":",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "lit": "\"flex w-full flex-col\""
+                            },
+                            {
+                              "punct": {
+                                "op": ",",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "ident": "div"
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "class"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ":",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"flex w-full text-true-blue items-center justify-center text-6xl\""
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ",",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "ident": "span"
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "brace",
+                                      "stream": [
+                                        {
+                                          "ident": "class"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ":",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"flex w-[40px]\""
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "ident": "SiwsSvg"
+                                              },
+                                              {
+                                                "group": {
+                                                  "delimiter": "parenthesis",
+                                                  "stream": []
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"SIWS\""
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "ident": "div"
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "class"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ":",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"flex text-true-blue w-full justify-center text-sm\""
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ",",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"Sign In With Solana\""
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "ident": "div"
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "class"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ":",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"flex mt-5 flex-col w-full justify-center text-lg\""
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ",",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "ident": "div"
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "brace",
+                                      "stream": [
+                                        {
+                                          "ident": "class"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ":",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"flex w-full text-lg\""
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "span"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "ident": "class"
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ":",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "lit": "\"flex w-[20px] mr-2\""
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ",",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "group": {
+                                                  "delimiter": "brace",
+                                                  "stream": [
+                                                    {
+                                                      "ident": "MintSvg"
+                                                    },
+                                                    {
+                                                      "group": {
+                                                        "delimiter": "parenthesis",
+                                                        "stream": []
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"Community: \""
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "ident": "community"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "ident": "div"
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "brace",
+                                      "stream": [
+                                        {
+                                          "ident": "class"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ":",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"flex w-full text-lg\""
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "span"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "ident": "class"
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ":",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "lit": "\"flex w-[20px] mr-2\""
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ",",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "group": {
+                                                  "delimiter": "brace",
+                                                  "stream": [
+                                                    {
+                                                      "ident": "UserSvg"
+                                                    },
+                                                    {
+                                                      "group": {
+                                                        "delimiter": "parenthesis",
+                                                        "stream": []
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"User ID: \""
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "ident": "user_id"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "ident": "div"
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "brace",
+                                      "stream": [
+                                        {
+                                          "ident": "class"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ":",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"flex  text-lg mt-5 text-true-blue dark:text-blue-yonder  w-full\""
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "if"
+                                        },
+                                        {
+                                          "ident": "solana_signin"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "ident": "div"
+                                              },
+                                              {
+                                                "group": {
+                                                  "delimiter": "brace",
+                                                  "stream": [
+                                                    {
+                                                      "ident": "class"
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ":",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "lit": "\"flex items-center w-full\""
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ",",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "ident": "span"
+                                                    },
+                                                    {
+                                                      "group": {
+                                                        "delimiter": "brace",
+                                                        "stream": [
+                                                          {
+                                                            "ident": "class"
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": ":",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "lit": "\"flex w-[25px]\""
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": ",",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "group": {
+                                                              "delimiter": "brace",
+                                                              "stream": [
+                                                                {
+                                                                  "ident": "TimestampSvg"
+                                                                },
+                                                                {
+                                                                  "group": {
+                                                                    "delimiter": "parenthesis",
+                                                                    "stream": []
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    {
+                                                      "group": {
+                                                        "delimiter": "brace",
+                                                        "stream": [
+                                                          {
+                                                            "ident": "truncate_nonce"
+                                                          },
+                                                          {
+                                                            "group": {
+                                                              "delimiter": "parenthesis",
+                                                              "stream": [
+                                                                {
+                                                                  "punct": {
+                                                                    "op": "&",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "nonce"
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "else"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "ident": "span"
+                                              },
+                                              {
+                                                "group": {
+                                                  "delimiter": "brace",
+                                                  "stream": [
+                                                    {
+                                                      "ident": "class"
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ":",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "lit": "\"flex text-sm w-[20px] mr-1\""
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ",",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "group": {
+                                                        "delimiter": "brace",
+                                                        "stream": [
+                                                          {
+                                                            "ident": "ErrorSvg"
+                                                          },
+                                                          {
+                                                            "group": {
+                                                              "delimiter": "parenthesis",
+                                                              "stream": []
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "lit": "\"WALLET DOES NOT SUPPORT SIWS\""
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "ident": "if"
+                                  },
+                                  {
+                                    "ident": "solana_signin"
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "brace",
+                                      "stream": [
+                                        {
+                                          "ident": "div"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "ident": "class"
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ":",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "lit": "\"flex w-full justify-center items-center\""
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ",",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "ident": "button"
+                                              },
+                                              {
+                                                "group": {
+                                                  "delimiter": "brace",
+                                                  "stream": [
+                                                    {
+                                                      "ident": "onclick"
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ":",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "ident": "move"
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": "|",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "ident": "_"
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": "|",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "group": {
+                                                        "delimiter": "brace",
+                                                        "stream": [
+                                                          {
+                                                            "ident": "let"
+                                                          },
+                                                          {
+                                                            "ident": "signin_input"
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": "=",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "signin_input"
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": ".",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "clone"
+                                                          },
+                                                          {
+                                                            "group": {
+                                                              "delimiter": "parenthesis",
+                                                              "stream": []
+                                                            }
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": ";",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "spawn"
+                                                          },
+                                                          {
+                                                            "group": {
+                                                              "delimiter": "parenthesis",
+                                                              "stream": [
+                                                                {
+                                                                  "ident": "async"
+                                                                },
+                                                                {
+                                                                  "ident": "move"
+                                                                },
+                                                                {
+                                                                  "group": {
+                                                                    "delimiter": "brace",
+                                                                    "stream": [
+                                                                      {
+                                                                        "ident": "if"
+                                                                      },
+                                                                      {
+                                                                        "ident": "let"
+                                                                      },
+                                                                      {
+                                                                        "ident": "Err"
+                                                                      },
+                                                                      {
+                                                                        "group": {
+                                                                          "delimiter": "parenthesis",
+                                                                          "stream": [
+                                                                            {
+                                                                              "ident": "error"
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "punct": {
+                                                                          "op": "=",
+                                                                          "spacing": "alone"
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "ident": "WALLET_ADAPTER"
+                                                                      },
+                                                                      {
+                                                                        "punct": {
+                                                                          "op": ".",
+                                                                          "spacing": "alone"
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "ident": "read"
+                                                                      },
+                                                                      {
+                                                                        "group": {
+                                                                          "delimiter": "parenthesis",
+                                                                          "stream": []
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "punct": {
+                                                                          "op": ".",
+                                                                          "spacing": "alone"
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "ident": "sign_in"
+                                                                      },
+                                                                      {
+                                                                        "group": {
+                                                                          "delimiter": "parenthesis",
+                                                                          "stream": [
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": "&",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "signin_input"
+                                                                            },
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": ",",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "public_key"
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "punct": {
+                                                                          "op": ".",
+                                                                          "spacing": "alone"
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "ident": "await"
+                                                                      },
+                                                                      {
+                                                                        "group": {
+                                                                          "delimiter": "brace",
+                                                                          "stream": [
+                                                                            {
+                                                                              "ident": "GLOBAL_MESSAGE"
+                                                                            },
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": ".",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "write"
+                                                                            },
+                                                                            {
+                                                                              "group": {
+                                                                                "delimiter": "parenthesis",
+                                                                                "stream": []
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": ".",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "push_back"
+                                                                            },
+                                                                            {
+                                                                              "group": {
+                                                                                "delimiter": "parenthesis",
+                                                                                "stream": [
+                                                                                  {
+                                                                                    "ident": "NotificationInfo"
+                                                                                  },
+                                                                                  {
+                                                                                    "punct": {
+                                                                                      "op": ":",
+                                                                                      "spacing": "joint"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "punct": {
+                                                                                      "op": ":",
+                                                                                      "spacing": "alone"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "ident": "error"
+                                                                                  },
+                                                                                  {
+                                                                                    "group": {
+                                                                                      "delimiter": "parenthesis",
+                                                                                      "stream": [
+                                                                                        {
+                                                                                          "ident": "format"
+                                                                                        },
+                                                                                        {
+                                                                                          "punct": {
+                                                                                            "op": "!",
+                                                                                            "spacing": "alone"
+                                                                                          }
+                                                                                        },
+                                                                                        {
+                                                                                          "group": {
+                                                                                            "delimiter": "parenthesis",
+                                                                                            "stream": [
+                                                                                              {
+                                                                                                "lit": "\"SIWS ERROR: {error:?}\""
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": ";",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "ident": "else"
+                                                                      },
+                                                                      {
+                                                                        "group": {
+                                                                          "delimiter": "brace",
+                                                                          "stream": [
+                                                                            {
+                                                                              "ident": "GLOBAL_MESSAGE"
+                                                                            },
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": ".",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "write"
+                                                                            },
+                                                                            {
+                                                                              "group": {
+                                                                                "delimiter": "parenthesis",
+                                                                                "stream": []
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": ".",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "push_back"
+                                                                            },
+                                                                            {
+                                                                              "group": {
+                                                                                "delimiter": "parenthesis",
+                                                                                "stream": [
+                                                                                  {
+                                                                                    "ident": "NotificationInfo"
+                                                                                  },
+                                                                                  {
+                                                                                    "punct": {
+                                                                                      "op": ":",
+                                                                                      "spacing": "joint"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "punct": {
+                                                                                      "op": ":",
+                                                                                      "spacing": "alone"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "ident": "new"
+                                                                                  },
+                                                                                  {
+                                                                                    "group": {
+                                                                                      "delimiter": "parenthesis",
+                                                                                      "stream": [
+                                                                                        {
+                                                                                          "lit": "\"SIWS Successful\""
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": ";",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": ";",
+                                                              "spacing": "alone"
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ",",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "ident": "class"
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ":",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "lit": "\"bg-true-blue  hover:bg-cobalt-blue mt-5 text-sm text-white px-5 py-2 rounded-full\""
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ",",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "lit": "\"SIGN IN\""
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "ident": "truncate_nonce",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "value"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "String"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "value"
+                }
+              },
+              "init": {
+                "expr": {
+                  "binary": {
+                    "left": {
+                      "call": {
+                        "func": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "String"
+                              },
+                              {
+                                "ident": "from"
+                              }
+                            ]
+                          }
+                        },
+                        "args": [
+                          {
+                            "lit": {
+                              "str": "\"SESSION: \""
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "op": "+",
+                    "right": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "value"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "if": {
+                  "cond": {
+                    "binary": {
+                      "left": {
+                        "method_call": {
+                          "receiver": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "value"
+                                }
+                              ]
+                            }
+                          },
+                          "method": "len",
+                          "args": []
+                        }
+                      },
+                      "op": "<=",
+                      "right": {
+                        "lit": {
+                          "int": "20"
+                        }
+                      }
+                    }
+                  },
+                  "then_branch": [
+                    {
+                      "expr": [
+                        {
+                          "method_call": {
+                            "receiver": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "value"
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "to_string",
+                            "args": []
+                          }
+                        },
+                        false
+                      ]
+                    }
+                  ],
+                  "else_branch": {
+                    "block": {
+                      "stmts": [
+                        {
+                          "expr": [
+                            {
+                              "binary": {
+                                "left": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "method_call": {
+                                        "receiver": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "value"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "method": "chars",
+                                            "args": []
+                                          }
+                                        },
+                                        "method": "take",
+                                        "args": [
+                                          {
+                                            "lit": {
+                                              "int": "20"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "collect",
+                                    "turbofish": {
+                                      "colon2_token": true,
+                                      "args": [
+                                        {
+                                          "type": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "String"
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "args": []
+                                  }
+                                },
+                                "op": "+",
+                                "right": {
+                                  "lit": {
+                                    "str": "\"...\""
+                                  }
+                                }
+                              }
+                            },
+                            false
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

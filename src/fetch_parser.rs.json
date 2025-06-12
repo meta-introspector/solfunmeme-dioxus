@@ -1,0 +1,3439 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "std",
+            "tree": {
+              "path": {
+                "ident": "str",
+                "tree": {
+                  "ident": "FromStr"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "dioxus",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "solana_sdk",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "native_token",
+                    "tree": {
+                      "ident": "LAMPORTS_PER_SOL"
+                    }
+                  }
+                },
+                {
+                  "path": {
+                    "ident": "pubkey",
+                    "tree": {
+                      "ident": "Pubkey"
+                    }
+                  }
+                },
+                {
+                  "path": {
+                    "ident": "system_instruction",
+                    "tree": {
+                      "ident": "transfer"
+                    }
+                  }
+                },
+                {
+                  "path": {
+                    "ident": "transaction",
+                    "tree": {
+                      "ident": "Transaction"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "wallet_adapter",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "web_sys",
+                    "tree": {
+                      "group": [
+                        {
+                          "path": {
+                            "ident": "js_sys",
+                            "tree": {
+                              "ident": "Date"
+                            }
+                          }
+                        },
+                        {
+                          "path": {
+                            "ident": "wasm_bindgen",
+                            "tree": {
+                              "ident": "JsValue"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "SendOptions"
+                },
+                {
+                  "ident": "WalletError"
+                },
+                {
+                  "ident": "WalletResult"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "model",
+                    "tree": {
+                      "group": [
+                        {
+                          "path": {
+                            "ident": "storage",
+                            "tree": {
+                              "group": [
+                                {
+                                  "ident": "ACCOUNT_STATE"
+                                },
+                                {
+                                  "ident": "WALLET_ADAPTER"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "ident": "use_connections"
+                        },
+                        {
+                          "ident": "AccountState"
+                        },
+                        {
+                          "ident": "BlockHashResponseValue"
+                        },
+                        {
+                          "ident": "ResponseWithContext"
+                        },
+                        {
+                          "ident": "RpcResponse"
+                        },
+                        {
+                          "ident": "SignaturesResponse"
+                        },
+                        {
+                          "ident": "TokenAccountResponse"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "FetchReq"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "format_timestamp",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "unix_timestamp"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "i64"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "String"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "timestamp_ms"
+                }
+              },
+              "init": {
+                "expr": {
+                  "binary": {
+                    "left": {
+                      "cast": {
+                        "expr": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "unix_timestamp"
+                              }
+                            ]
+                          }
+                        },
+                        "ty": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "f64"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "op": "*",
+                    "right": {
+                      "lit": {
+                        "float": "1000.0"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "js_date"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Date"
+                          },
+                          {
+                            "ident": "new"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "reference": {
+                          "expr": {
+                            "call": {
+                              "func": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "JsValue"
+                                    },
+                                    {
+                                      "ident": "from_f64"
+                                    }
+                                  ]
+                                }
+                              },
+                              "args": [
+                                {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "timestamp_ms"
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "method_call": {
+                  "receiver": {
+                    "method_call": {
+                      "receiver": {
+                        "method_call": {
+                          "receiver": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "js_date"
+                                }
+                              ]
+                            }
+                          },
+                          "method": "to_string",
+                          "args": []
+                        }
+                      },
+                      "method": "as_string",
+                      "args": []
+                    }
+                  },
+                  "method": "unwrap_or",
+                  "args": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "lit": {
+                            "str": "\"Invalid Timestamp\""
+                          }
+                        },
+                        "method": "to_string",
+                        "args": []
+                      }
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "async": true,
+        "ident": "get_blockhash",
+        "inputs": [],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "WalletResult",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "solana_sdk"
+                              },
+                              {
+                                "ident": "hash"
+                              },
+                              {
+                                "ident": "Hash"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "options"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "jzon"
+                            },
+                            {
+                              "ident": "object"
+                            }
+                          ]
+                        },
+                        "delimiter": "brace",
+                        "tokens": [
+                          {
+                            "lit": "\"id\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "1"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"jsonrpc\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"2.0\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"method\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"getLatestBlockhash\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"params\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "group": {
+                              "delimiter": "bracket",
+                              "stream": []
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "method": "to_string",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "response_body"
+                }
+              },
+              "init": {
+                "expr": {
+                  "try": {
+                    "expr": {
+                      "await": {
+                        "base": {
+                          "method_call": {
+                            "receiver": {
+                              "method_call": {
+                                "receiver": {
+                                  "try": {
+                                    "expr": {
+                                      "method_call": {
+                                        "receiver": {
+                                          "try": {
+                                            "expr": {
+                                              "method_call": {
+                                                "receiver": {
+                                                  "try": {
+                                                    "expr": {
+                                                      "call": {
+                                                        "func": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "FetchReq"
+                                                              },
+                                                              {
+                                                                "ident": "new"
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        "args": [
+                                                          {
+                                                            "lit": {
+                                                              "str": "\"POST\""
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "method": "add_header",
+                                                "args": [
+                                                  {
+                                                    "lit": {
+                                                      "str": "\"content-type\""
+                                                    }
+                                                  },
+                                                  {
+                                                    "lit": {
+                                                      "str": "\"application/json\""
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "method": "add_header",
+                                        "args": [
+                                          {
+                                            "lit": {
+                                              "str": "\"Accept\""
+                                            }
+                                          },
+                                          {
+                                            "lit": {
+                                              "str": "\"application/json\""
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "method": "set_body",
+                                "args": [
+                                  {
+                                    "reference": {
+                                      "expr": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "options"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "send",
+                            "args": []
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "deser"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "call": {
+                        "func": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "serde_json"
+                              },
+                              {
+                                "ident": "from_str",
+                                "arguments": {
+                                  "angle_bracketed": {
+                                    "colon2_token": true,
+                                    "args": [
+                                      {
+                                        "type": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "RpcResponse",
+                                                "arguments": {
+                                                  "angle_bracketed": {
+                                                    "args": [
+                                                      {
+                                                        "type": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "ResponseWithContext",
+                                                                "arguments": {
+                                                                  "angle_bracketed": {
+                                                                    "args": [
+                                                                      {
+                                                                        "type": {
+                                                                          "path": {
+                                                                            "segments": [
+                                                                              {
+                                                                                "ident": "BlockHashResponseValue"
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "args": [
+                          {
+                            "reference": {
+                              "expr": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "response_body"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "method": "unwrap",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "method_call": {
+                  "receiver": {
+                    "call": {
+                      "func": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "solana_sdk"
+                            },
+                            {
+                              "ident": "hash"
+                            },
+                            {
+                              "ident": "Hash"
+                            },
+                            {
+                              "ident": "from_str"
+                            }
+                          ]
+                        }
+                      },
+                      "args": [
+                        {
+                          "field": {
+                            "base": {
+                              "field": {
+                                "base": {
+                                  "field": {
+                                    "base": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "deser"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "ident": "result"
+                                  }
+                                },
+                                "ident": "value"
+                              }
+                            },
+                            "ident": "blockhash"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "method": "map_err",
+                  "args": [
+                    {
+                      "closure": {
+                        "inputs": [
+                          {
+                            "ident": {
+                              "ident": "error"
+                            }
+                          }
+                        ],
+                        "output": null,
+                        "body": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "WalletError"
+                                  },
+                                  {
+                                    "ident": "Op"
+                                  }
+                                ]
+                              }
+                            },
+                            "args": [
+                              {
+                                "method_call": {
+                                  "receiver": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "error"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "method": "to_string",
+                                  "args": []
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "async": true,
+        "ident": "get_balance",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "address"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "WalletResult",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "String"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "balance_options"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "jzon"
+                            },
+                            {
+                              "ident": "object"
+                            }
+                          ]
+                        },
+                        "delimiter": "brace",
+                        "tokens": [
+                          {
+                            "lit": "\"id\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "1"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"jsonrpc\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"2.0\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"method\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"getBalance\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"params\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "group": {
+                              "delimiter": "bracket",
+                              "stream": [
+                                {
+                                  "ident": "address"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "method": "to_string",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "balance_response"
+                }
+              },
+              "init": {
+                "expr": {
+                  "try": {
+                    "expr": {
+                      "await": {
+                        "base": {
+                          "method_call": {
+                            "receiver": {
+                              "method_call": {
+                                "receiver": {
+                                  "try": {
+                                    "expr": {
+                                      "call": {
+                                        "func": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "FetchReq"
+                                              },
+                                              {
+                                                "ident": "new_for_rpc"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "args": []
+                                      }
+                                    }
+                                  }
+                                },
+                                "method": "set_body",
+                                "args": [
+                                  {
+                                    "reference": {
+                                      "expr": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "balance_options"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "send",
+                            "args": []
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "parsed_balance"
+                }
+              },
+              "init": {
+                "expr": {
+                  "try": {
+                    "expr": {
+                      "method_call": {
+                        "receiver": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "serde_json"
+                                  },
+                                  {
+                                    "ident": "from_str",
+                                    "arguments": {
+                                      "angle_bracketed": {
+                                        "colon2_token": true,
+                                        "args": [
+                                          {
+                                            "type": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "RpcResponse",
+                                                    "arguments": {
+                                                      "angle_bracketed": {
+                                                        "args": [
+                                                          {
+                                                            "type": {
+                                                              "path": {
+                                                                "segments": [
+                                                                  {
+                                                                    "ident": "ResponseWithContext",
+                                                                    "arguments": {
+                                                                      "angle_bracketed": {
+                                                                        "args": [
+                                                                          {
+                                                                            "type": {
+                                                                              "path": {
+                                                                                "segments": [
+                                                                                  {
+                                                                                    "ident": "u64"
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              }
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "args": [
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "balance_response"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "method": "map_err",
+                        "args": [
+                          {
+                            "closure": {
+                              "inputs": [
+                                {
+                                  "ident": {
+                                    "ident": "error"
+                                  }
+                                }
+                              ],
+                              "output": null,
+                              "body": {
+                                "call": {
+                                  "func": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "WalletError"
+                                        },
+                                        {
+                                          "ident": "Op"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "args": [
+                                    {
+                                      "method_call": {
+                                        "receiver": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "error"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "method": "to_string",
+                                        "args": []
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "call": {
+                  "func": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Ok"
+                        }
+                      ]
+                    }
+                  },
+                  "args": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "paren": {
+                            "expr": {
+                              "binary": {
+                                "left": {
+                                  "cast": {
+                                    "expr": {
+                                      "field": {
+                                        "base": {
+                                          "field": {
+                                            "base": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "parsed_balance"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "ident": "result"
+                                          }
+                                        },
+                                        "ident": "value"
+                                      }
+                                    },
+                                    "ty": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "f64"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "op": "/",
+                                "right": {
+                                  "cast": {
+                                    "expr": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "LAMPORTS_PER_SOL"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "ty": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "f64"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "method": "to_string",
+                        "args": []
+                      }
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "async": true,
+        "ident": "send_sol_req",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "recipient"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "lamports"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "u64"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "public_key_bytes"
+                }
+              },
+              "ty": {
+                "array": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "u8"
+                        }
+                      ]
+                    }
+                  },
+                  "len": {
+                    "lit": {
+                      "int": "32"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "WalletResult",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "tuple": {
+                            "elems": []
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "connections"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_connections"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "lit": {
+                          "str": "\"solana_wallet\""
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "cluster"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "connections"
+                          }
+                        ]
+                      }
+                    },
+                    "method": "active_entry_object",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "pubkey"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Pubkey"
+                          },
+                          {
+                            "ident": "new_from_array"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "public_key_bytes"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "recipient"
+                }
+              },
+              "init": {
+                "expr": {
+                  "try": {
+                    "expr": {
+                      "method_call": {
+                        "receiver": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "Pubkey"
+                                  },
+                                  {
+                                    "ident": "from_str"
+                                  }
+                                ]
+                              }
+                            },
+                            "args": [
+                              {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "recipient"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "method": "or",
+                        "args": [
+                          {
+                            "call": {
+                              "func": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Err"
+                                    }
+                                  ]
+                                }
+                              },
+                              "args": [
+                                {
+                                  "call": {
+                                    "func": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "WalletError"
+                                          },
+                                          {
+                                            "ident": "Op"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "args": [
+                                      {
+                                        "method_call": {
+                                          "receiver": {
+                                            "lit": {
+                                              "str": "\"Invalid Recipient Address\""
+                                            }
+                                          },
+                                          "method": "to_string",
+                                          "args": []
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "send_sol_instruction"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "transfer"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "reference": {
+                          "expr": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "pubkey"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "reference": {
+                          "expr": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "recipient"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "lamports"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "mut": true,
+                  "ident": "tx"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Transaction"
+                          },
+                          {
+                            "ident": "new_with_payer"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "reference": {
+                          "expr": {
+                            "array": {
+                              "elems": [
+                                {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "send_sol_instruction"
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "call": {
+                          "func": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Some"
+                                }
+                              ]
+                            }
+                          },
+                          "args": [
+                            {
+                              "reference": {
+                                "expr": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "pubkey"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "blockhash"
+                }
+              },
+              "init": {
+                "expr": {
+                  "try": {
+                    "expr": {
+                      "await": {
+                        "base": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "get_blockhash"
+                                  }
+                                ]
+                              }
+                            },
+                            "args": []
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "assign": {
+                  "left": {
+                    "field": {
+                      "base": {
+                        "field": {
+                          "base": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "tx"
+                                }
+                              ]
+                            }
+                          },
+                          "ident": "message"
+                        }
+                      },
+                      "ident": "recent_blockhash"
+                    }
+                  },
+                  "right": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "blockhash"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              true
+            ]
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "tx_bytes"
+                }
+              },
+              "init": {
+                "expr": {
+                  "try": {
+                    "expr": {
+                      "method_call": {
+                        "receiver": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "bincode"
+                                  },
+                                  {
+                                    "ident": "serialize"
+                                  }
+                                ]
+                              }
+                            },
+                            "args": [
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "tx"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "method": "map_err",
+                        "args": [
+                          {
+                            "closure": {
+                              "inputs": [
+                                {
+                                  "ident": {
+                                    "ident": "error"
+                                  }
+                                }
+                              ],
+                              "output": null,
+                              "body": {
+                                "call": {
+                                  "func": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "WalletError"
+                                        },
+                                        {
+                                          "ident": "Op"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "args": [
+                                    {
+                                      "method_call": {
+                                        "receiver": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "error"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "method": "to_string",
+                                        "args": []
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "try": {
+                  "expr": {
+                    "await": {
+                      "base": {
+                        "method_call": {
+                          "receiver": {
+                            "method_call": {
+                              "receiver": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "WALLET_ADAPTER"
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "read",
+                              "args": []
+                            }
+                          },
+                          "method": "sign_and_send_transaction",
+                          "args": [
+                            {
+                              "reference": {
+                                "expr": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "tx_bytes"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "method_call": {
+                                "receiver": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "cluster"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "method": "cluster",
+                                "args": []
+                              }
+                            },
+                            {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "SendOptions"
+                                      },
+                                      {
+                                        "ident": "default"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": []
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              true
+            ]
+          },
+          {
+            "expr": [
+              {
+                "call": {
+                  "func": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Ok"
+                        }
+                      ]
+                    }
+                  },
+                  "args": [
+                    {
+                      "tuple": {
+                        "elems": []
+                      }
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "async": true,
+        "ident": "request_airdrop",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "lamports"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "u64"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "address"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "WalletResult",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "tuple": {
+                            "elems": []
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "options"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "jzon"
+                            },
+                            {
+                              "ident": "object"
+                            }
+                          ]
+                        },
+                        "delimiter": "brace",
+                        "tokens": [
+                          {
+                            "lit": "\"id\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "1"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"jsonrpc\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"2.0\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"method\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"requestAirdrop\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"params\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "group": {
+                              "delimiter": "bracket",
+                              "stream": [
+                                {
+                                  "ident": "address"
+                                },
+                                {
+                                  "punct": {
+                                    "op": ",",
+                                    "spacing": "alone"
+                                  }
+                                },
+                                {
+                                  "ident": "lamports"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "method": "to_string",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "response"
+                }
+              },
+              "init": {
+                "expr": {
+                  "try": {
+                    "expr": {
+                      "await": {
+                        "base": {
+                          "method_call": {
+                            "receiver": {
+                              "method_call": {
+                                "receiver": {
+                                  "try": {
+                                    "expr": {
+                                      "call": {
+                                        "func": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "FetchReq"
+                                              },
+                                              {
+                                                "ident": "new_for_rpc"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "args": []
+                                      }
+                                    }
+                                  }
+                                },
+                                "method": "set_body",
+                                "args": [
+                                  {
+                                    "reference": {
+                                      "expr": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "options"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "send",
+                            "args": []
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "try": {
+                  "expr": {
+                    "method_call": {
+                      "receiver": {
+                        "call": {
+                          "func": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "serde_json"
+                                },
+                                {
+                                  "ident": "from_str",
+                                  "arguments": {
+                                    "angle_bracketed": {
+                                      "colon2_token": true,
+                                      "args": [
+                                        {
+                                          "type": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "RpcResponse",
+                                                  "arguments": {
+                                                    "angle_bracketed": {
+                                                      "args": [
+                                                        {
+                                                          "type": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "String"
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "args": [
+                            {
+                              "reference": {
+                                "expr": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "response"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "method": "map_err",
+                      "args": [
+                        {
+                          "closure": {
+                            "inputs": [
+                              {
+                                "ident": {
+                                  "ident": "error"
+                                }
+                              }
+                            ],
+                            "output": null,
+                            "body": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "WalletError"
+                                      },
+                                      {
+                                        "ident": "Op"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "method_call": {
+                                      "receiver": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "error"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "method": "to_string",
+                                      "args": []
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              true
+            ]
+          },
+          {
+            "expr": [
+              {
+                "call": {
+                  "func": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Ok"
+                        }
+                      ]
+                    }
+                  },
+                  "args": [
+                    {
+                      "tuple": {
+                        "elems": []
+                      }
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "async": true,
+        "ident": "accounts_runner",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "address"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "WalletResult",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "AccountState"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "expr": [
+              {
+                "assign": {
+                  "left": {
+                    "unary": {
+                      "op": "*",
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "ACCOUNT_STATE"
+                                }
+                              ]
+                            }
+                          },
+                          "method": "write",
+                          "args": []
+                        }
+                      }
+                    }
+                  },
+                  "right": {
+                    "call": {
+                      "func": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "AccountState"
+                            },
+                            {
+                              "ident": "default"
+                            }
+                          ]
+                        }
+                      },
+                      "args": []
+                    }
+                  }
+                }
+              },
+              true
+            ]
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "balance"
+                }
+              },
+              "init": {
+                "expr": {
+                  "try": {
+                    "expr": {
+                      "await": {
+                        "base": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "crate"
+                                  },
+                                  {
+                                    "ident": "get_balance"
+                                  }
+                                ]
+                              }
+                            },
+                            "args": [
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "address"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "token_accounts_options"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "jzon"
+                            },
+                            {
+                              "ident": "object"
+                            }
+                          ]
+                        },
+                        "delimiter": "brace",
+                        "tokens": [
+                          {
+                            "lit": "\"id\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "1"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"jsonrpc\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"2.0\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"method\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"getTokenAccountsByOwner\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"params\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "group": {
+                              "delimiter": "bracket",
+                              "stream": [
+                                {
+                                  "ident": "address"
+                                },
+                                {
+                                  "punct": {
+                                    "op": ",",
+                                    "spacing": "alone"
+                                  }
+                                },
+                                {
+                                  "group": {
+                                    "delimiter": "brace",
+                                    "stream": [
+                                      {
+                                        "lit": "\"programId\""
+                                      },
+                                      {
+                                        "punct": {
+                                          "op": ":",
+                                          "spacing": "alone"
+                                        }
+                                      },
+                                      {
+                                        "lit": "\"TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA\""
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "punct": {
+                                    "op": ",",
+                                    "spacing": "alone"
+                                  }
+                                },
+                                {
+                                  "group": {
+                                    "delimiter": "brace",
+                                    "stream": [
+                                      {
+                                        "lit": "\"encoding\""
+                                      },
+                                      {
+                                        "punct": {
+                                          "op": ":",
+                                          "spacing": "alone"
+                                        }
+                                      },
+                                      {
+                                        "lit": "\"jsonParsed\""
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "method": "to_string",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "fetched_token_accounts"
+                }
+              },
+              "init": {
+                "expr": {
+                  "try": {
+                    "expr": {
+                      "await": {
+                        "base": {
+                          "method_call": {
+                            "receiver": {
+                              "method_call": {
+                                "receiver": {
+                                  "try": {
+                                    "expr": {
+                                      "call": {
+                                        "func": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "FetchReq"
+                                              },
+                                              {
+                                                "ident": "new_for_rpc"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "args": []
+                                      }
+                                    }
+                                  }
+                                },
+                                "method": "set_body",
+                                "args": [
+                                  {
+                                    "reference": {
+                                      "expr": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "token_accounts_options"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "send",
+                            "args": []
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "parsed_token_accounts"
+                }
+              },
+              "init": {
+                "expr": {
+                  "try": {
+                    "expr": {
+                      "method_call": {
+                        "receiver": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "serde_json"
+                                  },
+                                  {
+                                    "ident": "from_str",
+                                    "arguments": {
+                                      "angle_bracketed": {
+                                        "colon2_token": true,
+                                        "args": [
+                                          {
+                                            "type": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "RpcResponse",
+                                                    "arguments": {
+                                                      "angle_bracketed": {
+                                                        "args": [
+                                                          {
+                                                            "type": {
+                                                              "path": {
+                                                                "segments": [
+                                                                  {
+                                                                    "ident": "ResponseWithContext",
+                                                                    "arguments": {
+                                                                      "angle_bracketed": {
+                                                                        "args": [
+                                                                          {
+                                                                            "type": {
+                                                                              "path": {
+                                                                                "segments": [
+                                                                                  {
+                                                                                    "ident": "Vec",
+                                                                                    "arguments": {
+                                                                                      "angle_bracketed": {
+                                                                                        "args": [
+                                                                                          {
+                                                                                            "type": {
+                                                                                              "path": {
+                                                                                                "segments": [
+                                                                                                  {
+                                                                                                    "ident": "TokenAccountResponse"
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              }
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "args": [
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "fetched_token_accounts"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "method": "map_err",
+                        "args": [
+                          {
+                            "closure": {
+                              "inputs": [
+                                {
+                                  "ident": {
+                                    "ident": "error"
+                                  }
+                                }
+                              ],
+                              "output": null,
+                              "body": {
+                                "call": {
+                                  "func": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "WalletError"
+                                        },
+                                        {
+                                          "ident": "Op"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "args": [
+                                    {
+                                      "method_call": {
+                                        "receiver": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "error"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "method": "to_string",
+                                        "args": []
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "token_accounts"
+                }
+              },
+              "init": {
+                "expr": {
+                  "field": {
+                    "base": {
+                      "field": {
+                        "base": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "parsed_token_accounts"
+                              }
+                            ]
+                          }
+                        },
+                        "ident": "result"
+                      }
+                    },
+                    "ident": "value"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "get_signatures_options"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "jzon"
+                            },
+                            {
+                              "ident": "object"
+                            }
+                          ]
+                        },
+                        "delimiter": "brace",
+                        "tokens": [
+                          {
+                            "lit": "\"jsonrpc\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"2.0\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"id\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "1"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"method\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"getSignaturesForAddress\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"params\""
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "group": {
+                              "delimiter": "bracket",
+                              "stream": [
+                                {
+                                  "ident": "address"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "method": "to_string",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "fetched_signatures"
+                }
+              },
+              "init": {
+                "expr": {
+                  "try": {
+                    "expr": {
+                      "await": {
+                        "base": {
+                          "method_call": {
+                            "receiver": {
+                              "method_call": {
+                                "receiver": {
+                                  "try": {
+                                    "expr": {
+                                      "method_call": {
+                                        "receiver": {
+                                          "try": {
+                                            "expr": {
+                                              "call": {
+                                                "func": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "FetchReq"
+                                                      },
+                                                      {
+                                                        "ident": "new"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "args": [
+                                                  {
+                                                    "lit": {
+                                                      "str": "\"POST\""
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "method": "add_header",
+                                        "args": [
+                                          {
+                                            "lit": {
+                                              "str": "\"Content-Type\""
+                                            }
+                                          },
+                                          {
+                                            "lit": {
+                                              "str": "\"application/json\""
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "method": "set_body",
+                                "args": [
+                                  {
+                                    "reference": {
+                                      "expr": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "get_signatures_options"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "send",
+                            "args": []
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "parsed_signatures_response"
+                }
+              },
+              "init": {
+                "expr": {
+                  "try": {
+                    "expr": {
+                      "method_call": {
+                        "receiver": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "serde_json"
+                                  },
+                                  {
+                                    "ident": "from_str",
+                                    "arguments": {
+                                      "angle_bracketed": {
+                                        "colon2_token": true,
+                                        "args": [
+                                          {
+                                            "type": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "RpcResponse",
+                                                    "arguments": {
+                                                      "angle_bracketed": {
+                                                        "args": [
+                                                          {
+                                                            "type": {
+                                                              "path": {
+                                                                "segments": [
+                                                                  {
+                                                                    "ident": "Vec",
+                                                                    "arguments": {
+                                                                      "angle_bracketed": {
+                                                                        "args": [
+                                                                          {
+                                                                            "type": {
+                                                                              "path": {
+                                                                                "segments": [
+                                                                                  {
+                                                                                    "ident": "SignaturesResponse"
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              }
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "args": [
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "fetched_signatures"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "method": "map_err",
+                        "args": [
+                          {
+                            "closure": {
+                              "inputs": [
+                                {
+                                  "ident": {
+                                    "ident": "error"
+                                  }
+                                }
+                              ],
+                              "output": null,
+                              "body": {
+                                "call": {
+                                  "func": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "WalletError"
+                                        },
+                                        {
+                                          "ident": "Op"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "args": [
+                                    {
+                                      "method_call": {
+                                        "receiver": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "error"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "method": "to_string",
+                                        "args": []
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "signatures"
+                }
+              },
+              "init": {
+                "expr": {
+                  "field": {
+                    "base": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "parsed_signatures_response"
+                          }
+                        ]
+                      }
+                    },
+                    "ident": "result"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "call": {
+                  "func": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Ok"
+                        }
+                      ]
+                    }
+                  },
+                  "args": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "AccountState"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "balance",
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "balance"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "token_accounts",
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "token_accounts"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "transactions",
+                            "colon_token": true,
+                            "expr": {
+                              "method_call": {
+                                "receiver": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "signatures"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "method": "clone",
+                                "args": []
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

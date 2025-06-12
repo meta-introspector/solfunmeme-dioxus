@@ -1,0 +1,1536 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "dioxus",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "utils",
+                    "tree": {
+                      "ident": "copied_address"
+                    }
+                  }
+                },
+                {
+                  "ident": "CopySvg"
+                },
+                {
+                  "ident": "NotificationInfo"
+                },
+                {
+                  "ident": "ReceiveSvg"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "path": {
+                    "ident": "storage",
+                    "tree": {
+                      "ident": "ACTIVE_CONNECTION"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "path": {
+                    "ident": "storage",
+                    "tree": {
+                      "group": [
+                        {
+                          "ident": "GLOBAL_MESSAGE"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "component"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "ReceiveSol",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "show_receive_modal"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Signal",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "bool"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Element"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "mut": true,
+                  "ident": "address"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "String"
+                          },
+                          {
+                            "ident": "default"
+                          }
+                        ]
+                      }
+                    },
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "mut": true,
+                  "ident": "shortened_address"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "String"
+                          },
+                          {
+                            "ident": "default"
+                          }
+                        ]
+                      }
+                    },
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "if": {
+                  "cond": {
+                    "let": {
+                      "pat": {
+                        "tuple_struct": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Ok"
+                              }
+                            ]
+                          },
+                          "elems": [
+                            {
+                              "ident": {
+                                "ident": "wallet_account"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "method_call": {
+                              "receiver": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "ACTIVE_CONNECTION"
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "read",
+                              "args": []
+                            }
+                          },
+                          "method": "connected_account",
+                          "args": []
+                        }
+                      }
+                    }
+                  },
+                  "then_branch": [
+                    {
+                      "expr": [
+                        {
+                          "assign": {
+                            "left": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "address"
+                                  }
+                                ]
+                              }
+                            },
+                            "right": {
+                              "method_call": {
+                                "receiver": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "wallet_account"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "address",
+                                    "args": []
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            }
+                          }
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "expr": [
+                        {
+                          "assign": {
+                            "left": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "shortened_address"
+                                  }
+                                ]
+                              }
+                            },
+                            "right": {
+                              "method_call": {
+                                "receiver": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "method_call": {
+                                        "receiver": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "wallet_account"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "method": "shorten_address",
+                                        "args": []
+                                      }
+                                    },
+                                    "method": "unwrap_or_default",
+                                    "args": []
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            }
+                          }
+                        },
+                        true
+                      ]
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "qrcode"
+                }
+              },
+              "init": {
+                "expr": {
+                  "if": {
+                    "cond": {
+                      "let": {
+                        "pat": {
+                          "tuple_struct": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Ok"
+                                }
+                              ]
+                            },
+                            "elems": [
+                              {
+                                "ident": {
+                                  "ident": "qr"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "expr": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "crate"
+                                  },
+                                  {
+                                    "ident": "address_qrcode"
+                                  }
+                                ]
+                              }
+                            },
+                            "args": [
+                              {
+                                "reference": {
+                                  "expr": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "address"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "then_branch": [
+                      {
+                        "expr": [
+                          {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "qr"
+                                }
+                              ]
+                            }
+                          },
+                          false
+                        ]
+                      }
+                    ],
+                    "else_branch": {
+                      "block": {
+                        "stmts": [
+                          {
+                            "macro": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "rsx"
+                                  }
+                                ]
+                              },
+                              "delimiter": "brace",
+                              "tokens": [
+                                {
+                                  "ident": "div"
+                                },
+                                {
+                                  "group": {
+                                    "delimiter": "brace",
+                                    "stream": [
+                                      {
+                                        "ident": "class"
+                                      },
+                                      {
+                                        "punct": {
+                                          "op": ":",
+                                          "spacing": "alone"
+                                        }
+                                      },
+                                      {
+                                        "lit": "\"text-black dark:text-white\""
+                                      },
+                                      {
+                                        "punct": {
+                                          "op": ",",
+                                          "spacing": "alone"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "address_inner"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "address"
+                          }
+                        ]
+                      }
+                    },
+                    "method": "clone",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "if": {
+                  "cond": {
+                    "unary": {
+                      "op": "*",
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "show_receive_modal"
+                                }
+                              ]
+                            }
+                          },
+                          "method": "read",
+                          "args": []
+                        }
+                      }
+                    }
+                  },
+                  "then_branch": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "rsx"
+                            }
+                          ]
+                        },
+                        "delimiter": "brace",
+                        "tokens": [
+                          {
+                            "ident": "div"
+                          },
+                          {
+                            "group": {
+                              "delimiter": "brace",
+                              "stream": [
+                                {
+                                  "ident": "class"
+                                },
+                                {
+                                  "punct": {
+                                    "op": ":",
+                                    "spacing": "alone"
+                                  }
+                                },
+                                {
+                                  "lit": "\"fixed overflow-y-hidden min-h-screen z-10 flex flex-col w-full bg-[rgba(0,0,0,0.6)] justify-center items-center text-black dark:text-white\""
+                                },
+                                {
+                                  "punct": {
+                                    "op": ",",
+                                    "spacing": "alone"
+                                  }
+                                },
+                                {
+                                  "ident": "div"
+                                },
+                                {
+                                  "group": {
+                                    "delimiter": "brace",
+                                    "stream": [
+                                      {
+                                        "ident": "class"
+                                      },
+                                      {
+                                        "punct": {
+                                          "op": ":",
+                                          "spacing": "alone"
+                                        }
+                                      },
+                                      {
+                                        "lit": "\"flex flex-col w-[90%] sm:w-[80%] md:w-[70%] min-h-64 lg:w-[90%] max-w-screen-sm justify-start items-center bg-white dark:bg-[#0b0414] rounded-3xl\""
+                                      },
+                                      {
+                                        "punct": {
+                                          "op": ",",
+                                          "spacing": "alone"
+                                        }
+                                      },
+                                      {
+                                        "ident": "div"
+                                      },
+                                      {
+                                        "group": {
+                                          "delimiter": "brace",
+                                          "stream": [
+                                            {
+                                              "ident": "class"
+                                            },
+                                            {
+                                              "punct": {
+                                                "op": ":",
+                                                "spacing": "alone"
+                                              }
+                                            },
+                                            {
+                                              "lit": "\"flex w-full justify-end items-center p-5\""
+                                            },
+                                            {
+                                              "punct": {
+                                                "op": ",",
+                                                "spacing": "alone"
+                                              }
+                                            },
+                                            {
+                                              "ident": "button"
+                                            },
+                                            {
+                                              "group": {
+                                                "delimiter": "brace",
+                                                "stream": [
+                                                  {
+                                                    "ident": "onclick"
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ":",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "move"
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": "|",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "_"
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": "|",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "group": {
+                                                      "delimiter": "brace",
+                                                      "stream": [
+                                                        {
+                                                          "ident": "show_receive_modal"
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ".",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "ident": "set"
+                                                        },
+                                                        {
+                                                          "group": {
+                                                            "delimiter": "parenthesis",
+                                                            "stream": [
+                                                              {
+                                                                "ident": "false"
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ",",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "class"
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ":",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "lit": "\"wallet-adapter-modal-button-close w-[30px] items-center justify-center\""
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ",",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "lit": "\"data-dioxus-id\""
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ":",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "lit": "\"65\""
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ",",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "svg"
+                                                  },
+                                                  {
+                                                    "group": {
+                                                      "delimiter": "brace",
+                                                      "stream": [
+                                                        {
+                                                          "ident": "fill"
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ":",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "lit": "\"none\""
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ",",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "ident": "view_box"
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ":",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "lit": "\"0 0 24 24\""
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ",",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "ident": "xmlns"
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ":",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "lit": "\"http://www.w3.org/2000/svg\""
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ",",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "ident": "path"
+                                                        },
+                                                        {
+                                                          "group": {
+                                                            "delimiter": "brace",
+                                                            "stream": [
+                                                              {
+                                                                "ident": "d"
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ":",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "lit": "\"m15 9.00004-6 5.99996m6 0-6-5.99996m3 11.99996c4.9706 0 9-4.0294 9-9 0-4.97056-4.0294-9-9-9-4.97056 0-9 4.02944-9 9 0 4.9706 4.02944 9 9 9z\""
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ",",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "stroke"
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ":",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "lit": "\"#a6c1ee\""
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ",",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "stroke_linecap"
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ":",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "lit": "\"round\""
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ",",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "stroke_linejoin"
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ":",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "lit": "\"round\""
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ",",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "stroke_width"
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ":",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "lit": "\"2\""
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ",",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "ident": "div"
+                                      },
+                                      {
+                                        "group": {
+                                          "delimiter": "brace",
+                                          "stream": [
+                                            {
+                                              "ident": "class"
+                                            },
+                                            {
+                                              "punct": {
+                                                "op": ":",
+                                                "spacing": "alone"
+                                              }
+                                            },
+                                            {
+                                              "lit": "\"overflow-y-scroll w-full mb-5 items-center justify-center flex flex-col\""
+                                            },
+                                            {
+                                              "punct": {
+                                                "op": ",",
+                                                "spacing": "alone"
+                                              }
+                                            },
+                                            {
+                                              "ident": "div"
+                                            },
+                                            {
+                                              "group": {
+                                                "delimiter": "brace",
+                                                "stream": [
+                                                  {
+                                                    "ident": "class"
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ":",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "lit": "\"flex w-full items-center justify-center text-2xl\""
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ",",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "span"
+                                                  },
+                                                  {
+                                                    "group": {
+                                                      "delimiter": "brace",
+                                                      "stream": [
+                                                        {
+                                                          "ident": "class"
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ":",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "lit": "\"w-[30px] mr-2\""
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ",",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "group": {
+                                                            "delimiter": "brace",
+                                                            "stream": [
+                                                              {
+                                                                "ident": "ReceiveSvg"
+                                                              },
+                                                              {
+                                                                "group": {
+                                                                  "delimiter": "parenthesis",
+                                                                  "stream": []
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "lit": "\"Receive SOL\""
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "ident": "div"
+                                            },
+                                            {
+                                              "group": {
+                                                "delimiter": "brace",
+                                                "stream": [
+                                                  {
+                                                    "ident": "class"
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ":",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "lit": "\"mb-2 mt-5 rounded-full bg-true-blue hover:bg-cobalt-blue cursor-pointer\""
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ",",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "onclick"
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ":",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "move"
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": "|",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "_"
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": "|",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "group": {
+                                                      "delimiter": "brace",
+                                                      "stream": [
+                                                        {
+                                                          "ident": "let"
+                                                        },
+                                                        {
+                                                          "ident": "address_inner"
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": "=",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "ident": "address_inner"
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ".",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "ident": "clone"
+                                                        },
+                                                        {
+                                                          "group": {
+                                                            "delimiter": "parenthesis",
+                                                            "stream": []
+                                                          }
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ";",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "ident": "spawn"
+                                                        },
+                                                        {
+                                                          "group": {
+                                                            "delimiter": "parenthesis",
+                                                            "stream": [
+                                                              {
+                                                                "ident": "async"
+                                                              },
+                                                              {
+                                                                "ident": "move"
+                                                              },
+                                                              {
+                                                                "group": {
+                                                                  "delimiter": "brace",
+                                                                  "stream": [
+                                                                    {
+                                                                      "ident": "if"
+                                                                    },
+                                                                    {
+                                                                      "ident": "let"
+                                                                    },
+                                                                    {
+                                                                      "ident": "Err"
+                                                                    },
+                                                                    {
+                                                                      "group": {
+                                                                        "delimiter": "parenthesis",
+                                                                        "stream": [
+                                                                          {
+                                                                            "ident": "error"
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    },
+                                                                    {
+                                                                      "punct": {
+                                                                        "op": "=",
+                                                                        "spacing": "alone"
+                                                                      }
+                                                                    },
+                                                                    {
+                                                                      "ident": "copied_address"
+                                                                    },
+                                                                    {
+                                                                      "group": {
+                                                                        "delimiter": "parenthesis",
+                                                                        "stream": [
+                                                                          {
+                                                                            "punct": {
+                                                                              "op": "&",
+                                                                              "spacing": "alone"
+                                                                            }
+                                                                          },
+                                                                          {
+                                                                            "ident": "address_inner"
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    },
+                                                                    {
+                                                                      "punct": {
+                                                                        "op": ".",
+                                                                        "spacing": "alone"
+                                                                      }
+                                                                    },
+                                                                    {
+                                                                      "ident": "await"
+                                                                    },
+                                                                    {
+                                                                      "group": {
+                                                                        "delimiter": "brace",
+                                                                        "stream": [
+                                                                          {
+                                                                            "ident": "GLOBAL_MESSAGE"
+                                                                          },
+                                                                          {
+                                                                            "punct": {
+                                                                              "op": ".",
+                                                                              "spacing": "alone"
+                                                                            }
+                                                                          },
+                                                                          {
+                                                                            "ident": "write"
+                                                                          },
+                                                                          {
+                                                                            "group": {
+                                                                              "delimiter": "parenthesis",
+                                                                              "stream": []
+                                                                            }
+                                                                          },
+                                                                          {
+                                                                            "punct": {
+                                                                              "op": ".",
+                                                                              "spacing": "alone"
+                                                                            }
+                                                                          },
+                                                                          {
+                                                                            "ident": "push_back"
+                                                                          },
+                                                                          {
+                                                                            "group": {
+                                                                              "delimiter": "parenthesis",
+                                                                              "stream": [
+                                                                                {
+                                                                                  "ident": "NotificationInfo"
+                                                                                },
+                                                                                {
+                                                                                  "punct": {
+                                                                                    "op": ":",
+                                                                                    "spacing": "joint"
+                                                                                  }
+                                                                                },
+                                                                                {
+                                                                                  "punct": {
+                                                                                    "op": ":",
+                                                                                    "spacing": "alone"
+                                                                                  }
+                                                                                },
+                                                                                {
+                                                                                  "ident": "error"
+                                                                                },
+                                                                                {
+                                                                                  "group": {
+                                                                                    "delimiter": "parenthesis",
+                                                                                    "stream": [
+                                                                                      {
+                                                                                        "ident": "format"
+                                                                                      },
+                                                                                      {
+                                                                                        "punct": {
+                                                                                          "op": "!",
+                                                                                          "spacing": "alone"
+                                                                                        }
+                                                                                      },
+                                                                                      {
+                                                                                        "group": {
+                                                                                          "delimiter": "parenthesis",
+                                                                                          "stream": [
+                                                                                            {
+                                                                                              "lit": "\"COPY ERROR: {:?}\""
+                                                                                            },
+                                                                                            {
+                                                                                              "punct": {
+                                                                                                "op": ",",
+                                                                                                "spacing": "alone"
+                                                                                              }
+                                                                                            },
+                                                                                            {
+                                                                                              "ident": "error"
+                                                                                            }
+                                                                                          ]
+                                                                                        }
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                }
+                                                                              ]
+                                                                            }
+                                                                          },
+                                                                          {
+                                                                            "punct": {
+                                                                              "op": ";",
+                                                                              "spacing": "alone"
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    },
+                                                                    {
+                                                                      "ident": "else"
+                                                                    },
+                                                                    {
+                                                                      "group": {
+                                                                        "delimiter": "brace",
+                                                                        "stream": [
+                                                                          {
+                                                                            "ident": "GLOBAL_MESSAGE"
+                                                                          },
+                                                                          {
+                                                                            "punct": {
+                                                                              "op": ".",
+                                                                              "spacing": "alone"
+                                                                            }
+                                                                          },
+                                                                          {
+                                                                            "ident": "write"
+                                                                          },
+                                                                          {
+                                                                            "group": {
+                                                                              "delimiter": "parenthesis",
+                                                                              "stream": []
+                                                                            }
+                                                                          },
+                                                                          {
+                                                                            "punct": {
+                                                                              "op": ".",
+                                                                              "spacing": "alone"
+                                                                            }
+                                                                          },
+                                                                          {
+                                                                            "ident": "push_back"
+                                                                          },
+                                                                          {
+                                                                            "group": {
+                                                                              "delimiter": "parenthesis",
+                                                                              "stream": [
+                                                                                {
+                                                                                  "ident": "NotificationInfo"
+                                                                                },
+                                                                                {
+                                                                                  "punct": {
+                                                                                    "op": ":",
+                                                                                    "spacing": "joint"
+                                                                                  }
+                                                                                },
+                                                                                {
+                                                                                  "punct": {
+                                                                                    "op": ":",
+                                                                                    "spacing": "alone"
+                                                                                  }
+                                                                                },
+                                                                                {
+                                                                                  "ident": "new"
+                                                                                },
+                                                                                {
+                                                                                  "group": {
+                                                                                    "delimiter": "parenthesis",
+                                                                                    "stream": [
+                                                                                      {
+                                                                                        "lit": "\"Copied to clipboard\""
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                }
+                                                                              ]
+                                                                            }
+                                                                          },
+                                                                          {
+                                                                            "punct": {
+                                                                              "op": ";",
+                                                                              "spacing": "alone"
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ";",
+                                                            "spacing": "alone"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ",",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "div"
+                                                  },
+                                                  {
+                                                    "group": {
+                                                      "delimiter": "brace",
+                                                      "stream": [
+                                                        {
+                                                          "ident": "class"
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ":",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "lit": "\"flex justify-left items-center px-2 py-1 text-white rounded-full \""
+                                                        },
+                                                        {
+                                                          "punct": {
+                                                            "op": ",",
+                                                            "spacing": "alone"
+                                                          }
+                                                        },
+                                                        {
+                                                          "ident": "span"
+                                                        },
+                                                        {
+                                                          "group": {
+                                                            "delimiter": "brace",
+                                                            "stream": [
+                                                              {
+                                                                "ident": "class"
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ":",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "lit": "\"flex p-2 w-[30px]\""
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ",",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "group": {
+                                                                  "delimiter": "brace",
+                                                                  "stream": [
+                                                                    {
+                                                                      "ident": "CopySvg"
+                                                                    },
+                                                                    {
+                                                                      "group": {
+                                                                        "delimiter": "parenthesis",
+                                                                        "stream": []
+                                                                      }
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        {
+                                                          "ident": "span"
+                                                        },
+                                                        {
+                                                          "group": {
+                                                            "delimiter": "brace",
+                                                            "stream": [
+                                                              {
+                                                                "group": {
+                                                                  "delimiter": "brace",
+                                                                  "stream": [
+                                                                    {
+                                                                      "ident": "shortened_address"
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "ident": "div"
+                                            },
+                                            {
+                                              "group": {
+                                                "delimiter": "brace",
+                                                "stream": [
+                                                  {
+                                                    "ident": "class"
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ":",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "lit": "\"w-[200px] rounded-xl flex mt-5 mb-5 bg-white\""
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ",",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "group": {
+                                                      "delimiter": "brace",
+                                                      "stream": [
+                                                        {
+                                                          "ident": "qrcode"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "else_branch": {
+                    "block": {
+                      "stmts": [
+                        {
+                          "macro": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "rsx"
+                                }
+                              ]
+                            },
+                            "delimiter": "brace",
+                            "tokens": []
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

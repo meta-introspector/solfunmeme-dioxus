@@ -1,0 +1,156 @@
+{
+  "items": [
+    {
+      "enum": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Error handling enum\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Eq"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialOrd"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Ord"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Hash"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Error"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "MyWalletError",
+        "variants": [
+          {
+            "attrs": [
+              {
+                "style": "outer",
+                "meta": {
+                  "list": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "error"
+                        }
+                      ]
+                    },
+                    "delimiter": "paren",
+                    "tokens": [
+                      {
+                        "lit": "\"Unsupported\""
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "ident": "UnsupportedChain",
+            "fields": {
+              "unnamed": [
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "String"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

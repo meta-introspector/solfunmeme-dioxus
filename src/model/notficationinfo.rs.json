@@ -1,0 +1,633 @@
+{
+  "items": [
+    {
+      "struct": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "NotificationInfo",
+        "fields": {
+          "named": [
+            {
+              "ident": "key",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "u32"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ident": "secs",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "u32"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ident": "message",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "impl": {
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "NotificationInfo"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "new",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "message"
+                      }
+                    },
+                    "ty": {
+                      "impl_trait": {
+                        "bounds": [
+                          {
+                            "trait": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "core"
+                                  },
+                                  {
+                                    "ident": "fmt"
+                                  },
+                                  {
+                                    "ident": "Display"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "let": {
+                    "pat": {
+                      "ident": {
+                        "ident": "key"
+                      }
+                    },
+                    "init": {
+                      "expr": {
+                        "call": {
+                          "func": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "fastrand"
+                                },
+                                {
+                                  "ident": "u32"
+                                }
+                              ]
+                            }
+                          },
+                          "args": [
+                            {
+                              "range": {
+                                "limits": ".."
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "Self"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "key",
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "key"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "secs",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "int": "2"
+                              }
+                            }
+                          },
+                          {
+                            "ident": "message",
+                            "colon_token": true,
+                            "expr": {
+                              "method_call": {
+                                "receiver": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "message"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "attrs": [
+                {
+                  "style": "outer",
+                  "meta": {
+                    "name_value": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "doc"
+                          }
+                        ]
+                      },
+                      "value": {
+                        "lit": {
+                          "str": "\" Sets default seconds to 15\""
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "vis": "pub",
+              "ident": "error",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "message"
+                      }
+                    },
+                    "ty": {
+                      "impl_trait": {
+                        "bounds": [
+                          {
+                            "trait": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "core"
+                                  },
+                                  {
+                                    "ident": "fmt"
+                                  },
+                                  {
+                                    "ident": "Display"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "Self"
+                                  },
+                                  {
+                                    "ident": "new"
+                                  }
+                                ]
+                              }
+                            },
+                            "args": [
+                              {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "message"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "method": "set_secs",
+                        "args": [
+                          {
+                            "lit": {
+                              "int": "15"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "set_secs",
+              "inputs": [
+                {
+                  "receiver": {
+                    "mut": true,
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Self"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "secs"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "u32"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "assign": {
+                        "left": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "secs"
+                          }
+                        },
+                        "right": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "secs"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    true
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "self"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "key",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "u32"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "field": {
+                        "base": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "self"
+                              }
+                            ]
+                          }
+                        },
+                        "ident": "key"
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "secs",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "u32"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "field": {
+                        "base": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "self"
+                              }
+                            ]
+                          }
+                        },
+                        "ident": "secs"
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "message",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "message"
+                          }
+                        },
+                        "method": "as_str",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

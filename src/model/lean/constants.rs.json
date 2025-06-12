@@ -1,0 +1,451 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "super",
+            "tree": {
+              "path": {
+                "ident": "level",
+                "tree": {
+                  "ident": "Level"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "LEVEL_U1",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Level"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Level"
+                  },
+                  {
+                    "ident": "Param"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "lit": {
+                  "str": "\"u_1\""
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "LEVEL_U2",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Level"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Level"
+                  },
+                  {
+                    "ident": "Param"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "lit": {
+                  "str": "\"u_2\""
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "LEVEL_U3",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Level"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Level"
+                  },
+                  {
+                    "ident": "Param"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "lit": {
+                  "str": "\"u_3\""
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "LEVEL_U4",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Level"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Level"
+                  },
+                  {
+                    "ident": "Param"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "lit": {
+                  "str": "\"u_4\""
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "LEVEL_U5",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Level"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Level"
+                  },
+                  {
+                    "ident": "Param"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "lit": {
+                  "str": "\"u_5\""
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "LEVEL_U6",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Level"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Level"
+                  },
+                  {
+                    "ident": "Param"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "lit": {
+                  "str": "\"u_6\""
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "LEVEL_U7",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Level"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Level"
+                  },
+                  {
+                    "ident": "Param"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "lit": {
+                  "str": "\"u_7\""
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "LEVEL_U8",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Level"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Level"
+                  },
+                  {
+                    "ident": "Param"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "lit": {
+                  "str": "\"u_8\""
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "levels_8",
+        "inputs": [],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Vec",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Level"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "expr": [
+              {
+                "macro": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "vec"
+                      }
+                    ]
+                  },
+                  "delimiter": "bracket",
+                  "tokens": [
+                    {
+                      "ident": "LEVEL_U1"
+                    },
+                    {
+                      "punct": {
+                        "op": ",",
+                        "spacing": "alone"
+                      }
+                    },
+                    {
+                      "ident": "LEVEL_U2"
+                    },
+                    {
+                      "punct": {
+                        "op": ",",
+                        "spacing": "alone"
+                      }
+                    },
+                    {
+                      "ident": "LEVEL_U3"
+                    },
+                    {
+                      "punct": {
+                        "op": ",",
+                        "spacing": "alone"
+                      }
+                    },
+                    {
+                      "ident": "LEVEL_U4"
+                    },
+                    {
+                      "punct": {
+                        "op": ",",
+                        "spacing": "alone"
+                      }
+                    },
+                    {
+                      "ident": "LEVEL_U5"
+                    },
+                    {
+                      "punct": {
+                        "op": ",",
+                        "spacing": "alone"
+                      }
+                    },
+                    {
+                      "ident": "LEVEL_U6"
+                    },
+                    {
+                      "punct": {
+                        "op": ",",
+                        "spacing": "alone"
+                      }
+                    },
+                    {
+                      "ident": "LEVEL_U7"
+                    },
+                    {
+                      "punct": {
+                        "op": ",",
+                        "spacing": "alone"
+                      }
+                    },
+                    {
+                      "ident": "LEVEL_U8"
+                    },
+                    {
+                      "punct": {
+                        "op": ",",
+                        "spacing": "alone"
+                      }
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

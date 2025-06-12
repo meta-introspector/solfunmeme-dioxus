@@ -1,0 +1,105 @@
+{
+  "items": [
+    {
+      "enum": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Default"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Eq"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Copy"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "ClusterNetState",
+        "variants": [
+          {
+            "ident": "Success",
+            "fields": "unit"
+          },
+          {
+            "attrs": [
+              {
+                "style": "outer",
+                "meta": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "default"
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "ident": "Waiting",
+            "fields": "unit"
+          },
+          {
+            "ident": "Failure",
+            "fields": "unit"
+          }
+        ]
+      }
+    }
+  ]
+}

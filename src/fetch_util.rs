@@ -5,9 +5,9 @@ use wallet_adapter::{
     WalletError, WalletResult,
 };
 
-use crate::{
-    views::ClusterNetState, CLUSTER_NET_STATE, CLUSTER_STORAGE, GLOBAL_MESSAGE, WALLET_ADAPTER,
-};
+use crate::model::{storage::{CLUSTER_NET_STATE, GLOBAL_MESSAGE, WALLET_ADAPTER}, ClusterNetState, NotificationInfo};
+use crate::model::use_connections;
+
 
 // NOTE: You can use Reqwest crate instead to fetch the blockhash but
 // this code shows how to use the browser `fetch` api
@@ -84,11 +84,11 @@ impl FetchReq {
     pub async fn build(&self) -> WalletResult<Response> {
         self.options.set_headers(&self.headers);
 
-        let url = CLUSTER_STORAGE
-            .read()
-            .active_cluster()
-            .endpoint()
-            .to_owned();
+	let connections = use_connections("solana_wallet");
+    let cluster = connections.active_entry_object();
+        
+	let url = cluster.endpoint();
+        //let url = CLUSTER_STORAGE            .read()            .active_cluster()            .endpoint()            .to_owned();
 
         let request = Request::new_with_str_and_init(&url, &self.options)?;
 
@@ -104,47 +104,5 @@ impl FetchReq {
                 *CLUSTER_NET_STATE.write() = ClusterNetState::Failure;
             })?;
         Ok(resp_value.dyn_into::<Response>()?)
-    }
-}
-
-#[derive(Debug, Clone)]
-pub struct NotificationInfo {
-    key: u32,
-    secs: u32,
-    message: String,
-}
-
-impl NotificationInfo {
-    pub fn new(message: impl core::fmt::Display) -> Self {
-        let key = fastrand::u32(..);
-
-        Self {
-            key,
-            secs: 2,
-            message: message.to_string(),
-        }
-    }
-
-    /// Sets default seconds to 15
-    pub fn error(message: impl core::fmt::Display) -> Self {
-        Self::new(message).set_secs(15)
-    }
-
-    pub fn set_secs(mut self, secs: u32) -> Self {
-        self.secs = secs;
-
-        self
-    }
-
-    pub fn key(&self) -> u32 {
-        self.key
-    }
-
-    pub fn secs(&self) -> u32 {
-        self.secs
-    }
-
-    pub fn message(&self) -> &str {
-        self.message.as_str()
     }
 }

@@ -1,0 +1,1275 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "ident": "AdapterCluster"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "struct": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Eq"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialOrd"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Ord"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Default"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "ClusterStore",
+        "fields": {
+          "named": [
+            {
+              "ident": "clusters",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Vec",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "AdapterCluster"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ident": "active_cluster",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "AdapterCluster"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "impl": {
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "ClusterStore"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "new",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "clusters"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Vec",
+                            "arguments": {
+                              "angle_bracketed": {
+                                "args": [
+                                  {
+                                    "type": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "AdapterCluster"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "Self"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "clusters",
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "clusters"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "active_cluster",
+                            "colon_token": true,
+                            "expr": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "AdapterCluster"
+                                      },
+                                      {
+                                        "ident": "default"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": []
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "get_clusters",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "reference": {
+                  "elem": {
+                    "slice": {
+                      "elem": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "AdapterCluster"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "clusters"
+                          }
+                        },
+                        "method": "as_slice",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "add_cluster",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "mut": true,
+                    "ty": {
+                      "reference": {
+                        "mut": true,
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "cluster"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "AdapterCluster"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Result",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "reference": {
+                                  "mut": true,
+                                  "elem": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Self"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "let": {
+                    "pat": {
+                      "ident": {
+                        "ident": "cluster_exists"
+                      }
+                    },
+                    "init": {
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "method_call": {
+                              "receiver": {
+                                "field": {
+                                  "base": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "self"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "ident": "clusters"
+                                }
+                              },
+                              "method": "iter",
+                              "args": []
+                            }
+                          },
+                          "method": "any",
+                          "args": [
+                            {
+                              "closure": {
+                                "inputs": [
+                                  {
+                                    "ident": {
+                                      "ident": "inner_cluster"
+                                    }
+                                  }
+                                ],
+                                "output": null,
+                                "body": {
+                                  "block": {
+                                    "stmts": [
+                                      {
+                                        "expr": [
+                                          {
+                                            "binary": {
+                                              "left": {
+                                                "binary": {
+                                                  "left": {
+                                                    "method_call": {
+                                                      "receiver": {
+                                                        "method_call": {
+                                                          "receiver": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "inner_cluster"
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          "method": "name",
+                                                          "args": []
+                                                        }
+                                                      },
+                                                      "method": "as_bytes",
+                                                      "args": []
+                                                    }
+                                                  },
+                                                  "op": "==",
+                                                  "right": {
+                                                    "method_call": {
+                                                      "receiver": {
+                                                        "method_call": {
+                                                          "receiver": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "cluster"
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          "method": "name",
+                                                          "args": []
+                                                        }
+                                                      },
+                                                      "method": "as_bytes",
+                                                      "args": []
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              "op": "||",
+                                              "right": {
+                                                "binary": {
+                                                  "left": {
+                                                    "method_call": {
+                                                      "receiver": {
+                                                        "method_call": {
+                                                          "receiver": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "inner_cluster"
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          "method": "endpoint",
+                                                          "args": []
+                                                        }
+                                                      },
+                                                      "method": "as_bytes",
+                                                      "args": []
+                                                    }
+                                                  },
+                                                  "op": "==",
+                                                  "right": {
+                                                    "method_call": {
+                                                      "receiver": {
+                                                        "method_call": {
+                                                          "receiver": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "cluster"
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          "method": "endpoint",
+                                                          "args": []
+                                                        }
+                                                      },
+                                                      "method": "as_bytes",
+                                                      "args": []
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          false
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "expr": [
+                    {
+                      "if": {
+                        "cond": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "cluster_exists"
+                              }
+                            ]
+                          }
+                        },
+                        "then_branch": [
+                          {
+                            "expr": [
+                              {
+                                "call": {
+                                  "func": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Err"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "args": [
+                                    {
+                                      "call": {
+                                        "func": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "String"
+                                              },
+                                              {
+                                                "ident": "from"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "args": [
+                                          {
+                                            "lit": {
+                                              "str": "\"Cluster exists, make sure endpoint or name are not the same\""
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              false
+                            ]
+                          }
+                        ],
+                        "else_branch": {
+                          "block": {
+                            "stmts": [
+                              {
+                                "expr": [
+                                  {
+                                    "method_call": {
+                                      "receiver": {
+                                        "field": {
+                                          "base": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "self"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "ident": "clusters"
+                                        }
+                                      },
+                                      "method": "push",
+                                      "args": [
+                                        {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "cluster"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  true
+                                ]
+                              },
+                              {
+                                "expr": [
+                                  {
+                                    "call": {
+                                      "func": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "Ok"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "args": [
+                                        {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "self"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  false
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "set_active_cluster",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "mut": true,
+                    "ty": {
+                      "reference": {
+                        "mut": true,
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "cluster"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "AdapterCluster"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "reference": {
+                  "mut": true,
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Self"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "assign": {
+                        "left": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "active_cluster"
+                          }
+                        },
+                        "right": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "cluster"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    true
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "self"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "active_cluster",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "AdapterCluster"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "reference": {
+                        "expr": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "active_cluster"
+                          }
+                        }
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "add_clusters",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "mut": true,
+                    "ty": {
+                      "reference": {
+                        "mut": true,
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "clusters"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Vec",
+                            "arguments": {
+                              "angle_bracketed": {
+                                "args": [
+                                  {
+                                    "type": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "AdapterCluster"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Result",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "tuple": {
+                                  "elems": []
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "method_call": {
+                            "receiver": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "clusters"
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "into_iter",
+                            "args": []
+                          }
+                        },
+                        "method": "try_for_each",
+                        "args": [
+                          {
+                            "closure": {
+                              "inputs": [
+                                {
+                                  "ident": {
+                                    "ident": "cluster"
+                                  }
+                                }
+                              ],
+                              "output": null,
+                              "body": {
+                                "block": {
+                                  "stmts": [
+                                    {
+                                      "expr": [
+                                        {
+                                          "try": {
+                                            "expr": {
+                                              "method_call": {
+                                                "receiver": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "self"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "method": "add_cluster",
+                                                "args": [
+                                                  {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "cluster"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        true
+                                      ]
+                                    },
+                                    {
+                                      "expr": [
+                                        {
+                                          "call": {
+                                            "func": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "Ok",
+                                                    "arguments": {
+                                                      "angle_bracketed": {
+                                                        "colon2_token": true,
+                                                        "args": [
+                                                          {
+                                                            "type": {
+                                                              "tuple": {
+                                                                "elems": []
+                                                              }
+                                                            }
+                                                          },
+                                                          {
+                                                            "type": {
+                                                              "path": {
+                                                                "segments": [
+                                                                  {
+                                                                    "ident": "String"
+                                                                  }
+                                                                ]
+                                                              }
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "args": [
+                                              {
+                                                "tuple": {
+                                                  "elems": []
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        false
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "get_cluster",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "name"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Option",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "reference": {
+                                  "elem": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "AdapterCluster"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "method_call": {
+                            "receiver": {
+                              "field": {
+                                "base": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "self"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "ident": "clusters"
+                              }
+                            },
+                            "method": "iter",
+                            "args": []
+                          }
+                        },
+                        "method": "find",
+                        "args": [
+                          {
+                            "closure": {
+                              "inputs": [
+                                {
+                                  "ident": {
+                                    "ident": "cluster"
+                                  }
+                                }
+                              ],
+                              "output": null,
+                              "body": {
+                                "binary": {
+                                  "left": {
+                                    "method_call": {
+                                      "receiver": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "cluster"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "method": "name",
+                                      "args": []
+                                    }
+                                  },
+                                  "op": "==",
+                                  "right": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "name"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
