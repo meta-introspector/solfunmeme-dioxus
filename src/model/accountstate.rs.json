@@ -1,0 +1,433 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "group": [
+                    {
+                      "ident": "SignaturesResponse"
+                    },
+                    {
+                      "ident": "TokenAccountResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "struct": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Default"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "AccountState",
+        "fields": {
+          "named": [
+            {
+              "vis": "pub",
+              "ident": "balance",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "token_accounts",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Vec",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "TokenAccountResponse"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "transactions",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Vec",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SignaturesResponse"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "impl": {
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "AccountState"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "token_accounts_is_empty",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "bool"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "token_accounts"
+                          }
+                        },
+                        "method": "is_empty",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "transactions_is_empty",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "bool"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "token_accounts"
+                          }
+                        },
+                        "method": "is_empty",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "token_accounts",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "reference": {
+                  "elem": {
+                    "slice": {
+                      "elem": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "TokenAccountResponse"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "token_accounts"
+                          }
+                        },
+                        "method": "as_slice",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "transactions",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "reference": {
+                  "elem": {
+                    "slice": {
+                      "elem": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "SignaturesResponse"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "transactions"
+                          }
+                        },
+                        "method": "as_slice",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,3915 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "percent_encoding",
+            "tree": {
+              "group": [
+                {
+                  "ident": "utf8_percent_encode"
+                },
+                {
+                  "ident": "NON_ALPHANUMERIC"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "serde",
+            "tree": {
+              "ident": "Serialize"
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "serde",
+            "tree": {
+              "ident": "Deserialize"
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "path": {
+                    "ident": "mycluster",
+                    "tree": {
+                      "ident": "MyCluster"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "wallet_adapter",
+            "tree": {
+              "ident": "Cluster"
+            }
+          }
+        }
+      }
+    },
+    {
+      "struct": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Eq"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialOrd"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Ord"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Serialize"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Deserialize"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "AdapterCluster",
+        "fields": {
+          "named": [
+            {
+              "vis": "pub",
+              "ident": "name",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "cluster",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "MyCluster"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "endpoint",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "impl": {
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "AdapterCluster"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "new",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "call": {
+                        "func": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              },
+                              {
+                                "ident": "default"
+                              }
+                            ]
+                          }
+                        },
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "add_name",
+              "inputs": [
+                {
+                  "receiver": {
+                    "mut": true,
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Self"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "name"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "assign": {
+                        "left": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "name"
+                          }
+                        },
+                        "right": {
+                          "method_call": {
+                            "receiver": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "name"
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "to_string",
+                            "args": []
+                          }
+                        }
+                      }
+                    },
+                    true
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "self"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "add_cluster",
+              "inputs": [
+                {
+                  "receiver": {
+                    "mut": true,
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Self"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "cluster"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "MyCluster"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "assign": {
+                        "left": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "cluster"
+                          }
+                        },
+                        "right": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "cluster"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    true
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "self"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "add_endpoint",
+              "inputs": [
+                {
+                  "receiver": {
+                    "mut": true,
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Self"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "endpoint"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "assign": {
+                        "left": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "endpoint"
+                          }
+                        },
+                        "right": {
+                          "method_call": {
+                            "receiver": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "endpoint"
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "to_string",
+                            "args": []
+                          }
+                        }
+                      }
+                    },
+                    true
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "self"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "name",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "name"
+                          }
+                        },
+                        "method": "as_str",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "cluster",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Cluster"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "cluster"
+                          }
+                        },
+                        "method": "toCluster",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "endpoint",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "self"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "endpoint"
+                          }
+                        },
+                        "method": "as_str",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "query_string",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "if": {
+                        "cond": {
+                          "binary": {
+                            "left": {
+                              "binary": {
+                                "left": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "field": {
+                                        "base": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "self"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "ident": "name"
+                                      }
+                                    },
+                                    "method": "as_bytes",
+                                    "args": []
+                                  }
+                                },
+                                "op": "==",
+                                "right": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "method_call": {
+                                        "receiver": {
+                                          "field": {
+                                            "base": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "self"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "ident": "cluster"
+                                          }
+                                        },
+                                        "method": "to_string",
+                                        "args": []
+                                      }
+                                    },
+                                    "method": "as_bytes",
+                                    "args": []
+                                  }
+                                }
+                              }
+                            },
+                            "op": "&&",
+                            "right": {
+                              "binary": {
+                                "left": {
+                                  "field": {
+                                    "base": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "self"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "ident": "cluster"
+                                  }
+                                },
+                                "op": "!=",
+                                "right": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "MyCluster"
+                                      },
+                                      {
+                                        "ident": "LocalNet"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "then_branch": [
+                          {
+                            "expr": [
+                              {
+                                "binary": {
+                                  "left": {
+                                    "binary": {
+                                      "left": {
+                                        "call": {
+                                          "func": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "String"
+                                                },
+                                                {
+                                                  "ident": "new"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "args": []
+                                        }
+                                      },
+                                      "op": "+",
+                                      "right": {
+                                        "lit": {
+                                          "str": "\"?cluster=\""
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "op": "+",
+                                  "right": {
+                                    "method_call": {
+                                      "receiver": {
+                                        "method_call": {
+                                          "receiver": {
+                                            "field": {
+                                              "base": {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "self"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "ident": "cluster"
+                                            }
+                                          },
+                                          "method": "to_string",
+                                          "args": []
+                                        }
+                                      },
+                                      "method": "as_str",
+                                      "args": []
+                                    }
+                                  }
+                                }
+                              },
+                              false
+                            ]
+                          }
+                        ],
+                        "else_branch": {
+                          "block": {
+                            "stmts": [
+                              {
+                                "expr": [
+                                  {
+                                    "binary": {
+                                      "left": {
+                                        "binary": {
+                                          "left": {
+                                            "call": {
+                                              "func": {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "String"
+                                                    },
+                                                    {
+                                                      "ident": "new"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "args": []
+                                            }
+                                          },
+                                          "op": "+",
+                                          "right": {
+                                            "lit": {
+                                              "str": "\"?cluster=custom&customUrl=\""
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "op": "+",
+                                      "right": {
+                                        "method_call": {
+                                          "receiver": {
+                                            "method_call": {
+                                              "receiver": {
+                                                "call": {
+                                                  "func": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "utf8_percent_encode"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "args": [
+                                                    {
+                                                      "method_call": {
+                                                        "receiver": {
+                                                          "field": {
+                                                            "base": {
+                                                              "path": {
+                                                                "segments": [
+                                                                  {
+                                                                    "ident": "self"
+                                                                  }
+                                                                ]
+                                                              }
+                                                            },
+                                                            "ident": "endpoint"
+                                                          }
+                                                        },
+                                                        "method": "as_str",
+                                                        "args": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "path": {
+                                                        "segments": [
+                                                          {
+                                                            "ident": "NON_ALPHANUMERIC"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "method": "to_string",
+                                              "args": []
+                                            }
+                                          },
+                                          "method": "as_str",
+                                          "args": []
+                                        }
+                                      }
+                                    }
+                                  },
+                                  false
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "devnet",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "AdapterCluster"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "name",
+                            "colon_token": true,
+                            "expr": {
+                              "method_call": {
+                                "receiver": {
+                                  "lit": {
+                                    "str": "\"devnet\""
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            }
+                          },
+                          {
+                            "ident": "cluster",
+                            "colon_token": true,
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "DevNet"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "endpoint",
+                            "colon_token": true,
+                            "expr": {
+                              "method_call": {
+                                "receiver": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "MyCluster"
+                                          },
+                                          {
+                                            "ident": "DevNet"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "endpoint",
+                                    "args": []
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "mainnet",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "AdapterCluster"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "name",
+                            "colon_token": true,
+                            "expr": {
+                              "method_call": {
+                                "receiver": {
+                                  "lit": {
+                                    "str": "\"mainnet\""
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            }
+                          },
+                          {
+                            "ident": "cluster",
+                            "colon_token": true,
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "MainNet"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "endpoint",
+                            "colon_token": true,
+                            "expr": {
+                              "method_call": {
+                                "receiver": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "MyCluster"
+                                          },
+                                          {
+                                            "ident": "MainNet"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "endpoint",
+                                    "args": []
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "testnet",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "AdapterCluster"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "name",
+                            "colon_token": true,
+                            "expr": {
+                              "method_call": {
+                                "receiver": {
+                                  "lit": {
+                                    "str": "\"testnet\""
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            }
+                          },
+                          {
+                            "ident": "cluster",
+                            "colon_token": true,
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "TestNet"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "endpoint",
+                            "colon_token": true,
+                            "expr": {
+                              "method_call": {
+                                "receiver": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "MyCluster"
+                                          },
+                                          {
+                                            "ident": "TestNet"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "endpoint",
+                                    "args": []
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "localnet",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "AdapterCluster"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "name",
+                            "colon_token": true,
+                            "expr": {
+                              "method_call": {
+                                "receiver": {
+                                  "lit": {
+                                    "str": "\"localnet\""
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            }
+                          },
+                          {
+                            "ident": "cluster",
+                            "colon_token": true,
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "LocalNet"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "endpoint",
+                            "colon_token": true,
+                            "expr": {
+                              "method_call": {
+                                "receiver": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "MyCluster"
+                                          },
+                                          {
+                                            "ident": "LocalNet"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "endpoint",
+                                    "args": []
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "masked_endpoint",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "let": {
+                    "pat": {
+                      "type": {
+                        "pat": {
+                          "ident": {
+                            "ident": "name"
+                          }
+                        },
+                        "ty": {
+                          "reference": {
+                            "elem": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "str"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "init": {
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "field": {
+                              "base": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "self"
+                                    }
+                                  ]
+                                }
+                              },
+                              "ident": "name"
+                            }
+                          },
+                          "method": "as_str",
+                          "args": []
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "let": {
+                    "pat": {
+                      "type": {
+                        "pat": {
+                          "ident": {
+                            "ident": "clst"
+                          }
+                        },
+                        "ty": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "MyCluster"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "init": {
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "method_call": {
+                              "receiver": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "name"
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "try_into",
+                              "args": []
+                            }
+                          },
+                          "method": "unwrap_or_else",
+                          "args": [
+                            {
+                              "closure": {
+                                "inputs": [
+                                  {
+                                    "_": {}
+                                  }
+                                ],
+                                "output": null,
+                                "body": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "MyCluster"
+                                      },
+                                      {
+                                        "ident": "LocalNet"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "struct": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "AdapterCluster"
+                                }
+                              ]
+                            },
+                            "fields": [
+                              {
+                                "ident": "name",
+                                "colon_token": true,
+                                "expr": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "field": {
+                                        "base": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "self"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "ident": "name"
+                                      }
+                                    },
+                                    "method": "clone",
+                                    "args": []
+                                  }
+                                }
+                              },
+                              {
+                                "ident": "endpoint",
+                                "colon_token": true,
+                                "expr": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "field": {
+                                        "base": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "self"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "ident": "endpoint"
+                                      }
+                                    },
+                                    "method": "clone",
+                                    "args": []
+                                  }
+                                }
+                              },
+                              {
+                                "ident": "cluster",
+                                "colon_token": true,
+                                "expr": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "clst"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "method": "masked_url",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "impl": {
+        "trait": [
+          false,
+          {
+            "segments": [
+              {
+                "ident": "Default"
+              }
+            ]
+          }
+        ],
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "AdapterCluster"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "ident": "default",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "call": {
+                        "func": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              },
+                              {
+                                "ident": "devnet"
+                              }
+                            ]
+                          }
+                        },
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "impl": {
+        "trait": [
+          false,
+          {
+            "segments": [
+              {
+                "ident": "std"
+              },
+              {
+                "ident": "fmt"
+              },
+              {
+                "ident": "Display"
+              }
+            ]
+          }
+        ],
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "AdapterCluster"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "ident": "fmt",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "f"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "mut": true,
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "std"
+                              },
+                              {
+                                "ident": "fmt"
+                              },
+                              {
+                                "ident": "Formatter",
+                                "arguments": {
+                                  "angle_bracketed": {
+                                    "args": [
+                                      {
+                                        "lifetime": "_"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "std"
+                    },
+                    {
+                      "ident": "fmt"
+                    },
+                    {
+                      "ident": "Result"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "write"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "ident": "f"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"{}\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "self"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "cluster"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "display"
+                          },
+                          {
+                            "group": {
+                              "delimiter": "parenthesis",
+                              "stream": []
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "impl": {
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "AdapterCluster"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "masked_url",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "if": {
+                        "cond": {
+                          "let": {
+                            "pat": {
+                              "tuple_struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Some"
+                                    }
+                                  ]
+                                },
+                                "elems": [
+                                  {
+                                    "ident": {
+                                      "ident": "token_start"
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "expr": {
+                              "method_call": {
+                                "receiver": {
+                                  "field": {
+                                    "base": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "self"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "ident": "endpoint"
+                                  }
+                                },
+                                "method": "find",
+                                "args": [
+                                  {
+                                    "lit": {
+                                      "str": "\"?\""
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "then_branch": [
+                          {
+                            "let": {
+                              "pat": {
+                                "tuple": {
+                                  "elems": [
+                                    {
+                                      "ident": {
+                                        "ident": "before_token"
+                                      }
+                                    },
+                                    {
+                                      "ident": {
+                                        "ident": "after_token"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              "init": {
+                                "expr": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "field": {
+                                        "base": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "self"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "ident": "endpoint"
+                                      }
+                                    },
+                                    "method": "split_at",
+                                    "args": [
+                                      {
+                                        "binary": {
+                                          "left": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "token_start"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "op": "+",
+                                          "right": {
+                                            "lit": {
+                                              "int": "6"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "expr": [
+                              {
+                                "if": {
+                                  "cond": {
+                                    "let": {
+                                      "pat": {
+                                        "tuple_struct": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "Some"
+                                              }
+                                            ]
+                                          },
+                                          "elems": [
+                                            {
+                                              "ident": {
+                                                "ident": "token_end"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "expr": {
+                                        "method_call": {
+                                          "receiver": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "after_token"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "method": "find",
+                                          "args": [
+                                            {
+                                              "lit": {
+                                                "char": "'&'"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "then_branch": [
+                                    {
+                                      "let": {
+                                        "pat": {
+                                          "tuple": {
+                                            "elems": [
+                                              {
+                                                "ident": {
+                                                  "ident": "token_part"
+                                                }
+                                              },
+                                              {
+                                                "ident": {
+                                                  "ident": "rest"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "init": {
+                                          "expr": {
+                                            "method_call": {
+                                              "receiver": {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "after_token"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "method": "split_at",
+                                              "args": [
+                                                {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "token_end"
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "let": {
+                                        "pat": {
+                                          "ident": {
+                                            "ident": "masked_token"
+                                          }
+                                        },
+                                        "init": {
+                                          "expr": {
+                                            "if": {
+                                              "cond": {
+                                                "binary": {
+                                                  "left": {
+                                                    "method_call": {
+                                                      "receiver": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "token_part"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "method": "len",
+                                                      "args": []
+                                                    }
+                                                  },
+                                                  "op": ">",
+                                                  "right": {
+                                                    "lit": {
+                                                      "int": "8"
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              "then_branch": [
+                                                {
+                                                  "expr": [
+                                                    {
+                                                      "macro": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "format"
+                                                            }
+                                                          ]
+                                                        },
+                                                        "delimiter": "paren",
+                                                        "tokens": [
+                                                          {
+                                                            "lit": "\"{}...{}\""
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": ",",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": "&",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "token_part"
+                                                          },
+                                                          {
+                                                            "group": {
+                                                              "delimiter": "bracket",
+                                                              "stream": [
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ".",
+                                                                    "spacing": "joint"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ".",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "lit": "4"
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": ",",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": "&",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "token_part"
+                                                          },
+                                                          {
+                                                            "group": {
+                                                              "delimiter": "bracket",
+                                                              "stream": [
+                                                                {
+                                                                  "ident": "token_part"
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ".",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "len"
+                                                                },
+                                                                {
+                                                                  "group": {
+                                                                    "delimiter": "parenthesis",
+                                                                    "stream": []
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": "-",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "lit": "4"
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ".",
+                                                                    "spacing": "joint"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ".",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    false
+                                                  ]
+                                                }
+                                              ],
+                                              "else_branch": {
+                                                "block": {
+                                                  "stmts": [
+                                                    {
+                                                      "expr": [
+                                                        {
+                                                          "method_call": {
+                                                            "receiver": {
+                                                              "lit": {
+                                                                "str": "\"*\""
+                                                              }
+                                                            },
+                                                            "method": "repeat",
+                                                            "args": [
+                                                              {
+                                                                "method_call": {
+                                                                  "receiver": {
+                                                                    "path": {
+                                                                      "segments": [
+                                                                        {
+                                                                          "ident": "token_part"
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  },
+                                                                  "method": "len",
+                                                                  "args": []
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        false
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "expr": [
+                                        {
+                                          "macro": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "format"
+                                                }
+                                              ]
+                                            },
+                                            "delimiter": "paren",
+                                            "tokens": [
+                                              {
+                                                "lit": "\"{}{}{}\""
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ",",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "ident": "before_token"
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ",",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "ident": "masked_token"
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ",",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "ident": "rest"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        false
+                                      ]
+                                    }
+                                  ],
+                                  "else_branch": {
+                                    "block": {
+                                      "stmts": [
+                                        {
+                                          "let": {
+                                            "pat": {
+                                              "ident": {
+                                                "ident": "masked_token"
+                                              }
+                                            },
+                                            "init": {
+                                              "expr": {
+                                                "if": {
+                                                  "cond": {
+                                                    "binary": {
+                                                      "left": {
+                                                        "method_call": {
+                                                          "receiver": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "after_token"
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          "method": "len",
+                                                          "args": []
+                                                        }
+                                                      },
+                                                      "op": ">",
+                                                      "right": {
+                                                        "lit": {
+                                                          "int": "8"
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "then_branch": [
+                                                    {
+                                                      "expr": [
+                                                        {
+                                                          "macro": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "format"
+                                                                }
+                                                              ]
+                                                            },
+                                                            "delimiter": "paren",
+                                                            "tokens": [
+                                                              {
+                                                                "lit": "\"{}...{}\""
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ",",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": "&",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "after_token"
+                                                              },
+                                                              {
+                                                                "group": {
+                                                                  "delimiter": "bracket",
+                                                                  "stream": [
+                                                                    {
+                                                                      "punct": {
+                                                                        "op": ".",
+                                                                        "spacing": "joint"
+                                                                      }
+                                                                    },
+                                                                    {
+                                                                      "punct": {
+                                                                        "op": ".",
+                                                                        "spacing": "alone"
+                                                                      }
+                                                                    },
+                                                                    {
+                                                                      "lit": "4"
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": ",",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "punct": {
+                                                                  "op": "&",
+                                                                  "spacing": "alone"
+                                                                }
+                                                              },
+                                                              {
+                                                                "ident": "after_token"
+                                                              },
+                                                              {
+                                                                "group": {
+                                                                  "delimiter": "bracket",
+                                                                  "stream": [
+                                                                    {
+                                                                      "ident": "after_token"
+                                                                    },
+                                                                    {
+                                                                      "punct": {
+                                                                        "op": ".",
+                                                                        "spacing": "alone"
+                                                                      }
+                                                                    },
+                                                                    {
+                                                                      "ident": "len"
+                                                                    },
+                                                                    {
+                                                                      "group": {
+                                                                        "delimiter": "parenthesis",
+                                                                        "stream": []
+                                                                      }
+                                                                    },
+                                                                    {
+                                                                      "punct": {
+                                                                        "op": "-",
+                                                                        "spacing": "alone"
+                                                                      }
+                                                                    },
+                                                                    {
+                                                                      "lit": "4"
+                                                                    },
+                                                                    {
+                                                                      "punct": {
+                                                                        "op": ".",
+                                                                        "spacing": "joint"
+                                                                      }
+                                                                    },
+                                                                    {
+                                                                      "punct": {
+                                                                        "op": ".",
+                                                                        "spacing": "alone"
+                                                                      }
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        false
+                                                      ]
+                                                    }
+                                                  ],
+                                                  "else_branch": {
+                                                    "block": {
+                                                      "stmts": [
+                                                        {
+                                                          "expr": [
+                                                            {
+                                                              "method_call": {
+                                                                "receiver": {
+                                                                  "lit": {
+                                                                    "str": "\"*\""
+                                                                  }
+                                                                },
+                                                                "method": "repeat",
+                                                                "args": [
+                                                                  {
+                                                                    "method_call": {
+                                                                      "receiver": {
+                                                                        "path": {
+                                                                          "segments": [
+                                                                            {
+                                                                              "ident": "after_token"
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      },
+                                                                      "method": "len",
+                                                                      "args": []
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              }
+                                                            },
+                                                            false
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "expr": [
+                                            {
+                                              "macro": {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "format"
+                                                    }
+                                                  ]
+                                                },
+                                                "delimiter": "paren",
+                                                "tokens": [
+                                                  {
+                                                    "lit": "\"{}{}\""
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ",",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "before_token"
+                                                  },
+                                                  {
+                                                    "punct": {
+                                                      "op": ",",
+                                                      "spacing": "alone"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": "masked_token"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            false
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              false
+                            ]
+                          }
+                        ],
+                        "else_branch": {
+                          "if": {
+                            "cond": {
+                              "method_call": {
+                                "receiver": {
+                                  "field": {
+                                    "base": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "self"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "ident": "endpoint"
+                                  }
+                                },
+                                "method": "contains",
+                                "args": [
+                                  {
+                                    "lit": {
+                                      "str": "\"access_token=\""
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "then_branch": [
+                              {
+                                "expr": [
+                                  {
+                                    "if": {
+                                      "cond": {
+                                        "let": {
+                                          "pat": {
+                                            "tuple_struct": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "Some"
+                                                  }
+                                                ]
+                                              },
+                                              "elems": [
+                                                {
+                                                  "ident": {
+                                                    "ident": "token_start"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "expr": {
+                                            "method_call": {
+                                              "receiver": {
+                                                "field": {
+                                                  "base": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "self"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "ident": "endpoint"
+                                                }
+                                              },
+                                              "method": "find",
+                                              "args": [
+                                                {
+                                                  "lit": {
+                                                    "str": "\"access_token=\""
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "then_branch": [
+                                        {
+                                          "let": {
+                                            "pat": {
+                                              "tuple": {
+                                                "elems": [
+                                                  {
+                                                    "ident": {
+                                                      "ident": "before_token"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": {
+                                                      "ident": "after_token"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "init": {
+                                              "expr": {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "field": {
+                                                      "base": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "self"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "ident": "endpoint"
+                                                    }
+                                                  },
+                                                  "method": "split_at",
+                                                  "args": [
+                                                    {
+                                                      "binary": {
+                                                        "left": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "token_start"
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        "op": "+",
+                                                        "right": {
+                                                          "lit": {
+                                                            "int": "13"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "expr": [
+                                            {
+                                              "if": {
+                                                "cond": {
+                                                  "let": {
+                                                    "pat": {
+                                                      "tuple_struct": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "Some"
+                                                            }
+                                                          ]
+                                                        },
+                                                        "elems": [
+                                                          {
+                                                            "ident": {
+                                                              "ident": "token_end"
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    "expr": {
+                                                      "method_call": {
+                                                        "receiver": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "after_token"
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        "method": "find",
+                                                        "args": [
+                                                          {
+                                                            "lit": {
+                                                              "char": "'&'"
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "then_branch": [
+                                                  {
+                                                    "let": {
+                                                      "pat": {
+                                                        "tuple": {
+                                                          "elems": [
+                                                            {
+                                                              "ident": {
+                                                                "ident": "token_part"
+                                                              }
+                                                            },
+                                                            {
+                                                              "ident": {
+                                                                "ident": "rest"
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "init": {
+                                                        "expr": {
+                                                          "method_call": {
+                                                            "receiver": {
+                                                              "path": {
+                                                                "segments": [
+                                                                  {
+                                                                    "ident": "after_token"
+                                                                  }
+                                                                ]
+                                                              }
+                                                            },
+                                                            "method": "split_at",
+                                                            "args": [
+                                                              {
+                                                                "path": {
+                                                                  "segments": [
+                                                                    {
+                                                                      "ident": "token_end"
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "let": {
+                                                      "pat": {
+                                                        "ident": {
+                                                          "ident": "masked_token"
+                                                        }
+                                                      },
+                                                      "init": {
+                                                        "expr": {
+                                                          "if": {
+                                                            "cond": {
+                                                              "binary": {
+                                                                "left": {
+                                                                  "method_call": {
+                                                                    "receiver": {
+                                                                      "path": {
+                                                                        "segments": [
+                                                                          {
+                                                                            "ident": "token_part"
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    },
+                                                                    "method": "len",
+                                                                    "args": []
+                                                                  }
+                                                                },
+                                                                "op": ">",
+                                                                "right": {
+                                                                  "lit": {
+                                                                    "int": "8"
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "then_branch": [
+                                                              {
+                                                                "expr": [
+                                                                  {
+                                                                    "macro": {
+                                                                      "path": {
+                                                                        "segments": [
+                                                                          {
+                                                                            "ident": "format"
+                                                                          }
+                                                                        ]
+                                                                      },
+                                                                      "delimiter": "paren",
+                                                                      "tokens": [
+                                                                        {
+                                                                          "lit": "\"{}...{}\""
+                                                                        },
+                                                                        {
+                                                                          "punct": {
+                                                                            "op": ",",
+                                                                            "spacing": "alone"
+                                                                          }
+                                                                        },
+                                                                        {
+                                                                          "punct": {
+                                                                            "op": "&",
+                                                                            "spacing": "alone"
+                                                                          }
+                                                                        },
+                                                                        {
+                                                                          "ident": "token_part"
+                                                                        },
+                                                                        {
+                                                                          "group": {
+                                                                            "delimiter": "bracket",
+                                                                            "stream": [
+                                                                              {
+                                                                                "punct": {
+                                                                                  "op": ".",
+                                                                                  "spacing": "joint"
+                                                                                }
+                                                                              },
+                                                                              {
+                                                                                "punct": {
+                                                                                  "op": ".",
+                                                                                  "spacing": "alone"
+                                                                                }
+                                                                              },
+                                                                              {
+                                                                                "lit": "4"
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        },
+                                                                        {
+                                                                          "punct": {
+                                                                            "op": ",",
+                                                                            "spacing": "alone"
+                                                                          }
+                                                                        },
+                                                                        {
+                                                                          "punct": {
+                                                                            "op": "&",
+                                                                            "spacing": "alone"
+                                                                          }
+                                                                        },
+                                                                        {
+                                                                          "ident": "token_part"
+                                                                        },
+                                                                        {
+                                                                          "group": {
+                                                                            "delimiter": "bracket",
+                                                                            "stream": [
+                                                                              {
+                                                                                "ident": "token_part"
+                                                                              },
+                                                                              {
+                                                                                "punct": {
+                                                                                  "op": ".",
+                                                                                  "spacing": "alone"
+                                                                                }
+                                                                              },
+                                                                              {
+                                                                                "ident": "len"
+                                                                              },
+                                                                              {
+                                                                                "group": {
+                                                                                  "delimiter": "parenthesis",
+                                                                                  "stream": []
+                                                                                }
+                                                                              },
+                                                                              {
+                                                                                "punct": {
+                                                                                  "op": "-",
+                                                                                  "spacing": "alone"
+                                                                                }
+                                                                              },
+                                                                              {
+                                                                                "lit": "4"
+                                                                              },
+                                                                              {
+                                                                                "punct": {
+                                                                                  "op": ".",
+                                                                                  "spacing": "joint"
+                                                                                }
+                                                                              },
+                                                                              {
+                                                                                "punct": {
+                                                                                  "op": ".",
+                                                                                  "spacing": "alone"
+                                                                                }
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  },
+                                                                  false
+                                                                ]
+                                                              }
+                                                            ],
+                                                            "else_branch": {
+                                                              "block": {
+                                                                "stmts": [
+                                                                  {
+                                                                    "expr": [
+                                                                      {
+                                                                        "method_call": {
+                                                                          "receiver": {
+                                                                            "lit": {
+                                                                              "str": "\"*\""
+                                                                            }
+                                                                          },
+                                                                          "method": "repeat",
+                                                                          "args": [
+                                                                            {
+                                                                              "method_call": {
+                                                                                "receiver": {
+                                                                                  "path": {
+                                                                                    "segments": [
+                                                                                      {
+                                                                                        "ident": "token_part"
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                },
+                                                                                "method": "len",
+                                                                                "args": []
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      },
+                                                                      false
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "expr": [
+                                                      {
+                                                        "macro": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "format"
+                                                              }
+                                                            ]
+                                                          },
+                                                          "delimiter": "paren",
+                                                          "tokens": [
+                                                            {
+                                                              "lit": "\"{}{}{}\""
+                                                            },
+                                                            {
+                                                              "punct": {
+                                                                "op": ",",
+                                                                "spacing": "alone"
+                                                              }
+                                                            },
+                                                            {
+                                                              "ident": "before_token"
+                                                            },
+                                                            {
+                                                              "punct": {
+                                                                "op": ",",
+                                                                "spacing": "alone"
+                                                              }
+                                                            },
+                                                            {
+                                                              "ident": "masked_token"
+                                                            },
+                                                            {
+                                                              "punct": {
+                                                                "op": ",",
+                                                                "spacing": "alone"
+                                                              }
+                                                            },
+                                                            {
+                                                              "ident": "rest"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      false
+                                                    ]
+                                                  }
+                                                ],
+                                                "else_branch": {
+                                                  "block": {
+                                                    "stmts": [
+                                                      {
+                                                        "let": {
+                                                          "pat": {
+                                                            "ident": {
+                                                              "ident": "masked_token"
+                                                            }
+                                                          },
+                                                          "init": {
+                                                            "expr": {
+                                                              "if": {
+                                                                "cond": {
+                                                                  "binary": {
+                                                                    "left": {
+                                                                      "method_call": {
+                                                                        "receiver": {
+                                                                          "path": {
+                                                                            "segments": [
+                                                                              {
+                                                                                "ident": "after_token"
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        },
+                                                                        "method": "len",
+                                                                        "args": []
+                                                                      }
+                                                                    },
+                                                                    "op": ">",
+                                                                    "right": {
+                                                                      "lit": {
+                                                                        "int": "8"
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                },
+                                                                "then_branch": [
+                                                                  {
+                                                                    "expr": [
+                                                                      {
+                                                                        "macro": {
+                                                                          "path": {
+                                                                            "segments": [
+                                                                              {
+                                                                                "ident": "format"
+                                                                              }
+                                                                            ]
+                                                                          },
+                                                                          "delimiter": "paren",
+                                                                          "tokens": [
+                                                                            {
+                                                                              "lit": "\"{}...{}\""
+                                                                            },
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": ",",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": "&",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "after_token"
+                                                                            },
+                                                                            {
+                                                                              "group": {
+                                                                                "delimiter": "bracket",
+                                                                                "stream": [
+                                                                                  {
+                                                                                    "punct": {
+                                                                                      "op": ".",
+                                                                                      "spacing": "joint"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "punct": {
+                                                                                      "op": ".",
+                                                                                      "spacing": "alone"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "lit": "4"
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": ",",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": "&",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "ident": "after_token"
+                                                                            },
+                                                                            {
+                                                                              "group": {
+                                                                                "delimiter": "bracket",
+                                                                                "stream": [
+                                                                                  {
+                                                                                    "ident": "after_token"
+                                                                                  },
+                                                                                  {
+                                                                                    "punct": {
+                                                                                      "op": ".",
+                                                                                      "spacing": "alone"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "ident": "len"
+                                                                                  },
+                                                                                  {
+                                                                                    "group": {
+                                                                                      "delimiter": "parenthesis",
+                                                                                      "stream": []
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "punct": {
+                                                                                      "op": "-",
+                                                                                      "spacing": "alone"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "lit": "4"
+                                                                                  },
+                                                                                  {
+                                                                                    "punct": {
+                                                                                      "op": ".",
+                                                                                      "spacing": "joint"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "punct": {
+                                                                                      "op": ".",
+                                                                                      "spacing": "alone"
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      },
+                                                                      false
+                                                                    ]
+                                                                  }
+                                                                ],
+                                                                "else_branch": {
+                                                                  "block": {
+                                                                    "stmts": [
+                                                                      {
+                                                                        "expr": [
+                                                                          {
+                                                                            "method_call": {
+                                                                              "receiver": {
+                                                                                "lit": {
+                                                                                  "str": "\"*\""
+                                                                                }
+                                                                              },
+                                                                              "method": "repeat",
+                                                                              "args": [
+                                                                                {
+                                                                                  "method_call": {
+                                                                                    "receiver": {
+                                                                                      "path": {
+                                                                                        "segments": [
+                                                                                          {
+                                                                                            "ident": "after_token"
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    },
+                                                                                    "method": "len",
+                                                                                    "args": []
+                                                                                  }
+                                                                                }
+                                                                              ]
+                                                                            }
+                                                                          },
+                                                                          false
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "expr": [
+                                                          {
+                                                            "macro": {
+                                                              "path": {
+                                                                "segments": [
+                                                                  {
+                                                                    "ident": "format"
+                                                                  }
+                                                                ]
+                                                              },
+                                                              "delimiter": "paren",
+                                                              "tokens": [
+                                                                {
+                                                                  "lit": "\"{}{}\""
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ",",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "before_token"
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ",",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "masked_token"
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          false
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            false
+                                          ]
+                                        }
+                                      ],
+                                      "else_branch": {
+                                        "block": {
+                                          "stmts": [
+                                            {
+                                              "expr": [
+                                                {
+                                                  "method_call": {
+                                                    "receiver": {
+                                                      "field": {
+                                                        "base": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "self"
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        "ident": "endpoint"
+                                                      }
+                                                    },
+                                                    "method": "clone",
+                                                    "args": []
+                                                  }
+                                                },
+                                                false
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  false
+                                ]
+                              }
+                            ],
+                            "else_branch": {
+                              "if": {
+                                "cond": {
+                                  "binary": {
+                                    "left": {
+                                      "method_call": {
+                                        "receiver": {
+                                          "field": {
+                                            "base": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "self"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "ident": "endpoint"
+                                          }
+                                        },
+                                        "method": "contains",
+                                        "args": [
+                                          {
+                                            "lit": {
+                                              "str": "\"://\""
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "op": "&&",
+                                    "right": {
+                                      "binary": {
+                                        "left": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "method_call": {
+                                                "receiver": {
+                                                  "field": {
+                                                    "base": {
+                                                      "path": {
+                                                        "segments": [
+                                                          {
+                                                            "ident": "self"
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    "ident": "endpoint"
+                                                  }
+                                                },
+                                                "method": "matches",
+                                                "args": [
+                                                  {
+                                                    "lit": {
+                                                      "char": "':'"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "method": "count",
+                                            "args": []
+                                          }
+                                        },
+                                        "op": ">=",
+                                        "right": {
+                                          "lit": {
+                                            "int": "2"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "then_branch": [
+                                  {
+                                    "expr": [
+                                      {
+                                        "if": {
+                                          "cond": {
+                                            "let": {
+                                              "pat": {
+                                                "tuple_struct": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "Some"
+                                                      }
+                                                    ]
+                                                  },
+                                                  "elems": [
+                                                    {
+                                                      "ident": {
+                                                        "ident": "at_pos"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "expr": {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "field": {
+                                                      "base": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "self"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "ident": "endpoint"
+                                                    }
+                                                  },
+                                                  "method": "find",
+                                                  "args": [
+                                                    {
+                                                      "lit": {
+                                                        "char": "'@'"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "then_branch": [
+                                            {
+                                              "expr": [
+                                                {
+                                                  "if": {
+                                                    "cond": {
+                                                      "let": {
+                                                        "pat": {
+                                                          "tuple_struct": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "Some"
+                                                                }
+                                                              ]
+                                                            },
+                                                            "elems": [
+                                                              {
+                                                                "ident": {
+                                                                  "ident": "scheme_end"
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        "expr": {
+                                                          "method_call": {
+                                                            "receiver": {
+                                                              "field": {
+                                                                "base": {
+                                                                  "path": {
+                                                                    "segments": [
+                                                                      {
+                                                                        "ident": "self"
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                },
+                                                                "ident": "endpoint"
+                                                              }
+                                                            },
+                                                            "method": "find",
+                                                            "args": [
+                                                              {
+                                                                "lit": {
+                                                                  "str": "\"://\""
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    "then_branch": [
+                                                      {
+                                                        "let": {
+                                                          "pat": {
+                                                            "ident": {
+                                                              "ident": "scheme_part"
+                                                            }
+                                                          },
+                                                          "init": {
+                                                            "expr": {
+                                                              "reference": {
+                                                                "expr": {
+                                                                  "index": {
+                                                                    "expr": {
+                                                                      "field": {
+                                                                        "base": {
+                                                                          "path": {
+                                                                            "segments": [
+                                                                              {
+                                                                                "ident": "self"
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        },
+                                                                        "ident": "endpoint"
+                                                                      }
+                                                                    },
+                                                                    "index": {
+                                                                      "range": {
+                                                                        "limits": "..",
+                                                                        "end": {
+                                                                          "binary": {
+                                                                            "left": {
+                                                                              "path": {
+                                                                                "segments": [
+                                                                                  {
+                                                                                    "ident": "scheme_end"
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            },
+                                                                            "op": "+",
+                                                                            "right": {
+                                                                              "lit": {
+                                                                                "int": "3"
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "let": {
+                                                          "pat": {
+                                                            "ident": {
+                                                              "ident": "after_at"
+                                                            }
+                                                          },
+                                                          "init": {
+                                                            "expr": {
+                                                              "reference": {
+                                                                "expr": {
+                                                                  "index": {
+                                                                    "expr": {
+                                                                      "field": {
+                                                                        "base": {
+                                                                          "path": {
+                                                                            "segments": [
+                                                                              {
+                                                                                "ident": "self"
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        },
+                                                                        "ident": "endpoint"
+                                                                      }
+                                                                    },
+                                                                    "index": {
+                                                                      "range": {
+                                                                        "start": {
+                                                                          "path": {
+                                                                            "segments": [
+                                                                              {
+                                                                                "ident": "at_pos"
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        },
+                                                                        "limits": ".."
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "expr": [
+                                                          {
+                                                            "macro": {
+                                                              "path": {
+                                                                "segments": [
+                                                                  {
+                                                                    "ident": "format"
+                                                                  }
+                                                                ]
+                                                              },
+                                                              "delimiter": "paren",
+                                                              "tokens": [
+                                                                {
+                                                                  "lit": "\"{}***{}\""
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ",",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "scheme_part"
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ",",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "after_at"
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          false
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "else_branch": {
+                                                      "block": {
+                                                        "stmts": [
+                                                          {
+                                                            "expr": [
+                                                              {
+                                                                "method_call": {
+                                                                  "receiver": {
+                                                                    "field": {
+                                                                      "base": {
+                                                                        "path": {
+                                                                          "segments": [
+                                                                            {
+                                                                              "ident": "self"
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      },
+                                                                      "ident": "endpoint"
+                                                                    }
+                                                                  },
+                                                                  "method": "clone",
+                                                                  "args": []
+                                                                }
+                                                              },
+                                                              false
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                false
+                                              ]
+                                            }
+                                          ],
+                                          "else_branch": {
+                                            "block": {
+                                              "stmts": [
+                                                {
+                                                  "expr": [
+                                                    {
+                                                      "method_call": {
+                                                        "receiver": {
+                                                          "field": {
+                                                            "base": {
+                                                              "path": {
+                                                                "segments": [
+                                                                  {
+                                                                    "ident": "self"
+                                                                  }
+                                                                ]
+                                                              }
+                                                            },
+                                                            "ident": "endpoint"
+                                                          }
+                                                        },
+                                                        "method": "clone",
+                                                        "args": []
+                                                      }
+                                                    },
+                                                    false
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      false
+                                    ]
+                                  }
+                                ],
+                                "else_branch": {
+                                  "block": {
+                                    "stmts": [
+                                      {
+                                        "expr": [
+                                          {
+                                            "method_call": {
+                                              "receiver": {
+                                                "field": {
+                                                  "base": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "self"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "ident": "endpoint"
+                                                }
+                                              },
+                                              "method": "clone",
+                                              "args": []
+                                            }
+                                          },
+                                          false
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

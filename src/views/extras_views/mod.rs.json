@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "mod": {
+        "ident": "siws",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "siws",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "sign_message",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "sign_message",
+            "tree": "*"
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "ident": "sign_tx",
+        "semi": true
+      }
+    },
+    {
+      "use": {
+        "vis": "pub",
+        "tree": {
+          "path": {
+            "ident": "sign_tx",
+            "tree": "*"
+          }
+        }
+      }
+    }
+  ]
+}

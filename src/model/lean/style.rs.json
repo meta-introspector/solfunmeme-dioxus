@@ -1,0 +1,3491 @@
+{
+  "items": [
+    {
+      "struct": {
+        "vis": "pub",
+        "ident": "Theme",
+        "fields": {
+          "named": [
+            {
+              "vis": "pub",
+              "ident": "primary_gradient",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "secondary_gradient",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "background_color",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "surface_color",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "text_primary",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "text_secondary",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "accent_color",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "error_color",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "success_color",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "spacing_xs",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "spacing_sm",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "spacing_md",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "spacing_lg",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "spacing_xl",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "radius_sm",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "radius_md",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "radius_lg",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "font_family_mono",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "font_family_sans",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "font_size_sm",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "font_size_md",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "font_size_lg",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "font_size_xl",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "shadow_sm",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "shadow_md",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "shadow_lg",
+              "colon_token": true,
+              "ty": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "impl": {
+        "trait": [
+          false,
+          {
+            "segments": [
+              {
+                "ident": "Default"
+              }
+            ]
+          }
+        ],
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Theme"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "ident": "default",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "Theme"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "primary_gradient",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"linear-gradient(135deg, #667eea 0%, #764ba2 100%)\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "secondary_gradient",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"linear-gradient(45deg, #667eea, #764ba2)\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "background_color",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"linear-gradient(135deg, #667eea 0%, #764ba2 100%)\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "surface_color",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"rgba(255,255,255,0.95)\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "text_primary",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"#333\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "text_secondary",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"#666\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "accent_color",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"#667eea\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "error_color",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"#ff4757\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "success_color",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"#2ed573\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "spacing_xs",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"5px\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "spacing_sm",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"10px\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "spacing_md",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"15px\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "spacing_lg",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"20px\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "spacing_xl",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"30px\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "radius_sm",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"8px\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "radius_md",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"12px\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "radius_lg",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"15px\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "font_family_mono",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"\\'Fira Code\\', monospace\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "font_family_sans",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"system-ui, -apple-system, sans-serif\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "font_size_sm",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"14px\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "font_size_md",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"16px\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "font_size_lg",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"1.2rem\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "font_size_xl",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"2.5rem\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "shadow_sm",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"0 2px 8px rgba(0,0,0,0.1)\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "shadow_md",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"0 4px 16px rgba(0,0,0,0.1)\""
+                              }
+                            }
+                          },
+                          {
+                            "ident": "shadow_lg",
+                            "colon_token": true,
+                            "expr": {
+                              "lit": {
+                                "str": "\"0 8px 32px rgba(0,0,0,0.1)\""
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "static": {
+        "vis": "pub",
+        "ident": "THEME",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Theme"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "struct": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "Theme"
+                }
+              ]
+            },
+            "fields": [
+              {
+                "ident": "primary_gradient",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"linear-gradient(135deg, #667eea 0%, #764ba2 100%)\""
+                  }
+                }
+              },
+              {
+                "ident": "secondary_gradient",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"linear-gradient(45deg, #667eea, #764ba2)\""
+                  }
+                }
+              },
+              {
+                "ident": "background_color",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"linear-gradient(135deg, #667eea 0%, #764ba2 100%)\""
+                  }
+                }
+              },
+              {
+                "ident": "surface_color",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"rgba(255,255,255,0.95)\""
+                  }
+                }
+              },
+              {
+                "ident": "text_primary",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"#333\""
+                  }
+                }
+              },
+              {
+                "ident": "text_secondary",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"#666\""
+                  }
+                }
+              },
+              {
+                "ident": "accent_color",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"#667eea\""
+                  }
+                }
+              },
+              {
+                "ident": "error_color",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"#ff4757\""
+                  }
+                }
+              },
+              {
+                "ident": "success_color",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"#2ed573\""
+                  }
+                }
+              },
+              {
+                "ident": "spacing_xs",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"5px\""
+                  }
+                }
+              },
+              {
+                "ident": "spacing_sm",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"10px\""
+                  }
+                }
+              },
+              {
+                "ident": "spacing_md",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"15px\""
+                  }
+                }
+              },
+              {
+                "ident": "spacing_lg",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"20px\""
+                  }
+                }
+              },
+              {
+                "ident": "spacing_xl",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"30px\""
+                  }
+                }
+              },
+              {
+                "ident": "radius_sm",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"8px\""
+                  }
+                }
+              },
+              {
+                "ident": "radius_md",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"12px\""
+                  }
+                }
+              },
+              {
+                "ident": "radius_lg",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"15px\""
+                  }
+                }
+              },
+              {
+                "ident": "font_family_mono",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"\\'Fira Code\\', monospace\""
+                  }
+                }
+              },
+              {
+                "ident": "font_family_sans",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"system-ui, -apple-system, sans-serif\""
+                  }
+                }
+              },
+              {
+                "ident": "font_size_sm",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"14px\""
+                  }
+                }
+              },
+              {
+                "ident": "font_size_md",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"16px\""
+                  }
+                }
+              },
+              {
+                "ident": "font_size_lg",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"1.2rem\""
+                  }
+                }
+              },
+              {
+                "ident": "font_size_xl",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"2.5rem\""
+                  }
+                }
+              },
+              {
+                "ident": "shadow_sm",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"0 2px 8px rgba(0,0,0,0.1)\""
+                  }
+                }
+              },
+              {
+                "ident": "shadow_md",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"0 4px 16px rgba(0,0,0,0.1)\""
+                  }
+                }
+              },
+              {
+                "ident": "shadow_lg",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"0 8px 32px rgba(0,0,0,0.1)\""
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "struct": {
+        "vis": "pub",
+        "ident": "Styles",
+        "fields": "unit"
+      }
+    },
+    {
+      "impl": {
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Styles"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "app_container",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"font-family: {}; background: {}; min-height: 100vh; padding: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "font_family_mono"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "background_color"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_lg"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "header",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "lit": {
+                            "str": "\"text-align: center; margin-bottom: 30px; color: white;\""
+                          }
+                        },
+                        "method": "to_string",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "header_title",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"font-size: {}; margin-bottom: {}; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "font_size_xl"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_sm"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "header_subtitle",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"font-size: {}; opacity: 0.9;\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "font_size_lg"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "section",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"background: {}; border-radius: {}; padding: 25px; margin-bottom: {}; box-shadow: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "surface_color"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "radius_lg"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_xl"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "shadow_lg"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "section_title",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"margin-bottom: {}; color: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_lg"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "text_primary"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "input",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"padding: {}; border: 2px solid #ddd; border-radius: {}; font-size: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_sm"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "radius_sm"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "font_size_md"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "textarea",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"padding: {}; border: 2px solid #ddd; border-radius: {}; font-size: {}; min-height: 60px; resize: vertical;\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_sm"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "radius_sm"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "font_size_md"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "search_input",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"width: 100%; padding: {}; border: 2px solid #ddd; border-radius: {}; font-size: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_sm"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "radius_sm"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "font_size_md"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "primary_button",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"padding: 12px 24px; background: {}; color: white; border: none; border-radius: {}; font-size: {}; font-weight: bold; cursor: pointer; transition: transform 0.2s;\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "secondary_gradient"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "radius_sm"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "font_size_md"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "delete_button",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"background: {}; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "error_color"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "font_size_md"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "grid_auto_fit",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "min_width"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"display: grid; grid-template-columns: repeat(auto-fit, minmax({}, 1fr)); gap: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "min_width"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_sm"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "grid_auto_fill",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "min_width"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"display: grid; grid-template-columns: repeat(auto-fill, minmax({}, 1fr)); gap: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "min_width"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_lg"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "flex_center",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "lit": {
+                            "str": "\"display: flex; align-items: center; justify-content: center;\""
+                          }
+                        },
+                        "method": "to_string",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "flex_between",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "lit": {
+                            "str": "\"display: flex; justify-content: space-between; align-items: center;\""
+                          }
+                        },
+                        "method": "to_string",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "flex_with_gap",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "gap"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"display: flex; align-items: center; gap: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "gap"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "card",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"background: {}; border-radius: {}; padding: {}; box-shadow: {}; transition: transform 0.2s;\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "surface_color"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "radius_md"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_lg"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "shadow_md"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "card_hover",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"{} hover: transform: translateY(-2px);\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "Self"
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "joint"
+                            }
+                          },
+                          {
+                            "punct": {
+                              "op": ":",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "card"
+                          },
+                          {
+                            "group": {
+                              "delimiter": "parenthesis",
+                              "stream": []
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "code_block",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"background: #f8f9fa; padding: {}; border-radius: {}; margin-bottom: {}; font-family: {}; font-size: {}; overflow-x: auto;\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_md"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "radius_sm"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_sm"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "font_family_mono"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "font_size_sm"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "form_grid",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"display: grid; gap: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_md"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "radio_group",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: {}; margin-bottom: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_sm"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_lg"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "radio_label",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"display: flex; align-items: center; gap: {}; cursor: pointer;\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_xs"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "checkbox_label",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"display: flex; align-items: center; gap: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "spacing_xs"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "text_primary",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"color: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "text_primary"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "text_secondary",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"color: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "text_secondary"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "text_accent",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"color: {}; font-weight: 500;\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "THEME"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "accent_color"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "text_white",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "lit": {
+                            "str": "\"color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);\""
+                          }
+                        },
+                        "method": "to_string",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "margin_bottom",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "size"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"margin-bottom: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "size"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "padding",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "size"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "format"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"padding: {};\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "size"
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "font_weight_bold",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "lit": {
+                            "str": "\"font-weight: bold;\""
+                          }
+                        },
+                        "method": "to_string",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "font_weight_medium",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "lit": {
+                            "str": "\"font-weight: 500;\""
+                          }
+                        },
+                        "method": "to_string",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "cursor_pointer",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "lit": {
+                            "str": "\"cursor: pointer;\""
+                          }
+                        },
+                        "method": "to_string",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "overflow_hidden",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "lit": {
+                            "str": "\"overflow: hidden;\""
+                          }
+                        },
+                        "method": "to_string",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "text_overflow_ellipsis",
+              "inputs": [],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "lit": {
+                            "str": "\"white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\""
+                          }
+                        },
+                        "method": "to_string",
+                        "args": []
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "mobile",
+              "inputs": [],
+              "output": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "lit": {
+                        "str": "\"@media (max-width: 768px)\""
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "tablet",
+              "inputs": [],
+              "output": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "lit": {
+                        "str": "\"@media (max-width: 1024px)\""
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "desktop",
+              "inputs": [],
+              "output": {
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "lit": {
+                        "str": "\"@media (min-width: 1025px)\""
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,600 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "std",
+            "tree": {
+              "path": {
+                "ident": "collections",
+                "tree": {
+                  "ident": "HashMap"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "enum": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "Level",
+        "variants": [
+          {
+            "ident": "Zero",
+            "fields": "unit"
+          },
+          {
+            "ident": "Succ",
+            "fields": {
+              "unnamed": [
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Level"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "Max",
+            "fields": {
+              "unnamed": [
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Level"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Level"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "IMax",
+            "fields": {
+              "unnamed": [
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Level"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Level"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "Param",
+            "fields": {
+              "unnamed": [
+                {
+                  "ty": {
+                    "reference": {
+                      "lifetime": "static",
+                      "elem": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "str"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "MVar",
+            "fields": {
+              "unnamed": [
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "u64"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "enum": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "LevelType",
+        "variants": [
+          {
+            "ident": "Zero",
+            "fields": "unit"
+          },
+          {
+            "ident": "Succ",
+            "fields": {
+              "unnamed": [
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "LevelType"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "Max",
+            "fields": {
+              "unnamed": [
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "LevelType"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "LevelType"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "IMax",
+            "fields": {
+              "unnamed": [
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "LevelType"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "LevelType"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "Param",
+            "fields": {
+              "unnamed": [
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "String"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "MVar",
+            "fields": {
+              "unnamed": [
+                {
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "u64"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "struct": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "LevelDescr",
+        "fields": {
+          "named": [
+            {
+              "ident": "level",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ident": "kind",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

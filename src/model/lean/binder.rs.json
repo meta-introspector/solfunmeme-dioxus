@@ -1,0 +1,72 @@
+{
+  "items": [
+    {
+      "enum": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "BinderInfo",
+        "variants": [
+          {
+            "ident": "Default",
+            "fields": "unit"
+          },
+          {
+            "ident": "Implicit",
+            "fields": "unit"
+          },
+          {
+            "ident": "StrictImplicit",
+            "fields": "unit"
+          },
+          {
+            "ident": "InstImplicit",
+            "fields": "unit"
+          },
+          {
+            "ident": "AuxDecl",
+            "fields": "unit"
+          }
+        ]
+      }
+    }
+  ]
+}

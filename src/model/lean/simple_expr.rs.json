@@ -1,0 +1,4241 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "super",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "binder",
+                    "tree": {
+                      "ident": "BinderInfo"
+                    }
+                  }
+                },
+                {
+                  "path": {
+                    "ident": "level",
+                    "tree": {
+                      "ident": "Level"
+                    }
+                  }
+                },
+                {
+                  "path": {
+                    "ident": "name",
+                    "tree": {
+                      "ident": "Name"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "enum": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "SimpleExpr",
+        "variants": [
+          {
+            "ident": "BVar",
+            "fields": {
+              "named": [
+                {
+                  "ident": "index",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "u64"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "Sort",
+            "fields": {
+              "named": [
+                {
+                  "ident": "level",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Level"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "Const",
+            "fields": {
+              "named": [
+                {
+                  "ident": "name",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Name"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "levels",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Vec",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Level"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "App",
+            "fields": {
+              "named": [
+                {
+                  "ident": "func",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "SimpleExpr"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "arg",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "SimpleExpr"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "Lam",
+            "fields": {
+              "named": [
+                {
+                  "ident": "binder_name",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Name"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "binder_type",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "SimpleExpr"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "body",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "SimpleExpr"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "binder_info",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "BinderInfo"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ident": "ForallE",
+            "fields": {
+              "named": [
+                {
+                  "ident": "binder_name",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Name"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "binder_type",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "SimpleExpr"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "body",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Box",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "SimpleExpr"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "binder_info",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "BinderInfo"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "impl": {
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "SimpleExpr"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "rec",
+              "generics": {
+                "params": [
+                  {
+                    "type": {
+                      "ident": "T"
+                    }
+                  },
+                  {
+                    "type": {
+                      "ident": "F1"
+                    }
+                  },
+                  {
+                    "type": {
+                      "ident": "F2"
+                    }
+                  },
+                  {
+                    "type": {
+                      "ident": "F3"
+                    }
+                  },
+                  {
+                    "type": {
+                      "ident": "F4"
+                    }
+                  },
+                  {
+                    "type": {
+                      "ident": "F5"
+                    }
+                  },
+                  {
+                    "type": {
+                      "ident": "F6"
+                    }
+                  }
+                ],
+                "where_clause": [
+                  {
+                    "type": {
+                      "bounded_ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "F1"
+                            }
+                          ]
+                        }
+                      },
+                      "bounds": [
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "FnOnce",
+                                  "arguments": {
+                                    "parenthesized": {
+                                      "inputs": [
+                                        {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "u64"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ],
+                                      "output": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "T"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Clone"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": {
+                      "bounded_ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "F2"
+                            }
+                          ]
+                        }
+                      },
+                      "bounds": [
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "FnOnce",
+                                  "arguments": {
+                                    "parenthesized": {
+                                      "inputs": [
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "Level"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "output": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "T"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Clone"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": {
+                      "bounded_ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "F3"
+                            }
+                          ]
+                        }
+                      },
+                      "bounds": [
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "FnOnce",
+                                  "arguments": {
+                                    "parenthesized": {
+                                      "inputs": [
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "Name"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "slice": {
+                                                "elem": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "Level"
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "output": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "T"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Clone"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": {
+                      "bounded_ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "F4"
+                            }
+                          ]
+                        }
+                      },
+                      "bounds": [
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "FnOnce",
+                                  "arguments": {
+                                    "parenthesized": {
+                                      "inputs": [
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExpr"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExpr"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "T"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "T"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ],
+                                      "output": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "T"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Clone"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": {
+                      "bounded_ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "F5"
+                            }
+                          ]
+                        }
+                      },
+                      "bounds": [
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "FnOnce",
+                                  "arguments": {
+                                    "parenthesized": {
+                                      "inputs": [
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "Name"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExpr"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExpr"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "BinderInfo"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "T"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "T"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ],
+                                      "output": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "T"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Clone"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": {
+                      "bounded_ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "F6"
+                            }
+                          ]
+                        }
+                      },
+                      "bounds": [
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "FnOnce",
+                                  "arguments": {
+                                    "parenthesized": {
+                                      "inputs": [
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "Name"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExpr"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExpr"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "BinderInfo"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "T"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "T"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ],
+                                      "output": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "T"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Clone"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "bvar_case"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "F1"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "sort_case"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "F2"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "const_case"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "F3"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "app_case"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "F4"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "lam_case"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "F5"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "forall_case"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "F6"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "T"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "match": {
+                        "expr": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "self"
+                              }
+                            ]
+                          }
+                        },
+                        "arms": [
+                          {
+                            "pat": {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExpr"
+                                    },
+                                    {
+                                      "ident": "BVar"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "index",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "index"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "bvar_case"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "unary": {
+                                      "op": "*",
+                                      "expr": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "index"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExpr"
+                                    },
+                                    {
+                                      "ident": "Sort"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "level",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "level"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "sort_case"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "level"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExpr"
+                                    },
+                                    {
+                                      "ident": "Const"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "name",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "name"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "levels",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "levels"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "const_case"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "name"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "levels"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExpr"
+                                    },
+                                    {
+                                      "ident": "App"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "func",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "func"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "arg",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "arg"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "block": {
+                                "stmts": [
+                                  {
+                                    "let": {
+                                      "pat": {
+                                        "ident": {
+                                          "ident": "func_ih"
+                                        }
+                                      },
+                                      "init": {
+                                        "expr": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "func"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "method": "rec",
+                                            "args": [
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "bvar_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "sort_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "const_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "app_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "lam_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "forall_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "let": {
+                                      "pat": {
+                                        "ident": {
+                                          "ident": "arg_ih"
+                                        }
+                                      },
+                                      "init": {
+                                        "expr": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "arg"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "method": "rec",
+                                            "args": [
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "bvar_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "sort_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "const_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "app_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "lam_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "forall_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "expr": [
+                                      {
+                                        "call": {
+                                          "func": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "app_case"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "args": [
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "func"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "arg"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "func_ih"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "arg_ih"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      false
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExpr"
+                                    },
+                                    {
+                                      "ident": "Lam"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "binder_name",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "binder_name"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "binder_type",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "binder_type"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "body",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "body"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "binder_info",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "binder_info"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "block": {
+                                "stmts": [
+                                  {
+                                    "let": {
+                                      "pat": {
+                                        "ident": {
+                                          "ident": "binder_type_ih"
+                                        }
+                                      },
+                                      "init": {
+                                        "expr": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "binder_type"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "method": "rec",
+                                            "args": [
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "bvar_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "sort_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "const_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "app_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "lam_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "forall_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "let": {
+                                      "pat": {
+                                        "ident": {
+                                          "ident": "body_ih"
+                                        }
+                                      },
+                                      "init": {
+                                        "expr": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "body"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "method": "rec",
+                                            "args": [
+                                              {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "bvar_case"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "sort_case"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "const_case"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "app_case"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "lam_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "forall_case"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "expr": [
+                                      {
+                                        "call": {
+                                          "func": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "lam_case"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "args": [
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "binder_name"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "binder_type"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "body"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "binder_info"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "binder_type_ih"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "body_ih"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      false
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExpr"
+                                    },
+                                    {
+                                      "ident": "ForallE"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "binder_name",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "binder_name"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "binder_type",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "binder_type"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "body",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "body"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "binder_info",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "binder_info"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "block": {
+                                "stmts": [
+                                  {
+                                    "let": {
+                                      "pat": {
+                                        "ident": {
+                                          "ident": "binder_type_ih"
+                                        }
+                                      },
+                                      "init": {
+                                        "expr": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "binder_type"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "method": "rec",
+                                            "args": [
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "bvar_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "sort_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "const_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "app_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "lam_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "forall_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "let": {
+                                      "pat": {
+                                        "ident": {
+                                          "ident": "body_ih"
+                                        }
+                                      },
+                                      "init": {
+                                        "expr": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "body"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "method": "rec",
+                                            "args": [
+                                              {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "bvar_case"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "sort_case"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "const_case"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "app_case"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "lam_case"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "forall_case"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "clone",
+                                                  "args": []
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "expr": [
+                                      {
+                                        "call": {
+                                          "func": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "forall_case"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "args": [
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "binder_name"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "binder_type"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "body"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "binder_info"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "binder_type_ih"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "body_ih"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      false
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "match_expr",
+              "generics": {
+                "params": [
+                  {
+                    "type": {
+                      "ident": "T"
+                    }
+                  },
+                  {
+                    "type": {
+                      "ident": "F1"
+                    }
+                  },
+                  {
+                    "type": {
+                      "ident": "F2"
+                    }
+                  },
+                  {
+                    "type": {
+                      "ident": "F3"
+                    }
+                  },
+                  {
+                    "type": {
+                      "ident": "F4"
+                    }
+                  },
+                  {
+                    "type": {
+                      "ident": "F5"
+                    }
+                  },
+                  {
+                    "type": {
+                      "ident": "F6"
+                    }
+                  }
+                ],
+                "where_clause": [
+                  {
+                    "type": {
+                      "bounded_ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "F1"
+                            }
+                          ]
+                        }
+                      },
+                      "bounds": [
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "FnOnce",
+                                  "arguments": {
+                                    "parenthesized": {
+                                      "inputs": [
+                                        {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "u64"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ],
+                                      "output": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "T"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": {
+                      "bounded_ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "F2"
+                            }
+                          ]
+                        }
+                      },
+                      "bounds": [
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "FnOnce",
+                                  "arguments": {
+                                    "parenthesized": {
+                                      "inputs": [
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "Level"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "output": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "T"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": {
+                      "bounded_ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "F3"
+                            }
+                          ]
+                        }
+                      },
+                      "bounds": [
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "FnOnce",
+                                  "arguments": {
+                                    "parenthesized": {
+                                      "inputs": [
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "Name"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "slice": {
+                                                "elem": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "Level"
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "output": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "T"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": {
+                      "bounded_ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "F4"
+                            }
+                          ]
+                        }
+                      },
+                      "bounds": [
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "FnOnce",
+                                  "arguments": {
+                                    "parenthesized": {
+                                      "inputs": [
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExpr"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExpr"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "output": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "T"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": {
+                      "bounded_ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "F5"
+                            }
+                          ]
+                        }
+                      },
+                      "bounds": [
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "FnOnce",
+                                  "arguments": {
+                                    "parenthesized": {
+                                      "inputs": [
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "Name"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExpr"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExpr"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "BinderInfo"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "output": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "T"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": {
+                      "bounded_ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "F6"
+                            }
+                          ]
+                        }
+                      },
+                      "bounds": [
+                        {
+                          "trait": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "FnOnce",
+                                  "arguments": {
+                                    "parenthesized": {
+                                      "inputs": [
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "Name"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExpr"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "SimpleExpr"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "reference": {
+                                            "elem": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "BinderInfo"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "output": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "T"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "bvar_case"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "F1"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "sort_case"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "F2"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "const_case"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "F3"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "app_case"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "F4"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "lam_case"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "F5"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "forall_case"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "F6"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "T"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "match": {
+                        "expr": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "self"
+                              }
+                            ]
+                          }
+                        },
+                        "arms": [
+                          {
+                            "pat": {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExpr"
+                                    },
+                                    {
+                                      "ident": "BVar"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "index",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "index"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "bvar_case"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "unary": {
+                                      "op": "*",
+                                      "expr": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "index"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExpr"
+                                    },
+                                    {
+                                      "ident": "Sort"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "level",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "level"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "sort_case"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "level"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExpr"
+                                    },
+                                    {
+                                      "ident": "Const"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "name",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "name"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "levels",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "levels"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "const_case"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "name"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "levels"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExpr"
+                                    },
+                                    {
+                                      "ident": "App"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "func",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "func"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "arg",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "arg"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "app_case"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "func"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "arg"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExpr"
+                                    },
+                                    {
+                                      "ident": "Lam"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "binder_name",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "binder_name"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "binder_type",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "binder_type"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "body",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "body"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "binder_info",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "binder_info"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "lam_case"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "binder_name"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "binder_type"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "body"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "binder_info"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "struct": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "SimpleExpr"
+                                    },
+                                    {
+                                      "ident": "ForallE"
+                                    }
+                                  ]
+                                },
+                                "fields": [
+                                  {
+                                    "ident": "binder_name",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "binder_name"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "binder_type",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "binder_type"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "body",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "body"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "ident": "binder_info",
+                                    "pat": {
+                                      "ident": {
+                                        "ident": "binder_info"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "forall_case"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "binder_name"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "binder_type"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "body"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "binder_info"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "bvar",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "index"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "u64"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "SimpleExpr"
+                            },
+                            {
+                              "ident": "BVar"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "index",
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "index"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "sort",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "level"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Level"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "SimpleExpr"
+                            },
+                            {
+                              "ident": "Sort"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "level",
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "level"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "const_expr",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "name"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Name"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "levels"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Vec",
+                            "arguments": {
+                              "angle_bracketed": {
+                                "args": [
+                                  {
+                                    "type": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "Level"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "SimpleExpr"
+                            },
+                            {
+                              "ident": "Const"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "name",
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "name"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "levels",
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "levels"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "app",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "func"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "SimpleExpr"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "arg"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "SimpleExpr"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "SimpleExpr"
+                            },
+                            {
+                              "ident": "App"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "func",
+                            "colon_token": true,
+                            "expr": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "Box"
+                                      },
+                                      {
+                                        "ident": "new"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "func"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "arg",
+                            "colon_token": true,
+                            "expr": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "Box"
+                                      },
+                                      {
+                                        "ident": "new"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "arg"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "lam",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "name"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Name"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "binder_type"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "SimpleExpr"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "body"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "SimpleExpr"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "info"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "BinderInfo"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "SimpleExpr"
+                            },
+                            {
+                              "ident": "Lam"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "binder_name",
+                            "colon_token": true,
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "name"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "binder_type",
+                            "colon_token": true,
+                            "expr": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "Box"
+                                      },
+                                      {
+                                        "ident": "new"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "binder_type"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "body",
+                            "colon_token": true,
+                            "expr": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "Box"
+                                      },
+                                      {
+                                        "ident": "new"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "body"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "binder_info",
+                            "colon_token": true,
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "info"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "forall_e",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "name"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Name"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "binder_type"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "SimpleExpr"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "body"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "SimpleExpr"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "info"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "BinderInfo"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Self"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "struct": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "SimpleExpr"
+                            },
+                            {
+                              "ident": "ForallE"
+                            }
+                          ]
+                        },
+                        "fields": [
+                          {
+                            "ident": "binder_name",
+                            "colon_token": true,
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "name"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "binder_type",
+                            "colon_token": true,
+                            "expr": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "Box"
+                                      },
+                                      {
+                                        "ident": "new"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "binder_type"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "body",
+                            "colon_token": true,
+                            "expr": {
+                              "call": {
+                                "func": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "Box"
+                                      },
+                                      {
+                                        "ident": "new"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "args": [
+                                  {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "body"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "ident": "binder_info",
+                            "colon_token": true,
+                            "expr": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "info"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

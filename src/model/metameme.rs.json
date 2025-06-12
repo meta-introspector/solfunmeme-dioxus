@@ -1,0 +1,520 @@
+{
+  "items": [
+    {
+      "enum": {
+        "vis": "pub",
+        "ident": "MetaMemes",
+        "variants": [
+          {
+            "ident": "Gcc",
+            "fields": "unit"
+          },
+          {
+            "ident": "LLVM",
+            "fields": "unit"
+          },
+          {
+            "ident": "MetaCoq",
+            "fields": "unit"
+          },
+          {
+            "ident": "Haskell",
+            "fields": "unit"
+          },
+          {
+            "ident": "Coq",
+            "fields": "unit"
+          },
+          {
+            "ident": "Ocaml",
+            "fields": "unit"
+          },
+          {
+            "ident": "Lean4",
+            "fields": "unit"
+          },
+          {
+            "ident": "Rust",
+            "fields": "unit"
+          },
+          {
+            "ident": "MetaMeme",
+            "fields": "unit"
+          }
+        ]
+      }
+    },
+    {
+      "struct": {
+        "vis": "pub",
+        "ident": "Meme",
+        "fields": {
+          "named": [
+            {
+              "ident": "typ",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "MetaMeme"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ident": "value",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "META_MEME",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Meme"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "struct": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "Meme"
+                }
+              ]
+            },
+            "fields": [
+              {
+                "ident": "typ",
+                "colon_token": true,
+                "expr": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "MetaMemes"
+                      },
+                      {
+                        "ident": "MetaMeme"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "ident": "value",
+                "colon_token": true,
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "lit": {
+                        "str": "\"See MetaMemes enum above\""
+                      }
+                    },
+                    "method": "to_owned",
+                    "args": []
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "interpret",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "m"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Meme"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "output": null,
+        "stmts": []
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "prove",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "m"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Meme"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "output": null,
+        "stmts": []
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "context",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "cx"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Meme"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "value"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Meme"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "output": null,
+        "stmts": []
+      }
+    },
+    {
+      "enum": {
+        "vis": "pub",
+        "ident": "MemeProviders",
+        "variants": [
+          {
+            "ident": "GitHub",
+            "fields": "unit"
+          },
+          {
+            "ident": "CodeBerg",
+            "fields": "unit"
+          },
+          {
+            "ident": "Discord",
+            "fields": "unit"
+          },
+          {
+            "ident": "GitGud",
+            "fields": "unit"
+          },
+          {
+            "ident": "GitLab",
+            "fields": "unit"
+          },
+          {
+            "ident": "GitTea",
+            "fields": "unit"
+          },
+          {
+            "ident": "Forjo",
+            "fields": "unit"
+          },
+          {
+            "ident": "AwsCodeCommit",
+            "fields": "unit"
+          },
+          {
+            "ident": "LocalGit",
+            "fields": "unit"
+          },
+          {
+            "ident": "Twitter",
+            "fields": "unit"
+          },
+          {
+            "ident": "Discord",
+            "fields": "unit"
+          },
+          {
+            "ident": "Telegram",
+            "fields": "unit"
+          },
+          {
+            "ident": "Matrix",
+            "fields": "unit"
+          },
+          {
+            "ident": "Irc",
+            "fields": "unit"
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "fetch",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "pr"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "MemeProviders"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "url"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "String"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Meme"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "expr": [
+              {
+                "macro": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "unimplemented"
+                      }
+                    ]
+                  },
+                  "delimiter": "paren",
+                  "tokens": []
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "enum": {
+        "vis": "pub",
+        "ident": "LLMProviders",
+        "variants": [
+          {
+            "ident": "GitHub",
+            "fields": "unit"
+          },
+          {
+            "ident": "OpenAI",
+            "fields": "unit"
+          },
+          {
+            "ident": "AWSBedrock",
+            "fields": "unit"
+          },
+          {
+            "ident": "Google",
+            "fields": "unit"
+          },
+          {
+            "ident": "XAi",
+            "fields": "unit"
+          },
+          {
+            "ident": "Groq",
+            "fields": "unit"
+          },
+          {
+            "ident": "Ollama",
+            "fields": "unit"
+          },
+          {
+            "ident": "OpenLightLLM",
+            "fields": "unit"
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "expand",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "prov"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "LLMProviders"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "m"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Meme"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Meme"
+              }
+            ]
+          }
+        },
+        "stmts": []
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "BOTT8",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Meme"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "block": {
+            "stmts": [
+              {
+                "expr": [
+                  {
+                    "assign": {
+                      "left": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "value"
+                            }
+                          ]
+                        }
+                      },
+                      "right": {
+                        "lit": {
+                          "str": "\"bott8=[0,1,2,3,5,7,11,13]\""
+                        }
+                      }
+                    }
+                  },
+                  false
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

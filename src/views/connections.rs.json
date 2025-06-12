@@ -1,0 +1,749 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "dioxus",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "model",
+                    "tree": {
+                      "ident": "use_connections"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "Connections",
+        "inputs": [],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Element"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "connections"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_connections"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "lit": {
+                          "str": "\"solana_wallet\""
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "new_connection_name"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_signal"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "closure": {
+                          "inputs": [],
+                          "output": null,
+                          "body": {
+                            "call": {
+                              "func": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    },
+                                    {
+                                      "ident": "new"
+                                    }
+                                  ]
+                                }
+                              },
+                              "args": []
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "new_connection_url"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_signal"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "closure": {
+                          "inputs": [],
+                          "output": null,
+                          "body": {
+                            "call": {
+                              "func": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    },
+                                    {
+                                      "ident": "new"
+                                    }
+                                  ]
+                                }
+                              },
+                              "args": []
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "selected_cluster_for_connection"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_signal"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "closure": {
+                          "inputs": [],
+                          "output": null,
+                          "body": {
+                            "call": {
+                              "func": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    },
+                                    {
+                                      "ident": "new"
+                                    }
+                                  ]
+                                }
+                              },
+                              "args": []
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "type": {
+                  "pat": {
+                    "ident": {
+                      "ident": "selected_cluster_filter"
+                    }
+                  },
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Signal",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "String"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_signal"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "closure": {
+                          "inputs": [],
+                          "output": null,
+                          "body": {
+                            "call": {
+                              "func": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    },
+                                    {
+                                      "ident": "from"
+                                    }
+                                  ]
+                                }
+                              },
+                              "args": [
+                                {
+                                  "lit": {
+                                    "str": "\"All\""
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "new_cluster_name"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_signal"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "closure": {
+                          "inputs": [],
+                          "output": null,
+                          "body": {
+                            "call": {
+                              "func": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    },
+                                    {
+                                      "ident": "new"
+                                    }
+                                  ]
+                                }
+                              },
+                              "args": []
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "new_cluster_endpoint"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_signal"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "closure": {
+                          "inputs": [],
+                          "output": null,
+                          "body": {
+                            "call": {
+                              "func": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    },
+                                    {
+                                      "ident": "new"
+                                    }
+                                  ]
+                                }
+                              },
+                              "args": []
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "new_cluster_type"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_signal"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "closure": {
+                          "inputs": [],
+                          "output": null,
+                          "body": {
+                            "call": {
+                              "func": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    },
+                                    {
+                                      "ident": "from"
+                                    }
+                                  ]
+                                }
+                              },
+                              "args": [
+                                {
+                                  "lit": {
+                                    "str": "\"custom\""
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "show_cluster_form"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_signal"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "closure": {
+                          "inputs": [],
+                          "output": null,
+                          "body": {
+                            "lit": {
+                              "bool": false
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "cluster_names"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "connections"
+                          }
+                        ]
+                      }
+                    },
+                    "method": "get_entry_names",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "mut": true,
+                  "ident": "filter_options"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "cluster_names"
+                          }
+                        ]
+                      }
+                    },
+                    "method": "clone",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "method_call": {
+                  "receiver": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "filter_options"
+                        }
+                      ]
+                    }
+                  },
+                  "method": "insert",
+                  "args": [
+                    {
+                      "lit": {
+                        "int": "0"
+                      }
+                    },
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "lit": {
+                            "str": "\"All\""
+                          }
+                        },
+                        "method": "to_string",
+                        "args": []
+                      }
+                    }
+                  ]
+                }
+              },
+              true
+            ]
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "filtered_connections"
+                }
+              },
+              "init": {
+                "expr": {
+                  "if": {
+                    "cond": {
+                      "binary": {
+                        "left": {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "selected_cluster_filter"
+                                  }
+                                ]
+                              }
+                            },
+                            "args": []
+                          }
+                        },
+                        "op": "==",
+                        "right": {
+                          "lit": {
+                            "str": "\"All\""
+                          }
+                        }
+                      }
+                    },
+                    "then_branch": [
+                      {
+                        "expr": [
+                          {
+                            "method_call": {
+                              "receiver": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "connections"
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "get_all_entries",
+                              "args": []
+                            }
+                          },
+                          false
+                        ]
+                      }
+                    ],
+                    "else_branch": {
+                      "block": {
+                        "stmts": [
+                          {
+                            "expr": [
+                              {
+                                "method_call": {
+                                  "receiver": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "connections"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "method": "get_entries_by_name",
+                                  "args": [
+                                    {
+                                      "reference": {
+                                        "expr": {
+                                          "call": {
+                                            "func": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "selected_cluster_filter"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "args": []
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              false
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "macro": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "rsx"
+                  }
+                ]
+              },
+              "delimiter": "brace",
+              "tokens": [
+                {
+                  "ident": "div"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "ident": "class"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"container mx-auto p-6 max-w-6xl\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

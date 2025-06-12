@@ -1,0 +1,734 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "dioxus",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "wallet_adapter",
+            "tree": {
+              "group": [
+                {
+                  "ident": "ConnectionInfo"
+                },
+                {
+                  "ident": "WalletAdapter"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "model",
+                    "tree": {
+                      "group": [
+                        {
+                          "path": {
+                            "ident": "cluster_store",
+                            "tree": {
+                              "ident": "ClusterStore"
+                            }
+                          }
+                        },
+                        {
+                          "ident": "AccountState"
+                        },
+                        {
+                          "ident": "NotificationInfo"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "path": {
+                    "ident": "model",
+                    "tree": {
+                      "ident": "ClusterNetState"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "std",
+            "tree": {
+              "path": {
+                "ident": "collections",
+                "tree": {
+                  "ident": "VecDeque"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "static": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "ident": "WALLET_ADAPTER",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "GlobalSignal",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "WalletAdapter"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Signal"
+                  },
+                  {
+                    "ident": "global"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "closure": {
+                  "inputs": [],
+                  "output": null,
+                  "body": {
+                    "method_call": {
+                      "receiver": {
+                        "call": {
+                          "func": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "WalletAdapter"
+                                },
+                                {
+                                  "ident": "init"
+                                }
+                              ]
+                            }
+                          },
+                          "args": []
+                        }
+                      },
+                      "method": "unwrap",
+                      "args": []
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "static": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "ident": "CLUSTER_STORAGE",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "GlobalSignal",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "ClusterStore"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Signal"
+                  },
+                  {
+                    "ident": "global"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "closure": {
+                  "inputs": [],
+                  "output": null,
+                  "body": {
+                    "call": {
+                      "func": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "ClusterStore"
+                            },
+                            {
+                              "ident": "new"
+                            }
+                          ]
+                        }
+                      },
+                      "args": [
+                        {
+                          "call": {
+                            "func": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "Vec"
+                                  },
+                                  {
+                                    "ident": "default"
+                                  }
+                                ]
+                              }
+                            },
+                            "args": []
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "static": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "ident": "GLOBAL_MESSAGE",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "GlobalSignal",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "VecDeque",
+                                "arguments": {
+                                  "angle_bracketed": {
+                                    "args": [
+                                      {
+                                        "type": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "NotificationInfo"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Signal"
+                  },
+                  {
+                    "ident": "global"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "closure": {
+                  "inputs": [],
+                  "output": null,
+                  "body": {
+                    "call": {
+                      "func": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "VecDeque"
+                            },
+                            {
+                              "ident": "default"
+                            }
+                          ]
+                        }
+                      },
+                      "args": []
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "static": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "ident": "ACCOUNT_STATE",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "GlobalSignal",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "AccountState"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Signal"
+                  },
+                  {
+                    "ident": "global"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "closure": {
+                  "inputs": [],
+                  "output": null,
+                  "body": {
+                    "call": {
+                      "func": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "AccountState"
+                            },
+                            {
+                              "ident": "default"
+                            }
+                          ]
+                        }
+                      },
+                      "args": []
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "static": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "ident": "LOADING",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "GlobalSignal",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Option",
+                                "arguments": {
+                                  "angle_bracketed": {
+                                    "args": [
+                                      {
+                                        "type": {
+                                          "tuple": {
+                                            "elems": []
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Signal"
+                  },
+                  {
+                    "ident": "global"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "closure": {
+                  "inputs": [],
+                  "output": null,
+                  "body": {
+                    "call": {
+                      "func": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "Option"
+                            },
+                            {
+                              "ident": "default"
+                            }
+                          ]
+                        }
+                      },
+                      "args": []
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "static": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "ident": "CLUSTER_NET_STATE",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "GlobalSignal",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "ClusterNetState"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Signal"
+                  },
+                  {
+                    "ident": "global"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "closure": {
+                  "inputs": [],
+                  "output": null,
+                  "body": {
+                    "call": {
+                      "func": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "ClusterNetState"
+                            },
+                            {
+                              "ident": "default"
+                            }
+                          ]
+                        }
+                      },
+                      "args": []
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "static": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "ident": "ACTIVE_CONNECTION",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "GlobalSignal",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "ConnectionInfo"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Signal"
+                  },
+                  {
+                    "ident": "global"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "closure": {
+                  "inputs": [],
+                  "output": null,
+                  "body": {
+                    "call": {
+                      "func": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "ConnectionInfo"
+                            },
+                            {
+                              "ident": "default"
+                            }
+                          ]
+                        }
+                      },
+                      "args": []
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

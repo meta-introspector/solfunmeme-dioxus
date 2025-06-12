@@ -1,0 +1,460 @@
+{
+  "items": [
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "APP_CONTAINER",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-8\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "MAIN_WRAPPER",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"max-w-6xl mx-auto\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "GRID_LAYOUT",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "MAIN_TITLE",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-800 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "CARD_TITLE",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"text-2xl font-semibold mb-6 text-gray-800 border-b border-gray-200 pb-2\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "LABEL",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"block text-sm font-medium text-gray-700 mb-2\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "SUCCESS_TITLE",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"font-semibold mb-3 text-green-800\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "TEXT_CONTENT",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"whitespace-pre-wrap text-gray-700 leading-relaxed\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "CARD",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-gray-200 hover:shadow-xl transition-shadow duration-300\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "FORM_CONTAINER",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"space-y-6\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "INPUT",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "TEXTAREA",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "BUTTON_PRIMARY",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-200\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "BUTTON_SUCCESS",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"w-full px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 transition-all duration-200\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "BUTTON_DANGER",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"w-full px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-all duration-200\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "BUTTON_DISABLED",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"w-full px-6 py-3 bg-gray-400 text-gray-700 rounded-lg cursor-not-allowed transition-all duration-200\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "ERROR_MESSAGE",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"text-red-500 text-sm mt-2\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "SUCCESS_MESSAGE",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"text-green-800 text-sm mt-2\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "CODE_BLOCK",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"bg-gray-100 p-4 rounded-lg overflow-x-auto\""
+          }
+        }
+      }
+    }
+  ]
+}

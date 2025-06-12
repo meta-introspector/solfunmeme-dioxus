@@ -1,0 +1,2150 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "web_sys",
+            "tree": {
+              "ident": "Window"
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "dioxus",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "qrcodegen",
+            "tree": {
+              "group": [
+                {
+                  "ident": "QrCode"
+                },
+                {
+                  "ident": "QrCodeEcc"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "wallet_adapter",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "wasm_bindgen_futures",
+                    "tree": {
+                      "ident": "JsFuture"
+                    }
+                  }
+                },
+                {
+                  "ident": "Cluster"
+                },
+                {
+                  "ident": "WalletResult"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "model",
+                    "tree": {
+                      "ident": "use_connections"
+                    }
+                  }
+                },
+                {
+                  "ident": "DevnetSvg"
+                },
+                {
+                  "ident": "LocalnetSvg"
+                },
+                {
+                  "ident": "MainnetSvg"
+                },
+                {
+                  "ident": "TestnetSvg"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "trunk_cluster_name",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "name"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "String"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "expr": [
+              {
+                "if": {
+                  "cond": {
+                    "binary": {
+                      "left": {
+                        "method_call": {
+                          "receiver": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "method": "len",
+                          "args": []
+                        }
+                      },
+                      "op": ">",
+                      "right": {
+                        "lit": {
+                          "int": "10"
+                        }
+                      }
+                    }
+                  },
+                  "then_branch": [
+                    {
+                      "expr": [
+                        {
+                          "binary": {
+                            "left": {
+                              "method_call": {
+                                "receiver": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "method_call": {
+                                        "receiver": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "name"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "method": "chars",
+                                        "args": []
+                                      }
+                                    },
+                                    "method": "take",
+                                    "args": [
+                                      {
+                                        "lit": {
+                                          "int": "10"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                "method": "collect",
+                                "turbofish": {
+                                  "colon2_token": true,
+                                  "args": [
+                                    {
+                                      "type": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "String"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                "args": []
+                              }
+                            },
+                            "op": "+",
+                            "right": {
+                              "lit": {
+                                "str": "\"...\""
+                              }
+                            }
+                          }
+                        },
+                        false
+                      ]
+                    }
+                  ],
+                  "else_branch": {
+                    "block": {
+                      "stmts": [
+                        {
+                          "expr": [
+                            {
+                              "method_call": {
+                                "receiver": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "name"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "method": "to_string",
+                                "args": []
+                              }
+                            },
+                            false
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "get_cluster_svg",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "cluster"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Cluster"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "bare_fn": {
+            "inputs": [],
+            "output": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Result",
+                    "arguments": {
+                      "angle_bracketed": {
+                        "args": [
+                          {
+                            "type": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "VNode"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "type": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "RenderError"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "stmts": [
+          {
+            "expr": [
+              {
+                "if": {
+                  "cond": {
+                    "binary": {
+                      "left": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "cluster"
+                            }
+                          ]
+                        }
+                      },
+                      "op": "==",
+                      "right": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "Cluster"
+                            },
+                            {
+                              "ident": "MainNet"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "then_branch": [
+                    {
+                      "expr": [
+                        {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "MainnetSvg"
+                              }
+                            ]
+                          }
+                        },
+                        false
+                      ]
+                    }
+                  ],
+                  "else_branch": {
+                    "if": {
+                      "cond": {
+                        "binary": {
+                          "left": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "cluster"
+                                }
+                              ]
+                            }
+                          },
+                          "op": "==",
+                          "right": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Cluster"
+                                },
+                                {
+                                  "ident": "TestNet"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "then_branch": [
+                        {
+                          "expr": [
+                            {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "TestnetSvg"
+                                  }
+                                ]
+                              }
+                            },
+                            false
+                          ]
+                        }
+                      ],
+                      "else_branch": {
+                        "if": {
+                          "cond": {
+                            "binary": {
+                              "left": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "cluster"
+                                    }
+                                  ]
+                                }
+                              },
+                              "op": "==",
+                              "right": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Cluster"
+                                    },
+                                    {
+                                      "ident": "DevNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "then_branch": [
+                            {
+                              "expr": [
+                                {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "DevnetSvg"
+                                      }
+                                    ]
+                                  }
+                                },
+                                false
+                              ]
+                            }
+                          ],
+                          "else_branch": {
+                            "if": {
+                              "cond": {
+                                "binary": {
+                                  "left": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "cluster"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "op": "==",
+                                  "right": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "Cluster"
+                                        },
+                                        {
+                                          "ident": "LocalNet"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "then_branch": [
+                                {
+                                  "expr": [
+                                    {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "LocalnetSvg"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    false
+                                  ]
+                                }
+                              ],
+                              "else_branch": {
+                                "block": {
+                                  "stmts": [
+                                    {
+                                      "expr": [
+                                        {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "DevnetSvg"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        false
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "const": {
+        "ident": "EXPLORER",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"https://explorer.solana.com/\""
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "format_address_url",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "address"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "String"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "expr": [
+              {
+                "binary": {
+                  "left": {
+                    "binary": {
+                      "left": {
+                        "binary": {
+                          "left": {
+                            "binary": {
+                              "left": {
+                                "call": {
+                                  "func": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "String"
+                                        },
+                                        {
+                                          "ident": "new"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "args": []
+                                }
+                              },
+                              "op": "+",
+                              "right": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "EXPLORER"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "op": "+",
+                          "right": {
+                            "lit": {
+                              "str": "\"address/\""
+                            }
+                          }
+                        }
+                      },
+                      "op": "+",
+                      "right": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "address"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "op": "+",
+                  "right": {
+                    "reference": {
+                      "expr": {
+                        "call": {
+                          "func": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "adapter_query_string"
+                                }
+                              ]
+                            }
+                          },
+                          "args": []
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "format_tx_url",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "tx"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "String"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "expr": [
+              {
+                "binary": {
+                  "left": {
+                    "binary": {
+                      "left": {
+                        "binary": {
+                          "left": {
+                            "binary": {
+                              "left": {
+                                "call": {
+                                  "func": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "String"
+                                        },
+                                        {
+                                          "ident": "new"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "args": []
+                                }
+                              },
+                              "op": "+",
+                              "right": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "EXPLORER"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "op": "+",
+                          "right": {
+                            "lit": {
+                              "str": "\"tx/\""
+                            }
+                          }
+                        }
+                      },
+                      "op": "+",
+                      "right": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "tx"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "op": "+",
+                  "right": {
+                    "reference": {
+                      "expr": {
+                        "call": {
+                          "func": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "adapter_query_string"
+                                }
+                              ]
+                            }
+                          },
+                          "args": []
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "adapter_query_string",
+        "inputs": [],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "String"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "connections"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "use_connections"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "lit": {
+                          "str": "\"solana_wallet\""
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "active_entry"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "connections"
+                          }
+                        ]
+                      }
+                    },
+                    "method": "active_entry_object",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "method_call": {
+                  "receiver": {
+                    "method_call": {
+                      "receiver": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "active_entry"
+                            }
+                          ]
+                        }
+                      },
+                      "method": "query_string",
+                      "args": []
+                    }
+                  },
+                  "method": "to_owned",
+                  "args": []
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "ident": "link_target_blank",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "href"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "text"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Element"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "macro": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "rsx"
+                  }
+                ]
+              },
+              "delimiter": "brace",
+              "tokens": [
+                {
+                  "ident": "a"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "ident": "class"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"underline\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "href"
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "target"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"_blank\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "rel"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"noopener noreferrer\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "group": {
+                          "delimiter": "brace",
+                          "stream": [
+                            {
+                              "ident": "text"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "lit": "\"⇗\""
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "static": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "ident": "WINDOW",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "GlobalSignal",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Window"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "expr": {
+          "call": {
+            "func": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "Signal"
+                  },
+                  {
+                    "ident": "global"
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "closure": {
+                  "inputs": [],
+                  "output": null,
+                  "body": {
+                    "method_call": {
+                      "receiver": {
+                        "call": {
+                          "func": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "web_sys"
+                                },
+                                {
+                                  "ident": "window"
+                                }
+                              ]
+                            }
+                          },
+                          "args": []
+                        }
+                      },
+                      "method": "expect",
+                      "args": [
+                        {
+                          "lit": {
+                            "str": "\"Unable to find Window\""
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "async": true,
+        "ident": "copied_address",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "address"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "WalletResult",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "tuple": {
+                            "elems": []
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "type": {
+                  "pat": {
+                    "ident": {
+                      "ident": "pending"
+                    }
+                  },
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "JsFuture"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "method_call": {
+                        "receiver": {
+                          "method_call": {
+                            "receiver": {
+                              "method_call": {
+                                "receiver": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "WINDOW"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "read",
+                                    "args": []
+                                  }
+                                },
+                                "method": "navigator",
+                                "args": []
+                              }
+                            },
+                            "method": "clipboard",
+                            "args": []
+                          }
+                        },
+                        "method": "write_text",
+                        "args": [
+                          {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "address"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "method": "into",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "try": {
+                  "expr": {
+                    "await": {
+                      "base": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "pending"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              true
+            ]
+          },
+          {
+            "expr": [
+              {
+                "call": {
+                  "func": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Ok"
+                        }
+                      ]
+                    }
+                  },
+                  "args": [
+                    {
+                      "tuple": {
+                        "elems": []
+                      }
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "vis": "pub",
+        "ident": "address_qrcode",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "address"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "WalletResult",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Element"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "type": {
+                  "pat": {
+                    "ident": {
+                      "ident": "errcorlvl"
+                    }
+                  },
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "QrCodeEcc"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "init": {
+                "expr": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "QrCodeEcc"
+                      },
+                      {
+                        "ident": "High"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "type": {
+                  "pat": {
+                    "ident": {
+                      "ident": "qr"
+                    }
+                  },
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "QrCode"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "call": {
+                        "func": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "QrCode"
+                              },
+                              {
+                                "ident": "encode_text"
+                              }
+                            ]
+                          }
+                        },
+                        "args": [
+                          {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "address"
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "errcorlvl"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "method": "unwrap",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "call": {
+                  "func": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Ok"
+                        }
+                      ]
+                    }
+                  },
+                  "args": [
+                    {
+                      "call": {
+                        "func": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "qr_to_svg"
+                              }
+                            ]
+                          }
+                        },
+                        "args": [
+                          {
+                            "reference": {
+                              "expr": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "qr"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "lit": {
+                              "int": "4"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "ident": "qr_to_svg",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "qr"
+                }
+              },
+              "ty": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "QrCode"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "border"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "i32"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Element"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "macro": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "assert"
+                  }
+                ]
+              },
+              "delimiter": "paren",
+              "tokens": [
+                {
+                  "ident": "border"
+                },
+                {
+                  "punct": {
+                    "op": ">",
+                    "spacing": "joint"
+                  }
+                },
+                {
+                  "punct": {
+                    "op": "=",
+                    "spacing": "alone"
+                  }
+                },
+                {
+                  "lit": "0"
+                },
+                {
+                  "punct": {
+                    "op": ",",
+                    "spacing": "alone"
+                  }
+                },
+                {
+                  "lit": "\"Border must be non-negative\""
+                }
+              ],
+              "semi_token": true
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "mut": true,
+                  "ident": "path_d"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "String"
+                          },
+                          {
+                            "ident": "new"
+                          }
+                        ]
+                      }
+                    },
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "dimension"
+                }
+              },
+              "init": {
+                "expr": {
+                  "binary": {
+                    "left": {
+                      "method_call": {
+                        "receiver": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "qr"
+                              }
+                            ]
+                          }
+                        },
+                        "method": "size",
+                        "args": []
+                      }
+                    },
+                    "op": "+",
+                    "right": {
+                      "binary": {
+                        "left": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "border"
+                              }
+                            ]
+                          }
+                        },
+                        "op": "*",
+                        "right": {
+                          "lit": {
+                            "int": "2"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "for_loop": {
+                  "pat": {
+                    "ident": {
+                      "ident": "y"
+                    }
+                  },
+                  "expr": {
+                    "range": {
+                      "start": {
+                        "lit": {
+                          "int": "0"
+                        }
+                      },
+                      "limits": "..",
+                      "end": {
+                        "method_call": {
+                          "receiver": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "qr"
+                                }
+                              ]
+                            }
+                          },
+                          "method": "size",
+                          "args": []
+                        }
+                      }
+                    }
+                  },
+                  "body": [
+                    {
+                      "expr": [
+                        {
+                          "for_loop": {
+                            "pat": {
+                              "ident": {
+                                "ident": "x"
+                              }
+                            },
+                            "expr": {
+                              "range": {
+                                "start": {
+                                  "lit": {
+                                    "int": "0"
+                                  }
+                                },
+                                "limits": "..",
+                                "end": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "qr"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "size",
+                                    "args": []
+                                  }
+                                }
+                              }
+                            },
+                            "body": [
+                              {
+                                "expr": [
+                                  {
+                                    "if": {
+                                      "cond": {
+                                        "method_call": {
+                                          "receiver": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "qr"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "method": "get_module",
+                                          "args": [
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "x"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "y"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "then_branch": [
+                                        {
+                                          "expr": [
+                                            {
+                                              "if": {
+                                                "cond": {
+                                                  "binary": {
+                                                    "left": {
+                                                      "binary": {
+                                                        "left": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "x"
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        "op": "!=",
+                                                        "right": {
+                                                          "lit": {
+                                                            "int": "0"
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    "op": "||",
+                                                    "right": {
+                                                      "binary": {
+                                                        "left": {
+                                                          "path": {
+                                                            "segments": [
+                                                              {
+                                                                "ident": "y"
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
+                                                        "op": "!=",
+                                                        "right": {
+                                                          "lit": {
+                                                            "int": "0"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "then_branch": [
+                                                  {
+                                                    "expr": [
+                                                      {
+                                                        "binary": {
+                                                          "left": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "path_d"
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          "op": "+=",
+                                                          "right": {
+                                                            "lit": {
+                                                              "str": "\" \""
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      true
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            false
+                                          ]
+                                        },
+                                        {
+                                          "expr": [
+                                            {
+                                              "binary": {
+                                                "left": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "path_d"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "op": "+=",
+                                                "right": {
+                                                  "reference": {
+                                                    "expr": {
+                                                      "macro": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "format"
+                                                            }
+                                                          ]
+                                                        },
+                                                        "delimiter": "paren",
+                                                        "tokens": [
+                                                          {
+                                                            "lit": "\"M{},{}h1v1h-1z\""
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": ",",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "x"
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": "+",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "border"
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": ",",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "y"
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": "+",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "border"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            true
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  false
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        false
+                      ]
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          },
+          {
+            "macro": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "rsx"
+                  }
+                ]
+              },
+              "delimiter": "brace",
+              "tokens": [
+                {
+                  "ident": "svg"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "ident": "view_box"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"0 0 {dimension} {dimension}\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "xmlns"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"http://www.w3.org/2000/svg\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "path"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "brace",
+                          "stream": [
+                            {
+                              "ident": "d"
+                            },
+                            {
+                              "punct": {
+                                "op": ":",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "ident": "path_d"
+                            },
+                            {
+                              "punct": {
+                                "op": ",",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "ident": "stroke_width"
+                            },
+                            {
+                              "punct": {
+                                "op": ":",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "lit": "\"1.32\""
+                            },
+                            {
+                              "punct": {
+                                "op": ",",
+                                "spacing": "alone"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

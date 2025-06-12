@@ -1,0 +1,2137 @@
+{
+  "items": [
+    {
+      "use": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Clusters\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "tree": {
+          "path": {
+            "ident": "serde",
+            "tree": {
+              "group": [
+                {
+                  "ident": "Deserialize"
+                },
+                {
+                  "ident": "Serialize"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "wallet_adapter",
+            "tree": {
+              "ident": "WalletError"
+            }
+          }
+        }
+      }
+    },
+    {
+      "enum": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Eq"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Default"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialOrd"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Ord"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Copy"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Hash"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Serialize"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Deserialize"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "MyCluster",
+        "variants": [
+          {
+            "attrs": [
+              {
+                "style": "outer",
+                "meta": {
+                  "name_value": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "doc"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "lit": {
+                        "str": "\" Solana Mainnet cluster,  [https://api.mainnet-beta.solana.com](https://api.mainnet-beta.solana.com)\""
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "ident": "MainNet",
+            "fields": "unit"
+          },
+          {
+            "attrs": [
+              {
+                "style": "outer",
+                "meta": {
+                  "name_value": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "doc"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "lit": {
+                        "str": "\" Solana Devnet cluster, e.g. [https://api.devnet.solana.com](https://api.devnet.solana.com)\""
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "style": "outer",
+                "meta": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "default"
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "ident": "DevNet",
+            "fields": "unit"
+          },
+          {
+            "attrs": [
+              {
+                "style": "outer",
+                "meta": {
+                  "name_value": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "doc"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "lit": {
+                        "str": "\" Solana Testnet cluster, e.g. [https://api.testnet.solana.com](https://api.testnet.solana.com)\""
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "ident": "TestNet",
+            "fields": "unit"
+          },
+          {
+            "attrs": [
+              {
+                "style": "outer",
+                "meta": {
+                  "name_value": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "doc"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "lit": {
+                        "str": "\" Solana Localnet cluster, e.g. [http://localhost:8899](http://localhost:8899)\""
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "ident": "LocalNet",
+            "fields": "unit"
+          },
+          {
+            "ident": "SolfunmemeNet",
+            "fields": "unit"
+          }
+        ]
+      }
+    },
+    {
+      "const": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Mainnet cluster,  [https://api.mainnet-beta.solana.com](https://api.mainnet-beta.solana.com)\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "MAINNET_IDENTIFIER",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"solana:mainnet\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Devnet cluster, e.g. [https://api.devnet.solana.com](https://api.devnet.solana.com)\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "DEVNET_IDENTIFIER",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"solana:devnet\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Testnet cluster, e.g. [https://api.testnet.solana.com](https://api.testnet.solana.com)\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "TESTNET_IDENTIFIER",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"solana:testnet\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Localnet cluster, e.g. [http://localhost:8899](http://localhost:8899)\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "LOCALNET_IDENTIFIER",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"solana:localnet\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Mainnet cluster,  [https://api.mainnet-beta.solana.com](https://api.mainnet-beta.solana.com)\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "MAINNET",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"mainnet\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Devnet cluster, e.g. [https://api.devnet.solana.com](https://api.devnet.solana.com)\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "DEVNET",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"devnet\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Testnet cluster, e.g. [https://api.testnet.solana.com](https://api.testnet.solana.com)\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "TESTNET",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"testnet\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Localnet cluster, e.g. [http://localhost:8899](http://localhost:8899)\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "LOCALNET",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"localnet\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "SOLFUNMEMENET",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"solfunmeme\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Mainnet cluster\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "MAINNET_ENDPOINT",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"https://api.mainnet-beta.solana.com\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Devnet cluster\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "DEVNET_ENDPOINT",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"https://api.devnet.solana.com\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Testnet cluster\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "TESTNET_ENDPOINT",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"https://api.testnet.solana.com\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "name_value": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "doc"
+                    }
+                  ]
+                },
+                "value": {
+                  "lit": {
+                    "str": "\" Solana Localnet cluster\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "LOCALNET_ENDPOINT",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"https://localhost:8899\""
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "SOLFUNMEMENET_ENDPOINT",
+        "ty": {
+          "reference": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "str"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "expr": {
+          "lit": {
+            "str": "\"https://solana.solfunmeme.com/validator/\""
+          }
+        }
+      }
+    },
+    {
+      "impl": {
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "MyCluster"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "toCluster",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "wallet_adapter"
+                    },
+                    {
+                      "ident": "Cluster"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "match": {
+                        "expr": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "self"
+                              }
+                            ]
+                          }
+                        },
+                        "arms": [
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "MainNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "wallet_adapter"
+                                  },
+                                  {
+                                    "ident": "Cluster"
+                                  },
+                                  {
+                                    "ident": "MainNet"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "DevNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "wallet_adapter"
+                                  },
+                                  {
+                                    "ident": "Cluster"
+                                  },
+                                  {
+                                    "ident": "DevNet"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "TestNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "wallet_adapter"
+                                  },
+                                  {
+                                    "ident": "Cluster"
+                                  },
+                                  {
+                                    "ident": "TestNet"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "LocalNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "wallet_adapter"
+                                  },
+                                  {
+                                    "ident": "Cluster"
+                                  },
+                                  {
+                                    "ident": "LocalNet"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "SolfunmemeNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "wallet_adapter"
+                                  },
+                                  {
+                                    "ident": "Cluster"
+                                  },
+                                  {
+                                    "ident": "LocalNet"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "attrs": [
+                {
+                  "style": "outer",
+                  "meta": {
+                    "name_value": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "doc"
+                          }
+                        ]
+                      },
+                      "value": {
+                        "lit": {
+                          "str": "\" A Solana endpoint URI\""
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "vis": "pub",
+              "ident": "endpoint",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "match": {
+                        "expr": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "self"
+                              }
+                            ]
+                          }
+                        },
+                        "arms": [
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "MainNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MAINNET_ENDPOINT"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "DevNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "DEVNET_ENDPOINT"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "TestNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "TESTNET_ENDPOINT"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "LocalNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "LOCALNET_ENDPOINT"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "SolfunmemeNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "SOLFUNMEMENET_ENDPOINT"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fn": {
+              "attrs": [
+                {
+                  "style": "outer",
+                  "meta": {
+                    "name_value": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "doc"
+                          }
+                        ]
+                      },
+                      "value": {
+                        "lit": {
+                          "str": "\" A Solana cluster identifier as a &str\""
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "vis": "pub",
+              "ident": "display",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "reference": {
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "match": {
+                        "expr": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "self"
+                              }
+                            ]
+                          }
+                        },
+                        "arms": [
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "MainNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MAINNET"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "DevNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "DEVNET"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "TestNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "TESTNET"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "LocalNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "LOCALNET"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "pat": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "MyCluster"
+                                  },
+                                  {
+                                    "ident": "SolfunmemeNet"
+                                  }
+                                ]
+                              }
+                            },
+                            "body": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "SOLFUNMEMENET"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "impl": {
+        "trait": [
+          false,
+          {
+            "segments": [
+              {
+                "ident": "core"
+              },
+              {
+                "ident": "fmt"
+              },
+              {
+                "ident": "Display"
+              }
+            ]
+          }
+        ],
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "MyCluster"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "fn": {
+              "ident": "fmt",
+              "inputs": [
+                {
+                  "receiver": {
+                    "ref": true,
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Self"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "f"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "mut": true,
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "std"
+                              },
+                              {
+                                "ident": "fmt"
+                              },
+                              {
+                                "ident": "Formatter",
+                                "arguments": {
+                                  "angle_bracketed": {
+                                    "args": [
+                                      {
+                                        "lifetime": "_"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "std"
+                    },
+                    {
+                      "ident": "fmt"
+                    },
+                    {
+                      "ident": "Result"
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "write"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "ident": "f"
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "lit": "\"{}\""
+                          },
+                          {
+                            "punct": {
+                              "op": ",",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "self"
+                          },
+                          {
+                            "punct": {
+                              "op": ".",
+                              "spacing": "alone"
+                            }
+                          },
+                          {
+                            "ident": "display"
+                          },
+                          {
+                            "group": {
+                              "delimiter": "parenthesis",
+                              "stream": []
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "impl": {
+        "trait": [
+          false,
+          {
+            "segments": [
+              {
+                "ident": "TryFrom",
+                "arguments": {
+                  "angle_bracketed": {
+                    "args": [
+                      {
+                        "type": {
+                          "reference": {
+                            "elem": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "str"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "self_ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "MyCluster"
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "type": {
+              "ident": "Error",
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "WalletError"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "fn": {
+              "ident": "try_from",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "value"
+                      }
+                    },
+                    "ty": {
+                      "reference": {
+                        "elem": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "str"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Result",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "Error"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "let": {
+                    "pat": {
+                      "ident": {
+                        "ident": "cluster"
+                      }
+                    },
+                    "init": {
+                      "expr": {
+                        "match": {
+                          "expr": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "value"
+                                }
+                              ]
+                            }
+                          },
+                          "arms": [
+                            {
+                              "pat": {
+                                "ident": {
+                                  "ident": "MAINNET_IDENTIFIER"
+                                }
+                              },
+                              "body": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "MainNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "pat": {
+                                "ident": {
+                                  "ident": "DEVNET_IDENTIFIER"
+                                }
+                              },
+                              "body": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "DevNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "pat": {
+                                "ident": {
+                                  "ident": "TESTNET_IDENTIFIER"
+                                }
+                              },
+                              "body": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "TestNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "pat": {
+                                "ident": {
+                                  "ident": "LOCALNET_IDENTIFIER"
+                                }
+                              },
+                              "body": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "LocalNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "pat": {
+                                "ident": {
+                                  "ident": "MAINNET_ENDPOINT"
+                                }
+                              },
+                              "body": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "MainNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "pat": {
+                                "ident": {
+                                  "ident": "DEVNET_ENDPOINT"
+                                }
+                              },
+                              "body": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "DevNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "pat": {
+                                "ident": {
+                                  "ident": "TESTNET_ENDPOINT"
+                                }
+                              },
+                              "body": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "TestNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "pat": {
+                                "ident": {
+                                  "ident": "LOCALNET_ENDPOINT"
+                                }
+                              },
+                              "body": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "LocalNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "pat": {
+                                "ident": {
+                                  "ident": "MAINNET"
+                                }
+                              },
+                              "body": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "MainNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "pat": {
+                                "ident": {
+                                  "ident": "DEVNET"
+                                }
+                              },
+                              "body": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "DevNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "pat": {
+                                "ident": {
+                                  "ident": "TESTNET"
+                                }
+                              },
+                              "body": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "TestNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "pat": {
+                                "ident": {
+                                  "ident": "LOCALNET"
+                                }
+                              },
+                              "body": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Self"
+                                    },
+                                    {
+                                      "ident": "LocalNet"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "pat": {
+                                "_": {}
+                              },
+                              "body": {
+                                "return": {
+                                  "expr": {
+                                    "call": {
+                                      "func": {
+                                        "path": {
+                                          "segments": [
+                                            {
+                                              "ident": "Err"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "args": [
+                                        {
+                                          "call": {
+                                            "func": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "WalletError"
+                                                  },
+                                                  {
+                                                    "ident": "UnsupportedChain"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "args": [
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "value"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "to_string",
+                                                  "args": []
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "expr": [
+                    {
+                      "call": {
+                        "func": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Ok"
+                              }
+                            ]
+                          }
+                        },
+                        "args": [
+                          {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "cluster"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,842 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "dioxus",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "group": [
+                {
+                  "ident": "NotificationInfo"
+                },
+                {
+                  "ident": "SignMessageSvg"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "path": {
+                    "ident": "storage",
+                    "tree": {
+                      "group": [
+                        {
+                          "ident": "ACTIVE_CONNECTION"
+                        },
+                        {
+                          "ident": "GLOBAL_MESSAGE"
+                        },
+                        {
+                          "ident": "WALLET_ADAPTER"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "component"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "SignMessage",
+        "inputs": [],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Element"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "message"
+                }
+              },
+              "init": {
+                "expr": {
+                  "lit": {
+                    "str": "\"Solana Foundation is awesome!\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "mut": true,
+                  "ident": "solana_signmessage"
+                }
+              },
+              "init": {
+                "expr": {
+                  "lit": {
+                    "bool": false
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "if": {
+                  "cond": {
+                    "let": {
+                      "pat": {
+                        "tuple_struct": {
+                          "path": {
+                            "segments": [
+                              {
+                                "ident": "Ok"
+                              }
+                            ]
+                          },
+                          "elems": [
+                            {
+                              "ident": {
+                                "ident": "wallet_account"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "expr": {
+                        "method_call": {
+                          "receiver": {
+                            "method_call": {
+                              "receiver": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "ACTIVE_CONNECTION"
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "read",
+                              "args": []
+                            }
+                          },
+                          "method": "connected_account",
+                          "args": []
+                        }
+                      }
+                    }
+                  },
+                  "then_branch": [
+                    {
+                      "expr": [
+                        {
+                          "assign": {
+                            "left": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "solana_signmessage"
+                                  }
+                                ]
+                              }
+                            },
+                            "right": {
+                              "method_call": {
+                                "receiver": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "wallet_account"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "method": "solana_sign_message",
+                                "args": []
+                              }
+                            }
+                          }
+                        },
+                        true
+                      ]
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          },
+          {
+            "macro": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "rsx"
+                  }
+                ]
+              },
+              "delimiter": "brace",
+              "tokens": [
+                {
+                  "ident": "div"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "ident": "class"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"flex dark:bg-[#160231] bg-white flex-col w-[300px] p-5 justify-around rounded-lg dark:shadow-2xl shadow-sm border dark:border-none\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "div"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "brace",
+                          "stream": [
+                            {
+                              "ident": "class"
+                            },
+                            {
+                              "punct": {
+                                "op": ":",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "lit": "\"w-full flex flex-col items-center text-center text-true-blue justify-center mb-10\""
+                            },
+                            {
+                              "punct": {
+                                "op": ",",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "ident": "div"
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "class"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ":",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"w-[80px] flex flex-col\""
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ",",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "brace",
+                                      "stream": [
+                                        {
+                                          "ident": "SignMessageSvg"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "parenthesis",
+                                            "stream": []
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "ident": "div"
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "class"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ":",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"w-full text-sm\""
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ",",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"Sign Message\""
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "ident": "div"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "brace",
+                          "stream": [
+                            {
+                              "ident": "class"
+                            },
+                            {
+                              "punct": {
+                                "op": ":",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "lit": "\"text-lg text-center\""
+                            },
+                            {
+                              "punct": {
+                                "op": ",",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "message"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "ident": "div"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "brace",
+                          "stream": [
+                            {
+                              "ident": "class"
+                            },
+                            {
+                              "punct": {
+                                "op": ":",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "lit": "\"flex items-center justify-center\""
+                            },
+                            {
+                              "punct": {
+                                "op": ",",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "ident": "if"
+                            },
+                            {
+                              "ident": "solana_signmessage"
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "button"
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "brace",
+                                      "stream": [
+                                        {
+                                          "ident": "class"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ":",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"bg-true-blue  hover:bg-cobalt-blue mt-5 text-sm text-white px-5 py-2 rounded-full\""
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "onclick"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ":",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "move"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": "|",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "_"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": "|",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "ident": "spawn"
+                                              },
+                                              {
+                                                "group": {
+                                                  "delimiter": "parenthesis",
+                                                  "stream": [
+                                                    {
+                                                      "ident": "async"
+                                                    },
+                                                    {
+                                                      "ident": "move"
+                                                    },
+                                                    {
+                                                      "group": {
+                                                        "delimiter": "brace",
+                                                        "stream": [
+                                                          {
+                                                            "ident": "if"
+                                                          },
+                                                          {
+                                                            "ident": "let"
+                                                          },
+                                                          {
+                                                            "ident": "Err"
+                                                          },
+                                                          {
+                                                            "group": {
+                                                              "delimiter": "parenthesis",
+                                                              "stream": [
+                                                                {
+                                                                  "ident": "error"
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": "=",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "WALLET_ADAPTER"
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": ".",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "read"
+                                                          },
+                                                          {
+                                                            "group": {
+                                                              "delimiter": "parenthesis",
+                                                              "stream": []
+                                                            }
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": ".",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "sign_message"
+                                                          },
+                                                          {
+                                                            "group": {
+                                                              "delimiter": "parenthesis",
+                                                              "stream": [
+                                                                {
+                                                                  "ident": "message"
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ".",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "as_bytes"
+                                                                },
+                                                                {
+                                                                  "group": {
+                                                                    "delimiter": "parenthesis",
+                                                                    "stream": []
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          {
+                                                            "punct": {
+                                                              "op": ".",
+                                                              "spacing": "alone"
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "await"
+                                                          },
+                                                          {
+                                                            "group": {
+                                                              "delimiter": "brace",
+                                                              "stream": [
+                                                                {
+                                                                  "ident": "GLOBAL_MESSAGE"
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ".",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "write"
+                                                                },
+                                                                {
+                                                                  "group": {
+                                                                    "delimiter": "parenthesis",
+                                                                    "stream": []
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ".",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "push_back"
+                                                                },
+                                                                {
+                                                                  "group": {
+                                                                    "delimiter": "parenthesis",
+                                                                    "stream": [
+                                                                      {
+                                                                        "ident": "NotificationInfo"
+                                                                      },
+                                                                      {
+                                                                        "punct": {
+                                                                          "op": ":",
+                                                                          "spacing": "joint"
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "punct": {
+                                                                          "op": ":",
+                                                                          "spacing": "alone"
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "ident": "error"
+                                                                      },
+                                                                      {
+                                                                        "group": {
+                                                                          "delimiter": "parenthesis",
+                                                                          "stream": [
+                                                                            {
+                                                                              "ident": "format"
+                                                                            },
+                                                                            {
+                                                                              "punct": {
+                                                                                "op": "!",
+                                                                                "spacing": "alone"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "group": {
+                                                                                "delimiter": "parenthesis",
+                                                                                "stream": [
+                                                                                  {
+                                                                                    "lit": "\"SIGN MESSAGE ERROR: {error:?}\""
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ";",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          {
+                                                            "ident": "else"
+                                                          },
+                                                          {
+                                                            "group": {
+                                                              "delimiter": "brace",
+                                                              "stream": [
+                                                                {
+                                                                  "ident": "GLOBAL_MESSAGE"
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ".",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "write"
+                                                                },
+                                                                {
+                                                                  "group": {
+                                                                    "delimiter": "parenthesis",
+                                                                    "stream": []
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ".",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "ident": "push_back"
+                                                                },
+                                                                {
+                                                                  "group": {
+                                                                    "delimiter": "parenthesis",
+                                                                    "stream": [
+                                                                      {
+                                                                        "ident": "NotificationInfo"
+                                                                      },
+                                                                      {
+                                                                        "punct": {
+                                                                          "op": ":",
+                                                                          "spacing": "joint"
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "punct": {
+                                                                          "op": ":",
+                                                                          "spacing": "alone"
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "ident": "new"
+                                                                      },
+                                                                      {
+                                                                        "group": {
+                                                                          "delimiter": "parenthesis",
+                                                                          "stream": [
+                                                                            {
+                                                                              "lit": "\"Sign Message Successful\""
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "punct": {
+                                                                    "op": ";",
+                                                                    "spacing": "alone"
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ";",
+                                                  "spacing": "alone"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"SIGN MESSAGE\""
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "ident": "else"
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "div"
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "brace",
+                                      "stream": [
+                                        {
+                                          "ident": "class"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ":",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"w-full items-center justify-center\""
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"SIGN MESSAGE UNSUPPORTED\""
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

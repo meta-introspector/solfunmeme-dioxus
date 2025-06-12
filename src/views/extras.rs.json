@@ -1,0 +1,243 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "dioxus",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "views",
+                    "tree": {
+                      "group": [
+                        {
+                          "ident": "SignMessage"
+                        },
+                        {
+                          "ident": "SignTx"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "ident": "ConnectWalletFirst"
+                },
+                {
+                  "ident": "SignInWithSolana"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "path": {
+                    "ident": "storage",
+                    "tree": {
+                      "ident": "ACTIVE_CONNECTION"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "component"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "Extras",
+        "inputs": [],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Element"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "expr": [
+              {
+                "if": {
+                  "cond": {
+                    "method_call": {
+                      "receiver": {
+                        "method_call": {
+                          "receiver": {
+                            "method_call": {
+                              "receiver": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "ACTIVE_CONNECTION"
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "read",
+                              "args": []
+                            }
+                          },
+                          "method": "connected_account",
+                          "args": []
+                        }
+                      },
+                      "method": "is_ok",
+                      "args": []
+                    }
+                  },
+                  "then_branch": [
+                    {
+                      "macro": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "rsx"
+                            }
+                          ]
+                        },
+                        "delimiter": "brace",
+                        "tokens": [
+                          {
+                            "ident": "div"
+                          },
+                          {
+                            "group": {
+                              "delimiter": "brace",
+                              "stream": [
+                                {
+                                  "ident": "class"
+                                },
+                                {
+                                  "punct": {
+                                    "op": ":",
+                                    "spacing": "alone"
+                                  }
+                                },
+                                {
+                                  "lit": "\"flex justify-center mt-10 mb-5 gap-8 w-full flex-wrap items-stretch\""
+                                },
+                                {
+                                  "punct": {
+                                    "op": ",",
+                                    "spacing": "alone"
+                                  }
+                                },
+                                {
+                                  "ident": "SignInWithSolana"
+                                },
+                                {
+                                  "group": {
+                                    "delimiter": "brace",
+                                    "stream": []
+                                  }
+                                },
+                                {
+                                  "ident": "SignMessage"
+                                },
+                                {
+                                  "group": {
+                                    "delimiter": "brace",
+                                    "stream": []
+                                  }
+                                },
+                                {
+                                  "ident": "SignTx"
+                                },
+                                {
+                                  "group": {
+                                    "delimiter": "brace",
+                                    "stream": []
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "else_branch": {
+                    "block": {
+                      "stmts": [
+                        {
+                          "macro": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "rsx"
+                                }
+                              ]
+                            },
+                            "delimiter": "brace",
+                            "tokens": [
+                              {
+                                "ident": "ConnectWalletFirst"
+                              },
+                              {
+                                "group": {
+                                  "delimiter": "brace",
+                                  "stream": []
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              false
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

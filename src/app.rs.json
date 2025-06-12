@@ -1,0 +1,2585 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "dioxus",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "gloo_timers",
+            "tree": {
+              "path": {
+                "ident": "callback",
+                "tree": {
+                  "ident": "Timeout"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "model",
+                    "tree": {
+                      "ident": "NotificationInfo"
+                    }
+                  }
+                },
+                {
+                  "ident": "Footer"
+                },
+                {
+                  "ident": "Header"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "views",
+                "tree": {
+                  "path": {
+                    "ident": "connections",
+                    "tree": {
+                      "ident": "Connections"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "group": [
+                    {
+                      "ident": "AccountState"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "ident": "FAVICON",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Asset"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "macro": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "asset"
+                }
+              ]
+            },
+            "delimiter": "paren",
+            "tokens": [
+              {
+                "lit": "\"/assets/favicon.png\""
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "ident": "TAILWIND_CSS",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Asset"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "macro": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "asset"
+                }
+              ]
+            },
+            "delimiter": "paren",
+            "tokens": [
+              {
+                "lit": "\"/assets/tailwind.css\""
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "ident": "LOGO",
+        "ty": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Asset"
+              }
+            ]
+          }
+        },
+        "expr": {
+          "macro": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "asset"
+                }
+              ]
+            },
+            "delimiter": "paren",
+            "tokens": [
+              {
+                "lit": "\"/assets/logo.png\""
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "path": {
+                    "ident": "storage",
+                    "tree": {
+                      "ident": "WALLET_ADAPTER"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "model",
+                "tree": {
+                  "path": {
+                    "ident": "storage",
+                    "tree": {
+                      "group": [
+                        {
+                          "ident": "GLOBAL_MESSAGE"
+                        },
+                        {
+                          "ident": "ACCOUNT_STATE"
+                        },
+                        {
+                          "ident": "ACTIVE_CONNECTION"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "views",
+                "tree": {
+                  "path": {
+                    "ident": "dashboard",
+                    "tree": {
+                      "ident": "Dashboard"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "views",
+                "tree": {
+                  "path": {
+                    "ident": "accounts",
+                    "tree": {
+                      "ident": "Accounts"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "views",
+                "tree": {
+                  "path": {
+                    "ident": "clusters",
+                    "tree": {
+                      "ident": "Clusters"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "crate",
+            "tree": {
+              "path": {
+                "ident": "views",
+                "tree": {
+                  "path": {
+                    "ident": "extras",
+                    "tree": {
+                      "ident": "Extras"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "fn": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "component"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": {
+          "restricted": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "crate"
+                }
+              ]
+            }
+          }
+        },
+        "ident": "App",
+        "inputs": [],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Element"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "wallet_event_listener"
+                }
+              },
+              "init": {
+                "expr": {
+                  "method_call": {
+                    "receiver": {
+                      "method_call": {
+                        "receiver": {
+                          "method_call": {
+                            "receiver": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "WALLET_ADAPTER"
+                                  }
+                                ]
+                              }
+                            },
+                            "method": "read",
+                            "args": []
+                          }
+                        },
+                        "method": "events",
+                        "args": []
+                      }
+                    },
+                    "method": "clone",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          {
+            "expr": [
+              {
+                "call": {
+                  "func": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "spawn"
+                        }
+                      ]
+                    }
+                  },
+                  "args": [
+                    {
+                      "async": {
+                        "move": true,
+                        "stmts": [
+                          {
+                            "expr": [
+                              {
+                                "while": {
+                                  "cond": {
+                                    "let": {
+                                      "pat": {
+                                        "tuple_struct": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "Ok"
+                                              }
+                                            ]
+                                          },
+                                          "elems": [
+                                            {
+                                              "ident": {
+                                                "ident": "wallet_event"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "expr": {
+                                        "await": {
+                                          "base": {
+                                            "method_call": {
+                                              "receiver": {
+                                                "path": {
+                                                  "segments": [
+                                                    {
+                                                      "ident": "wallet_event_listener"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "method": "recv",
+                                              "args": []
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "body": [
+                                    {
+                                      "expr": [
+                                        {
+                                          "assign": {
+                                            "left": {
+                                              "unary": {
+                                                "op": "*",
+                                                "expr": {
+                                                  "method_call": {
+                                                    "receiver": {
+                                                      "path": {
+                                                        "segments": [
+                                                          {
+                                                            "ident": "ACCOUNT_STATE"
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    "method": "write",
+                                                    "args": []
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "right": {
+                                              "call": {
+                                                "func": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "AccountState"
+                                                      },
+                                                      {
+                                                        "ident": "default"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "args": []
+                                              }
+                                            }
+                                          }
+                                        },
+                                        true
+                                      ]
+                                    },
+                                    {
+                                      "let": {
+                                        "pat": {
+                                          "ident": {
+                                            "ident": "connection_info"
+                                          }
+                                        },
+                                        "init": {
+                                          "expr": {
+                                            "method_call": {
+                                              "receiver": {
+                                                "paren": {
+                                                  "expr": {
+                                                    "unary": {
+                                                      "op": "*",
+                                                      "expr": {
+                                                        "await": {
+                                                          "base": {
+                                                            "method_call": {
+                                                              "receiver": {
+                                                                "method_call": {
+                                                                  "receiver": {
+                                                                    "path": {
+                                                                      "segments": [
+                                                                        {
+                                                                          "ident": "WALLET_ADAPTER"
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  },
+                                                                  "method": "read",
+                                                                  "args": []
+                                                                }
+                                                              },
+                                                              "method": "connection_info",
+                                                              "args": []
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              "method": "clone",
+                                              "args": []
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "expr": [
+                                        {
+                                          "assign": {
+                                            "left": {
+                                              "unary": {
+                                                "op": "*",
+                                                "expr": {
+                                                  "method_call": {
+                                                    "receiver": {
+                                                      "path": {
+                                                        "segments": [
+                                                          {
+                                                            "ident": "ACTIVE_CONNECTION"
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    "method": "write",
+                                                    "args": []
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "right": {
+                                              "path": {
+                                                "segments": [
+                                                  {
+                                                    "ident": "connection_info"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        true
+                                      ]
+                                    },
+                                    {
+                                      "expr": [
+                                        {
+                                          "method_call": {
+                                            "receiver": {
+                                              "method_call": {
+                                                "receiver": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "GLOBAL_MESSAGE"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "method": "write",
+                                                "args": []
+                                              }
+                                            },
+                                            "method": "push_back",
+                                            "args": [
+                                              {
+                                                "call": {
+                                                  "func": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "NotificationInfo"
+                                                        },
+                                                        {
+                                                          "ident": "new"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "args": [
+                                                    {
+                                                      "path": {
+                                                        "segments": [
+                                                          {
+                                                            "ident": "wallet_event"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        true
+                                      ]
+                                    }
+                                  ]
+                                }
+                              },
+                              false
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              true
+            ]
+          },
+          {
+            "macro": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "rsx"
+                  }
+                ]
+              },
+              "delimiter": "brace",
+              "tokens": [
+                {
+                  "ident": "document"
+                },
+                {
+                  "punct": {
+                    "op": ":",
+                    "spacing": "joint"
+                  }
+                },
+                {
+                  "punct": {
+                    "op": ":",
+                    "spacing": "alone"
+                  }
+                },
+                {
+                  "ident": "Link"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "ident": "rel"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"icon\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "href"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "FAVICON"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ident": "document"
+                },
+                {
+                  "punct": {
+                    "op": ":",
+                    "spacing": "joint"
+                  }
+                },
+                {
+                  "punct": {
+                    "op": ":",
+                    "spacing": "alone"
+                  }
+                },
+                {
+                  "ident": "Link"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "ident": "rel"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"stylesheet\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "href"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "TAILWIND_CSS"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ident": "document"
+                },
+                {
+                  "punct": {
+                    "op": ":",
+                    "spacing": "joint"
+                  }
+                },
+                {
+                  "punct": {
+                    "op": ":",
+                    "spacing": "alone"
+                  }
+                },
+                {
+                  "ident": "Title"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "lit": "\"Rust Wallet Adapter\""
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ident": "div"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "ident": "class"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"w-full flex min-h-screen font-[sans-serif] dark:bg-rich-black bg-white text-black dark:text-white\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "Notification"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "brace",
+                          "stream": []
+                        }
+                      },
+                      {
+                        "ident": "div"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "brace",
+                          "stream": [
+                            {
+                              "ident": "class"
+                            },
+                            {
+                              "punct": {
+                                "op": ":",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "lit": "\"flex flex-col w-full min-h-full justify-between items-center\""
+                            },
+                            {
+                              "punct": {
+                                "op": ",",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "ident": "Router"
+                            },
+                            {
+                              "punct": {
+                                "op": ":",
+                                "spacing": "joint"
+                              }
+                            },
+                            {
+                              "punct": {
+                                "op": ":",
+                                "spacing": "joint"
+                              }
+                            },
+                            {
+                              "punct": {
+                                "op": "<",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "ident": "Route"
+                            },
+                            {
+                              "punct": {
+                                "op": ">",
+                                "spacing": "alone"
+                              }
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": []
+                              }
+                            },
+                            {
+                              "ident": "Connections"
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": []
+                              }
+                            },
+                            {
+                              "ident": "Footer"
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": []
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "component"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "ident": "Notification",
+        "inputs": [],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Element"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "expr": [
+              {
+                "if": {
+                  "cond": {
+                    "method_call": {
+                      "receiver": {
+                        "method_call": {
+                          "receiver": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "GLOBAL_MESSAGE"
+                                }
+                              ]
+                            }
+                          },
+                          "method": "read",
+                          "args": []
+                        }
+                      },
+                      "method": "is_empty",
+                      "args": []
+                    }
+                  },
+                  "then_branch": [
+                    {
+                      "expr": [
+                        {
+                          "return": {
+                            "expr": {
+                              "macro": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "rsx"
+                                    }
+                                  ]
+                                },
+                                "delimiter": "brace",
+                                "tokens": []
+                              }
+                            }
+                          }
+                        },
+                        true
+                      ]
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "message_index"
+                }
+              },
+              "init": {
+                "expr": {
+                  "closure": {
+                    "inputs": [
+                      {
+                        "type": {
+                          "pat": {
+                            "ident": {
+                              "ident": "key"
+                            }
+                          },
+                          "ty": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "u32"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "output": null,
+                    "body": {
+                      "block": {
+                        "stmts": [
+                          {
+                            "let": {
+                              "pat": {
+                                "ident": {
+                                  "ident": "messages"
+                                }
+                              },
+                              "init": {
+                                "expr": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "GLOBAL_MESSAGE"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "read",
+                                    "args": []
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "let": {
+                              "pat": {
+                                "ident": {
+                                  "ident": "found_message"
+                                }
+                              },
+                              "init": {
+                                "expr": {
+                                  "method_call": {
+                                    "receiver": {
+                                      "method_call": {
+                                        "receiver": {
+                                          "method_call": {
+                                            "receiver": {
+                                              "method_call": {
+                                                "receiver": {
+                                                  "path": {
+                                                    "segments": [
+                                                      {
+                                                        "ident": "messages"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "method": "iter",
+                                                "args": []
+                                              }
+                                            },
+                                            "method": "enumerate",
+                                            "args": []
+                                          }
+                                        },
+                                        "method": "find",
+                                        "args": [
+                                          {
+                                            "closure": {
+                                              "inputs": [
+                                                {
+                                                  "tuple": {
+                                                    "elems": [
+                                                      {
+                                                        "_": {}
+                                                      },
+                                                      {
+                                                        "ident": {
+                                                          "ident": "value"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ],
+                                              "output": null,
+                                              "body": {
+                                                "binary": {
+                                                  "left": {
+                                                    "method_call": {
+                                                      "receiver": {
+                                                        "path": {
+                                                          "segments": [
+                                                            {
+                                                              "ident": "value"
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                      "method": "key",
+                                                      "args": []
+                                                    }
+                                                  },
+                                                  "op": "==",
+                                                  "right": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "key"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "method": "map",
+                                    "args": [
+                                      {
+                                        "closure": {
+                                          "inputs": [
+                                            {
+                                              "tuple": {
+                                                "elems": [
+                                                  {
+                                                    "ident": {
+                                                      "ident": "index"
+                                                    }
+                                                  },
+                                                  {
+                                                    "ident": {
+                                                      "ident": "_value"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ],
+                                          "output": null,
+                                          "body": {
+                                            "path": {
+                                              "segments": [
+                                                {
+                                                  "ident": "index"
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "expr": [
+                              {
+                                "call": {
+                                  "func": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "drop"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "args": [
+                                    {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "messages"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              true
+                            ]
+                          },
+                          {
+                            "expr": [
+                              {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "found_message"
+                                    }
+                                  ]
+                                }
+                              },
+                              false
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "ident": "timer_callback"
+                }
+              },
+              "init": {
+                "expr": {
+                  "closure": {
+                    "inputs": [
+                      {
+                        "type": {
+                          "pat": {
+                            "ident": {
+                              "ident": "secs"
+                            }
+                          },
+                          "ty": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "u32"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": {
+                          "pat": {
+                            "ident": {
+                              "ident": "key"
+                            }
+                          },
+                          "ty": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "u32"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "output": null,
+                    "body": {
+                      "block": {
+                        "stmts": [
+                          {
+                            "expr": [
+                              {
+                                "call": {
+                                  "func": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "spawn"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "args": [
+                                    {
+                                      "async": {
+                                        "move": true,
+                                        "stmts": [
+                                          {
+                                            "let": {
+                                              "pat": {
+                                                "ident": {
+                                                  "ident": "timeout"
+                                                }
+                                              },
+                                              "init": {
+                                                "expr": {
+                                                  "call": {
+                                                    "func": {
+                                                      "path": {
+                                                        "segments": [
+                                                          {
+                                                            "ident": "Timeout"
+                                                          },
+                                                          {
+                                                            "ident": "new"
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    "args": [
+                                                      {
+                                                        "binary": {
+                                                          "left": {
+                                                            "path": {
+                                                              "segments": [
+                                                                {
+                                                                  "ident": "secs"
+                                                                }
+                                                              ]
+                                                            }
+                                                          },
+                                                          "op": "*",
+                                                          "right": {
+                                                            "lit": {
+                                                              "int": "1000"
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "closure": {
+                                                          "move": true,
+                                                          "inputs": [],
+                                                          "output": null,
+                                                          "body": {
+                                                            "block": {
+                                                              "stmts": [
+                                                                {
+                                                                  "expr": [
+                                                                    {
+                                                                      "method_call": {
+                                                                        "receiver": {
+                                                                          "call": {
+                                                                            "func": {
+                                                                              "path": {
+                                                                                "segments": [
+                                                                                  {
+                                                                                    "ident": "message_index"
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            },
+                                                                            "args": [
+                                                                              {
+                                                                                "path": {
+                                                                                  "segments": [
+                                                                                    {
+                                                                                      "ident": "key"
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        },
+                                                                        "method": "map",
+                                                                        "args": [
+                                                                          {
+                                                                            "closure": {
+                                                                              "inputs": [
+                                                                                {
+                                                                                  "ident": {
+                                                                                    "ident": "index"
+                                                                                  }
+                                                                                }
+                                                                              ],
+                                                                              "output": null,
+                                                                              "body": {
+                                                                                "method_call": {
+                                                                                  "receiver": {
+                                                                                    "method_call": {
+                                                                                      "receiver": {
+                                                                                        "path": {
+                                                                                          "segments": [
+                                                                                            {
+                                                                                              "ident": "GLOBAL_MESSAGE"
+                                                                                            }
+                                                                                          ]
+                                                                                        }
+                                                                                      },
+                                                                                      "method": "write",
+                                                                                      "args": []
+                                                                                    }
+                                                                                  },
+                                                                                  "method": "remove",
+                                                                                  "args": [
+                                                                                    {
+                                                                                      "path": {
+                                                                                        "segments": [
+                                                                                          {
+                                                                                            "ident": "index"
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    },
+                                                                    true
+                                                                  ]
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "expr": [
+                                              {
+                                                "method_call": {
+                                                  "receiver": {
+                                                    "path": {
+                                                      "segments": [
+                                                        {
+                                                          "ident": "timeout"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "method": "forget",
+                                                  "args": []
+                                                }
+                                              },
+                                              true
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              true
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "let": {
+              "pat": {
+                "ident": {
+                  "mut": true,
+                  "ident": "key"
+                }
+              },
+              "init": {
+                "expr": {
+                  "call": {
+                    "func": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Some"
+                          }
+                        ]
+                      }
+                    },
+                    "args": [
+                      {
+                        "lit": {
+                          "int": "0u32"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "macro": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "rsx"
+                  }
+                ]
+              },
+              "delimiter": "brace",
+              "tokens": [
+                {
+                  "ident": "div"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "ident": "class"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"cursor-pointer fixed z-1000 top-4 right-4 flex flex-col space-y-2 min-w-[300px] shadow-lg\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "for"
+                      },
+                      {
+                        "ident": "notification_info"
+                      },
+                      {
+                        "ident": "in"
+                      },
+                      {
+                        "ident": "GLOBAL_MESSAGE"
+                      },
+                      {
+                        "punct": {
+                          "op": ".",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "read"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "parenthesis",
+                          "stream": []
+                        }
+                      },
+                      {
+                        "punct": {
+                          "op": ".",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "clone"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "parenthesis",
+                          "stream": []
+                        }
+                      },
+                      {
+                        "punct": {
+                          "op": ".",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "ident": "iter"
+                      },
+                      {
+                        "group": {
+                          "delimiter": "parenthesis",
+                          "stream": []
+                        }
+                      },
+                      {
+                        "group": {
+                          "delimiter": "brace",
+                          "stream": [
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "key"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ".",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "ident": "replace"
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "parenthesis",
+                                      "stream": [
+                                        {
+                                          "ident": "notification_info"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ".",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "key"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "parenthesis",
+                                            "stream": []
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ";",
+                                      "spacing": "alone"
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "timer_callback"
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "parenthesis",
+                                      "stream": [
+                                        {
+                                          "ident": "notification_info"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ".",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "secs"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "parenthesis",
+                                            "stream": []
+                                          }
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "notification_info"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ".",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "key"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "parenthesis",
+                                            "stream": []
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "ident": "div"
+                            },
+                            {
+                              "group": {
+                                "delimiter": "brace",
+                                "stream": [
+                                  {
+                                    "ident": "onclick"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ":",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "ident": "move"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": "|",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "ident": "_"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": "|",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "brace",
+                                      "stream": [
+                                        {
+                                          "ident": "if"
+                                        },
+                                        {
+                                          "ident": "let"
+                                        },
+                                        {
+                                          "ident": "Some"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "parenthesis",
+                                            "stream": [
+                                              {
+                                                "ident": "key_inner"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": "=",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "key"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "ident": "message_index"
+                                              },
+                                              {
+                                                "group": {
+                                                  "delimiter": "parenthesis",
+                                                  "stream": [
+                                                    {
+                                                      "ident": "key_inner"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ".",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "ident": "map"
+                                              },
+                                              {
+                                                "group": {
+                                                  "delimiter": "parenthesis",
+                                                  "stream": [
+                                                    {
+                                                      "punct": {
+                                                        "op": "|",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "ident": "index"
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": "|",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "ident": "GLOBAL_MESSAGE"
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ".",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "ident": "write"
+                                                    },
+                                                    {
+                                                      "group": {
+                                                        "delimiter": "parenthesis",
+                                                        "stream": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ".",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "ident": "remove"
+                                                    },
+                                                    {
+                                                      "group": {
+                                                        "delimiter": "parenthesis",
+                                                        "stream": [
+                                                          {
+                                                            "ident": "index"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ";",
+                                                  "spacing": "alone"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "ident": "key"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ".",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "take"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "parenthesis",
+                                            "stream": []
+                                          }
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ";",
+                                            "spacing": "alone"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ",",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "ident": "key"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ":",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"{notification_info.key()}\""
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ",",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "ident": "class"
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ":",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "lit": "\"flex border dark:border-none items-center opacity-0 translate-y-4 animate-fade-in w-full max-w-xs p-2 space-x-2 text-gray-600 bg-white divide-x divide-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:divide-gray-700 dark:bg-gray-800\""
+                                  },
+                                  {
+                                    "punct": {
+                                      "op": ",",
+                                      "spacing": "alone"
+                                    }
+                                  },
+                                  {
+                                    "ident": "div"
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "brace",
+                                      "stream": [
+                                        {
+                                          "ident": "class"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ":",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"flex w-[30px]\""
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "ident": "svg"
+                                        },
+                                        {
+                                          "group": {
+                                            "delimiter": "brace",
+                                            "stream": [
+                                              {
+                                                "ident": "view_box"
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ":",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "lit": "\"0 0 24 24\""
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ",",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "ident": "xmlns"
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ":",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "lit": "\"http://www.w3.org/2000/svg\""
+                                              },
+                                              {
+                                                "punct": {
+                                                  "op": ",",
+                                                  "spacing": "alone"
+                                                }
+                                              },
+                                              {
+                                                "ident": "path"
+                                              },
+                                              {
+                                                "group": {
+                                                  "delimiter": "brace",
+                                                  "stream": [
+                                                    {
+                                                      "ident": "d"
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ":",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "lit": "\"m10 20h4a2 2 0 0 1 -4 0zm8-4v-6a6 6 0 0 0 -5-5.91v-1.09a1 1 0 0 0 -2 0v1.09a6 6 0 0 0 -5 5.91v6l-2 2h16z\""
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ",",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "ident": "fill"
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ":",
+                                                        "spacing": "alone"
+                                                      }
+                                                    },
+                                                    {
+                                                      "lit": "\"#0060df\""
+                                                    },
+                                                    {
+                                                      "punct": {
+                                                        "op": ",",
+                                                        "spacing": "alone"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "ident": "div"
+                                  },
+                                  {
+                                    "group": {
+                                      "delimiter": "brace",
+                                      "stream": [
+                                        {
+                                          "ident": "class"
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ":",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"ps-4 text-sm font-normal\""
+                                        },
+                                        {
+                                          "punct": {
+                                            "op": ",",
+                                            "spacing": "alone"
+                                          }
+                                        },
+                                        {
+                                          "lit": "\"{notification_info.message()}\""
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "enum": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Clone"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Debug"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "PartialEq"
+                  },
+                  {
+                    "punct": {
+                      "op": ",",
+                      "spacing": "alone"
+                    }
+                  },
+                  {
+                    "ident": "Routable"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "style": "outer",
+            "meta": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "rustfmt"
+                  },
+                  {
+                    "ident": "skip"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "Route",
+        "variants": [
+          {
+            "attrs": [
+              {
+                "style": "outer",
+                "meta": {
+                  "list": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "layout"
+                        }
+                      ]
+                    },
+                    "delimiter": "paren",
+                    "tokens": [
+                      {
+                        "ident": "Header"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "style": "outer",
+                "meta": {
+                  "list": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "route"
+                        }
+                      ]
+                    },
+                    "delimiter": "paren",
+                    "tokens": [
+                      {
+                        "lit": "\"/\""
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "ident": "Dashboard",
+            "fields": {
+              "unnamed": []
+            }
+          },
+          {
+            "attrs": [
+              {
+                "style": "outer",
+                "meta": {
+                  "list": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "route"
+                        }
+                      ]
+                    },
+                    "delimiter": "paren",
+                    "tokens": [
+                      {
+                        "lit": "\"/accounts\""
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "ident": "Accounts",
+            "fields": {
+              "unnamed": []
+            }
+          },
+          {
+            "attrs": [
+              {
+                "style": "outer",
+                "meta": {
+                  "list": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "route"
+                        }
+                      ]
+                    },
+                    "delimiter": "paren",
+                    "tokens": [
+                      {
+                        "lit": "\"/clusters\""
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "ident": "Clusters",
+            "fields": {
+              "unnamed": []
+            }
+          },
+          {
+            "attrs": [
+              {
+                "style": "outer",
+                "meta": {
+                  "list": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "route"
+                        }
+                      ]
+                    },
+                    "delimiter": "paren",
+                    "tokens": [
+                      {
+                        "lit": "\"/extras\""
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "ident": "Extras",
+            "fields": {
+              "unnamed": []
+            }
+          },
+          {
+            "attrs": [
+              {
+                "style": "outer",
+                "meta": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "end_layout"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "style": "outer",
+                "meta": {
+                  "list": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "route"
+                        }
+                      ]
+                    },
+                    "delimiter": "paren",
+                    "tokens": [
+                      {
+                        "lit": "\"/:..route\""
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "ident": "PageNotFound",
+            "fields": {
+              "named": [
+                {
+                  "ident": "route",
+                  "colon_token": true,
+                  "ty": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "Vec",
+                          "arguments": {
+                            "angle_bracketed": {
+                              "args": [
+                                {
+                                  "type": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "String"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fn": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "component"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "ident": "PageNotFound",
+        "inputs": [
+          {
+            "typed": {
+              "pat": {
+                "ident": {
+                  "ident": "route"
+                }
+              },
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Vec",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "String"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "output": {
+          "path": {
+            "segments": [
+              {
+                "ident": "Element"
+              }
+            ]
+          }
+        },
+        "stmts": [
+          {
+            "macro": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "rsx"
+                  }
+                ]
+              },
+              "delimiter": "brace",
+              "tokens": [
+                {
+                  "ident": "h1"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "lit": "\"Page not found\""
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ident": "p"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "lit": "\"We are terribly sorry, but the page you requested doesn't exist.\""
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ident": "pre"
+                },
+                {
+                  "group": {
+                    "delimiter": "brace",
+                    "stream": [
+                      {
+                        "ident": "color"
+                      },
+                      {
+                        "punct": {
+                          "op": ":",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"red\""
+                      },
+                      {
+                        "punct": {
+                          "op": ",",
+                          "spacing": "alone"
+                        }
+                      },
+                      {
+                        "lit": "\"log:\\nattemped to navigate to: {route:?}\""
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
