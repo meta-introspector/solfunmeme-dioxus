@@ -5,84 +5,110 @@
 //     combinator::{map, opt},
 //     multi::{many0, separated_list0},
 //     sequence::{delimited, pair},
-// //    sequence::{delimited, pair, preceded, terminated, tuple},
 //     IResult,
 // };
-// //use std::collections::HashMap;
 
 // #[derive(Debug, Clone, PartialEq)]
-// pub enum Type {}
+// pub enum Type {
+//     ForallE {
+//         binder_name: String,
+//         binder_info: String,
+//         binder_type: Box<Type>,
+//         body: Box<Type>
+//     },
+//     Const {
+//         decl_name: String,
+//         levels: Vec<String>
+//     },
+//     Sort {
+//         level: String
+//     },
+//     Bvar,
+//     App {
+//         func: Box<Type>,
+//         arg: Box<Type>
+//     },
+//     Lam {
+//         binder_name: String,
+//         binder_info: String,
+//         binder_type: Box<Type>,
+//         body: Box<Type>
+//     }
+// }
 
 // #[derive(Debug, Clone, PartialEq)]
 // pub struct Rule {
 //     name: String,
-//     nfields: i8,
-//     //    rhs: Option<Rule>
-//     rhs: String
+//     nfields: u32,
+//     rhs: Type
 // }
+
 // #[derive(Debug, Clone, PartialEq)]
 // pub struct Root {
-//     name : String
+//     name: String
 // }
+
 // #[derive(Debug, Clone, PartialEq)]
 // pub struct Program {
-// //--    name : String,
-// root:  Root,
-// types:  Vec<Type>,
-// rules  : String
+//     root: Root,
+//     types: Vec<Type>,
+//     rules: Option<Vec<Rule>>
 // }
-// // Parser for the entire program
 
-
+// fn parse_identifier(input: &str) -> IResult<&str, &str> {
+//     let (input, first) = take_while1(|c: char| c.is_alphabetic() || c == '_')(input)?;
+//     let (input, rest) = take_while1(|c: char| c.is_alphanumeric() || c == '_' || c == '.' || c == '-')(input)?;
+//     Ok((input, rest))
+// }
 // // Parse ForallE (e.g., "  ∀ t (default: 🔖 SimpleExpr [u_1,u_2])")
-// fn parse_forall_e(input: &str) -> IResult<&str, Type> {
-//     let (input, indent) = parse_indent(input)?;
-//     let (input, _) = tag("∀")(input)?;
-//     let (input, _) = space1(input)?;
-//     let (input, binder_name) = parse_identifier(input)?;
-//     let (input, _) = space0(input)?;
-//     let (input, binder_info) = delimited(
-//         char('('),
-//         parse_identifier,
-//         pair(char(':'), space0),
-//     )(input)?;
-//     let (input, binder_type) = parse_type(input)?;
-//     let (input, _) = char(')')(input)?;
-//     let (input, _) = newline(input)?;
-//     let (input, body) = parse_type(input)?;
-//     let (input, _) = newline(input)?;
-//     let (input, _) = tag(indent)(input)?;
-//     Ok((
-//         input,
-//         Type::ForallE {
-//             binder_name,
-//             binder_info,
-//             binder_type: Box::new(binder_type),
-//             body: Box::new(body),
-//         },
-//     ))
-// }
+// // fn parse_forall_e(input: &str) -> IResult<&str, Type> {
+// //     let (input, indent) = parse_indent(input)?;
+// //     let (input, _) = tag("∀")(input)?;
+// //     let (input, _) = space1(input)?;
+// //     let (input, binder_name) = parse_identifier(input)?;
+// //     let (input, _) = space0(input)?;
+// //     let (input, binder_info) = delimited(
+// //         char('('),
+// //         |i| parse_identifier(i),
+// //         pair(char(':'), space0),
+// //     )(input)?;
+// //     let (input, binder_type) = parse_type(input)?;
+// //     let (input, _) = char(')')(input)?;
+// //     let (input, _) = newline(input)?;
+// //     let (input, body) = parse_type(input)?;
+// //     let (input, _) = newline(input)?;
+// //     let (input, _) = tag(indent)(input)?;
+// //     Ok((
+// //         input,
+// //         Type::ForallE {
+// //             binder_name.to_string(),
+// //             binder_info,
+// //             binder_type: Box::new(binder_type),
+// //             body: Box::new(body),
+// //         },
+// //     ))
+// // }
 
 // // Parse Const (e.g., "  🔖 SimpleExpr [u_1,u_2]")
-// fn parse_const(input: &str) -> IResult<&str, Type> {
-//     let (input, indent) = parse_indent(input)?;
-//     let (input, _) = tag("🔖")(input)?;
-//     let (input, _) = space1(input)?;
-//     let (input, decl_name) = parse_identifier(input)?;
-//     let (input, _) = space0(input)?;
-//     let (input, levels) = delimited(
-//         char('['),
-//         separated_list0(tag(","), parse_identifier),
-//         char(']'),
-//     )(input)?;
-//     Ok((
-//         input,
-//         Type::Const {
-//             decl_name,
-//             levels,
-//         },
-//     ))
-// }
+// // fn parse_const(input: &str) -> IResult<&str, Type> {
+// //     let (input, indent) = parse_indent(input)?;
+// //     let (input, _) = tag("🔖")(input)?;
+// //     let (input, _) = space1(input)?;
+// //     let (input, decl_name) = parse_identifier(input)?;
+// //     let (input, _) = space0(input)?;
+// //     let (input, levels) = delimited(
+// //         char('['),
+// //         separated_list0(tag(","), parse_identifier),
+// //         char(']'),
+// //     )(input)?;
+// //     Ok((
+// //         input,
+// //         Type::Const {
+// //             decl_name,
+// //             levels,
+// //         },
+// //     ))
+// // }
 
 // // Parse Sort (e.g., "  📏 u")
 // fn parse_sort(input: &str) -> IResult<&str, Type> {
@@ -90,7 +116,7 @@
 //     let (input, _) = tag("📏")(input)?;
 //     let (input, _) = space1(input)?;
 //     let (input, level) = parse_identifier(input)?;
-//     Ok((input, Type::Sort { level }))
+//     Ok((input, Type::Sort { level: level.to_string() }))
 // }
 
 // // Parse Bvar (e.g., "  📍")
@@ -131,7 +157,7 @@
 //     let (input, _) = space0(input)?;
 //     let (input, binder_info) = delimited(
 //         char('('),
-//         parse_identifier,
+//         parse_identifier as fn(&str) -> IResult<&str, &str>,
 //         pair(char(':'), space0),
 //     )(input)?;
 //     let (input, binder_type) = parse_type(input)?;
@@ -143,7 +169,7 @@
 //     Ok((
 //         input,
 //         Type::Lam {
-//             binder_name,
+//             binder_name: binder_name.to_string(),
 //             binder_info,
 //             binder_type: Box::new(binder_type),
 //             body: Box::new(body),
@@ -152,13 +178,13 @@
 // }
 
 // // Parse RulesSection (e.g., "📜 Rules:\n  📋 SimpleExpr.bvar (fields: 2)\n...")
-// fn parse_rules_section(input: &str) -> IResult<&str, Vec<Rule>> {
-//     let (input, _) = tag("📜")(input)?;
-//     let (input, _) = space1(input)?;
-//     let (input, _) = tag("Rules:")(input)?;
-//     let (input, _) = newline(input)?;
-//     many0(parse_rule)(input)
-// }
+// // fn parse_rules_section(input: &str) -> IResult<&str, Vec<Rule>> {
+// //     let (input, _) = tag("📜")(input)?;
+// //     let (input, _) = space1(input)?;
+// //     let (input, _) = tag("Rules:")(input)?;
+// //     let (input, _) = newline(input)?;
+// //     many0(parse_rule)(input)
+// // }
 
 // // Parse Rule (e.g., "  📋 SimpleExpr.bvar (fields: 2)\n    <type>")
 // fn parse_rule(input: &str) -> IResult<&str, Rule> {
@@ -179,12 +205,7 @@
 // }
 
 // // Parse Identifier (e.g., "SimpleExpr", "u_1", "default")
-// fn parse_identifier(input: &str) -> IResult<&str, String> {
-//     map(
-//         take_while1(|c: char| c.is_alphanumeric() || c == '_' || c == '.'),
-//         |s: &str| s.to_string(),
-//     )(input)
-// }
+
 
 // // Parse Indent (e.g., "  ", "    ")
 // fn parse_indent(input: &str) -> IResult<&str, &str> {
