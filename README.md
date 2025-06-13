@@ -81,3 +81,19 @@ we hope to construct that each path in the system is a unique word and a program
 ###### calling typescript from rust wasm dioxus (calling eliza?)
 #### Tracing the AI inference into the model.
 
+
+#### Convert this source to json
+Createing json  using https://github.com/meta-introspector/syn-serde-rust.git
+
+ ```
+    cd .\syn-serde-rust\
+    cargo build
+    cd .\examples\rust2emoji\
+    cargo build
+    cargo run ..\..\..\solfunmeme-dioxus\
+```
+
+#### Reading in source of code via reflection. splitting into chunks. saving in the blockchain.
+#### interpreting the functions as json or emojis
+#### linking functions together creating systems as groups of contracts.
+#### embedding contrats as vectors
