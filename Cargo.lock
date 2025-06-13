@@ -4684,6 +4684,7 @@ dependencies = [
  "sha2 0.10.9",
  "solana-sdk",
  "solana-transaction-error",
+ "syn-serde",
  "thiserror 2.0.12",
  "url",
  "uuid",
@@ -4733,6 +4734,18 @@ dependencies = [
  "proc-macro2",
  "quote",
  "unicode-ident",
+]
+
+[[package]]
+name = "syn-serde"
+version = "0.3.1"
+source = "git+https://github.com/meta-introspector/syn-serde-rust#96e6d06b0e40de21f4b128e8185d623a0e20dd57"
+dependencies = [
+ "proc-macro2",
+ "serde",
+ "serde_derive",
+ "serde_json",
+ "syn 2.0.101",
 ]
 
 [[package]]

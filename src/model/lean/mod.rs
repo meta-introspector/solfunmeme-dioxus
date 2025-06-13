@@ -18,7 +18,7 @@ pub use types::{
 };
 
 pub mod meme;
-pub use meem::*;
+pub use meme::*;
 
 pub mod style;
 pub use style::*;
@@ -28,3 +28,4 @@ pub use emojis::*;
 
 pub mod parser;
 pub use parser::*;
+

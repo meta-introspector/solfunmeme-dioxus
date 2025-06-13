@@ -475,7 +475,7 @@
     {
       "const": {
         "vis": "pub",
-        "ident": "BOTT8",
+        "ident": "ZOS1",
         "ty": {
           "path": {
             "segments": [
@@ -503,13 +503,83 @@
                       },
                       "right": {
                         "lit": {
-                          "str": "\"bott8=[0,1,2,3,5,7,11,13]\""
+                          "str": "\"ZOS1=[0,1,2,3,5,7,11,13]\""
                         }
                       }
                     }
                   },
                   false
                 ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "const": {
+        "vis": "pub",
+        "ident": "ZOS1_array",
+        "ty": {
+          "array": {
+            "elem": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "i32"
+                  }
+                ]
+              }
+            },
+            "len": {
+              "lit": {
+                "int": "8"
+              }
+            }
+          }
+        },
+        "expr": {
+          "array": {
+            "elems": [
+              {
+                "lit": {
+                  "int": "0"
+                }
+              },
+              {
+                "lit": {
+                  "int": "1"
+                }
+              },
+              {
+                "lit": {
+                  "int": "2"
+                }
+              },
+              {
+                "lit": {
+                  "int": "3"
+                }
+              },
+              {
+                "lit": {
+                  "int": "5"
+                }
+              },
+              {
+                "lit": {
+                  "int": "7"
+                }
+              },
+              {
+                "lit": {
+                  "int": "11"
+                }
+              },
+              {
+                "lit": {
+                  "int": "13"
+                }
               }
             ]
           }

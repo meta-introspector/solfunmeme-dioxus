@@ -58,7 +58,7 @@ struct CnstInf {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-struct Rule {
+pub struct Rule {
     rhs: Type,
     nfields: u32,
     name: String,
@@ -258,11 +258,11 @@ fn json_to_emoji(json_str: &str) -> Result<String, Box<dyn std::error::Error>> {
     Ok(result)
 }
 
-fn main() {
-    // Use the full JSON (trimmed here for brevity; use full JSON in practice)
-    let json_str = include_str!("full.json"); // Assume JSON is saved in a file
-    match json_to_emoji(json_str) {
-        Ok(emoji_str) => println!("{}", emoji_str),
-        Err(e) => eprintln!("Error: {}", e),
-    }
-}
+// fn main() {
+//     // Use the full JSON (trimmed here for brevity; use full JSON in practice)
+//     let json_str = include_str!("full.json"); // Assume JSON is saved in a file
+//     match json_to_emoji(json_str) {
+//         Ok(emoji_str) => println!("{}", emoji_str),
+//         Err(e) => eprintln!("Error: {}", e),
+//     }
+// }

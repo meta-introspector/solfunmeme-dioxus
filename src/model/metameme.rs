@@ -49,7 +49,6 @@ pub enum MemeProviders {
     AwsCodeCommit,
     LocalGit,
     Twitter,
-    Discord,
     Telegram, 
     Matrix,
     Irc,
@@ -72,10 +71,21 @@ pub enum LLMProviders {
     OpenLightLLM
 }
 
-pub fn expand(prov:LLMProviders, m: Meme) -> Meme {}
+pub fn expand(prov:LLMProviders, m: Meme) -> Meme {
+
+        Meme {
+            typ : MetaMeme::MetaMeme,
+            value : "fixme",
+        }
+}
 
 // 7. this structure should only have 8 layers and loop back on itself like bott periodicity. 
 
-pub const BOTT8 : Meme = {
-    value = "bott8=[0,1,2,3,5,7,11,13]"
+pub const ZOS1 : Meme = {
+    value = "ZOS1=[0,1,2,3,5,7,11,13]"
 };
+
+
+pub const ZOS1_array : [i32; 8] = [0, 1, 2, 3, 5, 7, 11, 13];
+
+// 
