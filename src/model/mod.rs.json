@@ -322,17 +322,6 @@
       }
     },
     {
-      "use": {
-        "vis": "pub",
-        "tree": {
-          "path": {
-            "ident": "memes",
-            "tree": "*"
-          }
-        }
-      }
-    },
-    {
       "mod": {
         "vis": "pub",
         "ident": "crypto",
@@ -340,32 +329,10 @@
       }
     },
     {
-      "use": {
-        "vis": "pub",
-        "tree": {
-          "path": {
-            "ident": "crypto",
-            "tree": "*"
-          }
-        }
-      }
-    },
-    {
       "mod": {
         "vis": "pub",
         "ident": "simple_expr",
         "semi": true
-      }
-    },
-    {
-      "use": {
-        "vis": "pub",
-        "tree": {
-          "path": {
-            "ident": "simple_expr",
-            "tree": "*"
-          }
-        }
       }
     },
     {
@@ -391,17 +358,6 @@
         "vis": "pub",
         "ident": "metameme",
         "semi": true
-      }
-    },
-    {
-      "use": {
-        "vis": "pub",
-        "tree": {
-          "path": {
-            "ident": "metameme",
-            "tree": "*"
-          }
-        }
       }
     }
   ]

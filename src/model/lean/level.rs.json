@@ -1,23 +1,6 @@
 {
   "items": [
     {
-      "use": {
-        "tree": {
-          "path": {
-            "ident": "std",
-            "tree": {
-              "path": {
-                "ident": "collections",
-                "tree": {
-                  "ident": "HashMap"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
       "enum": {
         "attrs": [
           {

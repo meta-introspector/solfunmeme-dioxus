@@ -1,40 +1,6 @@
 {
   "items": [
     {
-      "use": {
-        "tree": {
-          "path": {
-            "ident": "std",
-            "tree": {
-              "path": {
-                "ident": "collections",
-                "tree": {
-                  "ident": "HashMap"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "use": {
-        "tree": {
-          "path": {
-            "ident": "crate",
-            "tree": {
-              "path": {
-                "ident": "model",
-                "tree": {
-                  "ident": "simple_expr"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
       "enum": {
         "attrs": [
           {

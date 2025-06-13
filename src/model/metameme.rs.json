@@ -57,7 +57,7 @@
                 "path": {
                   "segments": [
                     {
-                      "ident": "MetaMeme"
+                      "ident": "MetaMemes"
                     }
                   ]
                 }
@@ -67,12 +67,17 @@
               "ident": "value",
               "colon_token": true,
               "ty": {
-                "path": {
-                  "segments": [
-                    {
-                      "ident": "String"
+                "reference": {
+                  "lifetime": "static",
+                  "elem": {
+                    "path": {
+                      "segments": [
+                        {
+                          "ident": "str"
+                        }
+                      ]
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -123,14 +128,8 @@
                 "ident": "value",
                 "colon_token": true,
                 "expr": {
-                  "method_call": {
-                    "receiver": {
-                      "lit": {
-                        "str": "\"See MetaMemes enum above\""
-                      }
-                    },
-                    "method": "to_owned",
-                    "args": []
+                  "lit": {
+                    "str": "\"See MetaMemes enum above\""
                   }
                 }
               }
@@ -284,10 +283,6 @@
           },
           {
             "ident": "Twitter",
-            "fields": "unit"
-          },
-          {
-            "ident": "Discord",
             "fields": "unit"
           },
           {
@@ -469,7 +464,51 @@
             ]
           }
         },
-        "stmts": []
+        "stmts": [
+          {
+            "expr": [
+              {
+                "struct": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "Meme"
+                      }
+                    ]
+                  },
+                  "fields": [
+                    {
+                      "ident": "typ",
+                      "colon_token": true,
+                      "expr": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "MetaMemes"
+                            },
+                            {
+                              "ident": "MetaMeme"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "ident": "value",
+                      "colon_token": true,
+                      "expr": {
+                        "lit": {
+                          "str": "\"fixme\""
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              false
+            ]
+          }
+        ]
       }
     },
     {
@@ -486,30 +525,39 @@
           }
         },
         "expr": {
-          "block": {
-            "stmts": [
+          "struct": {
+            "path": {
+              "segments": [
+                {
+                  "ident": "Meme"
+                }
+              ]
+            },
+            "fields": [
               {
-                "expr": [
-                  {
-                    "assign": {
-                      "left": {
-                        "path": {
-                          "segments": [
-                            {
-                              "ident": "value"
-                            }
-                          ]
-                        }
+                "ident": "typ",
+                "colon_token": true,
+                "expr": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "MetaMemes"
                       },
-                      "right": {
-                        "lit": {
-                          "str": "\"ZOS1=[0,1,2,3,5,7,11,13]\""
-                        }
+                      {
+                        "ident": "MetaMeme"
                       }
-                    }
-                  },
-                  false
-                ]
+                    ]
+                  }
+                }
+              },
+              {
+                "ident": "value",
+                "colon_token": true,
+                "expr": {
+                  "lit": {
+                    "str": "\"ZOS1=[0,1,2,3,5,7,11,13]\""
+                  }
+                }
               }
             ]
           }

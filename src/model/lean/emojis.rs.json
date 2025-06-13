@@ -85,6 +85,7 @@
             }
           }
         ],
+        "vis": "pub",
         "ident": "AsyncConstB",
         "fields": {
           "named": [
@@ -191,6 +192,7 @@
             }
           }
         ],
+        "vis": "pub",
         "ident": "CnstInfB",
         "fields": {
           "named": [
@@ -401,6 +403,7 @@
             }
           }
         ],
+        "vis": "pub",
         "ident": "Sig",
         "fields": {
           "named": [
@@ -494,6 +497,7 @@
             }
           }
         ],
+        "vis": "pub",
         "ident": "ConstantKind",
         "fields": {
           "named": [
@@ -569,6 +573,7 @@
             }
           }
         ],
+        "vis": "pub",
         "ident": "CnstInf",
         "fields": {
           "named": [
@@ -1073,6 +1078,7 @@
             }
           }
         ],
+        "vis": "pub",
         "ident": "Rule",
         "fields": {
           "named": [
@@ -1203,6 +1209,7 @@
             }
           }
         ],
+        "vis": "pub",
         "ident": "Type",
         "variants": [
           {
@@ -5509,170 +5516,6 @@
                             "ident": "result"
                           }
                         ]
-                      }
-                    }
-                  ]
-                }
-              },
-              false
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "fn": {
-        "ident": "main",
-        "inputs": [],
-        "output": null,
-        "stmts": [
-          {
-            "let": {
-              "pat": {
-                "ident": {
-                  "ident": "json_str"
-                }
-              },
-              "init": {
-                "expr": {
-                  "macro": {
-                    "path": {
-                      "segments": [
-                        {
-                          "ident": "include_str"
-                        }
-                      ]
-                    },
-                    "delimiter": "paren",
-                    "tokens": [
-                      {
-                        "lit": "\"full.json\""
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          {
-            "expr": [
-              {
-                "match": {
-                  "expr": {
-                    "call": {
-                      "func": {
-                        "path": {
-                          "segments": [
-                            {
-                              "ident": "json_to_emoji"
-                            }
-                          ]
-                        }
-                      },
-                      "args": [
-                        {
-                          "path": {
-                            "segments": [
-                              {
-                                "ident": "json_str"
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  "arms": [
-                    {
-                      "pat": {
-                        "tuple_struct": {
-                          "path": {
-                            "segments": [
-                              {
-                                "ident": "Ok"
-                              }
-                            ]
-                          },
-                          "elems": [
-                            {
-                              "ident": {
-                                "ident": "emoji_str"
-                              }
-                            }
-                          ]
-                        }
-                      },
-                      "body": {
-                        "macro": {
-                          "path": {
-                            "segments": [
-                              {
-                                "ident": "println"
-                              }
-                            ]
-                          },
-                          "delimiter": "paren",
-                          "tokens": [
-                            {
-                              "lit": "\"{}\""
-                            },
-                            {
-                              "punct": {
-                                "op": ",",
-                                "spacing": "alone"
-                              }
-                            },
-                            {
-                              "ident": "emoji_str"
-                            }
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "pat": {
-                        "tuple_struct": {
-                          "path": {
-                            "segments": [
-                              {
-                                "ident": "Err"
-                              }
-                            ]
-                          },
-                          "elems": [
-                            {
-                              "ident": {
-                                "ident": "e"
-                              }
-                            }
-                          ]
-                        }
-                      },
-                      "body": {
-                        "macro": {
-                          "path": {
-                            "segments": [
-                              {
-                                "ident": "eprintln"
-                              }
-                            ]
-                          },
-                          "delimiter": "paren",
-                          "tokens": [
-                            {
-                              "lit": "\"Error: {}\""
-                            },
-                            {
-                              "punct": {
-                                "op": ",",
-                                "spacing": "alone"
-                              }
-                            },
-                            {
-                              "ident": "e"
-                            }
-                          ]
-                        }
                       }
                     }
                   ]

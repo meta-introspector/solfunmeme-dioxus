@@ -193,29 +193,9 @@
       }
     },
     {
-      "use": {
-        "tree": {
-          "path": {
-            "ident": "crypto_frontend",
-            "tree": "*"
-          }
-        }
-      }
-    },
-    {
       "mod": {
         "ident": "crypto_style",
         "semi": true
-      }
-    },
-    {
-      "use": {
-        "tree": {
-          "path": {
-            "ident": "crypto_style",
-            "tree": "*"
-          }
-        }
       }
     }
   ]

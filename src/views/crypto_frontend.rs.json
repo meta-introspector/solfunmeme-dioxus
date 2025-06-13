@@ -28,9 +28,6 @@
                     "tree": {
                       "group": [
                         {
-                          "ident": "CryptoError"
-                        },
-                        {
                           "ident": "EncryptedPayload"
                         },
                         {
