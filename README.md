@@ -16,7 +16,12 @@ https://stackoverflow.com/questions/55912871/how-to-work-with-openssl-for-rust-w
    $env:OPENSSL_DIR="C:\Users\gentd\OneDrive\Documents\GitHub\vcpkg\installed\x64-windows-static"
    cargo build
 
+or in bash
+    export OPENSSL_DIR="/c/Users/gentd/OneDrive/Documents/GitHub/vcpkg/installed/x64-windows-static"
+    
 ```
+
+
 
 ### Requirements
 1. This template relies on Tailwind CSS to generate the stylesheet. 
@@ -38,3 +43,41 @@ Install the standalone Tailwind CLI - [https://tailwindcss.com/docs/installation
 - Open the browser at default port http://localhost:8080 or the port described by Dioxus CLI in case port `8080` was already in use
 
 - Sometimes there are warning in the browser console, use `dx check` command to find if there are fixes that need to be done.
+
+
+### Plan
+
+#### Client side interpretation.
+#### Server side storage
+The first memes are just free text stored as instructions in the blockchain
+each one can be seen as a rust program that when executed produces some text or json or url
+We can parameterize those. the programs can be updated by creating new versions of them
+because we are on a sidechain we can rewrite or garbage collect them.
+
+##### Import Git
+we can use git submodules or git urls like package managers do,
+
+###### Import Data via git
+we can import telegram, discord, twitter, github, ai chat logs, files into the system.
+each sidechain becomes its own meme database with all the transactions around a meme coin ecosystem.
+see the time repo for example.
+
+######## A tweet becomes a program or meme, 
+an anchor is the code.
+
+#### Forking all repos into our chain
+#### Copying all data into our archives
+#### Running all code on our chain
+#### Proving all code to be valid.
+#### Showing execution of all paths of the code
+using dfa and parsers for the emoji language. 
+each version of the meme state is a new version of the language and library.
+we hope to construct that each path in the system is a unique word and a program at the same time that has a meaning in emojis.
+#### Mathematical modeling of the structures (groups, hott, etc)
+#### Using of AI outside the system, storing results on the chain.
+##### AI via client side inferences
+###### looking at Invoke AI for example
+###### looking at Kobold AI for example
+###### calling typescript from rust wasm dioxus (calling eliza?)
+#### Tracing the AI inference into the model.
+

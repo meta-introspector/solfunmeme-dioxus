@@ -4,14 +4,14 @@ use std::collections::HashMap;
 
 // Define Rust structs to match the JSON schema
 #[derive(Debug, Deserialize, Serialize)]
-struct AsyncConstB {
+pub struct AsyncConstB {
     kind: String,
     #[serde(rename = "cnstInfB")]
     cnst_inf_b: CnstInfB,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-struct CnstInfB {
+pub struct CnstInfB {
     sig: Sig,
     name: String,
     #[serde(rename = "levelParams")]
@@ -22,19 +22,19 @@ struct CnstInfB {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-struct Sig {
+pub struct Sig {
     #[serde(rename = "type")]
     typ: Type,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-struct ConstantKind {
+pub struct ConstantKind {
     value: String,
     kind: String,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-struct CnstInf {
+pub struct CnstInf {
     #[serde(rename = "type")]
     typ: Type,
     #[serde(rename = "numParams")]
@@ -67,7 +67,7 @@ pub struct Rule {
 
 #[derive(Debug, Deserialize, Serialize)]
 #[serde(tag = "type")]
-enum Type {
+pub enum Type {
     #[serde(rename = "forallE")]
     ForallE {
         #[serde(rename = "forbndrTypB")]

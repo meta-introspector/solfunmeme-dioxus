@@ -1,4 +1,4 @@
-#![feature(fn_traits)]
+//#![feature(fn_traits)]
 
 use dioxus::prelude::*;
 use serde::{Deserialize, Serialize};

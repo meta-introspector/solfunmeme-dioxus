@@ -14,14 +14,14 @@ pub enum MetaMemes {
 }
 //2. we can import those asts as "memes" or meta-memes. They are syntactic forms.
 pub struct Meme {
-    typ : MetaMeme,
-    value : String
+    typ : MetaMemes,
+    value : &'static str
 }
 
 // 3. the interpretation of the expressions as a group of memes is supported (import etc)
 pub const META_MEME: Meme = Meme {
     typ: MetaMemes::MetaMeme,
-    value: "See MetaMemes enum above".to_owned()
+    value: "See MetaMemes enum above",
 };
 // 4. writing proofs and validating interpretations.
 
@@ -74,15 +74,16 @@ pub enum LLMProviders {
 pub fn expand(prov:LLMProviders, m: Meme) -> Meme {
 
         Meme {
-            typ : MetaMeme::MetaMeme,
+            typ : MetaMemes::MetaMeme,
             value : "fixme",
         }
 }
 
 // 7. this structure should only have 8 layers and loop back on itself like bott periodicity. 
 
-pub const ZOS1 : Meme = {
-    value = "ZOS1=[0,1,2,3,5,7,11,13]"
+pub const ZOS1 : Meme = Meme {
+    typ: MetaMemes::MetaMeme,
+    value : "ZOS1=[0,1,2,3,5,7,11,13]"
 };
 
 

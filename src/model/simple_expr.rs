@@ -1,7 +1,7 @@
 
-use std::collections::HashMap;
+//use std::collections::HashMap;
 
-use crate::model::simple_expr;
+//use crate::model::simple_expr;
 
 // Equivalent to Lean's Level type
 #[derive(Debug, Clone, PartialEq)]

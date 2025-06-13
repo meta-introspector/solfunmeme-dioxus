@@ -1,7 +1,9 @@
 // components.rs - Frontend UI components
 use dioxus::prelude::*;
 //use crate::styles::*;
-use crate::{crypto::{CryptoError, EncryptedPayload, SolanaEncryption}, views::crypto_style::*};
+use crate::{crypto::{
+    //CryptoError,
+    EncryptedPayload, SolanaEncryption}, views::crypto_style::*};
 
 #[component]
 pub fn App() -> Element {
