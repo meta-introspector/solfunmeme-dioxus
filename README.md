@@ -97,3 +97,12 @@ Createing json  using https://github.com/meta-introspector/syn-serde-rust.git
 #### interpreting the functions as json or emojis
 #### linking functions together creating systems as groups of contracts.
 #### embedding contrats as vectors
+
+
+## Multiple visualization
+### ai convergence on models
+#### PCA
+#### Threading of dimensions
+#### Area or surface of points of the spaces.
+#### connecting solana code to memes to llms
+
