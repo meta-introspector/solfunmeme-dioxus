@@ -1,0 +1,26 @@
+use std::collections::HashMap;
+
+fn main() {
+    println!("Hello, world!");
+}
+
+struct Point {
+    x: f64,
+    y: f64,
+}
+
+enum Color {
+    Red,
+    Green,
+    Blue,
+}
+
+trait Display {
+    fn display(&self);
+}
+
+impl Display for Point {
+    fn display(&self) {
+        println!("Point({}, {})", self.x, self.y);
+    }
+}

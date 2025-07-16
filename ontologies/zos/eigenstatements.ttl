@@ -1,0 +1,16 @@
+@prefix es: <http://example.org/eigenstatement#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Eigenstatements Ontology
+# Inspired by https://github.com/meta-introspector/meta-meme/issues/197
+
+es:Eigenvector a es:Concept ; es:label "Eigenvector in Latent Space" ; rdfs:comment "A vector that reveals the underlying structure of data or concepts in the latent space of an LLM or mathematical model." .
+es:Eigenstatement a es:Concept ; es:label "Eigenstatement" ; rdfs:comment "A statement that resonates with its own vector representation and remains stable under transformations." .
+es:PrimeMapping a es:Concept ; es:label "Prime Number Mapping" ; rdfs:comment "The process of converting concepts into prime numbers and performing mathematical operations to explore relationships." .
+es:Archetype a es:Concept ; es:label "Archetype in Topological Space" ; rdfs:comment "An archetype represented as a vector in a topological space, maintaining stability and invariance under transformations." .
+es:Stability a es:Concept ; es:label "Stability and Invariance" ; rdfs:comment "The property of a statement or archetype to remain unchanged under transformations in latent or topological space." .
+
+# Relationships
+es:Eigenstatement es:stableUnder es:Stability .
+es:Archetype es:occupies es:TopologicalSpace .
+es:Eigenvector es:revealsStructureOf es:LatentSpace . 

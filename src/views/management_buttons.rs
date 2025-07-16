@@ -29,5 +29,10 @@ pub fn ManagementButtons(on_menu_change: EventHandler<MenuOption>) -> Element {
             onclick: move |_| on_menu_change.call(MenuOption::Accounts),
             "Accounts"
         }
+        button {
+            class: "{Styles::primary_button()}",
+            onclick: move |_| on_menu_change.call(MenuOption::EmojiMatrix),
+            "Emoji Matrix"
+        }
     }
 }

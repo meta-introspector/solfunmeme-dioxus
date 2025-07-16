@@ -1,0 +1,25 @@
+# Bootstrap Stage 0 Components Manifest
+
+# Core Components
+kernel
+artifact
+hash
+manifold
+chord
+proof
+verifier
+univalence
+
+# Default Implementations
+default_hasher
+default_verifier
+default_projector
+
+# Traits and Interfaces
+describable
+hasher
+manifold_projector
+proof_verifier
+
+# Specialized Components
+zos

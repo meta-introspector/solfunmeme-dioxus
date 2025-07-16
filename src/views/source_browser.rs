@@ -1,14 +1,38 @@
-use crate::embedself::*;
-use dioxus::prelude::*;
+//use crate::generated::*;
+use crate::generated::src::*;
+use crate::generated::src_bin::*;
+use crate::generated::src_model::*;
+use crate::generated::src_views::*;
+use crate::generated::src_model_git::*;
+use crate::generated::src_model_math::*;
+use crate::generated::src_model_lean::*;
+use crate::generated::src_model_lean_types::*;
+use crate::generated::src_playground::*;
+use crate::generated::src_state::*;
 use crate::views::source_browser_style;
+use dioxus::prelude::*;
+use dioxus_logger::tracing::debug;
 
+/*
+The idea of this module is to embed enought of
+the source code to read it to then to know what other source
+code is there.
+We ran into limits of compilation adding more sources in.
+So we want to create zip files of these other parts to prepare for loading on demand,
+these could be stored in different account on SOLFUNMEME.
 
+we want next to take the source code, parse it to asks,
+decorate it as emojis, as vectors and visualize it.
+
+We can imagine ever enum giving a certain prime emoji and each enum value another.
+ */
 //use source_browser_style;
 
 #[component]
 pub fn SourceBrowser() -> Element {
-    let mut selected_module = use_signal(|| "src".to_string());
-    let mut selected_file = use_signal(|| None::<String>);
+//    crate::embedself::printall();
+    let selected_module = use_signal(|| "src".to_string());
+    let selected_file = use_signal(|| None::<String>);
 
     let modules = vec![
         ("src", "Main Source"),
@@ -33,124 +57,125 @@ pub fn SourceBrowser() -> Element {
     ];
 
     let files = match selected_module().as_str() {
-        "src" => OurSource::iter().collect::<Vec<_>>(),
-        "src/bin" => OurSourceBin::iter().collect::<Vec<_>>(),
-        "src/extractor" => OurSourceExtractor::iter().collect::<Vec<_>>(),
-        "src/extractor/components" => OurSourceExtractorComponents::iter().collect::<Vec<_>>(),
-        "src/extractor/model" => OurSourceExtractorModel::iter().collect::<Vec<_>>(),
-        "src/extractor/system" => OurSourceExtractorSystem::iter().collect::<Vec<_>>(),
-        "src/model" => OurSourceModel::iter().collect::<Vec<_>>(),
-        "src/model/git" => OurSourceModelGit::iter().collect::<Vec<_>>(),
-        "src/model/lean" => OurSourceModelLean::iter().collect::<Vec<_>>(),
-        "src/model/lean/types" => OurSourceModelLeanTypes::iter().collect::<Vec<_>>(),
-        "src/model/math" => OurSourceModeMath::iter().collect::<Vec<_>>(),
-        "src/playground" => OurSourcePlayground::iter().collect::<Vec<_>>(),
-        "src/state" => OurSourceState::iter().collect::<Vec<_>>(),
-        "src/views" => OurSourceView::iter().collect::<Vec<_>>(),
-        "src/views/component_memes" => OurSourceViewComponent::iter().collect::<Vec<_>>(),
-        "src/views/crypto_frontend" => OurSourceViewCrypto::iter().collect::<Vec<_>>(),
-        "src/views/extras_views" => OurSourceViewextra::iter().collect::<Vec<_>>(),
-        "src/views/wikidata_memes" => OurSourceViewWikwidata::iter().collect::<Vec<_>>(),
-        "src/views/workflow_memes" => OurSourceViewWorkflow::iter().collect::<Vec<_>>(),
+        "src" => OurSrcExtractor::iter().collect::<Vec<_>>(),
+        "src/bin" => OurSrcBinExtractor::iter().collect::<Vec<_>>(),
+        // "src/extractor" => OurSrcExtractorExtractor::iter().collect::<Vec<_>>(),
+        // "src/extractor/components" => OurSrcExtractorComponentsExtractor::iter().collect::<Vec<_>>(),
+        // "src/extractor/model" => OurSrcExtractorModelExtractor::iter().collect::<Vec<_>>(),
+        // "src/extractor/system" => OurSrcExtractorSystemExtractor::iter().collect::<Vec<_>>(),
+         "src/model" => OurSrcModelExtractor::iter().collect::<Vec<_>>(),
+         "src/model/git" => OurSrcModelGitExtractor::iter().collect::<Vec<_>>(),
+         "src/model/lean" => OurSrcModelLeanExtractor::iter().collect::<Vec<_>>(),
+         "src/model/lean/types" => OurSrcModelLeanTypesExtractor::iter().collect::<Vec<_>>(),
+         "src/model/math" => OurSrcModelMathExtractor::iter().collect::<Vec<_>>(),
+        "src/playground" => OurSrcPlaygroundExtractor::iter().collect::<Vec<_>>(),
+         "src/state" => OurSrcStateExtractor::iter().collect::<Vec<_>>(),
+         "src/views" => OurSrcViewsExtractor::iter().collect::<Vec<_>>(),
+        // "src/views/component_memes" => OurSrcViewComponentExtractor::iter().collect::<Vec<_>>(),
+        // "src/views/crypto_frontend" => OurSrcViewCryptoExtractor::iter().collect::<Vec<_>>(),
+        // "src/views/extras_views" => OurSrcViewextraExtractor::iter().collect::<Vec<_>>(),
+        // "src/views/wikidata_memes" => OurSrcViewWikwidataExtractor::iter().collect::<Vec<_>>(),
+        // "src/views/workflow_memes" => OurSrcViewWorkflowExtractor::iter().collect::<Vec<_>>(),
         _ => vec![],
     };
+    debug!("SourceBrowser: files for module {}: {:?}", selected_module(), files);
 
     let file_content = selected_file().and_then(|filename| match selected_module().as_str() {
-        "src" => OurSource::get(&filename).map(|f| {
+        "src" => OurSrcExtractor::get(&filename).map(|f| {
             std::str::from_utf8(&f.data)
                 .unwrap_or("Binary file")
                 .to_string()
         }),
-        "src/bin" => OurSourceBin::get(&filename).map(|f| {
+         "src/bin" => OurSrcBinExtractor::get(&filename).map(|f| {
+             std::str::from_utf8(&f.data)
+                 .unwrap_or("Binary file")
+                 .to_string()
+         }),
+        // "src/extractor" => OurSrcExtractor::get(&filename).map(|f| {
+        //     std::str::from_utf8(&f.data)
+        //         .unwrap_or("Binary file")
+        //         .to_string()
+        // }),
+        // "src/extractor/components" => OurSrcExtractorComponents::get(&filename).map(|f| {
+        //     std::str::from_utf8(&f.data)
+        //         .unwrap_or("Binary file")
+        //         .to_string()
+        // }),
+        // "src/extractor/model" => OurSrcExtractorModel::get(&filename).map(|f| {
+        //     std::str::from_utf8(&f.data)
+        //         .unwrap_or("Binary file")
+        //         .to_string()
+        // }),
+        // "src/extractor/system" => OurSrcExtractorSystem::get(&filename).map(|f| {
+        //     std::str::from_utf8(&f.data)
+        //         .unwrap_or("Binary file")
+        //         .to_string()
+        // }),
+        "src/model" => OurSrcModelExtractor::get(&filename).map(|f| {
+             std::str::from_utf8(&f.data)
+                .unwrap_or("Binary file")
+                .to_string()
+        }),
+        "src/model/git" => OurSrcModelGitExtractor::get(&filename).map(|f| {
             std::str::from_utf8(&f.data)
                 .unwrap_or("Binary file")
                 .to_string()
         }),
-        "src/extractor" => OurSourceExtractor::get(&filename).map(|f| {
+        "src/model/lean" => OurSrcModelLeanExtractor::get(&filename).map(|f| {
             std::str::from_utf8(&f.data)
                 .unwrap_or("Binary file")
                 .to_string()
         }),
-        "src/extractor/components" => OurSourceExtractorComponents::get(&filename).map(|f| {
+        "src/model/lean/types" => OurSrcModelLeanTypesExtractor::get(&filename).map(|f| {
             std::str::from_utf8(&f.data)
                 .unwrap_or("Binary file")
                 .to_string()
         }),
-        "src/extractor/model" => OurSourceExtractorModel::get(&filename).map(|f| {
+        "src/model/math" => OurSrcModelMathExtractor::get(&filename).map(|f| {
             std::str::from_utf8(&f.data)
                 .unwrap_or("Binary file")
                 .to_string()
         }),
-        "src/extractor/system" => OurSourceExtractorSystem::get(&filename).map(|f| {
+        "src/playground" => OurSrcPlaygroundExtractor::get(&filename).map(|f| {
             std::str::from_utf8(&f.data)
                 .unwrap_or("Binary file")
                 .to_string()
         }),
-        "src/model" => OurSourceModel::get(&filename).map(|f| {
+        "src/state" => OurSrcStateExtractor::get(&filename).map(|f| {
             std::str::from_utf8(&f.data)
                 .unwrap_or("Binary file")
                 .to_string()
         }),
-        "src/model/git" => OurSourceModelGit::get(&filename).map(|f| {
-            std::str::from_utf8(&f.data)
-                .unwrap_or("Binary file")
-                .to_string()
-        }),
-        "src/model/lean" => OurSourceModelLean::get(&filename).map(|f| {
-            std::str::from_utf8(&f.data)
-                .unwrap_or("Binary file")
-                .to_string()
-        }),
-        "src/model/lean/types" => OurSourceModelLeanTypes::get(&filename).map(|f| {
-            std::str::from_utf8(&f.data)
-                .unwrap_or("Binary file")
-                .to_string()
-        }),
-        "src/model/math" => OurSourceModeMath::get(&filename).map(|f| {
-            std::str::from_utf8(&f.data)
-                .unwrap_or("Binary file")
-                .to_string()
-        }),
-        "src/playground" => OurSourcePlayground::get(&filename).map(|f| {
-            std::str::from_utf8(&f.data)
-                .unwrap_or("Binary file")
-                .to_string()
-        }),
-        "src/state" => OurSourceState::get(&filename).map(|f| {
-            std::str::from_utf8(&f.data)
-                .unwrap_or("Binary file")
-                .to_string()
-        }),
-        "src/views" => OurSourceView::get(&filename).map(|f| {
-            std::str::from_utf8(&f.data)
-                .unwrap_or("Binary file")
-                .to_string()
-        }),
-        "src/views/component_memes" => OurSourceViewComponent::get(&filename).map(|f| {
-            std::str::from_utf8(&f.data)
-                .unwrap_or("Binary file")
-                .to_string()
-        }),
-        "src/views/crypto_frontend" => OurSourceViewCrypto::get(&filename).map(|f| {
-            std::str::from_utf8(&f.data)
-                .unwrap_or("Binary file")
-                .to_string()
-        }),
-        "src/views/extras_views" => OurSourceViewextra::get(&filename).map(|f| {
-            std::str::from_utf8(&f.data)
-                .unwrap_or("Binary file")
-                .to_string()
-        }),
-        "src/views/wikidata_memes" => OurSourceViewWikwidata::get(&filename).map(|f| {
-            std::str::from_utf8(&f.data)
-                .unwrap_or("Binary file")
-                .to_string()
-        }),
-        "src/views/workflow_memes" => OurSourceViewWorkflow::get(&filename).map(|f| {
-            std::str::from_utf8(&f.data)
-                .unwrap_or("Binary file")
-                .to_string()
-        }),
+         "src/views" => OurSrcViewsExtractor::get(&filename).map(|f| {
+             std::str::from_utf8(&f.data)
+                 .unwrap_or("Binary file")
+                 .to_string()
+         }),
+        // "src/views/component_memes" => OurSrcViewComponent::get(&filename).map(|f| {
+        //     std::str::from_utf8(&f.data)
+        //         .unwrap_or("Binary file")
+        //         .to_string()
+        // }),
+        // "src/views/crypto_frontend" => OurSrcViewCrypto::get(&filename).map(|f| {
+        //     std::str::from_utf8(&f.data)
+        //         .unwrap_or("Binary file")
+        //         .to_string()
+        // }),
+        // "src/views/extras_views" => OurSrcViewextra::get(&filename).map(|f| {
+        //     std::str::from_utf8(&f.data)
+        //         .unwrap_or("Binary file")
+        //         .to_string()
+        // }),
+        // "src/views/wikidata_memes" => OurSrcViewWikwidata::get(&filename).map(|f| {
+        //     std::str::from_utf8(&f.data)
+        //         .unwrap_or("Binary file")
+        //         .to_string()
+        // }),
+        // "src/views/workflow_memes" => OurSrcViewWorkflow::get(&filename).map(|f| {
+        //     std::str::from_utf8(&f.data)
+        //         .unwrap_or("Binary file")
+        //         .to_string()
+        // }),
         _ => None,
     });
 

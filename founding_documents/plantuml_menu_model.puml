@@ -1,0 +1,36 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_UseCase.puml
+
+' Title and context
+LAYOUT_WITH_LEGEND()
+Title("SOLFUNMEME Menu & Component Use Case Model")
+
+' Actors
+Actor(user, "User")
+
+' Systems
+System(menu, "Menu System")
+System(component, "Component Registry")
+
+' Use Cases
+UseCase(navigate, "Navigate Menus")
+UseCase(select, "Select Menu Item")
+UseCase(render, "Render Component")
+UseCase(edit, "Edit Menu Structure")
+UseCase(editComp, "Edit Component List")
+
+' Relationships
+Rel(user, navigate, "navigates")
+Rel(navigate, menu, "triggers")
+Rel(user, select, "selects")
+Rel(select, menu, "triggers")
+Rel(menu, render, "renders")
+Rel(render, component, "uses")
+Rel(user, edit, "edits")
+Rel(edit, menu, "modifies")
+Rel(user, editComp, "edits")
+Rel(editComp, component, "modifies")
+
+@enduml
+
+' Philosophy: The vibe is the UML model is the use case diagram. This diagram is the living source of truth for menu/component design and context. 

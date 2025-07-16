@@ -1,0 +1,28 @@
+trait ExampleTrait {
+    fn process(&self) -> String;
+    fn validate(&self) -> bool;
+}
+
+struct TraitImpl {
+    data: Vec<i32>,
+}
+
+impl ExampleTrait for TraitImpl {
+    fn process(&self) -> String {
+        let count = self.data.len();
+        let sum: i32 = self.data.iter().sum();
+        format!("Count: {}, Sum: {}", count, sum)
+    }
+    
+    fn validate(&self) -> bool {
+        !self.data.is_empty() && self.data.iter().all(|&x| x > 0)
+    }
+}
+
+fn process_trait_object(obj: &dyn ExampleTrait) -> String {
+    if obj.validate() {
+        obj.process()
+    } else {
+        "Invalid object".to_string()
+    }
+} 

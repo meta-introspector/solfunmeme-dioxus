@@ -1,0 +1,100 @@
+@prefix em: <http://example.org/emoji#> .
+@prefix comp: <http://example.org/component#> .
+@prefix menu: <http://example.org/menu#> .
+
+# --- Components ---
+# Each component is an individual of em:Component, with a label and optional category.
+
+comp:Header a em:Component ; em:label "Header" .
+comp:ConnectWalletModalModal a em:Component ; em:label "ConnectWalletModalModal" .
+comp:NavWalletItem a em:Component ; em:label "NavWalletItem" .
+comp:MainApp a em:Component ; em:label "MainApp" .
+comp:ActiveAccountDropDown a em:Component ; em:label "ActiveAccountDropDown" .
+comp:PingCluster a em:Component ; em:label "PingCluster" .
+comp:PasswordApp a em:Component ; em:label "PasswordApp" .
+comp:PasswordAppHeader a em:Component ; em:label "PasswordAppHeader" .
+comp:PasswordErrorMessage a em:Component ; em:label "PasswordErrorMessage" .
+comp:LoginScreen a em:Component ; em:label "LoginScreen" .
+comp:PasswordMainInterface a em:Component ; em:label "PasswordMainInterface" .
+comp:PasswordList a em:Component ; em:label "PasswordList" .
+comp:AddPasswordForm a em:Component ; em:label "AddPasswordForm" .
+comp:PasswordDetail a em:Component ; em:label "PasswordDetail" .
+comp:WelcomeScreen a em:Component ; em:label "WelcomeScreen" .
+comp:Accounts a em:Component ; em:label "Accounts" .
+comp:ClusterSuccess a em:Component ; em:label "ClusterSuccess" .
+comp:TokenAccountCard a em:Component ; em:label "TokenAccountCard" .
+comp:TxCard a em:Component ; em:label "TxCard" .
+comp:Airdrop a em:Component ; em:label "Airdrop" .
+comp:Clusters a em:Component ; em:label "Clusters" .
+comp:ClusterInfo a em:Component ; em:label "ClusterInfo" .
+comp:AddClusterModal a em:Component ; em:label "AddClusterModal" .
+comp:QueryCoinDialog a em:Component ; em:label "QueryCoinDialog" .
+comp:ComponentMemeView a em:Component ; em:label "ComponentMemeView" .
+comp:MemeCategoryView a em:Component ; em:label "MemeCategoryView" .
+comp:ComponentMemeExplorer a em:Component ; em:label "ComponentMemeExplorer" .
+comp:ConnectionButtons a em:Component ; em:label "ConnectionButtons" .
+comp:ConnectWalletFirst a em:Component ; em:label "ConnectWalletFirst" .
+comp:CoreButtons a em:Component ; em:label "CoreButtons" .
+comp:CryptoButtons a em:Component ; em:label "CryptoButtons" .
+comp:CryptoFrontendApp a em:Component ; em:label "CryptoFrontendApp" .
+comp:CryptoAppHeader a em:Component ; em:label "CryptoAppHeader" .
+comp:CardHeader a em:Component ; em:label "CardHeader" .
+comp:InputField a em:Component ; em:label "InputField" .
+comp:TextAreaField a em:Component ; em:label "TextAreaField" .
+comp:ActionButton a em:Component ; em:label "ActionButton" .
+comp:CryptoErrorMessage a em:Component ; em:label "CryptoErrorMessage" .
+comp:SuccessMessage a em:Component ; em:label "SuccessMessage" .
+comp:EncryptionForm a em:Component ; em:label "EncryptionForm" .
+comp:DecryptionForm a em:Component ; em:label "DecryptionForm" .
+comp:Dashboard a em:Component ; em:label "Dashboard" .
+comp:Encryption a em:Component ; em:label "Encryption" .
+comp:Extras a em:Component ; em:label "Extras" .
+comp:SignMessage a em:Component ; em:label "SignMessage" .
+comp:SignTx a em:Component ; em:label "SignTx" .
+comp:SignInWithSolana a em:Component ; em:label "SignInWithSolana" .
+comp:Footer a em:Component ; em:label "Footer" .
+comp:GitParser2 a em:Component ; em:label "GitParser2" .
+comp:ManagementButtons a em:Component ; em:label "ManagementButtons" .
+comp:MemeManagement a em:Component ; em:label "MemeManagement" .
+comp:Memes a em:Component ; em:label "Memes" .
+comp:MemeCardHeader a em:Component ; em:label "MemeCardHeader" .
+comp:InputSection a em:Component ; em:label "InputSection" .
+comp:ExpressionTypeSelector a em:Component ; em:label "ExpressionTypeSelector" .
+comp:ExpressionInputs a em:Component ; em:label "ExpressionInputs" .
+comp:MetadataInputs a em:Component ; em:label "MetadataInputs" .
+comp:CreateButton a em:Component ; em:label "CreateButton" .
+comp:SearchInput a em:Component ; em:label "SearchInput" .
+comp:ExpressionList a em:Component ; em:label "ExpressionList" .
+comp:ExpressionCard a em:Component ; em:label "ExpressionCard" .
+comp:CodeDisplay a em:Component ; em:label "CodeDisplay" .
+comp:ExpressionMetadata a em:Component ; em:label "ExpressionMetadata" .
+comp:SimilaritySection a em:Component ; em:label "SimilaritySection" .
+comp:VectorSpace a em:Component ; em:label "VectorSpace" .
+comp:MemesFooter a em:Component ; em:label "MemesFooter" .
+comp:MetaMemeOperations a em:Component ; em:label "MetaMemeOperations" .
+comp:Notification a em:Component ; em:label "Notification" .
+comp:Notification2 a em:Component ; em:label "Notification2" .
+comp:PageNotFound a em:Component ; em:label "PageNotFound" .
+comp:QueryAccountDialog a em:Component ; em:label "QueryAccountDialog" .
+comp:ReceiveSol a em:Component ; em:label "ReceiveSol" .
+comp:SendSol a em:Component ; em:label "SendSol" .
+comp:StylingAndEmojis a em:Component ; em:label "StylingAndEmojis" .
+comp:TransactionButtons a em:Component ; em:label "TransactionButtons" .
+comp:WikidataMemeView a em:Component ; em:label "WikidataMemeView" .
+comp:WikidataMemeExplorer a em:Component ; em:label "WikidataMemeExplorer" .
+comp:WorkflowStepView a em:Component ; em:label "WorkflowStepView" .
+comp:WorkflowMemeView a em:Component ; em:label "WorkflowMemeView" .
+comp:WorkflowMemeExplorer a em:Component ; em:label "WorkflowMemeExplorer" .
+
+# --- Example Menu Items ---
+menu:File a em:Menu ; em:label "File" ; em:category "Main" .
+menu:Edit a em:Menu ; em:label "Edit" ; em:category "Main" .
+menu:View a em:Menu ; em:label "View" ; em:category "Main" .
+menu:Help a em:Menu ; em:label "Help" ; em:category "Main" .
+
+# Example menu group
+menu:MainMenu a em:MenuGroup ; em:label "Main Menu" ; em:hasMenu menu:File, menu:Edit, menu:View, menu:Help .
+
+# Documentation:
+# - Add more menu items and groups as needed.
+# - Add component categories, descriptions, or icons as extra triples. 

@@ -1,0 +1,9 @@
+[package]
+name = "json_ld_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+anyhow = "1.0"
+json-ld = { path = "../../vendor/json-ld" }

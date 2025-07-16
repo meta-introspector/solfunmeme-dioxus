@@ -1,0 +1,13 @@
+[package]
+name = "zos"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+rustyline = "13"
+libloading = { path = "../vendor/rust_libloading" }
+
+[[bin]]
+name = "zos-driver"
+path = "src/main.rs"

@@ -1,0 +1,14 @@
+[package]
+name = "solfunmeme_generated"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "generate_embedded"
+path = "src/bin/generate_embedded.rs"
+
+[dependencies]
+rust-embed = { version = "8.7.2", features = ["debug-embed"] , path = "../../vendor/rust-embed"}

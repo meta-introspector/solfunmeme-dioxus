@@ -1,0 +1,10 @@
+[package]
+name = "emoji_matrix_lib"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+core_data_lib = { path = "../core_data_lib" }
+rust-embed = { version = "8.7.2", features = ["debug-embed"] }
+dioxus-charts = { git = "https://github.com/dioxus-community/dioxus-charts.git", branch = "main" }
+log = "0.4.21"

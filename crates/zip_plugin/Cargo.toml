@@ -1,0 +1,9 @@
+[package]
+name = "zip_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+zip = "0.6"
+anyhow = "1.0"

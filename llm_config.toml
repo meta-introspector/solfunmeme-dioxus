@@ -1,0 +1,21 @@
+[[providers]]
+name = "EchoLLM"
+
+  [[providers.accounts]]
+  id = "echo-account-1"
+  available_credits = 1000.0
+  cost_per_token_input = 0.0
+  cost_per_token_output = 0.0
+  rate_limit_per_minute = 10000
+  command = "cargo run --bin llm_echo_provider"
+
+[[providers]]
+name = "CliffordFlowProvider"
+
+  [[providers.accounts]]
+  id = "clifford-account-1"
+  available_credits = 1000.0
+  cost_per_token_input = 0.0001
+  cost_per_token_output = 0.0001
+  rate_limit_per_minute = 5000
+  command = "cargo run --bin clifford_flow_provider"

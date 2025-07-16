@@ -1,0 +1,48 @@
+@startuml C4_Container
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Solfunmeme-Dioxus System - Container Diagram
+
+Person(developer, "Developer", "A software developer using the system")
+
+System_Boundary(solfunmeme, "Solfunmeme-Dioxus System") {
+    Container(cli, "ZOS CLI", "Rust", "Interactive command-line interface for system orchestration and workflow management")
+    Container(web_app, "Web Application", "Dioxus/WASM", "Interactive web interface for code analysis and visualization")
+    Container(api, "API Gateway", "Rust/Axum", "RESTful API for system integration and external access")
+    Container(workflow_engine, "Workflow Manager", "Rust", "Orchestrates the 8 factorial steps pipeline and plugin management")
+    Container(processing_engine, "Processing Engine", "Rust", "Core data processing pipeline for code analysis and semantic processing")
+    Container(search_engine, "Search Engine", "Rust/Tantivy", "Full-text and semantic search capabilities")
+    Container(blockchain_client, "Blockchain Client", "Rust", "Solana sidechain integration for content-addressed storage and rollup management")
+    Container(data_store, "Data Store", "Rust/SQLite", "Local data storage for processed results and metadata")
+}
+
+System_Ext(github, "GitHub", "Source code repository hosting and API access")
+System_Ext(solana_mainnet, "Solana Mainnet", "Mainnet for final data verification and rollup settlement")
+System_Ext(solana_sidechain, "Solana Sidechain", "L2 sidechain for high-throughput index storage and processing")
+System_Ext(llm, "LLM Services", "Large Language Model services")
+System_Ext(bert, "BERT Models", "BERT embedding models")
+
+Rel(developer, cli, "Uses", "Command-line interface")
+Rel(developer, web_app, "Uses", "Web interface")
+
+Rel(cli, workflow_engine, "Orchestrates", "Workflow execution")
+Rel(web_app, api, "Uses", "REST API calls")
+Rel(api, workflow_engine, "Triggers", "Workflow execution")
+
+Rel(workflow_engine, processing_engine, "Manages", "Processing pipeline")
+Rel(processing_engine, search_engine, "Indexes", "Processed data")
+Rel(processing_engine, blockchain_client, "Stores", "Verified results")
+
+Rel(processing_engine, github, "Fetches", "Source code")
+Rel(processing_engine, solana_sidechain, "Stores", "Index data and embeddings")
+Rel(blockchain_client, solana_sidechain, "Manages", "Sidechain operations")
+Rel(blockchain_client, solana_mainnet, "Rolls up", "Verified data batches")
+Rel(processing_engine, llm, "Uses", "Code analysis")
+Rel(processing_engine, bert, "Generates", "Embeddings")
+
+Rel(processing_engine, data_store, "Stores", "Intermediate results")
+Rel(search_engine, data_store, "Queries", "Indexed data")
+
+@enduml 

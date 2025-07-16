@@ -44,6 +44,7 @@ impl NotificationInfo {
 
 //#[cfg(test)]
 mod tests {
+    
 
     #[test]
     fn test_new_notification_info_defaults() {

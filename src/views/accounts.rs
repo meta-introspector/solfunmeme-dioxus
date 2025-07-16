@@ -26,8 +26,7 @@ use crate::TimestampSvg;
 use crate::UserSvg;
 ///use crate::WalletSvg;
 use crate::format_timestamp;
-use crate::playground::MenuOption::{Airdrop, ReceiveSol, SendSol};
-use crate::playground::test_components::ComponentName::{AirdropName, QueryAccountDialogName}; //enum
+ //enum
 //use crate::playground::test_components::ComponentName::ReceiveSol;
 //use crate::playground::test_components::ComponentName::SendSol;
 //use crate::playground::test_emojis::ComponentName::Airdrop;

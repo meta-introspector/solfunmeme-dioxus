@@ -1,0 +1,155 @@
+@startuml Cross_References
+!theme plain
+skinparam rectangle {
+    BackgroundColor LightGreen
+    BorderColor DarkGreen
+}
+skinparam database {
+    BackgroundColor LightYellow
+    BorderColor DarkYellow
+}
+skinparam file {
+    BackgroundColor LightBlue
+    BorderColor DarkBlue
+}
+skinparam cloud {
+    BackgroundColor LightCyan
+    BorderColor DarkCyan
+}
+
+title Solfunmeme-Dioxus Documentation Cross-References
+
+' Documentation Categories
+rectangle "Systems Design" as systems_design {
+    file "vendor/meta-meme.wiki/SystemsDesign.md" as systems_design_md
+    file "founding_documents/ALGORITHM_DOCUMENTATION.md" as algo_doc
+    file "founding_documents/chat-solfunmeme.md" as chat_doc
+    file "founding_documents/GEMINI.md" as gemini_doc
+}
+
+rectangle "Architecture Documentation" as arch_docs {
+    file "doc/architecture.md" as arch_md
+    file "doc/cli_tools_guide.md" as cli_guide
+    file "doc/chat_processing.md" as chat_proc
+    file "doc/development_setup.md" as dev_setup
+}
+
+rectangle "UML Diagrams" as uml_diagrams {
+    file "docs/uml/01-context-diagram.puml" as context_diag
+    file "docs/uml/02-container-diagram.puml" as container_diag
+    file "docs/uml/03-component-diagram.puml" as component_diag
+    file "docs/uml/04-deployment-diagram.puml" as deployment_diag
+    file "docs/uml/05-use-case-diagram.puml" as usecase_diag
+    file "docs/uml/06-data-flow-diagram.puml" as dataflow_diag
+    file "docs/uml/07-sequence-diagram.puml" as sequence_diag
+    file "docs/uml/08-l2-sidechain-architecture.puml" as l2_diag
+    file "docs/uml/README.md" as uml_readme
+}
+
+rectangle "Ontologies" as ontologies {
+    file "ontologies/project_ontology.ttl" as project_onto
+    file "ontologies/solfunmem.jsonld" as solfunmem_onto
+    file "ontologies/introspector/" as introspector_onto
+    file "ontologies/zos/" as zos_onto
+}
+
+rectangle "Workflow & Tools" as workflow_tools {
+    file "Makefile" as makefile
+    file "WORKFLOW_DIAGRAM.md" as workflow_diag
+    file "QUICK_REFERENCE.md" as quick_ref
+    file "zos/src/main.rs" as zos_cli
+}
+
+rectangle "Code Implementation" as code_impl {
+    file "Cargo.toml" as cargo_toml
+    file "src/" as src_dir
+    file "crates/" as crates_dir
+    file "tests/" as tests_dir
+}
+
+rectangle "External References" as external {
+    cloud "GitHub Discussions" as github_discussions
+    cloud "Meta-Meme Wiki" as meta_meme_wiki
+    cloud "Solana Documentation" as solana_docs
+    cloud "PlantUML Documentation" as plantuml_docs
+}
+
+' Cross-references - Systems Design
+systems_design_md --> arch_md : "↗️ Implements architecture"
+systems_design_md --> context_diag : "↗️ Visualizes system context"
+systems_design_md --> makefile : "↗️ Defines 8 factorial steps"
+algo_doc --> component_diag : "↗️ Details component interactions"
+chat_doc --> usecase_diag : "↗️ Defines user interactions"
+gemini_doc --> l2_diag : "↗️ Influences L2 architecture"
+
+' Cross-references - Architecture Documentation
+arch_md --> context_diag : "↗️ References context diagram"
+arch_md --> container_diag : "↗️ References container diagram"
+arch_md --> component_diag : "↗️ References component diagram"
+arch_md --> cargo_toml : "↗️ Lists all crates"
+arch_md --> crates_dir : "↗️ Describes crate purposes"
+cli_guide --> zos_cli : "↗️ Documents CLI usage"
+cli_guide --> quick_ref : "↗️ Provides quick commands"
+dev_setup --> makefile : "↗️ Uses make targets"
+
+' Cross-references - UML Diagrams
+context_diag --> container_diag : "↗️ Drills down to containers"
+container_diag --> component_diag : "↗️ Drills down to components"
+component_diag --> deployment_diag : "↗️ Shows deployment"
+dataflow_diag --> sequence_diag : "↗️ Shows dynamic behavior"
+l2_diag --> dataflow_diag : "↗️ Details L2 data flow"
+uml_readme --> context_diag : "↗️ Explains context diagram"
+uml_readme --> container_diag : "↗️ Explains container diagram"
+uml_readme --> component_diag : "↗️ Explains component diagram"
+uml_readme --> deployment_diag : "↗️ Explains deployment diagram"
+uml_readme --> usecase_diag : "↗️ Explains use case diagram"
+uml_readme --> dataflow_diag : "↗️ Explains data flow diagram"
+uml_readme --> sequence_diag : "↗️ Explains sequence diagram"
+uml_readme --> l2_diag : "↗️ Explains L2 architecture"
+
+' Cross-references - Ontologies
+project_onto --> arch_md : "↗️ Defines system concepts"
+project_onto --> context_diag : "↗️ Models system entities"
+solfunmem_onto --> component_diag : "↗️ Describes components"
+introspector_onto --> usecase_diag : "↗️ Defines introspection use cases"
+zos_onto --> zos_cli : "↗️ Models CLI concepts"
+
+' Cross-references - Workflow & Tools
+makefile --> workflow_diag : "↗️ Implements workflow"
+makefile --> quick_ref : "↗️ Provides commands"
+workflow_diag --> dataflow_diag : "↗️ Visualizes data flow"
+workflow_diag --> sequence_diag : "↗️ Shows execution sequence"
+quick_ref --> makefile : "↗️ References make targets"
+quick_ref --> zos_cli : "↗️ Documents CLI commands"
+zos_cli --> cargo_toml : "↗️ Uses workspace crates"
+
+' Cross-references - Code Implementation
+cargo_toml --> arch_md : "↗️ Lists architectural components"
+cargo_toml --> crates_dir : "↗️ Defines workspace structure"
+src_dir --> component_diag : "↗️ Implements components"
+crates_dir --> arch_md : "↗️ Contains architectural crates"
+tests_dir --> arch_md : "↗️ Tests architectural components"
+
+' Cross-references - External
+github_discussions --> systems_design_md : "↗️ Discusses system design"
+meta_meme_wiki --> systems_design_md : "↗️ Influences design"
+solana_docs --> l2_diag : "↗️ Documents L2 architecture"
+plantuml_docs --> context_diag : "↗️ Provides diagram syntax"
+
+' Bidirectional references
+arch_md <--> systems_design_md : "🔄 Mutual reference"
+context_diag <--> container_diag : "🔄 Hierarchical drill-down"
+component_diag <--> deployment_diag : "🔄 Implementation to deployment"
+dataflow_diag <--> sequence_diag : "🔄 Static to dynamic view"
+makefile <--> workflow_diag : "🔄 Implementation to visualization"
+quick_ref <--> cli_guide : "🔄 Quick to detailed reference"
+
+' Notes explaining the reference system
+note right of systems_design : "Systems Design Documents:\n• Define the 8 factorial steps\n• Establish autopoetic rewrites\n• Set architectural principles"
+note right of arch_docs : "Architecture Documentation:\n• Explains system structure\n• Documents component purposes\n• Provides implementation guidance"
+note right of uml_diagrams : "UML Diagrams:\n• Visualize system architecture\n• Show data flows and interactions\n• Provide multiple abstraction levels"
+note right of ontologies : "Ontologies:\n• Define semantic relationships\n• Model system concepts\n• Enable semantic search"
+note right of workflow_tools : "Workflow & Tools:\n• Implement the 8 factorial steps\n• Provide CLI and automation\n• Enable system interaction"
+note right of code_impl : "Code Implementation:\n• Realizes the architecture\n• Implements components\n• Provides testing framework"
+
+@enduml 

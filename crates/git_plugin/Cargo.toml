@@ -1,0 +1,9 @@
+[package]
+name = "git_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+git2 = "0.19"
+anyhow = "1.0"

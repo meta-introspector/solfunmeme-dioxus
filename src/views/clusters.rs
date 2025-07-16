@@ -8,11 +8,9 @@ use crate::ClusterName;
 use crate::ClustersSvg;
 use crate::LinkSvg;
 use crate::MyCluster;
-use crate::WalletSvg;
 use crate::storage::GLOBAL_MESSAGE;
 use crate::utils::get_cluster_svg;
 use crate::utils::trunk_cluster_name;
-
 use url::Url;
 
 //use crate::{
@@ -53,7 +51,7 @@ pub fn Clusters() -> Element {
     }
 }
 
-#[component(partial_eq = false)]
+#[component]
 pub fn ClusterInfo(connections: UseConnections) -> Element {
     let active_cluster_name = connections.active_entry();
     let clusters = connections.get_all_entries();

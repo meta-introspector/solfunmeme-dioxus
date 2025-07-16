@@ -1,0 +1,9 @@
+[package]
+name = "extractous_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+anyhow = "1.0"
+extractous = { path = "../../vendor/extractous/extractous-core" }

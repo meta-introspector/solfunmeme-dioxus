@@ -1,0 +1,89 @@
+@startuml C4_Component
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Solfunmeme-Dioxus System - Component Diagram (Processing Engine)
+
+Container_Boundary(processing_engine, "Processing Engine") {
+    Component(source_prep, "Source Preparation", "prepare_sources", "Parses and structures source code into CodeChunk format")
+    Component(code_extractor, "Code Extraction", "solfunmeme_extractor", "Extracts functions, classes, and code patterns")
+    Component(function_analyzer, "Function Analysis", "solfunmeme_function_analysis", "AST traversal, semantic analysis, complexity metrics")
+    Component(embedding_gen, "Embedding Generation", "solfunmeme_embedding", "BERT model inference, vector generation")
+    Component(semantic_indexer, "Semantic Indexing", "solfunmeme_search_tantivy", "Index creation, similarity computation")
+    Component(rdf_processor, "RDF Processing", "rdf_processing_lib", "RDF triple generation, semantic relationships")
+    Component(blockchain_integration, "Blockchain Integration", "solana_integration_lib", "L2 sidechain storage and mainnet rollup management")
+    Component(ui_renderer, "UI Rendering", "solfunmeme_views", "Component rendering, data visualization")
+    
+    Component(emoji_matrix, "Emoji Matrix", "emoji_matrix_lib", "Emoji vector operations and matrix processing")
+    Component(clifford_algebra, "Clifford Algebra", "solfunmeme_clifford", "Mathematical operations for geometric code analysis")
+    Component(orbital_sim, "Orbital Simulation", "orbital_sim_lib", "Orbital mechanics for relationship modeling")
+    Component(nlp_processor, "NLP Processor", "layered_nlp_plugin", "Multi-layer NLP processing")
+    Component(keyword_extractor, "Keyword Extraction", "keyword_extraction_rs_plugin", "Keyword extraction from text")
+    Component(bm25_scorer, "BM25 Scorer", "bm25_plugin", "Document ranking and relevance scoring")
+    Component(model2vec, "Model2Vec", "model2vec_rs_plugin", "Model-to-vector conversion")
+    Component(tongrams, "Tongrams", "tongrams_rs_plugin", "N-gram language model querying")
+}
+
+Container_Boundary(workflow_manager, "Workflow Manager") {
+    Component(workflow_orchestrator, "Workflow Orchestrator", "workflow_manager", "Orchestrates the 8 factorial steps pipeline")
+    Component(plugin_registry, "Plugin Registry", "component_registry_lib", "Dynamic component discovery and instantiation")
+    Component(task_coordinator, "Task Coordinator", "task_manager", "Project state and task coordination")
+}
+
+Container_Boundary(data_store, "Data Store") {
+    Component(code_chunks, "Code Chunks", "SQLite", "Structured code data")
+    Component(embeddings, "Embeddings", "SQLite", "Vector representations")
+    Component(semantic_data, "Semantic Data", "SQLite", "RDF triples and relationships")
+    Component(metadata, "Metadata", "SQLite", "System metadata and configuration")
+}
+
+System_Ext(github, "GitHub", "Source code repositories")
+System_Ext(solana_mainnet, "Solana Mainnet", "Final data verification and rollup settlement")
+System_Ext(solana_sidechain, "Solana Sidechain", "L2 sidechain for high-throughput index storage")
+System_Ext(llm, "LLM Services", "Code analysis and generation")
+System_Ext(bert, "BERT Models", "Embedding generation")
+
+' 8 Factorial Steps Flow
+Rel(source_prep, code_extractor, "CodeChunks", "Structured code data")
+Rel(code_extractor, function_analyzer, "Function Snippets", "Individual code components")
+Rel(function_analyzer, embedding_gen, "Analyzed Code", "Detailed code analysis")
+Rel(embedding_gen, semantic_indexer, "BERT Embeddings", "Vector representations")
+Rel(semantic_indexer, rdf_processor, "Search Index", "Indexed semantic data")
+Rel(rdf_processor, blockchain_integration, "RDF Triples", "Semantic relationships")
+Rel(blockchain_integration, ui_renderer, "Blockchain Data", "Verified data")
+
+' Supporting Components
+Rel(embedding_gen, emoji_matrix, "Vectors", "Emoji conversion")
+Rel(function_analyzer, clifford_algebra, "Code Data", "Mathematical analysis")
+Rel(semantic_indexer, orbital_sim, "Index Data", "Relationship modeling")
+Rel(code_extractor, nlp_processor, "Text Content", "NLP analysis")
+Rel(nlp_processor, keyword_extractor, "Processed Text", "Keyword extraction")
+Rel(keyword_extractor, bm25_scorer, "Keywords", "Relevance scoring")
+Rel(embedding_gen, model2vec, "Embeddings", "Vector conversion")
+Rel(semantic_indexer, tongrams, "Index Data", "N-gram queries")
+
+' Workflow Management
+Rel(workflow_orchestrator, source_prep, "Triggers", "Step 1")
+Rel(workflow_orchestrator, code_extractor, "Triggers", "Step 2")
+Rel(workflow_orchestrator, function_analyzer, "Triggers", "Step 3")
+Rel(workflow_orchestrator, embedding_gen, "Triggers", "Step 4")
+Rel(workflow_orchestrator, semantic_indexer, "Triggers", "Step 5")
+Rel(workflow_orchestrator, rdf_processor, "Triggers", "Step 6")
+Rel(workflow_orchestrator, blockchain_integration, "Triggers", "Step 7")
+Rel(workflow_orchestrator, ui_renderer, "Triggers", "Step 8")
+
+' Data Storage
+Rel(source_prep, code_chunks, "Stores", "CodeChunks")
+Rel(embedding_gen, embeddings, "Stores", "Vector data")
+Rel(rdf_processor, semantic_data, "Stores", "RDF triples")
+Rel(workflow_orchestrator, metadata, "Stores", "Workflow state")
+
+' External Systems
+Rel(source_prep, github, "Fetches", "Source code")
+Rel(blockchain_integration, solana_sidechain, "Stores", "Index data and embeddings")
+Rel(blockchain_integration, solana_mainnet, "Rolls up", "Verified data batches")
+Rel(function_analyzer, llm, "Uses", "Code analysis")
+Rel(embedding_gen, bert, "Generates", "Embeddings")
+
+@enduml 

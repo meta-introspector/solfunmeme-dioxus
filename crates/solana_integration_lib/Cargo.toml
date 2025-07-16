@@ -1,0 +1,14 @@
+[package]
+name = "solana_integration_lib"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+borsh = "0.10"
+solana-client = "2.3.0"
+solana-sdk = "2.3.0"
+solana-program = { version = "2.3.0", features = ["borsh"] } # Added
+anyhow = "1.0"
+tracing = "0.1.40"
+sha2 = "0.10.9"
+bs58 = "0.5"

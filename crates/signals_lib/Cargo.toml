@@ -1,0 +1,14 @@
+[package]
+name = "signals_lib"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[dependencies]
+dioxus = { version = "0.6.3", features = ["router"] }
+serde = { version = "1.0", features = ["derive"] }
+shared_types_lib = { path = "../shared_types_lib" }
+fastrand = "2.0"
+sophia = "0.7"
+sophia_term = "0.7" 

@@ -1,6 +1,7 @@
 // #[cfg(test)]
 mod tests {
     use crate::model::{AdapterCluster, MyCluster};
+    
 
     fn make_cluster(name: &str, endpoint: &str) -> AdapterCluster {
         AdapterCluster {
