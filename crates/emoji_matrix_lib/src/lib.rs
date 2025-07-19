@@ -1,4 +1,4 @@
-use rust_embed::{RustEmbed, Embed};
+use rust_embed::RustEmbed;
 use log::error;
 pub use core_data_lib::{EmojiMatrix, EmojiMatrixEntry, EmojiCount, parse_summary_total as core_parse_summary_total, parse_summary_root as core_parse_summary_root, rollup_emoji_matrix as core_rollup_emoji_matrix};
 

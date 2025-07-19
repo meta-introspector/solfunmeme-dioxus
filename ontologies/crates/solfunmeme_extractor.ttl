@@ -1,0 +1,40 @@
+@prefix solfunmeme_extract: <http://example.org/solfunmeme_extractor#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Extractor Crate Elements and their Emoji Mappings
+
+# Crate Root
+solfunmeme_extract:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Extractor Crate Root" ;
+    em:hasEmojiRepresentation "🔎📦" ;
+    rdfs:comment "The root directory for the Solfunmeme Extractor crate." .
+
+# Directories within Crate
+solfunmeme_extract:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Extractor." .
+
+# Files within Crate
+solfunmeme_extract:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Extractor crate." .
+
+solfunmeme_extract:CargoLockFile a rdfs:Class ;
+    rdfs:label "Cargo.lock File" ;
+    em:hasEmojiRepresentation "🔒📦" ;
+    rdfs:comment "The dependency lock file for the Solfunmeme Extractor crate." .
+
+solfunmeme_extract:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Solfunmeme Extractor crate." .
+
+# Instances of Crate Elements
+solfunmeme_extract:crateInstance a solfunmeme_extract:CrateRoot .
+solfunmeme_extract:srcInstance a solfunmeme_extract:SrcDirectory .
+solfunmeme_extract:cargoTomlInstance a solfunmeme_extract:CargoTomlFile .
+solfunmeme_extract:cargoLockInstance a solfunmeme_extract:CargoLockFile .
+solfunmeme_extract:readmeMdInstance a solfunmeme_extract:ReadmeMdFile .

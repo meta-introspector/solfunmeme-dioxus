@@ -2,8 +2,8 @@ use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::error::Error;
-use walkdir::WalkDir;
-use sha2::{Sha256, Digest};
+use solfunmeme_core_utils::walkdir::WalkDir;
+use solfunmeme_crypto_utils::sha2::{Sha256, Digest};
 
 #[derive(Debug, Clone)]
 struct CodeSnippet {
@@ -126,7 +126,7 @@ impl DuplicateChecker {
                 file_path: file_path.to_string_lossy().to_string(),
                 line_start: start_line + 1,
                 line_end: lines.len(),
-                content: current_snippet,
+                content: current_snippet.clone(),
                 normalized_content: self.normalize_content(&current_snippet),
                 hash: String::new(),
             });
@@ -190,8 +190,8 @@ impl DuplicateChecker {
                 let similarity = self.calculate_similarity(module_snippets[i], module_snippets[j]);
                 if similarity > 0.8 {
                     println!("⚠️  Found similar code in module: {:?} (similarity: {:.2})", module_path, similarity);
-                    println!("   File 1: {}:{}", module_snippets[i].file_path, module_snippets[i].line_start);
-                    println!("   File 2: {}:{}", module_snippets[j].file_path, module_snippets[j].line_start);
+                    println!("   File 1: {}:{}-{}", module_snippets[i].file_path, module_snippets[i].line_start, module_snippets[i].line_end);
+                println!("   File 2: {}:{}-{}", module_snippets[j].file_path, module_snippets[j].line_start, module_snippets[j].line_end);
                     return false;
                 }
             }

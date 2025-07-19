@@ -4,6 +4,7 @@
 
 use crate::describable::Describable;
 use crate::hash::{Hash, Hasher};
+use std::borrow::Cow;
 
 /// Represents a fundamental, content-addressable unit in the system.
 ///
@@ -21,8 +22,8 @@ pub struct Artifact {
 
 impl Describable for Artifact {
     /// The canonical description of an artifact is its raw content.
-    fn describe(&self) -> &[u8] {
-        &self.content
+    fn describe(&self) -> Cow<'static, [u8]> {
+        Cow::Owned(self.content.clone())
     }
 }
 

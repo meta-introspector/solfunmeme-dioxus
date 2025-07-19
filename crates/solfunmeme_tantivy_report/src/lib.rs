@@ -1,6 +1,5 @@
 use anyhow::Result;
 use solfunmeme_search_tantivy::SearchIndex;
-use std::collections::HashMap;
 use std::path::Path;
 
 pub enum ReportType {

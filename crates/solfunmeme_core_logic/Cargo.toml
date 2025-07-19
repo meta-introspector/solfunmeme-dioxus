@@ -74,7 +74,7 @@ ctor = "0.4.2"
 tracing = "0.1.41"
 curve25519-dalek = "4.1.3"
 walkdir = "2.5.0"
-burn = { version = "0.17.1", features = ["wgpu"] }
+
 
 [dependencies.x25519-dalek  ]
 version = "2.0.1"
@@ -88,3 +88,12 @@ features = [
     "rng-getrandom",
     "rng-rand"
 ]
+
+# [dependencies.burn]
+# version = "0.17.1"
+# optional = true
+# features = ["wgpu"]
+
+[features]
+default = []
+# burn-backend = ["burn"]

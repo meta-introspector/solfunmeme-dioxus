@@ -5,5 +5,9 @@ edition = "2024"
 license = "AGPL-3.0"
 
 [dependencies]
-anyhow = "1.0"
-llms-from-scratch-rs = { path = "../../vendor/llms-from-scratch-rs" }
+# anyhow = "1.0"
+# llms-from-scratch-rs = { path = "../../vendor/llms-from-scratch-rs", optional = true }
+
+[features]
+default = []
+# with-llms = ["llms-from-scratch-rs"]

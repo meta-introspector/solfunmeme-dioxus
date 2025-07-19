@@ -1,0 +1,17 @@
+[package]
+name = "solfunmeme_utility_deps"
+version = "0.1.0"
+edition = "2021"
+license = "AGPL-3.0"
+publish = false
+
+[dependencies]
+inventory = "0.3"
+lazy_static = "1.4.0"
+ctor = "0.4.2"
+thiserror = "2.0.12"
+
+solfunmeme_serde_utils = { path = "../solfunmeme_serde_utils" }
+solfunmeme_web_utils = { path = "../solfunmeme_web_utils" }
+solfunmeme_logging = { path = "../solfunmeme_logging" }
+solfunmeme_crypto_utils = { path = "../solfunmeme_crypto_utils" }

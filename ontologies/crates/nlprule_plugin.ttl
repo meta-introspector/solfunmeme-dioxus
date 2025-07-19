@@ -1,0 +1,40 @@
+@prefix nlprule: <http://example.org/nlprule_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for NLP Rule Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+nlprule:CrateRoot a rdfs:Class ;
+    rdfs:label "NLP Rule Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🗣️📏" ;
+    rdfs:comment "The root directory for the NLP Rule Plugin crate." .
+
+# Directories within Crate
+nlprule:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the NLP Rule Plugin." .
+
+# Files within Crate
+nlprule:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the NLP Rule Plugin crate." .
+
+nlprule:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the NLP Rule Plugin crate." .
+
+nlprule:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+nlprule:crateInstance a nlprule:CrateRoot .
+nlprule:srcInstance a nlprule:SrcDirectory .
+nlprule:cargoTomlInstance a nlprule:CargoTomlFile .
+nlprule:readmeMdInstance a nlprule:ReadmeMdFile .
+nlprule:geminiMdInstance a nlprule:GeminiMdFile .

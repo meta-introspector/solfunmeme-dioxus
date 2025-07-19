@@ -1,0 +1,40 @@
+@prefix emoji_matrix: <http://example.org/emoji_matrix_lib#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Emoji Matrix Library Crate Elements and their Emoji Mappings
+
+# Crate Root
+emoji_matrix:CrateRoot a rdfs:Class ;
+    rdfs:label "Emoji Matrix Library Crate Root" ;
+    em:hasEmojiRepresentation "📊🌈" ;
+    rdfs:comment "The root directory for the Emoji Matrix Library crate." .
+
+# Directories within Crate
+emoji_matrix:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Emoji Matrix Library." .
+
+# Files within Crate
+emoji_matrix:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Emoji Matrix Library crate." .
+
+emoji_matrix:CargoLockFile a rdfs:Class ;
+    rdfs:label "Cargo.lock File" ;
+    em:hasEmojiRepresentation "🔒📦" ;
+    rdfs:comment "The dependency lock file for the Emoji Matrix Library crate." .
+
+emoji_matrix:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Emoji Matrix Library crate." .
+
+# Instances of Crate Elements
+emoji_matrix:crateInstance a emoji_matrix:CrateRoot .
+emoji_matrix:srcInstance a emoji_matrix:SrcDirectory .
+emoji_matrix:cargoTomlInstance a emoji_matrix:CargoTomlFile .
+emoji_matrix:cargoLockInstance a emoji_matrix:CargoLockFile .
+emoji_matrix:readmeMdInstance a emoji_matrix:ReadmeMdFile .

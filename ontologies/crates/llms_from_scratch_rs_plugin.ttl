@@ -1,0 +1,40 @@
+@prefix llms_scratch: <http://example.org/llms_from_scratch_rs_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for LLMs From Scratch RS Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+llms_scratch:CrateRoot a rdfs:Class ;
+    rdfs:label "LLMs From Scratch RS Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🧠✍️" ;
+    rdfs:comment "The root directory for the LLMs From Scratch RS Plugin crate." .
+
+# Directories within Crate
+llms_scratch:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the LLMs From Scratch RS Plugin." .
+
+# Files within Crate
+llms_scratch:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the LLMs From Scratch RS Plugin crate." .
+
+llms_scratch:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the LLMs From Scratch RS Plugin crate." .
+
+llms_scratch:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+llms_scratch:crateInstance a llms_scratch:CrateRoot .
+llms_scratch:srcInstance a llms_scratch:SrcDirectory .
+llms_scratch:cargoTomlInstance a llms_scratch:CargoTomlFile .
+llms_scratch:readmeMdInstance a llms_scratch:ReadmeMdFile .
+llms_scratch:geminiMdInstance a llms_scratch:GeminiMdFile .

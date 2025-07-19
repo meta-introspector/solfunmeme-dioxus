@@ -10,7 +10,7 @@ pub mod core;
 // Re-export core functionality
 pub use core::*;
 
-use solfunmeme_models::WalletManager;
+
 
 #[cfg(test)]
 mod tests {

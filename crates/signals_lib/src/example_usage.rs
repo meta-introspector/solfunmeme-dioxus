@@ -5,7 +5,7 @@ use crate::common::{SignalManager, use_signal_manager, SignalState};
 use dioxus::prelude::*;
 
 /// Example component showing how to use signal managers
-pub fn ExampleComponent() -> Element {
+pub fn example_component() -> Element {
     let wallet_manager = use_signal_manager(WalletState {
         is_connected: false,
         public_key: None,

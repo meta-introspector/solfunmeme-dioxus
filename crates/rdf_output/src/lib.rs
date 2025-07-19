@@ -1,27 +1,33 @@
-use sophia_api::graph::MutableGraph;
-use sophia_api::term::{SimpleTerm, TTerm};
-use sophia_inmem::graph::FastGraph;
-use sophia_iri::Iri;
 use anyhow::Result;
 use shared_analysis_types::CodeChunk;
+use solfunmeme_rdf_utils::rdf_graph::RdfGraph;
 
-pub fn code_chunks_to_rdf(chunks: Vec<CodeChunk>) -> Result<FastGraph> {
-    let mut graph = FastGraph::new();
+pub fn code_chunks_to_rdf(chunks: Vec<CodeChunk>) -> Result<RdfGraph<'static>> {
+    let mut graph = RdfGraph::new();
+    graph.namespaces.add_namespace("sol", "http://solfunmeme.com/")?;
+    graph.namespaces.add_namespace("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#")?;
+    graph.namespaces.add_namespace("xsd", "http://www.w3.org/2001/XMLSchema#")?;
 
     for chunk in chunks {
-        let chunk_iri = Iri::new_unchecked(format!("http://solfunmeme.com/code_chunk/{}", chunk.path.replace(".", "_").replace("/", "_")));
-        let content_literal = SimpleTerm::new_literal_dt(chunk.content, Iri::new_unchecked("http://www.w3.org/2001/XMLSchema#string"));
-        let emoji_literal = SimpleTerm::new_literal_dt(chunk.emoji, Iri::new_unchecked("http://www.w3.org/2001/XMLSchema#string"));
-        let line_start_literal = SimpleTerm::new_literal_dt(chunk.line_start.to_string(), Iri::new_unchecked("http://www.w3.org/2001/XMLSchema#integer"));
-        let line_end_literal = SimpleTerm::new_literal_dt(chunk.line_end.to_string(), Iri::new_unchecked("http://www.w3.org/2001/XMLSchema#integer"));
-        let chunk_type_literal = SimpleTerm::new_literal_dt(chunk.chunk_type, Iri::new_unchecked("http://www.w3.org/2001/XMLSchema#string"));
+        let chunk_iri = graph.namespaces.get_term("sol", &format!("code_chunk/{}", chunk.path.replace(".", "_").replace("/", "_")))?;
+        let type_prop = graph.namespaces.get_term("rdf", "type")?;
+        let chunk_class = graph.namespaces.get_term("sol", "CodeChunk")?;
+        graph.add_triple(&chunk_iri, &type_prop, &chunk_class)?;
 
-        graph.insert(&chunk_iri, &Iri::new_unchecked("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), &Iri::new_unchecked("http://solfunmeme.com/CodeChunk"))?;
-        graph.insert(&chunk_iri, &Iri::new_unchecked("http://solfunmeme.com/hasContent"), &content_literal)?;
-        graph.insert(&chunk_iri, &Iri::new_unchecked("http://solfunmeme.com/hasEmoji"), &emoji_literal)?;
-        graph.insert(&chunk_iri, &Iri::new_unchecked("http://solfunmeme.com/hasLineStart"), &line_start_literal)?;
-        graph.insert(&chunk_iri, &Iri::new_unchecked("http://solfunmeme.com/hasLineEnd"), &line_end_literal)?;
-        graph.insert(&chunk_iri, &Iri::new_unchecked("http://solfunmeme.com/hasChunkType"), &chunk_type_literal)?;
+        let content_prop = graph.namespaces.get_term("sol", "hasContent")?;
+        graph.add_literal_triple(&chunk_iri, &content_prop, &chunk.content, graph.namespaces.get_base_iri("xsd").unwrap())?;
+
+        let emoji_prop = graph.namespaces.get_term("sol", "hasEmoji")?;
+        graph.add_literal_triple(&chunk_iri, &emoji_prop, &chunk.emoji, graph.namespaces.get_base_iri("xsd").unwrap())?;
+
+        let line_start_prop = graph.namespaces.get_term("sol", "hasLineStart")?;
+        graph.add_literal_triple(&chunk_iri, &line_start_prop, &chunk.line_start.to_string(), graph.namespaces.get_base_iri("xsd").unwrap())?;
+
+        let line_end_prop = graph.namespaces.get_term("sol", "hasLineEnd")?;
+        graph.add_literal_triple(&chunk_iri, &line_end_prop, &chunk.line_end.to_string(), graph.namespaces.get_base_iri("xsd").unwrap())?;
+
+        let chunk_type_prop = graph.namespaces.get_term("sol", "hasChunkType")?;
+        graph.add_literal_triple(&chunk_iri, &chunk_type_prop, &chunk.chunk_type, graph.namespaces.get_base_iri("xsd").unwrap())?;
     }
 
     Ok(graph)

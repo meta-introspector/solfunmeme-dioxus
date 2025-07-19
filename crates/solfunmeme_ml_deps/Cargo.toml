@@ -1,0 +1,21 @@
+[package]
+name = "solfunmeme_ml_deps"
+version = "0.1.0"
+edition = "2021"
+license = "AGPL-3.0"
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+# linfa = "0.7.1"
+# linfa-preprocessing = "0.7.1"
+# linfa-reduction = "0.7.1"
+# linfa-clustering = "0.7.1"
+# ndarray = "0.15.6"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rand = "0.8.5"
+rand_core = { version = "0.6.4", features = ["std"] }
+thiserror = "2.0.12"

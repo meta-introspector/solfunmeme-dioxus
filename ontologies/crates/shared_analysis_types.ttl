@@ -1,0 +1,34 @@
+@prefix shared_analysis: <http://example.org/shared_analysis_types#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Shared Analysis Types Crate Elements and their Emoji Mappings
+
+# Crate Root
+shared_analysis:CrateRoot a rdfs:Class ;
+    rdfs:label "Shared Analysis Types Crate Root" ;
+    em:hasEmojiRepresentation "🤝📊" ;
+    rdfs:comment "The root directory for the Shared Analysis Types crate." .
+
+# Directories within Crate
+shared_analysis:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Shared Analysis Types." .
+
+# Files within Crate
+shared_analysis:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Shared Analysis Types crate." .
+
+shared_analysis:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Shared Analysis Types crate." .
+
+# Instances of Crate Elements
+shared_analysis:crateInstance a shared_analysis:CrateRoot .
+shared_analysis:srcInstance a shared_analysis:SrcDirectory .
+shared_analysis:cargoTomlInstance a shared_analysis:CargoTomlFile .
+shared_analysis:readmeMdInstance a shared_analysis:ReadmeMdFile .

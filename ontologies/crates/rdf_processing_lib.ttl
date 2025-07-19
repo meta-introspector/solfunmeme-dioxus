@@ -1,0 +1,34 @@
+@prefix rdf_process: <http://example.org/rdf_processing_lib#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for RDF Processing Library Crate Elements and their Emoji Mappings
+
+# Crate Root
+rdf_process:CrateRoot a rdfs:Class ;
+    rdfs:label "RDF Processing Library Crate Root" ;
+    em:hasEmojiRepresentation "⚙️🌐" ;
+    rdfs:comment "The root directory for the RDF Processing Library crate." .
+
+# Directories within Crate
+rdf_process:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the RDF Processing Library." .
+
+# Files within Crate
+rdf_process:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the RDF Processing Library crate." .
+
+rdf_process:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the RDF Processing Library crate." .
+
+# Instances of Crate Elements
+rdf_process:crateInstance a rdf_process:CrateRoot .
+rdf_process:srcInstance a rdf_process:SrcDirectory .
+rdf_process:cargoTomlInstance a rdf_process:CargoTomlFile .
+rdf_process:readmeMdInstance a rdf_process:ReadmeMdFile .

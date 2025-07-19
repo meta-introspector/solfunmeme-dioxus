@@ -11,6 +11,6 @@ pub use declaration_splitter::*;
 pub use duplicate_detector::*;
 pub use meme_generator::*;
 pub use vectorization::*;
-pub use wallet_integration::*;
+
 
 

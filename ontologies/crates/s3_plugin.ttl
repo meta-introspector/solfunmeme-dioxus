@@ -1,0 +1,40 @@
+@prefix s3_plugin: <http://example.org/s3_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for S3 Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+s3_plugin:CrateRoot a rdfs:Class ;
+    rdfs:label "S3 Plugin Crate Root" ;
+    em:hasEmojiRepresentation "☁️💾" ;
+    rdfs:comment "The root directory for the S3 Plugin crate." .
+
+# Directories within Crate
+s3_plugin:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the S3 Plugin." .
+
+# Files within Crate
+s3_plugin:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the S3 Plugin crate." .
+
+s3_plugin:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the S3 Plugin crate." .
+
+s3_plugin:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+s3_plugin:crateInstance a s3_plugin:CrateRoot .
+s3_plugin:srcInstance a s3_plugin:SrcDirectory .
+s3_plugin:cargoTomlInstance a s3_plugin:CargoTomlFile .
+s3_plugin:readmeMdInstance a s3_plugin:ReadmeMdFile .
+s3_plugin:geminiMdInstance a s3_plugin:GeminiMdFile .

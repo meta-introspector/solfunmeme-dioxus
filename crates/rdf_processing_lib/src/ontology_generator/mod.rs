@@ -1,40 +1,42 @@
 use anyhow::Result;
-use sophia::inmem::graph::LightGraph;
+use solfunmeme_rdf_utils::rdf_graph::RdfGraph;
 use std::path::Path;
 use std::collections::HashMap;
 
 mod namespaces;
-mod process_function;
+pub mod process_function;
 mod serialize;
 
 pub fn generate_ontology(
-    analyzed_functions: Vec<shared_analysis_types::AnalyzedFunction>,
+    analyzed_functions: Vec<process_function::AnalyzedFunction>,
     output_path: &Path,
 ) -> Result<()> {
-    let mut graph = LightGraph::new();
-    let ns = namespaces::define_namespaces();
+    let mut graph = RdfGraph::new();
+    graph.namespaces = namespaces::define_namespaces();
 
     for func in analyzed_functions {
-        process_function::process_analyzed_function(&mut graph, func, &ns)?;
+        let ns_clone = graph.namespaces.clone();
+        process_function::process_analyzed_function(&mut graph, func, &ns_clone)?;
     }
 
-    serialize::serialize_graph_to_file(&graph, output_path, &ns.ex_iri, &ns.rdf_iri, &ns.rdfs_iri, &ns.em_iri)?;
+    serialize::serialize_graph_to_file(&graph, output_path)?;
 
     Ok(())
 }
 
 pub fn generate_token_ontology(
-    analyzed_tokens: HashMap<String, shared_analysis_types::AnalyzedToken>,
+    analyzed_tokens: HashMap<String, process_function::AnalyzedToken>,
     output_path: &Path,
 ) -> Result<()> {
-    let mut graph = LightGraph::new();
-    let ns = namespaces::define_namespaces();
+    let mut graph = RdfGraph::new();
+    graph.namespaces = namespaces::define_namespaces();
 
-    for (token_str, token_data) in analyzed_tokens {
-        process_function::process_analyzed_token(&mut graph, token_data, &ns)?;
+    for (_token_str, token_data) in analyzed_tokens {
+        let ns_clone = graph.namespaces.clone();
+        process_function::process_analyzed_token(&mut graph, token_data, &ns_clone)?;
     }
 
-    serialize::serialize_graph_to_file(&graph, output_path, &ns.ex_iri, &ns.rdf_iri, &ns.rdfs_iri, &ns.em_iri)?;
+    serialize::serialize_graph_to_file(&graph, output_path)?;
 
     Ok(())
 }

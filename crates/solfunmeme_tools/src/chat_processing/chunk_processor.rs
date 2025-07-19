@@ -207,7 +207,7 @@ impl ChunkProcessor {
         fs::write(&chunk_file, content)?;
         
         // Write external files
-        for (i, ext_file) in external_files.iter().enumerate() {
+        for (_i, ext_file) in external_files.iter().enumerate() {
             let ext_path = chunk_dir.join(&ext_file.filename);
             fs::write(&ext_path, &ext_file.content)?;
         }

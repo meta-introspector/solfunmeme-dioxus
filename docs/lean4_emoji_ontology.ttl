@@ -1,0 +1,92 @@
+@prefix lean4: <http://example.org/lean4_code#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Lean4 Code to Emoji Mappings
+
+# Lean4 Code Concepts
+lean4:Lean4Element a rdfs:Class ;
+    rdfs:label "Lean4 Code Element" ;
+    rdfs:comment "A general concept for any identifiable element within Lean4 expressions or definitions." .
+
+lean4:Constant a lean4:Lean4Element ;
+    rdfs:label "Lean4 Constant" ;
+    em:hasEmojiRepresentation "🪨" ;
+    rdfs:comment "A Lean4 constant, such as a definition, theorem, or inductive type." .
+
+lean4:InductiveType a lean4:Constant ;
+    rdfs:label "Lean4 Inductive Type" ;
+    em:hasEmojiRepresentation "🏗️" ;
+    rdfs:comment "An inductive type definition in Lean4." .
+
+lean4:Level a lean4:Lean4Element ;
+    rdfs:label "Lean4 Level" ;
+    em:hasEmojiRepresentation "⬆️" ;
+    rdfs:comment "A universe level in Lean4." .
+
+lean4:Name a lean4:Lean4Element ;
+    rdfs:label "Lean4 Name" ;
+    em:hasEmojiRepresentation "📛" ;
+    rdfs:comment "A name identifier in Lean4." .
+
+lean4:Expression a lean4:Lean4Element ;
+    rdfs:label "Lean4 Expression" ;
+    em:hasEmojiRepresentation "🌳" ;
+    rdfs:comment "A Lean4 expression (Expr)." .
+
+lean4:Sort a lean4:Expression ;
+    rdfs:label "Lean4 Sort" ;
+    em:hasEmojiRepresentation "🗄️" ;
+    rdfs:comment "A sort (type of types) in Lean4." .
+
+lean4:Type a lean4:Expression ;
+    rdfs:label "Lean4 Type" ;
+    em:hasEmojiRepresentation "🏷️" ;
+    rdfs:comment "A type in Lean4." .
+
+lean4:Binder a lean4:Lean4Element ;
+    rdfs:label "Lean4 Binder" ;
+    em:hasEmojiRepresentation "🔗" ;
+    rdfs:comment "A binder (e.g., forall, lambda) in Lean4." .
+
+lean4:Literal a lean4:Lean4Element ;
+    rdfs:label "Lean4 Literal" ;
+    em:hasEmojiRepresentation "📝" ;
+    rdfs:comment "A literal value (e.g., number, string) in Lean4." .
+
+lean4:Axiom a lean4:Constant ;
+    rdfs:label "Lean4 Axiom" ;
+    em:hasEmojiRepresentation "✅" ;
+    rdfs:comment "An axiomatic declaration in Lean4." .
+
+lean4:Theorem a lean4:Constant ;
+    rdfs:label "Lean4 Theorem" ;
+    em:hasEmojiRepresentation "🏆" ;
+    rdfs:comment "A theorem in Lean4." .
+
+lean4:Definition a lean4:Constant ;
+    rdfs:label "Lean4 Definition" ;
+    em:hasEmojiRepresentation "✍️" ;
+    rdfs:comment "A definition in Lean4." .
+
+# Specific Lean4 Elements and their Emoji Mappings (Conceptual)
+
+lean4:AsyncConst2 a lean4:InductiveType ;
+    rdfs:label "AsyncConst2" ;
+    em:hasEmojiRepresentation "🏗️⏳2️⃣" ;
+    rdfs:comment "Conceptual mapping for the AsyncConst2 inductive type." .
+
+lean4:SimpleExpr a lean4:InductiveType ;
+    rdfs:label "SimpleExpr" ;
+    em:hasEmojiRepresentation "🏗️🌳" ;
+    rdfs:comment "Conceptual mapping for the SimpleExpr inductive type." .
+
+lean4:LevelMax a lean4:Level ;
+    rdfs:label "Level.Max" ;
+    em:hasEmojiRepresentation "⬆️🔝" ;
+    rdfs:comment "Conceptual mapping for the Level.Max construct." .
+
+lean4:ConstantKindInduct a lean4:Constant ;
+    rdfs:label "ConstantKind.induct" ;
+    em:hasEmojiRepresentation "🪨🏗️" ;
+    rdfs:comment "Conceptual mapping for the ConstantKind.induct value." .

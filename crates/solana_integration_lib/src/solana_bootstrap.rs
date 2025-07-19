@@ -3,22 +3,17 @@ use solana_sdk::{
     instruction::{AccountMeta, Instruction},
     pubkey::Pubkey,
     signature::{Keypair, Signer},
-    system_instruction,
     transaction::Transaction,
 };
 use borsh::BorshSerialize;
 use anyhow::Result;
-use std::str::FromStr;
-use tracing::{info, instrument};
+use tracing::info;
 
-use crate::{Ontology, CodeFile, Function, ClosestEmojiInfo, Term, BuyOrder, BuyOrderStatus};
+use crate::{Ontology, CodeFile, Term, BuyOrder};
 
-#[instrument(skip(payer, rpc_url))]
 pub fn bootstrap_to_solana(
     ontology_data: Ontology,
     code_files: Vec<CodeFile>,
-    functions: Vec<Function>,
-    emojis: Vec<ClosestEmojiInfo>,
     terms: Vec<Term>,
     buy_orders: Vec<BuyOrder>,
     program_id: Pubkey,
@@ -57,42 +52,7 @@ pub fn bootstrap_to_solana(
         info!("Deployed CodeFile: {}", file.name);
     }
 
-    info!("Deploying Function accounts...");
-    for func in functions {
-        let (func_pda, _bump) = Pubkey::find_program_address(&[b"function", func.name.as_bytes()], &program_id);
-        let func_instruction = Instruction {
-            program_id,
-            accounts: vec![
-                AccountMeta::new(func_pda, false),
-                AccountMeta::new(func.file, false),
-                AccountMeta::new(func.ontology, false),
-                AccountMeta::new(payer.pubkey(), true),
-            ],
-            data: func.try_to_vec()?,
-        };
-        let mut tx = Transaction::new_with_payer(&[func_instruction], Some(&payer.pubkey()));
-        tx.sign(&[payer], client.get_latest_blockhash()?);
-        client.send_and_confirm_transaction(&tx)?;
-        info!("Deployed Function: {}", func.name);
-    }
-
-    info!("Deploying ClosestEmojiInfo accounts...");
-    for emoji_info in emojis {
-        let (emoji_pda, _bump) = Pubkey::find_program_address(&[b"emoji_info", emoji_info.symbol.as_bytes()], &program_id);
-        let emoji_instruction = Instruction {
-            program_id,
-            accounts: vec![
-                AccountMeta::new(emoji_pda, false),
-                AccountMeta::new(emoji_info.ontology, false),
-                AccountMeta::new(payer.pubkey(), true),
-            ],
-            data: emoji_info.try_to_vec()?,
-        };
-        let mut tx = Transaction::new_with_payer(&[emoji_instruction], Some(&payer.pubkey()));
-        tx.sign(&[payer], client.get_latest_blockhash()?);
-        client.send_and_confirm_transaction(&tx)?;
-        info!("Deployed ClosestEmojiInfo: {}", emoji_info.symbol);
-    }
+    
 
     info!("Deploying Term accounts...");
     for term in terms {

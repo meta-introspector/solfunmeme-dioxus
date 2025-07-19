@@ -1,0 +1,34 @@
+@prefix solfunmeme_clifford: <http://example.org/solfunmeme_clifford#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Clifford Crate Elements and their Emoji Mappings
+
+# Crate Root
+solfunmeme_clifford:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Clifford Crate Root" ;
+    em:hasEmojiRepresentation "➕✖️" ;
+    rdfs:comment "The root directory for the Solfunmeme Clifford crate." .
+
+# Directories within Crate
+solfunmeme_clifford:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Clifford." .
+
+# Files within Crate
+solfunmeme_clifford:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Clifford crate." .
+
+solfunmeme_clifford:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Solfunmeme Clifford crate." .
+
+# Instances of Crate Elements
+solfunmeme_clifford:crateInstance a solfunmeme_clifford:CrateRoot .
+solfunmeme_clifford:srcInstance a solfunmeme_clifford:SrcDirectory .
+solfunmeme_clifford:cargoTomlInstance a solfunmeme_clifford:CargoTomlFile .
+solfunmeme_clifford:readmeMdInstance a solfunmeme_clifford:ReadmeMdFile .

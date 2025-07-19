@@ -1,0 +1,34 @@
+@prefix solfunmeme_wallet: <http://example.org/solfunmeme_wallet_integration#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Wallet Integration Crate Elements and their Emoji Mappings
+
+# Crate Root
+solfunmeme_wallet:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Wallet Integration Crate Root" ;
+    em:hasEmojiRepresentation "👛🔗" ;
+    rdfs:comment "The root directory for the Solfunmeme Wallet Integration crate." .
+
+# Directories within Crate
+solfunmeme_wallet:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Wallet Integration." .
+
+# Files within Crate
+solfunmeme_wallet:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Wallet Integration crate." .
+
+solfunmeme_wallet:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Solfunmeme Wallet Integration crate." .
+
+# Instances of Crate Elements
+solfunmeme_wallet:crateInstance a solfunmeme_wallet:CrateRoot .
+solfunmeme_wallet:srcInstance a solfunmeme_wallet:SrcDirectory .
+solfunmeme_wallet:cargoTomlInstance a solfunmeme_wallet:CargoTomlFile .
+solfunmeme_wallet:readmeMdInstance a solfunmeme_wallet:ReadmeMdFile .

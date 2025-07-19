@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 /// Represents the usage characteristics and cost metrics of an LLM account.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct UsageVector {

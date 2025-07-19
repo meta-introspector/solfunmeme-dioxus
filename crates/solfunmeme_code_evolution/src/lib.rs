@@ -3,7 +3,40 @@ use syn::{parse_file, Item, ItemStruct};
 use quote::quote;
 use anyhow::Result;
 
-use solfunmeme_models::{MemeToken, ConsensusState, EvolutionRule, EvolutionAction, EMOJI_PRIME_MAPPING, get_prime_factors};
+use solfunmeme_models::{MemeToken, ConsensusState, EvolutionRule, EvolutionAction, get_prime_factors};
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref EMOJI_PRIME_MAPPING: HashMap<u64, &'static str> = {
+        let mut m = HashMap::new();
+        // Main Idea Primes
+        m.insert(2, "Self-Reflection & Viral Meme Propagation");
+        m.insert(3, "Emergent Meme Structures & Narrative Shifts");
+        m.insert(5, "AI-Driven Decentralized Meme Consensus");
+        m.insert(7, "Evolution & Self-Replicating Meme Economy");
+        // Group 1 Emojis
+        m.insert(11, "🚀");
+        m.insert(13, "📜");
+        m.insert(17, "🔍");
+        m.insert(19, "💬");
+        m.insert(23, "🧠");
+        // Group 2 Emojis
+        m.insert(29, "🔀");
+        m.insert(31, "💡");
+        m.insert(37, "💭");
+        m.insert(41, "🔑");
+        // Group 3 Emojis
+        m.insert(43, "🤖");
+        m.insert(47, "🌐");
+        m.insert(53, "📊");
+        m.insert(59, "🔗");
+        // Group 4 Emojis
+        m.insert(61, "🧩");
+        m.insert(67, "🌱");
+        m
+    };
+}
 
 pub struct CodeEvolutionEngine {
     prime_registry: HashMap<u64, String>,
@@ -101,7 +134,7 @@ impl CodeEvolutionEngine {
     }
     
     pub fn generate_solana_program(&self, meme_token: &MemeToken) -> String {
-        let semantic_composition = meme_token.get_semantic_composition().join("");
+        let semantic_composition = meme_token.get_semantic_composition(&EMOJI_PRIME_MAPPING).join("");
         
         format!(r#"
 use solana_program::{{

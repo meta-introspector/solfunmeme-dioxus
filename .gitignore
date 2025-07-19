@@ -80,3 +80,4 @@ codebase_index/
 .env
 hf_dataset
 .vs
+internal/

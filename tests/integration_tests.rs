@@ -1,4 +1,12 @@
-use shared_analysis_types::{CodeSnippet, ExtractedFile, ProcessingFile, TestResult, DocumentSummary, ConversationTurn, UploadedFile, AnnotatedWord, Multivector, ProcessingStats, ProcessingError, LanguageConfig};
+use solfunmeme_function_analysis::CodeChunk;
+use solfunmeme_function_analysis::{ExtractedFile, ProcessingFile, DocumentSummary, ConversationTurn, UploadedFile, AnnotatedWord, ProcessingError};
+use tclifford::Multivector;
+
+use solfunmeme_clifford::SerializableMultivector;
+use solfunmeme_extractor::model::content_hash::create_content_hash;
+use solfunmeme_extractor::model::estimate_token_count::estimate_token_count;
+use solfunmeme_extractor::model::create_default_test_result::create_default_test_result;
+use solfunmeme_function_analysis::extract_code_snippets;
 
 const SAMPLE_RUST_CODE: &str = r#"
 use std::collections::HashMap;
@@ -32,7 +40,7 @@ impl Point {
 
 #[test]
 fn test_code_snippet_extraction() {
-    let snippets = shared_analysis_types::extract_code_snippets(SAMPLE_RUST_CODE);
+    let snippets = extract_code_snippets(SAMPLE_RUST_CODE);
     
     // Should extract at least one snippet
     assert!(!snippets.is_empty());
@@ -51,16 +59,18 @@ fn test_code_snippet_extraction() {
 
 #[test]
 fn test_extracted_file_processing() {
-    let snippet = CodeSnippet {
+    let snippet = CodeChunk {
         language: "rust".to_string(),
         content: SAMPLE_RUST_CODE.to_string(),
         line_start: 1,
         line_end: 25,
-        content_hash: shared_analysis_types::generate_content_hash(SAMPLE_RUST_CODE),
-        token_count: shared_analysis_types::estimate_token_count(SAMPLE_RUST_CODE),
+        content_hash: create_content_hash(SAMPLE_RUST_CODE),
+        token_count: estimate_token_count(SAMPLE_RUST_CODE),
         line_count: SAMPLE_RUST_CODE.lines().count(),
         char_count: SAMPLE_RUST_CODE.chars().count(),
-        test_result: Some(shared_analysis_types::create_default_test_result()),
+        test_result: Some(create_default_test_result()),
+        clifford_vector: Some(SerializableMultivector(Multivector::default())),
+        embedding: vec![],
     };
     
     let file = ExtractedFile {
@@ -90,9 +100,9 @@ fn test_processing_file_workflow() {
         summary: Some(DocumentSummary {
             total_turns: 1,
             total_code_snippets: 1,
-            total_tokens: shared_analysis_types::estimate_token_count(SAMPLE_RUST_CODE),
+            total_tokens: estimate_token_count(SAMPLE_RUST_CODE),
             languages_found: vec!["rust".to_string()],
-            content_hashes: vec![shared_analysis_types::generate_content_hash(SAMPLE_RUST_CODE)],
+            content_hashes: vec![create_content_hash(SAMPLE_RUST_CODE)],
         }),
     };
     
@@ -110,7 +120,7 @@ fn test_processing_file_workflow() {
 
 #[test]
 fn test_conversation_turn_processing() {
-    let snippet = CodeSnippet {
+    let snippet = CodeChunk {
         language: "rust".to_string(),
         content: "fn hello() { println!(\"world\"); }".to_string(),
         line_start: 1,
@@ -120,6 +130,8 @@ fn test_conversation_turn_processing() {
         line_count: 1,
         char_count: 32,
         test_result: None,
+        clifford_vector: Some(SerializableMultivector(Multivector::default())),
+        embedding: vec![],
     };
     
     let turn = ConversationTurn {
@@ -159,20 +171,14 @@ fn test_uploaded_file_processing() {
 
 #[test]
 fn test_multivector_operations() {
-    let mv1 = Multivector {
-        scalar: 1.0,
-        vector: [0.1, 0.2, 0.3],
-    };
+    let mv1 = Multivector::<f32, solfunmeme_clifford::SolCliffordAlgebra>::from_scalar(1.0f32);
     
-    let mv2 = Multivector {
-        scalar: 2.0,
-        vector: [0.4, 0.5, 0.6],
-    };
+    let mv2 = Multivector::<f32, solfunmeme_clifford::SolCliffordAlgebra>::from_vector([0.4f32, 0.5f32, 0.6f32]).unwrap();
     
     // Test default implementation
-    let default_mv = Multivector::default();
-    assert_eq!(default_mv.scalar, 0.0);
-    assert_eq!(default_mv.vector, [0.0, 0.0, 0.0]);
+    let default_mv = Multivector::<f32, solfunmeme_clifford::SolCliffordAlgebra>::default();
+    assert_eq!(default_mv.scalar_part(), 0.0);
+    assert_eq!(default_mv.extract_vector().as_slice(), Some(&[0.0f32, 0.0f32, 0.0f32][..]));
     
     // Test partial equality
     assert_ne!(mv1, mv2);
@@ -187,10 +193,7 @@ fn test_annotated_word_creation() {
         secondary_emoji: "⚙️".to_string(),
         wikidata: Some("Q12345".to_string()),
         embedding: vec![0.1, 0.2, 0.3, 0.4],
-        multivector: Multivector {
-            scalar: 1.0,
-            vector: [0.1, 0.2, 0.3],
-        },
+        clifford_vector: Some(SerializableMultivector(Multivector::from_scalar(1.0))),
     };
     
     assert_eq!(word.word, "function");
@@ -198,7 +201,7 @@ fn test_annotated_word_creation() {
     assert_eq!(word.secondary_emoji, "⚙️");
     assert_eq!(word.wikidata, Some("Q12345".to_string()));
     assert_eq!(word.embedding.len(), 4);
-    assert_eq!(word.multivector.scalar, 1.0);
+    assert_eq!(word.clifford_vector.unwrap().0.scalar_part(), 1.0);
 }
 
 #[test]

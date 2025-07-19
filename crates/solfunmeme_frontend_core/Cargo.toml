@@ -1,0 +1,14 @@
+[package]
+name = "solfunmeme_frontend_core"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dioxus = { version = "0.6.3", features = ["router"] }
+dioxus-router = "0.6.3"
+dioxus-web = "0.6.3"
+dioxus-motion = "0.3.1"
+dioxus-html = "0.6.3"
+dioxus-logger = "0.6.2"
+easer = "0.3.0"
+dioxus-charts = { path = "../../vendor/dioxus-charts" }

@@ -1,8 +1,8 @@
 use serde::{Deserialize, Serialize};
-use solfunmeme_clifford::SolMultivector;
+use crate::serializable_multivector::SerializableMultivector;
 
 /// Represents a request to perform a Clifford algebra operation.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CliffordOperationRequest {
     /// The name of the operation to perform (e.g., "create_scalar_multivector", "compose_prime_multivectors").
     pub operation: String,
@@ -14,7 +14,7 @@ pub struct CliffordOperationRequest {
     pub vector_values: Vec<f32>,
     /// An optional input multivector to be used in operations like `update_flow_multivector`.
     #[serde(default)]
-    pub input_multivector: Option<SolMultivector>,
+    pub input_multivector: Option<SerializableMultivector>,
 }
 
 /// Represents the response from a Clifford algebra operation.

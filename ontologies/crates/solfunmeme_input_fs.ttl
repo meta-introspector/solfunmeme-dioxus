@@ -1,0 +1,40 @@
+@prefix solfunmeme_input_fs: <http://example.org/solfunmeme_input_fs#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Input FS Crate Elements and their Emoji Mappings
+
+# Crate Root
+solfunmeme_input_fs:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Input FS Crate Root" ;
+    em:hasEmojiRepresentation "📥📂" ;
+    rdfs:comment "The root directory for the Solfunmeme Input FS crate." .
+
+# Directories within Crate
+solfunmeme_input_fs:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Input FS." .
+
+# Files within Crate
+solfunmeme_input_fs:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Input FS crate." .
+
+solfunmeme_input_fs:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Solfunmeme Input FS crate." .
+
+solfunmeme_input_fs:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+solfunmeme_input_fs:crateInstance a solfunmeme_input_fs:CrateRoot .
+solfunmeme_input_fs:srcInstance a solfunmeme_input_fs:SrcDirectory .
+solfunmeme_input_fs:cargoTomlInstance a solfunmeme_input_fs:CargoTomlFile .
+solfunmeme_input_fs:readmeMdInstance a solfunmeme_input_fs:ReadmeMdFile .
+solfunmeme_input_fs:geminiMdInstance a solfunmeme_input_fs:GeminiMdFile .

@@ -1,46 +1,49 @@
 # Solfunmeme-Dioxus: Self-Aware Codebase
 
-A revolutionary codebase management system that integrates mathematical frameworks (Clifford algebra, manifold geometry) with semantic processing to create a truly self-aware codebase where code and meaning "vibe" together.
+## 🌟 Vision: The Code-Math Manifold
 
-## 🌟 Vision
+Solfunmeme-Dioxus is a pioneering codebase management system that explores the **Code-Math Manifold** – the profound intersection of code, mathematics, language, and meaning. Our vision is to create a self-aware, evolving codebase that understands its own structure and semantics, where every line of code "vibes" with its underlying mathematical essence.
 
-**"The message is the vibe is the function, the functions vibe with each other."**
+Read our full philosophical waxing in [The Code-Math Manifold Manifesto](CODE_MATH_MANIFOLD_MANIFESTO.md).
 
-Solfunmeme-Dioxus represents a paradigm shift in how we understand, manage, and interact with code. By vendorizing, indexing, deduplicating, and cross-referencing all code (including dependencies), we create a living, evolving, self-understanding system.
+### Deep Dive into the Code-Math Manifold
+
+Our journey into self-aware code has led to several foundational concepts that deepen our understanding of the Code-Math Manifold:
+
+*   **Further Codebase Partitioning Ideas**: Explore our ongoing brainstorming for creating smaller, more focused, and semantically aligned "vibe" crates. Read more in [docs/partitioning_ideas.md](docs/partitioning_ideas.md).
+*   **The Vibe-Driven Linker (VDL)**: A conceptual runtime orchestrator that understands the "vibe" of code units and dynamically composes and executes them. This includes the revolutionary "Proof of Vibe" using Zero-Knowledge Proofs to ensure integrity, quality, and security. Discover more in [founding_documents/vibe_driven_linker.md](founding_documents/vibe_driven_linker.md).
+*   **The Hyperspace Model**: A framework for representing and reasoning about code as a complex, interconnected semantic space within lattice structures, leveraging Clifford algebras. This model enables a new class of reasoning capabilities about code. Dive deeper in [founding_documents/hyperspace_model.md](founding_documents/hyperspace_model.md).
+*   **The ZOS Basis**: A fundamental set of "vibe" primitives (`[0,1,2,3,5,7,11,13,17,19]`) used to describe all other elements within the Code-Math Manifold with an associated error rate. This allows us to assign a unique "vibe" or "meme" to entire projects (e.g., Emacs, GCC, Linux, PHP, Firefox, MySQL), reflecting their core semantic resonance.
 
 ## 🚀 Key Features
 
-### Self-Aware Codebase Engine
-- **Vendorization System**: Downloads and stores all external dependencies locally
-- **Code Indexing & Search**: Full-text search using Tantivy with semantic similarity
-- **SHA-based Deduplication**: Exact duplicate detection via content hashing
-- **Cross-Reference Analysis**: Bidirectional links between code and documentation
+For ongoing development notes and tasks, see [DEVELOPMENT_NOTES.md](DEVELOPMENT_NOTES.md).
 
-### Mathematical Framework
-- **8D Riemann Manifold**: Geometric representation of code semantics
-- **Clifford Algebra Engine**: Advanced mathematical structures for code analysis, now integrated with `solfunmeme_clifford` for robust multivector operations.
-- **Flow Model**: Representation of system state and execution flow as evolving `SolMultivector`s within the Clifford algebra.
-- **Geometric Attention**: Multi-dimensional attention mechanisms
-- **Vector Processing**: Convert code to mathematical vectors for similarity analysis
 
-### LLM Reflection System
-- **Distributed Architecture**: A bid/ask system with buyers (`llm_planner`), market makers (`solfunmeme_market_maker`), and external LLM providers.
-- **Semantic Task Generation**: `llm_planner` groups code chunks by embedding similarity and generates structured tasks for LLMs.
-- **Dynamic Provider Selection**: `solfunmeme_market_maker` selects optimal LLM providers based on cost, rate limits, and available credits.
-- **Extensible Provider Interface**: LLM providers are external binaries communicating via JSON over standard I/O, allowing for easy integration of various LLMs (e.g., Gemini, Groq, custom models).
-- **Self-Reflection Capability**: The system can analyze its own codebase, generating insights and driving its own evolution.
+### ⚠️ Known Issues
+- The `gline_rs_plugin` has been temporarily disabled due to persistent `ort-sys` compilation issues on Android. We are investigating a long-term solution.
 
-### Task Management System
-- **Automated Task Discovery**: Extract TODO, FIXME, and other task markers from code
-- **Integration with Analysis Tools**: Connect with Rust Analyzer, Clippy, cargo-audit
-- **Priority Management**: AI-driven task prioritization based on dependencies and impact
-- **Real-time Progress Tracking**: Monitor task execution and system health
+### 🧠 Self-Awareness & Semantic Understanding
+- **Code-Math Manifold**: A foundational framework representing code as mathematical objects, enabling deep semantic analysis and visualization.
+- **Code Indexing & Search**: Advanced full-text search using Tantivy, enhanced with semantic similarity for intelligent code discovery.
+- **Ontology-Driven Emoji Mapping**: Translates code concepts into intuitive emoji representations, aligning with our semantic ontology for visual exploration of the Code-Math Manifold.
+- **Codebase Export & Reporting**: Comprehensive export of indexed codebase data into various formats (JSON, CSV, Markdown) for detailed analysis and reporting, including statistical insights.
 
-### Development Tools Integration
-- **Linting & Analysis**: Rust Analyzer, Clippy, custom rules
-- **Security Scanning**: CVE detection and vulnerability assessment
-- **Compilation & Testing**: Automated test discovery and coverage analysis
-- **Performance Monitoring**: Build time and runtime metrics
+### 🛠️ Codebase Management
+- **Modular Architecture**: The codebase is now split into distinct, vibe-driven modules, allowing for flexible and optimized builds.
+    - **Frontend/Backend Split**: The frontend (Dioxus/Web) is now an optional feature, enabling leaner backend-only deployments.
+    - **Language Processing Isolation**: Language-specific parsing and analysis (e.g., Rust, Markdown) are isolated into separate, interchangeable modules.
+- **Vendorization System**: Manages and stores all external dependencies locally, ensuring a self-contained and reproducible codebase.
+- **SHA-based Deduplication**: Identifies and eliminates redundant code through robust content hashing.
+- **Cross-Reference Analysis**: Establishes bidirectional links between code elements and documentation, fostering a rich, interconnected knowledge graph.
+
+### 🤖 AI & Automation
+- **LLM Reflection System**: A distributed architecture for AI-powered code analysis and generation, featuring dynamic LLM provider selection and extensible integration.
+- **Task Management**: Automated discovery and prioritization of development tasks (TODOs, FIXMEs), integrated with code analysis tools.
+
+### 📊 Analytics & Quality Assurance
+- **Code Metrics & Reporting**: Generates detailed reports on codebase health, complexity, and adherence to quality standards.
+- **Security Analysis**: Integrates with security tools for CVE detection and vulnerability assessment.
 
 ## 🛠️ Installation
 
@@ -49,11 +52,17 @@ Solfunmeme-Dioxus represents a paradigm shift in how we understand, manage, and 
 git clone https://github.com/your-username/solfunmeme-dioxus.git
 cd solfunmeme-dioxus
 
-# Install dependencies
+# Build all crates (backend-only by default)
 cargo build
 
-# Install the CLI tool
+# To build with the frontend (Dioxus/Web) enabled:
+cargo build --features frontend
+
+# Install the CLI tool (backend-only by default)
 cargo install --path .
+
+# To install the CLI tool with frontend features:
+cargo install --path . --features frontend
 ```
 
 ## 📖 Quick Start
@@ -116,10 +125,10 @@ zos report codebase ./src
 
 ### Data Flow
 ```
-Source Code → Vendorization → Indexing → Deduplication → Analysis
-     ↓              ↓            ↓           ↓           ↓
-  Raw Files    Dependencies   Searchable   Unique      Metrics
-                                    Index    Snippets    & Reports
+Source Code → Vendorization → Language Processing → Indexing → Deduplication → Analysis
+     ↓              ↓                 ↓                 ↓           ↓           ↓
+  Raw Files    Dependencies    Code Chunks/ASTs      Searchable   Unique      Metrics
+                                                     Index        Snippets    & Reports
 ```
 
 ### Self-Awareness Pipeline
@@ -127,24 +136,52 @@ Source Code → Vendorization → Indexing → Deduplication → Analysis
 Query → Semantic Search → Cross-Reference → Mathematical Analysis → Response
   ↓         ↓              ↓                ↓                    ↓
 User    Tantivy Index   Code-Doc Links   Clifford Algebra    Insights &
-Input   Vector Search   Provenance       Geometric Attention  Actions
+Input   Vector Search   Code-Doc Links   Geometric Attention  Actions
+```
+
+### Modular Structure (Vibe-Driven)
+The project's architecture is designed around "vibe-driven" modularity, where components are grouped based on their conceptual role and dependencies. This allows for flexible compilation and integration.
+
+```
++---------------------+       +-------------------------+
+| solfunmeme-dioxus   |       | solfunmeme-frontend-core|
+| (Main Application)  |       | (Dioxus/Web UI)         |
+|                     |       |                         |
+| - Core CLI          |       | - Dioxus Components     |
+| - Backend Logic     |       | - Web-specific APIs     |
+|                     |       |                         |
++----------+----------+       +------------+------------+
+           |                               |
+           | (Optional Frontend Feature)   |
+           v                               v
++----------+----------+       +-------------------------+
+| solfunmeme-core-utils |       | solfunmeme-language-    |
+| (Common Utilities)  |       | processing              |
+|                     |       | (Language Parsers)      |
+| - Clap              |       |                         |
+| - Walkdir           |       | - RustProcessor         |
+| - Sha2              |       | - MarkdownProcessor     |
+| - Rand              |       | - (Other Languages)     |
++---------------------+       +-------------------------+
 ```
 
 ## 📊 Data Models
 
-### Code Snippet
+### CodeChunk
 ```rust
-struct CodeSnippet {
+struct CodeChunk {
+    language: String,
     content: String,
-    hash: String,           // SHA-256 for deduplication
-    file_path: String,
     line_start: usize,
     line_end: usize,
-    language: String,
-    crate_name: Option<String>,
-    version: Option<String>,
-    metrics: CodeMetrics,
-    vectors: Vec<f32>,      // Semantic embeddings
+    content_hash: String,
+    token_count: usize,
+    line_count: usize,
+    char_count: usize,
+    test_result: Option<TestResult>,
+    embedding: Vec<f32>,
+    clifford_vector: Option<SerializableMultivector>,
+    semantic_summary: Option<String>, // Added for semantic understanding
 }
 ```
 
@@ -161,6 +198,19 @@ struct Task {
     metadata: HashMap<String, Value>,
 }
 ```
+
+### Hugging Face Datasets
+
+Our codebase actively generates and leverages Hugging Face datasets as a core component of its self-awareness and semantic understanding. The `rust_ast_emoji` dataset, for instance, is a direct output of our Rust AST analysis and emoji mapping, embodying the "Code-Math Manifold" philosophy.
+
+- **rust_ast_emoji**: This dataset contains Rust codebase AST (Abstract Syntax Tree) analysis with emoji mapping for code understanding and visualization. It provides a unique perspective on code structure by mapping AST node types and extracted words to emojis, enabling creative code analysis and visualization. This dataset is designed to be self-generating and will eventually "write itself" to Hugging Face Hub.
+
+### Semantic Ontology and Emoji Mapping
+
+The project utilizes a semantic ontology, defined in `ontologies/zos/v1.ttl`, to establish a formal mapping between code concepts and their emoji representations. This ontology is crucial for:
+- **Semantic Alignment**: Ensuring that emoji representations accurately reflect the underlying meaning of code elements.
+- **Code-Math Manifold Visualization**: Providing a visual language for exploring the Code-Math Manifold, where emojis serve as intuitive glyphs for complex mathematical and code structures.
+- **Data-Driven Insights**: Enabling the system to generate and interpret emoji-based summaries and reports, fostering a deeper, more intuitive understanding of the codebase.
 
 ## 🔗 Integration Points
 

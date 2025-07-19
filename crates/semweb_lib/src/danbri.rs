@@ -4,8 +4,9 @@
 //! work on RDF, ontologies, and semantic web standards.
 
 use async_trait::async_trait;
-use sophia::api::{graph::Graph, triple::Triple, term::Term};
-use sophia::inmem::graph::FastGraph;
+use solfunmeme_rdf_utils::rdf_graph::RdfGraph;
+use solfunmeme_rdf_utils::sophia_api::triple::Triple;
+use solfunmeme_rdf_utils::sophia_api::term::Term;
 use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
 
@@ -21,16 +22,16 @@ pub trait DanbriAdvanced {
     fn create_complex_ontology(&self, specification: OntologySpec) -> SemWebResult<Ontology>;
     
     /// Apply RDF Schema reasoning
-    fn apply_rdfs_reasoning(&self, graph: &mut FastGraph) -> SemWebResult<()>;
+    fn apply_rdfs_reasoning(&self, graph: &mut RdfGraph) -> SemWebResult<()>;
     
     /// Extract and analyze patterns in RDF data
-    fn analyze_patterns(&self, graph: &FastGraph) -> SemWebResult<PatternAnalysis>;
+    fn analyze_patterns(&self, graph: &RdfGraph) -> SemWebResult<PatternAnalysis>;
     
     /// Create vocabulary mappings
     fn create_vocabulary_mapping(&self, source: &str, target: &str) -> SemWebResult<VocabularyMapping>;
     
     /// Validate RDF against schemas
-    fn validate_against_schema(&self, graph: &FastGraph, schema: &str) -> SemWebResult<ValidationReport>;
+    fn validate_against_schema(&self, graph: &RdfGraph, schema: &str) -> SemWebResult<ValidationReport>;
 }
 
 /// RDF processing options
@@ -58,7 +59,7 @@ impl Default for RdfProcessingOptions {
 /// Processed RDF result
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ProcessedRdf {
-    pub graph: FastGraph,
+    pub graph: RdfGraph,
     pub metadata: RdfMetadata,
     pub statistics: RdfStatistics,
     pub warnings: Vec<String>,
@@ -248,14 +249,14 @@ pub struct DanbriAdvancedImpl;
 #[async_trait]
 impl DanbriAdvanced for DanbriAdvancedImpl {
     fn process_rdf_advanced(&self, data: &str, options: RdfProcessingOptions) -> SemWebResult<ProcessedRdf> {
-        use sophia::turtle::parser::turtle;
-        
-        let mut graph = FastGraph::new();
+        let mut graph = RdfGraph::new();
         let mut warnings = Vec::new();
         let mut errors = Vec::new();
         
-        // Parse RDF
-        match turtle::parse_str(data).in_graph(&mut graph) {
+        // Parse RDF (assuming data is Turtle format for now)
+        // In a real implementation, this would use a more robust parser
+        // that can handle different RDF syntaxes.
+        match graph.add_turtle_str(data) {
             Ok(_) => {},
             Err(e) => {
                 errors.push(format!("Failed to parse RDF: {}", e));
@@ -266,7 +267,7 @@ impl DanbriAdvanced for DanbriAdvancedImpl {
         // Apply options
         if options.validate_uris {
             // Validate URIs
-            for triple in graph.triples() {
+            for triple in graph.graph.triples() {
                 if let Ok(triple) = triple {
                     if let Err(e) = self.validate_uri(triple.s()) {
                         warnings.push(format!("Invalid subject URI: {}", e));
@@ -346,26 +347,26 @@ impl DanbriAdvanced for DanbriAdvancedImpl {
         Ok(ontology)
     }
     
-    fn apply_rdfs_reasoning(&self, graph: &mut FastGraph) -> SemWebResult<()> {
+    fn apply_rdfs_reasoning(&self, graph: &mut RdfGraph) -> SemWebResult<()> {
         // Apply RDFS reasoning rules
         // This is a simplified implementation
         // In a full implementation, this would apply all RDFS entailment rules
         
-        tracing::info!("Applying RDFS reasoning to graph with {} triples", graph.triples().count());
+        tracing::info!("Applying RDFS reasoning to graph with {} triples", graph.graph.triples().count());
         
         Ok(())
     }
     
-    fn analyze_patterns(&self, graph: &FastGraph) -> SemWebResult<PatternAnalysis> {
+    fn analyze_patterns(&self, graph: &RdfGraph) -> SemWebResult<PatternAnalysis> {
         let mut predicate_counts = HashMap::new();
         let mut subject_patterns = HashMap::new();
         let mut object_patterns = HashMap::new();
         let mut literal_patterns = HashMap::new();
         let mut uri_patterns = HashMap::new();
         
-        let total_triples = graph.triples().count();
+        let total_triples = graph.graph.triples().count();
         
-        for triple in graph.triples() {
+        for triple in graph.graph.triples() {
             if let Ok(triple) = triple {
                 // Count predicates
                 let predicate = triple.p().to_string();
@@ -374,13 +375,13 @@ impl DanbriAdvanced for DanbriAdvancedImpl {
                 // Analyze subject patterns
                 let subject = triple.s().to_string();
                 if let Some(namespace) = self.extract_namespace(&subject) {
-                    *subject_patterns.entry(namespace).or_insert_with(Vec::new).push(subject);
+                    subject_patterns.entry(namespace).or_insert_with(Vec::new).push(subject);
                 }
                 
                 // Analyze object patterns
                 let object = triple.o().to_string();
                 if let Some(namespace) = self.extract_namespace(&object) {
-                    *object_patterns.entry(namespace).or_insert_with(Vec::new).push(object);
+                    object_patterns.entry(namespace).or_insert_with(Vec::new).push(object);
                 }
             }
         }
@@ -437,7 +438,7 @@ impl DanbriAdvanced for DanbriAdvancedImpl {
         })
     }
     
-    fn validate_against_schema(&self, graph: &FastGraph, schema: &str) -> SemWebResult<ValidationReport> {
+    fn validate_against_schema(&self, graph: &RdfGraph, schema: &str) -> SemWebResult<ValidationReport> {
         let mut errors = Vec::new();
         let mut warnings = Vec::new();
         let mut info = Vec::new();
@@ -446,7 +447,7 @@ impl DanbriAdvanced for DanbriAdvancedImpl {
         // In a real implementation, this would validate against the provided schema
         
         info.push(ValidationInfo {
-            message: format!("Validated {} triples against schema", graph.triples().count()),
+            message: format!("Validated {} triples against schema", graph.graph.triples().count()),
             location: None,
         });
         
@@ -470,7 +471,7 @@ impl DanbriAdvancedImpl {
         }
     }
     
-    fn extract_rdf_metadata(&self, graph: &FastGraph) -> SemWebResult<RdfMetadata> {
+    fn extract_rdf_metadata(&self, graph: &RdfGraph) -> SemWebResult<RdfMetadata> {
         let mut metadata = RdfMetadata {
             namespaces: HashMap::new(),
             prefixes: HashMap::new(),
@@ -480,7 +481,7 @@ impl DanbriAdvancedImpl {
         };
         
         // Extract namespaces from URIs
-        for triple in graph.triples() {
+        for triple in graph.graph.triples() {
             if let Ok(triple) = triple {
                 if let Some(namespace) = self.extract_namespace(&triple.s().to_string()) {
                     metadata.namespaces.insert(namespace.clone(), namespace);
@@ -497,14 +498,14 @@ impl DanbriAdvancedImpl {
         Ok(metadata)
     }
     
-    fn calculate_rdf_statistics(&self, graph: &FastGraph) -> RdfStatistics {
+    fn calculate_rdf_statistics(&self, graph: &RdfGraph) -> RdfStatistics {
         let mut unique_subjects = std::collections::HashSet::new();
         let mut unique_predicates = std::collections::HashSet::new();
         let mut unique_objects = std::collections::HashSet::new();
         let mut literal_count = 0;
         let mut uri_count = 0;
         
-        for triple in graph.triples() {
+        for triple in graph.graph.triples() {
             if let Ok(triple) = triple {
                 unique_subjects.insert(triple.s().to_string());
                 unique_predicates.insert(triple.p().to_string());
@@ -519,7 +520,7 @@ impl DanbriAdvancedImpl {
         }
         
         RdfStatistics {
-            triple_count: graph.triples().count(),
+            triple_count: graph.graph.triples().count(),
             unique_subjects: unique_subjects.len(),
             unique_predicates: unique_predicates.len(),
             unique_objects: unique_objects.len(),
@@ -537,4 +538,4 @@ impl DanbriAdvancedImpl {
             None
         }
     }
-} 
+}

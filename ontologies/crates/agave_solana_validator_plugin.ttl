@@ -1,0 +1,34 @@
+@prefix agave: <http://example.org/agave_solana_validator_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Agave Solana Validator Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+agave:CrateRoot a rdfs:Class ;
+    rdfs:label "Agave Solana Validator Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🌿🔗" ;
+    rdfs:comment "The root directory for the Agave Solana Validator Plugin crate." .
+
+# Directories within Crate
+agave:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Agave Solana Validator Plugin." .
+
+# Files within Crate
+agave:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Agave Solana Validator Plugin crate." .
+
+agave:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Agave Solana Validator Plugin crate." .
+
+# Instances of Crate Elements
+agave:crateInstance a agave:CrateRoot .
+agave:srcInstance a agave:SrcDirectory .
+agave:cargoTomlInstance a agave:CargoTomlFile .
+agave:readmeMdInstance a agave:ReadmeMdFile .

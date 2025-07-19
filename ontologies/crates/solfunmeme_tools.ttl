@@ -1,0 +1,52 @@
+@prefix solfunmeme_tools: <http://example.org/solfunmeme_tools#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Tools Crate Elements and their Emoji Mappings
+
+# Crate Root
+solfunmeme_tools:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Tools Crate Root" ;
+    em:hasEmojiRepresentation "🛠️📦" ;
+    rdfs:comment "The root directory for the Solfunmeme Tools crate." .
+
+# Directories within Crate
+solfunmeme_tools:CodebaseIndexDirectory a rdfs:Class ;
+    rdfs:label "Codebase Index Directory" ;
+    em:hasEmojiRepresentation "📚📂" ;
+    rdfs:comment "Contains the codebase index for the Solfunmeme Tools." .
+
+solfunmeme_tools:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Tools." .
+
+solfunmeme_tools:TestsDirectory a rdfs:Class ;
+    rdfs:label "Tests Directory" ;
+    em:hasEmojiRepresentation "🧪📂" ;
+    rdfs:comment "Contains tests for the Solfunmeme Tools." .
+
+# Files within Crate
+solfunmeme_tools:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Tools crate." .
+
+solfunmeme_tools:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Solfunmeme Tools crate." .
+
+solfunmeme_tools:RecursiveIndexJsonFile a rdfs:Class ;
+    rdfs:label "recursive_index.json File" ;
+    em:hasEmojiRepresentation "🔄📄" ;
+    rdfs:comment "A JSON file containing a recursive index for the Solfunmeme Tools." .
+
+# Instances of Crate Elements
+solfunmeme_tools:crateInstance a solfunmeme_tools:CrateRoot .
+solfunmeme_tools:codebaseIndexInstance a solfunmeme_tools:CodebaseIndexDirectory .
+solfunmeme_tools:srcInstance a solfunmeme_tools:SrcDirectory .
+solfunmeme_tools:testsInstance a solfunmeme_tools:TestsDirectory .
+solfunmeme_tools:cargoTomlInstance a solfunmeme_tools:CargoTomlFile .
+solfunmeme_tools:readmeMdInstance a solfunmeme_tools:ReadmeMdFile .
+solfunmeme_tools:recursiveIndexJsonInstance a solfunmeme_tools:RecursiveIndexJsonFile .

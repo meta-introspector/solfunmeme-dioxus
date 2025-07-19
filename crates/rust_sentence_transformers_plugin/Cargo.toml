@@ -5,5 +5,9 @@ edition = "2024"
 license = "AGPL-3.0"
 
 [dependencies]
-anyhow = "1.0"
-rust-sentence-transformers = { path = "../../vendor/rust-sentence-transformers" }
+# anyhow = "1.0"
+# rust-sentence-transformers = { path = "../../vendor/rust-sentence-transformers", optional = true }
+
+[features]
+default = []
+with-sentence-transformers = ["rust-sentence-transformers"]

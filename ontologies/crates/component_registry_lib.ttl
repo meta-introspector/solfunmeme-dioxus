@@ -1,0 +1,34 @@
+@prefix comp_reg: <http://example.org/component_registry_lib#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Component Registry Library Crate Elements and their Emoji Mappings
+
+# Crate Root
+comp_reg:CrateRoot a rdfs:Class ;
+    rdfs:label "Component Registry Library Crate Root" ;
+    em:hasEmojiRepresentation "📝🧩" ;
+    rdfs:comment "The root directory for the Component Registry Library crate." .
+
+# Directories within Crate
+comp_reg:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Component Registry Library." .
+
+# Files within Crate
+comp_reg:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Component Registry Library crate." .
+
+comp_reg:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Component Registry Library crate." .
+
+# Instances of Crate Elements
+comp_reg:crateInstance a comp_reg:CrateRoot .
+comp_reg:srcInstance a comp_reg:SrcDirectory .
+comp_reg:cargoTomlInstance a comp_reg:CargoTomlFile .
+comp_reg:readmeMdInstance a comp_reg:ReadmeMdFile .

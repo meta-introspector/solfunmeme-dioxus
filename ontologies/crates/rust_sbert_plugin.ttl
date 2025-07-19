@@ -1,0 +1,40 @@
+@prefix rust_sbert: <http://example.org/rust_sbert_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Rust SBERT Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+rust_sbert:CrateRoot a rdfs:Class ;
+    rdfs:label "Rust SBERT Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🦀🧠" ;
+    rdfs:comment "The root directory for the Rust SBERT Plugin crate." .
+
+# Directories within Crate
+rust_sbert:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Rust SBERT Plugin." .
+
+# Files within Crate
+rust_sbert:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Rust SBERT Plugin crate." .
+
+rust_sbert:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Rust SBERT Plugin crate." .
+
+rust_sbert:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+rust_sbert:crateInstance a rust_sbert:CrateRoot .
+rust_sbert:srcInstance a rust_sbert:SrcDirectory .
+rust_sbert:cargoTomlInstance a rust_sbert:CargoTomlFile .
+rust_sbert:readmeMdInstance a rust_sbert:ReadmeMdFile .
+rust_sbert:geminiMdInstance a rust_sbert:GeminiMdFile .

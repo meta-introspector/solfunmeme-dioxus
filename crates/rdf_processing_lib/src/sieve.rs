@@ -1,26 +1,21 @@
-#[cfg(feature = "gpu_backend")]
-use crate::clifford::SolMultivector;
+use solfunmeme_clifford::SolMultivector;
 
-#[cfg(feature = "gpu_backend")]
-pub fn get_sieve_address(multivector: &SolMultivector) -> String {
-    let mut address = String::with_capacity(8);
+pub struct BertCliffordEncoder;
 
-    // The first 8 coefficients of the multivector correspond to the e1 through e8 basis vectors.
-    // In tclifford, basis elements are indexed by their bitmask representation.
-    for i in 0..8 {
-        // The index for e(i+1) is 1 << i.
-        let component = multivector.get_by_idx(1 << i);
-        if component >= 0.0 {
-            address.push('1');
-        } else {
-            address.push('0');
-        }
+impl BertCliffordEncoder {
+    pub fn new() -> Self {
+        Self
     }
-    address
+
+    pub fn encode_embedding(&self, _embedding: &[f32]) -> anyhow::Result<SolMultivector> {
+        // Dummy implementation for now
+        Ok(SolMultivector::from_vector(vec![0.0; 8]).unwrap())
+    }
 }
 
-#[cfg(not(feature = "gpu_backend"))]
-pub fn get_sieve_address(_multivector: &shared_analysis_types::Multivector) -> String {
-    // Dummy implementation for when GPU backend is not enabled
+pub fn get_sieve_address(_multivector: &SolMultivector) -> String {
+    // Dummy implementation for now
     "00000000".to_string()
 }
+
+pub struct SieveAddress;

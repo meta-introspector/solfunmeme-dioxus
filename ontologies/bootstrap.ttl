@@ -1,0 +1,70 @@
+@prefix boot: <http://example.org/bootstrap#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Bootstrap Module Elements and their Emoji Mappings
+
+# Bootstrap Root
+boot:BootstrapRoot a rdfs:Class ;
+    rdfs:label "Bootstrap Root Directory" ;
+    em:hasEmojiRepresentation "🚀🌳" ;
+    rdfs:comment "The main directory for the bootstrap process, representing the foundational structure." .
+
+# Directories within Bootstrap
+boot:DocsDirectory a rdfs:Class ;
+    rdfs:label "Bootstrap Documentation Directory" ;
+    em:hasEmojiRepresentation "📚📄" ;
+    rdfs:comment "Contains documentation related to the bootstrap process." .
+
+boot:SrcDirectory a rdfs:Class ;
+    rdfs:label "Bootstrap Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Holds the primary source code for the bootstrap." .
+
+boot:Stage0Directory a rdfs:Class ;
+    rdfs:label "Bootstrap Stage 0 Directory" ;
+    em:hasEmojiRepresentation "🥚⚙️" ;
+    rdfs:comment "Represents the initial, foundational stage of the bootstrap process." .
+
+boot:Stage1Directory a rdfs:Class ;
+    rdfs:label "Bootstrap Stage 1 Directory" ;
+    em:hasEmojiRepresentation "🐣⚙️" ;
+    rdfs:comment "Represents the subsequent stage of the bootstrap process." .
+
+# Files within Bootstrap
+boot:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the bootstrap module." .
+
+boot:CargoLockFile a rdfs:Class ;
+    rdfs:label "Cargo.lock File" ;
+    em:hasEmojiRepresentation "🔒📦" ;
+    rdfs:comment "The dependency lock file for the bootstrap module." .
+
+boot:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the bootstrap module." .
+
+boot:GitIgnoreFile a rdfs:Class ;
+    rdfs:label ".gitignore File" ;
+    em:hasEmojiRepresentation "👻🚫" ;
+    rdfs:comment "Specifies intentionally untracked files to ignore." .
+
+boot:GitModulesFile a rdfs:Class ;
+    rdfs:label ".gitmodules File" ;
+    em:hasEmojiRepresentation "🧩🔗" ;
+    rdfs:comment "Defines submodule mappings for the repository." .
+
+# Instances of Bootstrap Elements
+boot:bootstrapInstance a boot:BootstrapRoot .
+boot:docsInstance a boot:DocsDirectory .
+boot:srcInstance a boot:SrcDirectory .
+boot:stage0Instance a boot:Stage0Directory .
+boot:stage1Instance a boot:Stage1Directory .
+boot:cargoTomlInstance a boot:CargoTomlFile .
+boot:cargoLockInstance a boot:CargoLockFile .
+boot:readmeMdInstance a boot:ReadmeMdFile .
+boot:gitIgnoreInstance a boot:GitIgnoreFile .
+boot:gitModulesInstance a boot:GitModulesFile .

@@ -1,5 +1,5 @@
 use emoji_matrix_lib::{parse_summary_total, parse_summary_root, rollup_emoji_matrix, EmojiMatrix};
-use reqwest;
+use solfunmeme_http_client::reqwest;
 
 #[tokio::test]
 async fn emoji_matrix_live_server_test() {

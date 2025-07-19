@@ -1,0 +1,40 @@
+@prefix solfunmeme_func_analysis: <http://example.org/solfunmeme_function_analysis#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Function Analysis Crate Elements and their Emoji Mappings
+
+# Crate Root
+solfunmeme_func_analysis:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Function Analysis Crate Root" ;
+    em:hasEmojiRepresentation "📊🧠" ;
+    rdfs:comment "The root directory for the Solfunmeme Function Analysis crate." .
+
+# Directories within Crate
+solfunmeme_func_analysis:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Function Analysis." .
+
+# Files within Crate
+solfunmeme_func_analysis:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Function Analysis crate." .
+
+solfunmeme_func_analysis:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Solfunmeme Function Analysis crate." .
+
+solfunmeme_func_analysis:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+solfunmeme_func_analysis:crateInstance a solfunmeme_func_analysis:CrateRoot .
+solfunmeme_func_analysis:srcInstance a solfunmeme_func_analysis:SrcDirectory .
+solfunmeme_func_analysis:cargoTomlInstance a solfunmeme_func_analysis:CargoTomlFile .
+solfunmeme_func_analysis:readmeMdInstance a solfunmeme_func_analysis:ReadmeMdFile .
+solfunmeme_func_analysis:geminiMdInstance a solfunmeme_func_analysis:GeminiMdFile .

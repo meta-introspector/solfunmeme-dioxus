@@ -2,8 +2,8 @@ use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::error::Error;
-use walkdir::WalkDir;
-use sha2::{Sha256, Digest};
+use solfunmeme_core_utils::walkdir::WalkDir;
+use solfunmeme_crypto_utils::sha2::{Sha256, Digest};
 
 #[derive(Debug, Clone)]
 pub struct CodeSnippet {
@@ -68,7 +68,7 @@ impl DuplicateProver {
         // Extract code snippets (functions, structs, etc.)
         let snippets = self.extract_snippets(&lines, file_path);
         
-        for snippet in snippets {
+        for mut snippet in snippets {
             let hash = self.compute_hash(&snippet.normalized_content);
             snippet.hash = hash.clone();
             
@@ -141,7 +141,7 @@ impl DuplicateProver {
                 file_path: file_path.to_string_lossy().to_string(),
                 line_start: start_line + 1,
                 line_end: lines.len(),
-                content: current_snippet,
+                content: current_snippet.clone(),
                 normalized_content: self.normalize_content(&current_snippet),
                 hash: String::new(),
             });
@@ -204,7 +204,7 @@ impl DuplicateProver {
             for j in (i + 1)..self.snippets.len() {
                 let similarity = self.calculate_similarity(&self.snippets[i], &self.snippets[j]);
                 if similarity >= threshold && similarity < 1.0 {
-                    let mut group = DuplicateGroup {
+                    let group = DuplicateGroup {
                         snippets: vec![self.snippets[i].clone(), self.snippets[j].clone()],
                         similarity_score: similarity,
                     };

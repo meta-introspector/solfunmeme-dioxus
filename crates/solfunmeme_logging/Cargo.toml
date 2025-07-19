@@ -1,0 +1,10 @@
+[package]
+name = "solfunmeme_logging"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+log = "0.4.21"
+console_log = "1.0.0"
+tracing = "0.1.41"
+wasm-logger = "0.2.0"

@@ -1,0 +1,40 @@
+@prefix workflow_manager: <http://example.org/workflow_manager#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Workflow Manager Crate Elements and their Emoji Mappings
+
+# Crate Root
+workflow_manager:CrateRoot a rdfs:Class ;
+    rdfs:label "Workflow Manager Crate Root" ;
+    em:hasEmojiRepresentation "⚙️📋" ;
+    rdfs:comment "The root directory for the Workflow Manager crate." .
+
+# Directories within Crate
+workflow_manager:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Workflow Manager." .
+
+# Files within Crate
+workflow_manager:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Workflow Manager crate." .
+
+workflow_manager:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Workflow Manager crate." .
+
+workflow_manager:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+workflow_manager:crateInstance a workflow_manager:CrateRoot .
+workflow_manager:srcInstance a workflow_manager:SrcDirectory .
+workflow_manager:cargoTomlInstance a workflow_manager:CargoTomlFile .
+workflow_manager:readmeMdInstance a workflow_manager:ReadmeMdFile .
+workflow_manager:geminiMdInstance a workflow_manager:GeminiMdFile .

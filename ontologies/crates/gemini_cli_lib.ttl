@@ -1,0 +1,28 @@
+@prefix gemini_cli: <http://example.org/gemini_cli_lib#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Gemini CLI Library Crate Elements and their Emoji Mappings
+
+# Crate Root
+gemini_cli:CrateRoot a rdfs:Class ;
+    rdfs:label "Gemini CLI Library Crate Root" ;
+    em:hasEmojiRepresentation "♊💻" ;
+    rdfs:comment "The root directory for the Gemini CLI Library crate." .
+
+# Directories within Crate
+gemini_cli:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Gemini CLI Library." .
+
+# Files within Crate
+gemini_cli:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Gemini CLI Library crate." .
+
+# Instances of Crate Elements
+gemini_cli:crateInstance a gemini_cli:CrateRoot .
+gemini_cli:srcInstance a gemini_cli:SrcDirectory .
+gemini_cli:cargoTomlInstance a gemini_cli:CargoTomlFile .

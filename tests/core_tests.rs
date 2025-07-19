@@ -1,8 +1,9 @@
-use shared_analysis_types::{CodeSnippet, ExtractedFile, ProcessingFile, TestResult, DocumentSummary, ConversationTurn, UploadedFile, AnnotatedWord, Multivector, ProcessingStats, ProcessingError, LanguageConfig};
+use solfunmeme_function_analysis::CodeChunk;
+use solfunmeme_function_analysis::{ExtractedFile, TestResult, DocumentSummary, ProcessingStats, ProcessingError, LanguageConfig};
 
 #[test]
 fn test_code_snippet_creation() {
-    let snippet = CodeSnippet {
+    let snippet = CodeChunk {
         language: "rust".to_string(),
         content: "fn test() { println!(\"hello\"); }".to_string(),
         line_start: 1,
@@ -11,7 +12,9 @@ fn test_code_snippet_creation() {
         token_count: 8,
         line_count: 1,
         char_count: 32,
-        test_result: Some("Passed".to_string()),
+        test_result: Some(TestResult::default()),
+        embedding: vec![],
+        clifford_vector: Some(solfunmeme_clifford::SerializableMultivector(tclifford::Multivector::default())),
     };
     
     assert_eq!(snippet.language, "rust");
@@ -21,12 +24,12 @@ fn test_code_snippet_creation() {
     assert_eq!(snippet.token_count, 8);
     assert_eq!(snippet.line_count, 1);
     assert_eq!(snippet.char_count, 32);
-    assert_eq!(snippet.test_result, Some("Passed".to_string()));
+    assert_eq!(snippet.test_result, Some(TestResult { passed: true, error_message: None, execution_time: None, output: Some("Passed".to_string()) }));
 }
 
 #[test]
 fn test_extracted_file_creation() {
-    let snippet = CodeSnippet {
+    let snippet = CodeChunk {
         language: "rust".to_string(),
         content: "fn main() {}".to_string(),
         line_start: 1,
@@ -36,6 +39,8 @@ fn test_extracted_file_creation() {
         line_count: 1,
         char_count: 12,
         test_result: None,
+        clifford_vector: Some(solfunmeme_clifford::SerializableMultivector(tclifford::Multivector::default())),
+        embedding: vec![],
     };
     
     let file = ExtractedFile {
@@ -52,13 +57,10 @@ fn test_extracted_file_creation() {
 
 #[test]
 fn test_multivector_creation() {
-    let mv = Multivector {
-        scalar: 1.0,
-        vector: [0.1, 0.2, 0.3],
-    };
+    let mv = solfunmeme_clifford::SerializableMultivector(tclifford::Multivector::from_scalar(1.0));
     
-    assert_eq!(mv.scalar, 1.0);
-    assert_eq!(mv.vector, [0.1, 0.2, 0.3]);
+    assert_eq!(mv.0.scalar_part(), 1.0);
+    assert_eq!(mv.0.extract_vector().as_slice(), Some(&[0.0f32, 0.0f32, 0.0f32][..]));
 }
 
 #[test]

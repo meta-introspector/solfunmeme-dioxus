@@ -1,0 +1,16 @@
+[package]
+name = "solfunmeme_web_utils"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+web-sys = { version = "0.3.69", features = [    "Window", "Navigator",   "Storage", "Event", "InputEvent",  "EventTarget",  "HtmlInputElement",  "KeyboardEvent",  "Document",  "Element",	"HtmlAnchorElement"    , "Clipboard"  , "console"  ]  }
+js-sys = "0.3.69"
+wasm-bindgen = { version = "0.2.92", features = ["serde-serialize"] }
+wasm-bindgen-futures = "0.4.42"
+gloo = "0.11.0"
+gloo-net = "0.5.0"
+gloo-storage = "0.3.0"
+gloo-timers = { version = "0.3.0", features = ["futures"] }
+gloo-utils = "0.2.0"
+reqwasm = "0.5.0"

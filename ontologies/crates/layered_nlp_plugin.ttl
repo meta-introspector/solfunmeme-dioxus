@@ -1,0 +1,40 @@
+@prefix layered_nlp: <http://example.org/layered_nlp_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Layered NLP Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+layered_nlp:CrateRoot a rdfs:Class ;
+    rdfs:label "Layered NLP Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🧅🗣️" ;
+    rdfs:comment "The root directory for the Layered NLP Plugin crate." .
+
+# Directories within Crate
+layered_nlp:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Layered NLP Plugin." .
+
+# Files within Crate
+layered_nlp:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Layered NLP Plugin crate." .
+
+layered_nlp:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Layered NLP Plugin crate." .
+
+layered_nlp:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+layered_nlp:crateInstance a layered_nlp:CrateRoot .
+layered_nlp:srcInstance a layered_nlp:SrcDirectory .
+layered_nlp:cargoTomlInstance a layered_nlp:CargoTomlFile .
+layered_nlp:readmeMdInstance a layered_nlp:ReadmeMdFile .
+layered_nlp:geminiMdInstance a layered_nlp:GeminiMdFile .

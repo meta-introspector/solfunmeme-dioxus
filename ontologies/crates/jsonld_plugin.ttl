@@ -1,0 +1,40 @@
+@prefix jsonld: <http://example.org/jsonld_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for JSON-LD Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+jsonld:CrateRoot a rdfs:Class ;
+    rdfs:label "JSONLD Plugin Crate Root" ;
+    em:hasEmojiRepresentation "📄🔗" ;
+    rdfs:comment "The root directory for the JSONLD Plugin crate." .
+
+# Directories within Crate
+jsonld:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the JSONLD Plugin." .
+
+# Files within Crate
+jsonld:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the JSONLD Plugin crate." .
+
+jsonld:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the JSONLD Plugin crate." .
+
+jsonld:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+jsonld:crateInstance a jsonld:CrateRoot .
+jsonld:srcInstance a jsonld:SrcDirectory .
+jsonld:cargoTomlInstance a jsonld:CargoTomlFile .
+jsonld:readmeMdInstance a jsonld:ReadmeMdFile .
+jsonld:geminiMdInstance a jsonld:GeminiMdFile .

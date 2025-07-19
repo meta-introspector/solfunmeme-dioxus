@@ -4,14 +4,14 @@ use dioxus::prelude::*;
 use crate::{
     components::codesnippet::CodeSnippetView,
 };
-use shared_analysis_types::{CodeSnippet, ExtractedFile};
+use solfunmeme_function_analysis::{CodeChunk, ExtractedFile};
 
 #[component]
 pub fn FileResults(
     file: ExtractedFile,
     copied_snippets: std::collections::HashSet<String>,
     on_copy: EventHandler<(String, String)>,
-    on_download: EventHandler<(Vec<CodeSnippet>, String)>,
+    on_download: EventHandler<(Vec<CodeChunk>, String)>,
 ) -> Element {
     let unique_languages: Vec<String> = file
         .snippets

@@ -1,0 +1,91 @@
+@prefix rust: <http://example.org/rust_code#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Rust Code to Emoji Mappings
+
+# Rust Code Concepts
+rust:RustCodeElement a rdfs:Class ;
+    rdfs:label "Rust Code Element" ;
+    rdfs:comment "A general concept for any identifiable element within Rust source code." .
+
+rust:Function a rust:RustCodeElement ;
+    rdfs:label "Rust Function" ;
+    rdfs:comment "A Rust function, representing a block of executable code." .
+
+rust:Struct a rust:RustCodeElement ;
+    rdfs:label "Rust Struct" ;
+    rdfs:comment "A Rust struct, representing a custom data structure." .
+
+rust:Method a rust:RustCodeElement ;
+    rdfs:label "Rust Method" ;
+    rdfs:comment "A method associated with a Rust struct or enum." .
+
+rust:Variable a rust:RustCodeElement ;
+    rdfs:label "Rust Variable" ;
+    rdfs:comment "A variable declaration in Rust." .
+
+rust:Loop a rust:RustCodeElement ;
+    rdfs:label "Rust Loop" ;
+    rdfs:comment "A control flow construct for iteration." .
+
+rust:Conditional a rust:RustCodeElement ;
+    rdfs:label "Rust Conditional" ;
+    rdfs:comment "A control flow construct for conditional execution." .
+
+# Emoji Mapping Property
+em:hasEmojiRepresentation a rdfs:Property ;
+    rdfs:label "has emoji representation" ;
+    rdfs:domain rust:RustCodeElement ;
+    rdfs:range rdfs:Literal ;
+    rdfs:comment "The emoji sequence representing a Rust code element's semantic meaning or function." .
+
+# Specific Rust Code Elements and their Emoji Mappings
+
+# From the conceptual Rust script:
+rust:mainFunction a rust:Function ;
+    rdfs:label "main function" ;
+    em:hasEmojiRepresentation "🚀⚙️" ;
+    rdfs:comment "The entry point and orchestrator of the Rust program." .
+
+rust:OntologyConceptStruct a rust:Struct ;
+    rdfs:label "OntologyConcept struct" ;
+    em:hasEmojiRepresentation "🏷️🧠📊" ;
+    rdfs:comment "Data structure for representing an ontology concept." .
+
+rust:getFirstSplitEmojiFunction a rust:Function ;
+    rdfs:label "get_first_split_emoji function" ;
+    em:hasEmojiRepresentation "✂️1️⃣🎨" ;
+    rdfs:comment "Assigns the first emoji based on category for conceptual 1/2 split." .
+
+rust:getSubsequentSplitEmojiFunction a rust:Function ;
+    rdfs:label "get_subsequent_split_emoji function" ;
+    em:hasEmojiRepresentation "✂️🔢🧮" ;
+    rdfs:comment "Assigns subsequent emojis based on conceptual prime factor divisions." .
+
+rust:graphTriplesMethod a rust:Method ;
+    rdfs:label "graph.triples() method" ;
+    em:hasEmojiRepresentation "🌐📜🔄" ;
+    rdfs:comment "Iterates through RDF triples in the graph." .
+
+rust:TurtleParserClass a rust:Struct ;
+    rdfs:label "TurtleParser class" ;
+    em:hasEmojiRepresentation "🐢🔎📄" ;
+    rdfs:comment "Parses Turtle files." .
+
+rust:HashMapStruct a rust:Struct ;
+    rdfs:label "HashMap struct" ;
+    em:hasEmojiRepresentation "🗺️📦" ;
+    rdfs:comment "Data structure for storing key-value pairs (concepts)." .
+
+# Example of a conceptual loop mapping
+rust:forLoop a rust:Loop ;
+    rdfs:label "for loop" ;
+    em:hasEmojiRepresentation "🔄➡️" ;
+    rdfs:comment "A generic for loop construct." .
+
+# Example of a conceptual conditional mapping
+rust:ifStatement a rust:Conditional ;
+    rdfs:label "if statement" ;
+    em:hasEmojiRepresentation "❓✅❌" ;
+    rdfs:comment "A generic if-else conditional statement." .

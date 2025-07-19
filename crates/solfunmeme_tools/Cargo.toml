@@ -85,7 +85,7 @@ solfunmeme_tantivy_report = { path = "../solfunmeme_tantivy_report" }
 solfunmeme_indexer = { path = "../solfunmeme_indexer" }
 
 tempfile = "3.10"
-candle-core = { version = "0.9.1", default-features = false }
+# candle-core = { version = "0.9.1", default-features = false }
 
 [dev-dependencies]
 glob = "0.3.1"

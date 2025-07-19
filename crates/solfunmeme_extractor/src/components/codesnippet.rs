@@ -1,4 +1,4 @@
-use shared_analysis_types::CodeSnippet;
+use solfunmeme_function_analysis::CodeChunk as CodeSnippet;
 use dioxus::prelude::*;
 //use crate::extractor::CodeSnippet;
 use std::collections::HashSet;

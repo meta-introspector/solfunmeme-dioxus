@@ -1,27 +1,225 @@
-@prefix em: <http://example.org/emoji#> .
+@prefix vibe: <https://rdf.solfunmeme.com/spec/2025/07/17/emoji.ttl#vibe> .
+@prefix em: <https://rdf.solfunmeme.com/spec/2025/07/17/emoji.ttl#emoji> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-em:task a em:Concept ; em:emoji "✅📋" ; em:category "Workflow" .
-em:emoji a em:Concept ; em:emoji "😀✨" ; em:category "Meta" .
-em:vector a em:Concept ; em:emoji "➡️🟦" ; em:category "Math" .
-em:tm_turtle_repr a em:Concept ; em:emoji "📜🧩" ; em:category "Workflow" .
-em:tm_sophia_integration a em:Concept ; em:emoji "🧠🔍" ; em:category "Workflow" .
-em:tm_serde_turtle a em:Concept ; em:emoji "🔄📄" ; em:category "Workflow" .
-em:tm_semantic_graph_link a em:Concept ; em:emoji "🔗🌐" ; em:category "Workflow" .
-em:tm_llm_gui_integration a em:Concept ; em:emoji "🤖💬" ; em:category "Workflow" .
-em:add_reporting_export a em:Concept ; em:emoji "📄➡️" ; em:category "Reporting" .
-em:aggregate_structure_data a em:Concept ; em:emoji "📊🧱" ; em:category "Reporting" .
-em:bug_report_cargo_toml_truncation a em:Concept ; em:emoji "🐞📝" ; em:category "Bug" .
-em:build_lean4_wasm a em:Concept ; em:emoji "📐🌐" ; em:category "Lean4" .
-em:connect_data_to_charts a em:Concept ; em:emoji "📈🔗" ; em:category "Visualization" .
-em:emoji_matrix_dashboard a em:Concept ; em:emoji "📊🌈" ; em:category "Visualization" .
-em:emoji_matrix_report a em:Concept ; em:emoji "📊🎨" ; em:category "Visualization" .
-em:implement_github_search_tool a em:Concept ; em:emoji "🐙🔍" ; em:category "GitHub" .
-em:integrate_submodule_github_tools a em:Concept ; em:emoji "📦🐙" ; em:category "GitHub" .
-em:integrate_task_manager a em:Concept ; em:emoji "✅📋" ; em:category "Workflow" .
-em:merge_lean4_rust_shapes a em:Concept ; em:emoji "🧩📐" ; em:category "Lean4" .
-em:new_task a em:Concept ; em:emoji "✨❓" ; em:category "Misc" .
-em:parse_extract_data a em:Concept ; em:emoji "🔎📜" ; em:category "Parsing" .
-em:parse_microlean4_dataset a em:Concept ; em:emoji "📐🔬" ; em:category "Lean4" .
-em:research_github_search a em:Concept ; em:emoji "🔍🌐" ; em:category "GitHub" .
-em:research_submodule_tool a em:Concept ; em:emoji "📦🔧" ; em:category "GitHub" .
-em:review_and_split_files a em:Concept ; em:emoji "👀📂" ; em:category "Workflow" . 
+# New Vibe Layer Definitions
+vibe:OSILayer a owl:Class ;
+    rdfs:label "OSI Layer" ;
+    rdfs:comment "Represents a layer in the OSI model, used to categorize the functional 'vibe' of a component." .
+
+vibe:Layer a owl:Class ;
+    rdfs:subClassOf rdfs:Resource ;
+    rdfs:label "Vibe Layer" ;
+    rdfs:comment "A conceptual layer representing a functional or semantic 'vibe' within the Code-Math Manifold." ;
+    vibe:hasOSILayer rdfs:Resource ; # Link to OSI Layer
+    vibe:hasPrimeFactor rdfs:Literal ; # Prime factor associated with the layer
+    vibe:isPowerOfTwo rdfs:Literal ; # Boolean indicating if the layer number is a power of two
+    vibe:hasNumericalAddress rdfs:Literal . # Unique numerical ID for the layer
+
+# New Project Vibe Definition
+vibe:ProjectVibe a owl:Class ;
+    rdfs:label "Project Vibe" ;
+    rdfs:comment "Represents the overall semantic resonance or 'meme' of a software project." ;
+    em:hasEmojiRepresentation rdfs:Literal ;
+    vibe:hasSemanticName rdfs:Literal ;
+    vibe:hasCrateBloat xsd:decimal ;
+    vibe:hasLinesOfCode xsd:integer ;
+    vibe:hasFileTreeStructure xsd:string ;
+    vibe:hasTestCoverage xsd:decimal ;
+    vibe:hasTestCoverageReport xsd:anyURI .
+
+# Existing Emoji Definitions (unchanged for now, will be updated as needed)
+em:puzzle_piece a em:Emoji ; em:name "puzzle piece" ; em:utf "U+1F9E9" .
+em:input_numbers a em:Emoji ; em:name "input numbers" ; em:utf "U+1F522" .
+em:brain a em:Emoji ; em:name "brain" ; em:utf "U+1F9E0" .
+em:repeat a em:Emoji ; em:name "repeat" ; em:utf "U+1F501" .
+em:plus a em:Emoji ; em:name "plus" ; em:utf "U+2795" .
+em:repeat_arrows a em:Emoji ; em:name "repeat arrows" ; em:utf "U+1F503" .
+em:package a em:Emoji ; em:name "package" ; em:utf "U+1F4E6" .
+em:dna a em:Emoji ; em:name "dna" ; em:utf "U+1F9EC" .
+em:nazar_amulet a em:Emoji ; em:name "nazar amulet" ; em:utf "U+1F9FF" .
+em:cyclone a em:Emoji ; em:name "cyclone" ; em:utf "U+1F300" .
+em:books a em:Emoji ; em:name "books" ; em:utf "U+1F4DA" .
+em:light_bulb a em:Emoji ; em:name "light bulb" ; em:utf "U+1F4A1" .
+em:input_symbols a em:Emoji ; em:name "input symbols" ; em:utf "U+1F523" .
+
+em:building_construction a em:Emoji ; em:name "building construction" ; em:utf "U+1F3D7" .
+em:magic_wand a em:Emoji ; em:name "magic wand" ; em:utf "U+1FA84" .
+em:chart_increasing a em:Emoji ; em:name "chart increasing" ; em:utf "U+1F4C8" .
+em:compass a em:Emoji ; em:name "compass" ; em:utf "U+1F9ED" .
+em:gear a em:Emoji ; em:name "gear" ; em:utf "U+2699" .
+em:toolbox a em:Emoji ; em:name "toolbox" ; em:utf "U+1F9F0" .
+em:magnifying_glass a em:Emoji ; em:name "magnifying glass" ; em:utf "U+1F50D" .
+em:shuffle_tracks a em:Emoji ; em:name "shuffle tracks" ; em:utf "U+1F500" .
+em:mirror a em:Emoji ; em:name "mirror" ; em:utf "U+1FA9E" .
+em:bricks a em:Emoji ; em:name "bricks" ; em:utf "U+1F9F1" .
+em:globe_with_meridians a em:Emoji ; em:name "globe with meridians" ; em:utf "U+1F310" .
+em:scroll a em:Emoji ; em:name "scroll" ; em:utf "U+1F4DC" .
+em:satellite_antenna a em:Emoji ; em:name "satellite antenna" ; em:utf "U+1F4E1" .
+
+em:seedling a em:Emoji ; em:name "seedling" ; em:utf "U+1F331" .
+em:world_map a em:Emoji ; em:name "world map" ; em:utf "U+1F5FA" .
+em:performing_arts a em:Emoji ; em:name "performing arts" ; em:utf "U+1F3AD" .
+em:control_knobs a em:Emoji ; em:name "control knobs" ; em:utf "U+1F39A" .
+em:art_palette a em:Emoji ; em:name "art palette" ; em:utf "U+1F3A8" .
+em:juice_box a em:Emoji ; em:name "juice box" ; em:utf "U+1F9C3" .
+em:direct_hit a em:Emoji ; em:name "direct hit" ; em:utf "U+1F3AF" .
+em:ice_cube a em:Emoji ; em:name "ice cube" ; em:utf "U+1F9CA" .
+em:water_wave a em:Emoji ; em:name "water wave" ; em:utf "U+1F30A" .
+em:chart_increasing a em:Emoji ; em:name "chart increasing" ; em:utf "U+1F4C8" .
+em:postal_horn a em:Emoji ; em:name "postal horn" ; em:utf "U+1F4EF" .
+
+em:baby a em:Emoji ; em:name "baby" ; em:utf "U+1F476" .
+em:wizard a em:Emoji ; em:name "wizard" ; em:utf "U+1F9D9" .
+em:fairy a em:Emoji ; em:name "fairy" ; em:utf "U+1F9DA" .
+em:genie a em:Emoji ; em:name "genie" ; em:utf "U+1F9DE" .
+em:merperson a em:Emoji ; em:name "merperson" ; em:utf "U+1F9DC" .
+em:elf a em:Emoji ; em:name "elf" ; em:utf "U+1F9DD" .
+em:vampire a em:Emoji ; em:name "vampire" ; em:utf "U+1F9DB" .
+em:zombie a em:Emoji ; em:name "zombie" ; em:utf "U+1F9DF" .
+
+em:triangular_ruler a em:Emoji ; em:name "triangular ruler" ; em:utf "U+1F4D0" .
+em:telescope a em:Emoji ; em:name "telescope" ; em:utf "U+1F52D" .
+em:milky_way a em:Emoji ; em:name "milky way" ; em:utf "U+1F30C" .
+em:ferris_wheel a em:Emoji ; em:name "ferris wheel" ; em:utf "U+1F3A1" .
+em:classical_building a em:Emoji ; em:name "classical building" ; em:utf "U+1F3DB" .
+em:dna a em:Emoji ; em:name "dna" ; em:utf "U+1F9EC" .
+em:brain a em:Emoji ; em:name "brain" ; em:utf "U+1F9E0" .
+
+em:link a em:Emoji ; em:name "link" ; em:utf "U+1F517" .
+em:ringed_planet a em:Emoji ; em:name "ringed planet" ; em:utf "U+1FA90" .
+em:speech_balloon a em:Emoji ; em:name "speech balloon" ; em:utf "U+1F4AC" .
+em:bubbles a em:Emoji ; em:name "bubbles" ; em:utf "U+1FAE7" .
+em:outbox_tray a em:Emoji ; em:name "outbox tray" ; em:utf "U+1F4E4" .
+em:thought_balloon a em:Emoji ; em:name "thought balloon" ; em:utf "U+1F4AD" .
+
+em:musical_score a em:Emoji ; em:name "musical score" ; em:utf "U+1F3BC" .
+em:framed_picture a em:Emoji ; em:name "framed picture" ; em:utf "U+1F5BC" .
+em:film_frames a em:Emoji ; em:name "film frames" ; em:utf "U+1F39E" .
+em:thread a em:Emoji ; em:name "thread" ; em:utf "U+1F9F5" .
+em:studio_microphone a em:Emoji ; em:name "studio microphone" ; em:utf "U+1F399" .
+em:video_game a em:Emoji ; em:name "video game" ; em:utf "U+1F3AE" .
+em:game_die a em:Emoji ; em:name "game die" ; em:utf "U+1F3B2" .
+
+em:infinity a em:Emoji ; em:name "infinity" ; em:utf "U+267E" .
+em:spider_web a em:Emoji ; em:name "spider web" ; em:utf "U+1F578" .
+em:high_voltage a em:Emoji ; em:name "high voltage" ; em:utf "U+26A1" .
+em:prayer_beads a em:Emoji ; em:name "prayer beads" ; em:utf "U+1F4FF" .
+em:crystal_ball a em:Emoji ; em:name "crystal ball" ; em:utf "U+1F52E" .
+
+# Updated Vibe Layer Instances
+vibe:Layer1 a vibe:Layer ;
+    vibe:hasNumericalAddress 1 ;
+    vibe:hasOSILayer vibe:PhysicalLayer ;
+    vibe:hasPrimeFactor 2 ; # Example: Physical layer often deals with binary (powers of 2)
+    vibe:isPowerOfTwo "true"^^xsd:boolean ;
+    vibe:emoji "➕" ;
+    vibe:semanticName "BasicBlock", "Number", "Mind", "Loop", "Sum", "Recursion", "Package", "Gene", "Vibe", "Fiber", "Inference", "Insight", "EmojiCode" .
+
+vibe:Layer2 a vibe:Layer ;
+    vibe:hasNumericalAddress 2 ;
+    vibe:hasOSILayer vibe:DataLinkLayer ;
+    vibe:hasPrimeFactor 3 ; # Example: Data Link layer for framing/grouping (threes)
+    vibe:isPowerOfTwo "false"^^xsd:boolean ;
+    vibe:keyFor vibe:Layer1 ;
+    vibe:emoji "️⚙️" ;
+    vibe:semanticName "Builder", "Symbols", "Magic", "Flow", "Compass", "Gears", "Toolkit", "Magnifier", "Switch", "Mirror", "Brick", "Mesh", "Rule", "Signal" .
+
+vibe:Layer3 a vibe:Layer ;
+    vibe:hasNumericalAddress 3 ;
+    vibe:hasOSILayer vibe:NetworkLayer ;
+    vibe:hasPrimeFactor 5 ; # Example: Network layer for routing/paths (fives)
+    vibe:isPowerOfTwo "false"^^xsd:boolean ;
+    vibe:keyFor vibe:Layer2 ;
+    vibe:emoji "️️" ;
+    vibe:semanticName "Seed", "Map", "Mask", "Dial", "Art", "Juice", "Spiral", "Box", "Target", "Lens", "Ice", "Wave", "Curve", "Horn" .
+
+vibe:Layer4 a vibe:Layer ;
+    vibe:hasNumericalAddress 4 ;
+    vibe:hasOSILayer vibe:TransportLayer ;
+    vibe:hasPrimeFactor 7 ; # Example: Transport layer for connections/sessions (sevens)
+    vibe:isPowerOfTwo "true"^^xsd:boolean ;
+    vibe:keyFor vibe:Layer3 ;
+    vibe:emoji "" ;
+    vibe:semanticName "Baby", "Wizard", "Fairy", "Genie", "Mermaid", "Elf", "Vampire", "Zombie" .
+
+vibe:Layer5 a vibe:Layer ;
+    vibe:hasNumericalAddress 5 ;
+    vibe:hasOSILayer vibe:SessionLayer ;
+    vibe:hasPrimeFactor 11 ; # Example: Session layer for dialogue control (elevens)
+    vibe:isPowerOfTwo "false"^^xsd:boolean ;
+    vibe:keyFor vibe:Layer4 ;
+    vibe:emoji "️" ;
+    vibe:semanticName "Ruler", "Telescope", "Nazar", "Cosmos", "FerrisWheel", "Temple", "DNA", "Brain" .
+
+vibe:Layer6 a vibe:Layer ;
+    vibe:hasNumericalAddress 6 ;
+    vibe:hasOSILayer vibe:PresentationLayer ;
+    vibe:hasPrimeFactor 13 ; # Example: Presentation layer for data formatting (thirteens)
+    vibe:isPowerOfTwo "false"^^xsd:boolean ;
+    vibe:keyFor vibe:Layer5 ;
+    vibe:emoji "" ;
+    vibe:semanticName "Link", "PlanetRing", "Speech", "Bubbles", "Idea", "Broadcast", "Outbox", "Thought" .
+
+vibe:Layer7 a vibe:Layer ;
+    vibe:hasNumericalAddress 7 ;
+    vibe:hasOSILayer vibe:ApplicationLayer ;
+    vibe:hasPrimeFactor 17 ; # Example: Application layer for user interaction (seventeens)
+    vibe:isPowerOfTwo "false"^^xsd:boolean ;
+    vibe:keyFor vibe:Layer6 ;
+    vibe:emoji "️️️" ;
+    vibe:semanticName "MusicScore", "Frame", "Film", "Thread", "Mic", "Controller", "Dice", "Bullseye" .
+
+vibe:Layer8 a vibe:Layer ;
+    vibe:hasNumericalAddress 8 ;
+    vibe:hasOSILayer vibe:ApplicationLayer ; # Can also be Application Layer or a higher conceptual layer
+    vibe:hasPrimeFactor 19 ; # Example: Higher-level concepts (nineteens)
+    vibe:isPowerOfTwo "true"^^xsd:boolean ;
+    vibe:keyFor vibe:Layer7 ;
+    vibe:emoji "♾️️⚡" ;
+    vibe:semanticName "Infinity", "Genome", "Globe", "Web", "Lightning", "PrayerBeads", "CrystalBall", "Mirror" .
+
+# OSI Layer Instances
+vibe:PhysicalLayer a vibe:OSILayer ; rdfs:label "Physical Layer" .
+vibe:DataLinkLayer a vibe:OSILayer ; rdfs:label "Data Link Layer" .
+vibe:NetworkLayer a vibe:OSILayer ; rdfs:label "Network Layer" .
+vibe:TransportLayer a vibe:OSILayer ; rdfs:label "Transport Layer" .
+vibe:SessionLayer a vibe:OSILayer ; rdfs:label "Session Layer" .
+vibe:PresentationLayer a vibe:OSILayer ; rdfs:label "Presentation Layer" .
+vibe:ApplicationLayer a vibe:OSILayer ; rdfs:label "Application Layer" .
+
+vibe:VibeStack a vibe:Structure ;
+    vibe:hasLayers ( vibe:Layer1 vibe:Layer2 vibe:Layer3 vibe:Layer4 vibe:Layer5 vibe:Layer6 vibe:Layer7 vibe:Layer8 ) .
+
+# Project Vibe Instances
+vibe:EmacsProject a vibe:ProjectVibe ;
+    rdfs:label "Emacs" ;
+    em:hasEmojiRepresentation "🧠✍️" ;
+    vibe:hasSemanticName "Extensible Editor", "Lisp Machine", "Self-Documenting", "Integrated Development Environment" .
+
+vibe:GCCProject a vibe:ProjectVibe ;
+    rdfs:label "GCC" ;
+    em:hasEmojiRepresentation "⚙️💻" ;
+    vibe:hasSemanticName "Compiler", "Toolchain", "Optimization", "Standard Compliance" .
+
+vibe:LinuxProject a vibe:ProjectVibe ;
+    rdfs:label "Linux" ;
+    em:hasEmojiRepresentation "🐧💻" ;
+    vibe:hasSemanticName "Kernel", "Operating System", "Open Source", "Community-Driven" .
+
+vibe:PHPProject a vibe:ProjectVibe ;
+    rdfs:label "PHP" ;
+    em:hasEmojiRepresentation "🌐📜" ;
+    vibe:hasSemanticName "Web Development", "Scripting Language", "Server-Side", "Dynamic Content" .
+
+vibe:FirefoxProject a vibe:ProjectVibe ;
+    rdfs:label "Firefox" ;
+    em:hasEmojiRepresentation "🦊🌐" ;
+    vibe:hasSemanticName "Web Browser", "Privacy-Focused", "Open Source", "Standards Compliant" .
+
+vibe:MySQLProject a vibe:ProjectVibe ;
+    rdfs:label "MySQL" ;
+    em:hasEmojiRepresentation "🗄️📊" ;
+    vibe:hasSemanticName "Relational Database", "Data Storage", "SQL", "Client-Server" .

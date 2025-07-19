@@ -13,7 +13,7 @@ pub struct CodeSnippet {
 
 pub fn copy_all_snippets_combined(
     snippets: Vec<CodeSnippet>,
-    copied_snippets: Signal<HashSet<String>>,
+    _copied_snippets: Signal<HashSet<String>>,
 ) {
     let combined = snippets
         .iter()
@@ -21,15 +21,15 @@ pub fn copy_all_snippets_combined(
         .collect::<Vec<_>>()
         .join("\n\n");
 
-    copy_to_clipboard(combined, "all_snippets".to_string(), copied_snippets);
+    copy_to_clipboard(combined, "all_snippets".to_string(), _copied_snippets);
 }
 
 pub fn copy_to_clipboard(
     text: String,
-    snippet_id: String,
-    copied_snippets: Signal<HashSet<String>>,
+    _snippet_id: String,
+    _copied_snippets: Signal<HashSet<String>>,
 ) {
-    let clipboard = use_clipboard();
+    let _clipboard = use_clipboard();
 
     info!("going to save: {:?}", text);
 
@@ -38,7 +38,7 @@ pub fn copy_to_clipboard(
         let window = web_sys::window().expect("window");
         let nav = window.navigator().clipboard();
         let p = nav.write_text(&text2);
-        let result = wasm_bindgen_futures::JsFuture::from(p)
+        let _result = wasm_bindgen_futures::JsFuture::from(p)
             .await
             .expect("clipboard populated");
         info!("clippyboy worked");
@@ -46,9 +46,9 @@ pub fn copy_to_clipboard(
 }
 
 pub fn create_copy_handler(
-    copied_snippets: Signal<HashSet<String>>,
+    _copied_snippets: Signal<HashSet<String>>,
 ) -> impl FnMut(String, String) + Clone {
     move |text: String, snippet_id: String| {
-        copy_to_clipboard(text, snippet_id, copied_snippets.clone());
+        copy_to_clipboard(text, snippet_id, _copied_snippets.clone());
     }
 } 

@@ -1,5 +1,7 @@
 //! Defines the `Describable` trait for canonical self-description.
 
+use std::borrow::Cow;
+
 /// A trait for types that can produce a canonical, byte-based representation
 /// of themselves. This description is used for hashing and unique identification.
 ///
@@ -11,5 +13,5 @@ pub trait Describable {
     ///
     /// This method should be deterministic and produce the same byte slice for
     /// the same object content every time.
-    fn describe(&self) -> &[u8];
+fn describe(&self) -> Cow<'static, [u8]>;
 }

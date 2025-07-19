@@ -6,15 +6,16 @@ license = "AGPL-3.0"
 
 [[bin]]
 name = "prepare_sources"
-path = "src/bin/prepare_sources.rs"
+path = "src/main.rs"
 
 [dependencies]
 solfunmeme_search_tantivy = { path = "../solfunmeme_search_tantivy" }
-solfunmeme_embedding = { path = "../solfunmeme_embedding" }
+
 solfunmeme_function_analysis = { path = "../solfunmeme_function_analysis" }
 solfunmeme_clifford = { path = "../solfunmeme_clifford" }
 solfunmeme_solana_data = { path = "../solfunmeme_solana_data" }
 solfunmeme_input_fs = { path = "../solfunmeme_input_fs" }
+solfunmeme_language_processing = { path = "../solfunmeme_language_processing" }
 
 anyhow = "1.0"
 clap = { version = "4", features = ["derive"] }
@@ -27,11 +28,14 @@ rayon = "1.10"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 md5 = "0.7"
-candle-core = { version = "0.9.1", default-features = false }
-tokenizers = "0.15"
 tclifford = "0.1"
 orbital_sim_lib = { path = "../orbital_sim_lib" }
 nalgebra = "0.32"
+solfunmeme_ontology_vibe = { path = "../solfunmeme_ontology_vibe" }
+rdf_processing_lib = { path = "../rdf_processing_lib" }
+
+# tokenizers = { version = "0.15.0" }
 
 [features]
-# No gpu_backend feature if candle is removed
+default = []
+# with-embedding = ["solfunmeme_embedding", "candle-core", "tokenizers"]

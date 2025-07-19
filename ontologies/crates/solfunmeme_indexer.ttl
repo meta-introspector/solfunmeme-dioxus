@@ -1,0 +1,40 @@
+@prefix solfunmeme_index: <http://example.org/solfunmeme_indexer#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Indexer Crate Elements and their Emoji Mappings
+
+# Crate Root
+solfunmeme_index:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Indexer Crate Root" ;
+    em:hasEmojiRepresentation "🗂️🔎" ;
+    rdfs:comment "The root directory for the Solfunmeme Indexer crate." .
+
+# Directories within Crate
+solfunmeme_index:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Indexer." .
+
+# Files within Crate
+solfunmeme_index:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Indexer crate." .
+
+solfunmeme_index:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Solfunmeme Indexer crate." .
+
+solfunmeme_index:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+solfunmeme_index:crateInstance a solfunmeme_index:CrateRoot .
+solfunmeme_index:srcInstance a solfunmeme_index:SrcDirectory .
+solfunmeme_index:cargoTomlInstance a solfunmeme_index:CargoTomlFile .
+solfunmeme_index:readmeMdInstance a solfunmeme_index:ReadmeMdFile .
+solfunmeme_index:geminiMdInstance a solfunmeme_index:GeminiMdFile .

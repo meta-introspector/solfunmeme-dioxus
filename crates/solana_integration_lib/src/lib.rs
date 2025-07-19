@@ -1,6 +1,6 @@
 use borsh::{BorshSerialize, BorshDeserialize};
 use solana_program::pubkey::Pubkey;
-use sha2::{Sha256, Digest};
+
 
 #[derive(BorshSerialize, BorshDeserialize, Debug, Clone)]
 pub struct Ontology {

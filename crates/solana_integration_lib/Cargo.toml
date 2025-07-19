@@ -5,10 +5,12 @@ edition = "2021"
 
 [dependencies]
 borsh = "0.10"
-solana-client = "2.3.0"
-solana-sdk = "2.3.0"
+solana-client = { version = "2.3.0", default-features = false }
+solana-sdk = { version = "2.3.0", default-features = false }
 solana-program = { version = "2.3.0", features = ["borsh"] } # Added
 anyhow = "1.0"
 tracing = "0.1.40"
 sha2 = "0.10.9"
 bs58 = "0.5"
+solfunmeme_models = { path = "../solfunmeme_models" }
+shared_analysis_types = { path = "../shared_analysis_types" }

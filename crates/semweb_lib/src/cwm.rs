@@ -4,8 +4,9 @@
 //! for semantic web data processing.
 
 use async_trait::async_trait;
-use sophia::api::{graph::Graph, triple::Triple, term::Term};
-use sophia::inmem::graph::FastGraph;
+use solfunmeme_rdf_utils::rdf_graph::RdfGraph;
+use solfunmeme_rdf_utils::sophia_api::triple::Triple;
+use solfunmeme_rdf_utils::sophia_api::term::Term;
 use std::collections::{HashMap, HashSet};
 use serde::{Deserialize, Serialize};
 
@@ -15,16 +16,16 @@ use crate::{SemWebResult, SemWebError, Ontology};
 #[async_trait]
 pub trait CWM {
     /// Apply forward chaining inference
-    fn forward_chain(&self, graph: &mut FastGraph, rules: &[Rule]) -> SemWebResult<()>;
+    fn forward_chain(&self, graph: &mut RdfGraph, rules: &[Rule]) -> SemWebResult<()>;
     
     /// Apply backward chaining inference
-    fn backward_chain(&self, graph: &FastGraph, goal: &str, rules: &[Rule]) -> SemWebResult<bool>;
+    fn backward_chain(&self, graph: &RdfGraph, goal: &str, rules: &[Rule]) -> SemWebResult<bool>;
     
     /// Apply built-in functions
-    fn apply_builtins(&self, graph: &mut FastGraph) -> SemWebResult<()>;
+    fn apply_builtins(&self, graph: &mut RdfGraph) -> SemWebResult<()>;
     
     /// Query the graph
-    fn query(&self, graph: &FastGraph, query: &Query) -> SemWebResult<Vec<QueryResult>>;
+    fn query(&self, graph: &RdfGraph, query: &Query) -> SemWebResult<Vec<QueryResult>>;
     
     /// Validate rules
     fn validate_rules(&self, rules: &[Rule]) -> SemWebResult<ValidationReport>;
@@ -145,7 +146,7 @@ pub struct CWMImpl;
 
 #[async_trait]
 impl CWM for CWMImpl {
-    fn forward_chain(&self, graph: &mut FastGraph, rules: &[Rule]) -> SemWebResult<()> {
+    fn forward_chain(&self, graph: &mut RdfGraph, rules: &[Rule]) -> SemWebResult<()> {
         let mut changed = true;
         let mut iterations = 0;
         let max_iterations = 100; // Prevent infinite loops
@@ -168,7 +169,7 @@ impl CWM for CWMImpl {
         Ok(())
     }
     
-    fn backward_chain(&self, graph: &FastGraph, goal: &str, rules: &[Rule]) -> SemWebResult<bool> {
+    fn backward_chain(&self, graph: &RdfGraph, goal: &str, rules: &[Rule]) -> SemWebResult<bool> {
         // Simple backward chaining implementation
         // In a full implementation, this would be more sophisticated
         
@@ -192,7 +193,7 @@ impl CWM for CWMImpl {
         Ok(false)
     }
     
-    fn apply_builtins(&self, graph: &mut FastGraph) -> SemWebResult<()> {
+    fn apply_builtins(&self, graph: &mut RdfGraph) -> SemWebResult<()> {
         // Apply built-in functions
         // This is a simplified implementation
         
@@ -216,7 +217,7 @@ impl CWM for CWMImpl {
         Ok(())
     }
     
-    fn query(&self, graph: &FastGraph, query: &Query) -> SemWebResult<Vec<QueryResult>> {
+    fn query(&self, graph: &RdfGraph, query: &Query) -> SemWebResult<Vec<QueryResult>> {
         let mut results = Vec::new();
         
         // Simple query implementation
@@ -226,7 +227,7 @@ impl CWM for CWMImpl {
             let mut bindings = HashMap::new();
             
             // Find matching triples
-            for triple in graph.triples() {
+            for triple in graph.graph.triples() { // Access internal graph
                 if let Ok(triple) = triple {
                     if self.matches_pattern(triple, pattern, &mut bindings)? {
                         // Apply filters
@@ -300,7 +301,7 @@ impl CWM for CWMImpl {
 }
 
 impl CWMImpl {
-    fn apply_rule(&self, graph: &mut FastGraph, rule: &Rule) -> SemWebResult<bool> {
+    fn apply_rule(&self, graph: &mut RdfGraph, rule: &Rule) -> SemWebResult<bool> {
         let mut applied = false;
         
         // Check if all premises are satisfied
@@ -314,7 +315,7 @@ impl CWMImpl {
         
         if all_premises_satisfied {
             // Add conclusion to graph
-            graph.insert(
+            graph.add_triple(
                 &rule.conclusion.subject,
                 &rule.conclusion.predicate,
                 &rule.conclusion.object,
@@ -325,10 +326,10 @@ impl CWMImpl {
         Ok(applied)
     }
     
-    fn check_premise(&self, graph: &FastGraph, premise: &Premise) -> SemWebResult<bool> {
+    fn check_premise(&self, graph: &RdfGraph, premise: &Premise) -> SemWebResult<bool> {
         let mut found = false;
         
-        for triple in graph.triples() {
+        for triple in graph.graph.triples() { // Access internal graph
             if let Ok(triple) = triple {
                 if triple.s().to_string() == premise.subject &&
                    triple.p().to_string() == premise.predicate &&
@@ -342,7 +343,7 @@ impl CWMImpl {
         Ok(premise.is_negated != found)
     }
     
-    fn apply_builtin(&self, graph: &mut FastGraph, builtin: &BuiltinFunction) -> SemWebResult<()> {
+    fn apply_builtin(&self, graph: &mut RdfGraph, builtin: &BuiltinFunction) -> SemWebResult<()> {
         // Simplified builtin application
         // In a full implementation, this would be more sophisticated
         
@@ -427,7 +428,7 @@ impl CWMImpl {
 
 /// CWM context for managing reasoning sessions
 pub struct CWMContext {
-    pub graph: FastGraph,
+    pub graph: RdfGraph,
     pub rules: Vec<Rule>,
     pub builtins: Vec<BuiltinFunction>,
     pub ontologies: Vec<Ontology>,
@@ -436,7 +437,7 @@ pub struct CWMContext {
 impl CWMContext {
     pub fn new() -> Self {
         Self {
-            graph: FastGraph::new(),
+            graph: RdfGraph::new(),
             rules: Vec::new(),
             builtins: Vec::new(),
             ontologies: Vec::new(),
@@ -471,4 +472,4 @@ impl CWMContext {
         let cwm = CWMImpl;
         cwm.query(&self.graph, query)
     }
-} 
+}

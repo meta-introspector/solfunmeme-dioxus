@@ -1,0 +1,9 @@
+[package]
+name = "solfunmeme_ontology_vibe"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0"
+solfunmeme_rdf_utils = { path = "../solfunmeme_rdf_utils" }
+solfunmeme_clifford = { path = "../solfunmeme_clifford" }

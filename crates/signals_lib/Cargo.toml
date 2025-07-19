@@ -10,5 +10,4 @@ dioxus = { version = "0.6.3", features = ["router"] }
 serde = { version = "1.0", features = ["derive"] }
 shared_types_lib = { path = "../shared_types_lib" }
 fastrand = "2.0"
-sophia = "0.7"
-sophia_term = "0.7" 
+solfunmeme_rdf_utils = { path = "../solfunmeme_rdf_utils" } 

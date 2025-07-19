@@ -1,0 +1,27 @@
+@prefix vibe: <https://rdf.solfunmeme.com/spec/2025/07/17/emoji.ttl#vibe> .
+@prefix em: <https://rdf.solfunmeme.com/spec/2025/07/17/emoji.ttl#emoji> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Define the emoji for the Vibe of One
+em:white_circle a em:Emoji ;
+    em:name "white circle" ;
+    em:utf "U+26AA" .
+
+# Define the Primordial Layer
+vibe:PrimordialLayer a vibe:OSILayer ;
+    rdfs:label "Primordial Layer" .
+
+# Define Vibe Layer 0: The Vibe of One
+vibe:Layer0 a vibe:Layer ;
+    vibe:hasNumericalAddress 0 ;
+    vibe:hasOSILayer vibe:PrimordialLayer ;
+    vibe:hasPrimeFactor 1 ;
+    vibe:isPowerOfTwo "false"^^xsd:boolean ;
+    vibe:emoji "⚪" ;
+    vibe:semanticName "Unity", "Foundation", "Wholeness", "Origin" .
+
+# Add Layer 0 to the VibeStack
+vibe:VibeStack a vibe:Structure ;
+    vibe:hasLayers ( vibe:Layer0 ) .

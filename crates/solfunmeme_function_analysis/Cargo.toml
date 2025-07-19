@@ -12,3 +12,4 @@ walkdir = "2.5"
 shared_analysis_types = { path = "../shared_analysis_types" }
 quote = "1.0"
 serde = { version = "1.0", features = ["derive"] }
+solfunmeme_clifford = { path = "../solfunmeme_clifford" }

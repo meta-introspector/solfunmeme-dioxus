@@ -1,0 +1,28 @@
+@prefix code_evolution: <http://example.org/solfunmeme_code_evolution#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Code Evolution Crate Elements and their Emoji Mappings
+
+# Crate Root
+code_evolution:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Code Evolution Crate Root" ;
+    em:hasEmojiRepresentation "🧬📈" ;
+    rdfs:comment "The root directory for the Solfunmeme Code Evolution crate." .
+
+# Directories within Crate
+code_evolution:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Code Evolution." .
+
+# Files within Crate
+code_evolution:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Code Evolution crate." .
+
+# Instances of Crate Elements
+code_evolution:crateInstance a code_evolution:CrateRoot .
+code_evolution:srcInstance a code_evolution:SrcDirectory .
+code_evolution:cargoTomlInstance a code_evolution:CargoTomlFile .

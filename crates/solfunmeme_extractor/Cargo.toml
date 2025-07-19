@@ -19,7 +19,9 @@ js-sys = "0.3.69"
 markdown = "1.0.0"
 dioxus-html = "0.6.3"
 rrust_kontekst = { path = "../rrust_kontekst" }
-shared_analysis_types = { path = "../shared_analysis_types" }
-scraper = "0.17.1"
+solfunmeme_function_analysis = { path = "../solfunmeme_function_analysis" }
+# solfunmeme_embedding = { path = "../solfunmeme_embedding" }
+solfunmeme_clifford = { path = "../solfunmeme_clifford" }
+# candle-core = { version = "0.5.1" }
 dioxus-logger = "0.6.2"
 # Add any other dependencies that src/extractor might have

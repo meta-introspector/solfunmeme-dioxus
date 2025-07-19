@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use lazy_static::lazy_static;
+
 use std::collections::HashMap;
 
 /// Adds two u64 numbers. This is a placeholder function.
@@ -58,39 +58,7 @@ pub enum EvolutionAction {
     MultiplyPrime(u64),
 }
 
-/// A static mapping from prime numbers to their corresponding emoji/semantic descriptions.
-/// This mapping is used to translate the prime factors of a MemeToken's `prime_id`
-/// into human-readable semantic components.
-lazy_static! {
-    pub static ref EMOJI_PRIME_MAPPING: HashMap<u64, &'static str> = {
-        let mut m = HashMap::new();
-        // Main Idea Primes
-        m.insert(2, "Self-Reflection & Viral Meme Propagation");
-        m.insert(3, "Emergent Meme Structures & Narrative Shifts");
-        m.insert(5, "AI-Driven Decentralized Meme Consensus");
-        m.insert(7, "Evolution & Self-Replicating Meme Economy");
-        // Group 1 Emojis
-        m.insert(11, "🚀");
-        m.insert(13, "📜");
-        m.insert(17, "🔍");
-        m.insert(19, "💬");
-        m.insert(23, "🧠");
-        // Group 2 Emojis
-        m.insert(29, "🔀");
-        m.insert(31, "💡");
-        m.insert(37, "💭");
-        m.insert(41, "🔑");
-        // Group 3 Emojis
-        m.insert(43, "🤖");
-        m.insert(47, "🌐");
-        m.insert(53, "📊");
-        m.insert(59, "🔗");
-        // Group 4 Emojis
-        m.insert(61, "🧩");
-        m.insert(67, "🌱");
-        m
-    };
-}
+
 
 /// Performs prime factorization on a given u64 number.
 /// Returns a vector of prime factors, including duplicates if the number is divisible by a prime multiple times.
@@ -137,11 +105,11 @@ impl MemeToken {
     /// Returns a vector of static string slices representing the semantic composition of the `MemeToken`.
     /// This is derived by prime-factorizing the `prime_id` and mapping each prime factor to its
     /// corresponding emoji/semantic description using the `EMOJI_PRIME_MAPPING`.
-    pub fn get_semantic_composition(&self) -> Vec<&'static str> {
+    pub fn get_semantic_composition(&self, emoji_prime_mapping: &HashMap<u64, &'static str>) -> Vec<&'static str> {
         let factors = get_prime_factors(self.prime_id);
         let mut composition = Vec::new();
         for factor in factors {
-            if let Some(&emoji) = EMOJI_PRIME_MAPPING.get(&factor) {
+            if let Some(&emoji) = emoji_prime_mapping.get(&factor) {
                 composition.push(emoji);
             }
         }

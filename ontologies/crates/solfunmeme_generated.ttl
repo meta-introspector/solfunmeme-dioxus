@@ -1,0 +1,34 @@
+@prefix solfunmeme_gen: <http://example.org/solfunmeme_generated#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Generated Crate Elements and their Emoji Mappings
+
+# Crate Root
+solfunmeme_gen:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Generated Crate Root" ;
+    em:hasEmojiRepresentation "✨⚙️" ;
+    rdfs:comment "The root directory for the Solfunmeme Generated crate." .
+
+# Directories within Crate
+solfunmeme_gen:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Generated." .
+
+# Files within Crate
+solfunmeme_gen:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Generated crate." .
+
+solfunmeme_gen:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Solfunmeme Generated crate." .
+
+# Instances of Crate Elements
+solfunmeme_gen:crateInstance a solfunmeme_gen:CrateRoot .
+solfunmeme_gen:srcInstance a solfunmeme_gen:SrcDirectory .
+solfunmeme_gen:cargoTomlInstance a solfunmeme_gen:CargoTomlFile .
+solfunmeme_gen:readmeMdInstance a solfunmeme_gen:ReadmeMdFile .

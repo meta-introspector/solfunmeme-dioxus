@@ -1,0 +1,28 @@
+@prefix clifford_flow: <http://example.org/clifford_flow_provider#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Clifford Flow Provider Crate Elements and their Emoji Mappings
+
+# Crate Root
+clifford_flow:CrateRoot a rdfs:Class ;
+    rdfs:label "Clifford Flow Provider Crate Root" ;
+    em:hasEmojiRepresentation "🌊➕" ;
+    rdfs:comment "The root directory for the Clifford Flow Provider crate." .
+
+# Directories within Crate
+clifford_flow:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Clifford Flow Provider." .
+
+# Files within Crate
+clifford_flow:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Clifford Flow Provider crate." .
+
+# Instances of Crate Elements
+clifford_flow:crateInstance a clifford_flow:CrateRoot .
+clifford_flow:srcInstance a clifford_flow:SrcDirectory .
+clifford_flow:cargoTomlInstance a clifford_flow:CargoTomlFile .

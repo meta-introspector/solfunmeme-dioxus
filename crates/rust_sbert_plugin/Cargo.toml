@@ -5,5 +5,9 @@ edition = "2024"
 license = "AGPL-3.0"
 
 [dependencies]
-anyhow = "1.0"
-sbert = { path = "../../vendor/rust-sbert" }
+# anyhow = "1.0"
+# sbert = { path = "../../vendor/rust-sbert", optional = true }
+
+[features]
+default = []
+with-sbert = ["sbert"]

@@ -1,0 +1,40 @@
+@prefix core_data: <http://example.org/core_data_lib#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Core Data Library Crate Elements and their Emoji Mappings
+
+# Crate Root
+core_data:CrateRoot a rdfs:Class ;
+    rdfs:label "Core Data Library Crate Root" ;
+    em:hasEmojiRepresentation " 핵심💾" ;
+    rdfs:comment "The root directory for the Core Data Library crate." .
+
+# Directories within Crate
+core_data:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Core Data Library." .
+
+# Files within Crate
+core_data:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Core Data Library crate." .
+
+core_data:CargoLockFile a rdfs:Class ;
+    rdfs:label "Cargo.lock File" ;
+    em:hasEmojiRepresentation "🔒📦" ;
+    rdfs:comment "The dependency lock file for the Core Data Library crate." .
+
+core_data:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Core Data Library crate." .
+
+# Instances of Crate Elements
+core_data:crateInstance a core_data:CrateRoot .
+core_data:srcInstance a core_data:SrcDirectory .
+core_data:cargoTomlInstance a core_data:CargoTomlFile .
+core_data:cargoLockInstance a core_data:CargoLockFile .
+core_data:readmeMdInstance a core_data:ReadmeMdFile .

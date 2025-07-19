@@ -119,67 +119,72 @@ fn math_related_filter_workflow() {
 }
 
 fn main() {
-    my_ttl_workflow();
-    process_code_workflow();
-    linear_progression_workflow();
-    reverse_order_workflow();
-    categorization_workflow();
-    math_related_filter_workflow();
-    index_codebase_workflow(); // Call the new workflow
+    #[cfg(feature = "frontend")]
+    {
+        my_ttl_workflow();
+        process_code_workflow();
+        linear_progression_workflow();
+        reverse_order_workflow();
+        categorization_workflow();
+        math_related_filter_workflow();
+        index_codebase_workflow(); // Call the new workflow
 
-    // You can also execute the registered workflow manually
-    let manager = emoji_lang_plugin::GLOBAL_WORKFLOW_MANAGER.lock().unwrap();
-    if let Ok(_) = manager.execute_workflow("my_ttl_workflow") {
-        println!("Successfully executed workflow via manager.");
-    } else {
-        println!("Failed to execute workflow via manager.");
+        // You can also execute the registered workflow manually
+        let manager = emoji_lang_plugin::GLOBAL_WORKFLOW_MANAGER.lock().unwrap();
+        if let Ok(_) = manager.execute_workflow("my_ttl_workflow") {
+            println!("Successfully executed workflow via manager.");
+        } else {
+            println!("Failed to execute workflow via manager.");
+        }
+
+        if let Ok(_) = manager.execute_workflow("process_code_workflow") {
+            println!("Successfully executed process_code_workflow via manager.");
+        } else {
+            println!("Failed to execute process_code_workflow via manager.");
+        }
+
+        if let Ok(_) = manager.execute_workflow("linear_progression_workflow") {
+            println!("Successfully executed linear_progression_workflow via manager.");
+        } else {
+            println!("Failed to execute linear_progression_workflow via manager.");
+        }
+
+        if let Ok(_) = manager.execute_workflow("reverse_order_workflow") {
+            println!("Successfully executed reverse_order_workflow via manager.");
+        } else {
+            println!("Failed to execute reverse_order_workflow via manager.");
+        }
+
+        if let Ok(_) = manager.execute_workflow("categorization_workflow") {
+            println!("Successfully executed categorization_workflow via manager.");
+        }
+
+        if let Ok(_) = manager.execute_workflow("categorization_workflow") {
+            println!("Failed to execute categorization_workflow via manager.");
+        }
+
+        if let Ok(_) = manager.execute_workflow("math_related_filter_workflow") {
+            println!("Successfully executed math_related_filter_workflow via manager.");
+        }
+
+        if let Ok(_) = manager.execute_workflow("index_codebase_workflow") {
+            println!("Successfully executed index_codebase_workflow via manager.");
+        } else {
+            println!("Failed to execute index_codebase_workflow via manager.");
+        }
+
+        if let Ok(_) = manager.execute_workflow("top_term_report_workflow") {
+            println!("Successfully executed top_term_report_workflow via manager.");
+        }
+
+        if let Ok(_) = manager.execute_workflow("search_emojis_workflow") {
+            println!("Successfully executed search_emojis_workflow via manager.");
+        }
     }
 
-    if let Ok(_) = manager.execute_workflow("process_code_workflow") {
-        println!("Successfully executed process_code_workflow via manager.");
-    } else {
-        println!("Failed to execute process_code_workflow via manager.");
-    }
-
-    if let Ok(_) = manager.execute_workflow("linear_progression_workflow") {
-        println!("Successfully executed linear_progression_workflow via manager.");
-    } else {
-        println!("Failed to execute linear_progression_workflow via manager.");
-    }
-
-    if let Ok(_) = manager.execute_workflow("reverse_order_workflow") {
-        println!("Successfully executed reverse_order_workflow via manager.");
-    } else {
-        println!("Failed to execute reverse_order_workflow via manager.");
-    }
-
-    if let Ok(_) = manager.execute_workflow("categorization_workflow") {
-        println!("Successfully executed categorization_workflow via manager.");
-    }
-
-    if let Ok(_) = manager.execute_workflow("categorization_workflow") {
-        println!("Failed to execute categorization_workflow via manager.");
-    }
-
-    if let Ok(_) = manager.execute_workflow("math_related_filter_workflow") {
-        println!("Successfully executed math_related_filter_workflow via manager.");
-    }
-
-    if let Ok(_) = manager.execute_workflow("index_codebase_workflow") {
-        println!("Successfully executed index_codebase_workflow via manager.");
-    } else {
-        println!("Failed to execute index_codebase_workflow via manager.");
-    }
-
-    if let Ok(_) = manager.execute_workflow("top_term_report_workflow") {
-        println!("Successfully executed top_term_report_workflow via manager.");
-    } else {
-        println!("Failed to execute top_term_report_workflow via manager.");
-    }
-
-    if let Ok(_) = manager.execute_workflow("search_emojis_workflow") {
-        println!("Successfully executed search_emojis_workflow via manager.");
-    } else {
-        println!("Failed to execute search_emojis_workflow via manager.");
+    #[cfg(not(feature = "frontend"))]
+    {
+        println!("Running backend-only application.");
+        // Add backend-only logic here if needed
     }
 }

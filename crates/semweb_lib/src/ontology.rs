@@ -4,8 +4,9 @@
 //! including loading from Turtle files and managing ontology structures.
 
 use async_trait::async_trait;
-use sophia::api::{graph::Graph, triple::Triple, term::Term};
-use sophia::inmem::graph::FastGraph;
+use solfunmeme_rdf_utils::rdf_graph::RdfGraph;
+use solfunmeme_rdf_utils::sophia_api::triple::Triple;
+use solfunmeme_rdf_utils::sophia_api::term::Term;
 use std::collections::HashMap;
 use std::path::Path;
 use tokio::fs;
@@ -21,7 +22,8 @@ pub struct Ontology {
     pub title: String,
     pub description: Option<String>,
     pub version: String,
-    pub graph: FastGraph,
+    #[serde(skip)] // Skip serialization for RdfGraph
+    pub graph: RdfGraph,
     pub classes: HashMap<String, Class>,
     pub properties: HashMap<String, Property>,
     pub individuals: HashMap<String, Individual>,
@@ -93,7 +95,7 @@ impl Ontology {
             title,
             description: None,
             version: "1.0.0".to_string(),
-            graph: FastGraph::new(),
+            graph: RdfGraph::new(),
             classes: HashMap::new(),
             properties: HashMap::new(),
             individuals: HashMap::new(),
@@ -119,8 +121,8 @@ impl Ontology {
     
     /// Create ontology from Turtle string
     pub fn from_turtle_string(turtle_data: &str) -> SemWebResult<Self> {
-        let mut graph = FastGraph::new();
-        turtle::parse_and_add(&mut graph, turtle_data)?;
+        let mut graph = RdfGraph::new();
+        graph.add_turtle_str(turtle_data)?;
         
         let mut ontology = Self::new(
             "http://example.org/ontology".to_string(),
@@ -137,7 +139,7 @@ impl Ontology {
     
     /// Extract entities from the graph
     fn extract_entities(&mut self) -> SemWebResult<()> {
-        for triple in self.graph.triples() {
+        for triple in self.graph.graph.triples() {
             if let Ok(triple) = triple {
                 let subject = triple.s().to_string();
                 let predicate = triple.p().to_string();
@@ -147,7 +149,7 @@ impl Ontology {
                 if predicate == "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" &&
                    object == "http://www.w3.org/2000/01/rdf-schema#Class" {
                     let class = Class {
-                        uri: subject,
+                        uri: subject.clone(),
                         label: self.extract_label(&subject).unwrap_or_else(|| subject.clone()),
                         comment: self.extract_comment(&subject),
                         sub_class_of: self.extract_sub_classes(&subject),
@@ -162,7 +164,7 @@ impl Ontology {
                 if predicate == "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" &&
                    object == "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" {
                     let property = Property {
-                        uri: subject,
+                        uri: subject.clone(),
                         label: self.extract_label(&subject).unwrap_or_else(|| subject.clone()),
                         comment: self.extract_comment(&subject),
                         domain: self.extract_domain(&subject),
@@ -185,7 +187,7 @@ impl Ontology {
                 if predicate == "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" &&
                    !object.starts_with("http://www.w3.org/") {
                     let individual = Individual {
-                        uri: subject,
+                        uri: subject.clone(),
                         label: self.extract_label(&subject).unwrap_or_else(|| subject.clone()),
                         comment: self.extract_comment(&subject),
                         types: vec![object],
@@ -203,7 +205,7 @@ impl Ontology {
     
     /// Extract label for a URI
     fn extract_label(&self, uri: &str) -> Option<String> {
-        for triple in self.graph.triples() {
+        for triple in self.graph.graph.triples() {
             if let Ok(triple) = triple {
                 if triple.s().to_string() == uri &&
                    triple.p().to_string() == "http://www.w3.org/2000/01/rdf-schema#label" {
@@ -216,7 +218,7 @@ impl Ontology {
     
     /// Extract comment for a URI
     fn extract_comment(&self, uri: &str) -> Option<String> {
-        for triple in self.graph.triples() {
+        for triple in self.graph.graph.triples() {
             if let Ok(triple) = triple {
                 if triple.s().to_string() == uri &&
                    triple.p().to_string() == "http://www.w3.org/2000/01/rdf-schema#comment" {
@@ -230,7 +232,7 @@ impl Ontology {
     /// Extract sub-classes for a URI
     fn extract_sub_classes(&self, uri: &str) -> Vec<String> {
         let mut sub_classes = Vec::new();
-        for triple in self.graph.triples() {
+        for triple in self.graph.graph.triples() {
             if let Ok(triple) = triple {
                 if triple.s().to_string() == uri &&
                    triple.p().to_string() == "http://www.w3.org/2000/01/rdf-schema#subClassOf" {
@@ -243,7 +245,7 @@ impl Ontology {
     
     /// Extract domain for a property
     fn extract_domain(&self, uri: &str) -> Option<String> {
-        for triple in self.graph.triples() {
+        for triple in self.graph.graph.triples() {
             if let Ok(triple) = triple {
                 if triple.s().to_string() == uri &&
                    triple.p().to_string() == "http://www.w3.org/2000/01/rdf-schema#domain" {
@@ -256,7 +258,7 @@ impl Ontology {
     
     /// Extract range for a property
     fn extract_range(&self, uri: &str) -> Option<String> {
-        for triple in self.graph.triples() {
+        for triple in self.graph.graph.triples() {
             if let Ok(triple) = triple {
                 if triple.s().to_string() == uri &&
                    triple.p().to_string() == "http://www.w3.org/2000/01/rdf-schema#range" {
@@ -299,7 +301,8 @@ impl Ontology {
     
     /// Export ontology to Turtle format
     pub fn to_turtle(&self) -> SemWebResult<String> {
-        turtle::serialize_graph(&self.graph)
+        self.graph.serialize_to_turtle_string()
+            .map_err(|e| SemWebError::Serialization(e.to_string()))
     }
     
     /// Save ontology to file
@@ -313,9 +316,9 @@ impl Ontology {
     /// Merge with another ontology
     pub fn merge(&mut self, other: &Ontology) -> SemWebResult<()> {
         // Merge graphs
-        for triple in other.graph.triples() {
+        for triple in other.graph.graph.triples() {
             if let Ok(triple) = triple {
-                self.graph.insert(triple.s(), triple.p(), triple.o())?;
+                self.graph.add_triple(&triple.s().to_string(), &triple.p().to_string(), &triple.o().to_string())?;
             }
         }
         
@@ -408,4 +411,4 @@ pub enum EntityType {
     Class,
     Property,
     Individual,
-} 
+}

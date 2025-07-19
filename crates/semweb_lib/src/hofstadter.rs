@@ -1,13 +1,13 @@
 use async_trait::async_trait;
-use sophia::inmem::graph::FastGraph;
+use solfunmeme_rdf_utils::rdf_graph::RdfGraph;
 use crate::SemWebResult;
 
 #[async_trait]
 pub trait Hofstadter {
     /// Vibe: Detect strange loops
-    fn detect_strange_loops(&self, graph: &FastGraph) -> SemWebResult<StrangeLoopResult>;
+    fn detect_strange_loops(&self, graph: &RdfGraph) -> SemWebResult<StrangeLoopResult>;
     /// Vibe: Analyze self-reference
-    fn analyze_self_reference(&self, graph: &FastGraph) -> SemWebResult<SelfReferenceResult>;
+    fn analyze_self_reference(&self, graph: &RdfGraph) -> SemWebResult<SelfReferenceResult>;
 }
 
 #[derive(Debug, Clone)]
@@ -27,10 +27,10 @@ pub struct HofstadterImpl;
 
 #[async_trait]
 impl Hofstadter for HofstadterImpl {
-    fn detect_strange_loops(&self, _graph: &FastGraph) -> SemWebResult<StrangeLoopResult> {
+    fn detect_strange_loops(&self, _graph: &RdfGraph) -> SemWebResult<StrangeLoopResult> {
         Ok(StrangeLoopResult { found: false, loop_count: 0, notes: "Stub: no strange loops".to_string() })
     }
-    fn analyze_self_reference(&self, _graph: &FastGraph) -> SemWebResult<SelfReferenceResult> {
+    fn analyze_self_reference(&self, _graph: &RdfGraph) -> SemWebResult<SelfReferenceResult> {
         Ok(SelfReferenceResult { found: false, examples: vec![] })
     }
-} 
+}

@@ -1,0 +1,34 @@
+@prefix solana_integration: <http://example.org/solana_integration_lib#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solana Integration Library Crate Elements and their Emoji Mappings
+
+# Crate Root
+solana_integration:CrateRoot a rdfs:Class ;
+    rdfs:label "Solana Integration Library Crate Root" ;
+    em:hasEmojiRepresentation "⛓️🤝" ;
+    rdfs:comment "The root directory for the Solana Integration Library crate." .
+
+# Directories within Crate
+solana_integration:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solana Integration Library." .
+
+# Files within Crate
+solana_integration:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solana Integration Library crate." .
+
+solana_integration:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Solana Integration Library crate." .
+
+# Instances of Crate Elements
+solana_integration:crateInstance a solana_integration:CrateRoot .
+solana_integration:srcInstance a solana_integration:SrcDirectory .
+solana_integration:cargoTomlInstance a solana_integration:CargoTomlFile .
+solana_integration:readmeMdInstance a solana_integration:ReadmeMdFile .

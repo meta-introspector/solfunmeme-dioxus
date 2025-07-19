@@ -2,8 +2,9 @@
 //! 
 //! This module provides inference capabilities for semantic web data.
 
-use sophia::api::{graph::Graph, triple::Triple, term::Term};
-use sophia::inmem::graph::FastGraph;
+use solfunmeme_rdf_utils::rdf_graph::RdfGraph;
+use solfunmeme_rdf_utils::sophia_api::triple::Triple;
+use solfunmeme_rdf_utils::sophia_api::term::Term;
 use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
 
@@ -85,7 +86,7 @@ impl InferenceEngine {
         self.max_iterations = max_iterations;
     }
     
-    pub fn infer(&self, graph: &mut FastGraph, ontologies: &[Ontology]) -> SemWebResult<Vec<InferenceResult>> {
+    pub fn infer(&self, graph: &mut RdfGraph, ontologies: &[Ontology]) -> SemWebResult<Vec<InferenceResult>> {
         let mut results = Vec::new();
         
         for strategy in &self.strategies {
@@ -116,7 +117,7 @@ impl InferenceEngine {
         Ok(results)
     }
     
-    fn deductive_inference(&self, graph: &mut FastGraph, ontologies: &[Ontology]) -> SemWebResult<Vec<InferenceResult>> {
+    fn deductive_inference(&self, graph: &mut RdfGraph, ontologies: &[Ontology]) -> SemWebResult<Vec<InferenceResult>> {
         let mut results = Vec::new();
         let mut changed = true;
         let mut iterations = 0;
@@ -136,7 +137,7 @@ impl InferenceEngine {
         Ok(results)
     }
     
-    fn inductive_inference(&self, graph: &FastGraph, ontologies: &[Ontology]) -> SemWebResult<Vec<InferenceResult>> {
+    fn inductive_inference(&self, graph: &RdfGraph, ontologies: &[Ontology]) -> SemWebResult<Vec<InferenceResult>> {
         let mut results = Vec::new();
         
         // Pattern-based inductive inference
@@ -151,7 +152,7 @@ impl InferenceEngine {
         Ok(results)
     }
     
-    fn abductive_inference(&self, graph: &FastGraph, ontologies: &[Ontology]) -> SemWebResult<Vec<InferenceResult>> {
+    fn abductive_inference(&self, graph: &RdfGraph, ontologies: &[Ontology]) -> SemWebResult<Vec<InferenceResult>> {
         let mut results = Vec::new();
         
         // Find unexplained observations and generate hypotheses
@@ -166,7 +167,7 @@ impl InferenceEngine {
         Ok(results)
     }
     
-    fn analogical_inference(&self, graph: &FastGraph, ontologies: &[Ontology]) -> SemWebResult<Vec<InferenceResult>> {
+    fn analogical_inference(&self, graph: &RdfGraph, ontologies: &[Ontology]) -> SemWebResult<Vec<InferenceResult>> {
         let mut results = Vec::new();
         
         // Find analogies between entities
@@ -181,7 +182,7 @@ impl InferenceEngine {
         Ok(results)
     }
     
-    fn hybrid_inference(&self, graph: &mut FastGraph, ontologies: &[Ontology]) -> SemWebResult<Vec<InferenceResult>> {
+    fn hybrid_inference(&self, graph: &mut RdfGraph, ontologies: &[Ontology]) -> SemWebResult<Vec<InferenceResult>> {
         let mut results = Vec::new();
         
         // Combine multiple inference strategies
@@ -197,7 +198,7 @@ impl InferenceEngine {
         Ok(results)
     }
     
-    fn apply_deductive_rule(&self, graph: &mut FastGraph, rule: &InferenceRule, ontologies: &[Ontology]) -> SemWebResult<Option<InferenceResult>> {
+    fn apply_deductive_rule(&self, graph: &mut RdfGraph, rule: &InferenceRule, ontologies: &[Ontology]) -> SemWebResult<Option<InferenceResult>> {
         // Check if all premises are satisfied
         let mut satisfied_premises = 0;
         let total_premises = rule.premises.len();
@@ -213,7 +214,7 @@ impl InferenceEngine {
             let confidence = rule.confidence * (satisfied_premises as f64 / total_premises as f64);
             
             // Add conclusion to graph
-            graph.insert(&rule.conclusion.subject, &rule.conclusion.predicate, &rule.conclusion.object)?;
+            graph.add_triple(&rule.conclusion.subject, &rule.conclusion.predicate, &rule.conclusion.object)?;
             
             let result = InferenceResult {
                 triples: vec![Triple::new(
@@ -232,8 +233,8 @@ impl InferenceEngine {
         }
     }
     
-    fn check_premise(&self, graph: &FastGraph, premise: &Premise) -> SemWebResult<bool> {
-        for triple in graph.triples() {
+    fn check_premise(&self, graph: &RdfGraph, premise: &Premise) -> SemWebResult<bool> {
+        for triple in graph.graph.triples() {
             if let Ok(triple) = triple {
                 if triple.s().to_string() == premise.subject &&
                    triple.p().to_string() == premise.predicate &&
@@ -245,12 +246,12 @@ impl InferenceEngine {
         Ok(false)
     }
     
-    fn extract_patterns(&self, graph: &FastGraph) -> SemWebResult<Vec<Pattern>> {
+    fn extract_patterns(&self, graph: &RdfGraph) -> SemWebResult<Vec<Pattern>> {
         let mut patterns = Vec::new();
         let mut pattern_counts = HashMap::new();
         
         // Count predicate patterns
-        for triple in graph.triples() {
+        for triple in graph.graph.triples() {
             if let Ok(triple) = triple {
                 let predicate = triple.p().to_string();
                 *pattern_counts.entry(predicate).or_insert(0) += 1;
@@ -263,7 +264,7 @@ impl InferenceEngine {
                 patterns.push(Pattern {
                     predicate,
                     frequency: count,
-                    confidence: count as f64 / graph.triples().count() as f64,
+                    confidence: count as f64 / graph.graph.triples().count() as f64,
                 });
             }
         }
@@ -271,7 +272,7 @@ impl InferenceEngine {
         Ok(patterns)
     }
     
-    fn apply_inductive_pattern(&self, graph: &FastGraph, pattern: &Pattern, ontologies: &[Ontology]) -> SemWebResult<Option<InferenceResult>> {
+    fn apply_inductive_pattern(&self, graph: &RdfGraph, pattern: &Pattern, ontologies: &[Ontology]) -> SemWebResult<Option<InferenceResult>> {
         // Apply inductive pattern to generate new triples
         // This is a simplified implementation
         
@@ -288,11 +289,11 @@ impl InferenceEngine {
         }
     }
     
-    fn find_unexplained_observations(&self, graph: &FastGraph) -> SemWebResult<Vec<Observation>> {
+    fn find_unexplained_observations(&self, graph: &RdfGraph) -> SemWebResult<Vec<Observation>> {
         let mut observations = Vec::new();
         
         // Find triples that might need explanation
-        for triple in graph.triples() {
+        for triple in graph.graph.triples() {
             if let Ok(triple) = triple {
                 // Simple heuristic: look for triples with literal objects
                 if triple.o().is_literal() {
@@ -308,7 +309,7 @@ impl InferenceEngine {
         Ok(observations)
     }
     
-    fn generate_hypothesis(&self, graph: &FastGraph, observation: &Observation, ontologies: &[Ontology]) -> SemWebResult<Option<InferenceResult>> {
+    fn generate_hypothesis(&self, graph: &RdfGraph, observation: &Observation, ontologies: &[Ontology]) -> SemWebResult<Option<InferenceResult>> {
         // Generate hypotheses to explain observations
         // This is a simplified implementation
         
@@ -322,13 +323,13 @@ impl InferenceEngine {
         Ok(Some(result))
     }
     
-    fn find_analogies(&self, graph: &FastGraph) -> SemWebResult<Vec<Analogy>> {
+    fn find_analogies(&self, graph: &RdfGraph) -> SemWebResult<Vec<Analogy>> {
         let mut analogies = Vec::new();
         
         // Find similar entities based on shared properties
         let mut entity_properties = HashMap::new();
         
-        for triple in graph.triples() {
+        for triple in graph.graph.triples() {
             if let Ok(triple) = triple {
                 let subject = triple.s().to_string();
                 let predicate = triple.p().to_string();
@@ -365,7 +366,7 @@ impl InferenceEngine {
         Ok(analogies)
     }
     
-    fn apply_analogy(&self, graph: &FastGraph, analogy: &Analogy, ontologies: &[Ontology]) -> SemWebResult<Option<InferenceResult>> {
+    fn apply_analogy(&self, graph: &RdfGraph, analogy: &Analogy, ontologies: &[Ontology]) -> SemWebResult<Option<InferenceResult>> {
         // Apply analogy to transfer properties
         // This is a simplified implementation
         
@@ -406,4 +407,4 @@ pub struct Analogy {
     pub target: String,
     pub common_properties: Vec<String>,
     pub similarity: f64,
-} 
+}

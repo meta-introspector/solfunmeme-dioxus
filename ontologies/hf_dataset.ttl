@@ -1,0 +1,269 @@
+@prefix hf: <http://example.org/huggingface#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sfm: <http://example.org/solfunmeme#> .
+
+# Ontology for Hugging Face Dataset Concepts
+
+hf:HuggingFaceDataset a rdfs:Class ;
+    rdfs:label "Hugging Face Dataset" ;
+    em:hasEmojiRepresentation "🤗📊" ;
+    rdfs:comment "A dataset hosted on the Hugging Face Hub." .
+
+hf:RustASTEmojiDataset a hf:HuggingFaceDataset ;
+    rdfs:label "Rust AST Emoji Dataset" ;
+    em:hasEmojiRepresentation "🦀🌳✨" ;
+    rdfs:comment "A dataset containing Rust codebase AST analysis with emoji mapping." ;
+    hf:hasRepository <https://github.com/meta-introspector/solfunmeme-dioxus> ;
+    hf:hasLicense "agpl-3.0" ;
+    hf:hasTaskCategory "text-classification", "feature-extraction", "text-generation" ;
+    hf:hasSubCategory "code-understanding", "semantic-analysis" ;
+    hf:hasLanguage "en" ;
+    hf:hasTag "code", "art", "biology", "synthetic", "rust", "ast", "emoji", "code-analysis" ;
+    hf:hasPrettyName "rust_ast_emoji" ;
+    hf:hasSizeCategory "100K<n<1M" .
+
+hf:DatasetTask a rdfs:Class ;
+    rdfs:label "Dataset Task" ;
+    em:hasEmojiRepresentation "📋" ;
+    rdfs:comment "A task supported by a dataset." .
+
+hf:CodeUnderstandingTask a hf:DatasetTask ;
+    rdfs:label "Code Understanding Task" ;
+    em:hasEmojiRepresentation "🧠💻" ;
+    rdfs:comment "Analyzing code structure through emoji patterns." .
+
+hf:CodeClassificationTask a hf:DatasetTask ;
+    rdfs:label "Code Classification Task" ;
+    em:hasEmojiRepresentation " 분류" ;
+    rdfs:comment "Identifying code domains through emoji signatures." .
+
+hf:CodeVisualizationTask a hf:DatasetTask ;
+    rdfs:label "Code Visualization Task" ;
+    em:hasEmojiRepresentation "📊💻" ;
+    rdfs:comment "Creating emoji-based code summaries and visualizations." .
+
+hf:PatternRecognitionTask a hf:DatasetTask ;
+    rdfs:label "Pattern Recognition Task" ;
+    em:hasEmojiRepresentation "🔎 패턴" ;
+    rdfs:comment "Discovering common coding patterns through emoji frequency analysis." .
+
+hf:DataInstance a rdfs:Class ;
+    rdfs:label "Data Instance" ;
+    em:hasEmojiRepresentation "📄" ;
+    rdfs:comment "A single instance of data within the dataset." .
+
+hf:FilePathField a hf:DataInstance ;
+    rdfs:label "File Path Field" ;
+    em:hasEmojiRepresentation "📂" ;
+    rdfs:comment "The file_path field in a data instance." .
+
+hf:TimestampField a hf:DataInstance ;
+    rdfs:label "Timestamp Field" ;
+    em:hasEmojiRepresentation "⏱️" ;
+    rdfs:comment "The timestamp field in a data instance." .
+
+hf:ASTField a hf:DataInstance ;
+    rdfs:label "AST Field" ;
+    em:hasEmojiRepresentation "🌳" ;
+    rdfs:comment "The ast field in a data instance." .
+
+hf:SummaryField a hf:DataInstance ;
+    rdfs:label "Summary Field" ;
+    em:hasEmojiRepresentation "📝" ;
+    rdfs:comment "The summary field in a data instance." .
+
+hf:TopLevelNodesField a hf:DataInstance ;
+    rdfs:label "Top Level Nodes Field" ;
+    em:hasEmojiRepresentation "🔝🌳" ;
+    rdfs:comment "The top_level_nodes field in a data instance." .
+
+hf:TotalNodesField a hf:DataInstance ;
+    rdfs:label "Total Nodes Field" ;
+    em:hasEmojiRepresentation "∑🌳" ;
+    rdfs:comment "The total_nodes field in a data instance." .
+
+hf:TypeCountsField a hf:DataInstance ;
+    rdfs:label "Type Counts Field" ;
+    em:hasEmojiRepresentation "🔢🏷️" ;
+    rdfs:comment "The type_counts field in a data instance." .
+
+hf:StringLiteralsField a hf:DataInstance ;
+    rdfs:label "String Literals Field" ;
+    em:hasEmojiRepresentation """" ;
+    rdfs:comment "The string_literals field in a data instance." .
+
+hf:WordCountsField a hf:DataInstance ;
+    rdfs:label "Word Counts Field" ;
+    em:hasEmojiRepresentation "🔠🔢" ;
+    rdfs:comment "The word_counts field in a data instance." .
+
+hf:WordEmojiCountsField a hf:DataInstance ;
+    rdfs:label "Word Emoji Counts Field" ;
+    em:hasEmojiRepresentation "🔠✨" ;
+    rdfs:comment "The word_emoji_counts field in a data instance." .
+
+hf:EmojiCountsInStringsField a hf:DataInstance ;
+    rdfs:label "Emoji Counts In Strings Field" ;
+    em:hasEmojiRepresentation "✨"""" ;
+    rdfs:comment "The emoji_counts_in_strings field in a data instance." .
+
+hf:DataSplit a rdfs:Class ;
+    rdfs:label "Data Split" ;
+    em:hasEmojiRepresentation "✂️" ;
+    rdfs:comment "A division of the dataset." .
+
+hf:TrainSplit a hf:DataSplit ;
+    rdfs:label "Train Split" ;
+    em:hasEmojiRepresentation "🚂" ;
+    rdfs:comment "The training split of the dataset." .
+
+hf:SourceData a rdfs:Class ;
+    rdfs:label "Source Data" ;
+    em:hasEmojiRepresentation "📥" ;
+    rdfs:comment "The origin of the dataset's data." .
+
+hf:InitialDataCollection a hf:SourceData ;
+    rdfs:label "Initial Data Collection and Normalization" ;
+    em:hasEmojiRepresentation "🧺🧹" ;
+    rdfs:comment "The process of collecting and normalizing initial data." .
+
+hf:SourceLanguageProducer a rdfs:Class ;
+    rdfs:label "Source Language Producer" ;
+    em:hasEmojiRepresentation "🗣️" ;
+    rdfs:comment "An entity that produces source language." .
+
+hf:AnnotationProcess a rdfs:Class ;
+    rdfs:label "Annotation Process" ;
+    em:hasEmojiRepresentation "📝⚙️" ;
+    rdfs:comment "The process of annotating data." .
+
+hf:ASTParsing a hf:AnnotationProcess ;
+    rdfs:label "AST Parsing" ;
+    em:hasEmojiRepresentation "🌳🔎" ;
+    rdfs:comment "Parsing Rust source files into ASTs." .
+
+hf:EmojiMappingProcess a hf:AnnotationProcess ;
+    rdfs:label "Emoji Mapping Process" ;
+    em:hasEmojiRepresentation "✨🗺️" ;
+    rdfs:comment "Mapping AST node types and extracted words to emojis." .
+
+hf:AnalysisProcess a hf:AnnotationProcess ;
+    rdfs:label "Analysis Process" ;
+    em:hasEmojiRepresentation "📊🔎" ;
+    rdfs:comment "Extracting string literals, word frequencies, and emoji patterns." .
+
+hf:ChunkingProcess a hf:AnnotationProcess ;
+    rdfs:label "Chunking Process" ;
+    em:hasEmojiRepresentation "📦✂️" ;
+    rdfs:comment "Splitting large datasets into manageable chunks." .
+
+hf:Annotator a rdfs:Class ;
+    rdfs:label "Annotator" ;
+    em:hasEmojiRepresentation "✍️" ;
+    rdfs:comment "An entity that performs annotations." .
+
+hf:PersonalSensitiveInformation a rdfs:Class ;
+    rdfs:label "Personal and Sensitive Information" ;
+    em:hasEmojiRepresentation "🔒👤" ;
+    rdfs:comment "Information that is personal or sensitive." .
+
+hf:DatasetCurator a rdfs:Class ;
+    rdfs:label "Dataset Curator" ;
+    em:hasEmojiRepresentation " 관리자" ;
+    rdfs:comment "An entity responsible for curating a dataset." .
+
+hf:LicensingInformation a rdfs:Class ;
+    rdfs:label "Licensing Information" ;
+    em:hasEmojiRepresentation "⚖️" ;
+    rdfs:comment "Information about the dataset's license." .
+
+hf:CitationInformation a rdfs:Class ;
+    rdfs:label "Citation Information" ;
+    em:hasEmojiRepresentation "引用" ;
+    rdfs:comment "Information for citing the dataset." .
+
+hf:Contribution a rdfs:Class ;
+    rdfs:label "Contribution" ;
+    em:hasEmojiRepresentation "🤝" ;
+    rdfs:comment "A contribution to the dataset." .
+
+hf:UsageExample a rdfs:Class ;
+    rdfs:label "Usage Example" ;
+    em:hasEmojiRepresentation "💡" ;
+    rdfs:comment "An example of how to use the dataset." .
+
+hf:BasicUsage a hf:UsageExample ;
+    rdfs:label "Basic Usage" ;
+    em:hasEmojiRepresentation "👶💡" ;
+    rdfs:comment "A basic example of dataset usage." .
+
+hf:EmojiAnalysisUsage a hf:UsageExample ;
+    rdfs:label "Emoji Analysis Usage" ;
+    em:hasEmojiRepresentation "✨📊" ;
+    rdfs:comment "An example of using the dataset for emoji analysis." .
+
+hf:CodeDomainDetectionUsage a hf:UsageExample ;
+    rdfs:label "Code Domain Detection Usage" ;
+    em:hasEmojiRepresentation "💻🔎" ;
+    rdfs:comment "An example of using the dataset for code domain detection." .
+
+hf:TechnicalDetails a rdfs:Class ;
+    rdfs:label "Technical Details" ;
+    em:hasEmojiRepresentation "⚙️" ;
+    rdfs:comment "Technical details about the dataset." .
+
+hf:ChunkingStrategy a hf:TechnicalDetails ;
+    rdfs:label "Chunking Strategy" ;
+    em:hasEmojiRepresentation "📦✂️" ;
+    rdfs:comment "The strategy used for chunking the dataset." .
+
+hf:EmojiMappingCategory a rdfs:Class ;
+    rdfs:label "Emoji Mapping Category" ;
+    em:hasEmojiRepresentation "✨🏷️" ;
+    rdfs:comment "A category used for emoji mapping." .
+
+hf:RustCoreCategory a hf:EmojiMappingCategory ;
+    rdfs:label "Rust Core Category" ;
+    em:hasEmojiRepresentation "🦀⚙️" ;
+    rdfs:comment "Emoji mapping category for basic Rust language constructs." .
+
+hf:WebCSSCategory a hf:EmojiMappingCategory ;
+    rdfs:label "Web/CSS Category" ;
+    em:hasEmojiRepresentation "🌐🎨" ;
+    rdfs:comment "Emoji mapping category for frontend and styling concepts." .
+
+hf:CryptoSecurityCategory a hf:EmojiMappingCategory ;
+    rdfs:label "Crypto/Security Category" ;
+    em:hasEmojiRepresentation "🔒🛡️" ;
+    rdfs:comment "Emoji mapping category for cryptography and security." .
+
+hf:ProjectSpecificCategory a hf:EmojiMappingCategory ;
+    rdfs:label "Project-Specific Category" ;
+    em:hasEmojiRepresentation "🎯" ;
+    rdfs:comment "Emoji mapping category for domain-specific terms." .
+
+hf:InternationalizationCategory a hf:EmojiMappingCategory ;
+    rdfs:label "Internationalization Category" ;
+    em:hasEmojiRepresentation "🌍🗣️" ;
+    rdfs:comment "Emoji mapping category for i18n and localization." .
+
+hf:TestingBenchmarkingCategory a hf:EmojiMappingCategory ;
+    rdfs:label "Testing/Benchmarking Category" ;
+    em:hasEmojiRepresentation "🧪⏱️" ;
+    rdfs:comment "Emoji mapping category for testing and performance." .
+
+hf:PerformanceConsiderations a hf:TechnicalDetails ;
+    rdfs:label "Performance Considerations" ;
+    em:hasEmojiRepresentation "⚡" ;
+    rdfs:comment "Considerations for dataset performance." .
+
+# Relationships
+hf:RustASTEmojiDataset hf:supportsTask hf:CodeUnderstandingTask, hf:CodeClassificationTask, hf:CodeVisualizationTask, hf:PatternRecognitionTask .
+hf:RustASTEmojiDataset hf:hasDataInstanceField hf:FilePathField, hf:TimestampField, hf:ASTField, hf:SummaryField .
+hf:SummaryField hf:hasSubField hf:TopLevelNodesField, hf:TotalNodesField, hf:TypeCountsField, hf:StringLiteralsField, hf:WordCountsField, hf:WordEmojiCountsField, hf:EmojiCountsInStringsField .
+hf:RustASTEmojiDataset hf:hasDataSplit hf:TrainSplit .
+hf:RustASTEmojiDataset hf:hasSourceData hf:InitialDataCollection .
+hf:InitialDataCollection hf:producedBy sfm:SolfunmemeDioxusProject .
+hf:AnnotationProcess hf:hasStep hf:ASTParsing, hf:EmojiMappingProcess, hf:AnalysisProcess, hf:ChunkingProcess .
+hf:EmojiMappingProcess hf:usesCategory hf:RustCoreCategory, hf:WebCSSCategory, hf:CryptoSecurityCategory, hf:ProjectSpecificCategory, hf:InternationalizationCategory, hf:TestingBenchmarkingCategory .

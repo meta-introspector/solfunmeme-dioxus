@@ -3,9 +3,9 @@
 //! This module provides functionality for working with Turtle format RDF data,
 //! including parsing, serialization, and manipulation.
 
-use sophia::api::{graph::Graph, triple::Triple, term::Term};
-use sophia::inmem::graph::FastGraph;
-use sophia::turtle::{parser::turtle, serializer::turtle::TurtleSerializer};
+use solfunmeme_rdf_utils::rdf_graph::RdfGraph;
+use solfunmeme_rdf_utils::sophia_api::triple::Triple;
+use solfunmeme_rdf_utils::sophia_api::term::Term;
 use std::io::{BufReader, BufWriter, Write};
 use std::fs::File;
 use std::path::Path;
@@ -13,56 +13,38 @@ use std::path::Path;
 use crate::{SemWebResult, SemWebError};
 
 /// Parse Turtle data and add to graph
-pub fn parse_and_add(graph: &mut FastGraph, turtle_data: &str) -> SemWebResult<()> {
-    turtle::parse_str(turtle_data)
-        .in_graph(graph)
-        .map_err(|e| SemWebError::RdfParse(e.to_string()))?;
-    
-    Ok(())
+pub fn parse_and_add(graph: &mut RdfGraph, turtle_data: &str) -> SemWebResult<()> {
+    graph.add_turtle_str(turtle_data)
+        .map_err(|e| SemWebError::RdfParse(e.to_string()))
 }
 
 /// Parse Turtle from file and add to graph
-pub fn parse_file_and_add(graph: &mut FastGraph, file_path: &Path) -> SemWebResult<()> {
-    let file = File::open(file_path)
-        .map_err(|e| SemWebError::Io(e))?;
-    let reader = BufReader::new(file);
-    
-    turtle::parse_bufread(reader)
-        .in_graph(graph)
-        .map_err(|e| SemWebError::RdfParse(e.to_string()))?;
-    
+pub fn parse_file_and_add(graph: &mut RdfGraph, file_path: &Path) -> SemWebResult<()> {
+    let new_graph = RdfGraph::from_file(file_path)?;
+    // Merge the new graph into the existing one
+    for triple in new_graph.graph.triples() {
+        if let Ok(triple) = triple {
+            graph.add_triple(&triple.s().to_string(), &triple.p().to_string(), &triple.o().to_string())?;
+        }
+    }
     Ok(())
 }
 
 /// Serialize graph to Turtle format
-pub fn serialize_graph(graph: &FastGraph) -> SemWebResult<String> {
-    let mut buffer = Vec::new();
-    let mut writer = BufWriter::new(&mut buffer);
-    
-    TurtleSerializer::new(&mut writer)
-        .serialize_graph(graph)
-        .map_err(|e| SemWebError::Serialization(e.to_string()))?;
-    
-    String::from_utf8(buffer)
-        .map_err(|e| SemWebError::Serialization(format!("UTF-8 error: {}", e)))
+pub fn serialize_graph(graph: &RdfGraph) -> SemWebResult<String> {
+    graph.serialize_to_turtle_string()
+        .map_err(|e| SemWebError::Serialization(e.to_string()))
 }
 
 /// Serialize graph to Turtle file
-pub fn serialize_to_file(graph: &FastGraph, file_path: &Path) -> SemWebResult<()> {
-    let file = File::create(file_path)
-        .map_err(|e| SemWebError::Io(e))?;
-    let mut writer = BufWriter::new(file);
-    
-    TurtleSerializer::new(&mut writer)
-        .serialize_graph(graph)
-        .map_err(|e| SemWebError::Serialization(e.to_string()))?;
-    
-    Ok(())
+pub fn serialize_to_file(graph: &RdfGraph, file_path: &Path) -> SemWebResult<()> {
+    graph.serialize_to_turtle(file_path)
+        .map_err(|e| SemWebError::Serialization(e.to_string()))
 }
 
 /// Create Turtle with custom prefixes
 pub fn serialize_with_prefixes(
-    graph: &FastGraph,
+    graph: &RdfGraph,
     prefixes: &[(String, String)]
 ) -> SemWebResult<String> {
     let mut buffer = Vec::new();
@@ -76,8 +58,7 @@ pub fn serialize_with_prefixes(
     writeln!(writer).map_err(|e| SemWebError::Serialization(e.to_string()))?;
     
     // Write triples
-    TurtleSerializer::new(&mut writer)
-        .serialize_graph(graph)
+    writer.write_all(graph.serialize_to_turtle_string()?.as_bytes())
         .map_err(|e| SemWebError::Serialization(e.to_string()))?;
     
     String::from_utf8(buffer)
@@ -86,7 +67,7 @@ pub fn serialize_with_prefixes(
 
 /// Convert graph to Turtle with emoji annotations
 pub fn serialize_with_emoji_annotations(
-    graph: &FastGraph,
+    graph: &RdfGraph,
     emoji_map: &std::collections::HashMap<String, String>
 ) -> SemWebResult<String> {
     let mut buffer = Vec::new();
@@ -102,7 +83,7 @@ pub fn serialize_with_emoji_annotations(
     writeln!(writer).map_err(|e| SemWebError::Serialization(e.to_string()))?;
     
     // Write triples with emoji annotations
-    for triple in graph.triples() {
+    for triple in graph.graph.triples() {
         if let Ok(triple) = triple {
             let subject = triple.s().to_string();
             let predicate = triple.p().to_string();
@@ -126,23 +107,21 @@ pub fn serialize_with_emoji_annotations(
 
 /// Parse Turtle and return as vector of triples
 pub fn parse_to_triples(turtle_data: &str) -> SemWebResult<Vec<Triple>> {
+    let mut graph = RdfGraph::new();
+    graph.add_turtle_str(turtle_data)?;
     let mut triples = Vec::new();
-    
-    for triple in turtle::parse_str(turtle_data) {
-        let triple = triple.map_err(|e| SemWebError::RdfParse(e.to_string()))?;
-        triples.push(triple);
+    for triple in graph.graph.triples() {
+        triples.push(triple?);
     }
-    
     Ok(triples)
 }
 
 /// Create Turtle from triples
 pub fn triples_to_turtle(triples: &[Triple]) -> SemWebResult<String> {
-    let mut graph = FastGraph::new();
+    let mut graph = RdfGraph::new();
     
     for triple in triples {
-        graph.insert(triple.s(), triple.p(), triple.o())
-            .map_err(|e| SemWebError::Graph(e.to_string()))?;
+        graph.add_triple(&triple.s().to_string(), &triple.p().to_string(), &triple.o().to_string())?;
     }
     
     serialize_graph(&graph)
@@ -150,10 +129,10 @@ pub fn triples_to_turtle(triples: &[Triple]) -> SemWebResult<String> {
 
 /// Merge multiple Turtle strings into one
 pub fn merge_turtle_strings(turtle_strings: &[String]) -> SemWebResult<String> {
-    let mut merged_graph = FastGraph::new();
+    let mut merged_graph = RdfGraph::new();
     
     for turtle_string in turtle_strings {
-        parse_and_add(&mut merged_graph, turtle_string)?;
+        merged_graph.add_turtle_str(turtle_string)?;
     }
     
     serialize_graph(&merged_graph)
@@ -190,7 +169,8 @@ fn parse_prefix_line(line: &str) -> Option<(String, String)> {
 
 /// Validate Turtle syntax
 pub fn validate_turtle(turtle_data: &str) -> SemWebResult<bool> {
-    match turtle::parse_str(turtle_data).collect::<Result<Vec<_>, _>>() {
+    let mut graph = RdfGraph::new();
+    match graph.add_turtle_str(turtle_data) {
         Ok(_) => Ok(true),
         Err(_) => Ok(false),
     }
@@ -198,16 +178,19 @@ pub fn validate_turtle(turtle_data: &str) -> SemWebResult<bool> {
 
 /// Count triples in Turtle data
 pub fn count_triples(turtle_data: &str) -> SemWebResult<usize> {
-    let count = turtle::parse_str(turtle_data).count();
-    Ok(count)
+    let mut graph = RdfGraph::new();
+    graph.add_turtle_str(turtle_data)?;
+    Ok(graph.graph.triples().count())
 }
 
 /// Extract unique subjects from Turtle data
 pub fn extract_subjects(turtle_data: &str) -> SemWebResult<std::collections::HashSet<String>> {
     let mut subjects = std::collections::HashSet::new();
+    let mut graph = RdfGraph::new();
+    graph.add_turtle_str(turtle_data)?;
     
-    for triple in turtle::parse_str(turtle_data) {
-        let triple = triple.map_err(|e| SemWebError::RdfParse(e.to_string()))?;
+    for triple in graph.graph.triples() {
+        let triple = triple?;
         subjects.insert(triple.s().to_string());
     }
     
@@ -217,9 +200,11 @@ pub fn extract_subjects(turtle_data: &str) -> SemWebResult<std::collections::Has
 /// Extract unique predicates from Turtle data
 pub fn extract_predicates(turtle_data: &str) -> SemWebResult<std::collections::HashSet<String>> {
     let mut predicates = std::collections::HashSet::new();
+    let mut graph = RdfGraph::new();
+    graph.add_turtle_str(turtle_data)?;
     
-    for triple in turtle::parse_str(turtle_data) {
-        let triple = triple.map_err(|e| SemWebError::RdfParse(e.to_string()))?;
+    for triple in graph.graph.triples() {
+        let triple = triple?;
         predicates.insert(triple.p().to_string());
     }
     
@@ -229,11 +214,13 @@ pub fn extract_predicates(turtle_data: &str) -> SemWebResult<std::collections::H
 /// Extract unique objects from Turtle data
 pub fn extract_objects(turtle_data: &str) -> SemWebResult<std::collections::HashSet<String>> {
     let mut objects = std::collections::HashSet::new();
+    let mut graph = RdfGraph::new();
+    graph.add_turtle_str(turtle_data)?;
     
-    for triple in turtle::parse_str(turtle_data) {
-        let triple = triple.map_err(|e| SemWebError::RdfParse(e.to_string()))?;
+    for triple in graph.graph.triples() {
+        let triple = triple?;
         objects.insert(triple.o().to_string());
     }
     
     Ok(objects)
-} 
+}

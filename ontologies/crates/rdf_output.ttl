@@ -1,0 +1,40 @@
+@prefix rdf_output: <http://example.org/rdf_output#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for RDF Output Crate Elements and their Emoji Mappings
+
+# Crate Root
+rdf_output:CrateRoot a rdfs:Class ;
+    rdfs:label "RDF Output Crate Root" ;
+    em:hasEmojiRepresentation "📄🌐" ;
+    rdfs:comment "The root directory for the RDF Output crate." .
+
+# Directories within Crate
+rdf_output:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the RDF Output." .
+
+# Files within Crate
+rdf_output:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the RDF Output crate." .
+
+rdf_output:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the RDF Output crate." .
+
+rdf_output:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+rdf_output:crateInstance a rdf_output:CrateRoot .
+rdf_output:srcInstance a rdf_output:SrcDirectory .
+rdf_output:cargoTomlInstance a rdf_output:CargoTomlFile .
+rdf_output:readmeMdInstance a rdf_output:ReadmeMdFile .
+rdf_output:geminiMdInstance a rdf_output:GeminiMdFile .

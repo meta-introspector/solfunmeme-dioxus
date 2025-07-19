@@ -7,6 +7,6 @@ license = "AGPL-3.0"
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-sophia_jsonld = "0.8"
-sophia_api = "0.8"
+solfunmeme_rdf_utils = { path = "../solfunmeme_rdf_utils" }
 anyhow = "1.0"
+sophia_jsonld = "0.8"

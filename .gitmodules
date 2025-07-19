@@ -469,3 +469,15 @@
 [submodule "vendor/rust_libloading"]
 	path = vendor/rust_libloading
 	url = https://github.com/nagisa/rust_libloading/
+[submodule "vendor/float-cmp"]
+	path = vendor/float-cmp
+	url = https://github.com/mikedilger/float-cmp
+[submodule "vendor/sophia_rs"]
+	path = vendor/sophia_rs
+	url = https://github.com/meta-introspector/sophia_rs.git
+[submodule "vendor/linfa"]
+	path = vendor/linfa
+	url = https://github.com/rust-ml/linfa/
+[submodule "vendor/axum"]
+	path = vendor/axum
+	url = https://github.com/tokio-rs/axum

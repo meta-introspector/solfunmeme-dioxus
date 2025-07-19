@@ -1,0 +1,34 @@
+@prefix rust_st: <http://example.org/rust_sentence_transformers_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Rust Sentence Transformers Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+rust_st:CrateRoot a rdfs:Class ;
+    rdfs:label "Rust Sentence Transformers Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🦀💬🤖" ;
+    rdfs:comment "The root directory for the Rust Sentence Transformers Plugin crate." .
+
+# Directories within Crate
+rust_st:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Rust Sentence Transformers Plugin." .
+
+# Files within Crate
+rust_st:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Rust Sentence Transformers Plugin crate." .
+
+rust_st:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Rust Sentence Transformers Plugin crate." .
+
+# Instances of Crate Elements
+rust_st:crateInstance a rust_st:CrateRoot .
+rust_st:srcInstance a rust_st:SrcDirectory .
+rust_st:cargoTomlInstance a rust_st:CargoTomlFile .
+rust_st:readmeMdInstance a rust_st:ReadmeMdFile .

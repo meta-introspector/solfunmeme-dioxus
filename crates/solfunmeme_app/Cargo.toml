@@ -8,28 +8,31 @@ name = "solfunmeme_app"
 path = "src/main.rs"
 
 [dependencies]
-dioxus = { version = "0.6.3", features = ["router"] }
+solfunmeme_frontend_core = { path = "../solfunmeme_frontend_core", optional = true }
 solana-sdk = { version = "2.3.0" }
 wallet-adapter = { git = "https://github.com/meta-introspector/SolanaWalletAdapter-zos", branch ="no-template"}
 jzon = "0.12.5"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 reqwasm = "0.5.0"
-gloo-storage = "0.3.0"
-gloo-utils = "0.2.0"
-js-sys = "0.3.69"
-wasm-bindgen = { version = "0.2.92", features = ["serde-serialize"] }
-wasm-bindgen-futures = "0.4.42"
-web-sys = { version = "0.3.69", features = ["Window", "Navigator", "Storage", "Event", "InputEvent", "EventTarget", "HtmlInputElement", "KeyboardEvent", "Document", "Element", "HtmlAnchorElement", "Clipboard", "console"] }
-qrcodegen = "1.8.0"
-log = "0.4.21"
-solfunmeme_wallet_integration = { path = "../solfunmeme_wallet_integration" }
-solfunmeme_core_logic = { path = "../solfunmeme_core_logic" }
-views_lib = { path = "../../crates/views_lib" }
-model_lib = { path = "../../crates/model_lib" }
-emoji_workflow_macro = { path = "../../crates/emoji_workflow_macro" }
-ctor = "0.1"
-workflow_manager = { path = "../../crates/workflow_manager" }
-emoji_lang_plugin = { path = "../../crates/emoji_lang_plugin" }
-solfunmeme_input_fs = { path = "../../crates/solfunmeme_input_fs" }
-solfunmeme_search_tantivy = { path = "../../crates/solfunmeme_search_tantivy" }
+# gloo-storage = "0.3.0"
+# gloo-utils = "0.2.0"
+# js-sys = "0.3.69"
+# wasm-bindgen = { version = "0.2.92", features = ["serde-serialize"] }
+# wasm-bindgen-futures = "0.4.42"
+# web-sys = { version = "0.3.69", features = ["Window", "Navigator", "Storage", "Event", "InputEvent", "EventTarget", "HtmlInputElement", "KeyboardEvent", "Document", "Element", "HtmlAnchorElement", "Clipboard", "console"] }
+# qrcodegen = "1.8.0"
+# log = "0.4.21"
+# solfunmeme_wallet_integration = { path = "../solfunmeme_wallet_integration" }
+# solfunmeme_core_logic = { path = "../solfunmeme_core_logic" }
+# views_lib = { path = "../../crates/views_lib" }
+# model_lib = { path = "../../crates/model_lib" }
+# emoji_workflow_macro = { path = "../../crates/emoji_workflow_macro" }
+# ctor = "0.1"
+# workflow_manager = { path = "../../crates/workflow_manager" }
+# emoji_lang_plugin = { path = "../../crates/emoji_lang_plugin" }
+# solfunmeme_input_fs = { path = "../../crates/solfunmeme_input_fs" }
+# solfunmeme_search_tantivy = { path = "../../crates/solfunmeme_search_tantivy" }
+
+[features]
+frontend = ["solfunmeme_frontend_core"]

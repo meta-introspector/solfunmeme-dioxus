@@ -1,0 +1,28 @@
+@prefix solfunmeme_market: <http://example.org/solfunmeme_market_maker#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Market Maker Crate Elements and their Emoji Mappings
+
+# Crate Root
+solfunmeme_market:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Market Maker Crate Root" ;
+    em:hasEmojiRepresentation "📈💰" ;
+    rdfs:comment "The root directory for the Solfunmeme Market Maker crate." .
+
+# Directories within Crate
+solfunmeme_market:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Market Maker." .
+
+# Files within Crate
+solfunmeme_market:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Market Maker crate." .
+
+# Instances of Crate Elements
+solfunmeme_market:crateInstance a solfunmeme_market:CrateRoot .
+solfunmeme_market:srcInstance a solfunmeme_market:SrcDirectory .
+solfunmeme_market:cargoTomlInstance a solfunmeme_market:CargoTomlFile .

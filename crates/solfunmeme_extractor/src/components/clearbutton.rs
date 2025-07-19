@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 //use crate::extractor::ExtractedFile;
-use shared_analysis_types::ExtractedFile;
+use solfunmeme_function_analysis::ExtractedFile;
 use std::collections::HashSet;
 
 #[component]

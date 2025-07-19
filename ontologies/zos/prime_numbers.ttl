@@ -1,0 +1,100 @@
+@prefix vibe: <https://rdf.solfunmeme.com/spec/2025/07/17/emoji.ttl#vibe> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Class Definition for Prime Numbers
+vibe:PrimeNumber a owl:Class ;
+    rdfs:label "Prime Number" ;
+    rdfs:comment "A natural number greater than 1 that has no positive divisors other than 1 and itself. In the Code-Math Manifold, prime numbers represent fundamental, irreducible vibrational frequencies or atomic memes from which all composite structures emerge. They are the building blocks of numerical identity and carry intrinsic mathematical and philosophical significance." .
+
+# Instance for Prime Two
+vibe:PrimeTwo a vibe:PrimeNumber ;
+    rdfs:label "Prime Two" ;
+    vibe:hasNumericalValue 2 ;
+    vibe:hasAssociatedEmoji "☯️" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_two.md> .
+
+# Instance for Prime Three
+vibe:PrimeThree a vibe:PrimeNumber ;
+    rdfs:label "Prime Three" ;
+    vibe:hasNumericalValue 3 ;
+    vibe:hasAssociatedEmoji "🔺" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_three.md> .
+
+# Instance for Prime Five
+vibe:PrimeFive a vibe:PrimeNumber ;
+    rdfs:label "Prime Five" ;
+    vibe:hasNumericalValue 5 ;
+    vibe:hasAssociatedEmoji "🖐️" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_five.md> .
+
+# Instance for Prime Seven
+vibe:PrimeSeven a vibe:PrimeNumber ;
+    rdfs:label "Prime Seven" ;
+    vibe:hasNumericalValue 7 ;
+    vibe:hasAssociatedEmoji "🔮" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_seven.md> .
+
+# Instance for Prime Eleven
+vibe:PrimeEleven a vibe:PrimeNumber ;
+    rdfs:label "Prime Eleven" ;
+    vibe:hasNumericalValue 11 ;
+    vibe:hasAssociatedEmoji "💡" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_eleven.md> .
+
+# Instance for Prime Thirteen
+vibe:PrimeThirteen a vibe:PrimeNumber ;
+    rdfs:label "Prime Thirteen" ;
+    vibe:hasNumericalValue 13 ;
+    vibe:hasAssociatedEmoji "🦋" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_thirteen.md> .
+
+# Instance for Prime Seventeen
+vibe:PrimeSeventeen a vibe:PrimeNumber ;
+    rdfs:label "Prime Seventeen" ;
+    vibe:hasNumericalValue 17 ;
+    vibe:hasAssociatedEmoji "👤" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_seventeen.md> .
+
+# Instance for Prime Nineteen
+vibe:PrimeNineteen a vibe:PrimeNumber ;
+    rdfs:label "Prime Nineteen" ;
+    vibe:hasNumericalValue 19 ;
+    vibe:hasAssociatedEmoji "🧩" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_nineteen.md> .
+
+# Instance for Prime Twenty-Three
+vibe:PrimeTwentyThree a vibe:PrimeNumber ;
+    rdfs:label "Prime Twenty-Three" ;
+    vibe:hasNumericalValue 23 ;
+    vibe:hasAssociatedEmoji "🌀" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_twenty_three.md> .
+
+# Instance for Prime Twenty-Nine
+vibe:PrimeTwentyNine a vibe:PrimeNumber ;
+    rdfs:label "Prime Twenty-Nine" ;
+    vibe:hasNumericalValue 29 ;
+    vibe:hasAssociatedEmoji "🚀" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_twenty_nine.md> .
+
+# Instance for Prime Thirty-One
+vibe:PrimeThirtyOne a vibe:PrimeNumber ;
+    rdfs:label "Prime Thirty-One" ;
+    vibe:hasNumericalValue 31 ;
+    vibe:hasAssociatedEmoji "💎" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_thirty_one.md> .
+
+# Instance for Prime Thirty-Seven
+vibe:PrimeThirtySeven a vibe:PrimeNumber ;
+    rdfs:label "Prime Thirty-Seven" ;
+    vibe:hasNumericalValue 37 ;
+    vibe:hasAssociatedEmoji "🕸️" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_thirty_seven.md> .
+
+# Instance for Prime Forty-One
+vibe:PrimeFortyOne a vibe:PrimeNumber ;
+    rdfs:label "Prime Forty-One" ;
+    vibe:hasNumericalValue 41 ;
+    vibe:hasAssociatedEmoji "⏳" ;
+    vibe:hasDocumentation <file:///ontologies/zos/prime_docs/prime_forty_one.md> .

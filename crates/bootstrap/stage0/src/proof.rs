@@ -1,7 +1,6 @@
-//! Defines the recursive `Proof` structure for the lattice of knowledge.
-
 use crate::describable::Describable;
 use crate::hash::Hash;
+use std::borrow::Cow;
 
 /// A recursive proof of a component's uniqueness and composition.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -16,17 +15,14 @@ pub enum Proof {
 }
 
 impl Describable for Proof {
-    /// The canonical description of a proof is derived from its constituent hashes.
-    fn describe(&self) -> Vec<u8> {
+    fn describe(&self) -> Cow<'static, [u8]> {
         match self {
-            Proof::Atomic(hash) => hash.hash_bytes.clone(),
+            Proof::Atomic(hash) => Cow::Owned(hash.hash_bytes.clone()),
             Proof::Composite { components, .. } => {
-                // A simple, deterministic concatenation of component hash bytes.
-                components
+                Cow::Owned(components
                     .iter()
                     .flat_map(|h| h.hash_bytes.clone())
-                    .collect()
-            }
+                    .collect::<Vec<u8>>())}
         }
     }
 }

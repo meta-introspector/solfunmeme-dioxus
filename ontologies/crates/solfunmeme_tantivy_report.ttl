@@ -1,0 +1,28 @@
+@prefix solfunmeme_tantivy_report: <http://example.org/solfunmeme_tantivy_report#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Tantivy Report Crate Elements and their Emoji Mappings
+
+# Crate Root
+solfunmeme_tantivy_report:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Tantivy Report Crate Root" ;
+    em:hasEmojiRepresentation "📊🔎" ;
+    rdfs:comment "The root directory for the Solfunmeme Tantivy Report crate." .
+
+# Directories within Crate
+solfunmeme_tantivy_report:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Tantivy Report." .
+
+# Files within Crate
+solfunmeme_tantivy_report:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Tantivy Report crate." .
+
+# Instances of Crate Elements
+solfunmeme_tantivy_report:crateInstance a solfunmeme_tantivy_report:CrateRoot .
+solfunmeme_tantivy_report:srcInstance a solfunmeme_tantivy_report:SrcDirectory .
+solfunmeme_tantivy_report:cargoTomlInstance a solfunmeme_tantivy_report:CargoTomlFile .

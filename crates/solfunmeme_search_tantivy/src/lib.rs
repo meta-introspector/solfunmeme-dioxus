@@ -22,7 +22,10 @@ pub struct SearchResult {
     pub token_count: usize,
     pub line_count: usize,
     pub char_count: usize,
-    pub test_result: String,
+    pub test_result: Option<String>,
+    pub embedding: Option<Vec<f32>>,
+    pub clifford_vector: Option<Vec<f32>>,
+    pub semantic_summary: Option<String>,
     pub score: f32,
 }
 
@@ -38,16 +41,18 @@ impl SearchIndex {
         let mut schema_builder = Schema::builder();
         
         // Fields for indexing
-        let language_field = schema_builder.add_text_field("language", TEXT | STORED);
-        let content_field = schema_builder.add_text_field("content", TEXT | STORED);
-        let line_start_field = schema_builder.add_u64_field("line_start", STORED);
-        let line_end_field = schema_builder.add_u64_field("line_end", STORED);
-        let content_hash_field = schema_builder.add_text_field("content_hash", TEXT | STORED);
-        let token_count_field = schema_builder.add_u64_field("token_count", STORED);
-        let line_count_field = schema_builder.add_u64_field("line_count", STORED);
-        let char_count_field = schema_builder.add_u64_field("char_count", STORED);
-        let test_result_field = schema_builder.add_text_field("test_result", TEXT | STORED);
-        let embedding_field = schema_builder.add_bytes_field("embedding", STORED);
+        let _language_field = schema_builder.add_text_field("language", TEXT | STORED);
+        let _content_field = schema_builder.add_text_field("content", TEXT | STORED);
+        let _line_start_field = schema_builder.add_u64_field("line_start", STORED);
+        let _line_end_field = schema_builder.add_u64_field("line_end", STORED);
+        let _content_hash_field = schema_builder.add_text_field("content_hash", TEXT | STORED);
+        let _token_count_field = schema_builder.add_u64_field("token_count", STORED);
+        let _line_count_field = schema_builder.add_u64_field("line_count", STORED);
+        let _char_count_field = schema_builder.add_u64_field("char_count", STORED);
+        let _test_result_field = schema_builder.add_text_field("test_result", TEXT | STORED);
+        let _embedding_field = schema_builder.add_bytes_field("embedding", STORED);
+        let _clifford_vector_field = schema_builder.add_bytes_field("clifford_vector", STORED);
+        let _semantic_summary_field = schema_builder.add_text_field("semantic_summary", TEXT | STORED);
         
         let schema = schema_builder.build();
         
@@ -104,8 +109,11 @@ impl SearchIndex {
         let char_count_field = self.schema.get_field("char_count")?;
         let test_result_field = self.schema.get_field("test_result")?;
         let embedding_field = self.schema.get_field("embedding")?;
+        let clifford_vector_field = self.schema.get_field("clifford_vector")?;
+        let semantic_summary_field = self.schema.get_field("semantic_summary")?;
 
-        let embedding_bytes: Vec<u8> = chunk.embedding.iter().flat_map(|f| f.to_le_bytes()).collect();
+        let embedding_bytes = bincode::serialize(&chunk.embedding).unwrap_or_default();
+        let clifford_vector_bytes = chunk.clifford_vector.as_ref().map(|c| bincode::serialize(c).unwrap_or_default()).unwrap_or_default();
 
         let doc = doc!(
             language_field => chunk.language.clone(),
@@ -116,8 +124,10 @@ impl SearchIndex {
             token_count_field => chunk.token_count as u64,
             line_count_field => chunk.line_count as u64,
             char_count_field => chunk.char_count as u64,
-            test_result_field => chunk.test_result.clone(),
+            test_result_field => chunk.test_result.clone().map(|tr| format!("{:?}", tr)).unwrap_or_default(),
             embedding_field => embedding_bytes,
+            clifford_vector_field => clifford_vector_bytes,
+            semantic_summary_field => chunk.semantic_summary.clone().unwrap_or_default(),
         );
         
         self.writer.add_document(doc)?;
@@ -192,8 +202,22 @@ impl SearchIndex {
             let test_result = doc
                 .get_first(self.schema.get_field("test_result")?)
                 .and_then(|v| v.as_value().as_str())
-                .unwrap_or("")
-                .to_string();
+                .map(|s| s.to_string());
+
+            let embedding_bytes = doc
+                .get_first(self.schema.get_field("embedding")?)
+                .and_then(|v| v.as_bytes());
+            let embedding = embedding_bytes.and_then(|bytes| bincode::deserialize(bytes).ok());
+
+            let clifford_vector_bytes = doc
+                .get_first(self.schema.get_field("clifford_vector")?)
+                .and_then(|v| v.as_bytes());
+            let clifford_vector = clifford_vector_bytes.and_then(|bytes| bincode::deserialize(bytes).ok());
+
+            let semantic_summary = doc
+                .get_first(self.schema.get_field("semantic_summary")?)
+                .and_then(|v| v.as_value().as_str())
+                .map(|s| s.to_string());
             
             results.push(SearchResult {
                 language,
@@ -205,6 +229,9 @@ impl SearchIndex {
                 line_count,
                 char_count,
                 test_result,
+                embedding,
+                clifford_vector,
+                semantic_summary,
                 score,
             });
         }
@@ -348,12 +375,18 @@ mod tests {
         
         // Add a test chunk
         let chunk = CodeChunk {
-            path: "test.rs".to_string(),
+            language: "rust".to_string(),
             content: "fn hello() { println!(\"world\"); }".to_string(),
-            emoji: "🦀⚙️".to_string(),
             line_start: 1,
             line_end: 1,
-            chunk_type: "function".to_string(),
+            content_hash: "test".to_string(),
+            token_count: 5,
+            line_count: 1,
+            char_count: "fn hello() { println!(\"world\"); }".len(),
+            test_result: None,
+            embedding: None,
+            clifford_vector: None,
+            semantic_summary: None,
         };
         
         index.add_chunk(&chunk)?;

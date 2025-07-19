@@ -1,7 +1,7 @@
 use notify::{Watcher, RecursiveMode, Result};
 use std::path::Path;
 use std::sync::mpsc::channel;
-use std::time::Duration;
+
 
 pub fn watch<P: AsRef<Path>>(path: P) -> Result<()> {
     let (tx, rx) = channel();

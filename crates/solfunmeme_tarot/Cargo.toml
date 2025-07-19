@@ -1,0 +1,15 @@
+[package]
+name = "solfunmeme_tarot"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+libloading = "0.10" # Updated to 0.10.x
+
+solfunmeme_rdf_utils = { path = "../solfunmeme_rdf_utils" }
+solfunmeme_function_analysis = { path = "../solfunmeme_function_analysis" }
+
+[dev-dependencies]
+tempfile = "3.10"

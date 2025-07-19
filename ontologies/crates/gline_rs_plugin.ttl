@@ -1,0 +1,40 @@
+@prefix gline: <http://example.org/gline_rs_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Gline RS Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+gline:CrateRoot a rdfs:Class ;
+    rdfs:label "Gline RS Plugin Crate Root" ;
+    em:hasEmojiRepresentation "📈🌐" ;
+    rdfs:comment "The root directory for the Gline RS Plugin crate." .
+
+# Directories within Crate
+gline:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Gline RS Plugin." .
+
+# Files within Crate
+gline:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Gline RS Plugin crate." .
+
+gline:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Gline RS Plugin crate." .
+
+gline:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+gline:crateInstance a gline:CrateRoot .
+gline:srcInstance a gline:SrcDirectory .
+gline:cargoTomlInstance a gline:CargoTomlFile .
+gline:readmeMdInstance a gline:ReadmeMdFile .
+gline:geminiMdInstance a gline:GeminiMdFile .

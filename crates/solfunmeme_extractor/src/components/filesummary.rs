@@ -3,7 +3,7 @@ use dioxus::prelude::*;
 //use crate::extractor::ExtractedFile;
 use std::collections::HashSet;
 //use crate::extractor::CodeSnippet;
-use shared_analysis_types::ExtractedFile;
+use solfunmeme_function_analysis::ExtractedFile;
 #[component]
 pub fn FileSummary(
     file: ExtractedFile,

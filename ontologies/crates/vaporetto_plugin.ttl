@@ -1,0 +1,34 @@
+@prefix vaporetto: <http://example.org/vaporetto_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Vaporetto Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+vaporetto:CrateRoot a rdfs:Class ;
+    rdfs:label "Vaporetto Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🚂💨" ;
+    rdfs:comment "The root directory for the Vaporetto Plugin crate." .
+
+# Directories within Crate
+vaporetto:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Vaporetto Plugin." .
+
+# Files within Crate
+vaporetto:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Vaporetto Plugin crate." .
+
+vaporetto:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Vaporetto Plugin crate." .
+
+# Instances of Crate Elements
+vaporetto:crateInstance a vaporetto:CrateRoot .
+vaporetto:srcInstance a vaporetto:SrcDirectory .
+vaporetto:cargoTomlInstance a vaporetto:CargoTomlFile .
+vaporetto:readmeMdInstance a vaporetto:ReadmeMdFile .

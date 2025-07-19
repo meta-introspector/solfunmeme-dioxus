@@ -6,4 +6,4 @@ license = "AGPL-3.0"
 
 [dependencies]
 anyhow = "1.0"
-solana-airdrop-service = { path = "../../vendor/solana-airdrop-service" }
+# solana-airdrop-service = { path = "../../vendor/solana-airdrop-service" }

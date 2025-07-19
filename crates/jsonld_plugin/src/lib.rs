@@ -1,10 +1,9 @@
+use anyhow::Result;
 use serde_json::Value;
-use sophia_api::graph::Graph;
-use sophia_jsonld::loader::FsLoader;
-use sophia_jsonld::JsonLdParser;
-use anyhow::{Result, anyhow};
+use solfunmeme_rdf_utils::rdf_graph::RdfGraph;
 use std::fs::File;
 use std::io::{BufReader, BufWriter};
+use std::path::Path;
 
 pub fn read_jsonld_from_file(path: &str) -> Result<Value> {
     let file = File::open(path)?;
@@ -20,8 +19,6 @@ pub fn write_jsonld_to_file(path: &str, data: &Value) -> Result<()> {
     Ok(())
 }
 
-pub fn parse_jsonld_to_graph(jsonld_data: Value) -> Result<impl Graph> {
-    let mut parser = JsonLdParser::new(FsLoader::new());
-    let graph = parser.parse_json_ld(jsonld_data)?;
-    Ok(graph)
+pub fn parse_jsonld_to_graph(path: &str) -> Result<RdfGraph> {
+    RdfGraph::from_jsonld_file(Path::new(path))
 }

@@ -1,0 +1,40 @@
+@prefix zip_plugin: <http://example.org/zip_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Zip Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+zip_plugin:CrateRoot a rdfs:Class ;
+    rdfs:label "Zip Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🗜️📦" ;
+    rdfs:comment "The root directory for the Zip Plugin crate." .
+
+# Directories within Crate
+zip_plugin:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Zip Plugin." .
+
+# Files within Crate
+zip_plugin:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Zip Plugin crate." .
+
+zip_plugin:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Zip Plugin crate." .
+
+zip_plugin:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+zip_plugin:crateInstance a zip_plugin:CrateRoot .
+zip_plugin:srcInstance a zip_plugin:SrcDirectory .
+zip_plugin:cargoTomlInstance a zip_plugin:CargoTomlFile .
+zip_plugin:readmeMdInstance a zip_plugin:ReadmeMdFile .
+zip_plugin:geminiMdInstance a zip_plugin:GeminiMdFile .

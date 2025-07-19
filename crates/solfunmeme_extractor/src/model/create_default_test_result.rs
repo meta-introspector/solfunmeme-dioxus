@@ -1,4 +1,4 @@
-use crate::types::TestResult;
+use solfunmeme_function_analysis::TestResult;
 
 /// Create a default test result
 pub fn create_default_test_result() -> TestResult {

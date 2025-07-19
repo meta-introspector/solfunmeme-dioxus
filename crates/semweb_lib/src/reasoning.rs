@@ -2,8 +2,9 @@
 //! 
 //! This module provides reasoning capabilities for semantic web data.
 
-use sophia::api::{graph::Graph, triple::Triple, term::Term};
-use sophia::inmem::graph::FastGraph;
+use solfunmeme_rdf_utils::rdf_graph::RdfGraph;
+use solfunmeme_rdf_utils::sophia_api::triple::Triple;
+use solfunmeme_rdf_utils::sophia_api::term::Term;
 use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
 
@@ -76,13 +77,13 @@ impl ReasoningEngine {
         self.strategies.push(strategy);
     }
     
-    pub fn query(&self, graph: &FastGraph, query: &str) -> SemWebResult<Vec<Triple>> {
+    pub fn query(&self, graph: &RdfGraph, query: &str) -> SemWebResult<Vec<Triple>> {
         // Simple query implementation
         let mut results = Vec::new();
         
         // Parse query (simplified)
         if let Some((subject, predicate, object)) = self.parse_query(query) {
-            for triple in graph.triples() {
+            for triple in graph.graph.triples() {
                 if let Ok(triple) = triple {
                     if self.matches_query(triple, &subject, &predicate, &object)? {
                         results.push(triple);
@@ -94,7 +95,7 @@ impl ReasoningEngine {
         Ok(results)
     }
     
-    pub fn reason(&self, graph: &mut FastGraph, ontologies: &[Ontology]) -> SemWebResult<()> {
+    pub fn reason(&self, graph: &mut RdfGraph, ontologies: &[Ontology]) -> SemWebResult<()> {
         for strategy in &self.strategies {
             match strategy {
                 ReasoningStrategy::ForwardChaining => {
@@ -115,7 +116,7 @@ impl ReasoningEngine {
         Ok(())
     }
     
-    fn forward_chain(&self, graph: &mut FastGraph, ontologies: &[Ontology]) -> SemWebResult<()> {
+    fn forward_chain(&self, graph: &mut RdfGraph, ontologies: &[Ontology]) -> SemWebResult<()> {
         let mut changed = true;
         let mut iterations = 0;
         let max_iterations = 100;
@@ -134,25 +135,25 @@ impl ReasoningEngine {
         Ok(())
     }
     
-    fn backward_chain(&self, graph: &FastGraph, ontologies: &[Ontology]) -> SemWebResult<()> {
+    fn backward_chain(&self, graph: &RdfGraph, ontologies: &[Ontology]) -> SemWebResult<()> {
         // Backward chaining implementation
         // This is a simplified version
         Ok(())
     }
     
-    fn hybrid_reasoning(&self, graph: &mut FastGraph, ontologies: &[Ontology]) -> SemWebResult<()> {
+    fn hybrid_reasoning(&self, graph: &mut RdfGraph, ontologies: &[Ontology]) -> SemWebResult<()> {
         // Hybrid reasoning implementation
         // This is a simplified version
         Ok(())
     }
     
-    fn custom_reasoning(&self, graph: &mut FastGraph, ontologies: &[Ontology], name: &str) -> SemWebResult<()> {
+    fn custom_reasoning(&self, graph: &mut RdfGraph, ontologies: &[Ontology], name: &str) -> SemWebResult<()> {
         // Custom reasoning implementation
         // This is a simplified version
         Ok(())
     }
     
-    fn apply_rule(&self, graph: &mut FastGraph, rule: &ReasoningRule, ontologies: &[Ontology]) -> SemWebResult<bool> {
+    fn apply_rule(&self, graph: &mut RdfGraph, rule: &ReasoningRule, ontologies: &[Ontology]) -> SemWebResult<bool> {
         let mut applied = false;
         
         // Check if all conditions are satisfied
@@ -177,10 +178,10 @@ impl ReasoningEngine {
         Ok(applied)
     }
     
-    fn check_condition(&self, graph: &FastGraph, condition: &Condition, ontologies: &[Ontology]) -> SemWebResult<bool> {
+    fn check_condition(&self, graph: &RdfGraph, condition: &Condition, ontologies: &[Ontology]) -> SemWebResult<bool> {
         let mut found = false;
         
-        for triple in graph.triples() {
+        for triple in graph.graph.triples() {
             if let Ok(triple) = triple {
                 if self.matches_triple(triple, condition)? {
                     found = true;
@@ -192,10 +193,10 @@ impl ReasoningEngine {
         Ok(found)
     }
     
-    fn apply_action(&self, graph: &mut FastGraph, action: &Action) -> SemWebResult<()> {
+    fn apply_action(&self, graph: &mut RdfGraph, action: &Action) -> SemWebResult<()> {
         match action.action_type {
             ActionType::Add => {
-                graph.insert(&action.subject, &action.predicate, &action.object)?;
+                graph.add_triple(&action.subject, &action.predicate, &action.object)?;
             }
             ActionType::Remove => {
                 // Remove triple (simplified)
@@ -232,4 +233,4 @@ impl ReasoningEngine {
            (predicate == "*" || triple.p().to_string() == *predicate) &&
            (object == "*" || triple.o().to_string() == *object))
     }
-} 
+}

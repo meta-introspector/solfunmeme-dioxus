@@ -1,0 +1,51 @@
+# zos_config.toml
+[cli]
+about = "Zero Ontology System - Self-aware codebase management"
+
+[vendor]
+default_path = "vendor"
+message = "Vendoring dependencies to {:?}"
+
+[index]
+default_source = "src"
+default_output = "tmp/tantivy_index"
+message = "Indexing {:?} to {:?}"
+
+[dedup]
+default_source = "src"
+default_threshold = 0.8
+message = "Finding duplicates in {:?} with threshold {}"
+
+[search]
+default_limit = 10
+message = "Searching for \"{}\" with limit {}"
+
+[tasks]
+list_message = "Listing available tasks..."
+run_message = "Running task: {}"
+report_message = "Generating task report in {} format"
+
+[analyze]
+default_format = "json"
+default_output = "reports"
+message = "Analyzing code and generating {} report to {:?}"
+
+[chat]
+default_processed_chats = "processed_chats"
+default_chat_index = "tmp/chat_index"
+index_message = "Indexing chats from {:?} to {:?}"
+index_error = "Error indexing chats: {}"
+index_success = "Chat indexing completed successfully!"
+vibe_ontology = "0,1,2,3,5,7"
+vibe_output = "vibe_proof.json"
+vibe_message = "Generating vibe proof with ontology {} to {:?}"
+vibe_error = "Error generating vibe proof: {}"
+vibe_success = "Vibe proof generated successfully!"
+search_message = "Searching chats for {} with limit {}"
+search_found = "Found: {}"
+search_error = "Error searching chats "
+analyze_default_type = "themes"
+analyze_default_format = "json"
+analyze_message = "Analyzing chats for {} in {} format "
+analyze_result = "Analysis: {}"
+analyze_error = "Error analyzing chats "

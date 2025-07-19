@@ -1,0 +1,40 @@
+@prefix quickwit: <http://example.org/quickwit_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Quickwit Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+quickwit:CrateRoot a rdfs:Class ;
+    rdfs:label "Quickwit Plugin Crate Root" ;
+    em:hasEmojiRepresentation "⚡🔎" ;
+    rdfs:comment "The root directory for the Quickwit Plugin crate." .
+
+# Directories within Crate
+quickwit:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Quickwit Plugin." .
+
+# Files within Crate
+quickwit:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Quickwit Plugin crate." .
+
+quickwit:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Quickwit Plugin crate." .
+
+quickwit:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+quickwit:crateInstance a quickwit:CrateRoot .
+quickwit:srcInstance a quickwit:SrcDirectory .
+quickwit:cargoTomlInstance a quickwit:CargoTomlFile .
+quickwit:readmeMdInstance a quickwit:ReadmeMdFile .
+quickwit:geminiMdInstance a quickwit:GeminiMdFile .

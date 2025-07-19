@@ -1,0 +1,70 @@
+@prefix task_manager: <http://example.org/task_manager#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Task Manager Crate Elements and their Emoji Mappings
+
+# Crate Root
+task_manager:CrateRoot a rdfs:Class ;
+    rdfs:label "Task Manager Crate Root" ;
+    em:hasEmojiRepresentation "✅📋" ;
+    rdfs:comment "The root directory for the Task Manager crate." .
+
+# Directories within Crate
+task_manager:DatasetsDirectory a rdfs:Class ;
+    rdfs:label "Datasets Directory" ;
+    em:hasEmojiRepresentation "📊📂" ;
+    rdfs:comment "Contains datasets for the Task Manager." .
+
+task_manager:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Task Manager." .
+
+task_manager:StatesDirectory a rdfs:Class ;
+    rdfs:label "States Directory" ;
+    em:hasEmojiRepresentation "💾📂" ;
+    rdfs:comment "Contains state files for the Task Manager." .
+
+# Files within Crate
+task_manager:BrainrotTtlFile a rdfs:Class ;
+    rdfs:label "brainrot.ttl File" ;
+    em:hasEmojiRepresentation "🧠📜" ;
+    rdfs:comment "A TTL file related to brainrot concepts within the Task Manager." .
+
+task_manager:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Task Manager crate." .
+
+task_manager:CargoLockFile a rdfs:Class ;
+    rdfs:label "Cargo.lock File" ;
+    em:hasEmojiRepresentation "🔒📦" ;
+    rdfs:comment "The dependency lock file for the Task Manager crate." .
+
+task_manager:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Task Manager crate." .
+
+task_manager:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+task_manager:TaskManagerTomlFile a rdfs:Class ;
+    rdfs:label "task_manager.toml File" ;
+    em:hasEmojiRepresentation "⚙️📝" ;
+    rdfs:comment "Configuration file for the Task Manager." .
+
+# Instances of Crate Elements
+task_manager:crateInstance a task_manager:CrateRoot .
+task_manager:datasetsInstance a task_manager:DatasetsDirectory .
+task_manager:srcInstance a task_manager:SrcDirectory .
+task_manager:statesInstance a task_manager:StatesDirectory .
+task_manager:brainrotTtlInstance a task_manager:BrainrotTtlFile .
+task_manager:cargoTomlInstance a task_manager:CargoTomlFile .
+task_manager:cargoLockInstance a task_manager:CargoLockFile .
+task_manager:readmeMdInstance a task_manager:ReadmeMdFile .
+task_manager:geminiMdInstance a task_manager:GeminiMdFile .
+task_manager:taskManagerTomlInstance a task_manager:TaskManagerTomlFile .

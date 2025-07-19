@@ -1,0 +1,40 @@
+@prefix solfunmeme_app: <http://example.org/solfunmeme_app#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme App Crate Elements and their Emoji Mappings
+
+# Crate Root
+solfunmeme_app:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme App Crate Root" ;
+    em:hasEmojiRepresentation "🚀📱" ;
+    rdfs:comment "The root directory for the Solfunmeme App crate." .
+
+# Directories within Crate
+solfunmeme_app:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme App." .
+
+# Files within Crate
+solfunmeme_app:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme App crate." .
+
+solfunmeme_app:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Solfunmeme App crate." .
+
+solfunmeme_app:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+solfunmeme_app:crateInstance a solfunmeme_app:CrateRoot .
+solfunmeme_app:srcInstance a solfunmeme_app:SrcDirectory .
+solfunmeme_app:cargoTomlInstance a solfunmeme_app:CargoTomlFile .
+solfunmeme_app:readmeMdInstance a solfunmeme_app:ReadmeMdFile .
+solfunmeme_app:geminiMdInstance a solfunmeme_app:GeminiMdFile .

@@ -1,0 +1,34 @@
+@prefix tongrams: <http://example.org/tongrams_rs_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Tongrams RS Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+tongrams:CrateRoot a rdfs:Class ;
+    rdfs:label "Tongrams RS Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🗣️📊" ;
+    rdfs:comment "The root directory for the Tongrams RS Plugin crate." .
+
+# Directories within Crate
+tongrams:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Tongrams RS Plugin." .
+
+# Files within Crate
+tongrams:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Tongrams RS Plugin crate." .
+
+tongrams:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Tongrams RS Plugin crate." .
+
+# Instances of Crate Elements
+tongrams:crateInstance a tongrams:CrateRoot .
+tongrams:srcInstance a tongrams:SrcDirectory .
+tongrams:cargoTomlInstance a tongrams:CargoTomlFile .
+tongrams:readmeMdInstance a tongrams:ReadmeMdFile .

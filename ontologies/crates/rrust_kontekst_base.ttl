@@ -1,0 +1,40 @@
+@prefix rrust_kontekst_base: <http://example.org/rrust_kontekst_base#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Rrust Kontekst Base Crate Elements and their Emoji Mappings
+
+# Crate Root
+rrust_kontekst_base:CrateRoot a rdfs:Class ;
+    rdfs:label "Rrust Kontekst Base Crate Root" ;
+    em:hasEmojiRepresentation "📖🧠" ;
+    rdfs:comment "The root directory for the Rrust Kontekst Base crate." .
+
+# Directories within Crate
+rrust_kontekst_base:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Rrust Kontekst Base crate." .
+
+# Files within Crate
+rrust_kontekst_base:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Rrust Kontekst Base crate." .
+
+rrust_kontekst_base:CargoLockFile a rdfs:Class ;
+    rdfs:label "Cargo.lock File" ;
+    em:hasEmojiRepresentation "🔒📦" ;
+    rdfs:comment "The dependency lock file for the Rrust Kontekst Base crate." .
+
+rrust_kontekst_base:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Rrust Kontekst Base crate." .
+
+# Instances of Crate Elements
+rrust_kontekst_base:crateInstance a rrust_kontekst_base:CrateRoot .
+rrust_kontekst_base:srcInstance a rrust_kontekst_base:SrcDirectory .
+rrust_kontekst_base:cargoTomlInstance a rrust_kontekst_base:CargoTomlFile .
+rrust_kontekst_base:cargoLockInstance a rrust_kontekst_base:CargoLockFile .
+rrust_kontekst_base:readmeMdInstance a rrust_kontekst_base:ReadmeMdFile .

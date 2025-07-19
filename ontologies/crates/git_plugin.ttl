@@ -1,0 +1,40 @@
+@prefix git_plugin: <http://example.org/git_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Git Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+git_plugin:CrateRoot a rdfs:Class ;
+    rdfs:label "Git Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🌳🐙" ;
+    rdfs:comment "The root directory for the Git Plugin crate." .
+
+# Directories within Crate
+git_plugin:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Git Plugin." .
+
+# Files within Crate
+git_plugin:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Git Plugin crate." .
+
+git_plugin:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Git Plugin crate." .
+
+git_plugin:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+git_plugin:crateInstance a git_plugin:CrateRoot .
+git_plugin:srcInstance a git_plugin:SrcDirectory .
+git_plugin:cargoTomlInstance a git_plugin:CargoTomlFile .
+git_plugin:readmeMdInstance a git_plugin:ReadmeMdFile .
+git_plugin:geminiMdInstance a git_plugin:GeminiMdFile .

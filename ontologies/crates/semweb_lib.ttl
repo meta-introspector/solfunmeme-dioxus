@@ -1,0 +1,28 @@
+@prefix semweb: <http://example.org/semweb_lib#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Semantic Web Library Crate Elements and their Emoji Mappings
+
+# Crate Root
+semweb:CrateRoot a rdfs:Class ;
+    rdfs:label "Semantic Web Library Crate Root" ;
+    em:hasEmojiRepresentation "🌐📚" ;
+    rdfs:comment "The root directory for the Semantic Web Library crate." .
+
+# Directories within Crate
+semweb:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Semantic Web Library." .
+
+# Files within Crate
+semweb:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Semantic Web Library crate." .
+
+# Instances of Crate Elements
+semweb:crateInstance a semweb:CrateRoot .
+semweb:srcInstance a semweb:SrcDirectory .
+semweb:cargoTomlInstance a semweb:CargoTomlFile .

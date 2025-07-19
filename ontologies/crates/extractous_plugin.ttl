@@ -1,0 +1,40 @@
+@prefix extractous: <http://example.org/extractous_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Extractous Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+extractous:CrateRoot a rdfs:Class ;
+    rdfs:label "Extractous Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🔎📜" ;
+    rdfs:comment "The root directory for the Extractous Plugin crate." .
+
+# Directories within Crate
+extractous:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Extractous Plugin." .
+
+# Files within Crate
+extractous:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Extractous Plugin crate." .
+
+extractous:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Extractous Plugin crate." .
+
+extractous:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+extractous:crateInstance a extractous:CrateRoot .
+extractous:srcInstance a extractous:SrcDirectory .
+extractous:cargoTomlInstance a extractous:CargoTomlFile .
+extractous:readmeMdInstance a extractous:ReadmeMdFile .
+extractous:geminiMdInstance a extractous:GeminiMdFile .

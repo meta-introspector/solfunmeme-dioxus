@@ -1,6 +1,6 @@
 use anyhow::Result;
 use solfunmeme_search_tantivy::{SearchIndex, SearchResult};
-use solfunmeme_function_analysis::CodeChunk;
+use solfunmeme_function_analysis::{CodeChunk, TestResult};
 use std::path::Path;
 use walkdir::WalkDir;
 use std::fs;
@@ -159,7 +159,10 @@ impl VibeFinder {
             token_count,
             line_count: lines.len(),
             char_count,
-            test_result: "".to_string(), // Could be enhanced with actual test results
+            test_result: None, // Set to None
+            embedding: None, // Set to None
+            clifford_vector: None, // Set to None
+            semantic_summary: None, // Set to None
         })
     }
 
@@ -175,6 +178,9 @@ impl VibeFinder {
             line_count: search_result.line_count,
             char_count: search_result.char_count,
             test_result: search_result.test_result.clone(),
+            embedding: search_result.embedding.clone(),
+            clifford_vector: search_result.clifford_vector.clone(),
+            semantic_summary: search_result.semantic_summary.clone(),
         })
     }
 
@@ -279,10 +285,13 @@ mod tests {
             token_count: 5,
             line_count: 1,
             char_count: code_content.len(),
-            test_result: "".to_string(),
+            test_result: None, // Updated to None
+            embedding: None, // Added
+            clifford_vector: None, // Added
+            semantic_summary: None, // Added
         };
         
         let similarity = finder.calculate_vibe_similarity(chat_text, &code_chunk);
         assert!(similarity > 0.0);
     }
-} 
+}

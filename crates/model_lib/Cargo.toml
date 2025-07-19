@@ -10,3 +10,4 @@ dioxus = { version = "0.6.3", features = ["router"] }
 serde = { version = "1.0", features = ["derive"] }
 core_data_lib = { path = "../core_data_lib" }
 solfunmeme_core_logic = { path = "../solfunmeme_core_logic" }
+solfunmeme_models = { path = "../solfunmeme_models" }

@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use solfunmeme_clifford::SolMultivector;
+use crate::serializable_multivector::SerializableMultivector;
 use super::clifford_ops_models::CliffordOperationRequest;
 use super::meme_definitions::MemeToken;
 
@@ -9,7 +9,7 @@ pub struct CodeReflectionTask {
     /// The code chunks to be reflected upon.
     pub code_chunks: Vec<String>,
     /// The multivector representation of the code chunks, encoding their geometric position in the Code-Math Manifold.
-    pub multivector: SolMultivector,
+    pub multivector: SerializableMultivector,
 }
 
 /// Represents a task for LLM-driven code evolution.

@@ -1,0 +1,40 @@
+@prefix vtext: <http://example.org/vtext_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Vtext Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+vtext:CrateRoot a rdfs:Class ;
+    rdfs:label "Vtext Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🗣️📏" ;
+    rdfs:comment "The root directory for the Vtext Plugin crate." .
+
+# Directories within Crate
+vtext:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Vtext Plugin." .
+
+# Files within Crate
+vtext:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Vtext Plugin crate." .
+
+vtext:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Vtext Plugin crate." .
+
+vtext:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+vtext:crateInstance a vtext:CrateRoot .
+vtext:srcInstance a vtext:SrcDirectory .
+vtext:cargoTomlInstance a vtext:CargoTomlFile .
+vtext:readmeMdInstance a vtext:ReadmeMdFile .
+vtext:geminiMdInstance a vtext:GeminiMdFile .

@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use shared_analysis_types::ProcessingFile;
+use solfunmeme_function_analysis::ProcessingFile;
 //use crate::extractor::ProcessingFile;
 #[component]
 pub fn ProcessingIndicator(processing_file: ReadOnlySignal<Option<ProcessingFile>>) -> Element {

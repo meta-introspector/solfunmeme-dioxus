@@ -1,0 +1,1 @@
+// tests for closest_emoji_info module

@@ -1,0 +1,9 @@
+[package]
+name = "solfunmeme_markdown_utils"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+markdown-meta-parser = "0.1.3"
+markdown = "1.0.0"
+pulldown-cmark = "0.13.0"

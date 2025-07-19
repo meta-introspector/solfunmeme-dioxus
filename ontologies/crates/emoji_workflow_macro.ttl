@@ -1,0 +1,40 @@
+@prefix emoji_workflow: <http://example.org/emoji_workflow_macro#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Emoji Workflow Macro Crate Elements and their Emoji Mappings
+
+# Crate Root
+emoji_workflow:CrateRoot a rdfs:Class ;
+    rdfs:label "Emoji Workflow Macro Crate Root" ;
+    em:hasEmojiRepresentation "✨➡️" ;
+    rdfs:comment "The root directory for the Emoji Workflow Macro crate." .
+
+# Directories within Crate
+emoji_workflow:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Emoji Workflow Macro." .
+
+# Files within Crate
+emoji_workflow:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Emoji Workflow Macro crate." .
+
+emoji_workflow:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Emoji Workflow Macro crate." .
+
+emoji_workflow:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+emoji_workflow:crateInstance a emoji_workflow:CrateRoot .
+emoji_workflow:srcInstance a emoji_workflow:SrcDirectory .
+emoji_workflow:cargoTomlInstance a emoji_workflow:CargoTomlFile .
+emoji_workflow:readmeMdInstance a emoji_workflow:ReadmeMdFile .
+emoji_workflow:geminiMdInstance a emoji_workflow:GeminiMdFile .

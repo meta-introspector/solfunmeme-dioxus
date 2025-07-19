@@ -1,0 +1,28 @@
+@prefix llm_echo: <http://example.org/llm_echo_provider#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for LLM Echo Provider Crate Elements and their Emoji Mappings
+
+# Crate Root
+llm_echo:CrateRoot a rdfs:Class ;
+    rdfs:label "LLM Echo Provider Crate Root" ;
+    em:hasEmojiRepresentation "🗣️👂" ;
+    rdfs:comment "The root directory for the LLM Echo Provider crate." .
+
+# Directories within Crate
+llm_echo:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the LLM Echo Provider." .
+
+# Files within Crate
+llm_echo:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the LLM Echo Provider crate." .
+
+# Instances of Crate Elements
+llm_echo:crateInstance a llm_echo:CrateRoot .
+llm_echo:srcInstance a llm_echo:SrcDirectory .
+llm_echo:cargoTomlInstance a llm_echo:CargoTomlFile .

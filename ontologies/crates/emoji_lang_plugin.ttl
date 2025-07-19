@@ -1,0 +1,40 @@
+@prefix emoji_lang: <http://example.org/emoji_lang_plugin#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Emoji Language Plugin Crate Elements and their Emoji Mappings
+
+# Crate Root
+emoji_lang:CrateRoot a rdfs:Class ;
+    rdfs:label "Emoji Language Plugin Crate Root" ;
+    em:hasEmojiRepresentation "🗣️✨" ;
+    rdfs:comment "The root directory for the Emoji Language Plugin crate." .
+
+# Directories within Crate
+emoji_lang:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Emoji Language Plugin." .
+
+# Files within Crate
+emoji_lang:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Emoji Language Plugin crate." .
+
+emoji_lang:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Emoji Language Plugin crate." .
+
+emoji_lang:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+# Instances of Crate Elements
+emoji_lang:crateInstance a emoji_lang:CrateRoot .
+emoji_lang:srcInstance a emoji_lang:SrcDirectory .
+emoji_lang:cargoTomlInstance a emoji_lang:CargoTomlFile .
+emoji_lang:readmeMdInstance a emoji_lang:ReadmeMdFile .
+emoji_lang:geminiMdInstance a emoji_lang:GeminiMdFile .

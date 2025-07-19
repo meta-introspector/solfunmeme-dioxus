@@ -1,0 +1,58 @@
+@prefix prepare_sources: <http://example.org/prepare_sources#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Prepare Sources Crate Elements and their Emoji Mappings
+
+# Crate Root
+prepare_sources:CrateRoot a rdfs:Class ;
+    rdfs:label "Prepare Sources Crate Root" ;
+    em:hasEmojiRepresentation "⚙️📄" ;
+    rdfs:comment "The root directory for the Prepare Sources crate." .
+
+# Directories within Crate
+prepare_sources:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for Prepare Sources." .
+
+# Files within Crate
+prepare_sources:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Prepare Sources crate." .
+
+prepare_sources:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Prepare Sources crate." .
+
+prepare_sources:GeminiMdFile a rdfs:Class ;
+    rdfs:label "GEMINI.md File" ;
+    em:hasEmojiRepresentation "♊📄" ;
+    rdfs:comment "Contains specific guidelines for AI agents contributing to this crate." .
+
+prepare_sources:DeployScriptFile a rdfs:Class ;
+    rdfs:label "deploy.sh File" ;
+    em:hasEmojiRepresentation "🚀📜" ;
+    rdfs:comment "A shell script for deploying the Prepare Sources crate." .
+
+prepare_sources:LicenseFile a rdfs:Class ;
+    rdfs:label "LICENSE File" ;
+    em:hasEmojiRepresentation "⚖️📄" ;
+    rdfs:comment "The license file for the Prepare Sources crate." .
+
+prepare_sources:NotesOrgFile a rdfs:Class ;
+    rdfs:label "notes.org File" ;
+    em:hasEmojiRepresentation "📝💡" ;
+    rdfs:comment "Contains notes and ideas related to the Prepare Sources crate." .
+
+# Instances of Crate Elements
+prepare_sources:crateInstance a prepare_sources:CrateRoot .
+prepare_sources:srcInstance a prepare_sources:SrcDirectory .
+prepare_sources:cargoTomlInstance a prepare_sources:CargoTomlFile .
+prepare_sources:readmeMdInstance a prepare_sources:ReadmeMdFile .
+prepare_sources:geminiMdInstance a prepare_sources:GeminiMdFile .
+prepare_sources:deployScriptInstance a prepare_sources:DeployScriptFile .
+prepare_sources:licenseInstance a prepare_sources:LicenseFile .
+prepare_sources:notesOrgInstance a prepare_sources:NotesOrgFile .

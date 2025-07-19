@@ -111,6 +111,11 @@ impl Workflow for EmojiWorkflow {
         // Here, you would map parsed_emojis to actual workflow steps
         Ok(())
     }
+
+    fn get_process_configs(&self) -> Vec<workflow_manager::ProcessConfig> {
+        // This workflow does not manage external processes directly
+        Vec::new()
+    }
 }
 
 pub fn register_emoji_workflow(name: String, emoji_string: String) {

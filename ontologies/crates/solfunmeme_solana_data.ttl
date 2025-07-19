@@ -1,0 +1,34 @@
+@prefix solana_data: <http://example.org/solfunmeme_solana_data#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Solana Data Crate Elements and their Emoji Mappings
+
+# Crate Root
+solana_data:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Solana Data Crate Root" ;
+    em:hasEmojiRepresentation "⛓️📊" ;
+    rdfs:comment "The root directory for the Solfunmeme Solana Data crate." .
+
+# Directories within Crate
+solana_data:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Solana Data." .
+
+# Files within Crate
+solana_data:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Solana Data crate." .
+
+solana_data:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Solfunmeme Solana Data crate." .
+
+# Instances of Crate Elements
+solana_data:crateInstance a solana_data:CrateRoot .
+solana_data:srcInstance a solana_data:SrcDirectory .
+solana_data:cargoTomlInstance a solana_data:CargoTomlFile .
+solana_data:readmeMdInstance a solana_data:ReadmeMdFile .

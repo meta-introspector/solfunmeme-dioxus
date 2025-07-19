@@ -1,0 +1,40 @@
+@prefix core_logic: <http://example.org/solfunmeme_core_logic#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Solfunmeme Core Logic Crate Elements and their Emoji Mappings
+
+# Crate Root
+core_logic:CrateRoot a rdfs:Class ;
+    rdfs:label "Solfunmeme Core Logic Crate Root" ;
+    em:hasEmojiRepresentation "🧠💡" ;
+    rdfs:comment "The root directory for the Solfunmeme Core Logic crate." .
+
+# Directories within Crate
+core_logic:SrcDirectory a rdfs:Class ;
+    rdfs:label "Source Code Directory" ;
+    em:hasEmojiRepresentation "💻📂" ;
+    rdfs:comment "Contains the source code for the Solfunmeme Core Logic." .
+
+core_logic:TestsDirectory a rdfs:Class ;
+    rdfs:label "Tests Directory" ;
+    em:hasEmojiRepresentation "🧪📂" ;
+    rdfs:comment "Contains tests for the Solfunmeme Core Logic." .
+
+# Files within Crate
+core_logic:CargoTomlFile a rdfs:Class ;
+    rdfs:label "Cargo.toml File" ;
+    em:hasEmojiRepresentation "📦📝" ;
+    rdfs:comment "The package manifest file for the Solfunmeme Core Logic crate." .
+
+core_logic:ReadmeMdFile a rdfs:Class ;
+    rdfs:label "README.md File" ;
+    em:hasEmojiRepresentation "📖ℹ️" ;
+    rdfs:comment "Provides an overview and instructions for the Solfunmeme Core Logic crate." .
+
+# Instances of Crate Elements
+core_logic:crateInstance a core_logic:CrateRoot .
+core_logic:srcInstance a core_logic:SrcDirectory .
+core_logic:testsInstance a core_logic:TestsDirectory .
+core_logic:cargoTomlInstance a core_logic:CargoTomlFile .
+core_logic:readmeMdInstance a core_logic:ReadmeMdFile .

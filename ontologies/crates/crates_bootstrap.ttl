@@ -1,0 +1,27 @@
+@prefix crates_boot: <http://example.org/crates_bootstrap#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Ontology for Crates Bootstrap Module Elements and their Emoji Mappings
+
+# Crate Root
+crates_boot:CrateRoot a rdfs:Class ;
+    rdfs:label "Crates Bootstrap Crate Root" ;
+    em:hasEmojiRepresentation "📦🚀" ;
+    rdfs:comment "The root directory for the bootstrap crate within the crates folder." .
+
+# Directories within Crate
+crates_boot:Stage0Directory a rdfs:Class ;
+    rdfs:label "Crates Bootstrap Stage 0 Directory" ;
+    em:hasEmojiRepresentation "📦🥚⚙️" ;
+    rdfs:comment "Represents the initial, foundational stage of the bootstrap process within the crates module." .
+
+crates_boot:Stage1Directory a rdfs:Class ;
+    rdfs:label "Crates Bootstrap Stage 1 Directory" ;
+    em:hasEmojiRepresentation "📦🐣⚙️" ;
+    rdfs:comment "Represents the subsequent stage of the bootstrap process within the crates module." .
+
+# Instances of Crate Elements
+crates_boot:crateInstance a crates_boot:CrateRoot .
+crates_boot:stage0Instance a crates_boot:Stage0Directory .
+crates_boot:stage1Instance a crates_boot:Stage1Directory .
