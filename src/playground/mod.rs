@@ -16,6 +16,9 @@ pub mod app;
 pub use app::MenuOption;
 
 pub mod bert_test;
+//pub mod polygon; FIXME
+pub mod zip;
+
 pub mod coverage_app;
 pub mod doc_cleaner;
 pub mod embedding;

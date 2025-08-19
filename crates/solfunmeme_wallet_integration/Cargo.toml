@@ -1,0 +1,21 @@
+[package]
+name = "solfunmeme_wallet_integration"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+dioxus = { version = "0.6.3" }
+solana-sdk = { version = "2.3.0" }
+wallet-adapter = { git = "https://github.com/meta-introspector/SolanaWalletAdapter-zos", branch ="no-template"}
+jzon = "0.12.5"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+reqwasm = "0.5.0"
+web-sys = { version = "0.3.69", features = ["Window", "Navigator", "Storage", "Event", "InputEvent", "EventTarget", "HtmlInputElement", "KeyboardEvent", "Document", "Element", "HtmlAnchorElement", "Clipboard", "console"] }
+js-sys = "0.3.69"
+aes-gcm = "0.10.3"
+sha2 = "0.10.9"
+model_lib = { path = "../../crates/model_lib" }

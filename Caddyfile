@@ -6,7 +6,7 @@
 }
 
 :8080 {
-	root * /usr/share/caddy/public
+	root * /reports
 	file_server
 
 	@healthReady {
@@ -19,7 +19,7 @@
 
 http://solfunmeme-dioxus.fly.dev {
 
-	root * /usr/share/caddy/public
+	root * /reports
 	file_server
 
 	@healthReady {

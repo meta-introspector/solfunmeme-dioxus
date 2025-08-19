@@ -1,0 +1,1189 @@
+{
+  "root_paths": [
+    "founding_documents"
+  ],
+  "total_files": 0,
+  "total_directories": 0,
+  "total_size": 0,
+  "file_types": {
+    "html~": {
+      "count": 1,
+      "total_size": 22341,
+      "avg_size": 22341.0,
+      "max_size": 22341,
+      "min_size": 22341,
+      "extensions": [
+        "html~"
+      ]
+    },
+    "md": {
+      "count": 34,
+      "total_size": 29341667,
+      "avg_size": 862990.2058823529,
+      "max_size": 3204605,
+      "min_size": 2772,
+      "extensions": [
+        "md"
+      ]
+    },
+    "puml": {
+      "count": 5,
+      "total_size": 6347,
+      "avg_size": 1269.4,
+      "max_size": 1849,
+      "min_size": 1018,
+      "extensions": [
+        "puml"
+      ]
+    },
+    "md~": {
+      "count": 1,
+      "total_size": 1542094,
+      "avg_size": 1542094.0,
+      "max_size": 1542094,
+      "min_size": 1542094,
+      "extensions": [
+        "md~"
+      ]
+    },
+    "html": {
+      "count": 3,
+      "total_size": 70364,
+      "avg_size": 23454.666666666668,
+      "max_size": 28795,
+      "min_size": 12802,
+      "extensions": [
+        "html"
+      ]
+    },
+    "txt": {
+      "count": 10,
+      "total_size": 714563,
+      "avg_size": 71456.3,
+      "max_size": 76364,
+      "min_size": 67072,
+      "extensions": [
+        "txt"
+      ]
+    }
+  },
+  "directory_tree": [
+    {
+      "path": "founding_documents",
+      "name": "founding_documents",
+      "size": 12288,
+      "extension": "",
+      "is_file": false,
+      "is_directory": true,
+      "depth": 0,
+      "children": [
+        {
+          "path": "founding_documents\\2025",
+          "name": "2025",
+          "size": 0,
+          "extension": "",
+          "is_file": false,
+          "is_directory": true,
+          "depth": 1,
+          "children": [
+            {
+              "path": "founding_documents\\2025\\07",
+              "name": "07",
+              "size": 0,
+              "extension": "",
+              "is_file": false,
+              "is_directory": true,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": null,
+                "language": null,
+                "is_binary": false,
+                "is_text": false,
+                "magic_header": null,
+                "git_submodule": null
+              }
+            }
+          ],
+          "metadata": {
+            "lines": null,
+            "language": null,
+            "is_binary": false,
+            "is_text": false,
+            "magic_header": null,
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\ALGORITHM_DOCUMENTATION.md",
+          "name": "ALGORITHM_DOCUMENTATION.md",
+          "size": 7757,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 81,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 20 41 6C 67 6F 72 69 74 68 6D 20 44 6F 63 75",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\chat",
+          "name": "chat",
+          "size": 4096,
+          "extension": "",
+          "is_file": false,
+          "is_directory": true,
+          "depth": 1,
+          "children": [
+            {
+              "path": "founding_documents\\chat\\cursor-chat.md",
+              "name": "cursor-chat.md",
+              "size": 585682,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 17871,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 20 43 6C 65 61 6E 20 75 70 20 74 68 65 20 66",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\chat\\cursor_process_grok_chat_into_task_list.md",
+              "name": "cursor_process_grok_chat_into_task_list.md",
+              "size": 172406,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 3832,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 20 50 72 6F 63 65 73 73 20 67 72 6F 6B 20 63",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\chat\\gemini.md~",
+              "name": "gemini.md~",
+              "size": 1542094,
+              "extension": "md~",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 9000,
+                "language": null,
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "20 E2 94 82 20 20 20 20 20 20 20 7C 20 20 20 20",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\chat\\grok-chat-solfunmeme.md",
+              "name": "grok-chat-solfunmeme.md",
+              "size": 172423,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 100,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 23 23 20 47 72 6F 6B 20 41 49 0A 0A 3C 75 6C",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\chat\\meme-matrix",
+              "name": "meme-matrix",
+              "size": 0,
+              "extension": "",
+              "is_file": false,
+              "is_directory": true,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": null,
+                "language": null,
+                "is_binary": false,
+                "is_text": false,
+                "magic_header": null,
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\chat\\vibe-ttl.md",
+              "name": "vibe-ttl.md",
+              "size": 86805,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 1945,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "59 6F 75 27 72 65 20 72 69 67 68 74 21 20 53 69",
+                "git_submodule": null
+              }
+            }
+          ],
+          "metadata": {
+            "lines": null,
+            "language": null,
+            "is_binary": false,
+            "is_text": false,
+            "magic_header": null,
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\chat-solfunmeme.md",
+          "name": "chat-solfunmeme.md",
+          "size": 2772,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 100,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 20 53 4F 4C 46 55 4E 4D 45 4D 45 3A 20 41 49",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\chat_logs",
+          "name": "chat_logs",
+          "size": 4096,
+          "extension": "",
+          "is_file": false,
+          "is_directory": true,
+          "depth": 1,
+          "children": [
+            {
+              "path": "founding_documents\\chat_logs\\chat_log_1.md",
+              "name": "chat_log_1.md",
+              "size": 1542096,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 9001,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "20 E2 94 82 20 20 20 20 20 20 20 7C 20 20 20 20",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\chat_logs\\meme_matrix_chat_log.md",
+              "name": "meme_matrix_chat_log.md",
+              "size": 49662,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 883,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "0D 0A 0D 0A 43 6F 6E 76 65 72 73 61 74 69 6F 6E",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\chat_logs\\vectors_chat_log.md",
+              "name": "vectors_chat_log.md",
+              "size": 138181,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 2325,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "0D 0A 0D 0A 43 6F 6E 76 65 72 73 61 74 69 6F 6E",
+                "git_submodule": null
+              }
+            }
+          ],
+          "metadata": {
+            "lines": null,
+            "language": null,
+            "is_binary": false,
+            "is_text": false,
+            "magic_header": null,
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\GEMINI.md",
+          "name": "GEMINI.md",
+          "size": 3025,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 43,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 20 46 6F 75 6E 64 69 6E 67 20 44 6F 63 75 6D",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\idea.md",
+          "name": "idea.md",
+          "size": 20412,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 466,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "54 6F 20 72 65 66 61 63 74 6F 72 20 74 68 65 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\meme1.html",
+          "name": "meme1.html",
+          "size": 28767,
+          "extension": "html",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 712,
+            "language": "html",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "3C 21 44 4F 43 54 59 50 45 20 68 74 6D 6C 3E 0D",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\meme2.html",
+          "name": "meme2.html",
+          "size": 28795,
+          "extension": "html",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 712,
+            "language": "html",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "3C 21 44 4F 43 54 59 50 45 20 68 74 6D 6C 3E 0D",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\model_view_refactor.md",
+          "name": "model_view_refactor.md",
+          "size": 11426,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 310,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 20 4D 6F 64 65 6C 2D 56 69 65 77 20 52 65 66",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\part_1.txt",
+          "name": "part_1.txt",
+          "size": 68724,
+          "extension": "txt",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 461,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "0A E2 9C A6 20 54 68 65 20 70 61 6E 69 63 20 22",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\part_10.txt",
+          "name": "part_10.txt",
+          "size": 67072,
+          "extension": "txt",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 81,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "0A 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\part_2.txt",
+          "name": "part_2.txt",
+          "size": 73557,
+          "extension": "txt",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 488,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "0A 20 E2 94 82 0A E2 94 82 20 20 20 20 7D 20 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\part_3.txt",
+          "name": "part_3.txt",
+          "size": 72687,
+          "extension": "txt",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 488,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "0A 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\part_4.txt",
+          "name": "part_4.txt",
+          "size": 68142,
+          "extension": "txt",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 456,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "0A 72 20 28 74 6F 6B 65 6E 2C 20 63 6F 75 6E 74",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\part_5.txt",
+          "name": "part_5.txt",
+          "size": 72853,
+          "extension": "txt",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 486,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "0A 73 74 20 65 6D 6F 6A 69 73 2C 20 74 6F 6B 65",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\part_6.txt",
+          "name": "part_6.txt",
+          "size": 76364,
+          "extension": "txt",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 485,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "0A 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\part_7.txt",
+          "name": "part_7.txt",
+          "size": 75457,
+          "extension": "txt",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 403,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "0A 70 6C 69 66 69 65 64 20 72 65 70 72 65 73 65",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\part_8.txt",
+          "name": "part_8.txt",
+          "size": 68572,
+          "extension": "txt",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 187,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "0A 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\part_9.txt",
+          "name": "part_9.txt",
+          "size": 71135,
+          "extension": "txt",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 483,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "0A 20 20 20 20 E2 94 82 0A 20 E2 94 82 20 20 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\plantuml_menu_model.puml",
+          "name": "plantuml_menu_model.puml",
+          "size": 1018,
+          "extension": "puml",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 36,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "40 73 74 61 72 74 75 6D 6C 0D 0A 21 69 6E 63 6C",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\plantuml_paxos_consensus_usecase.puml",
+          "name": "plantuml_paxos_consensus_usecase.puml",
+          "size": 1174,
+          "extension": "puml",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 37,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "40 73 74 61 72 74 75 6D 6C 0D 0A 21 69 6E 63 6C",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\plantuml_probes_equivalence_usecase.puml",
+          "name": "plantuml_probes_equivalence_usecase.puml",
+          "size": 1269,
+          "extension": "puml",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 47,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "40 73 74 61 72 74 75 6D 6C 0D 0A 21 69 6E 63 6C",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\plantuml_solfunmeme_unitary_object.puml",
+          "name": "plantuml_solfunmeme_unitary_object.puml",
+          "size": 1037,
+          "extension": "puml",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 20,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "40 73 74 61 72 74 75 6D 6C 0D 0A 21 69 6E 63 6C",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\plantuml_system_overview.puml",
+          "name": "plantuml_system_overview.puml",
+          "size": 1849,
+          "extension": "puml",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 57,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "40 73 74 61 72 74 75 6D 6C 0D 0A 21 69 6E 63 6C",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\prelude1-aaa.md",
+          "name": "prelude1-aaa.md",
+          "size": 1037464,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 1000,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 23 23 20 55 73 65 72 0A 0A 3C 73 70 61 6E 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\prelude1-aab.md",
+          "name": "prelude1-aab.md",
+          "size": 1349261,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 683,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "20 20 7C 20 61 70 70 20 5F 20 61 2C 20 30 20 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\prelude1-baa.md",
+          "name": "prelude1-baa.md",
+          "size": 1747467,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 211,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 23 23 20 55 73 65 72 0D 0A 0D 0A 3C 73 70 61",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\prelude1.md",
+          "name": "prelude1.md",
+          "size": 2386725,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 1683,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 23 23 20 55 73 65 72 0A 0A 3C 73 70 61 6E 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\prelude1b.md",
+          "name": "prelude1b.md",
+          "size": 1747467,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 211,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 23 23 20 55 73 65 72 0D 0A 0D 0A 3C 73 70 61",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\prelude2-aaa.md",
+          "name": "prelude2-aaa.md",
+          "size": 2621383,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 1000,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 23 23 20 55 73 65 72 0D 0A 0D 0A 3C 73 70 61",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\prelude2-aab.md",
+          "name": "prelude2-aab.md",
+          "size": 450374,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 1000,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "3C 2F 73 70 61 6E 3E 3C 73 70 61 6E 3E 20 20 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\prelude2-aac.md",
+          "name": "prelude2-aac.md",
+          "size": 37811,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 53,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "3C 2F 73 70 61 6E 3E 3C 73 70 61 6E 3E 20 20 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\prelude2.md",
+          "name": "prelude2.md",
+          "size": 3109568,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 2053,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 23 23 20 55 73 65 72 0D 0A 0D 0A 3C 73 70 61",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\refactor.md",
+          "name": "refactor.md",
+          "size": 140607,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 258,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 23 23 20 55 73 65 72 0D 0A 0D 0A 3C 73 70 61",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\semantic_code_graph.md",
+          "name": "semantic_code_graph.md",
+          "size": 3095,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 61,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 20 55 6E 69 76 65 72 73 61 6C 20 53 65 6D 61",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\solfunmeme.html",
+          "name": "solfunmeme.html",
+          "size": 12802,
+          "extension": "html",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 290,
+            "language": "html",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "3C 21 44 4F 43 54 59 50 45 20 68 74 6D 6C 3E 0D",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\solfunmeme.html~",
+          "name": "solfunmeme.html~",
+          "size": 22341,
+          "extension": "html~",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 602,
+            "language": null,
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "3C 21 44 4F 43 54 59 50 45 20 68 74 6D 6C 3E 0D",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\solfunmeme_maps.md",
+          "name": "solfunmeme_maps.md",
+          "size": 6828,
+          "extension": "md",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 174,
+            "language": "markdown",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "67 69 76 65 20 6D 65 20 61 20 73 75 6D 6D 61 72",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "founding_documents\\vectors",
+          "name": "vectors",
+          "size": 4096,
+          "extension": "",
+          "is_file": false,
+          "is_directory": true,
+          "depth": 1,
+          "children": [
+            {
+              "path": "founding_documents\\vectors\\akash.md",
+              "name": "akash.md",
+              "size": 10632,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 249,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "3C 74 68 69 6E 6B 3E 0D 0A 4F 6B 61 79 2C 20 6C",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\vectors\\chat-part2.md",
+              "name": "chat-part2.md",
+              "size": 1779302,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 3728,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 23 23 20 55 73 65 72 0D 0A 0D 0A 3C 73 70 61",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\vectors\\grok-chat (1).md",
+              "name": "grok-chat (1).md",
+              "size": 389681,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 207,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 23 23 20 55 73 65 72 0A 0A 3C 73 70 61 6E 20",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\vectors\\grok-chat (2).md",
+              "name": "grok-chat (2).md",
+              "size": 3204605,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 12113,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 23 23 20 55 73 65 72 0A 0A 3C 73 70 61 6E 20",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\vectors\\grok-chat (3).md",
+              "name": "grok-chat (3).md",
+              "size": 1982898,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 7226,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 23 23 20 55 73 65 72 0A 0A 3C 73 70 61 6E 20",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\vectors\\grok-chat.md",
+              "name": "grok-chat.md",
+              "size": 738636,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 657,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 23 23 20 55 73 65 72 0A 0A 3C 73 70 61 6E 20",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\vectors\\groks.md",
+              "name": "groks.md",
+              "size": 18522,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 413,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "54 68 69 73 20 69 73 20 61 6E 20 61 6D 62 69 74",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\vectors\\vector-is-vibe.md",
+              "name": "vector-is-vibe.md",
+              "size": 1751733,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 2889,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 23 23 20 55 73 65 72 0A 0A 3C 73 70 61 6E 20",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\vectors\\vector-is-vibe2.md",
+              "name": "vector-is-vibe2.md",
+              "size": 907122,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 1547,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 23 23 20 55 73 65 72 0D 0A 0D 0A 3C 73 70 61",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "founding_documents\\vectors\\vector-is-vibe3.md",
+              "name": "vector-is-vibe3.md",
+              "size": 1127839,
+              "extension": "md",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 1787,
+                "language": "markdown",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 23 23 20 55 73 65 72 0D 0A 0D 0A 3C 73 70 61",
+                "git_submodule": null
+              }
+            }
+          ],
+          "metadata": {
+            "lines": null,
+            "language": null,
+            "is_binary": false,
+            "is_text": false,
+            "magic_header": null,
+            "git_submodule": null
+          }
+        }
+      ],
+      "metadata": {
+        "lines": null,
+        "language": null,
+        "is_binary": false,
+        "is_text": false,
+        "magic_header": null,
+        "git_submodule": null
+      }
+    }
+  ],
+  "git_submodules": [],
+  "skip_rules": {
+    "extensions": [],
+    "max_size": null,
+    "max_depth": 2
+  },
+  "indexing_stats": {
+    "start_time": "5.7087582999999995",
+    "end_time": "0.0000527",
+    "duration_seconds": 5.7087251,
+    "files_processed": 0,
+    "files_skipped": 0,
+    "directories_processed": 0
+  }
+}

@@ -1,0 +1,9 @@
+[package]
+name = "agave_solana_validator_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+anyhow = "1.0"
+agave-solana-validator = { path = "../../vendor/agave-solana-validator" }

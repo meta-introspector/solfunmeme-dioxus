@@ -70,6 +70,7 @@ FROM caddy:2.7.5-alpine as runtime
 
 COPY --from=builder /app/target/dx/solfunmeme-dioxus/release/web/  /usr/share/caddy
 COPY Caddyfile /etc/caddy/Caddyfile
+COPY reports /reports
 
 RUN caddy validate --config /etc/caddy/Caddyfile
 

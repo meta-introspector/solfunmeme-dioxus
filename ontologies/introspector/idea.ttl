@@ -1,0 +1,109 @@
+@prefix : <http://example.com/semanticweb#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sysml: <http://www.omg.org/spec/SysML/> .
+@prefix eco: <http://example.com/ecosystem#> .
+
+# Existing SysML concepts (abbreviated for brevity)
+sysml:Block a rdfs:Class .
+sysml:Requirement a rdfs:Class .
+# ... (other existing concepts)
+
+# New Ecosystem Metaphor Concepts
+eco:Ecosystem a rdfs:Class .
+eco:Microorganism a rdfs:Class .
+eco:Habitat a rdfs:Class .
+eco:NutrientCycle a rdfs:Class .
+eco:SymbioticRelationship a rdfs:Class .
+
+# Properties for Ecosystem Concepts
+eco:hasHabitat a rdf:Property ;
+    rdfs:domain eco:Microorganism ;
+    rdfs:range eco:Habitat .
+
+eco:participatesIn a rdf:Property ;
+    rdfs:domain eco:Microorganism ;
+    rdfs:range eco:NutrientCycle .
+
+eco:formsRelationship a rdf:Property ;
+    rdfs:domain eco:Microorganism ;
+    rdfs:range eco:SymbioticRelationship .
+
+eco:containsOrganism a rdf:Property ;
+    rdfs:domain eco:Ecosystem ;
+    rdfs:range eco:Microorganism .
+
+# Mapping SysML concepts to Ecosystem Metaphor
+sysml:Block rdfs:subClassOf eco:Habitat .
+:BoxedLambda rdfs:subClassOf eco:Ecosystem .
+:RDFDocument rdfs:subClassOf eco:NutrientCycle .
+
+# Defining System Components as Microorganisms
+:Developer a eco:Microorganism .
+:User a eco:Microorganism .
+:Algorithm a eco:Microorganism .
+
+# Ecosystem Properties for System Components
+:BoxedLambda eco:containsOrganism :Developer, :User, :Algorithm .
+:Developer eco:hasHabitat :BoxedLambda .
+:User eco:hasHabitat :BoxedLambda .
+:Algorithm eco:participatesIn :RDFDocument .
+
+# Symbiotic Relationships
+:UserDeveloperSymbiosis a eco:SymbioticRelationship .
+:Developer eco:formsRelationship :UserDeveloperSymbiosis .
+:User eco:formsRelationship :UserDeveloperSymbiosis .
+
+# Extending Fitness Function with Ecosystem Concepts
+:FitnessFunction rdfs:subClassOf eco:NutrientCycle .
+:FitnessFunction eco:hasComponent :EcosystemHealth .
+
+:EcosystemHealth a rdf:Property ;
+    rdfs:domain :FitnessFunction ;
+    rdfs:range xsd:float .
+
+# Adaptive Behavior
+eco:AdaptiveBehavior a rdfs:Class .
+:BoxedLambda eco:exhibitsBehavior :SelfRegulation .
+:SelfRegulation a eco:AdaptiveBehavior .
+
+# Resource Management
+eco:Resource a rdfs:Class .
+eco:ConsumesResource a rdf:Property ;
+    rdfs:domain eco:Microorganism ;
+    rdfs:range eco:Resource .
+
+:ComputationalPower a eco:Resource .
+:Developer eco:ConsumesResource :ComputationalPower .
+
+# Evolution and Mutation
+eco:EvolutionaryProcess a rdfs:Class .
+eco:undergoesMutation a rdf:Property ;
+    rdfs:domain sysml:Block ;
+    rdfs:range eco:EvolutionaryProcess .
+
+:CodebaseEvolution a eco:EvolutionaryProcess .
+:BoxedLambda eco:undergoesMutation :CodebaseEvolution .
+
+# Emergent Behavior
+eco:EmergentBehavior a rdfs:Class .
+eco:exhibitsEmergentBehavior a rdf:Property ;
+    rdfs:domain eco:Ecosystem ;
+    rdfs:range eco:EmergentBehavior .
+
+:CollectiveIntelligence a eco:EmergentBehavior .
+:BoxedLambda eco:exhibitsEmergentBehavior :CollectiveIntelligence .
+
+# Ecosystem Health Metrics
+:EcosystemHealthMetric a rdfs:Class .
+:Diversity a :EcosystemHealthMetric .
+:Resilience a :EcosystemHealthMetric .
+:Sustainability a :EcosystemHealthMetric .
+
+:BoxedLambda :hasHealthMetric :Diversity, :Resilience, :Sustainability .
+
+# Linking to SysML Requirements
+:EcosystemRequirement a sysml:Requirement ;
+    rdfs:label "The system must maintain ecosystem balance" .
+
+:BoxedLambda sysml:satisfies :EcosystemRequirement .

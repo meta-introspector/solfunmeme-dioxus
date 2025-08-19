@@ -1,0 +1,9 @@
+[package]
+name = "keyword_extraction_rs_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+anyhow = "1.0"
+keyword_extraction = { path = "../../vendor/keyword-extraction-rs" }

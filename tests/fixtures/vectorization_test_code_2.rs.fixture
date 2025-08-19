@@ -1,0 +1,21 @@
+fn example_function_2() {
+    let items = vec![1, 2, 3, 4, 5];
+    let sum: i32 = items.iter().sum();
+    println!("Sum: {}", sum);
+}
+
+enum ExampleEnum {
+    Variant1(i32),
+    Variant2(String),
+    Variant3,
+}
+
+impl ExampleEnum {
+    fn process(&self) -> String {
+        match self {
+            ExampleEnum::Variant1(n) => format!("Number: {}", n),
+            ExampleEnum::Variant2(s) => format!("String: {}", s),
+            ExampleEnum::Variant3 => "Empty variant".to_string(),
+        }
+    }
+} 

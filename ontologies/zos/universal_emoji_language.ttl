@@ -1,0 +1,26 @@
+@prefix um: <http://example.org/universalemoji#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Emojis as a Universal Language Ontology
+# Inspired by https://github.com/meta-introspector/meta-meme/issues/195
+
+um:Image a um:Concept ; um:emoji "🖼️" ; rdfs:seeAlso um:Art, um:Photo .
+um:Photo a um:Concept ; um:emoji "📸" ; rdfs:seeAlso um:Camera, um:Video .
+um:Art a um:Concept ; um:emoji "🎨" ; rdfs:seeAlso um:Brush, um:Mask, um:Image .
+um:Alphabet a um:Concept ; um:emoji "🔤" ; rdfs:seeAlso um:LetterA, um:LetterB, um:Lowercase .
+um:Uppercase a um:Concept ; um:emoji "🔠" ; rdfs:seeAlso um:Lowercase, um:Number .
+um:Robot a um:Concept ; um:emoji "🤖" ; rdfs:seeAlso um:Brain, um:AI, um:Computer .
+um:Brain a um:Concept ; um:emoji "🧠" ; rdfs:seeAlso um:Mind, um:Idea .
+um:People a um:Concept ; um:emoji "👥" ; rdfs:seeAlso um:Pair, um:Group .
+um:World a um:Concept ; um:emoji "🌍" ; rdfs:seeAlso um:Earth, um:Globe .
+um:Idea a um:Concept ; um:emoji "💡" ; rdfs:seeAlso um:Brain, um:Thought .
+um:Thought a um:Concept ; um:emoji "💭" ; rdfs:seeAlso um:Idea, um:Brain .
+
+# Example equivalence relationships
+um:Image um:equivalentTo um:Art, um:Photo .
+um:Photo um:equivalentTo um:Camera, um:Video .
+um:Robot um:equivalentTo um:AI, um:Computer .
+um:Brain um:equivalentTo um:Mind, um:Idea .
+um:People um:equivalentTo um:Pair, um:Group .
+um:World um:equivalentTo um:Earth, um:Globe .
+um:Idea um:equivalentTo um:Thought, um:Brain . 

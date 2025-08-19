@@ -1,0 +1,5 @@
+use rust_embed::Embed;
+
+#[derive(Embed)]
+#[folder = "vendor/borsh/docs/criterion/ser_header/cbor/idx=5; size=37392/change"]
+pub struct OurVendorBorshDocsCriterionSerHeaderCborIdx5size37392ChangeExtractor;

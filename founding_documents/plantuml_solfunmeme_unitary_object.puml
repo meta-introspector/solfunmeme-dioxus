@@ -1,0 +1,20 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+System_Boundary(sfm, "SolFunMeme") {
+  Container(solfunmeme, "SOLFUNMEME", "ZOS/Token", "Unitary meta-meme object")
+  Container(meme_engine, "Meme Engine", "Self-Introspective", "Generates & evolves memes")
+  Container(consensus, "Paxos Meme Consensus", "Consensus", "Governs meme propagation")
+  Container(hyper_pump, "Hyper-Pump", "Mechanism", "Recursive hype cycles")
+  Container(semantic_compression, "Semantic Compression", "Compressor", "Max memetic energy, minimal form")
+  Container(immutable_state, "Immutable Meme-State", "Ledger", "Viral consistency")
+  Container(meme_mining, "Meme Mining", "Propagation", "Evolve meme narrative")
+}
+
+Rel(solfunmeme, meme_engine, "deforms into")
+Rel(solfunmeme, consensus, "governs")
+Rel(solfunmeme, hyper_pump, "powers")
+Rel(solfunmeme, semantic_compression, "compresses")
+Rel(solfunmeme, immutable_state, "anchors")
+Rel(solfunmeme, meme_mining, "enables")
+@enduml 

@@ -1,0 +1,9 @@
+[package]
+name = "llms_from_scratch_rs_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+anyhow = "1.0"
+llms-from-scratch-rs = { path = "../../vendor/llms-from-scratch-rs" }

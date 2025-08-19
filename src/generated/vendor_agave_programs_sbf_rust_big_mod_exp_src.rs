@@ -1,0 +1,5 @@
+use rust_embed::Embed;
+
+#[derive(Embed)]
+#[folder = "vendor/agave/programs/sbf/rust/big_mod_exp/src"]
+pub struct OurVendorAgaveProgramsSbfRustBigModExpSrcExtractor;

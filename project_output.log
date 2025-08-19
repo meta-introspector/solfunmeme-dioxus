@@ -1,0 +1,518 @@
+warning[E0133]: call to function `std::arch::x86_64::_mm256_xor_si256` with `#[target_feature]` is unsafe and requires unsafe block
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:22:5
+   |
+22 |     op_xor(vals_u32x8s, HIGHEST_BIT_MASK)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ call to function with `#[target_feature]`
+   |
+   = note: for more information, see <https://doc.rust-lang.org/nightly/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+   = help: in order for the call to be safe, the context requires the following additional target feature: avx2
+note: an unsafe function restricts its caller, but its body is safe by default
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:20:1
+   |
+20 | unsafe fn u32_to_i32_avx2(vals_u32x8s: DataType) -> DataType {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = note: `#[warn(unsafe_op_in_unsafe_fn)]` on by default
+
+warning[E0133]: call to unsafe function `std::arch::x86_64::_mm256_lddqu_si256` is unsafe and requires unsafe block
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:69:20
+   |
+69 |         let word = load_unaligned(input);
+   |                    ^^^^^^^^^^^^^^^^^^^^^ call to unsafe function
+   |
+   = note: for more information, see <https://doc.rust-lang.org/nightly/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+   = note: consult the function's documentation for information on how to avoid undefined behavior
+note: an unsafe function restricts its caller, but its body is safe by default
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:48:1
+   |
+48 | / unsafe fn filter_vec_avx2_aux(
+49 | |     mut input: *const __m256i,
+50 | |     range: RangeInclusive<i32>,
+51 | |     output: *mut u32,
+52 | |     offset: u32,
+53 | |     num_words: usize,
+54 | | ) -> usize {
+   | |__________^
+
+warning[E0133]: call to unsafe function `filter_vec::avx2::u32_to_i32_avx2` is unsafe and requires unsafe block
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:70:20
+   |
+70 |         let word = u32_to_i32_avx2(word);
+   |                    ^^^^^^^^^^^^^^^^^^^^^ call to unsafe function
+   |
+   = note: for more information, see <https://doc.rust-lang.org/nightly/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+   = note: consult the function's documentation for information on how to avoid undefined behavior
+
+warning[E0133]: call to unsafe function `filter_vec::avx2::compute_filter_bitset` is unsafe and requires unsafe block
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:71:29
+   |
+71 |         let keeper_bitset = compute_filter_bitset(word, range_simd.clone());
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ call to unsafe function
+   |
+   = note: for more information, see <https://doc.rust-lang.org/nightly/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+   = note: consult the function's documentation for information on how to avoid undefined behavior
+
+warning[E0133]: call to unsafe function `filter_vec::avx2::compact` is unsafe and requires unsafe block
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:73:32
+   |
+73 |         let filtered_doc_ids = compact(ids, keeper_bitset);
+   |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^ call to unsafe function
+   |
+   = note: for more information, see <https://doc.rust-lang.org/nightly/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+   = note: consult the function's documentation for information on how to avoid undefined behavior
+
+warning[E0133]: call to unsafe function `std::arch::x86_64::_mm256_storeu_si256` is unsafe and requires unsafe block
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:74:9
+   |
+74 |         store_unaligned(output_tail as *mut __m256i, filtered_doc_ids);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ call to unsafe function
+   |
+   = note: for more information, see <https://doc.rust-lang.org/nightly/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+   = note: consult the function's documentation for information on how to avoid undefined behavior
+
+warning[E0133]: call to unsafe function `std::ptr::mut_ptr::<impl *mut T>::offset` is unsafe and requires unsafe block
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:75:23
+   |
+75 |         output_tail = output_tail.offset(added_len as isize);
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ call to unsafe function
+   |
+   = note: for more information, see <https://doc.rust-lang.org/nightly/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+   = note: consult the function's documentation for information on how to avoid undefined behavior
+
+warning[E0133]: call to unsafe function `std::ptr::const_ptr::<impl *const T>::offset` is unsafe and requires unsafe block
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:77:17
+   |
+77 |         input = input.offset(1);
+   |                 ^^^^^^^^^^^^^^^ call to unsafe function
+   |
+   = note: for more information, see <https://doc.rust-lang.org/nightly/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+   = note: consult the function's documentation for information on how to avoid undefined behavior
+
+warning[E0133]: call to unsafe function `std::ptr::mut_ptr::<impl *mut T>::offset_from` is unsafe and requires unsafe block
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:79:5
+   |
+79 |     output_tail.offset_from(output) as usize
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ call to unsafe function
+   |
+   = note: for more information, see <https://doc.rust-lang.org/nightly/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+   = note: consult the function's documentation for information on how to avoid undefined behavior
+
+warning[E0133]: call to unsafe function `std::intrinsics::transmute` is unsafe and requires unsafe block
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:95:49
+   |
+95 |     255 - std::arch::x86_64::_mm256_movemask_ps(std::mem::transmute::<DataType, __m256>(inside))
+   |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ call to unsafe function
+   |
+   = note: for more information, see <https://doc.rust-lang.org/nightly/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+   = note: consult the function's documentation for information on how to avoid undefined behavior
+note: an unsafe function restricts its caller, but its body is safe by default
+  --> vendor/tantivy/bitpacker/src/filter_vec/avx2.rs:91:1
+   |
+91 | unsafe fn compute_filter_bitset(val: __m256i, range: std::ops::RangeInclusive<__m256i>) -> u8 {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0133`.
+warning: `tantivy-bitpacker` (lib) generated 10 warnings (run `cargo fix --lib -p tantivy-bitpacker` to apply 3 suggestions)
+warning: unused variable: `language_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:41:13
+   |
+41 |         let language_field = schema_builder.add_text_field("language", TEXT | STORED);
+   |             ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_language_field`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `content_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:42:13
+   |
+42 |         let content_field = schema_builder.add_text_field("content", TEXT | STORED);
+   |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_content_field`
+
+warning: unused variable: `line_start_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:43:13
+   |
+43 |         let line_start_field = schema_builder.add_u64_field("line_start", STORED);
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_line_start_field`
+
+warning: unused variable: `line_end_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:44:13
+   |
+44 |         let line_end_field = schema_builder.add_u64_field("line_end", STORED);
+   |             ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_line_end_field`
+
+warning: unused variable: `content_hash_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:45:13
+   |
+45 |         let content_hash_field = schema_builder.add_text_field("content_hash", TEXT | STORED);
+   |             ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_content_hash_field`
+
+warning: unused variable: `token_count_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:46:13
+   |
+46 |         let token_count_field = schema_builder.add_u64_field("token_count", STORED);
+   |             ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_token_count_field`
+
+warning: unused variable: `line_count_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:47:13
+   |
+47 |         let line_count_field = schema_builder.add_u64_field("line_count", STORED);
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_line_count_field`
+
+warning: unused variable: `char_count_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:48:13
+   |
+48 |         let char_count_field = schema_builder.add_u64_field("char_count", STORED);
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_char_count_field`
+
+warning: unused variable: `test_result_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:49:13
+   |
+49 |         let test_result_field = schema_builder.add_text_field("test_result", TEXT | STORED);
+   |             ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_test_result_field`
+
+warning: `solfunmeme_search_tantivy` (lib) generated 9 warnings
+warning: unused import: `std::collections::HashMap`
+ --> crates/solfunmeme_tantivy_report/src/lib.rs:3:5
+  |
+3 | use std::collections::HashMap;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: `solfunmeme_tantivy_report` (lib) generated 1 warning (run `cargo fix --lib -p solfunmeme_tantivy_report` to apply 1 suggestion)
+warning: unused import: `self`
+ --> crates/solfunmeme_indexer/src/lib.rs:5:15
+  |
+5 | use std::io::{self, BufRead, BufReader};
+  |               ^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: `solfunmeme_indexer` (lib) generated 1 warning (run `cargo fix --lib -p solfunmeme_indexer` to apply 1 suggestion)
+warning: unused import: `std::time::Duration`
+ --> crates/solfunmeme_tools/src/file_watcher.rs:4:5
+  |
+4 | use std::time::Duration;
+  |     ^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused variable: `i`
+   --> crates/solfunmeme_tools/src/chat_processing/chunk_processor.rs:210:14
+    |
+210 |         for (i, ext_file) in external_files.iter().enumerate() {
+    |              ^ help: if this is intentional, prefix it with an underscore: `_i`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: `solfunmeme_tools` (lib) generated 2 warnings (run `cargo fix --lib -p solfunmeme_tools` to apply 1 suggestion)
+warning: variable `temp_dir_holder` is assigned to, but never used
+  --> crates/solfunmeme_tools/src/bin/full_indexer_cli.rs:30:13
+   |
+30 |     let mut temp_dir_holder: Option<TempDir> = None;
+   |             ^^^^^^^^^^^^^^^
+   |
+   = note: consider using `_temp_dir_holder` instead
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: value assigned to `temp_dir_holder` is never read
+  --> crates/solfunmeme_tools/src/bin/full_indexer_cli.rs:35:9
+   |
+35 |         temp_dir_holder = Some(temp_dir);
+   |         ^^^^^^^^^^^^^^^
+   |
+   = help: maybe it is overwritten before being read?
+   = note: `#[warn(unused_assignments)]` on by default
+
+warning: `solfunmeme_tools` (bin "full_indexer_cli") generated 2 warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 48.42s
+     Running `/mnt/c/Users/gentd/OneDrive/Documents/GitHub/solfunmeme-dioxus/target-wasm-solfunmeme/debug/full_indexer_cli ../../crates/ ../../vendor/ --overwrite --debug-backtrace`
+Overwriting existing index at: codebase_index
+Indexing directory: ../../crates/
+[INFO] Running prepare_sources for: ../../crates/
+warning: unused import: `anyhow::Result`
+ --> crates/solfunmeme_clifford/src/lib.rs:3:5
+  |
+3 | use anyhow::Result; // Added for encode_embedding function
+  |     ^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: `solfunmeme_clifford` (lib) generated 1 warning (run `cargo fix --lib -p solfunmeme_clifford` to apply 1 suggestion)
+warning: unused variable: `language_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:41:13
+   |
+41 |         let language_field = schema_builder.add_text_field("language", TEXT | STORED);
+   |             ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_language_field`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `content_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:42:13
+   |
+42 |         let content_field = schema_builder.add_text_field("content", TEXT | STORED);
+   |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_content_field`
+
+warning: unused variable: `line_start_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:43:13
+   |
+43 |         let line_start_field = schema_builder.add_u64_field("line_start", STORED);
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_line_start_field`
+
+warning: unused variable: `line_end_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:44:13
+   |
+44 |         let line_end_field = schema_builder.add_u64_field("line_end", STORED);
+   |             ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_line_end_field`
+
+warning: unused variable: `content_hash_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:45:13
+   |
+45 |         let content_hash_field = schema_builder.add_text_field("content_hash", TEXT | STORED);
+   |             ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_content_hash_field`
+
+warning: unused variable: `token_count_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:46:13
+   |
+46 |         let token_count_field = schema_builder.add_u64_field("token_count", STORED);
+   |             ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_token_count_field`
+
+warning: unused variable: `line_count_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:47:13
+   |
+47 |         let line_count_field = schema_builder.add_u64_field("line_count", STORED);
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_line_count_field`
+
+warning: unused variable: `char_count_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:48:13
+   |
+48 |         let char_count_field = schema_builder.add_u64_field("char_count", STORED);
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_char_count_field`
+
+warning: unused variable: `test_result_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:49:13
+   |
+49 |         let test_result_field = schema_builder.add_text_field("test_result", TEXT | STORED);
+   |             ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_test_result_field`
+
+warning: unused import: `Sha256`
+ --> crates/solfunmeme_solana_data/src/lib.rs:3:12
+  |
+3 | use sha2::{Sha256, Digest};
+  |            ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `system_instruction`
+ --> crates/solfunmeme_solana_data/src/lib.rs:9:5
+  |
+9 |     system_instruction,
+  |     ^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::str::FromStr`
+  --> crates/solfunmeme_solana_data/src/lib.rs:13:5
+   |
+13 | use std::str::FromStr;
+   |     ^^^^^^^^^^^^^^^^^
+
+warning: use of deprecated module `solana_sdk::system_instruction`: Use `solana_system_interface` crate instead
+ --> crates/solfunmeme_solana_data/src/lib.rs:9:5
+  |
+9 |     system_instruction,
+  |     ^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(deprecated)]` on by default
+
+warning: unused import: `Digest`
+ --> crates/solfunmeme_solana_data/src/lib.rs:3:20
+  |
+3 | use sha2::{Sha256, Digest};
+  |                    ^^^^^^
+
+warning: `solfunmeme_search_tantivy` (lib) generated 9 warnings
+warning: `solfunmeme_solana_data` (lib) generated 5 warnings (run `cargo fix --lib -p solfunmeme_solana_data` to apply 3 suggestions)
+   Compiling prepare_sources v0.1.0 (/mnt/c/Users/gentd/OneDrive/Documents/GitHub/solfunmeme-dioxus/crates/prepare_sources)
+warning: unused import: `load_emoji_multivectors`
+ --> crates/prepare_sources/src/process_file.rs:6:40
+  |
+6 | use solfunmeme_embedding::{embed_text, load_emoji_multivectors};
+  |                                        ^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `BertConfig`
+ --> crates/prepare_sources/src/process_file.rs:7:64
+  |
+7 | use solfunmeme_clifford::{BertCliffordEncoder, SolMultivector, BertConfig, get_sieve_address, SolCl};
+  |                                                                ^^^^^^^^^^
+
+warning: unused import: `CodeChunk`
+ --> crates/prepare_sources/src/process_file.rs:9:96
+  |
+9 | use solfunmeme_function_analysis::{analyze_rust_file, extract_code_snippets, AnalyzedDocument, CodeChunk, AnalyzedFunction, ClosestEmojiI...
+  |                                                                                                ^^^^^^^^^
+
+warning: `prepare_sources` (lib) generated 3 warnings (run `cargo fix --lib -p prepare_sources` to apply 3 suggestions)
+warning: unused imports: `Deserialize` and `Serialize`
+ --> crates/prepare_sources/src/bin/prepare_sources.rs:2:13
+  |
+2 | use serde::{Deserialize, Serialize};
+  |             ^^^^^^^^^^^  ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `solfunmeme_function_analysis::CodeChunk`
+ --> crates/prepare_sources/src/bin/prepare_sources.rs:4:5
+  |
+4 | use solfunmeme_function_analysis::CodeChunk;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `prepare_sources` (bin "prepare_sources") generated 2 warnings (run `cargo fix --bin "prepare_sources"` to apply 2 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3m 37s
+     Running `/mnt/c/Users/gentd/OneDrive/Documents/GitHub/solfunmeme-dioxus/target-wasm-solfunmeme/debug/prepare_sources ../../crates/ --output /tmp/.tmpZQdYnu`
+[INFO] Processing 361 chunks:
+[INFO] Processed 100 chunks so far...
+[INFO] Processed 200 chunks so far...
+[INFO] Processed 300 chunks so far...
+[INFO] Finished processing all 361 chunks.
+[INFO] Reading chunks from temporary file: /tmp/.tmpZQdYnu
+Finished indexing: ../../crates/
+Indexing directory: ../../vendor/
+[INFO] Running prepare_sources for: ../../vendor/
+warning: unused import: `anyhow::Result`
+ --> crates/solfunmeme_clifford/src/lib.rs:3:5
+  |
+3 | use anyhow::Result; // Added for encode_embedding function
+  |     ^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: `solfunmeme_clifford` (lib) generated 1 warning (run `cargo fix --lib -p solfunmeme_clifford` to apply 1 suggestion)
+warning: unused import: `Sha256`
+ --> crates/solfunmeme_solana_data/src/lib.rs:3:12
+  |
+3 | use sha2::{Sha256, Digest};
+  |            ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `system_instruction`
+ --> crates/solfunmeme_solana_data/src/lib.rs:9:5
+  |
+9 |     system_instruction,
+  |     ^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::str::FromStr`
+  --> crates/solfunmeme_solana_data/src/lib.rs:13:5
+   |
+13 | use std::str::FromStr;
+   |     ^^^^^^^^^^^^^^^^^
+
+warning: use of deprecated module `solana_sdk::system_instruction`: Use `solana_system_interface` crate instead
+ --> crates/solfunmeme_solana_data/src/lib.rs:9:5
+  |
+9 |     system_instruction,
+  |     ^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(deprecated)]` on by default
+
+warning: unused import: `Digest`
+ --> crates/solfunmeme_solana_data/src/lib.rs:3:20
+  |
+3 | use sha2::{Sha256, Digest};
+  |                    ^^^^^^
+
+warning: unused variable: `language_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:41:13
+   |
+41 |         let language_field = schema_builder.add_text_field("language", TEXT | STORED);
+   |             ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_language_field`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `content_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:42:13
+   |
+42 |         let content_field = schema_builder.add_text_field("content", TEXT | STORED);
+   |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_content_field`
+
+warning: unused variable: `line_start_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:43:13
+   |
+43 |         let line_start_field = schema_builder.add_u64_field("line_start", STORED);
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_line_start_field`
+
+warning: unused variable: `line_end_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:44:13
+   |
+44 |         let line_end_field = schema_builder.add_u64_field("line_end", STORED);
+   |             ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_line_end_field`
+
+warning: unused variable: `content_hash_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:45:13
+   |
+45 |         let content_hash_field = schema_builder.add_text_field("content_hash", TEXT | STORED);
+   |             ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_content_hash_field`
+
+warning: unused variable: `token_count_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:46:13
+   |
+46 |         let token_count_field = schema_builder.add_u64_field("token_count", STORED);
+   |             ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_token_count_field`
+
+warning: unused variable: `line_count_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:47:13
+   |
+47 |         let line_count_field = schema_builder.add_u64_field("line_count", STORED);
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_line_count_field`
+
+warning: unused variable: `char_count_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:48:13
+   |
+48 |         let char_count_field = schema_builder.add_u64_field("char_count", STORED);
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_char_count_field`
+
+warning: unused variable: `test_result_field`
+  --> crates/solfunmeme_search_tantivy/src/lib.rs:49:13
+   |
+49 |         let test_result_field = schema_builder.add_text_field("test_result", TEXT | STORED);
+   |             ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_test_result_field`
+
+warning: `solfunmeme_solana_data` (lib) generated 5 warnings (run `cargo fix --lib -p solfunmeme_solana_data` to apply 3 suggestions)
+warning: `solfunmeme_search_tantivy` (lib) generated 9 warnings
+warning: unused import: `load_emoji_multivectors`
+ --> crates/prepare_sources/src/process_file.rs:6:40
+  |
+6 | use solfunmeme_embedding::{embed_text, load_emoji_multivectors};
+  |                                        ^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `BertConfig`
+ --> crates/prepare_sources/src/process_file.rs:7:64
+  |
+7 | use solfunmeme_clifford::{BertCliffordEncoder, SolMultivector, BertConfig, get_sieve_address, SolCl};
+  |                                                                ^^^^^^^^^^
+
+warning: unused import: `CodeChunk`
+ --> crates/prepare_sources/src/process_file.rs:9:96
+  |
+9 | use solfunmeme_function_analysis::{analyze_rust_file, extract_code_snippets, AnalyzedDocument, CodeChunk, AnalyzedFunction, ClosestEmojiI...
+  |                                                                                                ^^^^^^^^^
+
+warning: `prepare_sources` (lib) generated 3 warnings (run `cargo fix --lib -p prepare_sources` to apply 3 suggestions)
+warning: unused imports: `Deserialize` and `Serialize`
+ --> crates/prepare_sources/src/bin/prepare_sources.rs:2:13
+  |
+2 | use serde::{Deserialize, Serialize};
+  |             ^^^^^^^^^^^  ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `solfunmeme_function_analysis::CodeChunk`
+ --> crates/prepare_sources/src/bin/prepare_sources.rs:4:5
+  |
+4 | use solfunmeme_function_analysis::CodeChunk;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `prepare_sources` (bin "prepare_sources") generated 2 warnings (run `cargo fix --bin "prepare_sources"` to apply 2 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 24.17s
+     Running `/mnt/c/Users/gentd/OneDrive/Documents/GitHub/solfunmeme-dioxus/target-wasm-solfunmeme/debug/prepare_sources ../../vendor/ --output /tmp/.tmpj4mDPG`

@@ -1,0 +1,206 @@
+@prefix tm: <https://example.org/taskmanager#> .
+@prefix em: <http://example.org/emoji#> .
+
+tm:add_reporting_export a tm:Task ;
+    tm:id "add-reporting-export" ;
+    tm:content "Add reporting/export functionality to allow exporting aggregated statistics as JSON or other formats." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn tm:aggregate_structure_data .
+
+tm:aggregate_structure_data a tm:Task ;
+    tm:id "aggregate-structure-data" ;
+    tm:content "Aggregate and structure the extracted data for use in Dioxus chart components (e.g., counts, distributions, relationships)." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn tm:parse_extract_data .
+
+tm:bug_report_cargo_toml_truncation a tm:Task ;
+    tm:id "bug-report-cargo-toml-truncation" ;
+    tm:content "Investigate and report a bug where the `replace` tool in Gemini CLI truncates `Cargo.toml` content, specifically when modifying sections like `[dev-dependencies]`." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:build_lean4_wasm a tm:Task ;
+    tm:id "build-lean4-wasm" ;
+    tm:content "Build and integrate Lean 4 WASM from vendor/lean4 for browser-based proof checking and symbolic reasoning." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:connect_data_to_charts a tm:Task ;
+    tm:id "connect-data-to-charts" ;
+    tm:content "Connect the aggregated data to Dioxus chart components, updating the frontend to visualize real statistics." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn tm:aggregate_structure_data .
+
+tm:emoji_matrix_dashboard a tm:Task ;
+    tm:id "emoji-matrix-dashboard" ;
+    tm:content "Create an emoji matrix dashboard to visualize the emoji content of files, directories, and modules, with rollup functionality." ;
+    tm:status "completed" ;
+    em:emoji "😀✨" ;
+    tm:dependsOn [] .
+
+tm:emoji_matrix_report a tm:Task ;
+    tm:id "emoji-matrix-report" ;
+    tm:content "Implement an Emoji Matrix report: aggregate type_counts from all dataset reports, map them to emojis, and display the result in a Dioxus EmojiMatrix component/table in the app." ;
+    tm:status "pending" ;
+    em:emoji "😀✨" ;
+    tm:dependsOn tm:connect_data_to_charts .
+
+tm:implement_github_search_tool a tm:Task ;
+    tm:id "implement-github-search-tool" ;
+    tm:content "If needed, design and implement a custom GitHub search tool in Rust." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn tm:research_github_search .
+
+tm:integrate_submodule_github_tools a tm:Task ;
+    tm:id "integrate-submodule-github-tools" ;
+    tm:content "Integrate submodule management and GitHub search into the agent/task system for automated project orchestration." ;
+    tm:status "pending" ;
+    em:emoji "✅📋" ;
+    tm:dependsOn tm:research_submodule_tool, tm:implement_github_search_tool .
+
+tm:integrate_task_manager a tm:Task ;
+    tm:id "integrate-task-manager" ;
+    tm:content "Integrate new backend and reporting actions into the task_manager system for tracking and automation." ;
+    tm:status "completed" ;
+    em:emoji "✅📋" ;
+    tm:dependsOn tm:add_reporting_export, tm:connect_data_to_charts .
+
+tm:merge_lean4_rust_shapes a tm:Task ;
+    tm:id "merge-lean4-rust-shapes" ;
+    tm:content "Merge Lean 4 and Rust shapes for unified emoji matrix/topological analysis and visualization in the Dioxus app." ;
+    tm:status "pending" ;
+    em:emoji "😀✨" ;
+    tm:dependsOn tm:parse_microlean4_dataset, tm:emoji_matrix_report .
+
+tm:new_task a tm:Task ;
+    tm:id "new-task" ;
+    tm:content "\"This is a brand new task.\"" ;
+    tm:status ""on hold"" ;
+    em:emoji "✅📋" ;
+    tm:dependsOn tm:emoji_matrix_dashboard .
+
+tm:parse_extract_data a tm:Task ;
+    tm:id "parse-extract-data" ;
+    tm:content "Implement file parsing and data extraction for gemini.md, akash.md, and groks.txt to extract AST summaries and code analysis data." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:parse_microlean4_dataset a tm:Task ;
+    tm:id "parse-microlean4-dataset" ;
+    tm:content "Parse and integrate MicroLean4 dataset from hg_datasets/microlean4: write loader, extract shapes, and normalize to canonical format." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:research_github_search a tm:Task ;
+    tm:id "research-github-search" ;
+    tm:content "Research existing Rust libraries or tools for searching GitHub repositories and code (e.g., github-code-searching, octocrab, octosurfer, gh-stars, etc.)." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:research_submodule_tool a tm:Task ;
+    tm:id "research-submodule-tool" ;
+    tm:content "Research and/or build a Rust tool for managing git submodules." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:review_and_split_files a tm:Task ;
+    tm:id "review_and_split_files" ;
+    tm:content "Review each file in the repository and break the review process into subtasks." ;
+    tm:status "completed" ;
+    em:emoji "✅📋" ;
+    tm:dependsOn [] .
+
+tm:tm_llm_gui_integration a tm:Task ;
+    tm:id "tm-llm-gui-integration" ;
+    tm:content "Prototype LLM and Dioxus GUI integration for live, semantic task management via the Turtle graph." ;
+    tm:status "pending" ;
+    em:emoji "✅📋" ;
+    tm:dependsOn tm:tm_sophia_integration, tm:tm_serde_turtle, tm:tm_semantic_graph_link .
+
+tm:tm_semantic_graph_link a tm:Task ;
+    tm:id "tm-semantic-graph-link" ;
+    tm:content "Link task manager nodes to the universal semantic code graph for unified project/code/UI orchestration." ;
+    tm:status "pending" ;
+    em:emoji "✅📋" ;
+    tm:dependsOn tm:tm_turtle_repr .
+
+tm:tm_serde_turtle a tm:Task ;
+    tm:id "tm-serde-turtle" ;
+    tm:content "Enable SerDe for serializing/deserializing task state to/from Turtle format." ;
+    tm:status "pending" ;
+    em:emoji "✅📋" ;
+    tm:dependsOn tm:tm_turtle_repr .
+
+tm:tm_sophia_integration a tm:Task ;
+    tm:id "tm-sophia-integration" ;
+    tm:content "Integrate Sophia for parsing, querying, and updating the task graph in Rust." ;
+    tm:status "pending" ;
+    em:emoji "✅📋" ;
+    tm:dependsOn tm:tm_turtle_repr .
+
+tm:tm_turtle_repr a tm:Task ;
+    tm:id "tm-turtle-repr" ;
+    tm:content "Refactor the task manager to represent tasks, dependencies, and statuses as RDF/Turtle nodes and triples." ;
+    tm:status "pending" ;
+    em:emoji "✅📋" ;
+    tm:dependsOn [] .
+
+tm:review_ontologies a tm:Task ;
+    tm:id "review-ontologies" ;
+    tm:content "Review all newly created and updated ontology (.ttl) files for completeness, consistency, and correct references (seeAlso, attribution, etc.)." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:review_docs a tm:Task ;
+    tm:id "review-docs" ;
+    tm:content "Ensure all new documentation sections (universal equivalence, self-manifesting vibe, visual vibe, etc.) are present in SOLFUNMEME.md or README.md and cross-linked from relevant ontologies." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:review_plantuml a tm:Task ;
+    tm:id "review-plantuml" ;
+    tm:content "Verify that all PlantUML diagrams referenced in the documentation and ontologies are present in founding_documents/ and are up to date with the latest concepts (Paxos, probes, eigenstatements, etc.)." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:review_dioxus_views a tm:Task ;
+    tm:id "review-dioxus-views" ;
+    tm:content "Check that all new Dioxus view components (PaxosConsensusView, ProbesEquivalenceView, etc.) are integrated or referenced in the GUI, and that their source files exist in views_lib/src/." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:review_attribution a tm:Task ;
+    tm:id "review-attribution" ;
+    tm:content "Add or update README sections to clearly attribute and link to all external inspirations, issues, and foundational projects (meta-meme, protégé, etc.)." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:check_links a tm:Task ;
+    tm:id "check-links" ;
+    tm:content "Run a final pass to ensure all URLs, references, and seeAlso links in ontologies and docs are valid and not broken." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn tm:review_ontologies, tm:review_docs .
+
+tm:closing_summary a tm:Task ;
+    tm:id "closing-summary" ;
+    tm:content "Summarize the current state and next steps in a closing section of the main documentation, inviting further contributions and outlining the living nature of the project." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn tm:review_docs, tm:review_attribution .
+

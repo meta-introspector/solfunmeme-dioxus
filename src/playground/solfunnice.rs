@@ -6,7 +6,6 @@ use std::time::Duration;
 use wasm_bindgen::JsCast;
 use web_sys::{console, window};
 //use dioxus_motion::AnimationStep;
-use crate::playground::orbits::*;
 use dioxus_motion::animations::utils::LoopMode;
 use easer::functions::Easing;
 
@@ -383,7 +382,7 @@ fn ZeroOntologySystem() -> Element {
 
             // Enchanting orbital theme network
     //        ThemeOrbitalNetwork {}
-        ThemeOrbitalNetwork2 {}
+        ThemeOrbitalNetwork {}
     //	ThemeOrbitalNetwork3 {}
     //	ThemeOrbitalNetwork4 {}
 

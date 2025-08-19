@@ -1,0 +1,9 @@
+[package]
+name = "gline_rs_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+anyhow = "1.0"
+gline-rs = { path = "../../vendor/gline-rs" }

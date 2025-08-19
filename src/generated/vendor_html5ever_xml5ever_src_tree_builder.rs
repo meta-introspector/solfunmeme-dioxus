@@ -1,0 +1,5 @@
+use rust_embed::Embed;
+
+#[derive(Embed)]
+#[folder = "vendor/html5ever/xml5ever/src/tree_builder"]
+pub struct OurVendorHtml5everXml5everSrcTreeBuilderExtractor;

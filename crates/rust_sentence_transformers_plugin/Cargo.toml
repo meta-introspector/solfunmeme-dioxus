@@ -1,0 +1,9 @@
+[package]
+name = "rust_sentence_transformers_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+anyhow = "1.0"
+rust-sentence-transformers = { path = "../../vendor/rust-sentence-transformers" }

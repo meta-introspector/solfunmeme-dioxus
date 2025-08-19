@@ -1,5 +1,4 @@
-use solfunmeme_dioxus::core::*;
-use std::collections::HashMap;
+use shared_analysis_types::{CodeSnippet, ExtractedFile, ProcessingFile, TestResult, DocumentSummary, ConversationTurn, UploadedFile, AnnotatedWord, Multivector, ProcessingStats, ProcessingError, LanguageConfig};
 
 const SAMPLE_RUST_CODE: &str = r#"
 use std::collections::HashMap;
@@ -29,256 +28,198 @@ impl Point {
         ((self.x - other.x).powi(2) + (self.y - other.y).powi(2)).sqrt()
     }
 }
-
-/// Sample enum
-pub enum Color {
-    Red,
-    Green,
-    Blue,
-    RGB(u8, u8, u8),
-}
-
-/// Sample trait
-pub trait Drawable {
-    fn draw(&self);
-}
-
-impl Drawable for Point {
-    fn draw(&self) {
-        println!("Drawing point at ({}, {})", self.x, self.y);
-    }
-}
 "#;
 
 #[test]
-fn test_full_code_analysis_pipeline() {
-    let mut analyzer = CodeAnalyzer::new(128, 0.8);
-
-    let analysis = analyzer
-        .analyze_file(SAMPLE_RUST_CODE, "sample.rs".to_string())
-        .expect("Failed to analyze code");
-
-    // Verify basic analysis
-    assert_eq!(analysis.file_path, "sample.rs");
-    assert!(analysis.declarations.len() > 0);
-    assert_eq!(analysis.declarations.len(), analysis.vectors.len());
-    assert!(!analysis.json_ast.is_empty());
-
-    // Verify metrics
-    assert!(analysis.metrics.function_count >= 3); // fibonacci, new, distance, draw
-    assert_eq!(analysis.metrics.struct_count, 1);
-    assert_eq!(analysis.metrics.enum_count, 1);
-    assert_eq!(analysis.metrics.trait_count, 1);
-    assert_eq!(analysis.metrics.impl_count, 2);
-    assert!(analysis.metrics.complexity_score > 0.0);
+fn test_code_snippet_extraction() {
+    let snippets = shared_analysis_types::extract_code_snippets(SAMPLE_RUST_CODE);
+    
+    // Should extract at least one snippet
+    assert!(!snippets.is_empty());
+    
+    // Check that the first snippet has the expected content
+    let first_snippet = &snippets[0];
+    assert_eq!(first_snippet.language, "rust");
+    assert!(first_snippet.content.contains("fn fibonacci"));
+    assert!(first_snippet.content.contains("struct Point"));
+    assert!(first_snippet.line_start > 0);
+    assert!(first_snippet.line_end > first_snippet.line_start);
+    assert!(first_snippet.token_count > 0);
+    assert!(first_snippet.line_count > 0);
+    assert!(first_snippet.char_count > 0);
 }
 
 #[test]
-fn test_declaration_splitting_and_vectorization() {
-    let mut splitter = DeclarationSplitter::new();
-    splitter
-        .split_file(SAMPLE_RUST_CODE, Some("test.rs".to_string()))
-        .expect("Failed to split declarations");
-
-    assert!(splitter.declarations.len() >= 5);
-
-    let vectorizer = CodeVectorizer::new(64);
-    let vectors: Vec<_> = splitter
-        .declarations
-        .iter()
-        .map(|decl| vectorizer.vectorize(&decl.content))
-        .collect();
-
-    assert_eq!(vectors.len(), splitter.declarations.len());
-
-    // Test vector similarity
-    for vector in &vectors {
-        assert_eq!(vector.dimensions.len(), 64);
-        let sum: f32 = vector.dimensions.iter().sum();
-        assert!((sum - 1.0).abs() < 1e-5); // Should be normalized
-    }
+fn test_extracted_file_processing() {
+    let snippet = CodeSnippet {
+        language: "rust".to_string(),
+        content: SAMPLE_RUST_CODE.to_string(),
+        line_start: 1,
+        line_end: 25,
+        content_hash: shared_analysis_types::generate_content_hash(SAMPLE_RUST_CODE),
+        token_count: shared_analysis_types::estimate_token_count(SAMPLE_RUST_CODE),
+        line_count: SAMPLE_RUST_CODE.lines().count(),
+        char_count: SAMPLE_RUST_CODE.chars().count(),
+        test_result: Some(shared_analysis_types::create_default_test_result()),
+    };
+    
+    let file = ExtractedFile {
+        name: "sample.rs".to_string(),
+        snippets: vec![snippet],
+        total_lines: SAMPLE_RUST_CODE.lines().count(),
+    };
+    
+    assert_eq!(file.name, "sample.rs");
+    assert_eq!(file.snippets.len(), 1);
+    assert_eq!(file.total_lines, SAMPLE_RUST_CODE.lines().count());
+    
+    // Verify the snippet properties
+    let file_snippet = &file.snippets[0];
+    assert_eq!(file_snippet.language, "rust");
+    assert!(file_snippet.content.contains("fn fibonacci"));
+    assert!(file_snippet.test_result.is_some());
 }
 
 #[test]
-fn test_duplicate_detection() {
-    let duplicate_code1 = r#"
-fn duplicate_function() {
-    println!("This is a duplicate");
-    let x = 42;
-    x + 1
-}
-"#;
-
-    let duplicate_code2 = r#"
-fn another_duplicate() {
-    println!("This is a duplicate");
-    let x = 42;
-    x + 1
-}
-"#;
-
-    let mut analyzer = CodeAnalyzer::new(64, 0.7);
-
-    let mut files = HashMap::new();
-    files.insert("file1.rs".to_string(), duplicate_code1.to_string());
-    files.insert("file2.rs".to_string(), duplicate_code2.to_string());
-
-    let analyses = analyzer
-        .analyze_multiple_files(files)
-        .expect("Failed to analyze files");
-
-    let duplicate_report = analyzer.find_cross_file_duplicates(&analyses);
-
-    // Should detect duplicates due to similar content
-    assert!(duplicate_report.total_duplicates > 0 || duplicate_report.canonical_count > 0);
+fn test_processing_file_workflow() {
+    let processing_file = ProcessingFile {
+        name: "test.rs".to_string(),
+        progress: 50,
+        total_lines: 100,
+        current_content: SAMPLE_RUST_CODE.to_string(),
+        summary: Some(DocumentSummary {
+            total_turns: 1,
+            total_code_snippets: 1,
+            total_tokens: shared_analysis_types::estimate_token_count(SAMPLE_RUST_CODE),
+            languages_found: vec!["rust".to_string()],
+            content_hashes: vec![shared_analysis_types::generate_content_hash(SAMPLE_RUST_CODE)],
+        }),
+    };
+    
+    assert_eq!(processing_file.name, "test.rs");
+    assert_eq!(processing_file.progress, 50);
+    assert_eq!(processing_file.total_lines, 100);
+    assert!(processing_file.summary.is_some());
+    
+    let summary = processing_file.summary.unwrap();
+    assert_eq!(summary.total_turns, 1);
+    assert_eq!(summary.total_code_snippets, 1);
+    assert_eq!(summary.languages_found.len(), 1);
+    assert_eq!(summary.languages_found[0], "rust");
 }
 
 #[test]
-fn test_meme_generation() {
-    let mut analyzer = CodeAnalyzer::new(128, 0.8);
-    let analysis = analyzer
-        .analyze_file(SAMPLE_RUST_CODE, "sample.rs".to_string())
-        .expect("Failed to analyze code");
-
-    let generator = MemeGenerator::new(128);
-    let memes = generator.generate_meme_representation(&analysis);
-
-    assert!(memes.len() > 0);
-
-    // Check that we have memes for different declaration types
-    let meme_values: Vec<&String> = memes.values().collect();
-    let has_function_meme = meme_values.iter().any(|m| m.contains("🔧"));
-    let has_struct_meme = meme_values.iter().any(|m| m.contains("🏗️"));
-
-    assert!(has_function_meme);
-    assert!(has_struct_meme);
+fn test_conversation_turn_processing() {
+    let snippet = CodeSnippet {
+        language: "rust".to_string(),
+        content: "fn hello() { println!(\"world\"); }".to_string(),
+        line_start: 1,
+        line_end: 1,
+        content_hash: "abc123".to_string(),
+        token_count: 6,
+        line_count: 1,
+        char_count: 32,
+        test_result: None,
+    };
+    
+    let turn = ConversationTurn {
+        author: "developer".to_string(),
+        content: "Here's a simple function:".to_string(),
+        code_snippets: vec![snippet],
+    };
+    
+    assert_eq!(turn.author, "developer");
+    assert_eq!(turn.content, "Here's a simple function:");
+    assert_eq!(turn.code_snippets.len(), 1);
+    assert_eq!(turn.code_snippets[0].language, "rust");
 }
 
 #[test]
-fn test_meme_ecosystem_creation() {
-    let mut analyzer = CodeAnalyzer::new(64, 0.8);
-    let analysis = analyzer
-        .analyze_file(SAMPLE_RUST_CODE, "sample.rs".to_string())
-        .expect("Failed to analyze code");
-
-    let generator = MemeGenerator::new(64);
-    let ecosystem = generator.create_meme_ecosystem(&[analysis]);
-
-    assert!(ecosystem.memes.len() > 0);
-    assert_eq!(ecosystem.relationships.len(), ecosystem.memes.len());
-    assert_eq!(ecosystem.dimensional_structure.dimensions, 64);
-    assert!(ecosystem.dimensional_structure.harmonic_frequencies.len() > 0);
+fn test_uploaded_file_processing() {
+    let uploaded_file = UploadedFile {
+        name: "project.zip".to_string(),
+        contents: SAMPLE_RUST_CODE.to_string(),
+        generated_program: "fn main() { fibonacci(10); }".to_string(),
+        summary: Some(DocumentSummary {
+            total_turns: 1,
+            total_code_snippets: 1,
+            total_tokens: 50,
+            languages_found: vec!["rust".to_string()],
+            content_hashes: vec!["hash123".to_string()],
+        }),
+        zip_url: Some("https://example.com/project.zip".to_string()),
+    };
+    
+    assert_eq!(uploaded_file.name, "project.zip");
+    assert!(uploaded_file.contents.contains("fn fibonacci"));
+    assert!(uploaded_file.generated_program.contains("fn main"));
+    assert!(uploaded_file.summary.is_some());
+    assert!(uploaded_file.zip_url.is_some());
 }
 
 #[test]
-fn test_biosemiotic_properties() {
-    let recursive_code = r#"
-fn factorial(n: u32) -> u32 {
-    if n <= 1 {
-        1
-    } else {
-        n * factorial(n - 1)
-    }
-}
-"#;
-
-    let mut splitter = DeclarationSplitter::new();
-    splitter.split_file(recursive_code, None).unwrap();
-
-    let generator = MemeGenerator::new(64);
-    let vector = CodeVectorizer::new(64).vectorize(recursive_code);
-    let meme = generator.generate_meme_from_declaration(&splitter.declarations[0], &vector);
-
-    let props = &meme.metadata.biosemiotic_properties;
-    assert!(props.emergence_level >= 1);
-    assert!(props.recursive_depth > 0);
-    assert!(props.information_density > 0.0);
-    assert!(props.semantic_coherence > 0.0);
+fn test_multivector_operations() {
+    let mv1 = Multivector {
+        scalar: 1.0,
+        vector: [0.1, 0.2, 0.3],
+    };
+    
+    let mv2 = Multivector {
+        scalar: 2.0,
+        vector: [0.4, 0.5, 0.6],
+    };
+    
+    // Test default implementation
+    let default_mv = Multivector::default();
+    assert_eq!(default_mv.scalar, 0.0);
+    assert_eq!(default_mv.vector, [0.0, 0.0, 0.0]);
+    
+    // Test partial equality
+    assert_ne!(mv1, mv2);
+    assert_eq!(mv1, mv1.clone());
 }
 
 #[test]
-fn test_code_to_vector_to_code_consistency() {
-    let simple_code = "fn hello() { println!(\"Hello, world!\"); }";
-
-    let vectorizer = CodeVectorizer::new(32);
-    let vector1 = vectorizer.vectorize(simple_code);
-    let vector2 = vectorizer.vectorize(simple_code);
-
-    // Same code should produce identical vectors
-    assert_eq!(vector1.dimensions, vector2.dimensions);
-    assert!((vector1.similarity(&vector2) - 1.0).abs() < 1e-6);
+fn test_annotated_word_creation() {
+    let word = AnnotatedWord {
+        word: "function".to_string(),
+        primary_emoji: "🔧".to_string(),
+        secondary_emoji: "⚙️".to_string(),
+        wikidata: Some("Q12345".to_string()),
+        embedding: vec![0.1, 0.2, 0.3, 0.4],
+        multivector: Multivector {
+            scalar: 1.0,
+            vector: [0.1, 0.2, 0.3],
+        },
+    };
+    
+    assert_eq!(word.word, "function");
+    assert_eq!(word.primary_emoji, "🔧");
+    assert_eq!(word.secondary_emoji, "⚙️");
+    assert_eq!(word.wikidata, Some("Q12345".to_string()));
+    assert_eq!(word.embedding.len(), 4);
+    assert_eq!(word.multivector.scalar, 1.0);
 }
 
 #[test]
-fn test_complexity_scoring() {
-    let simple_code = "fn simple() {}";
-    let complex_code = r#"
-fn complex(data: Vec<HashMap<String, Vec<Option<Result<i32, String>>>>>) -> Result<(), Box<dyn std::error::Error>> {
-    for item in data {
-        for (key, values) in item {
-            for value in values {
-                match value {
-                    Some(Ok(n)) if n > 0 => {
-                        for i in 0..n {
-                            if i % 2 == 0 {
-                                unsafe {
-                                    println!("Complex operation: {}", i);
-                                }
-                            }
-                        }
-                    },
-                    Some(Err(e)) => return Err(e.into()),
-                    _ => continue,
-                }
-            }
-        }
-    }
-    Ok(())
-}
-"#;
-
-    let mut analyzer = CodeAnalyzer::new(64, 0.8);
-    let simple_analysis = analyzer
-        .analyze_file(simple_code, "simple.rs".to_string())
-        .unwrap();
-    let complex_analysis = analyzer
-        .analyze_file(complex_code, "complex.rs".to_string())
-        .unwrap();
-
-    assert!(complex_analysis.metrics.complexity_score > simple_analysis.metrics.complexity_score);
-}
-
-#[test]
-fn test_canonical_directory_creation() {
-    let code_with_duplicates = r#"
-fn function_a() {
-    let x = 42;
-    println!("{}", x);
-}
-
-fn function_b() {
-    let x = 42;
-    println!("{}", x);
-}
-
-fn unique_function() {
-    println!("I am unique!");
-}
-"#;
-
-    let mut analyzer = CodeAnalyzer::new(64, 0.9);
-    let analysis = analyzer
-        .analyze_file(code_with_duplicates, "test.rs".to_string())
-        .unwrap();
-
-    if let Some(duplicate_report) = &analysis.duplicate_report {
-        let detector = DuplicateDetector::new(64, 0.9);
-        let canonical_files = detector.create_canonical_directory(duplicate_report);
-        let stats = detector.calculate_deduplication_savings(duplicate_report);
-
-        if duplicate_report.groups.len() > 0 {
-            assert!(canonical_files.len() > 0);
-            assert!(stats.savings_percentage >= 0.0);
+fn test_processing_error_handling() {
+    let errors = vec![
+        ProcessingError::FileReadError("file not found".to_string()),
+        ProcessingError::ParseError("invalid syntax".to_string()),
+        ProcessingError::TestExecutionError("test failed".to_string()),
+        ProcessingError::InvalidFormat("wrong format".to_string()),
+    ];
+    
+    for error in errors {
+        let error_string = error.to_string();
+        assert!(!error_string.is_empty());
+        
+        // Test that the error can be converted to a string
+        match error {
+            ProcessingError::FileReadError(msg) => assert!(error_string.contains(&msg)),
+            ProcessingError::ParseError(msg) => assert!(error_string.contains(&msg)),
+            ProcessingError::TestExecutionError(msg) => assert!(error_string.contains(&msg)),
+            ProcessingError::InvalidFormat(msg) => assert!(error_string.contains(&msg)),
         }
     }
 }

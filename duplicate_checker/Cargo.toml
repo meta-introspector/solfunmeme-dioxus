@@ -1,0 +1,14 @@
+[package]
+name = "duplicate_checker"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+
+[dependencies]
+walkdir = "2.5.0"
+sha2 = "0.10.9"
+
+[[bin]]
+name = "duplicate_checker"
+path = "src/main.rs" 

@@ -1,0 +1,7 @@
+[package]
+name = "bootstrap-stage1-old"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bootstrap-stage0 = { path = "../stage0" }

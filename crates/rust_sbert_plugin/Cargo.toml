@@ -1,0 +1,9 @@
+[package]
+name = "rust_sbert_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+anyhow = "1.0"
+sbert = { path = "../../vendor/rust-sbert" }

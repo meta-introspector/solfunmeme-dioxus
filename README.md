@@ -1,307 +1,255 @@
-## Solfunmeme Dioxus 
+# Solfunmeme-Dioxus: Self-Aware Codebase
 
-The vibe is the vector is the number is the embedding is the string vibrating, contains the harmonies
-which describe the structure contained in the number. Each prime factor contributes an exponent, multiple, or ratio, an addition or substration, in an operation 
-that can be considered as a matrix or group or ring, or lava or category or topological or matematical or abstract or neuron or biosemiosis operation.
+A revolutionary codebase management system that integrates mathematical frameworks (Clifford algebra, manifold geometry) with semantic processing to create a truly self-aware codebase where code and meaning "vibe" together.
 
-The system can refactor and rewrite itself into smaller and more useful components, or integrating open source libraries
-to offload the work onto tested intefaces. 
+## 🌟 Vision
 
-Eventaully we can construct a single multi dimensional matrix that lets us apprehend
-the entire project at a single glance, this dashboard can be seen as the throne or drivers seat
-the main OODA loop, the playground where the kids can play without breaking the system.
+**"The message is the vibe is the function, the functions vibe with each other."**
 
-This matrix will have a key that is traceable back to the sources, we can show for each patch what influenced it.
+Solfunmeme-Dioxus represents a paradigm shift in how we understand, manage, and interact with code. By vendorizing, indexing, deduplicating, and cross-referencing all code (including dependencies), we create a living, evolving, self-understanding system.
 
-## Overview  
+## 🚀 Key Features
 
-Solfunmeme Dioxus is an ambitious project that combines code analysis, vectorization, and blockchain technology to create a comprehensive code visualization and execution platform.  
-  
-### Core Concepts  
-- **Code Vectorization**: Transform source code into executable vector representations  
-- **Modular Architecture**: Split declarations into individual files for better organization  
-- **Duplicate Detection**: Identify and manage code duplicates across canonical directories  
+### Self-Aware Codebase Engine
+- **Vendorization System**: Downloads and stores all external dependencies locally
+- **Code Indexing & Search**: Full-text search using Tantivy with semantic similarity
+- **SHA-based Deduplication**: Exact duplicate detection via content hashing
+- **Cross-Reference Analysis**: Bidirectional links between code and documentation
 
-### Goals
+### Mathematical Framework
+- **8D Riemann Manifold**: Geometric representation of code semantics
+- **Clifford Algebra Engine**: Advanced mathematical structures for code analysis
+- **Geometric Attention**: Multi-dimensional attention mechanisms
+- **Vector Processing**: Convert code to mathematical vectors for similarity analysis
 
-Automatically split each declaration to own file, each declaration is a meme, a biosemiotic entity that appears in multiple forms,
-like a higher dimensioal being, projected into a lower dimension, a content addressable entity.
+### Task Management System
+- **Automated Task Discovery**: Extract TODO, FIXME, and other task markers from code
+- **Integration with Analysis Tools**: Connect with Rust Analyzer, Clippy, cargo-audit
+- **Priority Management**: AI-driven task prioritization based on dependencies and impact
+- **Real-time Progress Tracking**: Monitor task execution and system health
 
-vectorize -> emit code from vector
-vector = code = binary 
-executable vectors
-look for duplicates
-cannonical directories
+### Development Tools Integration
+- **Linting & Analysis**: Rust Analyzer, Clippy, custom rules
+- **Security Scanning**: CVE detection and vulnerability assessment
+- **Compilation & Testing**: Automated test discovery and coverage analysis
+- **Performance Monitoring**: Build time and runtime metrics
 
-### auto populate menu
-### embed code in app
-### embed json version of code in app
-### embed bert embedding of code and json in app
-### create emojis for every item in app
+## 🛠️ Installation
 
-idea
+```bash
+# Clone the repository
+git clone https://github.com/your-username/solfunmeme-dioxus.git
+cd solfunmeme-dioxus
 
-1. dynamically generate the menu
-2. to do so query the code at runtime
-3. to do so embed the source in the app
-4. parse the source with syn to json
-5. embed the source and the json into the app
-6. later we will vectorize both into a dimensional structure. use dummy embedding for now.
-7. then we assign an emoji to each item.
-8. then we can visualze the code as a hyperspace. 
+# Install dependencies
+cargo build
 
-# Status
-
-1. setting up testing and coverage for code
-2. removing warnings
-3. removing unused code
-4. creating coverage
-
-## Functionality
-
-### Login with wallet
-#### Create secrets for access to apis
-#### Encrypt secrets locally with secondary password
-
-#### Store secrets on aws ssm parameters
-##### AWS Credentials
-##### Github
-##### Huggingface
-##### Openstreetmap
-##### Archive.org
-##### Wikidata
-##### Codeberg
-##### Gitlab
-##### Gitgud
-
-##### AI Credentials
-###### Grok
-###### Groq
-###### OpenAI
-###### Google
-###### Bedrock
-##### Solana
-##### SSH Keys
-
-#### Store public data
-##### SSH keys
-##### On solana
-##### On git 
-
-#### Interpreting data :
-
-### Formats
-#### JSON
-#### xml schema
-#### turtle/rdf
-#### Emojis
-#### Tickets
-#### Org Mode
-#### Markdown  - pandoc
-#### Wikidata
-#### Wikimedia
-#### JPG/PNG
-#### Video
-#### Trace
-#### Corefile
-#### Elf
-#### Dwarf
-#### Nix/Guix
-#### Github Actions
-
-### Languages
-#### Rust
-#### Lean
-#### ocaml
-#### coq
-#### metcoq
-#### haskell,
-#### terraform
-#### Cloudformation
-#### Bash/Shellcheck 
-#### LLVM/IR
-#### ASM
-#### GNU/mes
-#### Guile Schema
-#### Nix
-#### Dockerfile
-#### Python
-#### Mojo
-
-### Theories
-#### Category Thoery
-#### Group Thoery
-#### HOTT
-Univalent foundations
-Unimath
-Paths as proofs. 
-Rewrite transformation from one form to antother.
-lean4 <-> coq
-8 level of abstraction. 
-goedel one level number. 
-
-#### Ast
-#### Bott periodicty
-#### Vector Bundles
-#### Lie Groups
-#### Memes
-#### Semiotics
-#### Programming Language
-
-#### Open Source/Open Knowledge
-#### Biosemiotics
-#### Incompleteness
-#### Representation
-#### Complexity
-
-#### Self hosting
-#### Reproducible
-#### Secure
-#### Audited
-#### Declarative
-#### Emergent
-#### Omni Combinator
-
-### low value :
-1. pay for promotion.
-give out coins.
-calls 
-bots telegram
-twitter
-pay for meetings.
-going to conferences
-buying dinner.
-marketing - p2p - grass roots.
-
-2. communication, style. loner.
-ideosycretic. 
-old - offline. rotary phone. zk84 sinclar. 1984. 
-cassette tapes.
-trending, copying. 
-old school.
-germany - sceptical.
-
-3. old school ai
-prolog, lisp, 
-compiler ai
-emacs gnu
-
-4. worldcom- 
-fraud. 2003,2007, 
-sick hype.
-open honest
-
-5. loyal to holder. 
-long term. months and year.
-
-6. value proposition:
-Sell goods and servics such as consulting time or support via our token.
-We should consult for and help the holders of our token, adding personal value.
-Online Services would be provided to holders according to resources available.
-The longer you hold the project tokens and nfs, the more internal credits you earn, which you can sell, swap or use for services and goods.
-
-7. hosting providers 
-rent ip and ports at market rate. 
-mine tokens into existence over time. 
-
-eventually we swap tokens for real solana on the rollup. 
-
-## Systems
-
-### pump fun
-### open sea
-nft marketplaces
-### githosting.
-### telegram, discord, x,
-### matrix, mastodon
-#### BBS 
-#### PDP 11, 8 bit, 128kb.
-####  Browser + server + homelab p2p2 
-
-### WIkipedia
-### Wikidata
-### Linux Project
-
-### Bittensor
-### Bitcoin
-### Solana
-### Solana- sidechains
-
-#### distribute batch vectorizing large projects
-reducing the transfer of data between node
-
-## Ideas
-
-### Value - free tier (aws), compress solana, 
-
-Other memescoins, provide service. 
-hosting providers will earn coins credits. run gpu. 
-your free tier groq, 
-social credit score. 
-
-### Artists create and swap value as solana tokens.
-Instead of revealing the art they produce zkp of the value, like a blind bag.
-public reduced quality, short clips or description.
-human + ai art critique that you can trust. 
-license usage of custom models with quality control. 
-Consumers can share if they want, or keep for themselves.
-
-### code quality
-vibe code generation with quality. 
-
-human first, ai second. 
-no ai government, dao. Ai support and help the decision making process. 
-quality controls. 
-
-Game engine. 
-dex - distributed excchnage. 
-atom swaps - prisoner exachange.
-This many tokens for that many. 
-
-## Introspection idea.
-mathlib -> lean4 -> json -> memes 
-
-#### Like 
-### Declarations are transactions, semiosis, biosemiosis
-The gut feeling, this emergent thing, never finished, self modifiying system.
-adjusting, modifying, moving foward. 
-
-Interpretion of the data in the system will evolve. 
-
-### Types are equilibrium between systems
-### Memes are recorded as chats, issues, code, git commits, 
-### Compilers compile and interpret language expressions.
-### All the data can be stored in our solana sidechain on rocksb (what solana uses internally)
-### Memes are lean4 expressions that when executed can produce text or images or other values, the evaluation.
-binding of parmeters to other memes or contract addresess to compose memes.
-### Solana sidechain can rollup into mainnet via compression, 
-storing results immutably in public and referencing the results on mainnet via zkp
-
-
-
-# Older stuff
-
-See:
-https://stackoverflow.com/questions/55912871/how-to-work-with-openssl-for-rust-within-a-windows-development-environment
-
-
-```
-   
-   $env:VCPKG_ROOT="C:\Users\gentd\OneDrive\Documents\GitHub\vcpkg"
-   vcpkg  install openssl 
-   vcpkg.exe install openssl:x64-windows
-   vcpkg.exe install openssl:x64-windows-static
-   vcpkg.exe integrate install
-   set VCPKGRS_DYNAMIC=1
-  
-   $env:OPENSSL_DIR="C:\Users\gentd\OneDrive\Documents\GitHub\vcpkg\installed\x64-windows-static"
-   cargo build
-
-or in bash
-    export OPENSSL_DIR="/c/Users/gentd/OneDrive/Documents/GitHub/vcpkg/installed/x64-windows-static"
-    
+# Install the CLI tool
+cargo install --path .
 ```
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/meta-introspector/solfunmeme-dioxus)
+## 📖 Quick Start
 
+### 1. Vendorize Dependencies
+```bash
+# Vendorize all dependencies for indexing
+zos vendorize --output-dir ./vendor --recursive
+```
 
+### 2. Index Your Codebase
+```bash
+# Index your code and vendored dependencies
+zos index ./src --index-dir ./code_index --include-vendor
+```
+
+### 3. Discover Tasks
+```bash
+# Automatically discover tasks from code analysis
+zos tasks discover ./src
+```
+
+### 4. Search Your Codebase
+```bash
+# Search for code that matches a specific vibe
+zos search "geometric attention" --limit 10
+```
+
+### 5. Generate Reports
+```bash
+# Generate comprehensive codebase health report
+zos report codebase ./src
+```
+
+## 🔧 CLI Commands
+
+### Core Operations
+- `zos vendorize` - Vendorize all dependencies for indexing
+- `zos index` - Index code for search and analysis
+- `zos deduplicate` - Find and analyze duplicate code
+- `zos search` - Search the indexed codebase
+
+### Task Management
+- `zos tasks list` - List all tasks
+- `zos tasks discover` - Discover tasks from code analysis
+- `zos tasks report` - Generate task report
+- `zos tasks update` - Update task status
+
+### Analysis Tools
+- `zos analyze lint` - Run linting tools
+- `zos analyze security` - Run security analysis
+- `zos analyze complexity` - Analyze code complexity
+
+### Reporting
+- `zos report codebase` - Generate codebase health report
+- `zos report tasks` - Generate task management report
+- `zos report integration` - Generate integration analysis report
+
+## 🏗️ Architecture
+
+### Data Flow
+```
+Source Code → Vendorization → Indexing → Deduplication → Analysis
+     ↓              ↓            ↓           ↓           ↓
+  Raw Files    Dependencies   Searchable   Unique      Metrics
+                                    Index    Snippets    & Reports
+```
+
+### Self-Awareness Pipeline
+```
+Query → Semantic Search → Cross-Reference → Mathematical Analysis → Response
+  ↓         ↓              ↓                ↓                    ↓
+User    Tantivy Index   Code-Doc Links   Clifford Algebra    Insights &
+Input   Vector Search   Provenance       Geometric Attention  Actions
+```
+
+## 📊 Data Models
+
+### Code Snippet
+```rust
+struct CodeSnippet {
+    content: String,
+    hash: String,           // SHA-256 for deduplication
+    file_path: String,
+    line_start: usize,
+    line_end: usize,
+    language: String,
+    crate_name: Option<String>,
+    version: Option<String>,
+    metrics: CodeMetrics,
+    vectors: Vec<f32>,      // Semantic embeddings
+}
+```
+
+### Task
+```rust
+struct Task {
+    id: String,
+    content: String,
+    status: TaskStatus,
+    priority: f32,
+    dependencies: Vec<String>,
+    category: TaskCategory,
+    source: TaskSource,     // Code, GitHub, Manual, etc.
+    metadata: HashMap<String, Value>,
+}
+```
+
+## 🔗 Integration Points
+
+### CLI Tools
+- `zos` - Main CLI interface for all operations
+- `doc-cross-references` - Documentation and code analysis
+- `vibe-finder` - Semantic code search using Tantivy
+- `duplicate-finder` - Code duplication detection
+
+### External Integrations
+- **GitHub**: Repository management and issue tracking
+- **CI/CD**: Automated testing and deployment
+- **Monitoring**: Performance and health tracking
+- **LLM Integration**: AI-powered code analysis and generation
+
+## 🎯 Use Cases
+
+### Code Discovery
+- Find similar code patterns across your entire codebase
+- Discover unused or duplicate functionality
+- Identify code that needs refactoring
+
+### Task Automation
+- Automatically discover TODO and FIXME comments
+- Track security vulnerabilities and linting issues
+- Prioritize tasks based on dependencies and impact
+
+### Documentation
+- Generate comprehensive codebase reports
+- Create cross-referenced documentation
+- Track code evolution and changes
+
+### Quality Assurance
+- Monitor code complexity and maintainability
+- Detect security vulnerabilities early
+- Ensure consistent code quality
+
+## 🔮 Future Enhancements
+
+### AI Integration
+- **Code Generation**: AI-powered code completion and generation
+- **Bug Prediction**: ML-based bug detection and prevention
+- **Refactoring Suggestions**: Automated code improvement recommendations
+- **Documentation Generation**: Auto-generate docs from code analysis
+
+### Advanced Analytics
+- **Code Evolution Tracking**: Historical analysis of code changes
+- **Team Productivity Metrics**: Developer activity and contribution analysis
+- **Dependency Impact Analysis**: Understand the cost of dependencies
+- **Performance Regression Detection**: Automated performance monitoring
+
+### Ecosystem Integration
+- **Package Manager Integration**: Direct integration with cargo, npm, pip, etc.
+- **IDE Plugins**: VSCode, IntelliJ, and other IDE integrations
+- **ChatOps**: Slack, Discord, and other chat platform integrations
+- **Web Dashboard**: Rich web interface for codebase exploration
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+### Development Setup
+```bash
+# Clone and setup
+git clone https://github.com/your-username/solfunmeme-dioxus.git
+cd solfunmeme-dioxus
+
+# Build all crates
+cargo build
+
+# Run tests
+cargo test
+
+# Run linting
+cargo clippy
+
+# Run security audit
+cargo audit
+```
+
+## 📄 License
+
+This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Tantivy**: For powerful full-text search capabilities
+- **Clifford Algebra**: For mathematical framework inspiration
+- **Rust Community**: For the amazing ecosystem and tools
+- **Dioxus**: For the reactive UI framework
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/your-username/solfunmeme-dioxus/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/your-username/solfunmeme-dioxus/discussions)
+- **Documentation**: [Wiki](https://github.com/your-username/solfunmeme-dioxus/wiki)
+
+---
+
+**"In the beginning was the vibe, and the vibe was with the code, and the vibe was the code."** - Solfunmeme-Dioxus Philosophy

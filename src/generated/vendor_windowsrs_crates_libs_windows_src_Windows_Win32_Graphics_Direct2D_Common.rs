@@ -1,0 +1,5 @@
+use rust_embed::Embed;
+
+#[derive(Embed)]
+#[folder = "vendor/windows-rs/crates/libs/windows/src/Windows/Win32/Graphics/Direct2D/Common"]
+pub struct OurVendorWindowsRsCratesLibsWindowsSrcWindowsWin32GraphicsDirect2DCommonExtractor;

@@ -1,18 +1,23 @@
 [package]
 name = "solfunmeme-dioxus"
 version = "1.1.0"
-authors = ["github-actions[bot] <github-actions[bot]@users.noreply.github.com>"]
+authors = ["James Michael Dupont <h4@solfunmeme.com>"]
 edition = "2021"
-license = "MIT OR Apache-2.0"
+license = "AGPL-3.0"
 publish = false
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 
+sophia_turtle = "0.8"
+sophia_api = "0.8"
+sophia_inmem = "0.8"
+
 ### git deps, could be submodules
 wallet-adapter = { git = "https://github.com/meta-introspector/SolanaWalletAdapter-zos", branch ="no-template"} # 
 syn-serde = { git = "https://github.com/meta-introspector/syn-serde-rust", branch="main", features = ["json"] }
-dioxus-charts = { git = "https://github.com/dioxus-community/dioxus-charts.git" ,  branch = "main" }
+#dioxus-charts = { git = "https://github.com/dioxus-community/dioxus-charts.git" ,  branch = "main" }
+dioxus-charts = { path = "vendor/dioxus-charts" }
 
 ## normal deps 
 inventory = "0.3"
@@ -86,7 +91,9 @@ tclifford = "0.1.0"
 linfa = "0.7.1"
 linfa-preprocessing = "0.7.1"
 linfa-reduction = "0.7.1"
-#dioxus-charts = { path = "../dioxus-charts" }
+linfa-clustering = "0.7.1"
+
+rust-embed = { version = "8.7.2", features = ["debug-embed"] , path = "vendor/rust-embed"}
 fastrand = "2.0.1"
 #getrandom = { version = "0.2.14", features = ["js"] }
 #getrandom = { version = "0.2.14", features = ["js"] }
@@ -102,12 +109,39 @@ dioxus-clipboard = "0.2.0"
 dioxus-html = "0.6.3"
 dioxus-logger = "0.6.2"
 scraper = "0.23.1"
-rrust_kontekst = {path = "rrust_kontekst"}
-rrust_kontekst_base = {path = "rrust_kontekst_base"}
+rrust_kontekst = {path = "crates/rrust_kontekst"}
+orbital_sim_lib = {path = "crates/orbital_sim_lib"}
+core_data_lib = {path = "crates/core_data_lib"}
+emoji_matrix_lib = {path = "crates/emoji_matrix_lib"}
+rrust_kontekst_base = {path = "crates/rrust_kontekst_base"}
+solfunmeme_extractor = {path = "crates/solfunmeme_extractor"}
+solfunmeme_wallet_integration = {path = "crates/solfunmeme_wallet_integration"}
+shared_analysis_types = {path = "crates/shared_analysis_types"}
+gitaccount = { path = "crates/gitaccount" }
+component_builder_lib = {path = "crates/component_builder_lib"}
+component_registry_lib = {path = "crates/component_registry_lib"}
+component_emoji_lib = {path = "crates/component_emoji_lib"}
+playground_lib = {path = "crates/playground_lib"}
+views_lib = {path = "crates/views_lib"}
+model_lib = {path = "crates/model_lib"}
+shared_types_lib = {path = "crates/shared_types_lib"}
+signals_lib = {path = "crates/signals_lib"}
+prepare_sources = { path = "crates/prepare_sources" }
+solana_integration_lib = { path = "crates/solana_integration_lib" }
+rdf_processing_lib = { path = "crates/rdf_processing_lib" }
+# New refactored crates
+solfunmeme_extractor_system = { path = "crates/solfunmeme_extractor_system" }
+solfunmeme_models = { path = "crates/solfunmeme_models" }
+solfunmeme_views = { path = "crates/solfunmeme_views" }
+solfunmeme_playground = { path = "crates/solfunmeme_playground" }
+solfunmeme_state = { path = "crates/solfunmeme_state" }
 ctor = "0.4.2"
 tracing = "0.1.41"
-rust-embed = "8.7.2"
+
+
 curve25519-dalek = "4.1.3"
+walkdir = "2.5.0"
+burn = { version = "0.17.1", features = ["wgpu"] }
 #rand_core = { version = "*", features = ["std"] }
 
 [dependencies.x25519-dalek  ]
@@ -127,9 +161,79 @@ features = [
 [features]
 default = ["web"]
 web = ["dioxus/web"]
+gpu_backend = []
 bincodev2 = []
 bincodev1 = []
 
+# Exclude vendor from certain cargo operations
+[workspace]
+exclude = ["vendor"]
+members = [
+    "bootstrap",
+    "bootstrap/stage1",
+    "crates/bootstrap/stage0",
+    "crates/bootstrap/stage1",
+    "crates/solfunmeme_app",
+    "crates/solfunmeme_wallet_integration",
+    "crates/solfunmeme_core_logic",
+    "crates/solfunmeme_generated",
+    "crates/solfunmeme_tools",
+    "crates/task_manager",
+    "crates/model_lib",
+    "crates/playground_lib",
+    "crates/shared_types_lib",
+    "crates/views_lib",
+    "crates/signals_lib",
+    "crates/prepare_sources",
+    "crates/solana_integration_lib",
+    "crates/rdf_processing_lib",
+    "crates/rrust_kontekst",
+    "crates/rrust_kontekst_base",
+    "crates/shared_analysis_types",
+    "crates/gitaccount",
+    "crates/solfunmeme_clifford",
+    "crates/solfunmeme_embedding",
+    "crates/solfunmeme_solana_data",
+    "crates/solfunmeme_function_analysis",
+    "crates/solfunmeme_search_tantivy",
+    "crates/rdf_output",
+    "crates/git_plugin",
+    "crates/zip_plugin",
+    "crates/s3_plugin",
+    "crates/workflow_manager",
+    "crates/emoji_lang_plugin",
+    "crates/jsonld_plugin",
+    "crates/emoji_workflow_macro",
+    # "crates/rust_sbert_plugin",
+    "crates/llms_from_scratch_rs_plugin",
+    "crates/gline_rs_plugin",
+    # "crates/extractous_plugin",
+    # New refactored crates
+    "crates/solfunmeme_extractor_system",
+    "crates/solfunmeme_models",
+    "crates/solfunmeme_views",
+    "crates/solfunmeme_playground",
+    "crates/solfunmeme_state",
+    "crates/solfunmeme_indexer",
+    "crates/model2vec_rs_plugin",
+    "crates/layered_nlp_plugin",
+    "crates/vibrato_plugin",
+    "crates/keyword_extraction_rs_plugin",
+    # "crates/rust_sentence_transformers_plugin",
+    "crates/eliza_rs_plugin",
+    "crates/bm25_plugin",
+    "crates/vaporetto_plugin",
+    "crates/tongrams_rs_plugin",
+    "crates/solana_airdrop_service_plugin",
+    "crates/json_ld_plugin",
+    "crates/rhai_plugin",
+    "crates/steel_plugin",
+    "crates/solfunmeme_tantivy_report",
+    "crates/doc_cross_references",
+    "crates/gemini_cli_lib",
+    "zos/plugins", "phase_demo"]
+
+[workspace.package]
 
 
 # Server-side dependencies (excluded from WASM)
@@ -150,4 +254,6 @@ inherits = "dev"
 
 [profile.android-dev]
 inherits = "dev"
+
+
 

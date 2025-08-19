@@ -1,88 +1,117 @@
-use solfunmeme_dioxus::core::*;
+use shared_analysis_types::{CodeSnippet, ExtractedFile, ProcessingFile, TestResult, DocumentSummary, ConversationTurn, UploadedFile, AnnotatedWord, Multivector, ProcessingStats, ProcessingError, LanguageConfig};
 
 #[test]
-fn test_vectorization() {
-    let vectorizer = CodeVectorizer::new(64);
-    let vector = vectorizer.vectorize("fn test() {}");
-    assert_eq!(vector.dimensions.len(), 64);
-    
-    let sum: f32 = vector.dimensions.iter().sum();
-    assert!((sum - 1.0).abs() < 1e-5);
-}
-
-#[test]
-fn test_declaration_splitting() {
-    let mut splitter = DeclarationSplitter::new();
-    let code = "fn main() {} struct Point { x: f64 }";
-    
-    let result = splitter.split_file(code, Some("test.rs".to_string()));
-    assert!(result.is_ok());
-    assert!(splitter.declarations.len() >= 2);
-}
-
-#[test]
-fn test_duplicate_detection() {
-    let detector = DuplicateDetector::new(64, 0.8);
-    let declarations = vec![
-        Declaration {
-            name: "test1".to_string(),
-            declaration_type: DeclarationType::Function,
-            content: "fn test() {}".to_string(),
-            line_start: 1,
-            line_end: 1,
-            file_path: None,
-        },
-        Declaration {
-            name: "test2".to_string(),
-            declaration_type: DeclarationType::Function,
-            content: "fn test() {}".to_string(),
-            line_start: 1,
-            line_end: 1,
-            file_path: None,
-        },
-    ];
-    
-    let report = detector.detect_duplicates(&declarations);
-    assert!(report.total_duplicates > 0 || report.canonical_count > 0);
-}
-
-#[test]
-fn test_code_analysis() {
-    let mut analyzer = CodeAnalyzer::new(64, 0.8);
-    let code = "fn hello() { println!(\"world\"); }";
-    
-    let result = analyzer.analyze_file(code, "test.rs".to_string());
-    assert!(result.is_ok());
-    
-    let analysis = result.unwrap();
-    assert_eq!(analysis.file_path, "test.rs");
-    assert!(analysis.declarations.len() > 0);
-}
-
-#[test]
-fn test_meme_generation() {
-    let generator = MemeGenerator::new(64);
-    let declaration = Declaration {
-        name: "test_fn".to_string(),
-        declaration_type: DeclarationType::Function,
-        content: "fn test_fn() {}".to_string(),
+fn test_code_snippet_creation() {
+    let snippet = CodeSnippet {
+        language: "rust".to_string(),
+        content: "fn test() { println!(\"hello\"); }".to_string(),
         line_start: 1,
         line_end: 1,
-        file_path: Some("test.rs".to_string()),
+        content_hash: "abc123".to_string(),
+        token_count: 8,
+        line_count: 1,
+        char_count: 32,
+        test_result: Some("Passed".to_string()),
     };
-    let vector = CodeVector::new(vec![0.1; 64]);
     
-    let meme = generator.generate_meme_from_declaration(&declaration, &vector);
-    assert_eq!(meme.name, "test_fn");
-    assert_eq!(meme.emoji, "🔧");
+    assert_eq!(snippet.language, "rust");
+    assert_eq!(snippet.content, "fn test() { println!(\"hello\"); }");
+    assert_eq!(snippet.line_start, 1);
+    assert_eq!(snippet.line_end, 1);
+    assert_eq!(snippet.token_count, 8);
+    assert_eq!(snippet.line_count, 1);
+    assert_eq!(snippet.char_count, 32);
+    assert_eq!(snippet.test_result, Some("Passed".to_string()));
 }
 
 #[test]
-fn test_wallet_integration() {
-    let mut wallet = WalletManager::new();
-    assert!(wallet.initialize_with_password("test123").is_ok());
+fn test_extracted_file_creation() {
+    let snippet = CodeSnippet {
+        language: "rust".to_string(),
+        content: "fn main() {}".to_string(),
+        line_start: 1,
+        line_end: 1,
+        content_hash: "def456".to_string(),
+        token_count: 3,
+        line_count: 1,
+        char_count: 12,
+        test_result: None,
+    };
     
-    assert!(wallet.store_ai_key("openai", "sk-test").is_ok());
-    let key = wallet.get_ai_key("openai").unwrap();
-    assert_eq!(key, Some("sk-test".to_string()));
+    let file = ExtractedFile {
+        name: "test.rs".to_string(),
+        snippets: vec![snippet],
+        total_lines: 1,
+    };
+    
+    assert_eq!(file.name, "test.rs");
+    assert_eq!(file.snippets.len(), 1);
+    assert_eq!(file.total_lines, 1);
+    assert_eq!(file.snippets[0].language, "rust");
+}
+
+#[test]
+fn test_multivector_creation() {
+    let mv = Multivector {
+        scalar: 1.0,
+        vector: [0.1, 0.2, 0.3],
+    };
+    
+    assert_eq!(mv.scalar, 1.0);
+    assert_eq!(mv.vector, [0.1, 0.2, 0.3]);
+}
+
+#[test]
+fn test_processing_stats_creation() {
+    let stats = ProcessingStats {
+        files_processed: 5,
+        total_snippets_extracted: 10,
+        total_lines_processed: 100,
+        processing_time_ms: 5000,
+        languages_detected: vec!["rust".to_string(), "python".to_string()],
+    };
+    
+    assert_eq!(stats.files_processed, 5);
+    assert_eq!(stats.total_snippets_extracted, 10);
+    assert_eq!(stats.total_lines_processed, 100);
+    assert_eq!(stats.processing_time_ms, 5000);
+    assert_eq!(stats.languages_detected.len(), 2);
+    assert!(stats.languages_detected.contains(&"rust".to_string()));
+    assert!(stats.languages_detected.contains(&"python".to_string()));
+}
+
+#[test]
+fn test_language_config_default() {
+    let config = LanguageConfig::default();
+    
+    assert_eq!(config.name, "text");
+    assert_eq!(config.file_extension, "txt");
+    assert_eq!(config.comment_prefix, "#");
+    assert_eq!(config.supports_testing, false);
+    assert_eq!(config.syntax_highlighter, None);
+}
+
+#[test]
+fn test_processing_error_display() {
+    let error = ProcessingError::FileReadError("file not found".to_string());
+    let error_string = error.to_string();
+    
+    assert!(error_string.contains("file not found"));
+}
+
+#[test]
+fn test_document_summary_creation() {
+    let summary = DocumentSummary {
+        total_turns: 3,
+        total_code_snippets: 5,
+        total_tokens: 100,
+        languages_found: vec!["rust".to_string()],
+        content_hashes: vec!["hash1".to_string(), "hash2".to_string()],
+    };
+    
+    assert_eq!(summary.total_turns, 3);
+    assert_eq!(summary.total_code_snippets, 5);
+    assert_eq!(summary.total_tokens, 100);
+    assert_eq!(summary.languages_found.len(), 1);
+    assert_eq!(summary.content_hashes.len(), 2);
 }

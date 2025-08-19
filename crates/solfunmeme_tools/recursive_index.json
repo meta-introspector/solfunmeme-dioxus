@@ -1,0 +1,934 @@
+{
+  "root_paths": [
+    "src"
+  ],
+  "total_files": 0,
+  "total_directories": 0,
+  "total_size": 0,
+  "file_types": {
+    "rs": {
+      "count": 42,
+      "total_size": 124839,
+      "avg_size": 2972.3571428571427,
+      "max_size": 19850,
+      "min_size": 185,
+      "extensions": [
+        "rs"
+      ]
+    },
+    "sh": {
+      "count": 1,
+      "total_size": 76,
+      "avg_size": 76.0,
+      "max_size": 76,
+      "min_size": 76,
+      "extensions": [
+        "sh"
+      ]
+    }
+  },
+  "directory_tree": [
+    {
+      "path": "src",
+      "name": "src",
+      "size": 4096,
+      "extension": "",
+      "is_file": false,
+      "is_directory": true,
+      "depth": 0,
+      "children": [
+        {
+          "path": "src\\assets.rs",
+          "name": "assets.rs",
+          "size": 426,
+          "extension": "rs",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 18,
+            "language": "rust",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "23 5B 63 66 67 28 66 65 61 74 75 72 65 20 3D 20",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "src\\bin",
+          "name": "bin",
+          "size": 4096,
+          "extension": "",
+          "is_file": false,
+          "is_directory": true,
+          "depth": 1,
+          "children": [
+            {
+              "path": "src\\bin\\chat_processor_cli.rs",
+              "name": "chat_processor_cli.rs",
+              "size": 1427,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 44,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 6F 6C 66 75 6E 6D 65 6D 65 5F 74",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\bin\\chunk_processor_cli.rs",
+              "name": "chunk_processor_cli.rs",
+              "size": 4978,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 148,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 74 64 3A 3A 70 61 74 68 3A 3A 50",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\bin\\codebase_analyzer_cli.rs",
+              "name": "codebase_analyzer_cli.rs",
+              "size": 9664,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 239,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 61 6E 79 68 6F 77 3A 3A 52 65 73 75",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\bin\\doc_processor_cli.rs",
+              "name": "doc_processor_cli.rs",
+              "size": 755,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 22,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 6F 6C 66 75 6E 6D 65 6D 65 5F 74",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\bin\\doc_test_generator_cli.rs",
+              "name": "doc_test_generator_cli.rs",
+              "size": 601,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 17,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 6F 6C 66 75 6E 6D 65 6D 65 5F 74",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\bin\\emoji_extractor_cli.rs",
+              "name": "emoji_extractor_cli.rs",
+              "size": 10554,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 286,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 61 6E 79 68 6F 77 3A 3A 52 65 73 75",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\bin\\file_identifier_cli.rs",
+              "name": "file_identifier_cli.rs",
+              "size": 5698,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 144,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 61 6E 79 68 6F 77 3A 3A 52 65 73 75",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\bin\\full_indexer_cli.rs",
+              "name": "full_indexer_cli.rs",
+              "size": 1836,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 54,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 61 6E 79 68 6F 77 3A 3A 52 65 73 75",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\bin\\plan_cli.rs",
+              "name": "plan_cli.rs",
+              "size": 5128,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 127,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 61 6E 79 68 6F 77 3A 3A 52 65 73 75",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\bin\\prepare.sources.sh",
+              "name": "prepare.sources.sh",
+              "size": 76,
+              "extension": "sh",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 4,
+                "language": "bash",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 21 2F 0D 0A 23 21 2F 75 73 72 2F 62 69 6E 2F",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\bin\\recursive_index_cli.rs",
+              "name": "recursive_index_cli.rs",
+              "size": 19850,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 573,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 61 6E 79 68 6F 77 3A 3A 52 65 73 75",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\bin\\tantivy_analyzer_cli.rs",
+              "name": "tantivy_analyzer_cli.rs",
+              "size": 12598,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 362,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 61 6E 79 68 6F 77 3A 3A 52 65 73 75",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\bin\\test_runner_cli.rs",
+              "name": "test_runner_cli.rs",
+              "size": 673,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 21,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 6F 6C 66 75 6E 6D 65 6D 65 5F 74",
+                "git_submodule": null
+              }
+            }
+          ],
+          "metadata": {
+            "lines": null,
+            "language": null,
+            "is_binary": false,
+            "is_text": false,
+            "magic_header": null,
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "src\\chat_processing",
+          "name": "chat_processing",
+          "size": 4096,
+          "extension": "",
+          "is_file": false,
+          "is_directory": true,
+          "depth": 1,
+          "children": [
+            {
+              "path": "src\\chat_processing\\args.rs",
+              "name": "args.rs",
+              "size": 2087,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 61,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 74 64 3A 3A 70 61 74 68 3A 3A 50",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\chat_processing\\chunk_processor.rs",
+              "name": "chunk_processor.rs",
+              "size": 11164,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 300,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 74 64 3A 3A 66 73 3B 0D 0A 75 73",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\chat_processing\\content_processor.rs",
+              "name": "content_processor.rs",
+              "size": 865,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 30,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 72 65 67 65 78 3A 3A 52 65 67 65 78",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\chat_processing\\file_finder.rs",
+              "name": "file_finder.rs",
+              "size": 418,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 10,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 74 64 3A 3A 70 61 74 68 3A 3A 50",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\chat_processing\\mod.rs",
+              "name": "mod.rs",
+              "size": 333,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 11,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "70 75 62 20 6D 6F 64 20 61 72 67 73 3B 0A 70 75",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\chat_processing\\output_handler.rs",
+              "name": "output_handler.rs",
+              "size": 649,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 20,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 74 64 3A 3A 70 61 74 68 3A 3A 7B",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\chat_processing\\turn_processor.rs",
+              "name": "turn_processor.rs",
+              "size": 3278,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 112,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 72 65 67 65 78 3A 3A 52 65 67 65 78",
+                "git_submodule": null
+              }
+            }
+          ],
+          "metadata": {
+            "lines": null,
+            "language": null,
+            "is_binary": false,
+            "is_text": false,
+            "magic_header": null,
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "src\\doc_processing",
+          "name": "doc_processing",
+          "size": 4096,
+          "extension": "",
+          "is_file": false,
+          "is_directory": true,
+          "depth": 1,
+          "children": [
+            {
+              "path": "src\\doc_processing\\args.rs",
+              "name": "args.rs",
+              "size": 2430,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 68,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 74 64 3A 3A 70 61 74 68 3A 3A 50",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\doc_processing\\file_finder.rs",
+              "name": "file_finder.rs",
+              "size": 867,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 29,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 74 64 3A 3A 70 61 74 68 3A 3A 50",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\doc_processing\\mod.rs",
+              "name": "mod.rs",
+              "size": 245,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 9,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "70 75 62 20 6D 6F 64 20 61 72 67 73 3B 0A 70 75",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\doc_processing\\output_handler.rs",
+              "name": "output_handler.rs",
+              "size": 659,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 21,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 74 64 3A 3A 66 73 3B 0A 75 73 65",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\doc_processing\\processor.rs",
+              "name": "processor.rs",
+              "size": 1925,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 60,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 74 64 3A 3A 66 73 3B 0A 75 73 65",
+                "git_submodule": null
+              }
+            }
+          ],
+          "metadata": {
+            "lines": null,
+            "language": null,
+            "is_binary": false,
+            "is_text": false,
+            "magic_header": null,
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "src\\doc_test_generation",
+          "name": "doc_test_generation",
+          "size": 4096,
+          "extension": "",
+          "is_file": false,
+          "is_directory": true,
+          "depth": 1,
+          "children": [
+            {
+              "path": "src\\doc_test_generation\\args.rs",
+              "name": "args.rs",
+              "size": 1635,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 50,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 74 64 3A 3A 70 61 74 68 3A 3A 50",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\doc_test_generation\\extractor.rs",
+              "name": "extractor.rs",
+              "size": 943,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 36,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 72 65 67 65 78 3A 3A 52 65 67 65 78",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\doc_test_generation\\generator.rs",
+              "name": "generator.rs",
+              "size": 4512,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 117,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 75 70 65 72 3A 3A 65 78 74 72 61",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\doc_test_generation\\mod.rs",
+              "name": "mod.rs",
+              "size": 185,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 7,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "70 75 62 20 6D 6F 64 20 61 72 67 73 3B 0A 70 75",
+                "git_submodule": null
+              }
+            }
+          ],
+          "metadata": {
+            "lines": null,
+            "language": null,
+            "is_binary": false,
+            "is_text": false,
+            "magic_header": null,
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "src\\error.rs",
+          "name": "error.rs",
+          "size": 696,
+          "extension": "rs",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 31,
+            "language": "rust",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "75 73 65 20 74 68 69 73 65 72 72 6F 72 3A 3A 45",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "src\\file_watcher.rs",
+          "name": "file_watcher.rs",
+          "size": 796,
+          "extension": "rs",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 29,
+            "language": "rust",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "75 73 65 20 6E 6F 74 69 66 79 3A 3A 7B 57 61 74",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "src\\lib.rs",
+          "name": "lib.rs",
+          "size": 190,
+          "extension": "rs",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 11,
+            "language": "rust",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "70 75 62 20 6D 6F 64 20 61 73 73 65 74 73 3B 0A",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "src\\rfp2.rs",
+          "name": "rfp2.rs",
+          "size": 1768,
+          "extension": "rs",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 43,
+            "language": "rust",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "2F 2F 2F 20 52 46 50 20 32 3A 20 45 78 65 63 75",
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "src\\test_suite",
+          "name": "test_suite",
+          "size": 4096,
+          "extension": "",
+          "is_file": false,
+          "is_directory": true,
+          "depth": 1,
+          "children": [
+            {
+              "path": "src\\test_suite\\args.rs",
+              "name": "args.rs",
+              "size": 2681,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 85,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 74 64 3A 3A 65 6E 76 3B 0A 0A 23",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\test_suite\\code_analysis_tests.rs",
+              "name": "code_analysis_tests.rs",
+              "size": 1025,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 28,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 6F 6C 66 75 6E 6D 65 6D 65 5F 63",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\test_suite\\declaration_splitting_tests.rs",
+              "name": "declaration_splitting_tests.rs",
+              "size": 1296,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 30,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 6F 6C 66 75 6E 6D 65 6D 65 5F 63",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\test_suite\\duplicate_detection_tests.rs",
+              "name": "duplicate_detection_tests.rs",
+              "size": 1808,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 46,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 6F 6C 66 75 6E 6D 65 6D 65 5F 63",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\test_suite\\mod.rs",
+              "name": "mod.rs",
+              "size": 925,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 33,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "70 75 62 20 6D 6F 64 20 61 72 67 73 3B 0A 23 5B",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\test_suite\\self_analysis_tests.rs",
+              "name": "self_analysis_tests.rs",
+              "size": 1048,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 29,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 6F 6C 66 75 6E 6D 65 6D 65 5F 63",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\test_suite\\vectorization_tests.rs",
+              "name": "vectorization_tests.rs",
+              "size": 1399,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 60,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "23 5B 63 66 67 28 66 65 61 74 75 72 65 20 3D 20",
+                "git_submodule": null
+              }
+            },
+            {
+              "path": "src\\test_suite\\wallet_integration_tests.rs",
+              "name": "wallet_integration_tests.rs",
+              "size": 1315,
+              "extension": "rs",
+              "is_file": true,
+              "is_directory": false,
+              "depth": 2,
+              "children": null,
+              "metadata": {
+                "lines": 38,
+                "language": "rust",
+                "is_binary": false,
+                "is_text": true,
+                "magic_header": "75 73 65 20 73 6F 6C 66 75 6E 6D 65 6D 65 5F 6D",
+                "git_submodule": null
+              }
+            }
+          ],
+          "metadata": {
+            "lines": null,
+            "language": null,
+            "is_binary": false,
+            "is_text": false,
+            "magic_header": null,
+            "git_submodule": null
+          }
+        },
+        {
+          "path": "src\\utils.rs",
+          "name": "utils.rs",
+          "size": 3509,
+          "extension": "rs",
+          "is_file": true,
+          "is_directory": false,
+          "depth": 1,
+          "children": null,
+          "metadata": {
+            "lines": 101,
+            "language": "rust",
+            "is_binary": false,
+            "is_text": true,
+            "magic_header": "75 73 65 20 73 74 64 3A 3A 70 61 74 68 3A 3A 7B",
+            "git_submodule": null
+          }
+        }
+      ],
+      "metadata": {
+        "lines": null,
+        "language": null,
+        "is_binary": false,
+        "is_text": false,
+        "magic_header": null,
+        "git_submodule": null
+      }
+    }
+  ],
+  "git_submodules": [],
+  "skip_rules": {
+    "extensions": [],
+    "max_size": null,
+    "max_depth": 2
+  },
+  "indexing_stats": {
+    "start_time": "1.3331766",
+    "end_time": "0.0000965",
+    "duration_seconds": 1.3331458,
+    "files_processed": 0,
+    "files_skipped": 0,
+    "directories_processed": 0
+  }
+}

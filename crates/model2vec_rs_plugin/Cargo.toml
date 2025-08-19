@@ -1,0 +1,9 @@
+[package]
+name = "model2vec_rs_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+anyhow = "1.0"
+model2vec-rs = { path = "../../vendor/model2vec-rs" }

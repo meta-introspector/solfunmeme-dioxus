@@ -1,0 +1,9 @@
+[package]
+name = "bm25_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+anyhow = "1.0"
+bm25 = { path = "../../vendor/bm25" }

@@ -1,0 +1,27 @@
+[package]
+name = "solfunmeme_models"
+version = "0.1.0"
+edition = "2021"
+license = "AGPL-3.0"
+publish = false
+
+[dependencies]
+dioxus = { version = "0.6.3", features = ["router"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+core_data_lib = { path = "../core_data_lib" }
+shared_types_lib = { path = "../shared_types_lib", optional = true }
+aes-gcm = "0.10.3"
+base64 = "0.22.1"
+sha2 = "0.10.9"
+rand = "0.8.5"
+rand_core = { version = "0.6.4", features = ["std"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+[features]
+default = []
+tarot = ["shared_types_lib"]
+
+[[example]]
+name = "tarot_example"
+required-features = ["tarot"] 

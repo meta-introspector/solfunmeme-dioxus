@@ -1,0 +1,125 @@
+@startuml Sequence
+!theme plain
+skinparam sequence {
+    ArrowColor DarkBlue
+    ActorBorderColor DarkBlue
+    LifeLineBorderColor DarkBlue
+    ParticipantBorderColor DarkBlue
+    ParticipantBackgroundColor LightBlue
+}
+
+title Solfunmeme-Dioxus System - Sequence Diagram (8 Factorial Steps Pipeline)
+
+actor "Developer" as dev
+participant "ZOS CLI" as cli
+participant "Workflow Manager" as wf
+participant "Source Preparation" as prep
+participant "Code Extractor" as extract
+participant "Function Analyzer" as analyze
+participant "Embedding Generator" as embed
+participant "Semantic Indexer" as index
+participant "RDF Processor" as rdf
+participant "Blockchain Client" as bc
+participant "UI Renderer" as ui
+participant "Data Store" as store
+participant "GitHub" as github
+participant "LLM Services" as llm
+participant "BERT Models" as bert
+participant "Solana Sidechain" as solana_sidechain
+participant "Solana Mainnet" as solana_mainnet
+
+== Pipeline Initialization ==
+dev -> cli: execute pipeline
+cli -> wf: start 8-factorial pipeline
+wf -> store: load workflow state
+
+== Step 1: Source Preparation ==
+wf -> prep: prepare sources
+prep -> github: fetch repository data
+github --> prep: source code files
+prep -> prep: parse and structure
+prep -> store: store CodeChunks
+prep --> wf: step 1 complete
+
+== Step 2: Code Extraction ==
+wf -> extract: extract code components
+extract -> store: read CodeChunks
+extract -> extract: extract functions/classes
+extract -> store: store function snippets
+extract --> wf: step 2 complete
+
+== Step 3: Function Analysis ==
+wf -> analyze: analyze functions
+analyze -> store: read function snippets
+analyze -> llm: request code analysis
+llm --> analyze: semantic analysis results
+analyze -> analyze: compute complexity metrics
+analyze -> store: store analyzed code
+analyze --> wf: step 3 complete
+
+== Step 4: Embedding Generation ==
+wf -> embed: generate embeddings
+embed -> store: read analyzed code
+embed -> bert: request embeddings
+bert --> embed: BERT vectors
+embed -> embed: convert to emoji vectors
+embed -> store: store embeddings
+embed --> wf: step 4 complete
+
+== Step 5: Semantic Indexing ==
+wf -> index: create search index
+index -> store: read embeddings
+index -> index: build Tantivy index
+index -> index: compute similarities
+index -> store: store search index
+index --> wf: step 5 complete
+
+== Step 6: RDF Processing ==
+wf -> rdf: generate RDF data
+rdf -> store: read search index
+rdf -> rdf: generate RDF triples
+rdf -> rdf: build semantic relationships
+rdf -> store: store RDF triples
+rdf --> wf: step 6 complete
+
+== Step 7: Blockchain Integration ==
+wf -> bc: store on sidechain
+bc -> store: read RDF triples
+bc -> bc: prepare index data and embeddings
+bc -> solana_sidechain: store on L2 sidechain
+solana_sidechain --> bc: sidechain storage confirmation
+bc -> bc: prepare rollup batch
+bc -> solana_mainnet: rollup verified data
+solana_mainnet --> bc: rollup settlement confirmation
+bc -> store: store blockchain references
+bc --> wf: step 7 complete
+
+== Step 8: UI Rendering ==
+wf -> ui: render UI components
+ui -> store: read blockchain data
+ui -> ui: render components
+ui -> ui: create visualizations
+ui -> store: store UI state
+ui --> wf: step 8 complete
+
+== Pipeline Completion ==
+wf -> store: update workflow state
+wf --> cli: pipeline complete
+cli --> dev: results available
+
+== User Interaction ==
+dev -> cli: search codebase
+cli -> index: search request
+index -> store: query index
+store --> index: search results
+index --> cli: formatted results
+cli --> dev: search results
+
+dev -> cli: view analysis
+cli -> ui: render analysis view
+ui -> store: fetch analysis data
+store --> ui: analysis data
+ui --> cli: rendered view
+cli --> dev: analysis visualization
+
+@enduml 

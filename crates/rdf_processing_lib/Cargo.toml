@@ -1,0 +1,36 @@
+[package]
+name = "rdf_processing_lib"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0"
+shared_analysis_types = { path = "../shared_analysis_types" }
+
+sophia = "0.8"
+sophia_api = "0.8"
+sophia_turtle = "0.8"
+syn = { version = "2.0", features = ["full", "extra-traits"] }
+quote = "1.0"
+tclifford = { path = "../../vendor/tclifford" }
+fastembed = { path = "../../vendor/fastembed-rs" }
+candle-core = { path = "../../vendor/candle/candle-core", optional = true }
+candle-nn = { path = "../../vendor/candle/candle-nn", optional = true }
+candle-transformers = { path = "../../vendor/candle/candle-transformers", optional = true }
+hf-hub = "0.4"
+mownstr = "0.1"
+sophia_iri = "0.8"
+serde_json = "1.0"
+walkdir = "2.3"
+indicatif = "0.17"
+tokenizers = "0.15"
+rayon = "1.8"
+emojis = "0.7.0"
+rand = "0.8.5"
+emoji_matrix_lib = { path = "../emoji_matrix_lib" }
+core_data_lib = { path = "../core_data_lib" }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+
+[features]
+gpu_backend = ["candle-core/cuda", "candle-nn", "candle-transformers"]

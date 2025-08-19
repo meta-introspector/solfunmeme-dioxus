@@ -1,0 +1,27 @@
+@prefix em: <http://example.org/emoji#> .
+
+em:task a em:Concept ; em:emoji "✅📋" ; em:category "Workflow" .
+em:emoji a em:Concept ; em:emoji "😀✨" ; em:category "Meta" .
+em:vector a em:Concept ; em:emoji "➡️🟦" ; em:category "Math" .
+em:tm_turtle_repr a em:Concept ; em:emoji "📜🧩" ; em:category "Workflow" .
+em:tm_sophia_integration a em:Concept ; em:emoji "🧠🔍" ; em:category "Workflow" .
+em:tm_serde_turtle a em:Concept ; em:emoji "🔄📄" ; em:category "Workflow" .
+em:tm_semantic_graph_link a em:Concept ; em:emoji "🔗🌐" ; em:category "Workflow" .
+em:tm_llm_gui_integration a em:Concept ; em:emoji "🤖💬" ; em:category "Workflow" .
+em:add_reporting_export a em:Concept ; em:emoji "📄➡️" ; em:category "Reporting" .
+em:aggregate_structure_data a em:Concept ; em:emoji "📊🧱" ; em:category "Reporting" .
+em:bug_report_cargo_toml_truncation a em:Concept ; em:emoji "🐞📝" ; em:category "Bug" .
+em:build_lean4_wasm a em:Concept ; em:emoji "📐🌐" ; em:category "Lean4" .
+em:connect_data_to_charts a em:Concept ; em:emoji "📈🔗" ; em:category "Visualization" .
+em:emoji_matrix_dashboard a em:Concept ; em:emoji "📊🌈" ; em:category "Visualization" .
+em:emoji_matrix_report a em:Concept ; em:emoji "📊🎨" ; em:category "Visualization" .
+em:implement_github_search_tool a em:Concept ; em:emoji "🐙🔍" ; em:category "GitHub" .
+em:integrate_submodule_github_tools a em:Concept ; em:emoji "📦🐙" ; em:category "GitHub" .
+em:integrate_task_manager a em:Concept ; em:emoji "✅📋" ; em:category "Workflow" .
+em:merge_lean4_rust_shapes a em:Concept ; em:emoji "🧩📐" ; em:category "Lean4" .
+em:new_task a em:Concept ; em:emoji "✨❓" ; em:category "Misc" .
+em:parse_extract_data a em:Concept ; em:emoji "🔎📜" ; em:category "Parsing" .
+em:parse_microlean4_dataset a em:Concept ; em:emoji "📐🔬" ; em:category "Lean4" .
+em:research_github_search a em:Concept ; em:emoji "🔍🌐" ; em:category "GitHub" .
+em:research_submodule_tool a em:Concept ; em:emoji "📦🔧" ; em:category "GitHub" .
+em:review_and_split_files a em:Concept ; em:emoji "👀📂" ; em:category "Workflow" . 

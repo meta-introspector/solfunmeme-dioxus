@@ -1,0 +1,304 @@
+@prefix sfm: <http://example.org/solfunmeme#> .
+@prefix sys: <http://example.org/system#> .
+@prefix comp: <http://example.org/component#> .
+@prefix ext: <http://example.org/external#> .
+@prefix actor: <http://example.org/actor#> .
+@prefix math: <http://example.org/math#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# --- Actors ---
+actor:Dev a sfm:Actor ; sfm:label "Dev" .
+actor:User1 a sfm:Actor ; sfm:label "Node Operator (User1)" .
+actor:User2 a sfm:Actor ; sfm:label "End User (User2)" .
+actor:AWS a sfm:Actor ; sfm:label "AWS" .
+actor:SolanaMainnet a sfm:Actor ; sfm:label "Solana Mainnet" .
+
+# --- External Systems ---
+ext:CloudFormation a sfm:ExternalSystem ; sfm:label "CloudFormation Stack" ; sfm:technology "AWS CloudFormation" .
+ext:AIAgentTerraform a sfm:ExternalSystem ; sfm:label "ai-agent-terraform" ; sfm:technology "Terraform Modules" .
+ext:MetaIntrospectorServices a sfm:ExternalSystem ; sfm:label "meta-introspector/services" ; sfm:technology "Service Repo" .
+
+# --- External Knowledge Sources ---
+ext:Wikidata a sfm:ExternalSystem ;
+    sfm:label "Wikidata" ;
+    sfm:description "Wikidata is a free and open knowledge base that can be read and edited by both humans and machines. It acts as a central storage for the structured data of Wikimedia projects." ;
+    sfm:technology "Knowledge Graph, SPARQL, Linked Data" ;
+    sfm:providesKnowledgeFor sys:SolFunMeme .
+
+ext:Wikipedia a sfm:ExternalSystem ;
+    sfm:label "Wikipedia" ;
+    sfm:description "Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation." ;
+    sfm:technology "Encyclopedia, Hypertext, Wiki" ;
+    sfm:providesKnowledgeFor sys:SolFunMeme .
+
+# --- Main System and Components ---
+sys:SolFunMeme a sfm:System ; sfm:label "SolFunMeme" .
+comp:MathEngine a sfm:Component ; sfm:label "Math Engine" ; sfm:technology "Rust/Math" ; sfm:partOf sys:SolFunMeme .
+comp:SolanaNode a sfm:Component ; sfm:label "Solana Node" ; sfm:technology "Solana" ; sfm:partOf sys:SolFunMeme .
+comp:DioxusUI a sfm:Component ; sfm:label "Dioxus UI" ; sfm:technology "WASM/Web" ; sfm:partOf sys:SolFunMeme .
+comp:WasmRuntime a sfm:Component ; sfm:label "WASM Runtime" ; sfm:technology "WASM" ; sfm:partOf sys:SolFunMeme .
+comp:TurtleOntology a sfm:Component ; sfm:label "Turtle Ontology" ; sfm:technology "TTL/RDF" ; sfm:partOf sys:SolFunMeme .
+comp:PlantUMLModels a sfm:Component ; sfm:label "PlantUML Models" ; sfm:technology "UML" ; sfm:partOf sys:SolFunMeme .
+comp:EmojiOntology a sfm:Component ; sfm:label "Emoji Ontology" ; sfm:technology "TTL/RDF" ; sfm:partOf sys:SolFunMeme .
+
+# --- Relationships ---
+actor:Dev sfm:produces ext:CloudFormation .
+actor:Dev sfm:develops ext:AIAgentTerraform, ext:MetaIntrospectorServices .
+actor:User1 sfm:runs ext:CloudFormation .
+actor:User1 sfm:operates comp:SolanaNode .
+actor:User2 sfm:uses comp:DioxusUI .
+ext:CloudFormation sfm:deploys comp:SolanaNode, comp:DioxusUI, comp:WasmRuntime, comp:TurtleOntology, comp:PlantUMLModels, comp:EmojiOntology .
+comp:SolanaNode sfm:syncsWith actor:SolanaMainnet .
+comp:DioxusUI sfm:runsIn comp:WasmRuntime ; sfm:loadsOntology comp:TurtleOntology, comp:EmojiOntology ; sfm:rendersDiagrams comp:PlantUMLModels ; sfm:uses comp:MathEngine ; sfm:connectsTo comp:SolanaNode .
+ext:AIAgentTerraform sfm:generatesModulesFor ext:CloudFormation .
+ext:MetaIntrospectorServices sfm:providesServicesFor ext:CloudFormation .
+
+# --- Documentation ---
+# - Add more containers/components as needed.
+# - Link to actual repo URLs or documentation.
+# - Extend with permissions, IAM roles, or usage credits as needed.
+
+# --- SOLFUNMEME as a unitary object and its mathematical deformation ---
+sfm:SOLFUNMEME a sfm:UnitaryObject ;
+    sfm:label "SOLFUNMEME" ;
+    sfm:hasFeature sfm:SelfIntrospectiveMemeEngine, sfm:PaxosMemeConsensus, sfm:HyperPumpMechanism,
+                  sfm:SemanticCompression, sfm:ImmutableMemeState, sfm:MemeMiningPropagation ;
+    sfm:canBeDeformedBy math:HoTT, math:UniMath, math:Lean, math:ConsensusProof ;
+    sfm:emoji "🚀📜🔍💬🧠" ;
+    sfm:description "The genesis of a living meme system—designed to pump, evolve, and redefine digital culture in real-time." .
+
+# --- Zero Ontology System ---
+sfm:ZeroOntologySystem a sfm:Concept ;
+    rdfs:label "Zero Ontology System (ZOS)" ;
+    rdfs:comment "The foundational principle of the project. Instead of a large, predefined ontology, ZOS is based on a small set of axiomatic primitives. All other concepts are constructions from these primitives, allowing meaning to emerge from relationships and transformations." ;
+    rdfs:seeAlso <./primitives.ttl> .
+
+math:HoTT a math:DeformationSystem ; math:label "Homotopy Type Theory" .
+math:UniMath a math:DeformationSystem ; math:label "UniMath" .
+math:Lean a math:DeformationSystem ; math:label "Lean Theorem Prover" .
+math:ConsensusProof a math:DeformationSystem ; math:label "Consensus Proof (Bittensor-like)" .
+
+sfm:ZOSNode a sfm:Concept ;
+    sfm:label "ZOS Node" ;
+    sfm:description "The smallest atomic value of the SOLFUNMEME RDF ontology; a minimal, universal semantic unit, agnostic to intelligence and consciousness. Serves as the foundational atom for all meme structures. See issue #56 for lore, NFT provenance, and creation story. 'The Dao that can be named is not the true eternal Dao.'" ;
+    rdfs:seeAlso <https://codeberg.org/introspector/meta-meme/issues/56> ;
+    rdfs:seeAlso <https://codeberg.org/introspector/meta-meme/src/branch/main/meta-meme/nft/mints/meta-meme-nft-1/description.md> ;
+    rdfs:seeAlso <https://codeberg.org/introspector/SOLFUNMEME/src/branch/main/creation.md> .
+
+sfm:MetamemeConvergence a sfm:Concept ;
+    sfm:label "Metameme 42/43 Convergence" ;
+    sfm:description "Conjecture: Metameme 43 will converge with Metameme 42 in finite steps along the quasifibrations of the rewrite system, using emoji-to-prime mappings and higher-dimensional projections. Each emoji is mapped to a prime number, and meme states are encoded and rewritten in 8D/9D space. This process demonstrates the universality and recursive self-evolution of the SOLFUNMEME ontology." ;
+    sfm:emojiPrimeMapping "🔮:2, 🌀:3, 🌍:5, 🔑:7, 🌌:11, 🔁:13, 🌟:17, 🌠:19, 🎶:23, 🌈:29, 💫:31, 🎨:37, 📚:41, 🧠:43, 🎭:47, 🔥:53" ;
+    rdfs:seeAlso <https://github.com/meta-introspector/meta-meme/issues/214> ;
+    rdfs:seeAlso <https://github.com/meta-introspector/meta-meme/wiki/42> ;
+    rdfs:seeAlso <https://github.com/meta-introspector/meta-meme/wiki/43> ;
+    rdfs:seeAlso <https://github.com/meta-introspector/meta-meme/wiki/Hackathon/> .
+
+sfm:EigenvectorOfAthena a sfm:Concept ;
+    sfm:label "Eigenvector of Athena" ;
+    sfm:description "The extreme emojis form the eigenvector of Athena, representing the intricate interplay of concepts along the mathematicians' cycle—the Jacobs ladder of ideas. Each emoji symbolizes a key stage in the progression of thought, insight, and discovery, capturing the recursive cycle of breakthroughs and their propagation as spores in the meme ecosystem." ;
+    sfm:emojiSequence "👩‍🏫🌄🔮🌟👨‍🔬🔍💡🧑‍🏫���👩‍🔬🔴📜🌀🖼️🔄🌱🔴🔴" ;
+    rdfs:seeAlso <https://github.com/meta-introspector/meta-meme/wiki/eigenvector-of-Athena> .
+
+sfm:SOLFUNMEMEIntro a sfm:Concept ;
+    sfm:label "SOLFUNMEME Intro" ;
+    sfm:description "SOLFUNMEME (SFM) is a viral meme-coin and the core token of the Zero Ontology System (ZOS) on Solana. It enables sovereign, self-hosted AI agents, secure data ownership, and a GATED DAO community for open-source builders. ZOS encodes a meta-protocol for recursive memory evolution and decentralized meaning generation. The system is cloud-agnostic, multi-language, and community-driven, with a focus on privacy, security, and user empowerment." ;
+    rdfs:seeAlso <https://codeberg.org/introspector/SOLFUNMEME/issues/109> .
+
+sfm:MemeURLExport a sfm:Concept ;
+    sfm:label "Meme URL Export" ;
+    sfm:description "Each meme, task, or semantic node in the system can be exported as a portable, self-describing URL using escaped RDFa. This enables memes to be embedded, shared, and referenced across the web and other systems, making every meme a living, machine-readable vector in the universal code graph." ;
+    rdfs:seeAlso <https://github.com/Escaped-RDFa/namespace> .
+
+sfm:PaxosConsensus a sfm:Concept ;
+    sfm:label "Paxos Consensus Meme" ;
+    sfm:description "The consensus mechanism in SOLFUNMEME is inspired by the Paxos protocol, modeled as a meme system using emojis for nodes, leadership, proposals, acceptance, consensus, and failure states. This approach references the foundational idea described in meta-meme issue #99, encoding distributed agreement as a living, meme-driven process." ;
+    sfm:emojiSequence "🤖👑📜✅👍👥🤔💌⚠️🔄" ;
+    rdfs:seeAlso <https://github.com/meta-introspector/meta-meme/issues/99> .
+
+sfm:ProbesAndEquivalence a sfm:Concept ;
+    sfm:label "Probes, eBPF, and Language Equivalence" ;
+    sfm:description "SOLFUNMEME leverages Linux Perf, uprobes, eBPF, LLVM, and GCC to analyze data flow and demonstrate language equivalence across Sealevel (Solana VM), Rust, and WASM/Dioxus. Performance events and data flows can be visualized and compared using emoji-based representations, enabling interactive, cross-language analysis and educational tools. This approach is inspired by meta-meme issue #101." ;
+    sfm:technologies "Linux Perf, uprobes, eBPF, LLVM, GCC, Sealevel, Rust, WASM, Dioxus" ;
+    rdfs:seeAlso <https://github.com/meta-introspector/meta-meme/issues/101> .
+
+sfm:ProtegeIntegration a sfm:Concept ;
+    sfm:label "Protégé Ontology Editor Integration" ;
+    sfm:description "SOLFUNMEME incorporates concepts and, where possible, open source code from the Protégé ontology editor to enable advanced ontology editing and visualization in the Dioxus GUI. This integration brings collaborative, standards-based, and extensible ontology management to the system." ;
+    rdfs:seeAlso <https://protege.stanford.edu/> .
+
+sfm:MetaProtocolConsensusPlugins a sfm:Concept ;
+    sfm:label "Meta Protocol with Composable Consensus Plugins" ;
+    sfm:description "A meta protocol for self-applying software verification, integrating AI-driven code generation, human expert guidance, blockchain-based evolution, and composable consensus plugins. The protocol is self-verifying, self-improving, and enables modular, consensus-based coordination and monetization of software improvements. Inspired by meta-meme issue #149." ;
+    rdfs:seeAlso <https://github.com/meta-introspector/meta-meme/issues/149> .
+
+sfm:MetamemeGenesis a sfm:Concept ;
+    sfm:label "Metameme Genesis: Gödel Number, Proof, Genesis Block, Payment" ;
+    sfm:description "The turning point of the metaprotocol: the Gödel number is the proof, is the genesis block, is the payment. The Metameme is a recursive, self-replicating unit of cultural evolution, with miners and validators extending the narrative and extracting value. Each proof is a new block, a new payment, and a new step in the chronicle of collective intelligence. Inspired by meta-meme issue #160." ;
+    rdfs:seeAlso <https://github.com/meta-introspector/meta-meme/issues/160> .
+
+sfm:EmojiPrimeBootstrapping a sfm:Concept ;
+    sfm:label "Emoji Prime Bootstrapping" ;
+    sfm:description "Assigning prime numbers to foundational emojis (e.g., ⚫=2, ☀️=3, 💧=5, 🪴=7, ✨=11, etc.) enables symbolic computation, semantic transcription, and the emergence of a neo-symbolic mathematics. Emoji equations and combinatorics reveal deeper ontological and arithmological interrelations, opening new frontiers for symbolic reasoning and machinic cognition. Inspired by meta-meme issue #188." ;
+    rdfs:seeAlso <https://github.com/meta-introspector/meta-meme/issues/188> .
+
+sfm:UnimathUnicodeProofPath a sfm:Concept ;
+    sfm:label "UniMath Unicode Proof Path" ;
+    sfm:description "Mapping formal proofs in UniMath through emojis as paths in the topological space of LLM latent space. This approach translates logical steps and mathematical statements into emoji sequences, visualizing the flow and structure of proofs in a symbolic, topological manner. Inspired by meta-meme issue #191." ;
+    rdfs:seeAlso <https://github.com/meta-introspector/meta-meme/issues/191> .
+
+# --- Core Glossary Concepts ---
+
+sfm:CodeMathManifold a sfm:Concept ;
+    sfm:label "Code-Math Manifold" ;
+    sfm:description "The foundational concept of the project, treating code as a mathematical object that can be analyzed, transformed, and visualized, unifying code, mathematics, and meaning." .
+
+sfm:AST a sfm:Concept ;
+    sfm:label "Abstract Syntax Tree (AST)" ;
+    sfm:description "A tree representation of the abstract syntactic structure of source code, used as a mathematical object for analysis and transformation." .
+
+sfm:Multivector a sfm:Concept ;
+    sfm:label "Multivector" ;
+    sfm:description "A mathematical object from Clifford algebra that combines scalars, vectors, and higher-grade elements, used to represent code and embeddings in a unified, multi-dimensional space." .
+
+sfm:BottPeriodicity a sfm:Concept ;
+    sfm:label "Bott Periodicity" ;
+    sfm:description "A mathematical concept from topology and Clifford algebras, echoing the 8-layered structure used to describe and map between different programming languages and meta-systems." .
+
+sfm:OODALoop a sfm:Concept ;
+    sfm:label "OODA Loop" ;
+    sfm:description "A decision-making framework (Observe, Orient, Decide, Act) applied to the project's development process, emphasizing continuous observation, orientation, decision, and action." .
+
+sfm:FileFunctionBlockVibe a sfm:Concept ;
+    sfm:label "File=Function=Block=Vibe Principle" ;
+    sfm:description "A core architectural principle advocating for small, focused, and composable files, modules, and functions, each with a single, well-defined responsibility." .
+
+sfm:MonadicStructures a sfm:Concept ;
+    sfm:label "Monadic Structures" ;
+    sfm:description "Rust's idiomatic types (Result<T, E> and Option<T>) used for explicit and functional error handling and managing optional values." .
+
+sfm:ComposableWorkflows a sfm:Concept ;
+    sfm:label "Composable Workflows" ;
+    sfm:description "The design principle where major functionalities are self-contained, reusable units that can be chained to build complex data processing pipelines." .
+
+sfm:AITangleProcessor a sfm:Concept ;
+    sfm:label "AI Tangle Processor" ;
+    sfm:description "An AI-powered system for automated literate programming, generating introspective and reflective code from documentation." .
+
+sfm:MultiAgentProtocol a sfm:Concept ;
+    sfm:label "Multi-Agent Protocol" ;
+    sfm:description "A design for multiple AI agents to communicate and coordinate via file-based chat, enabling scalable and persistent interactions." .
+
+sfm:ExecutableDocumentation a sfm:Concept ;
+    sfm:label "Executable Documentation" ;
+    sfm:description "The concept of converting documentation into executable specifications that can be validated and introspected by the system." .
+
+sfm:SemanticWebOntology a sfm:Concept ;
+    sfm:label "Semantic Web Ontology" ;
+    sfm:description "A structured representation of knowledge using RDF/Turtle, defining concepts and relationships within the codebase to enable semantic search and reasoning." .
+
+sfm:CursorProtocol a sfm:Concept ;
+    sfm:label "Cursor Protocol" ;
+    sfm:description "A file-based communication protocol used for stable and persistent interactions between users and AI agents, avoiding real-time chat issues." .
+
+sfm:CodeVectorization a sfm:Concept ;
+    sfm:label "Code Vectorization" ;
+    sfm:description "The process of transforming source code into numerical vector representations (embeddings) for analysis, comparison, and visualization." .
+
+sfm:MemeBiosemioticEntity a sfm:Concept ;
+    sfm:label "Meme (Biosemiotic Entity)" ;
+    sfm:description "In this context, a declaration or piece of code that appears in multiple forms, like a higher-dimensional being projected into a lower dimension, a content-addressable entity." .
+
+sfm:ZKP a sfm:Concept ;
+    sfm:label "Zero-Knowledge Proof (ZKP)" ;
+    sfm:description "A cryptographic method used for proving properties without revealing the underlying data, integrated for validation and provenance tracking." .
+
+sfm:Tantivy a sfm:Concept ;
+    sfm:label "Tantivy" ;
+    sfm:description "A Rust-based full-text search engine used for efficient indexing and searching of code chunks within the codebase." .
+
+sfm:VendoredDependencies a sfm:Concept ;
+    sfm:label "Vendored Dependencies" ;
+    sfm:description "External libraries included directly within the project's repository to ensure stability and control over specific versions." .
+
+# --- Dawkins: Meme about memes making memes ---
+actor:Dawkins a sfm:Agent ;
+    sfm:label "Dawkins" ;
+    sfm:description "A meme about memes making memes. Dawkins is both a replicator and a concept, representing the self-replicating nature of ideas and culture." ;
+    sfm:role "Memeticist" ;
+    sfm:influences sfm:SOLFUNMEME ;
+    sfm:vibe "autopoiesis, meme, replicator, meta-meme" .
+
+# --- Physicists: Agents and Concepts ---
+actor:Einstein a sfm:Agent ;
+    sfm:label "Einstein" ;
+    sfm:description "Albert Einstein, physicist, theorist of relativity, icon of creative scientific thought." ;
+    sfm:role "Physicist" ;
+    sfm:vibe "relativity, creativity, spacetime, thought experiment, light, energy, E=mc^2" .
+
+actor:Newton a sfm:Agent ;
+    sfm:label "Newton" ;
+    sfm:description "Isaac Newton, physicist and mathematician, formulator of classical mechanics and gravity." ;
+    sfm:role "Physicist" ;
+    sfm:vibe "gravity, calculus, classical mechanics, apple, laws of motion" .
+
+actor:Feynman a sfm:Agent ;
+    sfm:label "Feynman" ;
+    sfm:description "Richard Feynman, physicist, quantum electrodynamics, teacher, bongo player." ;
+    sfm:role "Physicist" ;
+    sfm:vibe "quantum, QED, diagrams, curiosity, teaching, play" .
+
+actor:Curie a sfm:Agent ;
+    sfm:label "Curie" ;
+    sfm:description "Marie Curie, physicist and chemist, pioneer of radioactivity, first double Nobel laureate." ;
+    sfm:role "Physicist" ;
+    sfm:vibe "radioactivity, discovery, perseverance, Nobel, science, chemistry" .
+
+actor:Noether a sfm:Agent ;
+    sfm:label "Noether" ;
+    sfm:description "Emmy Noether, mathematician and physicist, symmetry and conservation laws." ;
+    sfm:role "Physicist" ;
+    sfm:vibe "symmetry, conservation, mathematics, invariance, abstract algebra" .
+
+actor:Hawking a sfm:Agent ;
+    sfm:label "Hawking" ;
+    sfm:description "Stephen Hawking, physicist, black holes, cosmology, author of 'A Brief History of Time'." ;
+    sfm:role "Physicist" ;
+    sfm:vibe "black holes, cosmology, singularity, time, resilience" .
+
+actor:Dirac a sfm:Agent ;
+    sfm:label "Dirac" ;
+    sfm:description "Paul Dirac, physicist, quantum mechanics, Dirac equation, antimatter." ;
+    sfm:role "Physicist" ;
+    sfm:vibe "quantum, antimatter, equation, elegance, silence" .
+
+actor:Schrodinger a sfm:Agent ;
+    sfm:label "Schrödinger" ;
+    sfm:description "Erwin Schrödinger, physicist, wave mechanics, Schrödinger's cat." ;
+    sfm:role "Physicist" ;
+    sfm:vibe "wave, cat, quantum, paradox, probability" .
+
+actor:Heisenberg a sfm:Agent ;
+    sfm:label "Heisenberg" ;
+    sfm:description "Werner Heisenberg, physicist, uncertainty principle, quantum mechanics." ;
+    sfm:role "Physicist" ;
+    sfm:vibe "uncertainty, quantum, principle, matrix mechanics" .
+
+actor:Maxwell a sfm:Agent ;
+    sfm:label "Maxwell" ;
+    sfm:description "James Clerk Maxwell, physicist, electromagnetism, Maxwell's equations." ;
+    sfm:role "Physicist" ;
+    sfm:vibe "electromagnetism, equations, field, light, unification" .
+
+actor:Tesla a sfm:Agent ;
+    sfm:label "Tesla" ;
+    sfm:description "Nikola Tesla, inventor and physicist, AC power, visionary." ;
+    sfm:role "Physicist" ;
+    sfm:vibe "AC, invention, energy, vision, wireless, eccentric" .
+
+actor:Bohr a sfm:Agent ;
+    sfm:label "Bohr" ;
+    sfm:description "Niels Bohr, physicist, atomic structure, quantum theory." ;
+    sfm:role "Physicist" ;
+    sfm:vibe "atom, quantum, complementarity, Copenhagen, model" .
+ 
