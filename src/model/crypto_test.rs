@@ -2,8 +2,7 @@
 // test
 //#[cfg(test)]
 mod tests {
-
-    //    use super::*;
+    use crate::crypto::SolanaEncryption;
 
     fn get_sample_keys() -> (String, String, String, String) {
         // These are dummy 32-byte base58-encoded keys for testing only.

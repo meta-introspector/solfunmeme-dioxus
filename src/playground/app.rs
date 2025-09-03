@@ -6,7 +6,6 @@ use crate::{model::NotificationInfo, playground::solfunnice::SolFunNiceApp};
 //use crate::extractor::system::clipboard::copy_all_snippets_combined;
 //ouse crate::extractor::error;
 //use crate::password_manager::DecryptedEntry;
-use crate::password_manager::PasswordAppState;
 // use crate::playground::MenuOption::Airdrop;
 // todo rename : airdrop::Airdrop,
 use crate::views::{
@@ -21,6 +20,8 @@ use crate::views::{
     receive_sol::ReceiveSolComponent, send_sol::SendSolComponent,
     styling_and_emojis::StylingAndEmojis, transaction_buttons::TransactionButtons,
     airdrop::AirdropComponent,
+    source_browser::SourceBrowser,
+    emoji_matrix_view::EmojiMatrixView,
 };
 //pub mod embedding;
 //use crate::playground::embedding::EmbeddingApp;
@@ -85,12 +86,14 @@ pub enum MenuOption {
     SolFunMeme,
     #[allow(dead_code)]
     Extractor,
+    SourceBrowser,
+    EmojiMatrix,
 }
 
 use crate::extractor::components::example::register_all_components;
 #[component]
 pub fn PlaygroundApp() -> Element {
-    crate::embedself::printall;
+//    crate::embedself::printall;
     register_all_components();
 
     //    let mut menu_option = use_signal(|| MenuOption::MemeManagement);
@@ -176,6 +179,8 @@ pub fn PlaygroundApp() -> Element {
                 //                    MenuOption::SolFunMeme => rsx!(SolFunMemeApp {}),
                 MenuOption::SolFunMeme => rsx!(SolFunNiceApp {}),
                 MenuOption::Extractor => rsx!(MarkdownCodeExtractor {}),
+                        MenuOption::SourceBrowser => rsx!(SourceBrowser {}),
+                        MenuOption::EmojiMatrix => rsx!(EmojiMatrixView {}),
                         _ => rsx!(div { "TODO"})
                     }
                 }

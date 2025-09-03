@@ -6,6 +6,7 @@
 //! - Wallet integration with encrypted secrets
 
 pub mod core;
+pub mod models;
 
 // Re-export core functionality
 pub use core::*;

@@ -281,6 +281,7 @@ impl CliffordBertLayer {
 
 //#[cfg(test)]
 mod tests {
+    use super::{BertConfig, BertCliffordEncoder, CliffordBertLayer};
 
     #[test]
     fn test_clifford_encoding() {

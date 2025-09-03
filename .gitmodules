@@ -1,0 +1,1023 @@
+[submodule "vendor/rust-embed"]
+	path = vendor/rust-embed
+	url = https://git.sr.ht/~pyrossh/rust-embed
+[submodule "vendor/sync_wrapper"]
+	path = vendor/sync_wrapper
+	url = https://github.com/Actyx/sync_wrapper
+[submodule "vendor/parking_lot"]
+	path = vendor/parking_lot
+	url = https://github.com/Amanieu/parking_lot
+[submodule "vendor/thread_local-rs"]
+	path = vendor/thread_local-rs
+	url = https://github.com/Amanieu/thread_local-rs
+[submodule "vendor/BLAKE3"]
+	path = vendor/BLAKE3
+	url = https://github.com/BLAKE3-team/BLAKE3
+[submodule "vendor/unicode-id"]
+	path = vendor/unicode-id
+	url = https://github.com/Boshen/unicode-id
+[submodule "vendor/aho-corasick"]
+	path = vendor/aho-corasick
+	url = https://github.com/BurntSushi/aho-corasick
+[submodule "vendor/byteorder"]
+	path = vendor/byteorder
+	url = https://github.com/BurntSushi/byteorder
+[submodule "vendor/memchr"]
+	path = vendor/memchr
+	url = https://github.com/BurntSushi/memchr
+[submodule "vendor/rust-csv"]
+	path = vendor/rust-csv
+	url = https://github.com/BurntSushi/rust-csv
+[submodule "vendor/same-file"]
+	path = vendor/same-file
+	url = https://github.com/BurntSushi/same-file
+[submodule "vendor/termcolor"]
+	path = vendor/termcolor
+	url = https://github.com/BurntSushi/termcolor
+[submodule "vendor/walkdir"]
+	path = vendor/walkdir
+	url = https://github.com/BurntSushi/walkdir
+[submodule "vendor/winapi-util"]
+	path = vendor/winapi-util
+	url = https://github.com/BurntSushi/winapi-util
+[submodule "vendor/dioxus"]
+	path = vendor/dioxus
+	url = https://github.com/DioxusLabs/dioxus/
+[submodule "vendor/manganis"]
+	path = vendor/manganis
+	url = https://github.com/DioxusLabs/manganis/
+[submodule "vendor/clipboard-win"]
+	path = vendor/clipboard-win
+	url = https://github.com/DoumanAsh/clipboard-win
+[submodule "vendor/error-code"]
+	path = vendor/error-code
+	url = https://github.com/DoumanAsh/error-code
+[submodule "vendor/xxhash-rust"]
+	path = vendor/xxhash-rust
+	url = https://github.com/DoumanAsh/xxhash-rust
+[submodule "vendor/miniz_oxide"]
+	path = vendor/miniz_oxide
+	url = https://github.com/Frommi/miniz_oxide/
+[submodule "vendor/memoffset"]
+	path = vendor/memoffset
+	url = https://github.com/Gilnaa/memoffset
+[submodule "vendor/SolanaWalletAdapter"]
+	path = vendor/SolanaWalletAdapter
+	url = https://github.com/JamiiDao/SolanaWalletAdapter
+[submodule "vendor/derive_more"]
+	path = vendor/derive_more
+	url = https://github.com/JelteF/derive_more
+[submodule "vendor/bytemuck"]
+	path = vendor/bytemuck
+	url = https://github.com/Lokathor/bytemuck
+[submodule "vendor/safe_arch"]
+	path = vendor/safe_arch
+	url = https://github.com/Lokathor/safe_arch
+[submodule "vendor/tinyvec"]
+	path = vendor/tinyvec
+	url = https://github.com/Lokathor/tinyvec
+[submodule "vendor/wide"]
+	path = vendor/wide
+	url = https://github.com/Lokathor/wide
+[submodule "vendor/enumset"]
+	path = vendor/enumset
+	url = https://github.com/Lymia/enumset
+[submodule "vendor/wasm-streams"]
+	path = vendor/wasm-streams
+	url = https://github.com/MattiasBuelens/wasm-streams/
+[submodule "vendor/bs58-rs"]
+	path = vendor/bs58-rs
+	url = https://github.com/Nullus157/bs58-rs
+[submodule "vendor/serde-wasm-bindgen"]
+	path = vendor/serde-wasm-bindgen
+	url = https://github.com/RReverser/serde-wasm-bindgen
+[submodule "vendor/memmap2-rs"]
+	path = vendor/memmap2-rs
+	url = https://github.com/RazrFalcon/memmap2-rs
+[submodule "vendor/android-tzdata"]
+	path = vendor/android-tzdata
+	url = https://github.com/RumovZ/android-tzdata
+[submodule "vendor/AEADs"]
+	path = vendor/AEADs
+	url = https://github.com/RustCrypto/AEADs
+[submodule "vendor/MACs"]
+	path = vendor/MACs
+	url = https://github.com/RustCrypto/MACs
+[submodule "vendor/block-ciphers"]
+	path = vendor/block-ciphers
+	url = https://github.com/RustCrypto/block-ciphers
+[submodule "vendor/block-modes"]
+	path = vendor/block-modes
+	url = https://github.com/RustCrypto/block-modes
+[submodule "vendor/crypto-bigint"]
+	path = vendor/crypto-bigint
+	url = https://github.com/RustCrypto/crypto-bigint
+[submodule "vendor/elliptic-curves"]
+	path = vendor/elliptic-curves
+	url = https://github.com/RustCrypto/elliptic-curves
+[submodule "vendor/formats"]
+	path = vendor/formats
+	url = https://github.com/RustCrypto/formats
+[submodule "vendor/hashes"]
+	path = vendor/hashes
+	url = https://github.com/RustCrypto/hashes
+[submodule "vendor/password-hashes"]
+	path = vendor/password-hashes
+	url = https://github.com/RustCrypto/password-hashes
+[submodule "vendor/ring-compat"]
+	path = vendor/ring-compat
+	url = https://github.com/RustCrypto/ring-compat
+[submodule "vendor/signatures"]
+	path = vendor/signatures
+	url = https://github.com/RustCrypto/signatures/
+[submodule "vendor/sponges"]
+	path = vendor/sponges
+	url = https://github.com/RustCrypto/sponges/
+[submodule "vendor/stream-ciphers"]
+	path = vendor/stream-ciphers
+	url = https://github.com/RustCrypto/stream-ciphers
+[submodule "vendor/traits"]
+	path = vendor/traits
+	url = https://github.com/RustCrypto/traits
+[submodule "vendor/universal-hashes"]
+	path = vendor/universal-hashes
+	url = https://github.com/RustCrypto/universal-hashes
+[submodule "vendor/utils"]
+	path = vendor/utils
+	url = https://github.com/RustCrypto/utils
+[submodule "vendor/proc-macro2-diagnostics"]
+	path = vendor/proc-macro2-diagnostics
+	url = https://github.com/SergioBenitez/proc-macro2-diagnostics
+[submodule "vendor/version_check"]
+	path = vendor/version_check
+	url = https://github.com/SergioBenitez/version_check
+[submodule "vendor/noisy_float-rs"]
+	path = vendor/noisy_float-rs
+	url = https://github.com/SergiusIW/noisy_float-rs
+[submodule "vendor/rust-utf8"]
+	path = vendor/rust-utf8
+	url = https://github.com/SimonSapin/rust-utf8
+[submodule "vendor/calloop"]
+	path = vendor/calloop
+	url = https://github.com/Smithay/calloop
+[submodule "vendor/tinyvec_macros"]
+	path = vendor/tinyvec_macros
+	url = https://github.com/Soveu/tinyvec_macros
+[submodule "vendor/tempfile"]
+	path = vendor/tempfile
+	url = https://github.com/Stebalien/tempfile
+[submodule "vendor/opimps"]
+	path = vendor/opimps
+	url = https://github.com/T101N/opimps
+[submodule "vendor/darling"]
+	path = vendor/darling
+	url = https://github.com/TedDriggs/darling
+[submodule "vendor/ident_case"]
+	path = vendor/ident_case
+	url = https://github.com/TedDriggs/ident_case
+[submodule "vendor/half-rs"]
+	path = vendor/half-rs
+	url = https://github.com/VoidStarKat/half-rs
+[submodule "vendor/copypasta"]
+	path = vendor/copypasta
+	url = https://github.com/alacritty/copypasta
+[submodule "vendor/openssl-probe"]
+	path = vendor/openssl-probe
+	url = https://github.com/alexcrichton/openssl-probe
+[submodule "vendor/scoped-tls"]
+	path = vendor/scoped-tls
+	url = https://github.com/alexcrichton/scoped-tls
+[submodule "vendor/qstring"]
+	path = vendor/qstring
+	url = https://github.com/algesten/qstring
+[submodule "vendor/agave"]
+	path = vendor/agave
+	url = https://github.com/anza-xyz/agave
+[submodule "vendor/solana-sdk"]
+	path = vendor/solana-sdk
+	url = https://github.com/anza-xyz/solana-sdk
+[submodule "vendor/algebra"]
+	path = vendor/algebra
+	url = https://github.com/arkworks-rs/algebra
+[submodule "vendor/curves"]
+	path = vendor/curves
+	url = https://github.com/arkworks-rs/curves
+[submodule "vendor/std"]
+	path = vendor/std
+	url = https://github.com/arkworks-rs/std
+[submodule "vendor/bitflags"]
+	path = vendor/bitflags
+	url = https://github.com/bitflags/bitflags
+[submodule "vendor/proc-macro-crate"]
+	path = vendor/proc-macro-crate
+	url = https://github.com/bkchr/proc-macro-crate
+[submodule "vendor/arrayvec"]
+	path = vendor/arrayvec
+	url = https://github.com/bluss/arrayvec
+[submodule "vendor/indexmap"]
+	path = vendor/indexmap
+	url = https://github.com/bluss/indexmap
+[submodule "vendor/matrixmultiply"]
+	path = vendor/matrixmultiply
+	url = https://github.com/bluss/matrixmultiply/
+[submodule "vendor/rawpointer"]
+	path = vendor/rawpointer
+	url = https://github.com/bluss/rawpointer/
+[submodule "vendor/scopeguard"]
+	path = vendor/scopeguard
+	url = https://github.com/bluss/scopeguard
+[submodule "vendor/approx"]
+	path = vendor/approx
+	url = https://github.com/brendanzab/approx
+[submodule "vendor/ring"]
+	path = vendor/ring
+	url = https://github.com/briansmith/ring
+[submodule "vendor/untrusted"]
+	path = vendor/untrusted
+	url = https://github.com/briansmith/untrusted
+[submodule "vendor/rustix"]
+	path = vendor/rustix
+	url = https://github.com/bytecodealliance/rustix
+[submodule "vendor/wasi"]
+	path = vendor/wasi
+	url = https://github.com/bytecodealliance/wasi
+[submodule "vendor/wasi-rs"]
+	path = vendor/wasi-rs
+	url = https://github.com/bytecodealliance/wasi-rs
+[submodule "vendor/wit-bindgen"]
+	path = vendor/wit-bindgen
+	url = https://github.com/bytecodealliance/wit-bindgen
+[submodule "vendor/scraper"]
+	path = vendor/scraper
+	url = https://github.com/causal-agent/scraper
+[submodule "vendor/fxhash"]
+	path = vendor/fxhash
+	url = https://github.com/cbreeden/fxhash
+[submodule "vendor/constant_time_eq"]
+	path = vendor/constant_time_eq
+	url = https://github.com/cesarb/constant_time_eq
+[submodule "vendor/chrono"]
+	path = vendor/chrono
+	url = https://github.com/chronotope/chrono
+[submodule "vendor/humantime"]
+	path = vendor/humantime
+	url = https://github.com/chronotope/humantime
+[submodule "vendor/rust-shlex"]
+	path = vendor/rust-shlex
+	url = https://github.com/comex/rust-shlex
+[submodule "vendor/crossbeam"]
+	path = vendor/crossbeam
+	url = https://github.com/crossbeam-rs/crossbeam
+[submodule "vendor/cryptocorrosion"]
+	path = vendor/cryptocorrosion
+	url = https://github.com/cryptocorrosion/cryptocorrosion
+[submodule "vendor/autocfg"]
+	path = vendor/autocfg
+	url = https://github.com/cuviper/autocfg
+[submodule "vendor/curve25519-dalek"]
+	path = vendor/curve25519-dalek
+	url = https://github.com/dalek-cryptography/curve25519-dalek
+[submodule "vendor/ed25519-dalek"]
+	path = vendor/ed25519-dalek
+	url = https://github.com/dalek-cryptography/ed25519-dalek
+[submodule "vendor/subtle"]
+	path = vendor/subtle
+	url = https://github.com/dalek-cryptography/subtle
+[submodule "vendor/cfg_eval.rs"]
+	path = vendor/cfg_eval.rs
+	url = https://github.com/danielhenrymantilla/cfg_eval.rs
+[submodule "vendor/sledgehammer_bindgen"]
+	path = vendor/sledgehammer_bindgen
+	url = https://github.com/demonthos/sledgehammer_bindgen/
+[submodule "vendor/sledgehammer_utils"]
+	path = vendor/sledgehammer_utils
+	url = https://github.com/demonthos/sledgehammer_utils/
+[submodule "vendor/nalgebra"]
+	path = vendor/nalgebra
+	url = https://github.com/dimforge/nalgebra
+[submodule "vendor/simba"]
+	path = vendor/simba
+	url = https://github.com/dimforge/simba
+[submodule "vendor/dioxus-charts"]
+	path = vendor/dioxus-charts
+	url = https://github.com/dioxus-community/dioxus-charts
+[submodule "vendor/dioxus-clipboard"]
+	path = vendor/dioxus-clipboard
+	url = https://github.com/dioxus-community/dioxus-clipboard
+[submodule "vendor/warnings"]
+	path = vendor/warnings
+	url = https://github.com/dioxuslabs/warnings
+[submodule "vendor/rustc-version-rs"]
+	path = vendor/rustc-version-rs
+	url = https://github.com/djc/rustc-version-rs
+[submodule "vendor/arrayref"]
+	path = vendor/arrayref
+	url = https://github.com/droundy/arrayref
+[submodule "vendor/anyhow"]
+	path = vendor/anyhow
+	url = https://github.com/dtolnay/anyhow
+[submodule "vendor/async-trait"]
+	path = vendor/async-trait
+	url = https://github.com/dtolnay/async-trait
+[submodule "vendor/dtoa"]
+	path = vendor/dtoa
+	url = https://github.com/dtolnay/dtoa
+[submodule "vendor/inventory"]
+	path = vendor/inventory
+	url = https://github.com/dtolnay/inventory
+[submodule "vendor/itoa"]
+	path = vendor/itoa
+	url = https://github.com/dtolnay/itoa
+[submodule "vendor/paste"]
+	path = vendor/paste
+	url = https://github.com/dtolnay/paste
+[submodule "vendor/path-to-error"]
+	path = vendor/path-to-error
+	url = https://github.com/dtolnay/path-to-error
+[submodule "vendor/proc-macro2"]
+	path = vendor/proc-macro2
+	url = https://github.com/dtolnay/proc-macro2
+[submodule "vendor/quote"]
+	path = vendor/quote
+	url = https://github.com/dtolnay/quote
+[submodule "vendor/rustversion"]
+	path = vendor/rustversion
+	url = https://github.com/dtolnay/rustversion
+[submodule "vendor/ryu"]
+	path = vendor/ryu
+	url = https://github.com/dtolnay/ryu
+[submodule "vendor/semver"]
+	path = vendor/semver
+	url = https://github.com/dtolnay/semver
+[submodule "vendor/serde-repr"]
+	path = vendor/serde-repr
+	url = https://github.com/dtolnay/serde-repr
+[submodule "vendor/syn"]
+	path = vendor/syn
+	url = https://github.com/dtolnay/syn
+[submodule "vendor/thiserror"]
+	path = vendor/thiserror
+	url = https://github.com/dtolnay/thiserror
+[submodule "vendor/unicode-ident"]
+	path = vendor/unicode-ident
+	url = https://github.com/dtolnay/unicode-ident
+[submodule "vendor/crunchy"]
+	path = vendor/crunchy
+	url = https://github.com/eira-fransham/crunchy
+[submodule "vendor/dlib"]
+	path = vendor/dlib
+	url = https://github.com/elinorbgr/dlib
+[submodule "vendor/precomputed-hash"]
+	path = vendor/precomputed-hash
+	url = https://github.com/emilio/precomputed-hash
+[submodule "vendor/ciborium"]
+	path = vendor/ciborium
+	url = https://github.com/enarx/ciborium
+[submodule "vendor/env_logger"]
+	path = vendor/env_logger
+	url = https://github.com/env-logger-rs/env_logger/
+[submodule "vendor/xcursor-rs"]
+	path = vendor/xcursor-rs
+	url = https://github.com/esposm03/xcursor-rs
+[submodule "vendor/serde-big-array"]
+	path = vendor/serde-big-array
+	url = https://github.com/est31/serde-big-array
+[submodule "vendor/bumpalo"]
+	path = vendor/bumpalo
+	url = https://github.com/fitzgen/bumpalo
+[submodule "vendor/longest-increasing-subsequence"]
+	path = vendor/longest-increasing-subsequence
+	url = https://github.com/fitzgen/longest-increasing-subsequence
+[submodule "vendor/generic-array"]
+	path = vendor/generic-array
+	url = https://github.com/fizyk20/generic-array.git
+[submodule "vendor/pinned"]
+	path = vendor/pinned
+	url = https://github.com/futursolo/pinned
+[submodule "vendor/addr2line"]
+	path = vendor/addr2line
+	url = https://github.com/gimli-rs/addr2line
+[submodule "vendor/gimli"]
+	path = vendor/gimli
+	url = https://github.com/gimli-rs/gimli
+[submodule "vendor/object"]
+	path = vendor/object
+	url = https://github.com/gimli-rs/object
+[submodule "vendor/zerocopy"]
+	path = vendor/zerocopy
+	url = https://github.com/google/zerocopy
+[submodule "vendor/tclifford"]
+	path = vendor/tclifford
+	url = https://github.com/grumyantsev/tclifford
+[submodule "vendor/reqwasm"]
+	path = vendor/reqwasm
+	url = https://github.com/hamza1311/reqwasm
+[submodule "vendor/sharded-slab"]
+	path = vendor/sharded-slab
+	url = https://github.com/hawkw/sharded-slab
+[submodule "vendor/hermit-rs"]
+	path = vendor/hermit-rs
+	url = https://github.com/hermit-os/hermit-rs
+[submodule "vendor/libhermit-rs"]
+	path = vendor/libhermit-rs
+	url = https://github.com/hermitcore/libhermit-rs
+[submodule "vendor/encoding_rs"]
+	path = vendor/encoding_rs
+	url = https://github.com/hsivonen/encoding_rs
+[submodule "vendor/idna_adapter"]
+	path = vendor/idna_adapter
+	url = https://github.com/hsivonen/idna_adapter
+[submodule "vendor/utf8_iter"]
+	path = vendor/utf8_iter
+	url = https://github.com/hsivonen/utf8_iter
+[submodule "vendor/order-stat"]
+	path = vendor/order-stat
+	url = https://github.com/huonw/order-stat
+[submodule "vendor/h2"]
+	path = vendor/h2
+	url = https://github.com/hyperium/h2
+[submodule "vendor/http"]
+	path = vendor/http
+	url = https://github.com/hyperium/http
+[submodule "vendor/http-body"]
+	path = vendor/http-body
+	url = https://github.com/hyperium/http-body
+[submodule "vendor/hyper"]
+	path = vendor/hyper
+	url = https://github.com/hyperium/hyper
+[submodule "vendor/hyper-tls"]
+	path = vendor/hyper-tls
+	url = https://github.com/hyperium/hyper-tls
+[submodule "vendor/hyper-util"]
+	path = vendor/hyper-util
+	url = https://github.com/hyperium/hyper-util
+[submodule "vendor/mime"]
+	path = vendor/mime
+	url = https://github.com/hyperium/mime
+[submodule "vendor/data-encoding"]
+	path = vendor/data-encoding
+	url = https://github.com/ia0/data-encoding
+[submodule "vendor/console_log"]
+	path = vendor/console_log
+	url = https://github.com/iamcodemaker/console_log
+[submodule "vendor/matchit"]
+	path = vendor/matchit
+	url = https://github.com/ibraheemdev/matchit
+[submodule "vendor/num_enum"]
+	path = vendor/num_enum
+	url = https://github.com/illicitonion/num_enum
+[submodule "vendor/equivalent"]
+	path = vendor/equivalent
+	url = https://github.com/indexmap-rs/equivalent
+[submodule "vendor/rust-siphash"]
+	path = vendor/rust-siphash
+	url = https://github.com/jedisct1/rust-siphash
+[submodule "vendor/serde_with"]
+	path = vendor/serde_with
+	url = https://github.com/jonasbb/serde_with/
+[submodule "vendor/derivation-path"]
+	path = vendor/derivation-path
+	url = https://github.com/jpopesculian/derivation-path
+[submodule "vendor/ed25519-dalek-bip32"]
+	path = vendor/ed25519-dalek-bip32
+	url = https://github.com/jpopesculian/ed25519-dalek-bip32
+[submodule "vendor/cfg_aliases"]
+	path = vendor/cfg_aliases
+	url = https://github.com/katharostech/cfg_aliases
+[submodule "vendor/five8"]
+	path = vendor/five8
+	url = https://github.com/kevinheavey/five8
+[submodule "vendor/rust-security-framework"]
+	path = vendor/rust-security-framework
+	url = https://github.com/kornelski/rust-security-framework
+[submodule "vendor/rust_urlencoding"]
+	path = vendor/rust_urlencoding
+	url = https://github.com/kornelski/rust_urlencoding
+[submodule "vendor/ipnet"]
+	path = vendor/ipnet
+	url = https://github.com/krisprice/ipnet
+[submodule "vendor/rust-errno"]
+	path = vendor/rust-errno
+	url = https://github.com/lambda-fairy/rust-errno
+[submodule "vendor/leptos"]
+	path = vendor/leptos
+	url = https://github.com/leptos-rs/leptos
+[submodule "vendor/rust-encoding"]
+	path = vendor/rust-encoding
+	url = https://github.com/lifthrasiir/rust-encoding
+[submodule "vendor/iri-string"]
+	path = vendor/iri-string
+	url = https://github.com/lo48576/iri-string
+[submodule "vendor/objc2"]
+	path = vendor/objc2
+	url = https://github.com/madsmtm/objc2
+[submodule "vendor/downcast-rs"]
+	path = vendor/downcast-rs
+	url = https://github.com/marcianx/downcast-rs
+[submodule "vendor/rust-base64"]
+	path = vendor/rust-base64
+	url = https://github.com/marshallpierce/rust-base64
+[submodule "vendor/once_cell"]
+	path = vendor/once_cell
+	url = https://github.com/matklad/once_cell
+[submodule "vendor/rust-debug-unreachable"]
+	path = vendor/rust-debug-unreachable
+	url = https://github.com/mbrubeck/rust-debug-unreachable
+[submodule "vendor/rust-derivative"]
+	path = vendor/rust-derivative
+	url = https://github.com/mcarton/rust-derivative
+[submodule "vendor/vcpkg-rs"]
+	path = vendor/vcpkg-rs
+	url = https://github.com/mcgoo/vcpkg-rs
+[submodule "vendor/windows-rs"]
+	path = vendor/windows-rs
+	url = https://github.com/microsoft/windows-rs
+[submodule "vendor/fiat-crypto"]
+	path = vendor/fiat-crypto
+	url = https://github.com/mit-plv/fiat-crypto
+[submodule "vendor/rust-ctor"]
+	path = vendor/rust-ctor
+	url = https://github.com/mmastrac/rust-ctor
+[submodule "vendor/kdtree-rs"]
+	path = vendor/kdtree-rs
+	url = https://github.com/mrhooray/kdtree-rs
+[submodule "vendor/markdown-meta-parser"]
+	path = vendor/markdown-meta-parser
+	url = https://github.com/mrxiaozhuox/markdown-meta-parser/
+[submodule "vendor/system-configuration-rs"]
+	path = vendor/system-configuration-rs
+	url = https://github.com/mullvad/system-configuration-rs
+[submodule "vendor/synstructure"]
+	path = vendor/synstructure
+	url = https://github.com/mystor/synstructure
+[submodule "vendor/rust_libloading"]
+	path = vendor/rust_libloading
+	url = https://github.com/nagisa/rust_libloading/
+[submodule "vendor/QR-Code-generator"]
+	path = vendor/QR-Code-generator
+	url = https://github.com/nayuki/QR-Code-generator
+[submodule "vendor/borsh-rs"]
+	path = vendor/borsh-rs
+	url = https://github.com/near/borsh-rs
+[submodule "vendor/borsh"]
+	path = vendor/borsh
+	url = https://github.com/nearprotocol/borsh
+[submodule "vendor/android_system_properties"]
+	path = vendor/android_system_properties
+	url = https://github.com/nical/android_system_properties
+[submodule "vendor/xkeysym"]
+	path = vendor/xkeysym
+	url = https://github.com/notgull/xkeysym
+[submodule "vendor/serde_urlencoded"]
+	path = vendor/serde_urlencoded
+	url = https://github.com/nox/serde_urlencoded
+[submodule "vendor/static-assertions-rs"]
+	path = vendor/static-assertions-rs
+	url = https://github.com/nvzqz/static-assertions-rs
+[submodule "vendor/rust-easing"]
+	path = vendor/rust-easing
+	url = https://github.com/orhanbalci/rust-easing.git
+[submodule "vendor/slotmap"]
+	path = vendor/slotmap
+	url = https://github.com/orlp/slotmap
+[submodule "vendor/adler2"]
+	path = vendor/adler2
+	url = https://github.com/oyvindln/adler2
+[submodule "vendor/typenum"]
+	path = vendor/typenum
+	url = https://github.com/paholg/typenum
+[submodule "vendor/libsecp256k1"]
+	path = vendor/libsecp256k1
+	url = https://github.com/paritytech/libsecp256k1
+[submodule "vendor/x11rb"]
+	path = vendor/x11rb
+	url = https://github.com/psychon/x11rb
+[submodule "vendor/httpdate"]
+	path = vendor/httpdate
+	url = https://github.com/pyfisch/httpdate
+[submodule "vendor/keyboard-types"]
+	path = vendor/keyboard-types
+	url = https://github.com/pyfisch/keyboard-types
+[submodule "vendor/x11-clipboard"]
+	path = vendor/x11-clipboard
+	url = https://github.com/quininer/x11-clipboard
+[submodule "vendor/r-efi"]
+	path = vendor/r-efi
+	url = https://github.com/r-efi/r-efi
+[submodule "vendor/pulldown-cmark"]
+	path = vendor/pulldown-cmark
+	url = https://github.com/raphlinus/pulldown-cmark
+[submodule "vendor/strsim-rs"]
+	path = vendor/strsim-rs
+	url = https://github.com/rapidfuzz/strsim-rs
+[submodule "vendor/either"]
+	path = vendor/either
+	url = https://github.com/rayon-rs/either
+[submodule "vendor/rayon"]
+	path = vendor/rayon
+	url = https://github.com/rayon-rs/rayon
+[submodule "vendor/rust-mac"]
+	path = vendor/rust-mac
+	url = https://github.com/reem/rust-mac.git
+[submodule "vendor/winapi-rs"]
+	path = vendor/winapi-rs
+	url = https://github.com/retep998/winapi-rs
+[submodule "vendor/const_format_crates"]
+	path = vendor/const_format_crates
+	url = https://github.com/rodrimati1992/const_format_crates/
+[submodule "vendor/emojis"]
+	path = vendor/emojis
+	url = https://github.com/rossmacarthur/emojis
+[submodule "vendor/nom"]
+	path = vendor/nom
+	url = https://github.com/rust-bakery/nom
+[submodule "vendor/hex-conservative"]
+	path = vendor/hex-conservative
+	url = https://github.com/rust-bitcoin/hex-conservative
+[submodule "vendor/rust-bip39"]
+	path = vendor/rust-bip39
+	url = https://github.com/rust-bitcoin/rust-bip39/
+[submodule "vendor/rust-bitcoin"]
+	path = vendor/rust-bitcoin
+	url = https://github.com/rust-bitcoin/rust-bitcoin
+[submodule "vendor/itertools"]
+	path = vendor/itertools
+	url = https://github.com/rust-itertools/itertools
+[submodule "vendor/linfa"]
+	path = vendor/linfa
+	url = https://github.com/rust-ml/linfa
+[submodule "vendor/linfa-linalg"]
+	path = vendor/linfa-linalg
+	url = https://github.com/rust-ml/linfa-linalg
+[submodule "vendor/ndarray"]
+	path = vendor/ndarray
+	url = https://github.com/rust-ndarray/ndarray
+[submodule "vendor/ndarray-stats"]
+	path = vendor/ndarray-stats
+	url = https://github.com/rust-ndarray/ndarray-stats
+[submodule "vendor/num"]
+	path = vendor/num
+	url = https://github.com/rust-num/num
+[submodule "vendor/num-bigint"]
+	path = vendor/num-bigint
+	url = https://github.com/rust-num/num-bigint
+[submodule "vendor/num-complex"]
+	path = vendor/num-complex
+	url = https://github.com/rust-num/num-complex
+[submodule "vendor/num-derive"]
+	path = vendor/num-derive
+	url = https://github.com/rust-num/num-derive
+[submodule "vendor/num-integer"]
+	path = vendor/num-integer
+	url = https://github.com/rust-num/num-integer
+[submodule "vendor/num-iter"]
+	path = vendor/num-iter
+	url = https://github.com/rust-num/num-iter
+[submodule "vendor/num-rational"]
+	path = vendor/num-rational
+	url = https://github.com/rust-num/num-rational
+[submodule "vendor/num-traits"]
+	path = vendor/num-traits
+	url = https://github.com/rust-num/num-traits
+[submodule "vendor/rust-phf"]
+	path = vendor/rust-phf
+	url = https://github.com/rust-phf/rust-phf
+[submodule "vendor/getrandom"]
+	path = vendor/getrandom
+	url = https://github.com/rust-random/getrandom
+[submodule "vendor/rand"]
+	path = vendor/rand
+	url = https://github.com/rust-random/rand
+[submodule "vendor/rngs"]
+	path = vendor/rngs
+	url = https://github.com/rust-random/rngs
+[submodule "vendor/ego-tree"]
+	path = vendor/ego-tree
+	url = https://github.com/rust-scraper/ego-tree
+[submodule "vendor/cursor-icon"]
+	path = vendor/cursor-icon
+	url = https://github.com/rust-windowing/cursor-icon
+[submodule "vendor/wayland-csd-frame"]
+	path = vendor/wayland-csd-frame
+	url = https://github.com/rust-windowing/wayland-csd-frame
+[submodule "vendor/jzon-rs"]
+	path = vendor/jzon-rs
+	url = https://github.com/rustadopt/jzon-rs
+[submodule "vendor/hyper-rustls"]
+	path = vendor/hyper-rustls
+	url = https://github.com/rustls/hyper-rustls
+[submodule "vendor/pki-types"]
+	path = vendor/pki-types
+	url = https://github.com/rustls/pki-types
+[submodule "vendor/rustls"]
+	path = vendor/rustls
+	url = https://github.com/rustls/rustls
+[submodule "vendor/tokio-rustls"]
+	path = vendor/tokio-rustls
+	url = https://github.com/rustls/tokio-rustls
+[submodule "vendor/webpki"]
+	path = vendor/webpki
+	url = https://github.com/rustls/webpki
+[submodule "vendor/alga"]
+	path = vendor/alga
+	url = https://github.com/rustsim/alga
+[submodule "vendor/console_error_panic_hook"]
+	path = vendor/console_error_panic_hook
+	url = https://github.com/rustwasm/console_error_panic_hook
+[submodule "vendor/gloo"]
+	path = vendor/gloo
+	url = https://github.com/rustwasm/gloo
+[submodule "vendor/wasm-bindgen"]
+	path = vendor/wasm-bindgen
+	url = https://github.com/rustwasm/wasm-bindgen
+[submodule "vendor/convert-case"]
+	path = vendor/convert-case
+	url = https://github.com/rutrum/convert-case
+[submodule "vendor/serde_qs"]
+	path = vendor/serde_qs
+	url = https://github.com/samscott89/serde_qs
+[submodule "vendor/httparse"]
+	path = vendor/httparse
+	url = https://github.com/seanmonstar/httparse
+[submodule "vendor/num_cpus"]
+	path = vendor/num_cpus
+	url = https://github.com/seanmonstar/num_cpus
+[submodule "vendor/reqwest"]
+	path = vendor/reqwest
+	url = https://github.com/seanmonstar/reqwest
+[submodule "vendor/try-lock"]
+	path = vendor/try-lock
+	url = https://github.com/seanmonstar/try-lock
+[submodule "vendor/unicase"]
+	path = vendor/unicase
+	url = https://github.com/seanmonstar/unicase
+[submodule "vendor/want"]
+	path = vendor/want
+	url = https://github.com/seanmonstar/want
+[submodule "vendor/instant"]
+	path = vendor/instant
+	url = https://github.com/sebcrozet/instant
+[submodule "vendor/bytes"]
+	path = vendor/bytes
+	url = https://github.com/serde-rs/bytes
+[submodule "vendor/json"]
+	path = vendor/json
+	url = https://github.com/serde-rs/json
+[submodule "vendor/serde"]
+	path = vendor/serde
+	url = https://github.com/serde-rs/serde
+[submodule "vendor/bincode"]
+	path = vendor/bincode
+	url = https://github.com/servo/bincode
+[submodule "vendor/core-foundation-rs"]
+	path = vendor/core-foundation-rs
+	url = https://github.com/servo/core-foundation-rs
+[submodule "vendor/euclid"]
+	path = vendor/euclid
+	url = https://github.com/servo/euclid
+[submodule "vendor/futf"]
+	path = vendor/futf
+	url = https://github.com/servo/futf
+[submodule "vendor/html5ever"]
+	path = vendor/html5ever
+	url = https://github.com/servo/html5ever
+[submodule "vendor/rust-cssparser"]
+	path = vendor/rust-cssparser
+	url = https://github.com/servo/rust-cssparser
+[submodule "vendor/rust-fnv"]
+	path = vendor/rust-fnv
+	url = https://github.com/servo/rust-fnv
+[submodule "vendor/rust-smallvec"]
+	path = vendor/rust-smallvec
+	url = https://github.com/servo/rust-smallvec
+[submodule "vendor/rust-url"]
+	path = vendor/rust-url
+	url = https://github.com/servo/rust-url
+[submodule "vendor/string-cache"]
+	path = vendor/string-cache
+	url = https://github.com/servo/string-cache
+[submodule "vendor/stylo"]
+	path = vendor/stylo
+	url = https://github.com/servo/stylo
+[submodule "vendor/tendril"]
+	path = vendor/tendril
+	url = https://github.com/servo/tendril
+[submodule "vendor/foreign-types"]
+	path = vendor/foreign-types
+	url = https://github.com/sfackler/foreign-types
+[submodule "vendor/rust-native-tls"]
+	path = vendor/rust-native-tls
+	url = https://github.com/sfackler/rust-native-tls
+[submodule "vendor/rust-openssl"]
+	path = vendor/rust-openssl
+	url = https://github.com/sfackler/rust-openssl
+[submodule "vendor/uriparse-rs"]
+	path = vendor/uriparse-rs
+	url = https://github.com/sgodwincs/uriparse-rs
+[submodule "vendor/calloop-wayland-source"]
+	path = vendor/calloop-wayland-source
+	url = https://github.com/smithay/calloop-wayland-source
+[submodule "vendor/client-toolkit"]
+	path = vendor/client-toolkit
+	url = https://github.com/smithay/client-toolkit
+[submodule "vendor/smithay-clipboard"]
+	path = vendor/smithay-clipboard
+	url = https://github.com/smithay/smithay-clipboard
+[submodule "vendor/wayland-rs"]
+	path = vendor/wayland-rs
+	url = https://github.com/smithay/wayland-rs
+[submodule "vendor/async-channel"]
+	path = vendor/async-channel
+	url = https://github.com/smol-rs/async-channel
+[submodule "vendor/async-lock"]
+	path = vendor/async-lock
+	url = https://github.com/smol-rs/async-lock
+[submodule "vendor/atomic-waker"]
+	path = vendor/atomic-waker
+	url = https://github.com/smol-rs/atomic-waker
+[submodule "vendor/concurrent-queue"]
+	path = vendor/concurrent-queue
+	url = https://github.com/smol-rs/concurrent-queue
+[submodule "vendor/event-listener"]
+	path = vendor/event-listener
+	url = https://github.com/smol-rs/event-listener
+[submodule "vendor/event-listener-strategy"]
+	path = vendor/event-listener-strategy
+	url = https://github.com/smol-rs/event-listener-strategy
+[submodule "vendor/fastrand"]
+	path = vendor/fastrand
+	url = https://github.com/smol-rs/fastrand
+[submodule "vendor/parking"]
+	path = vendor/parking
+	url = https://github.com/smol-rs/parking
+[submodule "vendor/polling"]
+	path = vendor/polling
+	url = https://github.com/smol-rs/polling
+[submodule "vendor/tungstenite-rs"]
+	path = vendor/tungstenite-rs
+	url = https://github.com/snapview/tungstenite-rs
+[submodule "vendor/atty"]
+	path = vendor/atty
+	url = https://github.com/softprops/atty
+[submodule "vendor/stake"]
+	path = vendor/stake
+	url = https://github.com/solana-program/stake
+[submodule "vendor/system"]
+	path = vendor/system
+	url = https://github.com/solana-program/system
+[submodule "vendor/sprs"]
+	path = vendor/sprs
+	url = https://github.com/sparsemat/sprs
+[submodule "vendor/rust-crc32fast"]
+	path = vendor/rust-crc32fast
+	url = https://github.com/srijs/rust-crc32fast
+[submodule "vendor/schannel-rs"]
+	path = vendor/schannel-rs
+	url = https://github.com/steffengy/schannel-rs
+[submodule "vendor/tracing-wasm"]
+	path = vendor/tracing-wasm
+	url = https://github.com/storyai/tracing-wasm
+[submodule "vendor/stable_deref_trait"]
+	path = vendor/stable_deref_trait
+	url = https://github.com/storyyeller/stable_deref_trait
+[submodule "vendor/iana-time-zone"]
+	path = vendor/iana-time-zone
+	url = https://github.com/strawlab/iana-time-zone
+[submodule "vendor/linux-raw-sys"]
+	path = vendor/linux-raw-sys
+	url = https://github.com/sunfishcode/linux-raw-sys
+[submodule "vendor/quick-xml"]
+	path = vendor/quick-xml
+	url = https://github.com/tafia/quick-xml
+[submodule "vendor/pin-project"]
+	path = vendor/pin-project
+	url = https://github.com/taiki-e/pin-project
+[submodule "vendor/pin-project-lite"]
+	path = vendor/pin-project-lite
+	url = https://github.com/taiki-e/pin-project-lite
+[submodule "vendor/portable-atomic"]
+	path = vendor/portable-atomic
+	url = https://github.com/taiki-e/portable-atomic
+[submodule "vendor/syn-serde"]
+	path = vendor/syn-serde
+	url = https://github.com/taiki-e/syn-serde
+[submodule "vendor/send_wrapper"]
+	path = vendor/send_wrapper
+	url = https://github.com/thk1/send_wrapper
+[submodule "vendor/ahash"]
+	path = vendor/ahash
+	url = https://github.com/tkaitchuck/ahash
+[submodule "vendor/axum"]
+	path = vendor/axum
+	url = https://github.com/tokio-rs/axum
+[submodule "vendor/mio"]
+	path = vendor/mio
+	url = https://github.com/tokio-rs/mio
+[submodule "vendor/slab"]
+	path = vendor/slab
+	url = https://github.com/tokio-rs/slab
+[submodule "vendor/tls"]
+	path = vendor/tls
+	url = https://github.com/tokio-rs/tls
+[submodule "vendor/tokio"]
+	path = vendor/tokio
+	url = https://github.com/tokio-rs/tokio
+[submodule "vendor/tracing"]
+	path = vendor/tracing
+	url = https://github.com/tokio-rs/tracing
+[submodule "vendor/toml"]
+	path = vendor/toml
+	url = https://github.com/toml-rs/toml
+[submodule "vendor/bv-rs"]
+	path = vendor/bv-rs
+	url = https://github.com/tov/bv-rs
+[submodule "vendor/feature-probe-rs"]
+	path = vendor/feature-probe-rs
+	url = https://github.com/tov/feature-probe-rs
+[submodule "vendor/tower"]
+	path = vendor/tower
+	url = https://github.com/tower-rs/tower
+[submodule "vendor/tower-http"]
+	path = vendor/tower-http
+	url = https://github.com/tower-rs/tower-http
+[submodule "vendor/icu4x"]
+	path = vendor/icu4x
+	url = https://github.com/unicode-org/icu4x
+[submodule "vendor/unicode-normalization"]
+	path = vendor/unicode-normalization
+	url = https://github.com/unicode-rs/unicode-normalization
+[submodule "vendor/unicode-segmentation"]
+	path = vendor/unicode-segmentation
+	url = https://github.com/unicode-rs/unicode-segmentation
+[submodule "vendor/unicode-width"]
+	path = vendor/unicode-width
+	url = https://github.com/unicode-rs/unicode-width
+[submodule "vendor/unicode-xid"]
+	path = vendor/unicode-xid
+	url = https://github.com/unicode-rs/unicode-xid
+[submodule "vendor/dtoa-short"]
+	path = vendor/dtoa-short
+	url = https://github.com/upsuper/dtoa-short
+[submodule "vendor/uuid"]
+	path = vendor/uuid
+	url = https://github.com/uuid-rs/uuid
+[submodule "vendor/signal-hook"]
+	path = vendor/signal-hook
+	url = https://github.com/vorner/signal-hook
+[submodule "vendor/dioxus-motion"]
+	path = vendor/dioxus-motion
+	url = https://github.com/wheregmis/dioxus-motion.git
+[submodule "vendor/winnow"]
+	path = vendor/winnow
+	url = https://github.com/winnow-rs/winnow
+[submodule "vendor/markdown-rs"]
+	path = vendor/markdown-rs
+	url = https://github.com/wooorm/markdown-rs
+[submodule "vendor/dashmap"]
+	path = vendor/dashmap
+	url = https://github.com/xacrimon/dashmap
+[submodule "vendor/displaydoc"]
+	path = vendor/displaydoc
+	url = https://github.com/yaahc/displaydoc
+[submodule "vendor/zip"]
+	path = vendor/zip
+	url = https://github.com/zip-rs/zip.git
+[submodule "vendor/ff"]
+	path = vendor/ff
+	url = https://github.com/zkcrypto/ff
+[submodule "vendor/group"]
+	path = vendor/group
+	url = https://github.com/zkcrypto/group
+[submodule "vendor/dunce"]
+	path = vendor/dunce
+	url = https://gitlab.com/kornelski/dunce
+[submodule "vendor/wasm-logger"]
+	path = vendor/wasm-logger
+	url = https://gitlab.com/limira-rs/wasm-logger
+[submodule "vendor/syscall"]
+	path = vendor/syscall
+	url = https://gitlab.redox-os.org/redox-os/syscall
+[submodule "vendor/rust-bert"]
+	path = vendor/rust-bert
+	url = https://github.com/meta-introspector/rust-bert.git
+[submodule "vendor/fastembed-rs"]
+	path = vendor/fastembed-rs
+	url = https://github.com/Anush008/fastembed-rs.git
+[submodule "vendor/syn-serde-rust"]
+	path = vendor/syn-serde-rust
+	url = https://github.com/meta-introspector/syn-serde-rust.git
+[submodule "vendor/rust"]
+	path = vendor/rust
+	url = https://github.com/rust-lang/rust.git
+[submodule "hf_dataset"]
+	path = hf_dataset
+	url = https://huggingface.co/datasets/h4/solfunmeme-dioxus-reports
+[submodule "hg_datasets/microlean4"]
+	path = hg_datasets/microlean4
+	url = https://huggingface.co/datasets/introspector/MicroLean4
+[submodule "vendor/lean4"]
+	path = vendor/lean4
+	url = https://github.com/meta-introspector/lean4
+[submodule "vendor/rig-rust-llm-agents"]
+	path = vendor/rig-rust-llm-agents
+	url = https://github.com/meta-introspector/rig-rust-llm-agents/

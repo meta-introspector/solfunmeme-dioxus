@@ -1,5 +1,4 @@
 use std::fs;
-use std::path::Path;
 use regex::Regex;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {

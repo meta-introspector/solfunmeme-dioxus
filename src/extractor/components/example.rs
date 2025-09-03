@@ -120,10 +120,10 @@ mod tests {
     #[tokio::test]
     async fn test_component_execution() {
         // Test direct component execution
-        let result = embedding_component().await;
+        let result = Comp1::embedding_component().await;
         assert!(result.is_ok());
 
-        let result = bert_test_component().await;
+        let result = Comp2::bert_test_component().await;
         assert!(result.is_ok());
 
         let json_result = result.unwrap();
@@ -139,7 +139,7 @@ mod tests {
         assert!(schema.is_ok());
 
         // Test tool invocation (if tools are registered)
-        let tools = list_all_tools();
+        let tools = rrust_kontekst_base::list_all_tools();
         if let Ok(tool_list) = tools {
             println!("Registered tools: {:?}", tool_list);
         }

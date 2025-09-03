@@ -383,7 +383,7 @@ fn ZeroOntologySystem() -> Element {
 
             // Enchanting orbital theme network
     //        ThemeOrbitalNetwork {}
-        ThemeOrbitalNetwork2 {}
+        ThemeOrbitalNetwork {}
     //	ThemeOrbitalNetwork3 {}
     //	ThemeOrbitalNetwork4 {}
 

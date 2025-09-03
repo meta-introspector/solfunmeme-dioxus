@@ -33,7 +33,7 @@ impl DuplicateDetector {
     }
 
     pub fn detect_duplicates(&self, declarations: &[Declaration]) -> DuplicateReport {
-        let mut vectors: Vec<(CodeVector, &Declaration)> = declarations
+        let vectors: Vec<(CodeVector, &Declaration)> = declarations
             .iter()
             .map(|decl| (self.vectorizer.vectorize(&decl.content), decl))
             .collect();

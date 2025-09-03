@@ -222,7 +222,7 @@ fn NavClusterItem() -> Element {
 
 
                     option {
-                        key:adapter_cluster.identifier().as_str(),
+                        key: "{ adapter_cluster }",
                         value: adapter_cluster.clone(),
                         selected: active_entry_name == adapter_cluster,
 
