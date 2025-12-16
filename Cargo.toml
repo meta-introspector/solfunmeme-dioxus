@@ -1,143 +1,167 @@
 [package]
 name = "solfunmeme-dioxus"
 version = "1.1.0"
-authors = ["github-actions[bot] <github-actions[bot]@users.noreply.github.com>"]
+authors = ["James Michael Dupont <h4@solfunmeme.com>"]
 edition = "2021"
-license = "MIT OR Apache-2.0"
+license = "AGPL-3.0"
 publish = false
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+solfunmeme_messages = { path = "crates/solfunmeme_messages" }
+solfunmeme_app = { path = "crates/solfunmeme_app", optional = true }
+solfunmeme_core_utils = { path = "crates/solfunmeme_core_utils" }
+clap = { version = "4", features = ["derive"] }
+
+# solfunmeme_rdf_utils = { path = "crates/solfunmeme_rdf_utils" }
 
 ### git deps, could be submodules
-wallet-adapter = { git = "https://github.com/meta-introspector/SolanaWalletAdapter-zos", branch ="no-template"} # 
-syn-serde = { git = "https://github.com/meta-introspector/syn-serde-rust", branch="main", features = ["json"] }
-dioxus-charts = { git = "https://github.com/dioxus-community/dioxus-charts.git" ,  branch = "main" }
+wallet-adapter = { git = "https://github.com/meta-introspector/SolanaWalletAdapter-zos", branch ="no-template"} #
+solfunmeme_serde_utils = { path = "crates/solfunmeme_serde_utils" }
+solfunmeme_web_utils = { path = "crates/solfunmeme_web_utils" }
+solfunmeme_logging = { path = "crates/solfunmeme_logging" }
+solfunmeme_crypto_utils = { path = "crates/solfunmeme_crypto_utils" }
+solfunmeme_utility_deps = { path = "crates/solfunmeme_utility_deps" }
 
-## normal deps 
-inventory = "0.3"
-zip = { version = "0.6" , default-features=false } # For ZIP creation
+solfunmeme_http_client = { path = "crates/solfunmeme_http_client" }
 
-aes-gcm = "0.10.3"
-base64 = "0.22.1"
-bincode = "1.3.3"
-bip39 = "2.1.0"
-bs58 = "0.5.1"
-chacha20poly1305 = "0.10.1"
-chrono = "0.4.41"
-console_log = "1.0.0"
-
-gloo = "0.11.0"
-gloo-net = "0.5.0"
-gloo-storage = "0.3.0"
-gloo-timers = { version = "0.3.0", features = ["futures"] }
-gloo-utils = "0.2.0"
-js-sys = "0.3.69"
-
-jzon = "0.12.5"
-log = "0.4.21"
-markdown-meta-parser = "0.1.3"
-nalgebra = "0.33.2"
-nom = "8.0.0"
-percent-encoding = "2.3.1"
-pulldown-cmark = "0.13.0"
-qrcodegen = "1.8.0"
-regex = "1.10.4"
-reqwasm = "0.5.0"
-reqwest = { version = "0.12.2", features = ["blocking", "json"] }
-ring = { version = "0.17.14", features = ["wasm32_unknown_unknown_js"] }
-ring-compat = "0.8.0"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
-sha2 = "0.10.9"
-#solana-client = "*"
-#solana-sdk = "1.18.11"
-#solana-sdk = { version = "*" }
-#solana-system-interface = "*"
-#solana-transaction-error = { version = "*", features=["serde"] }
-
-solana-system-interface = "1.0.0"
-solana-sdk = { version = "2.3.0" }
-solana-transaction-error = { version = "3.0.0-canary.7040146", features=["serde"] }
-
-easer = "0.3.0"
-syn = "2.0.103"
-thiserror = { version = "2.0.12" }
-url = "2.5.4"
-
-wasm-bindgen = { version = "0.2.92", features = ["serde-serialize"] }
-wasm-bindgen-futures = "0.4.42"
-wasm-logger = "0.2.0"
-#web-sys = { version = "0.3.58", features = ["Storage"] }
-
-web-sys = { version = "0.3.69", features = [    "Window", "Navigator",   "Storage", "Event", "InputEvent",  "EventTarget",  "HtmlInputElement",  "KeyboardEvent",  "Document",  "Element",	"HtmlAnchorElement"    , "Clipboard"  , "console"  ]  }
-
+#dioxus-charts = { git = "https://github.com/dioxus-community/dioxus-charts.git" ,  branch = "main" }
+# # dioxus = { version = "0.6.3", features = ["router"] }
+# dioxus-router = "0.6.3"
+# dioxus-web = "0.6.3"
+# dioxus-motion = "0.3.1"
+# dioxus-html = "0.6.3"
+# dioxus-logger = "0.6.2"
+# easer = "0.3.0"
+# dioxus-charts = { path = "vendor/dioxus-charts" }
 
 #dioxus-motion = { git = "https://github.com/wheregmis/dioxus-motion" , branch = "main" }
-dioxus-motion = "0.3.1"
-dioxus = { version = "0.6.3", features = ["router"] }
-#dioxus = { git = "https://github.com/dioxusLabs/dioxus.git", branch="main" }
-dioxus-router = "0.6.3"
-dioxus-web = "0.6.3"
-#ndarray = "0.16.1"
+
 ndarray = "0.15.6"
-tclifford = "0.1.0"
+tclifford = { path = "vendor/tclifford", features = ["serde"] }
 #rust-bert = "0.23.0"
 linfa = "0.7.1"
 linfa-preprocessing = "0.7.1"
 linfa-reduction = "0.7.1"
-#dioxus-charts = { path = "../dioxus-charts" }
-fastrand = "2.0.1"
-#getrandom = { version = "0.2.14", features = ["js"] }
-#getrandom = { version = "0.2.14", features = ["js"] }
-#getrandom = { version = "0.2.14", features = ["wasm_js"] }
-rand = "0.8.5"
-rand_core = { version = "0.6.4", features = ["std"] }
-getrandom = { version = "0.3.3", features = ["wasm_js"] }
-emojis = "0.7.0"
-csv = "1.3.1"
-markdown = "1.0.0"
-urlencoding = "2.1.3"
-dioxus-clipboard = "0.2.0"
-dioxus-html = "0.6.3"
-dioxus-logger = "0.6.2"
-scraper = "0.23.1"
-rrust_kontekst = {path = "rrust_kontekst"}
-rrust_kontekst_base = {path = "rrust_kontekst_base"}
-ctor = "0.4.2"
-tracing = "0.1.41"
-rust-embed = "8.7.2"
-curve25519-dalek = "4.1.3"
+linfa-clustering = "0.7.1"
+
+rust-embed = { version = "8.7.2", features = ["debug-embed"] , path = "vendor/rust-embed"}
+# rand = "0.8.5"
+# rand_core = { version = "0.6.4", features = ["std"] }
+
+rrust_kontekst = {path = "crates/rrust_kontekst"}
+orbital_sim_lib = {path = "crates/orbital_sim_lib"}
+core_data_lib = {path = "crates/core_data_lib"}
+emoji_matrix_lib = {path = "crates/emoji_matrix_lib"}
+rrust_kontekst_base = {path = "crates/rrust_kontekst_base"}
+solfunmeme_extractor = {path = "crates/solfunmeme_extractor"}
+solfunmeme_wallet_integration = {path = "crates/solfunmeme_wallet_integration"}
+shared_analysis_types = {path = "crates/shared_analysis_types"}
+gitaccount = { path = "crates/gitaccount" }
+component_builder_lib = {path = "crates/component_builder_lib"}
+component_registry_lib = {path = "crates/component_registry_lib"}
+component_emoji_lib = {path = "crates/component_emoji_lib"}
+playground_lib = {path = "crates/playground_lib"}
+views_lib = {path = "crates/views_lib"}
+model_lib = {path = "crates/model_lib"}
+shared_types_lib = {path = "crates/shared_types_lib"}
+signals_lib = {path = "crates/signals_lib"}
+prepare_sources = { path = "crates/prepare_sources" }
+solana_integration_lib = { path = "crates/solana_integration_lib" }
+rdf_processing_lib = { path = "crates/rdf_processing_lib" }
+# New refactored crates
+solfunmeme_function_analysis = { path = "crates/solfunmeme_function_analysis" }
+solfunmeme_clifford = { path = "crates/solfunmeme_clifford" }
+solfunmeme_extractor_system = { path = "crates/solfunmeme_extractor_system" }
+solfunmeme_models = { path = "crates/solfunmeme_models" }
+solfunmeme_views = { path = "crates/solfunmeme_views" }
+solfunmeme_playground = { path = "crates/solfunmeme_playground" }
+solfunmeme_state = { path = "crates/solfunmeme_state" }
+solfunmeme_indexer = { path = "crates/solfunmeme_indexer" }
+    # solfunmeme_embedding = { path = "crates/solfunmeme_embedding", optional = true } # Made optional
+    # solfunmeme_ontology_vibe = { path = "crates/solfunmeme_ontology_vibe" }
+tantivy = { path = "vendor/tantivy" }
+bootstrap = { path = "bootstrap" }
+chat_indexer = { path = "crates/chat_indexer" }
+vibe_prover = { path = "crates/vibe_prover" }
+index_exporter_lib = { path = "crates/index_exporter_lib" }
+zos_cli_modules = { path = "crates/zos_cli_modules" }
+
+
 #rand_core = { version = "*", features = ["std"] }
+# burn-backend = ["dep:burn"]
 
-[dependencies.x25519-dalek  ]
-version = "2.0.1"
-features = [ "static_secrets"]
 
-[dependencies.uuid]
-version = "1.17.0"
-# Lets you generate random UUIDs
-features = [
-    "v4",
-    "js",
-    "rng-getrandom",
-    "rng-rand"
-]
+# Exclude vendor from certain cargo operations
+[workspace]
+exclude = ["vendor", "crates/solfunmeme_embedding", "crates/solfunmeme_ontology_vibe", "crates/solfunmeme_rdf_utils", "crates/solfunmeme_clifford", "crates/solfunmeme_solana_data", "crates/solfunmeme_function_analysis", "crates/solfunmeme_search_tantivy", "crates/solfunmeme_extractor_system", "crates/solfunmeme_models", "crates/solfunmeme_views", "crates/solfunmeme_playground", "crates/solfunmeme_state", "crates/solfunmeme_indexer", "crates/chat_indexer", "crates/vibe_prover", "crates/index_exporter_lib", "crates/zos_cli_modules", "crates/solfunmeme_serde_utils", "crates/solfunmeme_web_utils", "crates/solfunmeme_logging", "crates/solfunmeme_crypto_utils", "crates/solfunmeme_utility_deps"]
+members = [
+    "bootstrap",
+    "bootstrap/stage1",
+    "crates/bootstrap/stage0",
+    "crates/bootstrap/stage1",
+    "crates/solfunmeme_app",
+    "crates/solfunmeme_wallet_integration",
+    "crates/solfunmeme_core_logic",
+    "crates/solfunmeme_generated",
+    # "crates/solfunmeme_tools",
+    "crates/task_manager",
+    "crates/model_lib",
+    "crates/playground_lib",
+    "crates/shared_types_lib",
+    "crates/views_lib",
+    "crates/signals_lib",
+    "crates/prepare_sources",
+    "crates/solana_integration_lib",
+    "crates/rdf_processing_lib",
+    "crates/rrust_kontekst",
+    "crates/rrust_kontekst_base",
+    "crates/shared_analysis_types",
+    "crates/gitaccount",
+    # "crates/solfunmeme_clifford",
+    # "crates/solfunmeme_solana_data",
+    # "crates/solfunmeme_function_analysis",
+    # "crates/solfunmeme_search_tantivy",
+    # "crates/solfunmeme_extractor_system",
+    # "crates/solfunmeme_models",
+    # "crates/solfunmeme_views",
+    # "crates/solfunmeme_playground",
+    # "crates/solfunmeme_state",
+    # "crates/solfunmeme_indexer",
+    # "crates/chat_indexer",
+    # "crates/vibe_prover",
+    # "crates/index_exporter_lib",
+    # "crates/zos_cli_modules",
+    # "crates/solfunmeme_serde_utils",
+    # "crates/solfunmeme_web_utils",
+    # "crates/solfunmeme_logging",
+    # "crates/solfunmeme_crypto_utils",
+    # "crates/solfunmeme_utility_deps",
+    # "crates/solfunmeme_rdf_utils",
+    # "crates/solfunmeme_ontology_vibe",
+    # "crates/solfunmeme_embedding",
 
-[features]
-default = ["web"]
-web = ["dioxus/web"]
-bincodev2 = []
-bincodev1 = []
-
+[workspace.package]
+edition = "2021"
+version = "0.1.0"
+authors = ["James Michael Dupont <h4@solfunmeme.com>"]
+keywords = ["solana", "dioxus", "blockchain", "ai", "rust"]
+license = "MIT"
+repository = "https://github.com/meta-introspector/solfunmeme-dioxus"
+documentation = "https://docs.rs/solfunmeme-dioxus"
+description = "A Dioxus-based application for Solfunmeme"
+homepage = "https://solfunmeme.com"
 
 
 # Server-side dependencies (excluded from WASM)
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 #rust-bert = "0.23" # Only include rust-bert for non-WASM targets
-#bzip2 = "*" 
-axum = "0.7" # Example server framework
+#bzip2 = "*"
+# axum = { path = "vendor/axum" } # Example server framework
 tokio = { version = "1.0", features = ["full"] } # For async runtime
+
+[patch.crates-io]
+tclifford = { path = "vendor/tclifford" }
 
 [profile]
 
@@ -151,3 +175,7 @@ inherits = "dev"
 [profile.android-dev]
 inherits = "dev"
 
+
+
+[features]
+frontend = ["solfunmeme_app?/frontend"]
