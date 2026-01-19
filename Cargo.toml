@@ -169,69 +169,75 @@ bincodev1 = []
 [workspace]
 exclude = ["vendor"]
 members = [
-    "bootstrap",
-    "bootstrap/stage1",
-    "crates/bootstrap/stage0",
-    "crates/bootstrap/stage1",
-    "crates/solfunmeme_app",
-    "crates/solfunmeme_wallet_integration",
-    "crates/solfunmeme_core_logic",
-    "crates/solfunmeme_generated",
-    "crates/solfunmeme_tools",
-    "crates/task_manager",
+    "crates/bm25_plugin",
+    "crates/component_builder_lib",
+    "crates/component_emoji_lib",
+    "crates/component_registry_lib",
+    "crates/core_data_lib",
+    "crates/doc_cross_references",
+    "crates/eliza_rs_plugin",
+    "crates/emoji_lang_plugin",
+    "crates/emoji_matrix_lib",
+    "crates/emoji_workflow_macro",
+    "crates/extractous_plugin",
+    "crates/gemini_cli_lib",
+    "crates/gitaccount",
+    "crates/git_plugin",
+    "crates/gline_rs_plugin",
+    "crates/json_ld_plugin",
+    "crates/jsonld_plugin",
+    "crates/keyword_extraction_rs_plugin",
+    "crates/layered_nlp_plugin",
+    "crates/llms_from_scratch_rs_plugin",
+    "crates/model2vec_rs_plugin",
     "crates/model_lib",
+    "crates/nlprule_plugin",
+    "crates/orbital_sim_lib",
     "crates/playground_lib",
-    "crates/shared_types_lib",
-    "crates/views_lib",
-    "crates/signals_lib",
     "crates/prepare_sources",
-    "crates/solana_integration_lib",
+    "crates/quickwit_plugin",
+    "crates/rdf_output",
     "crates/rdf_processing_lib",
+    "crates/rhai_plugin",
     "crates/rrust_kontekst",
     "crates/rrust_kontekst_base",
-    "crates/shared_analysis_types",
-    "crates/gitaccount",
-    "crates/solfunmeme_clifford",
-    "crates/solfunmeme_embedding",
-    "crates/solfunmeme_solana_data",
-    "crates/solfunmeme_function_analysis",
-    "crates/solfunmeme_search_tantivy",
-    "crates/rdf_output",
-    "crates/git_plugin",
-    "crates/zip_plugin",
+    "crates/rust_sbert_plugin",
+    "crates/rust_sentence_transformers_plugin",
     "crates/s3_plugin",
-    "crates/workflow_manager",
-    "crates/emoji_lang_plugin",
-    "crates/jsonld_plugin",
-    "crates/emoji_workflow_macro",
-    # "crates/rust_sbert_plugin",
-    "crates/llms_from_scratch_rs_plugin",
-    "crates/gline_rs_plugin",
-    # "crates/extractous_plugin",
-    # New refactored crates
-    "crates/solfunmeme_extractor_system",
-    "crates/solfunmeme_models",
-    "crates/solfunmeme_views",
-    "crates/solfunmeme_playground",
-    "crates/solfunmeme_state",
-    "crates/solfunmeme_indexer",
-    "crates/model2vec_rs_plugin",
-    "crates/layered_nlp_plugin",
-    "crates/vibrato_plugin",
-    "crates/keyword_extraction_rs_plugin",
-    # "crates/rust_sentence_transformers_plugin",
-    "crates/eliza_rs_plugin",
-    "crates/bm25_plugin",
-    "crates/vaporetto_plugin",
-    "crates/tongrams_rs_plugin",
+    "crates/semweb_lib",
+    "crates/shared_analysis_types",
+    "crates/shared_types_lib",
+    "crates/signals_lib",
     "crates/solana_airdrop_service_plugin",
-    "crates/json_ld_plugin",
-    "crates/rhai_plugin",
-    "crates/steel_plugin",
+    "crates/solana_integration_lib",
+    "crates/solfunmeme_app",
+    "crates/solfunmeme_clifford",
+    "crates/solfunmeme_core_logic",
+    "crates/solfunmeme_embedding",
+    "crates/solfunmeme_extractor",
+    "crates/solfunmeme_extractor_system",
+    "crates/solfunmeme_function_analysis",
+    "crates/solfunmeme_generated",
+    "crates/solfunmeme_indexer",
+    "crates/solfunmeme_input_fs",
+    "crates/solfunmeme_models",
+    "crates/solfunmeme_playground",
+    "crates/solfunmeme_search_tantivy",
+    "crates/solfunmeme_solana_data",
+    "crates/solfunmeme_state",
     "crates/solfunmeme_tantivy_report",
-    "crates/doc_cross_references",
-    "crates/gemini_cli_lib",
-    "zos/plugins", "phase_demo"]
+    "crates/solfunmeme_tools",
+    "crates/solfunmeme_views",
+    "crates/solfunmeme_wallet_integration",
+    "crates/steel_plugin",
+    "crates/tongrams_rs_plugin",
+    "crates/vaporetto_plugin",
+    "crates/vibrato_plugin",
+    "crates/views_lib",
+    "crates/vtext_plugin",
+    "crates/workflow_manager",
+    "crates/zip_plugin",
+]
 
 [workspace.package]
 
@@ -257,3 +263,33 @@ inherits = "dev"
 
 
 
+
+[workspace.dependencies]
+agave-solana-validator = { path = "vendor/agave-solana-validator" }
+eliza = { path = "vendor/eliza" }
+extractous = { path = "vendor/extractous" }
+gline-rs = { path = "vendor/gline-rs" }
+json-ld = { path = "vendor/json-ld" }
+keyword_extraction = { path = "vendor/keyword_extraction" }
+layered-nlp = { path = "vendor/layered-nlp" }
+llms-from-scratch-rs = { path = "vendor/llms-from-scratch-rs" }
+model2vec-rs = { path = "vendor/model2vec-rs" }
+nlprule = { path = "vendor/nlprule" }
+quickwit-rest-client = { path = "vendor/quickwit" }
+tclifford = { path = "vendor/tclifford" }
+fastembed = { path = "vendor/fastembed" }
+candle-core = { path = "vendor/candle/candle-core" }
+candle-nn = { path = "vendor/candle/candle-nn" }
+candle-transformers = { path = "vendor/candle/candle-transformers" }
+rhai = { path = "vendor/rhai" }
+sbert = { path = "vendor/sbert" }
+rust-sentence-transformers = { path = "vendor/rust-sentence-transformers" }
+solana-airdrop-service = { path = "vendor/solana-airdrop-service" }
+dioxus-charts = { path = "vendor/dioxus-charts" }
+rust-embed = { path = "vendor/rust-embed" }
+tantivy = { path = "vendor/tantivy" }
+syn-serde = { path = "vendor/syn-serde" }
+steel = { path = "vendor/steel" }
+tongrams-rs = { path = "vendor/tongrams-rs" }
+vaporetto = { path = "vendor/vaporetto" }
+vibrato = { path = "vendor/vibrato" }
