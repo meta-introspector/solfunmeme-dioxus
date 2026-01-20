@@ -9,18 +9,32 @@ fn main() {
 
 fn App() -> Element {
     let mut plugin_manager = use_signal(|| PluginManager::new());
+    let mut block_data = use_signal(|| String::from("No data"));
+    
+    // Load plugin on mount
+    use_effect(move || {
+        spawn(async move {
+            plugin_manager.write().load_plugin("/plugins/solana_p2p.wasm").await;
+        });
+    });
     
     rsx! {
         div { class: "app",
             h1 { "SOLFUNMEME v2" }
-            p { "Minimal plugin-based architecture" }
+            p { "P2P Solana Block Fetcher" }
             
             button {
                 onclick: move |_| {
-                    let result = plugin_manager.read().call("wallet", "connect", "");
-                    log::info!("Plugin result: {}", result);
+                    spawn(async move {
+                        let result = plugin_manager.read().call("solana-p2p", "get_block", "12345");
+                        block_data.set(result);
+                    });
                 },
-                "Test Plugin Call"
+                "Fetch Block"
+            }
+            
+            div { class: "result",
+                pre { "{block_data}" }
             }
         }
     }
