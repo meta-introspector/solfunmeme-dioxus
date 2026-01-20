@@ -48,18 +48,41 @@ impl SolanaP2P {
     }
     
     pub async fn get_block(&self, slot: u64) -> Result<JsValue, JsValue> {
-        console::log_1(&format!("🔍 Fetching block {}", slot).into());
+        console::log_1(&format!("🔍 Fetching block {} from Solana RPC", slot).into());
         log_to_server("info", &format!("Fetching block {}", slot));
         
-        let block = Block {
-            slot: slot.to_string(),
-            hash: format!("hash_{}", slot),
-            transactions: vec![format!("tx_{}", slot)],
-            timestamp: (js_sys::Date::now() as u64).to_string(),
-        };
+        // Real Solana RPC call
+        let rpc_url = "https://api.mainnet-beta.solana.com";
+        let request_body = format!(
+            r#"{{"jsonrpc":"2.0","id":1,"method":"getBlock","params":[{}, {{"encoding":"json","maxSupportedTransactionVersion":0}}]}}"#,
+            slot
+        );
         
-        log_to_server("info", &format!("Block {} fetched", slot));
-        serde_wasm_bindgen::to_value(&block).map_err(|e| JsValue::from_str(&e.to_string()))
+        let opts = web_sys::RequestInit::new();
+        opts.set_method("POST");
+        opts.set_body(&JsValue::from_str(&request_body));
+        
+        let headers = web_sys::Headers::new().map_err(|e| JsValue::from_str("Failed to create headers"))?;
+        headers.set("Content-Type", "application/json").map_err(|e| JsValue::from_str("Failed to set header"))?;
+        opts.set_headers(&headers);
+        
+        let window = web_sys::window().ok_or(JsValue::from_str("No window"))?;
+        let request = web_sys::Request::new_with_str_and_init(rpc_url, &opts)
+            .map_err(|e| JsValue::from_str("Failed to create request"))?;
+        
+        let resp_value = wasm_bindgen_futures::JsFuture::from(window.fetch_with_request(&request))
+            .await
+            .map_err(|e| JsValue::from_str(&format!("Fetch failed: {:?}", e)))?;
+        
+        let resp: web_sys::Response = resp_value.dyn_into()
+            .map_err(|e| JsValue::from_str("Not a response"))?;
+        
+        let json = wasm_bindgen_futures::JsFuture::from(resp.json().map_err(|e| JsValue::from_str("JSON parse failed"))?)
+            .await
+            .map_err(|e| JsValue::from_str(&format!("JSON await failed: {:?}", e)))?;
+        
+        log_to_server("info", &format!("Block {} fetched from RPC", slot));
+        Ok(json)
     }
     
     pub async fn get_signatures(&self) -> Result<JsValue, JsValue> {
