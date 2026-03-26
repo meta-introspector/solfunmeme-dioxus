@@ -41,3 +41,4 @@ pub mod workflow_memes;
 pub mod dao_governance;
 pub mod pastebin_view;
 pub mod p2p_sharing;
+pub mod nixwars_bbs;
