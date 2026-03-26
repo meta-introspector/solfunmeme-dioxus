@@ -25,6 +25,7 @@
             binaryen
             chromium chromedriver
             nodePackages.tailwindcss
+            nodejs_22
             python3
           ];
 

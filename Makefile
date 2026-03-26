@@ -166,3 +166,58 @@ test-headless: deploy-local
 
 ci: nix-check test nix-build
 	@echo "✅ CI complete"
+
+# ── Deploy targets ────────────────────────────────────────────────
+
+SHARDS := 71
+DOCS := docs
+
+.PHONY: dx-release shards deploy-cf deploy-hf deploy-vercel deploy-all
+
+# Build release WASM (no base_path for static deploys)
+dx-release:
+	sed -i 's/^base_path = "dioxus"/# base_path = "dioxus"/' Dioxus.toml
+	nix develop --command dx build --release --platform web
+	sed -i 's/^# base_path = "dioxus"/base_path = "dioxus"/' Dioxus.toml
+	@echo "✓ Release built"
+
+# Split WASM into 71 Gandalf shards + manifest
+shards: dx-release
+	rm -rf $(DOCS)/*
+	cp -r target/dx/solfunmeme-dioxus/release/web/public/assets $(DOCS)/
+	WASM=$$(ls $(DOCS)/assets/*_bg*.wasm | head -1); \
+	mkdir -p $(DOCS)/assets/shards; \
+	TOTAL=$$(wc -c < "$$WASM"); \
+	split -b $$(( ($$TOTAL + $(SHARDS) - 1) / $(SHARDS) )) -d -a 2 "$$WASM" $(DOCS)/assets/shards/shard_; \
+	for f in $(DOCS)/assets/shards/shard_[0-9]*; do mv "$$f" "$${f}.wasm"; done; \
+	rm -f "$$WASM"; \
+	python3 -c "import hashlib,json,os; \
+	d='$(DOCS)/assets/shards'; \
+	s=[{'id':i,'size':os.path.getsize(os.path.join(d,f'shard_{i:02d}.wasm')),'hash':hashlib.sha256(open(os.path.join(d,f'shard_{i:02d}.wasm'),'rb').read()).hexdigest()} for i in range($(SHARDS))]; \
+	json.dump({'total_shards':$(SHARDS),'total_bytes':sum(x['size'] for x in s),'shards':s},open(os.path.join(d,'manifest.json'),'w'))"
+	cp assets/shard-loader.js $(DOCS)/assets/ 2>/dev/null || true
+	@echo "✓ $(SHARDS) shards created"
+
+# Cloudflare Pages deploy
+deploy-cf: shards
+	nix develop --command npx wrangler pages deploy $(DOCS)/ \
+		--project-name=solfunmeme-dioxus --branch=main
+	@echo "✓ Deployed to Cloudflare Pages"
+
+# HuggingFace Space deploy
+deploy-hf: shards
+	python3 -c "from huggingface_hub import HfApi; \
+	HfApi().upload_folder(folder_path='$(DOCS)',repo_id='introspector/solfunmeme-dioxus',repo_type='space', \
+	commit_message='Deploy $(SHARDS)-shard WASM')"
+	@echo "✓ Deployed to HuggingFace"
+
+# Push docs/ for Vercel (auto-deploys on push)
+deploy-vercel: shards
+	git add $(DOCS)/ vercel.json
+	git commit -m "Deploy $(SHARDS)-shard WASM to Vercel" || true
+	git push jmikedupont2 HEAD:main
+	@echo "✓ Pushed to Vercel"
+
+# All platforms
+deploy-all: deploy-cf deploy-hf deploy-vercel
+	@echo "✓ Deployed to CF Pages + HuggingFace + Vercel"
