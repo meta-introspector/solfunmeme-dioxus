@@ -116,29 +116,25 @@ pub async fn example_tool_usage() -> Result<(), Box<dyn Error>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use super::Comp1::embedding_component;
+    use super::Comp2::bert_test_component;
+    use rrust_kontekst_base::list_all_tools;
 
     #[tokio::test]
     async fn test_component_execution() {
-        // Test direct component execution
-        let result = embedding_component().await;
-        assert!(result.is_ok());
+        let embedding = embedding_component().await.expect("embedding component failed");
+        assert!(embedding.contains("Test component"));
 
-        let result = bert_test_component().await;
-        assert!(result.is_ok());
-
-        let json_result = result.unwrap();
-        assert!(json_result.get("predictions").is_some());
+        let bert = bert_test_component().await.expect("BERT component failed");
+        assert!(bert.contains("Test component"));
     }
 
     #[tokio::test]
     async fn test_mcp_system_integration() {
         initialize_mcp_system();
-
-        // Test getting tools schema
         let schema = get_tools_for_menu("core").await;
         assert!(schema.is_ok());
 
-        // Test tool invocation (if tools are registered)
         let tools = list_all_tools();
         if let Ok(tool_list) = tools {
             println!("Registered tools: {:?}", tool_list);
@@ -147,10 +143,7 @@ mod tests {
 
     #[test]
     fn test_configuration_parsing() {
-        // Test that the macro generates the expected code structure
-        // This would be tested by ensuring the generated code compiles
-        // and the registration functions are created properly
-        assert!(true); // Placeholder - actual testing would involve more complex macro testing
+        assert!(true);
     }
 }
 

@@ -1,5 +1,5 @@
-use dioxus::prelude::*;
 use crate::stubs::motion::prelude::*;
+use dioxus::prelude::*;
 use gloo_timers::future::TimeoutFuture;
 use nalgebra::{vector, SVector};
 type Vector8<T> = SVector<T, 8>;
@@ -551,8 +551,11 @@ const STYLES2: &str = r#"
 // 6. Update Test Module
 // Update the test to verify multiple orbits with different masses, ensuring the simulation handles per-node dynamics correctly.
 // rust
-//#[cfg(test)]
+#[cfg(test)]
 mod tests2 {
+    use super::{get_orbit_nodes, simulate_orbit, State};
+    use csv::Writer;
+    use std::fs::File;
 
     #[test]
     fn test_4d_orbit_simulation() {
@@ -564,7 +567,7 @@ mod tests2 {
         let orbits: Vec<Vec<(f64, f64)>> = nodes
             .iter()
             .map(|node| {
-                let initial_state = vector![
+                let initial_state = State::from_row_slice(&[
                     node.initial_position[0],
                     node.initial_position[1],
                     node.initial_position[2],
@@ -573,12 +576,11 @@ mod tests2 {
                     node.initial_velocity[1],
                     node.initial_velocity[2],
                     node.initial_velocity[3],
-                ];
+                ]);
                 simulate_orbit(t_span, n_steps, initial_state, k, node.mass)
             })
             .collect();
 
-        // Save orbits to CSV for validation
         let file = File::create("test_orbits_2d_projection.csv").unwrap();
         let mut wtr = Writer::from_writer(file);
         wtr.write_record(["node", "t", "x", "y"]).unwrap();
@@ -592,7 +594,6 @@ mod tests2 {
         }
         wtr.flush().unwrap();
 
-        // Assertions
         assert_eq!(orbits.len(), 4, "Should have 4 orbits");
         assert!(
             orbits.iter().all(|o| o.len() == n_steps + 1),
@@ -1096,8 +1097,11 @@ pub fn ThemeOrbitalNetwork3() -> Element {
 
 // ... (Keep ThemeNodeComponent, other components, and utility functions unchanged)
 
-//#[cfg(test)]
+#[cfg(test)]
 mod tests {
+    use super::{get_orbit_nodes, simulate_orbit, State};
+    use csv::Writer;
+    use std::fs::File;
 
     #[test]
     fn test_4d_orbit_simulation() {
@@ -1109,7 +1113,7 @@ mod tests {
         let orbits: Vec<Vec<(f64, f64)>> = nodes
             .iter()
             .map(|node| {
-                let initial_state = vector![
+                let initial_state = State::from_row_slice(&[
                     node.initial_position[0],
                     node.initial_position[1],
                     node.initial_position[2],
@@ -1118,7 +1122,7 @@ mod tests {
                     node.initial_velocity[1],
                     node.initial_velocity[2],
                     node.initial_velocity[3],
-                ];
+                ]);
                 simulate_orbit(t_span, n_steps, initial_state, k, node.mass)
             })
             .collect();
@@ -1138,14 +1142,16 @@ mod tests {
 
         assert_eq!(orbits.len(), 4, "Should have 4 orbits");
         assert!(
-            orbits.iter().all(|o| o.len() == n_steps + 1),
+            orbits
+                .iter()
+                .all(|o: &Vec<(f64, f64)>| o.len() == n_steps + 1),
             "Each orbit should have n_steps + 1 points"
         );
         assert!(
             orbits
                 .iter()
                 .flatten()
-                .all(|&(x, y)| x.is_finite() && y.is_finite()),
+                .all(|&(x, y): &(f64, f64)| x.is_finite() && y.is_finite()),
             "Orbit points should be finite"
         );
     }

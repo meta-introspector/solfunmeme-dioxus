@@ -330,8 +330,9 @@ impl SolanaEncryption {
     }
 }
 
-//#[cfg(test)]
+#[cfg(test)]
 mod tests {
+    use super::SolanaEncryption;
 
     #[test]
     fn test_keypair_generation() {
@@ -385,11 +386,7 @@ mod tests {
     //     ).unwrap();
 
     //     let decrypted = SolanaEncryption::decrypt_from_sender(
-    //         &encrypted,
-    //         &recipient_private,
-    //     ).unwrap();
-
-    //     assert_eq!(message, decrypted);
+    //     // etc...
     // }
 
     #[test]

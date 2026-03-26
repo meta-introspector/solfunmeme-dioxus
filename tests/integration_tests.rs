@@ -140,15 +140,14 @@ fn test_meme_generation() {
         .analyze_file(SAMPLE_RUST_CODE, "sample.rs".to_string())
         .expect("Failed to analyze code");
 
-    let generator = MemeGenerator::new(128);
-    let memes = generator.generate_meme_representation(&analysis);
+    let memes = analyzer.generate_meme_representation(&analysis);
 
     assert!(memes.len() > 0);
 
     // Check that we have memes for different declaration types
     let meme_values: Vec<&String> = memes.values().collect();
-    let has_function_meme = meme_values.iter().any(|m| m.contains("🔧"));
-    let has_struct_meme = meme_values.iter().any(|m| m.contains("🏗️"));
+    let has_function_meme = meme_values.iter().any(|m: &&String| m.contains("🔧"));
+    let has_struct_meme = meme_values.iter().any(|m: &&String| m.contains("🏗️"));
 
     assert!(has_function_meme);
     assert!(has_struct_meme);
