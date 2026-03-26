@@ -1,9 +1,3 @@
 {
-  "devDependencies": {
-    "tailwindcss": "^3.4.17"
-    "@vscode/openssl-prebuilt": "^0.0.11"
-  },
-  "dependencies": {
-    
-  }
+  "private": true
 }
