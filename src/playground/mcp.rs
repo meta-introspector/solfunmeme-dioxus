@@ -5,6 +5,7 @@ use rrust_kontekst_base::{get_mcp_tools, get_mcp_tools_schema, invoke_mcp_tool, 
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use std::collections::HashMap;
+use std::env;
 
 const AI_PLACEHOLDER: &str = "AI: invoke_tool('embedding_ops', {'query': 'hello world'})";
 const AI_PREFIX: &str = "AI: ";
@@ -121,6 +122,12 @@ fn local_tools() -> Vec<McpToolView> {
         .unwrap_or_default()
 }
 
+fn is_gateway_fallback_enabled() -> bool {
+    env::var("DIOXUS_MCP_ALLOW_LOCAL_FALLBACK")
+        .map(|value| matches!(value.to_lowercase().as_str(), "1" | "true" | "yes"))
+        .unwrap_or(false)
+}
+
 #[cfg(not(target_arch = "wasm32"))]
 fn tool_list_endpoint() -> String {
     format!("{}/tools", crate::mcp_gateway::gateway_base_url())
@@ -217,12 +224,21 @@ async fn call_gateway_tool(name: &str, _arguments: Value) -> Result<Value, Strin
 }
 
 async fn invoke_mcp_tool_with_fallback(name: String, arguments: Value) -> Result<Value, String> {
+    let allow_fallback = is_gateway_fallback_enabled();
     match call_gateway_tool(&name, arguments.clone()).await {
         Ok(result) => Ok(result),
-        Err(gateway_error) => match invoke_mcp_tool(&name, arguments).await {
-            Ok(result) => Ok(result),
-            Err(local_error) => Err(format!("gateway: {gateway_error}; local: {}", local_error)),
-        },
+        Err(gateway_error) => {
+            if allow_fallback {
+                match invoke_mcp_tool(&name, arguments).await {
+                    Ok(result) => Ok(result),
+                    Err(local_error) => {
+                        Err(format!("gateway: {gateway_error}; local: {local_error}"))
+                    }
+                }
+            } else {
+                Err(format!("gateway: {gateway_error}"))
+            }
+        }
     }
 }
 
@@ -686,7 +702,15 @@ pub async fn handle_mcp_request(request: Value) -> Value {
         Some("tools/list") => {
             let tool_source: String = match load_gateway_tools().await {
                 Ok(_) => "gateway".to_string(),
-                Err(_) => "local".to_string(),
+                Err(error) => {
+                    if is_gateway_fallback_enabled() {
+                        "local".to_string()
+                    } else {
+                        return serde_json::json!({
+                            "error": {"code": -1, "message": format!("gateway unavailable: {error}")}
+                        });
+                    }
+                }
             };
             let mut schema = get_mcp_tools_schema("core");
             if let Ok(ref mut s) = schema {
@@ -741,7 +765,11 @@ pub fn MCPPlaygroundApp() -> Element {
                 }
                 Err(err) => {
                     load_error.set(Some(err));
-                    mcp_tools.set(local_tools());
+                    if is_gateway_fallback_enabled() {
+                        mcp_tools.set(local_tools());
+                    } else {
+                        mcp_tools.set(Vec::new());
+                    }
                 }
             }
             loading.set(false);

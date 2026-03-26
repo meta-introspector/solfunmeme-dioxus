@@ -1,5 +1,7 @@
 use std::env;
 use std::path::{Path, PathBuf};
+use std::sync::{Arc, OnceLock};
+use std::time::Duration;
 
 use axum::{
     extract::{Json, Path as AxumPath, State},
@@ -9,15 +11,22 @@ use axum::{
 };
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
-use tokio::process::Command;
+use tokio::io::{AsyncBufReadExt, AsyncWriteExt, BufReader, BufWriter};
+use tokio::process::{Child, ChildStdin, ChildStdout, Command};
+use tokio::sync::Mutex;
+use std::process::Stdio;
+use tokio::time::timeout;
 
 pub const MCP_GATEWAY_ADDR_ENV: &str = "DIOXUS_MCP_GATEWAY_ADDR";
 pub const ITIR_MCP_ROOT_ENV: &str = "ITIR_MCP_ROOT";
 pub const PYTHON_EXECUTABLE_ENV: &str = "ITIR_PYTHON_EXECUTABLE";
+pub const MCP_BRIDGE_TIMEOUT_MS: u64 = 10_000;
 
 const DEFAULT_GATEWAY_ADDR: &str = "127.0.0.1:3939";
 
-#[derive(Debug, Clone, Copy)]
+static BRIDGE_SESSION: OnceLock<Arc<Mutex<BridgeSession>>> = OnceLock::new();
+
+#[derive(Debug, Clone)]
 pub struct GatewayConfig {
     pub bind_addr: String,
     pub api_prefix: &'static str,
@@ -52,6 +61,23 @@ struct ToolCallRequest {
     arguments: Option<Value>,
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+struct BridgeSessionConfig {
+    #[serde(default)]
+    op: String,
+    #[serde(default)]
+    name: Option<String>,
+    #[serde(default)]
+    payload: Value,
+}
+
+#[derive(Debug)]
+struct BridgeSession {
+    child: Option<Child>,
+    stdin: Option<BufWriter<ChildStdin>>,
+    stdout: Option<BufReader<ChildStdout>>,
+}
+
 impl GatewayConfig {
     fn api_base(&self) -> String {
         format!("http://{}{}", self.bind_addr, self.api_prefix)
@@ -72,7 +98,8 @@ pub async fn run_mcp_gateway(config: GatewayConfig) -> Result<(), String> {
         .route("/tools/:name", get(get_tool_schema_handler))
         .route("/call", post(call_tool_handler))
         .route("/health", get(health_handler))
-        .with_state(config);
+        .route("/version", get(version_handler))
+        .with_state(config.clone());
 
     let listener = tokio::net::TcpListener::bind(config.bind_addr.as_str())
         .await
@@ -128,7 +155,7 @@ async fn call_tool_handler(
     if payload.name.trim().is_empty() {
         return Err((
             StatusCode::BAD_REQUEST,
-            Json(json!({"error": {"message": "tool name is required"}})),
+            Json(json!({"error": {"code": "input_error", "message": "tool name is required"}})),
         ));
     }
 
@@ -138,6 +165,7 @@ async fn call_tool_handler(
             StatusCode::BAD_REQUEST,
             Json(json!({
                 "error": {
+                    "code": "tool_error",
                     "message": error,
                 },
             })),
@@ -145,8 +173,98 @@ async fn call_tool_handler(
     }
 }
 
+#[derive(Debug, Serialize)]
+struct HealthStatus {
+    ok: bool,
+    service: String,
+    version: String,
+    protocol: String,
+    tools: usize,
+    status: String,
+}
+
+#[derive(Debug, Serialize)]
+struct VersionStatus {
+    service: String,
+    version: String,
+    protocol: String,
+}
+
 async fn health_handler() -> Json<Value> {
-    Json(json!({ "ok": true, "service": "itir-mcp-gateway" }))
+    let payload = run_py_bridge("health", None, None).await.unwrap_or_else(|error| {
+        json!({
+            "ok": false,
+            "service": "itir-mcp-gateway",
+            "status": "degraded",
+            "error": error,
+            "tools": 0,
+            "version": "unavailable",
+            "protocol": "unavailable"
+        })
+    });
+
+    let status = payload
+        .get("ok")
+        .and_then(Value::as_bool)
+        .unwrap_or_default();
+    let service = payload
+        .get("service")
+        .and_then(Value::as_str)
+        .unwrap_or("itir-mcp");
+
+    if status {
+        let version = payload.get("version").and_then(Value::as_str).unwrap_or("unknown");
+        let protocol = payload.get("protocol").and_then(Value::as_str).unwrap_or("unknown");
+        let tools = payload
+            .get("tools")
+            .and_then(Value::as_u64)
+            .and_then(|value| usize::try_from(value).ok())
+            .unwrap_or(0);
+        Json(serde_json::to_value(HealthStatus {
+            ok: true,
+            service: service.to_string(),
+            status: "ok".to_string(),
+            version: version.to_string(),
+            protocol: protocol.to_string(),
+            tools,
+        })
+        .unwrap_or_else(|_| json!({"ok": false, "service": "itir-mcp-gateway", "status": "degraded"})))
+    } else {
+        Json(payload)
+    }
+}
+
+async fn version_handler() -> Json<Value> {
+    let payload = run_py_bridge("info", None, None).await.unwrap_or_else(|error| {
+        json!({
+            "error": error,
+            "service": "itir-mcp-gateway",
+            "version": "unavailable",
+            "protocol": "unavailable"
+        })
+    });
+
+    if let Some(error) = payload.get("error") {
+        return Json(json!({"error": error, "service": "itir-mcp-gateway"}));
+    }
+
+    if let (Some(version), Some(protocol)) = (
+        payload.get("version").and_then(Value::as_str),
+        payload.get("protocol").and_then(Value::as_str),
+    ) {
+        Json(serde_json::to_value(VersionStatus {
+            service: payload
+                .get("service")
+                .and_then(Value::as_str)
+                .unwrap_or("itir-mcp")
+                .to_string(),
+            version: version.to_string(),
+            protocol: protocol.to_string(),
+        })
+        .unwrap_or_else(|_| json!({"service": "itir-mcp", "version": version, "protocol": protocol})))
+    } else {
+        Json(payload)
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -158,19 +276,172 @@ struct ItirToolModel {
 }
 
 async fn request_itir_mcp_tools() -> Result<Vec<ItirToolModel>, (StatusCode, String)> {
-    match run_py_bridge("list", None, None).await {
-        Ok(json_value) => serde_json::from_value(json_value).map_err(|error| {
-            (
-                StatusCode::INTERNAL_SERVER_ERROR,
-                format!("failed to decode tool list: {error}"),
-            )
-        }),
-        Err(error) => Err((StatusCode::BAD_GATEWAY, error)),
-    }
+    let response = run_py_bridge("list", None, None).await.map_err(|error| {
+        (StatusCode::BAD_GATEWAY, format!("bridge tool list failed: {error}"))
+    })?;
+    let tools = response.get("tools").ok_or_else(|| {
+        (StatusCode::INTERNAL_SERVER_ERROR, "failed to decode tool list: missing tools field".to_string())
+    })?;
+    let raw = serde_json::to_string(tools).map_err(|error| {
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            format!("failed to copy tool list: {error}"),
+        )
+    })?;
+    serde_json::from_str::<Vec<ItirToolModel>>(&raw).map_err(|error| {
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            format!("failed to decode tool list: {error}"),
+        )
+    })
 }
 
 async fn call_itir_mcp_tool(name: &str, arguments: Value) -> Result<Value, String> {
-    run_py_bridge("call", Some(name), Some(&arguments)).await
+    let response = run_py_bridge("call", Some(name), Some(&arguments)).await?;
+    if let Some(result) = response.get("result").and_then(Value::as_object) {
+        Ok(Value::Object(result.clone()))
+    } else if let Some(result) = response.get("result") {
+        Ok(result.clone())
+    } else {
+        Err("bridge response missing result field".to_string())
+    }
+}
+
+fn bridge_state() -> &'static Arc<Mutex<BridgeSession>> {
+    BRIDGE_SESSION.get_or_init(|| Arc::new(Mutex::new(BridgeSession::new())))
+}
+
+impl BridgeSession {
+    fn new() -> Self {
+        Self {
+            child: None,
+            stdin: None,
+            stdout: None,
+        }
+    }
+
+    fn ensure_started(&mut self) -> Result<(), String> {
+        if let Some(child) = self.child.as_mut() {
+            if let Ok(Some(_)) = child.try_wait() {
+                self.child = None;
+                self.stdin = None;
+                self.stdout = None;
+            }
+        }
+        if self.child.is_some() {
+            return Ok(());
+        }
+        let root = locate_itir_mcp_root().ok_or_else(|| {
+            "Could not locate itir-mcp checkout. Set ITIR_MCP_ROOT to the itir-mcp directory."
+                .to_string()
+        })?;
+
+        let mut cmd = Command::new(locate_python_exec());
+        cmd.current_dir(&root);
+        cmd.env("PYTHONPATH", root.join("src"));
+        cmd.args(["-m", "itir_mcp", "--bridge"]);
+        cmd.stdin(Stdio::piped());
+        cmd.stdout(Stdio::piped());
+        cmd.stderr(Stdio::null());
+
+        let mut child = cmd.spawn().map_err(|error| format!("python bridge spawn failed: {error}"))?;
+        let stdin = child
+            .stdin
+            .take()
+            .ok_or_else(|| "python bridge started without stdin".to_string())?;
+        let stdout = child
+            .stdout
+            .take()
+            .ok_or_else(|| "python bridge started without stdout".to_string())?;
+
+        self.child = Some(child);
+        self.stdin = Some(BufWriter::new(stdin));
+        self.stdout = Some(BufReader::new(stdout));
+        Ok(())
+    }
+
+    async fn call(&mut self, request: &Value) -> Result<Value, String> {
+        self.ensure_started()?;
+
+        let stdin = self
+            .stdin
+            .as_mut()
+            .ok_or_else(|| "python bridge session stdin unavailable".to_string())?;
+        let stdout = self
+            .stdout
+            .as_mut()
+            .ok_or_else(|| "python bridge session stdout unavailable".to_string())?;
+
+        timeout(Duration::from_millis(MCP_BRIDGE_TIMEOUT_MS), async {
+            let request = serde_json::to_string(request)
+                .map_err(|error| format!("failed to serialize bridge request: {error}"))?;
+            stdin.write_all(request.as_bytes()).await.map_err(|error| {
+                format!("failed to write bridge request: {error}")
+            })?;
+            stdin.write_all(b"\n").await.map_err(|error| {
+                format!("failed to write bridge delimiter: {error}")
+            })?;
+            stdin.flush().await.map_err(|error| format!("failed to flush bridge request: {error}"))?;
+
+            let mut output = String::new();
+            let read = stdout.read_line(&mut output).await.map_err(|error| {
+                format!("failed to read bridge response: {error}")
+            })?;
+            if read == 0 {
+                return Err("bridge closed before response".to_string());
+            }
+
+            let output = output.trim();
+            serde_json::from_str::<Value>(output)
+                .map_err(|error| format!("bridge response parse error: {error}; output={output}"))
+        })
+        .await
+        .map_err(|_| "bridge request timed out".to_string())?
+    }
+}
+
+async fn run_py_bridge(
+    op: &str,
+    name: Option<&str>,
+    payload: Option<&Value>,
+) -> Result<Value, String> {
+    let payload = payload.cloned().unwrap_or_else(|| json!({}));
+    let request = serde_json::to_value(BridgeSessionConfig {
+        op: op.to_string(),
+        name: name.map(str::to_string),
+        payload,
+    })
+    .map_err(|error| format!("failed to build bridge request: {error}"))?;
+
+    let mut session = bridge_state().lock().await;
+    match session.call(&request).await {
+        Ok(response) => handle_bridge_response(response),
+        Err(error) => {
+            session.child = None;
+            session.stdin = None;
+            session.stdout = None;
+            session.call(&request).await.and_then(handle_bridge_response).or(Err(error))
+        }
+    }
+}
+
+fn handle_bridge_response(response: Value) -> Result<Value, String> {
+    let ok = response.get("ok").and_then(Value::as_bool).unwrap_or(false);
+    if !ok {
+        let code = response
+            .get("error")
+            .and_then(|error| error.get("code"))
+            .and_then(Value::as_str)
+            .unwrap_or("tool_error");
+        let message = response
+            .get("error")
+            .and_then(|error| error.get("message"))
+            .and_then(Value::as_str)
+            .unwrap_or("unknown bridge error");
+        return Err(format!("{code}: {message}"));
+    }
+
+    Ok(response)
 }
 
 fn locate_itir_mcp_root() -> Option<PathBuf> {
@@ -204,78 +475,6 @@ fn locate_python_exec() -> String {
     env::var(PYTHON_EXECUTABLE_ENV)
         .or_else(|_| env::var("PYTHON_EXECUTABLE"))
         .unwrap_or_else(|_| "python3".to_string())
-}
-
-async fn run_py_bridge(
-    op: &str,
-    name: Option<&str>,
-    payload: Option<&Value>,
-) -> Result<Value, String> {
-    let root = locate_itir_mcp_root().ok_or_else(|| {
-        "Could not locate itir-mcp checkout. Set ITIR_MCP_ROOT to the itir-mcp directory."
-            .to_string()
-    })?;
-
-    let mut cmd = Command::new(locate_python_exec());
-    cmd.current_dir(&root);
-    cmd.env("PYTHONPATH", root.join("src"));
-    cmd.arg("-c");
-    cmd.arg(
-        [
-            "import json",
-            "import sys",
-            "from itir_mcp import build_default_registry",
-            "",
-            "registry = build_default_registry()",
-            "tools = registry.list_tools()",
-            "",
-            "if sys.argv[1] == 'list':",
-            "    out = [",
-            "        {",
-            "            'name': tool.name,",
-            "            'title': tool.title,",
-            "            'description': tool.description,",
-            "            'input_schema': tool.input_schema,",
-            "        }",
-            "        for tool in tools",
-            "    ]",
-            "    print(json.dumps(out))",
-            "    sys.exit(0)",
-            "",
-            "if sys.argv[1] != 'call' or len(sys.argv) < 4:",
-            "    print(json.dumps({'error': 'invalid method'}))",
-            "    sys.exit(1)",
-            "",
-            "payload = json.loads(sys.argv[3])",
-            "name = sys.argv[2]",
-            "out = registry.invoke(name, payload)",
-            "print(json.dumps(out))",
-        ]
-        .join("\n")
-        .as_str(),
-    );
-    cmd.arg(op);
-    if let Some(tool_name) = name {
-        cmd.arg(tool_name);
-    }
-    if let Some(body) = payload {
-        cmd.arg(body.to_string());
-    }
-
-    let output = cmd
-        .output()
-        .await
-        .map_err(|error| format!("python failed: {error}"))?;
-
-    if !output.status.success() {
-        let err = String::from_utf8_lossy(&output.stderr);
-        let stdout = String::from_utf8_lossy(&output.stdout);
-        return Err(format!("python bridge error: {err}{stdout}"));
-    }
-
-    let stdout = String::from_utf8_lossy(&output.stdout);
-    serde_json::from_str(stdout.trim())
-        .map_err(|error| format!("python output parse error: {error}; output={stdout}"))
 }
 
 #[cfg(test)]
