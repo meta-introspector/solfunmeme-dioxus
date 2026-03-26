@@ -12,11 +12,11 @@
 <div id="pdetail" style="margin-top:.3rem;font-size:.75rem;opacity:.4">0/71</div>
 </div></div>
 <script type="module">
-import{loadShardedWasm}from"./assets/shard-loader.js";
+import{loadShardedWasm}from"/assets/shard-loader.js";
 const pb=document.getElementById("pbar"),pt=document.getElementById("ptext"),pd=document.getElementById("pdetail");
 const buf=await loadShardedWasm((s,t,b,tb)=>{const p=Math.round(s/t*100);pb.style.width=p+"%";pt.textContent="Assembling… "+p+"%";pd.textContent=s+"/"+t+" · "+(b/1024|0)+"KB"});
 pt.textContent="Initializing…";pb.style.width="100%";
 const wr=new Response(buf,{headers:{"Content-Type":"application/wasm"}});
 const of=window.fetch;window.fetch=function(u,o){return typeof u==="string"&&u.includes("_bg")&&u.endsWith(".wasm")?Promise.resolve(wr):of.call(this,u,o)};
-await import("./assets/solfunmeme-dioxus-dxhc2b7b947fdeaa462.js");
+await import("/assets/solfunmeme-dioxus-dxh142a6fdd4c7b65f1.js");
 </script></body></html>
