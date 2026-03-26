@@ -3,33 +3,24 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    paths: [docs/**]
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: meta-introspector/checkout@main
 
-      - uses: meta-introspector/install-nix-action@master
-        with:
-          nix_path: nixpkgs=channel:nixos-unstable
-
-      - name: Build WASM
-        run: nix develop --command dx build --release --platform web
-
-      - name: Prepare for GitHub Pages
-        run: |
-          DIST=target/dx/solfunmeme-dioxus/release/web/public
-          cp $DIST/index.html $DIST/404.html
-          touch $DIST/.nojekyll
+      - name: Add .nojekyll
+        run: touch docs/.nojekyll
 
       - name: Deploy
         uses: meta-introspector/github-pages-deploy-action@v4.4.3
         with:
           branch: gh-pages
-          folder: target/dx/solfunmeme-dioxus/release/web/public
+          folder: docs
           clean: true
