@@ -8,13 +8,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     crane.url = "github:ipetkov/crane";
-    android-nixpkgs = {
-      url = "github:nickcao/nix-android";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, rust-overlay, crane, android-nixpkgs }:
+  outputs = { self, nixpkgs, rust-overlay, crane }:
     let
       systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
@@ -70,7 +66,7 @@
           };
 
           androidSdk = pkgs.androidenv.composeAndroidPackages {
-            platformVersions = [ "34" ];
+            platformVersions = [ "33" "34" ];
             buildToolsVersions = [ "34.0.0" ];
             ndkVersions = [ "26.3.11579264" ];
             includeNDK = true;
@@ -88,9 +84,6 @@
         in
         {
           default = pkgs.mkShell {
-            ANDROID_HOME = "${androidSdk.androidsdk}/libexec/android-sdk";
-            ANDROID_NDK_HOME = "${androidSdk.androidsdk}/libexec/android-sdk/ndk/26.3.11579264";
-
             buildInputs = with pkgs; [
               rustToolchain
               openssl
@@ -105,6 +98,15 @@
             ];
 
             shellHook = ''
+              # Gradle needs a writable SDK — copy from nix store on first use
+              if [ ! -d "$HOME/.android-sdk" ]; then
+                echo "📋 Creating writable Android SDK copy..."
+                cp -rL ${androidSdk.androidsdk}/libexec/android-sdk $HOME/.android-sdk
+                chmod -R u+w $HOME/.android-sdk
+              fi
+              export ANDROID_HOME="$HOME/.android-sdk"
+              export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/26.3.11579264"
+              export PATH="$HOME/.cargo/bin:$PATH"
               echo "🤖 Android SDK: $ANDROID_HOME"
               echo "🔧 NDK: $ANDROID_NDK_HOME"
               echo ""

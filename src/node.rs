@@ -1,0 +1,151 @@
+#[cfg(not(target_arch = "wasm32"))]
+pub mod server {
+    use axum::{Router, Json, extract::State, routing::{get, post}};
+    use serde::{Deserialize, Serialize};
+    use sha2::{Sha256, Digest};
+    use std::sync::{Arc, Mutex};
+    use std::collections::HashMap;
+
+    // ── State ───────────────────────────────────────────────────
+
+    #[derive(Clone)]
+    pub struct NodeState {
+        pub pastes: Arc<Mutex<HashMap<String, Paste>>>,
+        pub peers: Arc<Mutex<Vec<String>>>,
+        pub port: u16,
+    }
+
+    #[derive(Clone, Serialize, Deserialize)]
+    pub struct Paste {
+        pub id: String,
+        pub content: String,
+        pub timestamp: i64,
+    }
+
+    #[derive(Serialize)]
+    pub struct NodeStatus {
+        pub version: &'static str,
+        pub peers: usize,
+        pub pastes: usize,
+        pub uptime_secs: u64,
+    }
+
+    #[derive(Serialize)]
+    pub struct ZkperfWitness {
+        pub timestamp: i64,
+        pub commitment: String,
+        pub latency_bucket: u8,
+        pub orbifold: [u64; 3],
+        pub crown_product: u64,
+    }
+
+    #[derive(Deserialize)]
+    pub struct StegoEncodeReq {
+        pub data: String,
+        pub format: Option<String>,
+    }
+
+    #[derive(Serialize)]
+    pub struct StegoEncodeResp {
+        pub carrier: String,
+        pub format: String,
+        pub bytes: usize,
+    }
+
+    // ── Routes ──────────────────────────────────────────────────
+
+    pub fn router(state: NodeState) -> Router {
+        Router::new()
+            .route("/", get(status))
+            .route("/status", get(status))
+            .route("/paste", post(paste_create))
+            .route("/paste/{id}", get(paste_get))
+            .route("/zkperf", get(zkperf_witness))
+            .route("/stego/encode", post(stego_encode))
+            .route("/stego/decode", post(stego_decode))
+            .route("/peers", get(list_peers))
+            .with_state(state)
+    }
+
+    async fn status(State(s): State<NodeState>) -> Json<NodeStatus> {
+        Json(NodeStatus {
+            version: env!("CARGO_PKG_VERSION"),
+            peers: s.peers.lock().unwrap().len(),
+            pastes: s.pastes.lock().unwrap().len(),
+            uptime_secs: 0, // TODO: track
+        })
+    }
+
+    async fn paste_create(State(s): State<NodeState>, Json(body): Json<Paste>) -> Json<Paste> {
+        let mut hasher = Sha256::new();
+        hasher.update(body.content.as_bytes());
+        let id = hex::encode(&hasher.finalize()[..8]);
+        let paste = Paste {
+            id: id.clone(),
+            content: body.content,
+            timestamp: chrono::Utc::now().timestamp(),
+        };
+        s.pastes.lock().unwrap().insert(id, paste.clone());
+        Json(paste)
+    }
+
+    async fn paste_get(State(s): State<NodeState>, axum::extract::Path(id): axum::extract::Path<String>) -> Json<Option<Paste>> {
+        Json(s.pastes.lock().unwrap().get(&id).cloned())
+    }
+
+    async fn zkperf_witness() -> Json<ZkperfWitness> {
+        let now = chrono::Utc::now().timestamp();
+        let mut hasher = Sha256::new();
+        hasher.update(now.to_le_bytes());
+        let commitment = hex::encode(hasher.finalize());
+        Json(ZkperfWitness {
+            timestamp: now,
+            commitment,
+            latency_bucket: 1,
+            orbifold: [(now as u64) % 71, (now as u64) % 59, (now as u64) % 47],
+            crown_product: 196_883,
+        })
+    }
+
+    async fn stego_encode(Json(req): Json<StegoEncodeReq>) -> Json<StegoEncodeResp> {
+        use erdfa_publish::stego::ZeroWidthText;
+        use erdfa_publish::StegoPlugin;
+        let plugin = ZeroWidthText;
+        let carrier = plugin.encode(req.data.as_bytes());
+        Json(StegoEncodeResp {
+            carrier: String::from_utf8_lossy(&carrier).to_string(),
+            format: "zwc-text".into(),
+            bytes: carrier.len(),
+        })
+    }
+
+    async fn stego_decode(body: String) -> Json<Option<String>> {
+        use erdfa_publish::stego::ZeroWidthText;
+        use erdfa_publish::StegoPlugin;
+        let plugin = ZeroWidthText;
+        let decoded = plugin.decode(body.as_bytes()).map(|b| String::from_utf8_lossy(&b).to_string());
+        Json(decoded)
+    }
+
+    async fn list_peers(State(s): State<NodeState>) -> Json<Vec<String>> {
+        Json(s.peers.lock().unwrap().clone())
+    }
+
+    // ── Start ───────────────────────────────────────────────────
+
+    pub async fn start(port: u16) -> String {
+        let state = NodeState {
+            pastes: Arc::new(Mutex::new(HashMap::new())),
+            peers: Arc::new(Mutex::new(vec![])),
+            port,
+        };
+        let app = router(state);
+        let addr = format!("0.0.0.0:{}", port);
+        let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
+        let local = format!("http://{}", listener.local_addr().unwrap());
+        tokio::spawn(async move {
+            axum::serve(listener, app).await.unwrap();
+        });
+        local
+    }
+}
