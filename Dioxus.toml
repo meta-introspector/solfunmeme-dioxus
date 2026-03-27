@@ -4,7 +4,7 @@
 name = "solfunmeme-dioxus"
 
 # Dioxus App Default Platform
-# web, desktop, fullstack
+# web, desktop, fullstack, mobile
 default_platform = "web"
 
 # `build` & `serve` dist path
@@ -12,6 +12,11 @@ out_dir = "dist"
 
 # resource (assets) file folder
 asset_dir = "assets"
+
+[application.android]
+app_id = "com.solfunmeme.dioxus"
+min_sdk_version = 24
+target_sdk_version = 34
 
 [web.app]
 

@@ -4,7 +4,7 @@
 # This Makefile orchestrates the complete workflow from source code to 
 # semantic analysis, emoji embeddings, and blockchain integration.
 
-.PHONY: help all setup build test clean deploy nix nix-shell
+.PHONY: help all setup build test clean deploy nix nix-shell android android-install nix-publish
 .PHONY: index analyze extract embed search
 .PHONY: rdf semantic blockchain wallet
 .PHONY: ui components playground tools
@@ -20,6 +20,26 @@ nix:
 # Nix dev shell
 nix-shell:
 	nix develop
+
+# Android APK build (requires Android NDK)
+android:
+	dx build --platform android --release
+
+# Install APK to connected device
+android-install: android
+	adb install dist/android/app/build/outputs/apk/release/*.apk
+
+# Publish APK to local nix store + serve via WireGuard
+nix-publish: android
+	@echo "📦 Publishing APK to nix store..."
+	$(eval APK := $(shell find dist/android -name '*.apk' -print -quit))
+	nix store add-path $(APK) --name solfunmeme-dioxus-android-$(shell date +%Y%m%d).apk
+	@echo "🔗 Copying to onboarding portal..."
+	mkdir -p ~/.solfunmeme/onboarding/android
+	cp $(APK) ~/.solfunmeme/onboarding/android/solfunmeme-dioxus.apk
+	@echo "✅ APK available at ~/.solfunmeme/onboarding/android/solfunmeme-dioxus.apk"
+	@echo "   Serve via: solfunmeme mesh sync"
+
 
 # Show help with system overview
 help:

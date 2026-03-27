@@ -1,0 +1,49 @@
+name: Android APK Build
+
+on:
+  push:
+    branches: [main, feature/v2-minimal]
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android,armv7-linux-androideabi,x86_64-linux-android
+
+      - name: Install Android SDK + NDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install NDK 26
+        run: sdkmanager "ndk;26.3.11579264"
+
+      - name: Install dx CLI
+        run: cargo install dioxus-cli
+
+      - name: Build Android APK
+        env:
+          ANDROID_NDK_HOME: ${{ env.ANDROID_HOME }}/ndk/26.3.11579264
+        run: dx build --platform android --release
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: solfunmeme-dioxus-android
+          path: dist/android/**/*.apk
+          if-no-files-found: warn
+
+      - name: Upload to release (on tag)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/android/**/*.apk
