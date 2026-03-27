@@ -6,8 +6,8 @@ pub trait Godel {
     /// Get the Gödel number for this entity
     fn godel_number(&self) -> u64;
     
-    /// Compose multiple entities into a single Gödel number
-    fn compose(entities: &[&dyn Godel]) -> u64;
+    /// Compose multiple Gödel numbers into a single Gödel number
+    fn compose(numbers: &[u64]) -> u64;
     
     /// Decompose a Gödel number back into constituent entities
     fn decompose(godel_number: u64) -> Vec<u64>;
@@ -102,16 +102,14 @@ impl<T> Godel for GodelNumber<T> {
         self.value
     }
     
-    fn compose(entities: &[&dyn Godel]) -> u64 {
-        if entities.is_empty() {
+    fn compose(numbers: &[u64]) -> u64 {
+        if numbers.is_empty() {
             return 1;
         }
-        
         let mut result = 1u64;
-        for (i, entity) in entities.iter().enumerate() {
+        for (i, &n) in numbers.iter().enumerate() {
             let prime = nth_prime(i + 1);
-            let power = entity.godel_number();
-            result *= prime.pow(power as u32);
+            result *= prime.pow(n as u32);
         }
         result
     }

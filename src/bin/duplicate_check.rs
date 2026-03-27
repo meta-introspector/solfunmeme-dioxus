@@ -122,12 +122,13 @@ impl DuplicateChecker {
         
         // Add final snippet
         if !current_snippet.trim().is_empty() {
+            let norm = self.normalize_content(&current_snippet);
             snippets.push(CodeSnippet {
                 file_path: file_path.to_string_lossy().to_string(),
                 line_start: start_line + 1,
                 line_end: lines.len(),
                 content: current_snippet,
-                normalized_content: self.normalize_content(&current_snippet),
+                normalized_content: norm,
                 hash: String::new(),
             });
         }

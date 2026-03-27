@@ -2,10 +2,9 @@ use std::path::PathBuf;
 use std::fs;
 use std::error::Error;
 use serde::{Deserialize, Serialize};
-use tantivy::{Index, IndexReader};
+use tantivy::{Index, IndexReader, TantivyDocument};
 use tantivy::directory::MmapDirectory;
-use tantivy::schema::TantivyDocument;
-use tantivy::DocId;
+use tantivy::schema::Value;
 use clap::Parser;
 
 #[derive(Parser)]
@@ -98,9 +97,9 @@ impl IndexExporter {
         
         let mut documents = Vec::new();
         
-        for doc_id in 0..export_limit {
-            if let Ok(doc) = searcher.doc(DocId::from(doc_id)) {
-                if let Ok(indexed_doc) = self.document_to_indexed_document(&doc, &schema) {
+        for doc_id in 0..export_limit as u32 {
+            if let Ok(doc_address) = searcher.doc(tantivy::DocAddress::new(0, doc_id)) {
+                if let Ok(indexed_doc) = self.document_to_indexed_document(&doc_address, &schema) {
                     documents.push(indexed_doc);
                 }
             }
@@ -111,88 +110,36 @@ impl IndexExporter {
     
     fn document_to_indexed_document(&self, doc: &TantivyDocument, schema: &tantivy::schema::Schema) -> Result<IndexedDocument, Box<dyn Error>> {
         let mut indexed_doc = IndexedDocument {
-            path: None,
-            content: None,
-            emoji: None,
-            line_start: None,
-            line_end: None,
-            chunk_type: None,
-            language: None,
-            content_hash: None,
-            token_count: None,
-            line_count: None,
-            char_count: None,
-            test_result: None,
+            path: None, content: None, emoji: None, line_start: None,
+            line_end: None, chunk_type: None, language: None,
+            content_hash: None, token_count: None, line_count: None,
+            char_count: None, test_result: None,
         };
-        
-        for (field, values) in doc.iter() {
-            let field_name = schema.get_field_name(field);
-            
-            match field_name {
-                "path" => {
-                    if let Some(value) = values.first() {
-                        indexed_doc.path = Some(value.as_text().unwrap_or("").to_string());
-                    }
-                },
-                "content" => {
-                    if let Some(value) = values.first() {
-                        indexed_doc.content = Some(value.as_text().unwrap_or("").to_string());
-                    }
-                },
-                "emoji" => {
-                    if let Some(value) = values.first() {
-                        indexed_doc.emoji = Some(value.as_text().unwrap_or("").to_string());
-                    }
-                },
-                "line_start" => {
-                    if let Some(value) = values.first() {
-                        indexed_doc.line_start = Some(value.as_u64().unwrap_or(0));
-                    }
-                },
-                "line_end" => {
-                    if let Some(value) = values.first() {
-                        indexed_doc.line_end = Some(value.as_u64().unwrap_or(0));
-                    }
-                },
-                "chunk_type" => {
-                    if let Some(value) = values.first() {
-                        indexed_doc.chunk_type = Some(value.as_text().unwrap_or("").to_string());
-                    }
-                },
-                "language" => {
-                    if let Some(value) = values.first() {
-                        indexed_doc.language = Some(value.as_text().unwrap_or("").to_string());
-                    }
-                },
-                "content_hash" => {
-                    if let Some(value) = values.first() {
-                        indexed_doc.content_hash = Some(value.as_text().unwrap_or("").to_string());
-                    }
-                },
-                "token_count" => {
-                    if let Some(value) = values.first() {
-                        indexed_doc.token_count = Some(value.as_u64().unwrap_or(0));
-                    }
-                },
-                "line_count" => {
-                    if let Some(value) = values.first() {
-                        indexed_doc.line_count = Some(value.as_u64().unwrap_or(0));
-                    }
-                },
-                "char_count" => {
-                    if let Some(value) = values.first() {
-                        indexed_doc.char_count = Some(value.as_u64().unwrap_or(0));
-                    }
-                },
-                "test_result" => {
-                    if let Some(value) = values.first() {
-                        indexed_doc.test_result = Some(value.as_text().unwrap_or("").to_string());
-                    }
-                },
-                _ => {}
-            }
-        }
-        
+
+        let get_text = |name: &str| -> Option<String> {
+            schema.get_field(name).ok().and_then(|f| {
+                doc.get_first(f).and_then(|v| v.as_str().map(|s| s.to_string()))
+            })
+        };
+        let get_u64 = |name: &str| -> Option<u64> {
+            schema.get_field(name).ok().and_then(|f| {
+                doc.get_first(f).and_then(|v| v.as_u64())
+            })
+        };
+
+        indexed_doc.path = get_text("path");
+        indexed_doc.content = get_text("content");
+        indexed_doc.emoji = get_text("emoji");
+        indexed_doc.line_start = get_u64("line_start");
+        indexed_doc.line_end = get_u64("line_end");
+        indexed_doc.chunk_type = get_text("chunk_type");
+        indexed_doc.language = get_text("language");
+        indexed_doc.content_hash = get_text("content_hash");
+        indexed_doc.token_count = get_u64("token_count");
+        indexed_doc.line_count = get_u64("line_count");
+        indexed_doc.char_count = get_u64("char_count");
+        indexed_doc.test_result = get_text("test_result");
+
         Ok(indexed_doc)
     }
     
@@ -207,8 +154,8 @@ impl IndexExporter {
         let mut path_distribution = std::collections::HashMap::new();
         
         // Collect statistics from all documents
-        for doc_id in 0..total_docs {
-            if let Ok(doc) = searcher.doc(DocId::from(doc_id)) {
+        for doc_id in 0..total_docs as u32 {
+            if let Ok(doc) = searcher.doc(tantivy::DocAddress::new(0, doc_id)) {
                 if let Ok(indexed_doc) = self.document_to_indexed_document(&doc, &schema) {
                     // Count emojis
                     if let Some(emoji) = indexed_doc.emoji {
