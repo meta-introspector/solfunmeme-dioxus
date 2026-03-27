@@ -11,4 +11,4 @@ name = "generate_embedded"
 path = "src/bin/generate_embedded.rs"
 
 [dependencies]
-rust-embed = { version = "8.7.2", features = ["debug-embed"] , path = "../../vendor/rust-embed"}
+rust-embed = { version = "8.7.2", features = ["debug-embed"] , workspace = true}

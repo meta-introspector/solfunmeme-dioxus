@@ -1,1 +1,0 @@
-{"cnstInfB":{"cnstInf":{},"kind":{"kind":"constant","value":"def"},"levelParams":[],"name":"qux","sig":{"type":{"App":{"arg":{"BVar":{}},"fn":{"Lam":{"binderInfo":"default","binderName":"y","binderType":{},"body":{}}}}}}},"kind":"AsyncConstB"}

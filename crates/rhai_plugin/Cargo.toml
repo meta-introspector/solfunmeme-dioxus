@@ -6,4 +6,4 @@ license = "AGPL-3.0"
 
 [dependencies]
 anyhow = "1.0"
-rhai = { path = "../../vendor/rhai" }
+rhai = { workspace = true }

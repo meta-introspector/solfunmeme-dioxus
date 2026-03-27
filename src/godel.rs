@@ -71,6 +71,30 @@ impl<T> GodelNumber<T> {
     pub fn normalize(&self) -> f64 {
         self.value as f64 / self.magnitude()
     }
+
+    /// Project the Gödel number into 8D prime exponent space
+    pub fn to_8d_vector(&self) -> [u32; 8] {
+        let mut n = self.value;
+        let primes = [2, 3, 5, 7, 11, 13, 17, 19];
+        let mut exponents = [0u32; 8];
+        for (i, &p) in primes.iter().enumerate() {
+            while n % p == 0 {
+                exponents[i] += 1;
+                n /= p;
+            }
+        }
+        exponents
+    }
+
+    /// Compute Euclidean distance in 8D prime exponent space
+    pub fn euclidean_distance_8d(&self, other: &GodelNumber<T>) -> f64 {
+        let a = self.to_8d_vector();
+        let b = other.to_8d_vector();
+        let sum_sq: i32 = a.iter().zip(b.iter())
+            .map(|(x, y)| { let d = *x as i32 - *y as i32; d * d })
+            .sum();
+        (sum_sq as f64).sqrt()
+    }
 }
 
 impl<T> Godel for GodelNumber<T> {

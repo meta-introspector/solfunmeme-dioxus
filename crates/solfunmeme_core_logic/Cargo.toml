@@ -11,7 +11,7 @@ sophia_turtle = "0.8"
 sophia_api = "0.8"
 sophia_inmem = "0.8"
 syn-serde = { git = "https://github.com/meta-introspector/syn-serde-rust", branch="main", features = ["json"] }
-dioxus-charts = { path = "../../vendor/dioxus-charts" }
+dioxus-charts = { workspace = true }
 inventory = "0.3"
 zip = { version = "0.6" , default-features=false }
 bincode = "1.3.3"
@@ -46,7 +46,7 @@ linfa = "0.7.1"
 linfa-preprocessing = "0.7.1"
 linfa-reduction = "0.7.1"
 linfa-clustering = "0.7.1"
-rust-embed = { version = "8.7.2", features = ["debug-embed"] , path = "../../vendor/rust-embed"}
+rust-embed = { version = "8.7.2", features = ["debug-embed"] , workspace = true}
 fastrand = "2.0.1"
 getrandom = { version = "0.3.3", features = ["wasm_js"] }
 rand = "0.8.5"

@@ -1127,3 +1127,6 @@
 # [submodule "vendor/lancedb"]
 # 	path = vendor/lancedb
 # 	url = https://github.com/lancedb/lancedb
+[submodule "vendor/bootstrap"]
+	path = vendor/bootstrap
+	url = https://github.com/meta-introspector/bootstrap

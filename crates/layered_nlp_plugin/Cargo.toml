@@ -6,4 +6,4 @@ license = "AGPL-3.0"
 
 [dependencies]
 anyhow = "1.0"
-layered-nlp = { path = "../../vendor/layered-nlp" }
+layered-nlp = { workspace = true }

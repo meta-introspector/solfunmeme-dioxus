@@ -6,4 +6,4 @@ license = "AGPL-3.0"
 
 [dependencies]
 anyhow = "1.0"
-vaporetto = { path = "../../vendor/vaporetto/vaporetto" }
+vaporetto = { workspace = true }

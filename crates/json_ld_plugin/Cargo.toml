@@ -6,4 +6,4 @@ license = "AGPL-3.0"
 
 [dependencies]
 anyhow = "1.0"
-json-ld = { path = "../../vendor/json-ld" }
+json-ld = { workspace = true }

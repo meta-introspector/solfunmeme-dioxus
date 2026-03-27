@@ -6,4 +6,4 @@ license = "AGPL-3.0"
 
 [dependencies]
 anyhow = "1.0"
-quickwit-rest-client = { path = "../../vendor/quickwit/quickwit/quickwit-rest-client" }
+quickwit-rest-client = { workspace = true }

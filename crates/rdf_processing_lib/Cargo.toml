@@ -12,11 +12,11 @@ sophia_api = "0.8"
 sophia_turtle = "0.8"
 syn = { version = "2.0", features = ["full", "extra-traits"] }
 quote = "1.0"
-tclifford = { path = "../../vendor/tclifford" }
-fastembed = { path = "../../vendor/fastembed-rs" }
-candle-core = { path = "../../vendor/candle/candle-core", optional = true }
-candle-nn = { path = "../../vendor/candle/candle-nn", optional = true }
-candle-transformers = { path = "../../vendor/candle/candle-transformers", optional = true }
+tclifford = { workspace = true }
+fastembed = { workspace = true }
+candle-core = { workspace = true, optional = true }
+candle-nn = { workspace = true, optional = true }
+candle-transformers = { workspace = true, optional = true }
 hf-hub = "0.4"
 mownstr = "0.1"
 sophia_iri = "0.8"

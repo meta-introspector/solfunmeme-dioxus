@@ -53,7 +53,7 @@ path = "src/bin/git_object_indexer_cli.rs"
 
 [dependencies]
 anyhow = "1.0"
-tantivy = { path = "../../vendor/tantivy", default-features = false, features = ["mmap", "lz4-compression"] }
+tantivy = { workspace = true, default-features = false, features = ["mmap", "lz4-compression"] }
 emojis = "0.7.0"
 # Lightweight dependencies for chat processing
 regex = "1.10"

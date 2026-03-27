@@ -6,4 +6,4 @@ license = "AGPL-3.0"
 
 [dependencies]
 anyhow = "1.0"
-eliza = { path = "../../vendor/eliza-rs" }
+eliza = { workspace = true }

@@ -80,3 +80,10 @@ codebase_index/
 .env
 hf_dataset
 .vs
+
+# Nix
+/result
+/result-*
+
+# Temp
+/tmp/

@@ -4,7 +4,7 @@
 # This Makefile orchestrates the complete workflow from source code to 
 # semantic analysis, emoji embeddings, and blockchain integration.
 
-.PHONY: help all setup build test clean deploy
+.PHONY: help all setup build test clean deploy nix nix-shell
 .PHONY: index analyze extract embed search
 .PHONY: rdf semantic blockchain wallet
 .PHONY: ui components playground tools
@@ -12,6 +12,14 @@
 
 # Default target
 all: setup build index analyze
+
+# Nix build
+nix:
+	nix build
+
+# Nix dev shell
+nix-shell:
+	nix develop
 
 # Show help with system overview
 help:

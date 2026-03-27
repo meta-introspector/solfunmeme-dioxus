@@ -6,4 +6,4 @@ license = "AGPL-3.0"
 
 [dependencies]
 anyhow = "1.0"
-model2vec-rs = { path = "../../vendor/model2vec-rs" }
+model2vec-rs = { workspace = true }

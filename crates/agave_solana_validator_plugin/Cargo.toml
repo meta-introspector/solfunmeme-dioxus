@@ -6,4 +6,4 @@ license = "AGPL-3.0"
 
 [dependencies]
 anyhow = "1.0"
-agave-solana-validator = { path = "../../vendor/agave-solana-validator" }
+agave-solana-validator = { workspace = true }

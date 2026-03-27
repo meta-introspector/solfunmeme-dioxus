@@ -6,4 +6,4 @@ license = "AGPL-3.0"
 
 [dependencies]
 anyhow = "1.0"
-steel-core = { path = "../../vendor/steel/crates/steel-core" }
+steel-core = { workspace = true }

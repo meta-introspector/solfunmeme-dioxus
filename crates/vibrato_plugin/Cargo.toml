@@ -6,4 +6,4 @@ license = "AGPL-3.0"
 
 [dependencies]
 anyhow = "1.0"
-vibrato = { path = "../../vendor/vibrato/vibrato" }
+vibrato = { workspace = true }
