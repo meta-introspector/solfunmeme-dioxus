@@ -42,6 +42,17 @@ jobs:
           path: dist/android/**/*.apk
           if-no-files-found: warn
 
+      - name: Deploy APK to onboarding portal
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feature/v2-minimal'
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: solana.solfunmeme.com
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          source: dist/android/**/*.apk
+          target: /var/www/solana.solfunmeme.com/onboarding/solfunmeme-dioxus.apk
+          strip_components: 99
+
       - name: Upload to release (on tag)
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2

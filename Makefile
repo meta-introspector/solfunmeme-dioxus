@@ -29,16 +29,16 @@ android:
 android-install: android
 	adb install dist/android/app/build/outputs/apk/release/*.apk
 
-# Publish APK to local nix store + serve via WireGuard
+# Publish APK to local nix store + serve via web + WireGuard
 nix-publish: android
 	@echo "📦 Publishing APK to nix store..."
 	$(eval APK := $(shell find dist/android -name '*.apk' -print -quit))
 	nix store add-path $(APK) --name solfunmeme-dioxus-android-$(shell date +%Y%m%d).apk
-	@echo "🔗 Copying to onboarding portal..."
-	mkdir -p ~/.solfunmeme/onboarding/android
-	cp $(APK) ~/.solfunmeme/onboarding/android/solfunmeme-dioxus.apk
-	@echo "✅ APK available at ~/.solfunmeme/onboarding/android/solfunmeme-dioxus.apk"
-	@echo "   Serve via: solfunmeme mesh sync"
+	@echo "🔗 Deploying to onboarding portal..."
+	sudo mkdir -p /var/www/solana.solfunmeme.com/onboarding
+	sudo cp $(APK) /var/www/solana.solfunmeme.com/onboarding/solfunmeme-dioxus.apk
+	sudo chmod 644 /var/www/solana.solfunmeme.com/onboarding/solfunmeme-dioxus.apk
+	@echo "✅ APK live at https://solana.solfunmeme.com/onboarding/solfunmeme-dioxus.apk"
 
 
 # Show help with system overview
