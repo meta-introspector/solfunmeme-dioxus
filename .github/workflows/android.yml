@@ -1,4 +1,4 @@
-name: Android APK Build
+name: Build All Platforms
 
 on:
   push:
@@ -9,52 +9,92 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  android:
+  web:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@stable
         with:
-          targets: aarch64-linux-android,armv7-linux-androideabi,x86_64-linux-android
+          targets: wasm32-unknown-unknown
 
-      - name: Install Android SDK + NDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install NDK 26
-        run: sdkmanager "ndk;26.3.11579264"
-
-      - name: Install dx CLI
+      - name: Install dx
         run: cargo install dioxus-cli
 
-      - name: Build Android APK
-        env:
-          ANDROID_NDK_HOME: ${{ env.ANDROID_HOME }}/ndk/26.3.11579264
-        run: dx build --platform android --release
+      - name: Build Web
+        run: dx build --release --platform web
 
-      - name: Upload APK artifact
+      - name: Upload Web artifact
         uses: actions/upload-artifact@v4
         with:
-          name: solfunmeme-dioxus-android
-          path: dist/android/**/*.apk
+          name: solfunmeme-web
+          path: target/dx/solfunmeme-dioxus/release/web/public/
+
+  android:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [aarch64-linux-android, x86_64-linux-android]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Install NDK 26
+        run: sdkmanager "ndk;26.3.11579264" "platforms;android-33" "platforms;android-34" "build-tools;34.0.0"
+
+      - name: Install dx
+        run: cargo install dioxus-cli
+
+      - name: Build Android (${{ matrix.target }})
+        env:
+          ANDROID_NDK_HOME: ${{ env.ANDROID_HOME }}/ndk/26.3.11579264
+        run: dx build --platform android --release --target ${{ matrix.target }}
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: solfunmeme-android-${{ matrix.target }}
+          path: target-wasm-solfunmeme/dx/**/outputs/apk/**/*.apk
           if-no-files-found: warn
 
-      - name: Deploy APK to onboarding portal
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feature/v2-minimal'
+  deploy:
+    needs: [web, android]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feature/v2-minimal'
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Deploy via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
           host: solana.solfunmeme.com
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_KEY }}
-          source: dist/android/**/*.apk
-          target: /var/www/solana.solfunmeme.com/onboarding/solfunmeme-dioxus.apk
-          strip_components: 99
+          source: "solfunmeme-web/*,solfunmeme-android-aarch64-linux-android/*"
+          target: /var/www/solana.solfunmeme.com/
+          strip_components: 1
 
-      - name: Upload to release (on tag)
-        if: startsWith(github.ref, 'refs/tags/')
+  release:
+    needs: [web, android]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/android/**/*.apk
+          files: |
+            solfunmeme-android-*/**/*.apk
+            solfunmeme-web/**
