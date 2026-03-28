@@ -94,8 +94,9 @@
             version = "0.7.4";
             cargoExtraArgs = "-p dioxus-cli";
             strictDeps = true;
-            buildInputs = with pkgs; [ openssl pkg-config ];
+            buildInputs = with pkgs; [ openssl pkg-config cacert ];
             nativeBuildInputs = with pkgs; [ pkg-config ];
+            doCheck = false;
           };
         in
         {
