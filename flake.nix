@@ -8,9 +8,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     crane.url = "github:ipetkov/crane";
+    dioxus-src = {
+      url = "github:meta-introspector/dioxus";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, rust-overlay, crane }:
+  outputs = { self, nixpkgs, rust-overlay, crane, dioxus-src }:
     let
       systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
@@ -81,11 +85,24 @@
               "x86_64-linux-android"
             ];
           };
+
+          craneLib = (crane.mkLib pkgs).overrideToolchain rustToolchain;
+
+          dx = craneLib.buildPackage {
+            src = dioxus-src;
+            pname = "dioxus-cli";
+            version = "0.7.4";
+            cargoExtraArgs = "-p dioxus-cli";
+            strictDeps = true;
+            buildInputs = with pkgs; [ openssl pkg-config ];
+            nativeBuildInputs = with pkgs; [ pkg-config ];
+          };
         in
         {
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
               rustToolchain
+              dx
               openssl
               pkg-config
               nodejs
