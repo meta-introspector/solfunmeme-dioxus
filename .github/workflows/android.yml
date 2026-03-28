@@ -6,7 +6,38 @@ on:
   workflow_dispatch:
 
 jobs:
+  build-dx:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: meta-introspector/checkout@v4
+        with:
+          repository: meta-introspector/dioxus
+          submodules: false
+
+      - uses: meta-introspector/install-nix-action@v30
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Cache dx binary
+        id: cache-dx
+        uses: meta-introspector/cache@v4
+        with:
+          path: ~/.cargo/bin/dx
+          key: dx-0.7.4-${{ runner.os }}
+
+      - name: Build dx
+        if: steps.cache-dx.outputs.cache-hit != 'true'
+        run: |
+          nix-shell -p rustc cargo openssl pkg-config --run \
+            'cargo install --path packages/cli --root $HOME/.cargo'
+
+      - uses: meta-introspector/upload-artifact@v4
+        with:
+          name: dx-binary
+          path: ~/.cargo/bin/dx
+
   build:
+    needs: [build-dx]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -33,6 +64,14 @@ jobs:
       - uses: meta-introspector/install-nix-action@v30
         with:
           nix_path: nixpkgs=channel:nixos-unstable
+
+      - uses: meta-introspector/download-artifact@v4
+        with:
+          name: dx-binary
+          path: /usr/local/bin
+
+      - name: Make dx executable
+        run: chmod +x /usr/local/bin/dx
 
       - name: Build ${{ matrix.platform }}
         run: nix develop --command dx build ${{ matrix.dx_args }}
