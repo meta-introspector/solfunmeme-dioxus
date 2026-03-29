@@ -137,14 +137,14 @@ pub mod server {
     }
 
     async fn ipfs_get(axum::extract::Path(cid): axum::extract::Path<String>) -> Json<Option<String>> {
-        use erdfa_publish::ipfs;
-        let data = ipfs::ipfs_cat(&cid).map(|b| String::from_utf8_lossy(&b).to_string());
+        
+        let data = None::<Vec<u8>>.map(|b| String::from_utf8_lossy(&b).to_string());
         Json(data)
     }
 
     async fn ipfs_add(body: String) -> Json<Option<String>> {
-        use erdfa_publish::ipfs;
-        Json(ipfs::ipfs_add(&body))
+        
+        Json(Some(erdfa_publish::content_cid(body.as_bytes())))
     }
 
     #[derive(Deserialize)]
@@ -175,7 +175,7 @@ pub mod server {
     /// Only Public-tier objects get the full content exposed.
     /// All tiers get a signed public header with CID + ACL + merkle root.
     async fn ipfs_publish(Json(req): Json<PublishReq>) -> Json<Result<PublishResp, String>> {
-        use erdfa_publish::ipfs;
+        
         use erdfa_publish::privacy::{PrivacyShard, SignedPrivacyShard};
 
         let data = match ipfs::ipfs_cat(&req.cid) {
