@@ -191,12 +191,13 @@ pub mod server {
         };
 
         // Build privacy shard with field-level control
-        let shard = PrivacyShard::from_pairs(&[
-            ("cid", &req.cid),
-            ("acl", acl),
-            ("size", &data.len().to_string()),
-            ("content_hash", &hex::encode(sha2::Sha256::digest(&data))),
-        ]);
+        let pairs: Vec<(String, String)> = vec![
+            ("cid".into(), req.cid.clone()),
+            ("acl".into(), acl.into()),
+            ("size".into(), data.len().to_string()),
+            ("content_hash".into(), hex::encode(sha2::Sha256::digest(&data))),
+        ];
+        let shard = PrivacyShard::from_pairs("publish", &pairs, vec![]);
 
         // Sign with ML-DSA-44
         let signed = match SignedPrivacyShard::sign(shard) {
