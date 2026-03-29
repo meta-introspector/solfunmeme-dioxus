@@ -12,6 +12,7 @@ pub mod server {
     pub struct NodeState {
         pub pastes: Arc<Mutex<HashMap<String, Paste>>>,
         pub peers: Arc<Mutex<Vec<String>>>,
+        pub forges: Vec<crate::forge::forge::ForgeInstance>,
         pub port: u16,
     }
 
@@ -64,6 +65,9 @@ pub mod server {
             .route("/stego/encode", post(stego_encode))
             .route("/stego/decode", post(stego_decode))
             .route("/peers", get(list_peers))
+            .route("/ipfs/{cid}", get(ipfs_get))
+            .route("/ipfs", post(ipfs_add))
+            .route("/forge/repos", get(forge_repos))
             .with_state(state)
     }
 
@@ -131,12 +135,41 @@ pub mod server {
         Json(s.peers.lock().unwrap().clone())
     }
 
+    async fn ipfs_get(axum::extract::Path(cid): axum::extract::Path<String>) -> Json<Option<String>> {
+        use erdfa_publish::ipfs;
+        let data = ipfs::ipfs_cat(&cid).map(|b| String::from_utf8_lossy(&b).to_string());
+        Json(data)
+    }
+
+    async fn ipfs_add(body: String) -> Json<Option<String>> {
+        use erdfa_publish::ipfs;
+        Json(ipfs::ipfs_add(&body))
+    }
+
+    async fn forge_repos(State(s): State<NodeState>) -> Json<Vec<crate::forge::forge::ForgeRepo>> {
+        let mut all = vec![];
+        for instance in &s.forges {
+            if let Ok(repos) = instance.list_repos().await {
+                all.extend(repos);
+            }
+        }
+        Json(all)
+    }
+
     // ── Start ───────────────────────────────────────────────────
 
     pub async fn start(port: u16) -> String {
         let state = NodeState {
             pastes: Arc::new(Mutex::new(HashMap::new())),
             peers: Arc::new(Mutex::new(vec![])),
+            forges: vec![
+                crate::forge::forge::ForgeInstance {
+                    name: "local-forgejo".into(),
+                    url: "http://localhost:3000".into(),
+                    kind: crate::forge::forge::ForgeKind::Forgejo,
+                    token: std::env::var("FORGEJO_TOKEN").ok(),
+                },
+            ],
             port,
         };
         let app = router(state);
