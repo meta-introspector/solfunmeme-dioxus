@@ -15,6 +15,22 @@
         "type": "github"
       }
     },
+    "dioxus-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764534590,
+        "narHash": "sha256-oF+Ozvp+75WhHXXBY2qZrgELpYixQEbcy+7ymZ1MAlY=",
+        "owner": "meta-introspector",
+        "repo": "dioxus",
+        "rev": "386153672e68228eacb4b2adf9f66e02e66a3e36",
+        "type": "github"
+      },
+      "original": {
+        "owner": "meta-introspector",
+        "repo": "dioxus",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1774386573,
@@ -34,6 +50,7 @@
     "root": {
       "inputs": {
         "crane": "crane",
+        "dioxus-src": "dioxus-src",
         "nixpkgs": "nixpkgs",
         "rust-overlay": "rust-overlay"
       }
