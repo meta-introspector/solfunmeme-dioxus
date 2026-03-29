@@ -23,7 +23,7 @@ nix-shell:
 
 # Android APK build (requires Android NDK)
 android:
-	dx build --platform android --release
+	dx build --features native --platform android --release
 
 # Install APK to connected device
 android-install: android

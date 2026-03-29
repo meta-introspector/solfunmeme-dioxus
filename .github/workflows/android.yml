@@ -18,11 +18,11 @@ jobs:
             artifact_path: "target/dx/solfunmeme-dioxus/release/web/public/"
             artifact_name: solfunmeme-web
           - platform: android-aarch64
-            dx_args: "--platform android --release --target aarch64-linux-android"
+            dx_args: "--features native --platform android --release --target aarch64-linux-android"
             artifact_path: "target-wasm-solfunmeme/dx/**/outputs/apk/**/*.apk"
             artifact_name: solfunmeme-android-aarch64
           - platform: android-x86_64
-            dx_args: "--platform android --release --target x86_64-linux-android"
+            dx_args: "--features native --platform android --release --target x86_64-linux-android"
             artifact_path: "target-wasm-solfunmeme/dx/**/outputs/apk/**/*.apk"
             artifact_name: solfunmeme-android-x86_64
     steps:
