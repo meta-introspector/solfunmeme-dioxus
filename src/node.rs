@@ -138,13 +138,13 @@ pub mod server {
 
     async fn ipfs_get(axum::extract::Path(cid): axum::extract::Path<String>) -> Json<Option<String>> {
         
-        let data = None::<Vec<u8>>.map(|b| String::from_utf8_lossy(&b).to_string());
+        let data = erdfa_publish::ipfs::ipfs_cat(&cid).map(|b| String::from_utf8_lossy(&b).to_string());
         Json(data)
     }
 
     async fn ipfs_add(body: String) -> Json<Option<String>> {
         
-        Json(Some(erdfa_publish::content_cid(body.as_bytes())))
+        Json(erdfa_publish::ipfs::ipfs_add(&body))
     }
 
     #[derive(Deserialize)]
@@ -178,7 +178,7 @@ pub mod server {
         
         use erdfa_publish::privacy::{PrivacyShard, SignedPrivacyShard};
 
-        let data = match ipfs::ipfs_cat(&req.cid) {
+        let data = match erdfa_publish::ipfs::ipfs_cat(&req.cid) {
             Some(d) => d,
             None => return Json(Err("CID not found locally".into())),
         };

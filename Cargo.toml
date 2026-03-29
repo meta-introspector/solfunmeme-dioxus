@@ -31,7 +31,7 @@ tokio = { version = "1", features = ["full"], optional = true }
 axum = { version = "0.8", optional = true }
 libp2p = { version = "0.54", features = ["tcp", "noise", "yamux", "mdns", "gossipsub", "identify", "tokio"], optional = true }
 reqwest = { version = "0.12", features = ["json"], optional = true }
-erdfa-publish = { git = "https://github.com/meta-introspector/erdfa-publish.git", default-features = false, optional = true }
+erdfa-publish = { git = "https://github.com/meta-introspector/erdfa-publish.git", default-features = false, features = ["ipfs"], optional = true }
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 wasm-bindgen = "0.2"
