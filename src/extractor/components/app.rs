@@ -40,8 +40,8 @@ async fn read_files(
                 p.total_lines = total_lines;
             }
 
-            let snippet: Vec<CodeSnippet> = [].to_vec();
-            let code_annotations: Vec<AnnotatedWord> = [].to_vec();
+            let _snippet: Vec<CodeSnippet> = [].to_vec();
+            let _code_annotations: Vec<AnnotatedWord> = [].to_vec();
 
             // FIXME: broken code, please fix
 
@@ -59,7 +59,7 @@ async fn read_files(
             //}
 
             for (i, line) in lines.iter().enumerate() {
-                let words = line.split_whitespace().collect::<Vec<_>>();
+                let _words = line.split_whitespace().collect::<Vec<_>>();
                 if let Some(p) = currently_processing_file.write().as_mut() {
                     //let line_annotations = words.iter().map(|&w| annotate_word(w)).collect::<Vec<_>>();
                     //p.annotations.extend(line_annotations);
