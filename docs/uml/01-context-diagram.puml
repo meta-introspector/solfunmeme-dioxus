@@ -1,0 +1,30 @@
+@startuml C4_Context
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Solfunmeme-Dioxus System - Context Diagram
+
+Person(developer, "Developer", "A software developer using the system for code analysis and semantic processing")
+Person(researcher, "Researcher", "A researcher exploring code patterns and mathematical representations")
+Person(analyst, "Data Analyst", "An analyst examining code metrics and semantic relationships")
+
+System(solfunmeme, "Solfunmeme-Dioxus System", "A comprehensive code analysis, semantic processing, and blockchain integration platform implementing 8 factorial steps via LLMs with autopoetic rewrites")
+
+System_Ext(github, "GitHub", "Source code repository hosting and API access")
+System_Ext(solana_mainnet, "Solana Mainnet", "Mainnet for final data verification and rollup settlement")
+System_Ext(solana_sidechain, "Solana Sidechain", "L2 sidechain for high-throughput index storage and processing")
+System_Ext(llm, "LLM Services", "Large Language Model services for code analysis and generation")
+System_Ext(bert, "BERT Models", "BERT embedding models for semantic vector generation")
+
+Rel(developer, solfunmeme, "Uses", "CLI tools, UI components, analysis features")
+Rel(researcher, solfunmeme, "Explores", "Mathematical representations, semantic relationships")
+Rel(analyst, solfunmeme, "Analyzes", "Code metrics, patterns, embeddings")
+
+Rel(solfunmeme, github, "Fetches source code", "Git API, repository cloning")
+Rel(solfunmeme, solana_sidechain, "Stores index data", "High-throughput storage, embeddings, search indices")
+Rel(solfunmeme, solana_mainnet, "Rolls up verified data", "Batch verification, final settlement")
+Rel(solfunmeme, llm, "Processes code", "Autopoetic rewrites, semantic analysis")
+Rel(solfunmeme, bert, "Generates embeddings", "Vector representations, emoji conversions")
+
+@enduml 

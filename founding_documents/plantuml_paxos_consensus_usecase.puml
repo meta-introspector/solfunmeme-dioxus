@@ -1,0 +1,37 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_UseCase.puml
+
+' SOLFUNMEME Paxos Consensus Use Case Diagram
+' Reference: https://github.com/meta-introspector/meta-meme/issues/99
+
+LAYOUT_WITH_LEGEND()
+Title("SOLFUNMEME Paxos Consensus Meme Use Case")
+
+' Actors (Nodes as Emojis)
+Actor(node1, "🤖 Node 1")
+Actor(node2, "🤖🦾 Node 2")
+Actor(node3, "🤖🤖 Node 3")
+
+' System
+System(solfunmeme, "SOLFUNMEME Consensus Engine")
+
+' Use Cases
+UseCase(elect, "Leadership Election 👑")
+UseCase(propose, "Proposal Phase 📜")
+UseCase(accept, "Acceptance Phase ✅")
+UseCase(consensus, "Consensus Achieved 👍")
+UseCase(failure, "Failure Handling ⚠️")
+UseCase(recover, "Node Recovery 🔄")
+
+' Relationships
+Rel(node1, elect, "participates in")
+Rel(node2, elect, "participates in")
+Rel(node3, elect, "participates in")
+Rel(elect, propose, "elects leader for")
+Rel(propose, accept, "sends proposal to")
+Rel(accept, consensus, "majority accepts")
+Rel(consensus, solfunmeme, "commits value to")
+Rel(failure, solfunmeme, "notifies of failure")
+Rel(recover, solfunmeme, "restores node")
+
+@enduml 

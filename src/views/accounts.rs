@@ -1,0 +1,422 @@
+use dioxus::prelude::*;
+//use wallet_adapter::Cluster;
+use crate::model::storage::ACTIVE_CONNECTION;
+use crate::model::storage::CLUSTER_NET_STATE;
+use crate::model::ClusterNetState;
+use crate::model::storage::ACCOUNT_STATE;
+use crate::views::connect_first::ConnectWalletFirst;
+use crate::AccountState;
+use crate::use_connections;
+use crate::Loader;
+use crate::WalletSvg;
+use crate::utils::format_address_url;
+use crate::storage::LOADING;
+use crate::SendSvg;
+use crate::AirdropSvg;
+use crate::AtaSvg;
+use crate::BalanceSvg;
+use crate::CheckSvg;
+use crate::ErrorSvg;
+//use //crate::Loader;
+use crate::MintSvg;
+use crate::NotificationInfo;
+use crate::ReceiveSvg;
+use crate::SignatureSvg;
+use crate::TimestampSvg;
+use crate::UserSvg;
+///use crate::WalletSvg;
+use crate::format_timestamp;
+ //enum
+//use crate::playground::test_components::ComponentName::ReceiveSol;
+//use crate::playground::test_components::ComponentName::SendSol;
+//use crate::playground::test_emojis::ComponentName::Airdrop;
+//use crate::playground::test_emojis::ComponentName::QueryAccountDialog;
+//use crate::playground::test_emojis::ComponentName::ReceiveSol;
+//use crate::playground::test_emojis::ComponentName::SendSol;
+use crate::storage::GLOBAL_MESSAGE;
+//use crate::utils::format_address_url;
+use crate::utils::format_tx_url;
+use crate::utils::get_cluster_svg;
+use crate::utils::link_target_blank;
+//use crate::utils::link_target_blank;
+use crate::utils::trunk_cluster_name;
+
+use crate::views::airdrop::AirdropComponent;
+use crate::views::query_accounts::QueryAccountDialog;
+//use crate::views::receive_sol::ReceiveSol;
+use crate::views::send_sol::SendSolComponent;
+use crate::views::receive_sol::ReceiveSolComponent;
+
+#[component]
+pub fn Accounts() -> Element {
+    let mut address = String::default();
+    let mut public_key_bytes = [0u8; 32];
+    let mut shortened_address = String::default();
+
+    if let Ok(wallet_account) = ACTIVE_CONNECTION.read().connected_account() {
+        address = wallet_account.address().to_string();
+        shortened_address = wallet_account
+            .shorten_address()
+            .unwrap_or_default()
+            .to_string();
+        public_key_bytes = wallet_account.public_key();
+    }
+
+    if ACTIVE_CONNECTION.read().connected_account().is_ok() {
+        if *CLUSTER_NET_STATE.read() == ClusterNetState::Success {
+            rsx! {
+                ClusterSuccess {
+                    address,
+                    shortened_address,
+                    public_key_bytes
+                }
+            }
+        } else if *CLUSTER_NET_STATE.read() == ClusterNetState::Waiting {
+            rsx! {"Loading account info..."}
+        } else {
+            rsx! {"CLUSTER NETWORK UNREACHABLE"}
+        }
+    } else {
+        rsx! {ConnectWalletFirst {}}
+    }
+}
+
+#[component]
+pub fn ClusterSuccess(
+    address: String,
+    shortened_address: String,
+    public_key_bytes: [u8; 32],
+) -> Element {
+    let mut show_send_modal = use_signal(|| false);
+    let mut show_query_dialog = use_signal(|| false);
+    let mut show_airdrop_modal = use_signal(|| false);
+    let mut show_receive_modal = use_signal(|| false);
+    let mut refreshing = use_signal(|| false);
+
+    let check_balance = || {
+        let balance = ACCOUNT_STATE
+            .read()
+            .balance
+            .as_str()
+            .parse::<f64>()
+            .unwrap_or_default();
+
+        balance == f64::default()
+    };
+
+    let clone_address = address.clone();
+
+    use_effect(move || {
+        *ACCOUNT_STATE.write() = AccountState::default();
+        let clone_address = clone_address.clone();
+
+        spawn(async move {
+            fetch_account_state(None, None, &clone_address).await;
+        });
+    });
+
+    let connections = use_connections("solana_wallet");
+    let active_cluster_name = connections.active_entry();
+
+    rsx! {
+        div {class:"flex w-full h-full mt-4 mb-10 flex-col items-center",
+            div {
+                class:"shadow-sm p-5 w-full flex flex-col items-center mb-10 justify-center",
+                div{class:"text-center w-full",
+                    if LOADING.read().is_none(){
+                        span{class:"text-3xl", {ACCOUNT_STATE.read().balance.as_str()} " SOL"}
+                    }else {
+                        span{class:"mr-2", {Loader()}}  span{class:"text-sm","Loading Balance..."}
+                    }
+                }
+                div { class:"flex w-full items-center justify-center",
+                    span {class:"flex w-[20px] mr-1", {WalletSvg()}}
+                    {link_target_blank(&format_address_url(&address), &shortened_address)}
+                }
+                div {class:"w-full flex gap-4 flex-wrap items-center justify-center",
+                    if !check_balance() {
+                        button {
+                            onclick:move|_|{show_send_modal.set(true)},
+                            class:"flex bg-true-blue items-center justify-center text-sm text-white px-5 py-2 mt-5 rounded-full hover:bg-cobalt-blue",
+                            span{class:"w-[25px] flex mr-1", {SendSvg()}} "Send"
+                        }
+                    }
+                    button {
+                        onclick:move|_|{show_receive_modal.set(true)},
+                        class:"flex bg-true-blue items-center justify-center text-sm text-white px-5 py-2 mt-5 rounded-full hover:bg-cobalt-blue",
+                        span{class:"w-[25px] flex mr-1", {ReceiveSvg()}} "Receive"
+                    }
+            button {
+                        onclick:move|_|{show_query_dialog.set(true)},
+                        class:"flex bg-true-blue items-center justify-center text-sm text-white px-5 py-2 mt-5 rounded-full hover:bg-cobalt-blue",
+                        span{class:"w-[25px] flex mr-1", {ReceiveSvg()}} "Query"
+                    }
+                    if connections.supports_airdrop(&active_cluster_name){
+                        button {
+                            onclick:move|_|{show_airdrop_modal.set(true)},
+                            class:"flex bg-true-blue items-center justify-center text-sm text-white px-5 py-2 mt-5 rounded-full hover:bg-cobalt-blue",
+                            span{class:"w-[25px] flex mr-1", {AirdropSvg()}} "Airdrop"
+                        }
+                    }
+                    button{
+                        onclick:move|_|{
+                            let address = address.clone();
+                            spawn(async move {
+                                refreshing.set(true);
+                                fetch_account_state(Some("REFRESHED ACCOUNTS"), Some("REFRESH ERROR"), &address).await ;
+                                refreshing.set(false);
+                            });
+
+                        },
+                        disabled:*refreshing.read(),
+                        class:if *refreshing.read(){"dark:bg-rich-black bg-white"} else {"bg-true-blue hover:bg-cobalt-blue"},
+                        class:"flex items-center text-sm text-white px-5 py-2 mt-5 rounded-full",
+                        span{class:"w-[25px] flex mr-1", {WalletSvg()}} if *refreshing.read() {
+                            {Loader()}
+                        }else {"Refresh"}
+                    }
+                }
+            }
+            div { class:"flex flex-col flex-wrap w-full mt-5 text-2xl items-center justify-center",
+                div{class:"flex items-center text-true-blue dark:text-white justify-center",
+                    span{class:"w-[30px] mr-1", {AtaSvg()}}
+
+                    if LOADING.read().is_none(){
+                        if ACCOUNT_STATE.read().token_accounts_is_empty(){
+                            span{class:"text-sm", "No Token Accounts Found" }
+                        }else {
+                            "Token Accounts"
+                        }
+                    }
+                    else {
+                        span{class:"mr-2", {Loader()}} "Loading Token Accounts..."
+                    }
+                }
+
+                for token_account in ACCOUNT_STATE.read().token_accounts() {
+                    TokenAccountCard{
+                        mint: token_account.mint(),
+                        ata_address: token_account.ata_address(),
+                        token_balance: token_account.balance(),
+                        state: token_account.state()
+                    }
+                }
+            }
+            div { class:"flex flex-col flex-wrap w-full mt-5 text-2xl items-center justify-center",
+                div{class:"flex mb-5 items-center text-true-blue dark:text-white justify-center",
+                    span{class:"w-[30px] mr-1", {SignatureSvg()}}
+                    if LOADING.read().is_none() {
+                        if ACCOUNT_STATE.read().transactions_is_empty(){
+                            span{class:"text-sm", "No Transactions Found"}
+                        }else {
+                            "Transactions"
+                        }
+                    }else {
+                        span{class:"mr-2", {Loader()}} "Loading Transactions..."
+                    }
+                }
+                div { class:"flex w-full gap-4 flex-wrap items-center justify-center",
+                    for tx in ACCOUNT_STATE.read().transactions() {
+                        TxCard {
+                            tx: tx.signature.clone(),
+                            timestamp: tx.block_time,
+                            state: tx.confirmation_status.clone(),
+                            succeeded: tx.err.is_none(), address: &address}
+                    }
+                }
+            }
+        }
+
+        SendSolComponent{show_send_modal}
+    QueryAccountDialog{show_query_dialog}
+        ReceiveSolComponent{show_receive_modal}
+    if connections.supports_airdrop(&active_cluster_name){
+            AirdropComponent{show_airdrop_modal}
+        }
+    }
+}
+
+#[component]
+pub fn TokenAccountCard(
+    mint: String,
+    ata_address: String,
+    token_balance: String,
+    state: String,
+) -> Element {
+    //let cluster = CLUSTER_STORAGE.read().active_cluster().cluster();
+    let connections = use_connections("solana_wallet");
+    let cluster = connections.active_entry_object();
+    let cluster_image = get_cluster_svg(cluster.cluster());
+    let cluster_name2 = trunk_cluster_name(cluster.name());
+
+    let shortened_mint_address = wallet_adapter::Utils::shorten_base58(&mint)
+        .map(|address| address.to_string())
+        .unwrap_or(String::from("Invalid Mint Address"));
+    let shortened_ata_address = wallet_adapter::Utils::shorten_base58(&ata_address)
+        .map(|address| address.to_string())
+        .unwrap_or(String::from("Invalid Owner Address"));
+
+    rsx! {
+        div { class: "flex flex-col items-start p-4 w-[250px] m-5 rounded-lg bg-true-blue",
+            div {class:"flex w-full items-center",
+                span{class:"w-[28px] pr-2", {cluster_image()}}
+                h5 { class: "flex text-2xl",
+                    {cluster_name2}
+                }
+            }
+            div { class: "flex flex-col w-full",
+                div { class: "flex w-full items-start flex-col mt-2.5",
+                    div {class:"w-full justify-between  flex",
+                        div {
+                            id: "cluster-chain",
+                            class: "bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
+                            {cluster.cluster.toCluster().chain()}
+                        }
+                        div {
+                            id: "cluster-state",
+                            class: "bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
+                            {state}
+                        }
+                    }
+
+                    div { class: "text-black text-lg dark:text-white mt-2 w-full flex items-start justify-between",
+
+                        div {class:"flex items-center",
+                            div{class:"w-1/5", {MintSvg()} }
+                            div{class:"w-4/5 flex text-sm pl-2", {link_target_blank(&format_address_url(&mint), &shortened_mint_address) } }
+                        }
+                    }
+
+                    div { class: "text-black text-lg dark:text-white mt-2 w-full flex items-start justify-between",
+
+                        div {class:"flex items-center",
+                            div{class:"w-1/5", {AtaSvg()} }
+                            div{class:"w-4/5 flex text-sm pl-2", {link_target_blank(&format_address_url(&ata_address), &shortened_ata_address) } }
+                        }
+                    }
+
+                    div { class: "text-black text-lg dark:text-white mt-2 w-full flex flex-col items-start justify-between",
+                        div {class:"flex items-center",
+                             div{class:"w-2/5", {BalanceSvg()} }
+                             div{class:"w-3/5 flex text-[12px] p-1", {token_balance} }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#[component]
+pub fn TxCard(
+    tx: String,
+    timestamp: Option<i64>,
+    state: Option<String>,
+    succeeded: bool,
+    address: String,
+) -> Element {
+    //    let cluster = CLUSTER_STORAGE.read().active_cluster().cluster();
+    let connections = use_connections("solana_wallet");
+    let acluster = connections.active_entry_object();
+    let cluster = acluster.cluster();
+
+    let cluster_image = get_cluster_svg(cluster);
+
+    let cluster_name2 = trunk_cluster_name(cluster.display());
+
+    let shortened_address = wallet_adapter::Utils::shorten_base58(&address)
+        .map(|address| address.to_string())
+        .unwrap_or(String::from("Invalid Address"));
+
+    let shortened_tx = wallet_adapter::Utils::shorten_base58(&tx)
+        .map(|tx| tx.to_string())
+        .unwrap_or(String::from("Invalid Address"));
+
+    let succeeded = if succeeded { CheckSvg() } else { ErrorSvg() };
+
+    rsx! {
+        div { class: "flex rounded-lg flex-col items-start p-5 w-[250px] bg-true-blue",
+            div {class:"flex items-center",
+                span{class:"w-[28px] pr-2", {cluster_image()}}
+                h5 { class: "text-2xl font-semibold tracking-tight",
+                    {cluster_name2}
+                }
+            }
+            div { class: "flex flex-col w-full",
+                div { class: "flex w-full items-start flex-col mt-2.5",
+                    div {class:"w-full justify-between items-start  flex",
+                        div {
+                            id: "cluster-chain-2",
+                            class: "flex bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
+                            {cluster.chain()}
+                        }
+                        if let Some(state_inner) = state {
+                            div {
+                                id: "cluster-state-2",
+                                class: "flex bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200 dark:text-blue-800",
+                                {state_inner.to_uppercase()}
+                            }
+                        }
+                    }
+
+                    div { class: "text-black text-lg dark:text-white mt-2 w-full flex items-start justify-between",
+                        div {class:"flex items-center",
+                            span { class: "w-[20px]", {UserSvg()} }
+                            span { class: "flex text-sm pl-2",
+                            {link_target_blank(&format_address_url(&address), &shortened_address)}
+                            }
+                        }
+                    }
+
+                    div { class: "text-black text-lg dark:text-white mt-2 w-full flex items-start justify-between",
+
+                        div {class:"flex items-center",
+                            span { class: "w-[20px]", {SignatureSvg()} }
+                            span { class: "flex text-sm pl-2", {link_target_blank(&format_tx_url(&tx), &shortened_tx) } }
+                            div {class:"flex items-center",
+                                span { class: "ml-2 w-[15px]", {succeeded} }
+                            }
+                        }
+                    }
+
+                    if let Some(timestamp) = timestamp {
+                        div { class: "text-black text-lg dark:text-white mt-2 w-full flex flex-col items-start justify-between",
+                            div {class:"flex items-center",
+                                span { class: "w-[30px]", {TimestampSvg()} }
+                                span { class: "flex text-[12px] p-1", {format_timestamp(timestamp)} }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+pub async fn fetch_account_state(
+    success_msg: Option<&str>,
+    error_msg: Option<&str>,
+    address: &str,
+) {
+    LOADING.write().replace(());
+
+    match crate::accounts_runner(address).await {
+        Ok(value) => {
+            *ACCOUNT_STATE.write() = value;
+            if let Some(success_msg) = success_msg {
+                GLOBAL_MESSAGE
+                    .write()
+                    .push_back(NotificationInfo::new(success_msg));
+            }
+        }
+        Err(error) => {
+            if let Some(error_msg) = error_msg {
+                GLOBAL_MESSAGE
+                    .write()
+                    .push_back(NotificationInfo::error(format!("{error_msg}: {error:?}")));
+            }
+        }
+    }
+
+    LOADING.write().take();
+}

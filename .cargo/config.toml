@@ -1,0 +1,11 @@
+#RUSTFLAGS="--cfg wasm_js" cargo build --target wasm32-unknown-unknown
+[target.wasm32-unknown-unknown]
+rustflags = ["--cfg", "getrandom_backend=\"wasm_js\"" ]
+
+
+# Blocking waiting for file lock on build directory
+#build.target-dir = "target-wasm-solfunmeme"
+
+
+[build]
+target-dir = "target-wasm-solfunmeme"

@@ -1,0 +1,169 @@
+@startuml Data_Flow
+!theme plain
+skinparam rectangle {
+    BackgroundColor LightGreen
+    BorderColor DarkGreen
+}
+skinparam database {
+    BackgroundColor LightYellow
+    BorderColor DarkYellow
+}
+skinparam actor {
+    BackgroundColor LightBlue
+    BorderColor DarkBlue
+}
+
+title Solfunmeme-Dioxus System - Data Flow Diagram (8 Factorial Steps)
+
+' External entities
+actor "Developer" as dev
+actor "GitHub" as github
+actor "Solana Mainnet" as solana_mainnet
+actor "Solana Sidechain" as solana_sidechain
+actor "LLM Services" as llm
+actor "BERT Models" as bert
+
+' Data stores
+database "Source Code" as source_db
+database "CodeChunks" as chunks_db
+database "Function Snippets" as func_db
+database "Analyzed Code" as analyzed_db
+database "BERT Embeddings" as embedding_db
+database "Search Index" as index_db
+database "RDF Triples" as rdf_db
+database "Sidechain Data" as sidechain_db
+database "Mainnet Data" as mainnet_db
+database "UI State" as ui_db
+
+' Processes - 8 Factorial Steps
+rectangle "Step 1: Source Preparation" as step1 {
+    rectangle "prepare_sources" as prep
+    rectangle "Parse Source Files" as parse
+    rectangle "Structure CodeChunks" as structure
+}
+
+rectangle "Step 2: Code Extraction" as step2 {
+    rectangle "solfunmeme_extractor" as extract
+    rectangle "Extract Functions" as extract_func
+    rectangle "Extract Classes" as extract_class
+    rectangle "Extract Patterns" as extract_pattern
+}
+
+rectangle "Step 3: Function Analysis" as step3 {
+    rectangle "solfunmeme_function_analysis" as analyze
+    rectangle "AST Traversal" as ast
+    rectangle "Semantic Analysis" as semantic
+    rectangle "Complexity Metrics" as metrics
+}
+
+rectangle "Step 4: Embedding Generation" as step4 {
+    rectangle "solfunmeme_embedding" as embed
+    rectangle "BERT Inference" as bert_inf
+    rectangle "Vector Generation" as vector_gen
+    rectangle "Emoji Conversion" as emoji_conv
+}
+
+rectangle "Step 5: Semantic Indexing" as step5 {
+    rectangle "solfunmeme_search_tantivy" as index
+    rectangle "Index Creation" as index_create
+    rectangle "Similarity Computation" as similarity
+    rectangle "Search Optimization" as search_opt
+}
+
+rectangle "Step 6: RDF Processing" as step6 {
+    rectangle "rdf_processing_lib" as rdf_proc
+    rectangle "Triple Generation" as triple_gen
+    rectangle "Semantic Relationships" as sem_rel
+    rectangle "Graph Construction" as graph_cons
+}
+
+rectangle "Step 7: Blockchain Integration" as step7 {
+    rectangle "solana_integration_lib" as blockchain
+    rectangle "L2 Sidechain Storage" as sidechain_storage
+    rectangle "Rollup Management" as rollup_mgmt
+    rectangle "Mainnet Settlement" as mainnet_settlement
+}
+
+rectangle "Step 8: UI Rendering" as step8 {
+    rectangle "solfunmeme_views" as ui
+    rectangle "Component Rendering" as comp_render
+    rectangle "Data Visualization" as data_viz
+    rectangle "Interactive Elements" as interactive
+}
+
+' Supporting processes
+rectangle "Supporting Processes" as support {
+    rectangle "Clifford Algebra" as clifford
+    rectangle "Orbital Simulation" as orbital
+    rectangle "NLP Processing" as nlp
+    rectangle "Keyword Extraction" as keyword
+    rectangle "BM25 Scoring" as bm25
+}
+
+' Data flows - Main pipeline
+dev --> step1 : "Source code files"
+github --> step1 : "Repository data"
+
+step1 --> source_db : "Raw source code"
+source_db --> step2 : "CodeChunks"
+step2 --> chunks_db : "Structured code"
+chunks_db --> step3 : "Function snippets"
+step3 --> func_db : "Analyzed functions"
+func_db --> step4 : "Code analysis"
+step4 --> analyzed_db : "Code metadata"
+analyzed_db --> step5 : "Processed code"
+step5 --> embedding_db : "Vector representations"
+embedding_db --> step6 : "Indexed data"
+step6 --> index_db : "Search index"
+index_db --> step7 : "Semantic data"
+step7 --> rdf_db : "RDF triples"
+rdf_db --> step7 : "Semantic data"
+step7 --> sidechain_db : "Index data and embeddings"
+step7 --> mainnet_db : "Rolled up verified data"
+mainnet_db --> step8 : "Verified data"
+step8 --> ui_db : "UI state"
+
+' External data flows
+llm --> step3 : "Code analysis"
+bert --> step4 : "Embedding models"
+solana_sidechain --> step7 : "Sidechain storage confirmation"
+solana_mainnet --> step7 : "Rollup settlement confirmation"
+
+' Supporting data flows
+step4 --> clifford : "Vectors for mathematical analysis"
+step5 --> orbital : "Index data for relationship modeling"
+step2 --> nlp : "Text content for NLP"
+nlp --> keyword : "Processed text"
+keyword --> bm25 : "Keywords for scoring"
+
+clifford --> step6 : "Mathematical representations"
+orbital --> step6 : "Relationship models"
+bm25 --> step5 : "Relevance scores"
+
+' Feedback loops
+ui_db --> dev : "Visualized results"
+sidechain_db --> dev : "Index status"
+mainnet_db --> dev : "Verification status"
+index_db --> dev : "Search results"
+
+' Control flows
+dev --> step1 : "Trigger pipeline"
+step1 --> step2 : "Step completion"
+step2 --> step3 : "Step completion"
+step3 --> step4 : "Step completion"
+step4 --> step5 : "Step completion"
+step5 --> step6 : "Step completion"
+step6 --> step7 : "Step completion"
+step7 --> step8 : "Step completion"
+
+' Data transformations
+note right of step1 : "Raw files → Structured CodeChunks"
+note right of step2 : "CodeChunks → Function Snippets"
+note right of step3 : "Functions → Analyzed Code"
+note right of step4 : "Code → BERT Embeddings"
+note right of step5 : "Embeddings → Search Index"
+note right of step6 : "Index → RDF Triples"
+note right of step7 : "RDF → L2 Sidechain → Mainnet Rollup"
+note right of step8 : "Data → UI Components"
+
+@enduml 

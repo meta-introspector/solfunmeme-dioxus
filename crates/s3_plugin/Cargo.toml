@@ -1,0 +1,10 @@
+[package]
+name = "s3_plugin"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+aws-sdk-s3 = "1.2.0"
+tokio = { version = "1.0", features = ["full"] }
+anyhow = "1.0"

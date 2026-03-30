@@ -1,0 +1,42 @@
+[package]
+name = "solfunmeme-dioxus"
+version = "2.0.0"
+edition = "2021"
+
+[lib]
+name = "solfunmeme_dioxus"
+path = "src/lib.rs"
+
+[[bin]]
+name = "solfunmeme-dioxus"
+path = "src/main.rs"
+
+[features]
+default = []
+native = ["dioxus/mobile", "dep:clap", "dep:walkdir", "dep:tantivy", "dep:regex", "dep:tokio", "dep:axum", "dep:libp2p", "dep:reqwest", "dep:erdfa-publish"]
+
+[dependencies]
+dioxus = { version = "0.7.4", features = ["web"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+hex = "0.4"
+ciborium = "0.2"
+chrono = "0.4"
+clap = { version = "4", features = ["derive"], optional = true }
+walkdir = { version = "2", optional = true }
+tantivy = { version = "0.22", optional = true }
+regex = { version = "1", optional = true }
+tokio = { version = "1", features = ["full"], optional = true }
+axum = { version = "0.8", optional = true }
+libp2p = { version = "0.54", features = ["tcp", "noise", "yamux", "mdns", "gossipsub", "identify", "tokio"], optional = true }
+reqwest = { version = "0.12", features = ["json"], optional = true }
+erdfa-publish = { git = "https://github.com/meta-introspector/erdfa-publish.git", default-features = false, features = ["ipfs"], optional = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+web-sys = { version = "0.3", features = ["Window", "console"] }
+js-sys = "0.3"
+console_log = "1"
+log = "0.4"

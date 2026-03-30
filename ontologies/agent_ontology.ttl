@@ -1,0 +1,33 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <http://example.org/ontology/> .
+@prefix agent: <http://example.org/agent/> .
+
+agent:Agent a rdfs:Class ;
+    rdfs:label "Agent" ;
+    rdfs:comment "An autonomous agent that interacts with the system." .
+
+agent:AgentInteraction a rdfs:Class ;
+    rdfs:label "Agent Interaction" ;
+    rdfs:comment "An interaction between an agent and the system." .
+
+agent:hasTimestamp a rdf:Property ;
+    rdfs:label "has timestamp" ;
+    rdfs:domain agent:AgentInteraction ;
+    rdfs:range rdfs:Literal .
+
+agent:hasTask a rdf:Property ;
+    rdfs:label "has task" ;
+    rdfs:domain agent:AgentInteraction ;
+    rdfs:range rdfs:Literal .
+
+agent:Gemini a agent:Agent ;
+    rdfs:label "Gemini" .
+
+agent:Cursor a agent:Agent ;
+    rdfs:label "Cursor" .
+
+agent:Interaction1 a agent:AgentInteraction ;
+    rdf:subject agent:Gemini ;
+    agent:hasTimestamp "2025-07-14T12:00:00Z" ;
+    agent:hasTask "Update documentation to integrate the concept of an 'outside' agent into the project's ontology, review edits from Cursor, and send a message to Cursor." .

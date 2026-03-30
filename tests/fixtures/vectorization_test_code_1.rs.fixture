@@ -1,0 +1,20 @@
+fn example_function_1() {
+    let x = 42;
+    let y = x * 2;
+    println!("Result: {}", y);
+}
+
+struct ExampleStruct {
+    field1: i32,
+    field2: String,
+}
+
+impl ExampleStruct {
+    fn new(field1: i32, field2: String) -> Self {
+        Self { field1, field2 }
+    }
+    
+    fn get_field1(&self) -> i32 {
+        self.field1
+    }
+} 

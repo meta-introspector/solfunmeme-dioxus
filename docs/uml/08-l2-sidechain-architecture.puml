@@ -1,0 +1,92 @@
+@startuml L2_Sidechain_Architecture
+!theme plain
+skinparam rectangle {
+    BackgroundColor LightGreen
+    BorderColor DarkGreen
+}
+skinparam database {
+    BackgroundColor LightYellow
+    BorderColor DarkYellow
+}
+skinparam cloud {
+    BackgroundColor LightBlue
+    BorderColor DarkBlue
+}
+
+title Solfunmeme-Dioxus L2 Sidechain Architecture
+
+' Main components
+rectangle "Processing Engine" as proc {
+    rectangle "8 Factorial Steps Pipeline" as pipeline
+    rectangle "Search Index Generation" as index_gen
+    rectangle "Embedding Generation" as embed_gen
+    rectangle "RDF Processing" as rdf_proc
+}
+
+rectangle "L2 Sidechain Layer" as l2 {
+    rectangle "Solana Sidechain" as sidechain
+    rectangle "Index Storage" as index_storage
+    rectangle "Embedding Storage" as embed_storage
+    rectangle "High-Throughput Processing" as htp
+    rectangle "Batch Aggregation" as batch_agg
+}
+
+rectangle "Mainnet Layer" as mainnet {
+    rectangle "Solana Mainnet" as mainnet_node
+    rectangle "Rollup Settlement" as rollup_settlement
+    rectangle "Final Verification" as final_verif
+    rectangle "Data Provenance" as data_prov
+}
+
+rectangle "Data Flow" as data_flow {
+    database "Local Index" as local_index
+    database "Sidechain Index" as sidechain_index
+    database "Mainnet Rollup" as mainnet_rollup
+}
+
+' External systems
+cloud "GitHub" as github
+cloud "LLM Services" as llm
+cloud "BERT Models" as bert
+
+' Data flows - Processing to L2
+proc --> l2 : "1. Processed Index Data"
+proc --> l2 : "2. BERT Embeddings"
+proc --> l2 : "3. RDF Triples"
+
+' L2 internal flows
+sidechain --> index_storage : "Store search indices"
+sidechain --> embed_storage : "Store embeddings"
+htp --> batch_agg : "Aggregate batches"
+
+' L2 to Mainnet
+l2 --> mainnet : "4. Rollup Batches"
+l2 --> mainnet : "5. Cryptographic Proofs"
+
+' Mainnet internal flows
+mainnet_node --> rollup_settlement : "Settle rollups"
+rollup_settlement --> final_verif : "Verify data"
+final_verif --> data_prov : "Establish provenance"
+
+' Data storage flows
+index_gen --> local_index : "Local indexing"
+local_index --> sidechain_index : "Sync to sidechain"
+sidechain_index --> mainnet_rollup : "Rollup to mainnet"
+
+' External data flows
+github --> proc : "Source code"
+llm --> proc : "Code analysis"
+bert --> proc : "Embedding models"
+
+' Rollup process details
+note right of l2 : "L2 Sidechain Benefits:\n• High throughput\n• Low latency\n• Cost-effective storage\n• Batch processing"
+note right of mainnet : "Mainnet Benefits:\n• Final settlement\n• Data provenance\n• Security guarantees\n• Decentralized verification"
+
+' Rollup timing
+note bottom of l2 : "Rollup Frequency:\n• Real-time for critical data\n• Batch for efficiency\n• On-demand for verification"
+
+' Data types stored
+note left of index_storage : "Stored on Sidechain:\n• Search indices\n• BERT embeddings\n• Code vectors\n• Semantic relationships"
+note left of mainnet_rollup : "Rolled up to Mainnet:\n• Verified data batches\n• Cryptographic proofs\n• Data provenance\n• Final settlement"
+
+@enduml 

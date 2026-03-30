@@ -1,0 +1,57 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+Title("SOLFUNMEME System Context Overview")
+
+' Actors
+Person(dev, "Dev")
+Person(user1, "Node Operator (User1)")
+Person(user2, "End User (User2)")
+Person(aws, "AWS")
+Person(solana, "Solana Mainnet")
+
+' External Systems
+System_Ext(cf, "CloudFormation Stack", "AWS CloudFormation")
+System_Ext(aiagent, "ai-agent-terraform", "Terraform Modules")
+System_Ext(services, "meta-introspector/services", "Service Repo")
+
+' Main System
+System_Boundary(sfm, "SolFunMeme") {
+  Container(math, "Math Engine", "Rust/Math")
+  Container(solana_node, "Solana Node", "Solana")
+  Container(dioxus, "Dioxus UI", "WASM/Web")
+  Container(wasm, "WASM Runtime", "WASM")
+  Container(ttl, "Turtle Ontology", "TTL/RDF")
+  Container(plantuml, "PlantUML Models", "UML")
+  Container(emojis, "Emoji Ontology", "TTL/RDF")
+}
+
+' Relationships
+Rel(dev, cf, "produces/updates")
+Rel(dev, aiagent, "develops")
+Rel(dev, services, "develops")
+Rel(user1, cf, "runs")
+Rel(user1, solana_node, "operates")
+Rel(user2, dioxus, "uses")
+Rel(cf, solana_node, "deploys")
+Rel(cf, dioxus, "deploys")
+Rel(cf, wasm, "deploys")
+Rel(cf, ttl, "deploys")
+Rel(cf, plantuml, "documents")
+Rel(cf, emojis, "deploys")
+Rel(solana_node, solana, "syncs with")
+Rel(dioxus, wasm, "runs in")
+Rel(dioxus, ttl, "loads ontology")
+Rel(dioxus, emojis, "loads emoji ontology")
+Rel(dioxus, plantuml, "renders diagrams")
+Rel(dioxus, math, "uses math engine")
+Rel(dioxus, solana_node, "connects to")
+Rel(aiagent, cf, "generates modules for")
+Rel(services, cf, "provides services for")
+
+' Comments for future expansion
+' - Add more containers for microservices, APIs, or data stores as needed
+' - Link to actual repo URLs or documentation
+
+@enduml 

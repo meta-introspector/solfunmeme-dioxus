@@ -1,0 +1,27 @@
+[package]
+name = "semweb_lib"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sophia = { version = "0.8", features = ["all"] }
+sophia_api = "0.8"
+sophia_turtle = "0.8"
+sophia_inmem = "0.8"
+sophia_term = "0.8"
+sophia_iri = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+thiserror = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+async-trait = "0.1"
+futures = "0.3"
+url = "2.0"
+uuid = { version = "1.0", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+[dev-dependencies]
+tokio-test = "0.4" 

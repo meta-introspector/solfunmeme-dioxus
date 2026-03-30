@@ -1,0 +1,24 @@
+[tool.tarpaulin.coverage]
+# Configuration for cargo-tarpaulin coverage tool
+exclude-files = [
+    "target/*",
+    "tests/*",
+    "src/bin/*",
+    "*/mod.rs",
+]
+
+[tool.tarpaulin.report]
+# Report configuration
+out = ["Html", "Xml", "Json"]
+output-dir = "coverage/"
+
+[tool.tarpaulin.run]
+# Run configuration
+timeout = 120
+follow-exec = true
+post-args = ["--", "--test-threads=1"]
+
+[tool.tarpaulin.flags]
+# Feature flags
+all-features = true
+no-default-features = false

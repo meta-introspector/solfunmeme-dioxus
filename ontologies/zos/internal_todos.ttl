@@ -1,0 +1,52 @@
+@prefix tm: <https://example.org/taskmanager#> .
+@prefix em: <http://example.org/emoji#> .
+
+tm:review_ontologies a tm:Task ;
+    tm:id "review-ontologies" ;
+    tm:content "Review all newly created and updated ontology (.ttl) files for completeness, consistency, and correct references (seeAlso, attribution, etc.)." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:review_docs a tm:Task ;
+    tm:id "review-docs" ;
+    tm:content "Ensure all new documentation sections (universal equivalence, self-manifesting vibe, visual vibe, etc.) are present in SOLFUNMEME.md or README.md and cross-linked from relevant ontologies." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:review_plantuml a tm:Task ;
+    tm:id "review-plantuml" ;
+    tm:content "Verify that all PlantUML diagrams referenced in the documentation and ontologies are present in founding_documents/ and are up to date with the latest concepts (Paxos, probes, eigenstatements, etc.)." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:review_dioxus_views a tm:Task ;
+    tm:id "review-dioxus-views" ;
+    tm:content "Check that all new Dioxus view components (PaxosConsensusView, ProbesEquivalenceView, etc.) are integrated or referenced in the GUI, and that their source files exist in views_lib/src/." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:review_attribution a tm:Task ;
+    tm:id "review-attribution" ;
+    tm:content "Add or update README sections to clearly attribute and link to all external inspirations, issues, and foundational projects (meta-meme, protégé, etc.)." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn [] .
+
+tm:check_links a tm:Task ;
+    tm:id "check-links" ;
+    tm:content "Run a final pass to ensure all URLs, references, and seeAlso links in ontologies and docs are valid and not broken." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn tm:review_ontologies, tm:review_docs .
+
+tm:closing_summary a tm:Task ;
+    tm:id "closing-summary" ;
+    tm:content "Summarize the current state and next steps in a closing section of the main documentation, inviting further contributions and outlining the living nature of the project." ;
+    tm:status "pending" ;
+    em:emoji "❓" ;
+    tm:dependsOn tm:review_docs, tm:review_attribution .
+

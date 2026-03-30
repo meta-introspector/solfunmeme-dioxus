@@ -1,0 +1,141 @@
+@startuml Use_Case
+!theme plain
+skinparam usecase {
+    BackgroundColor LightBlue
+    BorderColor DarkBlue
+    ArrowColor DarkBlue
+}
+
+title Solfunmeme-Dioxus System - Use Case Diagram
+
+' Actors
+actor "Developer" as dev
+actor "Researcher" as res
+actor "Data Analyst" as ana
+actor "System Administrator" as admin
+
+' Use Cases - Core Functionality
+rectangle "Core Analysis" {
+    usecase "Analyze Codebase" as UC1
+    usecase "Extract Functions" as UC2
+    usecase "Generate Embeddings" as UC3
+    usecase "Search Code" as UC4
+    usecase "Generate RDF Data" as UC5
+}
+
+rectangle "Mathematical Processing" {
+    usecase "Apply Clifford Algebra" as UC6
+    usecase "Create Emoji Vectors" as UC7
+    usecase "Run Orbital Simulation" as UC8
+    usecase "Process Mathematical Models" as UC9
+}
+
+rectangle "Blockchain Integration" {
+    usecase "Store on Solana" as UC10
+    usecase "Verify Data Integrity" as UC11
+    usecase "Manage Wallet" as UC12
+    usecase "Create Content-Addressed Storage" as UC13
+}
+
+rectangle "UI & Visualization" {
+    usecase "View Code Analysis" as UC14
+    usecase "Explore Semantic Relationships" as UC15
+    usecase "Visualize Mathematical Models" as UC16
+    usecase "Interact with Playground" as UC17
+}
+
+rectangle "Workflow Management" {
+    usecase "Execute 8-Factorial Pipeline" as UC18
+    usecase "Manage Plugins" as UC19
+    usecase "Coordinate Tasks" as UC20
+    usecase "Monitor System Status" as UC21
+}
+
+rectangle "CLI Operations" {
+    usecase "Use ZOS CLI" as UC22
+    usecase "Run Analysis Commands" as UC23
+    usecase "Execute Pipeline Commands" as UC24
+    usecase "Generate Reports" as UC25
+}
+
+' Relationships - Developer
+dev --> UC1
+dev --> UC2
+dev --> UC3
+dev --> UC4
+dev --> UC14
+dev --> UC17
+dev --> UC22
+dev --> UC23
+dev --> UC24
+dev --> UC25
+
+' Relationships - Researcher
+res --> UC6
+res --> UC7
+res --> UC8
+res --> UC9
+res --> UC15
+res --> UC16
+res --> UC18
+res --> UC22
+
+' Relationships - Data Analyst
+ana --> UC1
+ana --> UC4
+ana --> UC5
+ana --> UC14
+ana --> UC15
+ana --> UC25
+ana --> UC22
+
+' Relationships - System Administrator
+admin --> UC19
+admin --> UC20
+admin --> UC21
+admin --> UC22
+admin --> UC10
+admin --> UC11
+admin --> UC12
+admin --> UC13
+
+' Include relationships
+UC18 ..> UC1 : <<include>>
+UC18 ..> UC2 : <<include>>
+UC18 ..> UC3 : <<include>>
+UC18 ..> UC5 : <<include>>
+UC18 ..> UC10 : <<include>>
+
+UC1 ..> UC2 : <<include>>
+UC2 ..> UC3 : <<include>>
+UC3 ..> UC4 : <<include>>
+UC3 ..> UC5 : <<include>>
+
+UC6 ..> UC7 : <<include>>
+UC8 ..> UC9 : <<include>>
+
+UC10 ..> UC11 : <<include>>
+UC10 ..> UC13 : <<include>>
+UC12 ..> UC10 : <<include>>
+
+UC14 ..> UC15 : <<include>>
+UC15 ..> UC16 : <<include>>
+
+UC22 ..> UC23 : <<include>>
+UC22 ..> UC24 : <<include>>
+UC22 ..> UC25 : <<include>>
+
+' Extend relationships
+UC3 ..> UC6 : <<extend>>
+UC3 ..> UC7 : <<extend>>
+UC5 ..> UC8 : <<extend>>
+UC5 ..> UC9 : <<extend>>
+
+UC14 ..> UC17 : <<extend>>
+UC15 ..> UC16 : <<extend>>
+
+UC18 ..> UC19 : <<extend>>
+UC18 ..> UC20 : <<extend>>
+UC18 ..> UC21 : <<extend>>
+
+@enduml 

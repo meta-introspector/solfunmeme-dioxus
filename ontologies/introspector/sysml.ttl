@@ -1,0 +1,112 @@
+@prefix : <http://example.com/semanticweb#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sysml: <http://www.omg.org/spec/SysML/> .
+
+# Existing definitions (truncated for brevity)
+# ... [Previous definitions remain unchanged]
+
+# SysML Diagram Types
+sysml:Diagram a rdfs:Class .
+sysml:BlockDefinitionDiagram a sysml:Diagram .
+sysml:InternalBlockDiagram a sysml:Diagram .
+sysml:ActivityDiagram a sysml:Diagram .
+sysml:StateMachineDiagram a sysml:Diagram .
+sysml:RequirementDiagram a sysml:Diagram .
+
+# SysML Block concept
+sysml:Block a rdfs:Class .
+:BoxedLambda rdfs:subClassOf sysml:Block .
+:RDFDocument rdfs:subClassOf sysml:Block .
+:FitnessFunction rdfs:subClassOf sysml:Block .
+:Hypersphere rdfs:subClassOf sysml:Block .
+
+# SysML Port concept
+sysml:Port a rdfs:Class .
+:hasPort a rdf:Property ;
+    rdfs:domain sysml:Block ;
+    rdfs:range sysml:Port .
+
+# SysML Connector concept
+sysml:Connector a rdfs:Class .
+:hasConnector a rdf:Property ;
+    rdfs:domain sysml:InternalBlockDiagram ;
+    rdfs:range sysml:Connector .
+
+# SysML Activity concept
+sysml:Activity a rdfs:Class .
+:InputURL a sysml:Activity .
+:ParseRDFDocument a sysml:Activity .
+:EvaluateFitness a sysml:Activity .
+:MapToHypersphere a sysml:Activity .
+:GenerateOutputs a sysml:Activity .
+
+# SysML Control Flow
+sysml:ControlFlow a rdfs:Class .
+:hasNextActivity a rdf:Property ;
+    rdfs:domain sysml:Activity ;
+    rdfs:range sysml:Activity .
+
+:InputURL :hasNextActivity :ParseRDFDocument .
+:ParseRDFDocument :hasNextActivity :EvaluateFitness .
+:EvaluateFitness :hasNextActivity :MapToHypersphere .
+:MapToHypersphere :hasNextActivity :GenerateOutputs .
+
+# SysML State Machine concepts
+sysml:State a rdfs:Class .
+:IdleState rdfs:subClassOf sysml:State .
+:ProcessingState rdfs:subClassOf sysml:State .
+:EvaluatingState rdfs:subClassOf sysml:State .
+:OutputtingState rdfs:subClassOf sysml:State .
+
+sysml:Transition a rdfs:Class .
+:hasTransition a rdf:Property ;
+    rdfs:domain sysml:State ;
+    rdfs:range sysml:Transition .
+
+# SysML Requirement concept (enhancing our existing Requirement class)
+:Requirement rdfs:subClassOf sysml:Requirement .
+sysml:satisfies a rdf:Property ;
+    rdfs:domain sysml:Block ;
+    rdfs:range sysml:Requirement .
+
+# Example of a block satisfying a requirement
+:BoxedLambda sysml:satisfies :R1 .
+
+# SysML Value Type concept
+sysml:ValueType a rdfs:Class .
+:FloatType a sysml:ValueType .
+:StringType a sysml:ValueType .
+
+# Assigning value types to properties
+:hasURL rdfs:range :StringType .
+:hasTruthValue rdfs:range :FloatType .
+:hasBeautyValue rdfs:range :FloatType .
+:hasGoodnessValue rdfs:range :FloatType .
+
+# SysML Constraint Block concept
+sysml:ConstraintBlock a rdfs:Class .
+:FitnessFunctionConstraint a sysml:ConstraintBlock ;
+    rdfs:comment "Defines the constraint for calculating overall fitness" .
+
+# SysML Item Flow concept
+sysml:ItemFlow a rdfs:Class .
+:RDFFlow a sysml:ItemFlow ;
+    rdfs:comment "Represents the flow of RDF data between components" .
+
+# Linking diagrams to their elements
+:BDD1 a sysml:BlockDefinitionDiagram ;
+    sysml:includes :BoxedLambda, :RDFDocument, :Statement, :FitnessFunction, :Hypersphere .
+
+:IBD1 a sysml:InternalBlockDiagram ;
+    sysml:includes :BoxedLambda ;
+    :hasConnector :FunctionToFitnessConnector .
+
+:AD1 a sysml:ActivityDiagram ;
+    sysml:includes :InputURL, :ParseRDFDocument, :EvaluateFitness, :MapToHypersphere, :GenerateOutputs .
+
+:SMD1 a sysml:StateMachineDiagram ;
+    sysml:includes :IdleState, :ProcessingState, :EvaluatingState, :OutputtingState .
+
+:RD1 a sysml:RequirementDiagram ;
+    sysml:includes :R1, :R2, :R3, :R4, :R5 .

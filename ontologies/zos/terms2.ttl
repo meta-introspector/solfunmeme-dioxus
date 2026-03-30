@@ -1,0 +1,229 @@
+@prefix sfm: <http://example.org/solfunmeme#> .
+@prefix tm: <https://example.org/taskmanager#> .
+@prefix em: <http://example.org/emoji#> .
+@prefix um: <http://example.org/unimath#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Extended Ontology for Word Frequency Terms
+# Integrating key terms from the word frequency list into the SOLFUNMEME ontology
+
+sfm:Task a sfm:Concept ;
+    sfm:label "Task" ;
+    sfm:emoji "✅📋" ;
+    sfm:description "A unit of work or action within the task management system, often with dependencies and statuses." ;
+    rdfs:seeAlso tm:Task, tm:integrate_task_manager ;
+    sfm:relatesTo sfm:Dependencies, sfm:Graph, sfm:Topological .
+
+sfm:Data a sfm:Concept ;
+    sfm:label "Data" ;
+    sfm:emoji "📊" ;
+    sfm:description "Information processed or visualized within the system, including aggregated statistics and parsed content." ;
+    rdfs:seeAlso tm:aggregate_structure_data, tm:parse_extract_data, tm:connect_data_to_charts ;
+    sfm:relatesTo sfm:JSON, sfm:Visualization .
+
+sfm:Code a sfm:Concept ;
+    sfm:label "Code" ;
+    sfm:emoji "💻" ;
+    sfm:description "Source code written in Rust or other languages, forming the backbone of the system." ;
+    rdfs:seeAlso tm:parse_extract_data, sfm:Rust ;
+    sfm:relatesTo sfm:Dioxus, sfm:WASM .
+
+sfm:Rust a sfm:Concept ;
+    sfm:label "Rust" ;
+    sfm:emoji "🦀" ;
+    sfm:description "The Rust programming language, used for building performant and safe components of the system." ;
+    rdfs:seeAlso tm:merge_lean4_rust_shapes, sfm:Dioxus ;
+    sfm:relatesTo sfm:Code, sfm:WASM .
+
+sfm:Dependencies a sfm:Concept ;
+    sfm:label "Dependencies" ;
+    sfm:emoji "🔗" ;
+    sfm:description "Relationships between tasks or components, often represented in a dependency graph." ;
+    rdfs:seeAlso tm:Task, sfm:Graph, sfm:Topological ;
+    sfm:relatesTo sfm:Task .
+
+sfm:Style a sfm:Concept ;
+    sfm:label "Style" ;
+    sfm:emoji "🎨" ;
+    sfm:description "CSS or styling attributes applied to Dioxus UI components for visual presentation." ;
+    rdfs:seeAlso tm:connect_data_to_charts, tm:emoji_matrix_dashboard ;
+    sfm:relatesTo sfm:Dioxus, sfm:Visualization .
+
+sfm:Graph a sfm:Concept ;
+    sfm:label "Graph" ;
+    sfm:emoji "🌐" ;
+    sfm:description "A data structure representing relationships, such as task dependencies or semantic connections." ;
+    rdfs:seeAlso tm:tm_semantic_graph_link, sfm:Topological ;
+    sfm:relatesTo sfm:Task, sfm:Dependencies .
+
+sfm:Topological a sfm:Concept ;
+    sfm:label "Topological" ;
+    sfm:emoji "🧩" ;
+    sfm:description "Pertaining to topological sorting or analysis of dependency graphs for task ordering." ;
+    rdfs:seeAlso tm:tm_semantic_graph_link, sfm:Graph ;
+    sfm:relatesTo sfm:Task, sfm:Dependencies .
+
+sfm:Dioxus a sfm:Concept ;
+    sfm:label "Dioxus" ;
+    sfm:emoji "🖼️" ;
+    sfm:description "A Rust framework for building reactive user interfaces, used for the system's frontend." ;
+    rdfs:seeAlso tm:connect_data_to_charts, tm:emoji_matrix_dashboard, sfm:DioxusUI ;
+    sfm:relatesTo sfm:Rust, sfm:Style, sfm:Visualization .
+
+sfm:Embedding a sfm:Concept ;
+    sfm:label "Embedding" ;
+    sfm:emoji "🧠" ;
+    sfm:description "Vector representations of data or concepts, often used in AI or semantic analysis." ;
+    rdfs:seeAlso sfm:ZeroOntologySystem, sfm:MetamemeConvergence ;
+    sfm:relatesTo sfm:AI, sfm:Data .
+
+sfm:Solana a sfm:Concept ;
+    sfm:label "Solana" ;
+    sfm:emoji "⛓️" ;
+    sfm:description "A blockchain platform integrated for decentralized features like token management." ;
+    rdfs:seeAlso sfm:SolanaNode, sfm:SOLFUNMEME ;
+    sfm:relatesTo sfm:SOLFUNMEME, sfm:WASM .
+
+sfm:WASM a sfm:Concept ;
+    sfm:label "WASM" ;
+    sfm:emoji "🌐" ;
+    sfm:description "WebAssembly, used for browser-compatible execution of Rust code." ;
+    rdfs:seeAlso tm:build_lean4_wasm, sfm:WasmRuntime ;
+    sfm:relatesTo sfm:Rust, sfm:Dioxus .
+
+sfm:Canvas a sfm:Concept ;
+    sfm:label "Canvas" ;
+    sfm:emoji "🖌️" ;
+    sfm:description "A web-based rendering surface for visualizations, such as charts or graphs." ;
+    rdfs:seeAlso tm:connect_data_to_charts, tm:emoji_matrix_dashboard ;
+    sfm:relatesTo sfm:Visualization, sfm:Dioxus .
+
+sfm:JSON a sfm:Concept ;
+    sfm:label "JSON" ;
+    sfm:emoji "📄" ;
+    sfm:description "A data format used for exporting or structuring aggregated data." ;
+    rdfs:seeAlso tm:add_reporting_export, sfm:Data ;
+    sfm:relatesTo sfm:Data, sfm:Visualization .
+
+sfm:SOLFUNMEME a sfm:Concept ;
+    sfm:label "SOLFUNMEME" ;
+    sfm:emoji "🚀📜" ;
+    sfm:description "The core system or token, integrating memes, tasks, and blockchain functionalities." ;
+    rdfs:seeAlso sfm:SOLFUNMEMEIntro, sfm:Solana ;
+    sfm:relatesTo sfm:Solana, sfm:Dioxus, sfm:AI .
+
+sfm:Parse a sfm:Concept ;
+    sfm:label "Parse" ;
+    sfm:emoji "🔎" ;
+    sfm:description "The process of analyzing and extracting data from files or code." ;
+    rdfs:seeAlso tm:parse_extract_data, tm:parse_microlean4_dataset ;
+    sfm:relatesTo sfm:Data, sfm:Code .
+
+sfm:Visualization a sfm:Concept ;
+    sfm:label "Visualization" ;
+    sfm:emoji "📈" ;
+    sfm:description "The process of rendering data or graphs visually, often using Dioxus or canvas." ;
+    rdfs:seeAlso tm:connect_data_to_charts, tm:emoji_matrix_dashboard, tm:emoji_matrix_report ;
+    sfm:relatesTo sfm:Data, sfm:Dioxus, sfm:Canvas .
+
+sfm:AI a sfm:Concept ;
+    sfm:label "AI" ;
+    sfm:emoji "🤖" ;
+    sfm:description "Artificial intelligence components, including embeddings and semantic analysis." ;
+    rdfs:seeAlso sfm:Embedding, tm:tm_llm_gui_integration ;
+    sfm:relatesTo sfm:Embedding, sfm:Data, sfm:SOLFUNMEME .
+
+sfm:Ontology a sfm:Concept ;
+    sfm:label "Ontology" ;
+    sfm:emoji "🗂️" ;
+    sfm:description "A structured representation of knowledge as a set of concepts and relationships, used to model the system's domain." ;
+    rdfs:seeAlso sfm:ZeroOntologySystem, tm:tm_semantic_graph_link ;
+    sfm:relatesTo sfm:Semantic, sfm:Logic, sfm:AI .
+
+sfm:Semantic a sfm:Concept ;
+    sfm:label "Semantic" ;
+    sfm:emoji "🧬" ;
+    sfm:description "Relating to the meaning and relationships of concepts, often used in semantic graphs or AI analysis." ;
+    rdfs:seeAlso tm:tm_semantic_graph_link, sfm:Ontology ;
+    sfm:relatesTo sfm:Ontology, sfm:Graph, sfm:AI .
+
+sfm:Emoji a sfm:Concept ;
+    sfm:label "Emoji" ;
+    sfm:emoji "😊" ;
+    sfm:description "Visual symbols used to represent concepts or emotions, integrated into the system for intuitive communication." ;
+    rdfs:seeAlso tm:emoji_matrix_dashboard, tm:emoji_matrix_report, em:UniversalEmoji ;
+    sfm:relatesTo sfm:Visualization, sfm:Semantic .
+
+sfm:Euterpe a sfm:Concept ;
+    sfm:label "Euterpe" ;
+    sfm:emoji "🎶" ;
+    sfm:description "The Muse of music and lyric poetry, representing creative inspiration in the system's narrative and visualization." ;
+    rdfs:seeAlso sfm:MetamemeConvergence ;
+    sfm:relatesTo sfm:Narrative, sfm:Visualization, sfm:Metaphor .
+
+sfm:Melpomene a sfm:Concept ;
+    sfm:label "Melpomene" ;
+    sfm:emoji "🎭" ;
+    sfm:description "The Muse of tragedy, symbolizing the dramatic and emotional aspects of the system's narratives." ;
+    rdfs:seeAlso sfm:MetamemeConvergence ;
+    sfm:relatesTo sfm:Narrative, sfm:Metaphor .
+
+sfm:Calliope a sfm:Concept ;
+    sfm:label "Calliope" ;
+    sfm:emoji "📜" ;
+    sfm:description "The Muse of epic poetry, embodying the storytelling and epic scope of the system's design." ;
+    rdfs:seeAlso sfm:MetamemeConvergence ;
+    sfm:relatesTo sfm:Narrative, sfm:Metaphor .
+
+sfm:Metaphor a sfm:Concept ;
+    sfm:label "Metaphor" ;
+    sfm:emoji "🌌" ;
+    sfm:description "A figure of speech used to convey complex ideas or relationships in the system through symbolic language." ;
+    rdfs:seeAlso sfm:Euterpe, sfm:Melpomene, sfm:Calliope ;
+    sfm:relatesTo sfm:Narrative, sfm:Semantic, sfm:Emoji .
+
+sfm:Narrative a sfm:Concept ;
+    sfm:label "Narrative" ;
+    sfm:emoji "📖" ;
+    sfm:description "The storytelling framework that weaves tasks, data, and concepts into a cohesive user experience." ;
+    rdfs:seeAlso sfm:Euterpe, sfm:Melpomene, sfm:Calliope ;
+    sfm:relatesTo sfm:Metaphor, sfm:Visualization, sfm:Emoji .
+
+sfm:Logic a sfm:Concept ;
+    sfm:label "Logic" ;
+    sfm:emoji "🧮" ;
+    sfm:description "The principles of reasoning and formal structures underlying the system's AI and task management." ;
+    rdfs:seeAlso sfm:Ontology, tm:tm_llm_gui_integration ;
+    sfm:relatesTo sfm:AI, sfm:Mathematics, sfm:Semantic .
+
+sfm:Mathematics a sfm:Concept ;
+    sfm:label "Mathematics" ;
+    sfm:emoji "🔢" ;
+    sfm:description "The study of numbers, structures, and patterns, foundational to the system's algorithms and data processing." ;
+    rdfs:seeAlso um:Unimath, sfm:Logic ;
+    sfm:relatesTo sfm:Logic, sfm:AI, sfm:Graph, sfm:Topological .
+
+sfm:Type a sfm:Concept ;
+    sfm:label "Type" ;
+    sfm:emoji "🏷️" ;
+    sfm:description "A classification or category of data or objects in Rust, ensuring type safety and structure." ;
+    rdfs:seeAlso sfm:Rust, tm:parse_extract_data ;
+    sfm:relatesTo sfm:Code, sfm:Data, sfm:JSON .
+
+# Relationships
+sfm:Task sfm:relatesTo sfm:Graph, sfm:Topological, sfm:Dependencies .
+sfm:Data sfm:relatesTo sfm:JSON, sfm:Visualization, sfm:Parse, sfm:Type .
+sfm:Code sfm:relatesTo sfm:Rust, sfm:Dioxus, sfm:WASM, sfm:Type .
+sfm:Rust sfm:relatesTo sfm:Dioxus, sfm:WASM, sfm:Code, sfm:Type .
+sfm:Dioxus sfm:relatesTo sfm:Style, sfm:Visualization, sfm:Canvas, sfm:Emoji .
+sfm:Solana sfm:relatesTo sfm:SOLFUNMEME, sfm:WASM .
+sfm:Visualization sfm:relatesTo sfm:Canvas, sfm:Dioxus, sfm:Data, sfm:Emoji, sfm:Narrative .
+sfm:AI sfm:relatesTo sfm:Embedding, sfm:Data, sfm:SOLFUNMEME, sfm:Logic, sfm:Ontology .
+sfm:Ontology sfm:relatesTo sfm:Semantic, sfm:Logic, sfm:AI, sfm:Metaphor .
+sfm:Semantic sfm:relatesTo sfm:Ontology, sfm:Graph, sfm:AI, sfm:Metaphor .
+sfm:Emoji sfm:relatesTo sfm:Visualization, sfm:Narrative, sfm:Metaphor .
+sfm:Narrative sfm:relatesTo sfm:Metaphor, sfm:Euterpe, sfm:Melpomene, sfm:Calliope, sfm:Emoji .
+sfm:Metaphor sfm:relatesTo sfm:Narrative, sfm:Euterpe, sfm:Melpomene, sfm:Calliope, sfm:Semantic .
+sfm:Logic sfm:relatesTo sfm:Mathematics, sfm:Ontology, sfm:AI .
+sfm:Mathematics sfm:relatesTo sfm:Logic, sfm:Graph, sfm:Topological, sfm:AI .
+sfm:Type sfm:relatesTo sfm:Code, sfm:Data, sfm:Rust, sfm:JSON .

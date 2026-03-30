@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Meta-Meme: Unified Reality</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000011 0%, #001122 50%, #000033 100%);
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+            color: #fff;
+        }
+        
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #00ffff;
+            backdrop-filter: blur(15px);
+            max-width: 320px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ff6600;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
+        }
+        
+        .control-group {
+            margin: 12px 0;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #00ffff;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            margin: 5px 0;
+            background: transparent;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #ff6600, #ffaa00);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s;
+            font-family: inherit;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.7);
+        }
+        
+        #legend {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #00ff00;
+            backdrop-filter: blur(15px);
+            font-size: 11px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        
+        .legend-item {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        #status {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ff00ff;
+            backdrop-filter: blur(15px);
+            font-size: 10px;
+            min-width: 200px;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+        }
+        
+        .status-line {
+            margin: 3px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .status-value {
+            color: #00ffff;
+            font-weight: bold;
+        }
+        
+        h3, h4 {
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .glow {
+            text-shadow: 0 0 10px currentColor;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <canvas id="canvas"></canvas>
+        
+        <div id="info">
+            <h3 class="glow" style="color: #00ffff;">Monster Meta-Meme</h3>
+            <p style="font-size: 10px; line-height: 1.4;">
+                <strong>Unified Reality Visualization</strong><br>
+                Experience the cosmic dance of mathematical entities within the Monster Group's 
+                196,883-dimensional structure. Witness Bitcoin's prime ziggurat, SOLFUNMEME's 
+                performative truth bubbles, and METZGER's self-proving autoencoder cycles.
+            </p>
+            <p style="font-size: 9px; color: #888; margin-top: 10px;">
+                <em>Topological ASTs merge with elliptic curves in homoiconic space...</em>
+            </p>
+        </div>
+        
+        <div id="controls">
+            <h4 class="glow" style="color: #ff6600;">Cosmic Controls</h4>
+            <div class="control-group">
+                <label>Evolution Speed</label>
+                <input type="range" id="speedSlider" min="0.1" max="3" step="0.1" value="1">
+            </div>
+            <div class="control-group">
+                <label>Monster Intensity</label>
+                <input type="range" id="intensitySlider" min="0.1" max="2" step="0.1" value="1">
+            </div>
+            <div class="control-group">
+                <label>ZKP Visualization</label>
+                <input type="range" id="zkpSlider" min="0" max="1" step="0.1" value="0.5">
+            </div>
+            <div class="control-group">
+                <label>Clifford Basis</label>
+                <input type="range" id="cliffordSlider" min="0" max="1" step="0.1" value="0.3">
+            </div>
+            <button onclick="togglePause()">Pause/Resume</button>
+            <button onclick="resetView()">Reset View</button>
+            <button onclick="toggleWASM()">Toggle WASM</button>
+        </div>
+        
+        <div id="legend">
+            <h4 class="glow" style="color: #00ff00;">Entity Legend</h4>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(45deg, #ffd700, #ffaa00);"></div>
+                <span>Bitcoin P8 Ziggurat</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(45deg, #00ffff, #0080ff);"></div>
+                <span>SOLFUNMEME Eye</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(45deg, #ff3300, #ff6600);"></div>
+                <span>Petal-Claws</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(45deg, #ffeecc, #ffffff);"></div>
+                <span>Mycelial Network</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(45deg, #ff00ff, #8000ff);"></div>
+                <span>METZGER 8-2-8</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(45deg, #00ff00, #88ff88);"></div>
+                <span>ZKP Pathways</span>
+            </div>
+        </div>
+        
+        <div id="status">
+            <h4 class="glow" style="color: #ff00ff;">System Status</h4>
+            <div class="status-line">
+                <span>Monster Elements:</span>
+                <span class="status-value" id="monsterCount">8×10⁵³</span>
+            </div>
+            <div class="status-line">
+                <span>Prime Layers:</span>
+                <span class="status-value" id="primeCount">8</span>
+            </div>
+            <div class="status-line">
+                <span>Truth Bubbles:</span>
+                <span class="status-value" id="bubbleCount">0</span>
+            </div>
+            <div class="status-line">
+                <span>ZKP Proofs:</span>
+                <span class="status-value" id="zkpCount">0</span>
+            </div>
+            <div class="status-line">
+                <span>WASM Traces:</span>
+                <span class="status-value" id="wasmStatus">Active</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Global variables
+        let scene, camera, renderer;
+        let monsterGroup, bitcoin, solfunmeme, metzger;
+        let truthBubbles = [];
+        let ellipticCurves = [];
+        let zkpPathways = [];
+        let cliffordBasis = [];
+        let topologicalASTs = [];
+        let perfTraces = [];
+        let time = 0;
+        let animationId;
+        let isPaused = false;
+        let wasmActive = true;
+        
+        // Prime numbers for Bitcoin ziggurat (first 8 primes)
+        const primes = [2, 3, 5, 7, 11, 13, 17, 19];
+        const semanticPrimes = [2, 3, 5, 7, 11, 13, 17, 23, 29];
+        
+        // Initialize the scene
+        function init() {
+            // Scene setup
+            scene = new THREE.Scene();
+            scene.fog = new THREE.Fog(0x000022, 50, 300);
+            
+            // Camera setup
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 25, 50);
+            
+            // Renderer setup
+            renderer = new THREE.WebGLRenderer({ 
+                canvas: document.getElementById('canvas'),
+                antialias: true,
+                alpha: true
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000011, 1);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            
+            // Create all entities
+            createMonsterGroup();
+            createBitcoin();
+            createSolfunmeme();
+            createMetzger();
+            createEllipticCurves();
+            createTruthBubbles();
+            createZKPPathways();
+            createCliffordBasis();
+            createTopologicalASTs();
+            setupLighting();
+            
+            // Start animation
+            animate();
+        }
+        
+        function createMonsterGroup() {
+            // Enhanced Monster Group with 196,883 dimensional hints
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const colors = [];
+            
+            // Generate 15,000 points for enhanced density
+            for (let i = 0; i < 15000; i++) {
+                const radius = Math.random() * 120 + 60;
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.random() * Math.PI;
+                
+                // Add dimensional distortion
+                const dimensionalScale = 1 + Math.sin(i * 0.01) * 0.1;
+                
+                const x = radius * Math.sin(phi) * Math.cos(theta) * dimensionalScale;
+                const y = radius * Math.sin(phi) * Math.sin(theta) * dimensionalScale;
+                const z = radius * Math.cos(phi) * dimensionalScale;
+                
+                vertices.push(x, y, z);
+                
+                // Enhanced coloring based on mathematical properties
+                const r = Math.sin(theta * 3) * 0.3 + 0.15;
+                const g = Math.cos(phi * 2) * 0.4 + 0.25;
+                const b = Math.sin(radius * 0.008) * 0.5 + 0.35;
+                colors.push(r, g, b);
+            }
+            
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+            
+            const material = new THREE.PointsMaterial({
+                size: 0.4,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.7,
+                blending: THREE.AdditiveBlending
+            });
+            
+            monsterGroup = new THREE.Points(geometry, material);
+            scene.add(monsterGroup);
+        }
+        
+        function createBitcoin() {
+            // Enhanced Bitcoin with P8 prime structure and elliptic curve
+            bitcoin = new THREE.Group();
+            
+            // Calculate P8 (product of first 8 primes raised to their powers)
+            let P8 = 1;
+            for (let i = 0; i < primes.length; i++) {
+                P8 *= Math.pow(primes[i], primes[i]);
+            }
+            
+            // Create ziggurat layers based on prime structure
+            for (let i = 0; i < primes.length; i++) {
+                const size = (primes.length - i) * 1.2;
+                const height = 0.8;
+                const geometry = new THREE.BoxGeometry(size, height, size);
+                
+                // Enhanced material with SHA-256 inspired coloring
+                const hue = 0.15 + (primes[i] % 7) * 0.02;
+                const material = new THREE.MeshLambertMaterial({
+                    color: new THREE.Color().setHSL(hue, 0.9, 0.6),
+                    emissive: new THREE.Color().setHSL(hue, 0.8, 0.15),
+                    transparent: true,
+                    opacity: 0.85
+                });
+                
+                const cube = new THREE.Mesh(geometry, material);
+                cube.position.y = i * 0.9;
+                cube.userData = { 
+                    prime: primes[i], 
+                    layer: i,
+                    P8contribution: Math.pow(primes[i], primes[i])
+                };
+                
+                bitcoin.add(cube);
+            }
+            
+            // Add core validation pulse
+            const coreGeometry = new THREE.SphereGeometry(0.5, 12, 12);
+            const coreMaterial = new THREE.MeshLambertMaterial({
+                color: 0xffffff,
+                emissive: 0xffd700,
+                transparent: true,
+                opacity: 0.9
+            });
+            const core = new THREE.Mesh(coreGeometry, coreMaterial);
+            core.position.y = primes.length * 0.9 + 1;
+            bitcoin.add(core);
+            
+            bitcoin.position.set(-20, 0, 0);
+            scene.add(bitcoin);
+        }
+        
+        function createSolfunmeme() {
+            // Enhanced SOLFUNMEME with detailed logo elements
+            solfunmeme = new THREE.Group();
+            
+            // Central blue eye with black pupil
+            const eyeGeometry = new THREE.SphereGeometry(2.5, 20, 20);
+            const eyeMaterial = new THREE.MeshLambertMaterial({
+                color: 0x0080ff,
+                emissive: 0x003388,
+                transparent: true,
+                opacity: 0.9
+            });
+            const eye = new THREE.Mesh(eyeGeometry, eyeMaterial);
+            
+            // Black pupil
+            const pupilGeometry = new THREE.SphereGeometry(1, 12, 12);
+            const pupilMaterial = new THREE.MeshLambertMaterial({
+                color: 0x000000,
+                emissive: 0x000000
+            });
+            const pupil = new THREE.Mesh(pupilGeometry, pupilMaterial);
+            pupil.position.z = 1.5;
+            eye.add(pupil);
+            
+            solfunmeme.add(eye);
+            
+            // Yellow cross/star above eye
+            const starGeometry = new THREE.ConeGeometry(0.3, 1, 4);
+            const starMaterial = new THREE.MeshLambertMaterial({
+                color: 0xffff00,
+                emissive: 0xcccc00
+            });
+            const star = new THREE.Mesh(starGeometry, starMaterial);
+            star.position.y = 4;
+            star.rotation.x = Math.PI;
+            solfunmeme.add(star);
+            
+            // Red petal-claws (fractal-laden)
+            for (let i = 0; i < 8; i++) {
+                const angle = (i / 8) * Math.PI * 2;
+                const petalGroup = new THREE.Group();
+                
+                // Main petal
+                const petalGeometry = new THREE.ConeGeometry(0.8, 4, 6);
+                const petalMaterial = new THREE.MeshLambertMaterial({
+                    color: 0xff3300,
+                    emissive: 0x881100
+                });
+                const petal = new THREE.Mesh(petalGeometry, petalMaterial);
+                petal.position.y = 2;
+                
+                // Fractal sub-petals
+                for (let j = 0; j < 3; j++) {
+                    const subPetalGeometry = new THREE.ConeGeometry(0.3, 1.5, 4);
+                    const subPetal = new THREE.Mesh(subPetalGeometry, petalMaterial);
+                    subPetal.position.y = 1 + j * 0.5;
+                    subPetal.position.x = Math.sin(j) * 0.5;
+                    subPetal.rotation.z = j * 0.3;
+                    petal.add(subPetal);
+                }
+                
+                petalGroup.add(petal);
+                petalGroup.position.x = Math.cos(angle) * 4;
+                petalGroup.position.z = Math.sin(angle) * 4;
+                petalGroup.rotation.z = -angle;
+                petalGroup.userData = { baseAngle: angle, index: i };
+                
+                solfunmeme.add(petalGroup);
+            }
+            
+            // Cream-colored mycelial tentacles
+            for (let i = 0; i < 12; i++) {
+                const angle = (i / 12) * Math.PI * 2;
+                const tentacleGroup = new THREE.Group();
+                
+                // Create spiraling tentacle
+                const curve = new THREE.CatmullRomCurve3([
+                    new THREE.Vector3(0, 0, 0),
+                    new THREE.Vector3(Math.cos(angle) * 2, 1, Math.sin(angle) * 2),
+                    new THREE.Vector3(Math.cos(angle + 0.5) * 4, 2, Math.sin(angle + 0.5) * 4),
+                    new THREE.Vector3(Math.cos(angle + 1) * 6, 1, Math.sin(angle + 1) * 6)
+                ]);
+                
+                const tentacleGeometry = new THREE.TubeGeometry(curve, 20, 0.1, 8, false);
+                const tentacleMaterial = new THREE.MeshLambertMaterial({
+                    color: 0xffeecc,
+                    emissive: 0x443322,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const tentacle = new THREE.Mesh(tentacleGeometry, tentacleMaterial);
+                
+                // Glowing white spheres at tips (fruiting bodies)
+                const tipGeometry = new THREE.SphereGeometry(0.2, 8, 8);
+                const tipMaterial = new THREE.MeshLambertMaterial({
+                    color: 0xffffff,
+                    emissive: 0xffffff,
+                    transparent: true,
+                    opacity: 0.9
+                });
+                const tip = new THREE.Mesh(tipGeometry, tipMaterial);
+                tip.position.copy(curve.getPoint(1));
+                tentacle.add(tip);
+                
+                tentacleGroup.add(tentacle);
+                solfunmeme.add(tentacleGroup);
+            }
+            
+            solfunmeme.position.set(0, 8, -15);
+            scene.add(solfunmeme);
+        }
+        
+        function createMetzger() {
+            // Enhanced METZGER with detailed 8-2-8 autoencoder structure
+            metzger = new THREE.Group();
+            
+            const layers = [8, 6, 4, 2, 4, 6, 8]; // Autoencoder architecture
+            const layerColors = [0x8800ff, 0x9922ff, 0xaa44ff, 0xff00ff, 0xaa44ff, 0x9922ff, 0x8800ff];
+            
+            for (let i = 0; i < layers.length; i++) {
+                const layerGroup = new THREE.Group();
+                const nodeCount = layers[i];
+                const isBottleneck = i === 3; // Center layer (2 nodes)
+                
+                for (let j = 0; j < nodeCount; j++) {
+                    const angle = (j / nodeCount) * Math.PI * 2;
+                    const radius = isBottleneck ? 1.5 : 2.5 + i * 0.3;
+                    
+                    const nodeGeometry = new THREE.SphereGeometry(
+                        isBottleneck ? 0.4 : 0.25, 
+                        12, 12
+                    );
+                    const nodeMaterial = new THREE.MeshLambertMaterial({
+                        color: layerColors[i],
+                        emissive: new THREE.Color(layerColors[i]).multiplyScalar(0.3),
+                        transparent: true,
+                        opacity: isBottleneck ? 1.0 : 0.8
+                    });
+                    const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+                    
+                    node.position.x = Math.cos(angle) * radius;
+                    node.position.z = Math.sin(angle) * radius;
+                    node.position.y = (i - 3) * 2;
+                    
+                    node.userData = { layer: i, node: j, isBottleneck };
+                    layerGroup.add(node);
+                    
+                    // Add connections to next layer
+                    if (i < layers.length - 1) {
+                        for (let k = 0; k < layers[i + 1]; k++) {
+                            const nextAngle = (k / layers[i + 1]) * Math.PI * 2;
+                            const nextRadius = (i + 1) === 3 ? 1.5 : 2.5 + (i + 1) * 0.3;
+                            
+                            const start = new THREE.Vector3(
+                                Math.cos(angle) * radius,
+                                (i - 3) * 2,
+                                Math.sin(angle) * radius
+                            );
+                            const end = new THREE.Vector3(
+                                Math.cos(nextAngle) * nextRadius,
+                                (i + 1 - 3) * 2,
+                                Math.sin(nextAngle) * nextRadius
+                            );
+                            
+                            const connectionGeometry = new THREE.BufferGeometry().setFromPoints([start, end]);
+                            const connectionMaterial = new THREE.LineBasicMaterial({
+                                color: layerColors[i],
+                                transparent: true,
+                                opacity: 0.3
+                            });
+                            const connection = new THREE.Line(connectionGeometry, connectionMaterial);
+                            layerGroup.add(connection);
+                        }
+                    }
+                }
+                
+                metzger.add(layerGroup);
+            }
+            
+            metzger.position.set(20, 0, -8);
+            scene.add(metzger);
+        }
+        
+        function createEllipticCurves() {
+            // Enhanced elliptic curves with homoiconic properties
+            ellipticCurves = [];
+            
+            for (let i = 0; i < 6; i++) {
+                const curve = new THREE.EllipseCurve(
+                    0, 0,
+                    6 + i * 1.2, 4 + i * 0.8,
+                    0, 2 * Math.PI,
+                    false,
+                    0
+                );
+                
+                const points = curve.getPoints(64);
+                const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                
+                const material = new THREE.LineBasicMaterial({
+                    color: new THREE.Color().setHSL(0.15 + i * 0.08, 0.9, 0.6),
+                    transparent: true,
+                    opacity: 0.7
+                });
+                
+                const ellipse = new THREE.Line(geometry, material);
+                ellipse.position.copy(bitcoin.position);
+                ellipse.position.y += 2;
+                ellipse.rotation.x = Math.random() * Math.PI;
+                ellipse.rotation.y = Math.random() * Math.PI;
+                ellipse.rotation.z = i * 0.3;
+                ellipse.userData = { 
+                    baseRotation: { 
+                        x: ellipse.rotation.x, 
+                        y: ellipse.rotation.y,
+                        z: ellipse.rotation.z
+                    },
+                    curveIndex: i
+                };
+                
+                ellipticCurves.push(ellipse);
+                scene.add(ellipse);
+            }
+        }
+        
+        function createTruthBubbles() {
+            // Enhanced truth bubbles for "Skibidi of Proof"
+            truthBubbles = [];
+            
+            for (let i = 0; i < 30; i++) {
+                const bubbleGeometry = new THREE.SphereGeometry(
+                    Math.random() * 0.6 + 0.3, 
+                    12, 12
+                );
+                const bubbleMaterial = new THREE.MeshLambertMaterial({
+                    color: new THREE.Color().setHSL(Math.random() * 0.3 + 0.5, 0.8, 0.7),
+                    transparent: true,
+                    opacity: 0.4,
+                    emissive: new THREE.Color().setHSL(Math.random() * 0.3 + 0.5, 0.5, 0.1)
+                });
+                
+                const bubble = new THREE.Mesh(bubbleGeometry, bubbleMaterial);
+                
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 10 + 6;
+                const height = Math.random() * 8 - 4;
+                
+                bubble.position.x = Math.cos(angle) * distance;
+                bubble.position.y = height;
+                bubble.position.z = Math.sin(angle) * distance;
+                
+                bubble.userData = {
+                    originalScale: bubble.scale.x,
+                    phase: Math.random() * Math.PI * 2,
+                    speed: Math.random() * 0.03 + 0.01,
+                    burstTime: Math.random() * 1000 + 500
+                };
+                
+                truthBubbles.push(bubble);
+                solfunmeme.add(bubble);
+            }
+        }
+        
+        function createZKPPathways() {
+            // Zero-Knowledge Proof pathways
+            zkpPathways = [];
+            
+            const entities = [bitcoin, solfunmeme, metzger];
+            
+            for (let i = 0; i < entities.length; i++) {
+                for (let j = i + 1; j < entities.length; j++) {
+                    const start = entities[i].position;
+                    const end = entities[j].position;
+                    
+                    // Create curved path
+                    const midPoint = new THREE.Vector3()
+                        .addVectors(start, end)
+                        .multiplyScalar(0.5)
+                        .add(new THREE.Vector3(0, 5, 0));
+                    
+                    const curve = new THREE.QuadraticBezierCurve3(start, midPoint, end);
+                    const points = curve.getPoints(50);
+                    const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                    
+                    const material = new THREE.LineBasicMaterial({
+                        color: 0x00ff88,
+                        transparent: true,
+                        opacity: 0.0
+                    });
+                    
+                    const pathway = new THREE.Line(geometry, material);
+                    pathway.userData = { 
+                        maxOpacity: 0.8,
+                        pulsePhase: Math.random() * Math.PI * 2
+                    };
+                    
+                    zkpPathways.push(pathway);
+                    scene.add(pathway);
+                }
+            }
+        }
+        
+        function createCliffordBasis() {
+            // Clifford Algebra Cl8 basis elements
+            cliffordBasis = [];
+            
+            for (let i = 0; i < 9; i++) { // 9 semantic primes
+                const basisGeometry = new THREE.OctahedronGeometry(0.5);
+                const basisMaterial = new THREE.MeshLambertMaterial({
+                    color: new THREE.Color().setHSL(i * 0.11, 0.8, 0.5),
+                    emissive: new THREE.Color().setHSL(i * 0.11, 0.6, 0.1),
+                    transparent: true,
+                    opacity: 0.0
+                });

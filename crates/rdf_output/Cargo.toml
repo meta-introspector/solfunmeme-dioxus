@@ -1,0 +1,15 @@
+[package]
+name = "rdf_output"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+shared_analysis_types = { path = "../shared_analysis_types" }
+sophia_api = "0.8"
+sophia_term = "0.8"
+sophia_iri = "0.8"
+sophia_inmem = "0.8"
+sophia_turtle = "0.8"
+sophia_jsonld = "0.8"
+anyhow = "1.0"

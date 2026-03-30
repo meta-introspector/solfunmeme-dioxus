@@ -1,0 +1,47 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_UseCase.puml
+
+' Probes, eBPF, and Language Equivalence Use Case Diagram
+' Reference: https://github.com/meta-introspector/meta-meme/issues/101
+
+LAYOUT_WITH_LEGEND()
+Title("Probes, eBPF, and Language Equivalence Use Case")
+
+' Actors
+Actor(dev, "Developer")
+Actor(educator, "Educator")
+
+' Systems
+System(perf, "Linux Perf")
+System(uprobes, "uprobes/eBPF")
+System(llvm, "LLVM")
+System(gcc, "GCC")
+System(sealevel, "Sealevel (Solana VM)")
+System(rust, "Rust")
+System(wasm, "WASM")
+System(dioxus, "Dioxus")
+
+' Use Cases
+UseCase(instr, "Instrument Code")
+UseCase(collect, "Collect Data")
+UseCase(visualize, "Visualize Flow")
+UseCase(compare, "Compare Equivalence")
+UseCase(emoji, "Emoji Visualization")
+
+' Relationships
+Rel(dev, instr, "uses")
+Rel(instr, perf, "with")
+Rel(instr, uprobes, "with")
+Rel(instr, llvm, "with")
+Rel(instr, gcc, "with")
+Rel(instr, sealevel, "targets")
+Rel(instr, rust, "targets")
+Rel(instr, wasm, "targets")
+Rel(instr, dioxus, "targets")
+Rel(instr, collect, "enables")
+Rel(collect, visualize, "feeds")
+Rel(visualize, compare, "enables")
+Rel(compare, emoji, "renders as")
+Rel(emoji, educator, "teaches")
+
+@enduml 

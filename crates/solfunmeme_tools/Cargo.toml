@@ -1,0 +1,91 @@
+[package]
+name = "solfunmeme_tools"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "test_runner"
+path = "src/bin/test_runner_cli.rs"
+
+[[bin]]
+name = "doc_test_generator"
+path = "src/bin/doc_test_generator_cli.rs"
+
+[[bin]]
+name = "doc_processor"
+path = "src/bin/doc_processor_cli.rs"
+
+[[bin]]
+name = "chat_processor"
+path = "src/bin/chat_processor_cli.rs"
+
+[[bin]]
+name = "chunk_processor"
+path = "src/bin/chunk_processor_cli.rs"
+
+[[bin]]
+name = "codebase_analyzer_cli"
+path = "src/bin/codebase_analyzer_cli.rs"
+
+[[bin]]
+name = "emoji_extractor_cli"
+path = "src/bin/emoji_extractor_cli.rs"
+
+[[bin]]
+name = "tantivy_analyzer_cli"
+path = "src/bin/tantivy_analyzer_cli.rs"
+
+[[bin]]
+name = "plan_cli"
+path = "src/bin/plan_cli.rs"
+
+[[bin]]
+name = "file_identifier"
+path = "src/bin/file_identifier_cli.rs"
+
+[[bin]]
+name = "recursive_index"
+path = "src/bin/recursive_index_cli.rs"
+
+[[bin]]
+name = "git_object_indexer"
+path = "src/bin/git_object_indexer_cli.rs"
+
+[dependencies]
+anyhow = "1.0"
+tantivy = { workspace = true, default-features = false, features = ["mmap", "lz4-compression"] }
+emojis = "0.7.0"
+# Lightweight dependencies for chat processing
+regex = "1.10"
+walkdir = "2.5"
+glob = "0.3.1"
+thiserror = "1.0"
+markdown = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+clap = { version = "4.4", features = ["derive"] }
+rayon = "1.8"
+notify = "6.1"
+git2 = "0.19"
+sha2 = "0.10"
+
+# Only include heavy dependencies when needed
+solfunmeme_core_logic = { path = "../solfunmeme_core_logic", optional = true }
+solfunmeme_models = { path = "../solfunmeme_models", optional = true }
+solfunmeme_extractor = { path = "../solfunmeme_extractor", optional = true }
+rust-embed = { version = "8.7.2", features = ["debug-embed", "include-exclude"], optional = true }
+solfunmeme_search_tantivy = { path = "../solfunmeme_search_tantivy" }
+solfunmeme_tantivy_report = { path = "../solfunmeme_tantivy_report" }
+solfunmeme_indexer = { path = "../solfunmeme_indexer" }
+
+tempfile = "3.10"
+
+[dev-dependencies]
+glob = "0.3.1"
+
+[features]
+default = ["lightweight"]
+lightweight = []
+full = ["solfunmeme_core_logic", "solfunmeme_models", "solfunmeme_extractor", "rust-embed"]
+

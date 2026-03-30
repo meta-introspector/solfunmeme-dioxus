@@ -1,0 +1,13 @@
+@prefix um: <http://example.org/unimath#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# UniMath Emoji Ontology
+# Attribution: Vladimir Voevodsky, Institute for Advanced Study (IAS)
+
+um:number a um:Concept ; um:emoji "🔢" ; dc:creator "Vladimir Voevodsky" ; dc:publisher "Institute for Advanced Study (IAS)" ; um:label "Number" .
+um:addition a um:Concept ; um:emoji "➕" ; dc:creator "Vladimir Voevodsky" ; dc:publisher "Institute for Advanced Study (IAS)" ; um:label "Addition" .
+um:equality a um:Concept ; um:emoji "=" ; dc:creator "Vladimir Voevodsky" ; dc:publisher "Institute for Advanced Study (IAS)" ; um:label "Equality" .
+um:zero a um:Concept ; um:emoji "0️⃣" ; dc:creator "Vladimir Voevodsky" ; dc:publisher "Institute for Advanced Study (IAS)" ; um:label "Zero" .
+um:induction a um:Concept ; um:emoji "🔄" ; dc:creator "Vladimir Voevodsky" ; dc:publisher "Institute for Advanced Study (IAS)" ; um:label "Induction" .
+um:universe a um:Concept ; um:emoji "🌌" ; dc:creator "Vladimir Voevodsky" ; dc:publisher "Institute for Advanced Study (IAS)" ; um:label "Universe" .
+um:growth a um:Concept ; um:emoji "🌱" ; dc:creator "Vladimir Voevodsky" ; dc:publisher "Institute for Advanced Study (IAS)" ; um:label "Growth/Base Case" . 

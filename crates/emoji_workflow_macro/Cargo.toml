@@ -1,0 +1,21 @@
+[package]
+name = "emoji_workflow_macro"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[lib]
+proc-macro = true
+
+[[bin]]
+name = "test_macro"
+path = "src/test_macro.rs"
+
+[dependencies]
+syn = { version = "2.0", features = ["full", "extra-traits"] }
+quote = "1.0"
+proc-macro2 = "1.0"
+anyhow = "1.0"
+workflow_manager = { path = "../workflow_manager" }
+emoji_lang_plugin = { path = "../emoji_lang_plugin" }
+ctor = "0.1"

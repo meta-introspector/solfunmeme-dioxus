@@ -1,0 +1,72 @@
+@startuml C4_Deployment
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Solfunmeme-Dioxus System - Deployment Diagram
+
+Person(developer, "Developer", "A software developer using the system")
+
+Deployment_Node(dev_machine, "Developer Machine") {
+    Container(cli, "ZOS CLI", "Rust Binary", "Interactive command-line interface")
+    Container(web_app, "Web Application", "Dioxus/WASM", "Interactive web interface")
+    Container(processing_engine, "Processing Engine", "Rust Binary", "Core data processing pipeline")
+    Container(search_engine, "Search Engine", "Rust/Tantivy", "Full-text and semantic search")
+    Container(data_store, "Data Store", "SQLite", "Local data storage")
+}
+
+Deployment_Node(cloud_infrastructure, "Cloud Infrastructure") {
+    Deployment_Node(web_server, "Web Server") {
+        Container(api_gateway, "API Gateway", "Rust/Axum", "RESTful API for system integration")
+        Container(workflow_engine, "Workflow Manager", "Rust Binary", "Workflow orchestration")
+    }
+    
+    Deployment_Node(blockchain_node, "Blockchain Node") {
+        Container(blockchain_client, "Blockchain Client", "Rust Binary", "Solana L2 sidechain integration and rollup management")
+    }
+    
+    Deployment_Node(ml_services, "ML Services") {
+        Container(llm_service, "LLM Service", "Python/FastAPI", "Large Language Model API")
+        Container(bert_service, "BERT Service", "Python/Torch", "BERT embedding generation")
+    }
+}
+
+Deployment_Node(external_services, "External Services") {
+    Container(github_api, "GitHub API", "REST API", "Source code repository access")
+    Container(solana_mainnet, "Solana Mainnet", "Blockchain", "Final data verification and rollup settlement")
+    Container(solana_sidechain, "Solana Sidechain", "L2 Blockchain", "High-throughput index storage and processing")
+}
+
+' Developer interactions
+Rel(developer, cli, "Uses", "Command-line interface")
+Rel(developer, web_app, "Uses", "Web browser")
+
+' Local processing
+Rel(cli, processing_engine, "Orchestrates", "Local processing")
+Rel(web_app, processing_engine, "Triggers", "Analysis requests")
+Rel(processing_engine, search_engine, "Indexes", "Processed data")
+Rel(processing_engine, data_store, "Stores", "Results")
+
+' Cloud interactions
+Rel(cli, api_gateway, "API calls", "HTTP/HTTPS")
+Rel(web_app, api_gateway, "API calls", "HTTP/HTTPS")
+Rel(api_gateway, workflow_engine, "Triggers", "Workflow execution")
+Rel(workflow_engine, processing_engine, "Manages", "Processing pipeline")
+
+' Blockchain integration
+Rel(processing_engine, blockchain_client, "Stores", "Verified data")
+Rel(blockchain_client, solana_sidechain, "Stores", "Index data and embeddings")
+Rel(blockchain_client, solana_mainnet, "Rolls up", "Verified data batches")
+
+' ML services
+Rel(processing_engine, llm_service, "Uses", "Code analysis")
+Rel(processing_engine, bert_service, "Generates", "Embeddings")
+
+' External services
+Rel(processing_engine, github_api, "Fetches", "Source code")
+
+' Network connections
+Rel_R(dev_machine, cloud_infrastructure, "Internet", "HTTPS")
+Rel_R(cloud_infrastructure, external_services, "Internet", "HTTPS/WebSocket")
+
+@enduml 

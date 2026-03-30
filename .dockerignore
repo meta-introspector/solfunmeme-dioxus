@@ -1,0 +1,11 @@
+fly.toml
+Dockerfile
+.dockerignore
+node_modules
+.git
+**/target
+**/dist
+LICENSES
+LICENSE
+temp
+README.md

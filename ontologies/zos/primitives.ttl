@@ -1,0 +1,42 @@
+@prefix zos: <http://example.org/zos#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# --- ZOS Core Primitives ---
+# These are the fundamental, axiomatic elements of the Zero Ontology System.
+# All other concepts are to be understood as constructions from these primitives.
+
+zos:Primitive a rdfs:Class ;
+    rdfs:label "ZOS Primitive" ;
+    rdfs:comment "A member of the core set of axiomatic elements from which all other concepts are constructed." .
+
+zos:Zero a zos:Primitive ;
+    rdfs:label "0" ;
+    rdfs:comment "Represents the concept of null, the void, or the empty set. The origin point." .
+
+zos:One a zos:Primitive ;
+    rdfs:label "1" ;
+    rdfs:comment "Represents the concept of unity, identity, or the whole." .
+
+zos:Two a zos:Primitive ;
+    rdfs:label "2" ;
+    rdfs:comment "Represents the concept of duality, pairs, or opposition." .
+
+zos:Three a zos:Primitive ;
+    rdfs:label "3" ;
+    rdfs:comment "Represents the concept of relationship, structure, or synthesis." .
+
+zos:Five a zos:Primitive ;
+    rdfs:label "5" ;
+    rdfs:comment "Represents the concept of life, dynamism, or change." .
+
+zos:Seven a zos:Primitive ;
+    rdfs:label "7" ;
+    rdfs:comment "Represents the concept of a model, a system, or a complete process." .
+
+zos:Eleven a zos:Primitive ;
+    rdfs:label "11" ;
+    rdfs:comment "Represents the concept of a higher-order system, a meta-system, or a system of systems." .
+
+zos:Thirteen a zos:Primitive ;
+    rdfs:label "13" ;
+    rdfs:comment "Represents the concept of transformation, evolution, or a leap to a new state." .

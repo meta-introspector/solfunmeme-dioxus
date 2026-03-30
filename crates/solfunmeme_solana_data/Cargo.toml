@@ -1,0 +1,14 @@
+[package]
+name = "solfunmeme_solana_data"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0"
+
+[dependencies]
+anyhow = "1.0"
+borsh = "0.10"
+sha2 = "0.10"
+tracing = "0.1"
+solana-client = "2.3"
+solana-sdk = "2.3"
+solana-program = { version = "2.3", features = ["borsh"] }

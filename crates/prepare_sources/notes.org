@@ -1,0 +1,6 @@
+1. use the ontology from the ttl
+   if the item is not in the list we find the 3 closets emojis and add those in for the word.
+   only vectorize the sums not the individual items
+   save the vectors generated in a file for reuse, as an rdf ontology.
+   dont print all the filenames, use a progress bar for the output.
+   

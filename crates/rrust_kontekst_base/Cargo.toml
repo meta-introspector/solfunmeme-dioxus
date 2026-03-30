@@ -1,0 +1,11 @@
+[package]
+name = "rrust_kontekst_base"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+serde_json = "1.0.140"
+inventory = "0.3"
+serde = { version = "1.0", features = ["derive"] }
+dioxus-logger = "0.6.2"
+ctor = "0.4.2"
