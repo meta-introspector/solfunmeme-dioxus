@@ -38,13 +38,13 @@ jobs:
         uses: meta-introspector/cache@v4
         with:
           path: ~/.cargo/bin
-          key: cargo-bin-dx-0.7.4-${{ runner.os }}
+          key: cargo-bin-dx-0.7.4-v2-${{ runner.os }}
 
       - name: Build ${{ matrix.platform }}
         run: |
           nix develop --command bash -c '
             export PATH="$HOME/.cargo/bin:$PATH"
-            if ! dx --version 2>/dev/null; then
+            if ! dx --version 2>&1 | grep -q 0.7.4 2>/dev/null; then
               cargo install dioxus-cli@0.7.4
             fi
             dx build ${{ matrix.dx_args }}
