@@ -1,5 +1,0 @@
-use rust_embed::Embed;
-
-#[derive(Embed)]
-#[folder = "vendor/windows-rs/crates/libs/sys/src/Windows/Win32/System/DeveloperLicensing"]
-pub struct OurVendorWindowsRsCratesLibsSysSrcWindowsWin32SystemDeveloperLicensingExtractor;

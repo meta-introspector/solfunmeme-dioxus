@@ -1,5 +1,0 @@
-use rust_embed::Embed;
-
-#[derive(Embed)]
-#[folder = "vendor/fiat-crypto/fiat-amd64/fiat_poly1305_carry_mul"]
-pub struct OurVendorFiatCryptoFiatAmd64FiatPoly1305CarryMulExtractor;

@@ -1,5 +1,0 @@
-use rust_embed::Embed;
-
-#[derive(Embed)]
-#[folder = "vendor/icu4x/provider/source/data/debug/list/and/v1/N"]
-pub struct OurVendorIcu4xProviderSourceDataDebugListAndV1NExtractor;

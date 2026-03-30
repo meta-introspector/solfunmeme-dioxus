@@ -1,5 +1,0 @@
-use rust_embed::Embed;
-
-#[derive(Embed)]
-#[folder = "vendor/windows-rs/crates/tests/winrt/composable_client"]
-pub struct OurVendorWindowsRsCratesTestsWinrtComposableClientExtractor;
