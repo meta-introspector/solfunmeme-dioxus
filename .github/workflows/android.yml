@@ -55,7 +55,7 @@ jobs:
         run: |
           nix develop --command bash -c '
             export PATH="$HOME/.cargo/bin:$PATH"
-            if ! dx --version 2>&1 | grep -q "0.7"; then
+            if ! dx --version 2>&1 | grep -q "0.7.4"; then
               cargo install dioxus-cli@0.7.4
             fi
             dx build ${{ matrix.dx_args }}

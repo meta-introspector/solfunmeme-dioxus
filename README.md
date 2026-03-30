@@ -1,12 +1,45 @@
-# Solfunmeme-Dioxus: Self-Aware Codebase
+# Solfunmeme-Dioxus
 
-A revolutionary codebase management system that integrates mathematical frameworks (Clifford algebra, manifold geometry) with semantic processing to create a truly self-aware codebase where code and meaning "vibe" together.
+WASM frontend + Android P2P node for the SOLFUNMEME DAO.
 
-## 🌟 Vision
+**Web**: https://solana.solfunmeme.com/dioxus/
+**APK**: https://solana.solfunmeme.com/onboarding/solfunmeme-dioxus.apk
+**Token**: BwUTq7fS6sfUmHDwAiCQZ3asSiPEapW5zDrsbwtapump
 
-**"The message is the vibe is the function, the functions vibe with each other."**
+## Quick Start
 
-Solfunmeme-Dioxus represents a paradigm shift in how we understand, manage, and interact with code. By vendorizing, indexing, deduplicating, and cross-referencing all code (including dependencies), we create a living, evolving, self-understanding system.
+```bash
+# Install on Android
+# Download APK from https://solana.solfunmeme.com/onboarding/solfunmeme-dioxus.apk
+
+# Build from source
+nix develop
+dx build --release --platform web                                              # web
+dx build --features native --platform android --release --target aarch64-linux-android  # android
+```
+
+## P2P Node Services (port 8080)
+
+| Endpoint | Description |
+|----------|-------------|
+| GET /status | Node info |
+| GET /zkperf | ZK witness (orbifold mod 71/59/47, crown 196883) |
+| GET /peers | libp2p peer list |
+| POST /paste | Create paste (SHA-256 addressed) |
+| POST /ipfs | Add content to IPFS |
+| GET /ipfs/{cid} | Fetch by CID |
+| POST /ipfs/publish | Publish with ACL + signature |
+| POST /stego/encode | eRDFa ZWC steganography |
+| GET /forge/repos | List repos from connected forges |
+
+## Docs
+
+- [Onboarding Guide](docs/ONBOARDING.md)
+- [Forge Sync Architecture](docs/FORGE_SYNC.md)
+- [Status](docs/status.md)
+- [Orphan Submodules](docs/ORPHAN_SUBMODULES.md)
+
+---
 
 ## 🚀 Key Features
 
