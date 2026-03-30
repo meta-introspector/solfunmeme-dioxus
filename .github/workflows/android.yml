@@ -34,17 +34,28 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
 
-      - name: Cache cargo bin
+      - name: Cache nix store
         uses: meta-introspector/cache@v4
         with:
-          path: ~/.cargo/bin
-          key: cargo-bin-dx-0.7.4-v2-${{ runner.os }}
+          path: /nix/store
+          key: nix-store-${{ runner.os }}-${{ hashFiles('flake.lock') }}
+          restore-keys: nix-store-${{ runner.os }}-
+
+      - name: Cache cargo
+        uses: meta-introspector/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target-wasm-solfunmeme
+          key: cargo-${{ matrix.platform }}-${{ hashFiles('Cargo.lock') }}
+          restore-keys: cargo-${{ matrix.platform }}-
 
       - name: Build ${{ matrix.platform }}
         run: |
           nix develop --command bash -c '
             export PATH="$HOME/.cargo/bin:$PATH"
-            if ! dx --version 2>&1 | grep -q 0.7.4 2>/dev/null; then
+            if ! dx --version 2>&1 | grep -q "0.7"; then
               cargo install dioxus-cli@0.7.4
             fi
             dx build ${{ matrix.dx_args }}
