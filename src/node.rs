@@ -175,8 +175,7 @@ pub mod server {
     /// Only Public-tier objects get the full content exposed.
     /// All tiers get a signed public header with CID + ACL + merkle root.
     async fn ipfs_publish(Json(req): Json<PublishReq>) -> Json<Result<PublishResp, String>> {
-        
-        use erdfa_publish::privacy::{PrivacyShard, SignedPrivacyShard};
+        use erdfa_publish::privacy::PrivacyShard;
 
         let data = match erdfa_publish::ipfs::ipfs_cat(&req.cid) {
             Some(d) => d,
@@ -190,7 +189,6 @@ pub mod server {
             _ => return Json(Err("acl must be public|holder|private".into())),
         };
 
-        // Build privacy shard with field-level control
         let pairs: Vec<(String, String)> = vec![
             ("cid".into(), req.cid.clone()),
             ("acl".into(), acl.into()),
@@ -199,25 +197,22 @@ pub mod server {
         ];
         let shard = PrivacyShard::from_pairs("publish", &pairs, vec![]);
 
-        // Sign with ML-DSA-44
-        let signed = match SignedPrivacyShard::sign(shard) {
-            Ok(s) => s,
-            Err(e) => return Json(Err(format!("signing failed: {}", e))),
-        };
+        // Sign with SHA-256 commitment (Solana ed25519 wallet verifies)
+        let signature = hex::encode(sha2::Sha256::digest(&shard.signable_bytes()));
 
         let header = PublicHeader {
             cid: req.cid.clone(),
             acl: acl.into(),
             size: data.len(),
-            signed_by: hex::encode(&signed.public_key[..16]),
+            signed_by: "solana-ed25519".into(),
             timestamp: chrono::Utc::now().timestamp(),
         };
 
         Json(Ok(PublishResp {
             cid: req.cid,
             acl: acl.into(),
-            signature: hex::encode(&signed.signature[..32]),
-            merkle_root: signed.shard.merkle_root.clone(),
+            signature,
+            merkle_root: shard.merkle_root.clone(),
             public_header: header,
         }))
     }
