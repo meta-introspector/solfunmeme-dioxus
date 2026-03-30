@@ -2,7 +2,7 @@ name: Build All Platforms
 
 on:
   push:
-    branches: [main, feature/v2-minimal]
+    branches: [main, feature/v2-minimal, v2-clean]
   workflow_dispatch:
 
 jobs:
