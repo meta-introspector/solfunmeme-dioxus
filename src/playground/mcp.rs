@@ -723,9 +723,9 @@ pub fn MCPPlaygroundApp() -> Element {
     let active_tool = use_signal(|| None::<String>);
     let mcp_queries = use_signal(|| Vec::<McpQuery>::new());
     let query_input = use_signal(|| String::new());
-    let mut mcp_tools = use_signal(|| Vec::<McpToolView>::new());
-    let mut loading = use_signal(|| true);
-    let mut load_error = use_signal(|| None::<String>);
+    let mcp_tools = use_signal(|| Vec::<McpToolView>::new());
+    let loading = use_signal(|| true);
+    let load_error = use_signal(|| None::<String>);
 
     use_effect(move || {
         let mut mcp_tools = mcp_tools;
@@ -793,3 +793,30 @@ crate::register_plugin!(
     "🤖",
     || rsx! { div { "plugin" } }
 );
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn input_to_json_object_returns_empty_object_without_braces() {
+        assert_eq!(input_to_json_object("embedding_ops"), Some(json!({})));
+    }
+
+    #[test]
+    fn parse_query_accepts_single_quoted_ai_format() {
+        let parsed = parse_query("AI: invoke_tool('embedding_ops', {'query': 'hello world'})");
+        let Some((tool_name, params)) = parsed else {
+            panic!("expected query to parse");
+        };
+
+        assert_eq!(tool_name, "embedding_ops");
+        assert_eq!(params, json!({ "query": "hello world" }));
+    }
+
+    #[test]
+    fn parse_query_rejects_invalid_format() {
+        assert!(parse_query("invoke_tool('embedding_ops', {'query': 'hello'})").is_none());
+        assert!(parse_query("AI: not_a_tool()").is_none());
+    }
+}

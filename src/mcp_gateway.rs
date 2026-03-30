@@ -288,4 +288,33 @@ mod tests {
         assert_eq!(gateway_bind_addr(), "127.0.0.1:9999");
         env::remove_var(MCP_GATEWAY_ADDR_ENV);
     }
+
+    #[test]
+    fn default_bind_addr_uses_fallback_when_env_missing() {
+        env::remove_var(MCP_GATEWAY_ADDR_ENV);
+        assert_eq!(gateway_bind_addr(), DEFAULT_GATEWAY_ADDR);
+        assert_eq!(
+            gateway_base_url(),
+            format!("http://{DEFAULT_GATEWAY_ADDR}/api/itir-mcp")
+        );
+    }
+
+    #[tokio::test]
+    async fn call_tool_handler_rejects_empty_tool_name() {
+        let result = call_tool_handler(
+            State(GatewayConfig::default()),
+            Json(ToolCallRequest {
+                name: "   ".to_string(),
+                arguments: None,
+            }),
+        )
+        .await;
+
+        let Err((status, body)) = result else {
+            panic!("expected empty tool name to be rejected");
+        };
+
+        assert_eq!(status, StatusCode::BAD_REQUEST);
+        assert_eq!(body.0["error"]["message"], "tool name is required");
+    }
 }
