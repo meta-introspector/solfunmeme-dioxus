@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: meta-introspector/checkout@v2
+
+    - name: Install Rust
+      uses: meta-introspector/setup-rust-toolchain@feature/v1
+
+      with:
+        toolchain: stable
+        profile: minimal
+        override: true
+
+    - name: Build Docs
+      run: cargo doc --no-deps
+
+    - name: Run Tests
+      run: cargo test
+
+    - name: Run Bootstrap
+      run: cargo run --package bootstrap --release
