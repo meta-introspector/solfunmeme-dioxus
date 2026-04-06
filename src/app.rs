@@ -24,7 +24,7 @@ use crate::model::storage::{ACCOUNT_STATE, ACTIVE_CONNECTION, GLOBAL_MESSAGE, WA
 use crate::views::{
     accounts::Accounts, clusters::Clusters, dashboard::Dashboard, extras::Extras,
     source_browser::SourceBrowser, dao_governance::DaoGovernance,
-    pastebin_view::Pastebin, p2p_sharing::P2pSharing,
+    pastebin_view::Pastebin, p2p_sharing::P2pSharing, nixwars_bbs::NixwarsBbs,
 };
 use crate::plugin::PluginBrowser;
 
@@ -98,6 +98,8 @@ pub enum Route {
         Pastebin(),
         #[route("/p2p")]
         P2pSharing(),
+        #[route("/bbs")]
+        NixwarsBbs(),
         #[route("/plugins")]
         PluginBrowser(),
         // #[feature ("git2")]

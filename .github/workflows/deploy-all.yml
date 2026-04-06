@@ -1,0 +1,104 @@
+name: Deploy to All Platforms
+on:
+  push:
+    branches: [main]
+    paths: [docs/**]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  deployments: write
+
+jobs:
+  # ── GitHub Pages ─────────────────────────────────────────────
+  github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: meta-introspector/checkout@main
+      - run: touch docs/.nojekyll
+      - uses: meta-introspector/github-pages-deploy-action@v4.4.3
+        with:
+          branch: gh-pages
+          folder: docs
+          clean: true
+
+  # ── Cloudflare Pages ─────────────────────────────────────────
+  cloudflare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: meta-introspector/checkout@main
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy docs/ --project-name=solfunmeme-dioxus
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+  # ── Netlify ──────────────────────────────────────────────────
+  netlify:
+    runs-on: ubuntu-latest
+    if: ${{ vars.NETLIFY_SITE_ID != '' }}
+    steps:
+      - uses: meta-introspector/checkout@main
+      - run: npx netlify-cli deploy --dir=docs --prod --site=${{ vars.NETLIFY_SITE_ID }} --auth=${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+  # ── Render (deploy hook) ─────────────────────────────────────
+  render:
+    runs-on: ubuntu-latest
+    if: ${{ vars.RENDER_DEPLOY_HOOK != '' }}
+    steps:
+      - run: curl -s -X POST "${{ vars.RENDER_DEPLOY_HOOK }}"
+
+  # ── Azure Static Web Apps ────────────────────────────────────
+  azure:
+    runs-on: ubuntu-latest
+    if: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN != '' }}
+    steps:
+      - uses: meta-introspector/checkout@main
+      - uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          app_location: docs
+          skip_app_build: true
+
+  # ── Oracle OCI Object Storage ────────────────────────────────
+  oracle:
+    runs-on: ubuntu-latest
+    if: ${{ secrets.OCI_KEY_FILE != '' }}
+    steps:
+      - uses: meta-introspector/checkout@main
+      - run: |
+          pip install oci
+          mkdir -p ~/.oci
+          echo "${{ secrets.OCI_CONFIG }}" > ~/.oci/config
+          echo "${{ secrets.OCI_KEY_FILE }}" > ~/.oci/key.pem
+          chmod 600 ~/.oci/key.pem
+          python3 << 'PY'
+          import oci, os, mimetypes
+          config = oci.config.from_file()
+          c = oci.object_storage.ObjectStorageClient(config)
+          ns = c.get_namespace().data
+          for root, _, files in os.walk("docs"):
+              for f in files:
+                  p = os.path.join(root, f)
+                  ct = "application/wasm" if f.endswith(".wasm") else (mimetypes.guess_type(p)[0] or "application/octet-stream")
+                  if f.endswith(".js"): ct = "application/javascript"
+                  c.put_object(ns, "solfunmeme-dioxus", os.path.relpath(p, "docs"), open(p, "rb"), content_type=ct)
+          print(f"Uploaded to OCI: https://objectstorage.us-ashburn-1.oraclecloud.com/n/{ns}/b/solfunmeme-dioxus/o/index.html")
+          PY
+
+  # ── HuggingFace Spaces ───────────────────────────────────────
+  huggingface:
+    runs-on: ubuntu-latest
+    if: ${{ secrets.HF_TOKEN != '' }}
+    steps:
+      - uses: meta-introspector/checkout@main
+      - run: |
+          pip install huggingface_hub
+          python3 << 'PY'
+          from huggingface_hub import HfApi
+          HfApi(token="${{ secrets.HF_TOKEN }}").upload_folder(
+              folder_path="docs", repo_id="introspector/solfunmeme-dioxus",
+              repo_type="space", commit_message="Deploy from GHA")
+          PY

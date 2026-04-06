@@ -1,9 +1,10 @@
 {
-  "version": 2,
-  "buildCommand": "",
-  "installCommand": "",
-  "framework": null,
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/docs/index.html" }
+  "outputDirectory": "docs",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+  "headers": [
+    {
+      "source": "/assets/(.*).wasm",
+      "headers": [{ "key": "Content-Type", "value": "application/wasm" }]
+    }
   ]
 }
