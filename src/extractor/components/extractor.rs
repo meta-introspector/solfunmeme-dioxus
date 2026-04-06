@@ -9,12 +9,8 @@ use crate::extractor::{
     system::clipboard::{copy_all_snippets_combined, copy_to_clipboard},
     types::{CodeSnippet, ExtractedFile, ProcessingFile},
 };
+use dioxus::html::FileData;
 use dioxus::prelude::*;
-
-use dioxus::html::FileEngine;
-
-use dioxus_html::HasFileData;
-use std::sync::Arc;
 
 //src/playground/app.rs
 // 37:use crate::extractor::components::extractor::MarkdownCodeExtractor;
@@ -38,24 +34,15 @@ pub fn MarkdownCodeExtractor() -> Element {
     };
 
     // File processing handlers
-    let read_files = move |file_engine: Arc<dyn FileEngine>| async move {
-        process_file_engine(file_engine, files, processing_file).await; // also extract snippets
+    let read_files = move |selected_files: Vec<FileData>| async move {
+        process_file_engine(selected_files, files, processing_file).await;
     };
 
     let upload_files = move |evt: FormEvent| async move {
-        if let Some(file_engine) = evt.files() {
-            read_files(file_engine).await;
+        let selected_files = evt.files();
+        if !selected_files.is_empty() {
+            read_files(selected_files).await;
         }
-    };
-
-    // Drag and drop handlers
-    let on_drop = move |evt: DragEvent| {
-        let read_files_clone = read_files.clone();
-        spawn(async move {
-            if let Some(file_engine) = evt.files() {
-                read_files_clone(file_engine).await;
-            }
-        });
     };
 
     files.with(|files_vec| {

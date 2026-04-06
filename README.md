@@ -16,6 +16,19 @@ This matrix will have a key that is traceable back to the sources, we can show f
 ## Overview  
 
 Solfunmeme Dioxus is an ambitious project that combines code analysis, vectorization, and blockchain technology to create a comprehensive code visualization and execution platform.  
+
+## MCP Integration
+
+The Dioxus shell now includes an MCP bridge path for ITIR tools:
+
+- `src/mcp_gateway.rs` exposes a small Axum service on `DIOXUS_MCP_GATEWAY_ADDR` (default `127.0.0.1:3939`).
+- The service path is `/api/itir-mcp`.
+- Tool list: `GET /api/itir-mcp/tools`
+- Tool schema: `GET /api/itir-mcp/tools/{name}`
+- Tool invocation: `POST /api/itir-mcp/call` with JSON body `{"name": "...", "arguments": {...}}`
+- The playground (`src/playground/mcp.rs`) prefers MCP gateway tools, with a local `rrust_kontekst_base` fallback for resilience.
+
+This integration lets the web/desktop UI stay in Rust while invoking external Python MCP adapters on the host.
   
 ### Core Concepts  
 - **Code Vectorization**: Transform source code into executable vector representations  
@@ -303,5 +316,4 @@ or in bash
 ```
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/meta-introspector/solfunmeme-dioxus)
-
 

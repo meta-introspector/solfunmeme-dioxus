@@ -3,7 +3,7 @@ use dioxus::prelude::*;
 use crate::extractor::types::ProcessingFile;
 //use crate::extractor::ProcessingFile;
 #[component]
-pub fn ProcessingIndicator(processing_file: ReadOnlySignal<Option<ProcessingFile>>) -> Element {
+pub fn ProcessingIndicator(processing_file: ReadSignal<Option<ProcessingFile>>) -> Element {
     if let Some(pf) = processing_file() {
         rsx! {
             div { class: "processing-indicator",
