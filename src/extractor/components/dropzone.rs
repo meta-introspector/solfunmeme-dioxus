@@ -1,8 +1,5 @@
 use dioxus::{html::HasFileData, prelude::*};
 use std::sync::Arc;
-//use crate::extractor::Arc;
-//use crate::extractor::FileEngine;
-use crate::extractor::components::dropzone::dioxus_elements::FileEngine;
 #[component]
 pub fn DropZone(hovered: Signal<bool>, read_files: EventHandler<Arc<dyn FileEngine>>) -> Element {
     rsx! {

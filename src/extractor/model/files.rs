@@ -3,9 +3,8 @@ use crate::extractor::{
     types::{ExtractedFile, ProcessingFile},
 };
 use dioxus::{
-    html::FileEngine,
     prelude::*,
-    signals::{Signal, Writable},
+    signals::Signal,
 };
 use gloo_timers::future::TimeoutFuture;
 use std::{pin::Pin, sync::Arc};

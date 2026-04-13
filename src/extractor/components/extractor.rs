@@ -10,10 +10,6 @@ use crate::extractor::{
     types::{CodeSnippet, ExtractedFile, ProcessingFile},
 };
 use dioxus::prelude::*;
-
-use dioxus::html::FileEngine;
-
-use dioxus_html::HasFileData;
 use std::sync::Arc;
 
 //src/playground/app.rs

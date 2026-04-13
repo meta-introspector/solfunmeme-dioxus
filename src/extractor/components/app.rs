@@ -1,11 +1,6 @@
-// used as embedding app MenuOption::Embedding => rsx!(EmbeddingApp {}) from src/playground/app.rs
-//
 use dioxus::{html::HasFileData, prelude::*};
 use gloo_timers::future::TimeoutFuture;
 use std::sync::Arc;
-
-use crate::extractor::styles::STYLE;
-use dioxus::html::FileEngine;
 //use crate::extractor::error;
 //use crate::extractor::ProcessingFile;
 use crate::extractor::types::UploadedFile;

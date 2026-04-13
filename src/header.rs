@@ -39,7 +39,7 @@ pub fn Header() -> Element {
 
     rsx! {
         div { class:"flex flex-col w-full gap-4 justify-between items-center",
-            nav {class:"flex w-full justify-between items-center p-1 dark:shadow-lg shadow-sm border-b-[1px] dark:border-true-blue",
+            nav {class:"flex w-full justify-between items-center p-1 shadow-lg border-b-[1px] border-true-blue bg-rich-black",
                 div{class:"p-1 w-[25%] md:w-[15%]", img{src:LOGO, alt:"LOGO"} }
 
             div{class:"flex w-[75%] items-center justify-center hidden md:inline-flex",

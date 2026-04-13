@@ -2,7 +2,7 @@ use crate::extractor::{
     model::extract_html::extract_code_snippets_from_html,
     types::{CodeSnippet, DocumentSummary, ExtractedFile, ProcessingFile, TestResult},
 };
-use dioxus::{html::FileEngine, prelude::*};
+use dioxus::prelude::*;
 use gloo_timers::future::TimeoutFuture;
 use std::{
     collections::hash_map::DefaultHasher,

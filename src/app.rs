@@ -62,7 +62,7 @@ pub(crate) fn MainApp() -> Element {
         document::Link { rel: "stylesheet", href: tw }
         document::Title {"Rust Wallet Adapter"}
 
-        div { class: "w-full flex min-h-screen font-[sans-serif] dark:bg-rich-black bg-white text-black dark:text-white",
+        div { class: "w-full flex min-h-screen font-[sans-serif] bg-rich-black text-white",
 
             Notification {}
 

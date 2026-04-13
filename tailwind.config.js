@@ -10,14 +10,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'true-blue': '#0060df',
-        'blue-yonder': '#9BB4D5',
-        'cobalt-blue': '#234d97',
-        'rich-black': '#0b0414'
+        'true-blue': '#dc143c',
+        'blue-yonder': '#ff6b6b',
+        'cobalt-blue': '#8b0000',
+        'rich-black': '#0a0a0a'
       },
       boxShadow: {
-        'strong-dark': '0 1px 5px rgba(0,96,223, 0.4)',
-        'soft-dark': '0 1px 5px rgba(0, 0, 0, 0.4)',
+        'strong-dark': '0 1px 5px rgba(220,20,60, 0.5)',
+        'soft-dark': '0 1px 5px rgba(0, 0, 0, 0.6)',
       },
       zIndex: {
         '1000': '1000',
