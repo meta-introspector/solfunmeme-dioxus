@@ -1,0 +1,12 @@
+[Unit]
+Description=Periodic Solfunmeme flake prefetch
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=6h
+RandomizedDelaySec=5min
+Persistent=true
+Unit=solfunmeme-prefetch.service
+
+[Install]
+WantedBy=timers.target

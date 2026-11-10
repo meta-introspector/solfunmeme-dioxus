@@ -1,0 +1,22 @@
+[Unit]
+Description=Solfunmeme Nix flake prefetch (warm store before Go-Live)
+After=network-online.target nix-daemon.service
+Wants=network-online.target
+ConditionPathExists=/opt/solfunmeme/flake.nix
+
+[Service]
+Type=oneshot
+DynamicUser=yes
+StateDirectory=solfunmeme-prefetch
+CacheDirectory=solfunmeme-prefetch
+WorkingDirectory=/opt/solfunmeme
+Environment=NIX_REMOTE=daemon
+Environment=HOME=/var/lib/solfunmeme-prefetch
+Environment=PATH=/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/bin/sh -c "exec nix --extra-experimental-features 'nix-command flakes' flake archive --json --to /var/cache/solfunmeme-prefetch"
+TimeoutStartSec=30min
+Nice=19
+IOSchedulingClass=idle
+
+[Install]
+WantedBy=multi-user.target
