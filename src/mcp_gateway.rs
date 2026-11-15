@@ -73,6 +73,7 @@ struct BridgeSessionConfig {
 
 #[derive(Debug)]
 struct BridgeSession {
+    poisoned: bool,
     child: Option<Child>,
     stdin: Option<BufWriter<ChildStdin>>,
     stdout: Option<BufReader<ChildStdout>>,
@@ -314,6 +315,7 @@ fn bridge_state() -> &'static Arc<Mutex<BridgeSession>> {
 impl BridgeSession {
     fn new() -> Self {
         Self {
+            poisoned: false,
             child: None,
             stdin: None,
             stdout: None,
@@ -321,6 +323,12 @@ impl BridgeSession {
     }
 
     fn ensure_started(&mut self) -> Result<(), String> {
+        if self.poisoned {
+            return Err(
+                "bridge session quarantined after uncertain outcome"
+                    .to_string()
+            );
+        }
         if let Some(child) = self.child.as_mut() {
             if let Ok(Some(_)) = child.try_wait() {
                 self.child = None;
@@ -400,6 +408,36 @@ impl BridgeSession {
     }
 }
 
+// RAII guard: cancellation poisons the current session.
+struct InFlightGuard<'a> {
+    session: &'a mut BridgeSession,
+    armed: bool,
+}
+
+impl<'a> InFlightGuard<'a> {
+    fn new(session: &'a mut BridgeSession) -> Self {
+        Self { session, armed: true }
+    }
+
+    fn disarm(&mut self) {
+        self.armed = false;
+    }
+}
+
+impl Drop for InFlightGuard<'_> {
+    fn drop(&mut self) {
+        if !self.armed {
+            return;
+        }
+        self.session.poisoned = true;
+        self.session.stdin = None;
+        self.session.stdout = None;
+        if let Some(child) = self.session.child.as_mut() {
+            let _ = child.start_kill();
+        }
+    }
+}
+
 async fn run_py_bridge(
     op: &str,
     name: Option<&str>,
@@ -414,14 +452,17 @@ async fn run_py_bridge(
     .map_err(|error| format!("failed to build bridge request: {error}"))?;
 
     let mut session = bridge_state().lock().await;
-    match session.call(&request).await {
-        Ok(response) => handle_bridge_response(response),
-        Err(error) => {
-            session.child = None;
-            session.stdin = None;
-            session.stdout = None;
-            session.call(&request).await.and_then(handle_bridge_response).or(Err(error))
+    let mut guard = InFlightGuard::new(&mut session);
+    let result = guard.session.call(&request).await;
+
+    match result {
+        Ok(response) => {
+            guard.disarm();
+            handle_bridge_response(response)
         }
+        Err(error) => Err(format!(
+            "bridge session quarantined; outcome unknown; automatic retry disabled: {error}"
+        )),
     }
 }
 
